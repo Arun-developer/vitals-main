@@ -1,0 +1,1313 @@
+<?php
+#echo'<pre>';print_r($requestListInfo);die;
+$this->load->view('vitals_header.php', array('main_menu' => 'request', 'page_title' => 'Approval Note Details'));
+?>
+<?php #$this->load->view('travel/header.php', array('main_menu' => 'request', 'page_title' => 'Approval Note Details'));  ?>
+<?php
+$currentTab = $this->uri->segment(3);
+$requestId = $this->uri->segment(4);
+?>
+<style>
+    .href_cls{
+        border-style: 1px solid;color: #2a7d47;border: 1px solid;padding: 3px;
+    }
+</style>
+
+<div class="dataconfig-content page-wrapper vitals_mainContent position-relative">
+    <div class="row">
+        <div class="col-lg-3 col-xl-3 col-md-3 col-12">
+            <div id="leftMenuLoad">
+                <?php $this->load->view('vitals_leftmenu.php', array('left_menu' => 'approve', 'page' => 'travellist')); ?>
+                <?php #$this->load->view('travel/master_sidemenu.php', array('left_menu' => 'approve', 'page' => 'my_approval_note')); ?>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-xl-9 col-md-9 col-12 pad-lf0 " ">
+            <main class="page-content">
+                <div class="row dataconfig d_v_d_c">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12 pad-none display-flex">
+                        <span><a href="<?php echo base_url() . 'index.php/traveladmin/requestlist/' . $currentTab; ?>"><i class="fas fa-angle-left"></i> Back </a></span>
+                        <h4><?php echo 'Travel Booking Details - ' . $this->uri->segment(4); ?></h4>
+                    </div>
+                    <div class="col-xl-8 col-lg-6 col-md-12 col-12 text-right">
+                        <ul class="vitals-links">
+                            <?php foreach ($requestListInfo as $row) { ?>
+                                <?php
+                                switch ($row['status']) {
+                                    case 'pending':
+                                        ?>
+                                        <li class="edit">
+                                            <a href="javascript:" data-toggle="modal" data-target="#confirmed" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span>Confirm</a>
+                                           <!-- <a href="javascript:" data-toggle="modal" data-target="#cancelrequest" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span>Cancel Request</a>-->
+                                           <!--<a href="javascript:" data-toggle="modal" data-target="#deferrequest" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span>Defer</a>-->
+
+                                        <?php
+                                    }
+                                    ?>
+
+                                <li class="edit"><a  href="<?php echo base_url() . 'index.php/traveladmin/edit_request_from/' . $currentTab . '/' . $requestId; ?>" class="master_aduser summaryEdit"><span><i class="fas fa-pencil-alt"></i></span> Edit</a></li>
+
+                                <?php if ($row['ticket_status'] == 'pending' && $row['status'] != 'cancelled') { ?>
+                                    <a href="javascript:" data-toggle="modal" data-target="#approveModel" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span> Cancel Request</a>
+                                <?php } ?>
+
+
+                                <?php if ($row["reporting_approval"] == 'pending') { ?>
+                                    <a href="javascript:" data-toggle="modal" data-target="#approveModel_admin" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span> Approve</a>
+                                    <a href="javascript:" data-toggle="modal" data-target="#disapproveModel_admin" class="master_aduser summaryEdit"><span><i class="far fa-check-circle"></i></span> Disapprove</a>
+                                <?php } ?>
+                                <li class="edit"><a  href="<?php echo base_url() . 'index.php/traveladmin/requestlist/' . $row['status']; ?>" class="master_aduser summaryEdit"><span><i class="far fa-times-circle"></i></span> Back</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="plan-structure-vital vital_windowScroll">
+                        <div class="tab-slider--container">
+                            <div id="tab1" class="tab-slider--body pad-none tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme">
+                                <main class="page-content">
+                                    <div class="inputplan-structureall plan-structure-new">
+                                        <?php if ($row["cancel_request"] == 'pending') { ?>
+                                            <div class="row approvalLabel">
+                                                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                                                    <div class="display-flex">
+                                                        <label>Cancel Request :</label>
+                                                        <p>
+                                                            <?php echo $row["cancel_request"]; ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                                                    <div class="display-flex">
+                                                        <label>Cancel Request Date :</label>
+                                                        <p><?php
+                                                            if (isset($row["cancel_request_date"]) && $row["cancel_request_date"] != '') {
+                                                                echo date('Y-m-d', strtotime($row["cancel_request_date"]));
+                                                            }
+                                                            ?></p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        <?php } ?>
+
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                                                <div class="display-flex">
+                                                    <label>Status :</label>
+                                                    <p>
+                                                        <?php
+                                                        if (isset($row["status"]) && $row["status"] != '') {
+                                                            echo ucfirst($row["status"]);
+                                                        }
+                                                        if (isset($row["confirmed_date"]) && $row["confirmed_date"] != '') {
+                                                            echo date('Y-m-d', strtotime($row["confirmed_date"]));
+                                                        }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                                                <div class="display-flex">
+                                                    <label>Reporting Authority Approval :</label>
+                                                    <p><?php
+                                                    if (isset($row["reporting_approval"]) && $row["reporting_approval"] != '') {
+                                                        echo ucfirst($row["reporting_approval"]) . ' ';
+                                                    }
+                                                    if (isset($row["RO_date"]) && $row["RO_date"] != '') {
+                                                        echo date('Y-m-d', strtotime($row["RO_date"]));
+                                                    }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div style="height: 15px;"></div>
+                                        <div class="newApprovalNoteViewTbl" style="border-bottom: 1px solid #ffffff;" >
+                                            <table class="table" style="margin-top: 0">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="5%">Date of Travel</th>
+                                                        <th width="5%">Destination From:</th>
+                                                        <th width="5%">To:</th>
+                                                        <th width="5%">Time</th>
+                                                        <th width="5%">Train/Flight/Cab/Bus</th>
+                                                        <th width="5%">Any preferred Train/Flight</th>
+                                                        <th width="5%">Date of Accommodation</th>
+                                                        <th width="5%">Location Preference</th>
+                                                        <th width="5%">Tickets Status</th>
+                                                        <th width="20%">Tickets Info</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <?php
+                                                    $ticket_count = 1;
+                                                    foreach ($journeyList as $row_jur) {
+                                                        ?>
+                                                        <tr class="metric_more">
+                                                            <td><?php
+                                                if (isset($row_jur["date_of_travel"]) && $row_jur["date_of_travel"] != '') {
+                                                    echo date('Y-m-d', strtotime($row_jur["date_of_travel"]));
+                                                }
+                                                        ?></td>
+                                                            <td><?= $row_jur["destination_from"] ?></td>
+                                                            <td><?= $row_jur["destination_to"] ?></td>
+                                                            <td><?= $row_jur["travel_time"] ?></td>
+                                                            <td><?php
+                                                        if ($row_jur["travel_mode"] == '') {
+                                                            echo '-';
+                                                        } else {
+                                                            $condition = array('master_id' => $row_jur["travel_mode"]);
+                                                            $get_masterName = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', '', true, 'ais');
+
+                                                            echo $get_masterName[0]->master_name;
+                                                        }
+                                                        ?></td>
+                                                            <td><?= $row_jur["preferred_train_flight"] ?></td>
+                                                            <td><?php
+                                                        $date1 = $date2 = '';
+                                                        if (isset($row_jur["date_of_accomodation"]) && $row_jur["date_of_accomodation"] != '') {
+
+                                                            if ($row_jur["date_of_accomodation"] != '0000-00-00 00:00:00') {
+                                                                $date1 = date('Y-m-d', strtotime($row_jur["date_of_accomodation"]));
+                                                            }
+                                                        }
+                                                        echo $date1 . ' - ' . $date2;
+                                                        ?></td>
+                                                            <td><?= $row_jur["location_preference"] ?></td>
+                                                            <td><?= $row_jur["ticket"] ?></td>
+                                                            <td>
+
+                                                                <?php if ($row['status'] == 'confirmed') {
+                                                                    if ($row_jur["send_tovendor"] == 'no') {
+                                                                        $snd = 'Send';
+                                                                    } else {
+                                                                        echo 'Sent&nbsp;/&nbsp;';
+                                                                        $snd = 'Resend';
+                                                                    }
+                                                                    ?>
+
+                                                                    <a  href="javascript:void(0);" onClick="showDialog_send('send_to_<?= $row_jur["journey_id"] ?>')" class="link_button href_cls" ><?= $snd ?></a>
+
+                                                                    <div class="modal" id="send_to_<?php echo $row_jur["journey_id"]; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title">Travel Booking - Send to Vendor</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body text-center">
+                                                                                    <form  class="send_form" action="<?php echo base_url() . 'index.php/traveladmin/sendtovendor/' . $currentTab . '/' . $requestId . '/' . $row_jur["journey_id"]; ?>" cancel="" method="post">
+                                                                                        <div class="container-fluid">
+                                                                                            <table style="border-bottom: 1px solid #ffffff;" width="400" cellspacing="5" cellpadding="5">
+                                                                                                <tr>
+                                                                                                    <td style="border-bottom: 1px solid #ffffff;"><label>Vendor : </label></td>
+                                                                                                    <td style="border-bottom: 1px solid #ffffff;">
+                                                                                                        <select class="form-control vendor_<?php echo $ticket_count; ?>" name="vendor" >
+                                                                                                            <option value="">Select</option>
+            <?php foreach ($vendorList as $rows) { ?>
+                                                                                                                <option value="<?= $rows['vendor_id'] ?>" <?php echo ($row_jur['vendor'] == $rows['vendor_id']) ? ('selected') : (''); ?>>
+                <?= $rows['vendor_name'] ?>
+                                                                                                                </option>
+            <?php } ?>
+                                                                                                        </select>
+                                                                                                        <div id="vendor_<?php echo $ticket_count; ?>_err" ></div>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                            <div style="height:15px"></div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-12 col-sm-12  col-md-12 text-left " style="text-align: end!important;">
+                                                                                                    <ul class="vitals-links">
+                                                                                                        <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel"  data-attr-tag-id="vendor_<?php echo $ticket_count; ?>" class="send_to_approve vital_yellow_btn wdt-100">Confirm</a></li>
+                                                                                                        <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Close</a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+
+            <?php if ($row_jur["send_tovendor"] == 'sent' && $row_jur['ticket'] == 'pending') { ?>
+
+                                                                        <a  href="javascript:void(0);" onClick="showDialog_upload_ticket('upload_ticket_<?php echo $ticket_count; ?>')" class="button href_cls" >Upload Tickets</a>
+
+                                                                        <div class="modal" id="upload_ticket_<?php echo $ticket_count; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Ticket and Bill Informations</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body text-center">
+                                                                                        <form id="upload_ticket_form"  enctype="multipart/form-data" action="<?php echo base_url() . 'index.php/traveladmin/upload_tickets/' . $currentTab . '/' . $row["travel_request_id"]; ?>" cancel="" method="post">
+                                                                                            <div class="container-fluid form-group">
+                                                                                                <table width="450px" cellspacing="5" cellpadding="5">
+
+
+
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Bill No <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;" >
+                                                                                                            <input type="hidden" name="travel_request_id" value="<?= $row["travel_request_id"] ?>" />
+                                                                                                            <input type="hidden" name="journey_id" value="<?= $row_jur["journey_id"] ?>" />
+                                                                                                            <input class="form-control bill_no_<?php echo $ticket_count; ?>"  type="text" name="bill_no" />
+                                                                                                            <div id="billno_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Total Amount <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>
+                                                                                                                <input class="commonAlphaNum form-control amount_<?php echo $ticket_count; ?>"  type="text" name="amount"  />
+                                                                                                                <div id="total_amt_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>E-Ticekt :</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;">
+                                                                                                            <div class="fileUpload blue-btn btn width100" style="width:100%!important">
+                                                                                                                <span><i class="fas fa-upload"></i> Upload</span>
+                                                                                                                <input type="file" value="" class="uploadlogo" name="e_ticket" >
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Bill Date <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>
+
+                                                                                                                <input type="text" name="bill_date" class="form-control bill_date bill_date_<?php echo $ticket_count; ?>" plaeholder="dd-mm-yyyy">
+                                                                                                                <div id="bill_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Vendor  </label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;">
+                                                                                                            <select class="form-control  vendor_<?php echo $ticket_count; ?>" name="vendor" >
+                                                                                                                <option value="">Select</option>
+                <?php foreach ($vendorList as $rows) { ?>
+                                                                                                                    <option value="<?= $rows['vendor_id'] ?>" <?php echo ($row_jur['vendor'] == $rows['vendor_id']) ? ('selected') : (''); ?>>
+                    <?= $rows['vendor_name'] ?>
+                                                                                                                    </option>
+                <?php } ?>
+                                                                                                            </select>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <div style="height:15px"></div>
+                                                                                            </div>
+                                                                                            <div class="row ">
+                                                                                                <div class="col-12 col-sm-12  col-md-12 text-left " style="text-align: end!important;">
+                                                                                                    <ul class="vitals-links">
+                                                                                                        <li><a href="javascript:" data-aatr-count="<?php echo $ticket_count; ?>" data-toggle="modal" data-target="#approveSuccessModel" id="upload_ticket_confirm" class="upload_ticket_confirm vital_yellow_btn wdt-100">Confirm</a></li>
+                                                                                                        <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Back</a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+            <?php } ?>
+
+            <?php if ($row_jur['ticket'] == 'confirmed' && $row['status'] == 'confirmed') { ?>
+                                                                        <a href="javascript:void(0);" onClick="showDialogForm('<?php echo $ticket_count; ?>')" class="button href_cls" >
+
+                                                                            View Tickets
+
+                                                                        </a>
+
+
+                                                                        <div class="modal ticket_info_modal" id="view_ticket_<?php echo $ticket_count; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Ticket Information</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body text-center">
+                                                                                        <form id="confirmed_form" action="<?php echo base_url() . 'index.php/traveladmin/confirm/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                                                                                            <div class="container-fluid">
+                                                                                                <table width="400" cellspacing="5" cellpadding="5">
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;" ><label>Bill No</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;" ><?= $row_jur["bill_no"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Bill Date</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><?php
+                                                                                            if ($row_jur["bill_date"] != '') {
+                                                                                                echo date('Y-m-d', strtotime($row_jur["bill_date"]));
+                                                                                            }
+                                                                                            ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Amount</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><?= $row_jur["amount"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Vendor</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><?= $row_jur["vendor_name"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>e-Ticket</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><a class="vital_yellow_btn wdt-100" href="<?= base_url() ?>uploads/tickets/<?php echo $row_jur['e_ticket'] ?>">
+                                                                                                                Download
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><a onClick="showDialog_reupload_ticket('reupload_ticket_<?php echo $ticket_count; ?>')" class="vital_yellow_btn wdt-100" href="javascript:" >
+                                                                                                                Reupload ticket
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </div>
+
+
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        &nbsp;
+                                                                        <a href="javascript:void(0);" onClick="showDialogForm_ticketcancel('ticket_cancel_<?php echo $ticket_count; ?>')" class="button href_cls" >
+
+                                                                            Cancel Tickets
+
+                                                                        </a>
+
+                                                                        <div class="modal ticket_info_modal" id="ticket_cancel_<?php echo $ticket_count; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                                <div class="modal-content ">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Ticket Cancel Form</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body text-center">
+                                                                                        <form id="ticket_cancel_form" class="ticket_cancel_form" action="<?php echo base_url() . 'index.php/traveladmin/ticket_cancel/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                                                                                            <div class="container-fluid form-group">
+                                                                                                <table width="400" cellspacing="5" cellpadding="5">
+                                                                                                    <tr>
+                                                                                                    <input type="hidden" name="travel_request_id" value="<?= $row["travel_request_id"] ?>" />
+                                                                                                    <input type="hidden" name="journey_id" value="<?= $row_jur["journey_id"] ?>" />
+                                                                                                    <input type="hidden" name="ticket_id" value="<?= $row_jur["ticket_id"] ?>" />
+                                                                                                    <td style="border-bottom: 1px solid #ffffff;" ><label>Credit Note Number <span class="style1">*</span></label></td>
+                                                                                                    <td style="border-bottom: 1px solid #ffffff;" >
+                                                                                                        <input type="text" class="form-control credit_note_no_<?php echo $ticket_count; ?>" name="credit_note_no" />
+                                                                                                        <div id="credit_noteno_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                    </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Amount <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;" >
+                                                                                                            <input type="text"  name="credit_amount" class="commonAlphaNum  form-control numericCheck credit_amount_<?php echo $ticket_count; ?>" />
+                                                                                                            <div id="credit_amount_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                </table>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12 col-sm-12  col-md-12 text-end " style="text-align: end; ">
+                                                                                                        <ul class="vitals-links">
+                                                                                                            <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="ticket_cancel_confirm" class="ticket_cancel_confirm vital_yellow_btn wdt-100" data-aatr-count="<?php echo $ticket_count; ?>" >Confirm</a></li>
+                                                                                                            <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Close</a></li>
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+
+
+
+
+
+                                                                        <div class="modal" id="reupload_ticket_<?php echo $ticket_count; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Ticket and Bill Informations</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body text-center">
+                                                                                        <form id="reupload_ticket_form"  enctype="multipart/form-data" action="<?php echo base_url() . 'index.php/traveladmin/upload_tickets/' . $currentTab . '/' . $row["travel_request_id"]; ?>" cancel="" method="post">
+                                                                                            <div class="container-fluid form-group">
+                                                                                                <table width="450px" cellspacing="5" cellpadding="5">
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Bill No <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;" >
+                                                                                                            <input type="hidden" name="travel_request_id" value="<?= $row["travel_request_id"] ?>" />
+                                                                                                            <input type="hidden" name="journey_id" value="<?= $row_jur["journey_id"] ?>" />
+                                                                                                            <input type="hidden" name="ticket_id" value="<?= $row_jur["ticket_id"] ?>" />
+
+                                                                                                            <input value="<?= $row_jur['bill_no'] ?>" class="form-control bill_no_<?php echo $ticket_count; ?>"  type="text" name="bill_no" />
+
+                                                                                                            <div id="billno_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Total Amount <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>
+                                                                                                                <input value="<?= $row_jur['amount'] ?>" class="commonAlphaNum form-control amount_<?php echo $ticket_count; ?>"  type="text" name="amount"  />
+                                                                                                                <div id="total_amt_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>E-Ticekt :</label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;">
+                                                                                                            <div class="fileUpload blue-btn btn width100" style="width:100%!important">
+                                                                                                                <span><i class="fas fa-upload"></i> Upload</span>
+                                                                                                                <input type="file" value="" class="uploadlogo" name="e_ticket" >
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Bill Date <span class="style1">*</span></label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>
+
+                                                                                                                <input type="text" value="<?php echo date('Y-m-d', strtotime($row_jur['bill_date'])); ?>" name="bill_date" class="form-control bill_date bill_date_<?php echo $ticket_count; ?>" plaeholder="dd-mm-yyyy">
+                                                                                                                <div id="bill_err_<?php echo $ticket_count; ?>" ></div>
+                                                                                                            </label>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;"><label>Vendor  </label></td>
+                                                                                                        <td style="border-bottom: 1px solid #ffffff;">
+                                                                                                            <select class="form-control  vendor_<?php echo $ticket_count; ?>" name="vendor" >
+                                                                                                                <option value="">Select</option>
+                <?php foreach ($vendorList as $rows) { ?>
+                                                                                                                    <option value="<?= $rows['vendor_id'] ?>" <?php echo ($row_jur['vendor'] == $rows['vendor_id']) ? ('selected') : (''); ?>>
+                    <?= $rows['vendor_name'] ?>
+                                                                                                                    </option>
+                <?php } ?>
+                                                                                                            </select>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <div style="height:15px"></div>
+                                                                                            </div>
+                                                                                            <div class="row ">
+                                                                                                <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                                                                                    <ul class="vitals-links">
+                                                                                                        <li><a href="javascript:" data-aatr-count="<?php echo $ticket_count; ?>" data-toggle="modal" data-target="#approveSuccessModel" id="reupload_ticket_confirm" class="reupload_ticket_confirm vital_yellow_btn wdt-100">Confirm</a></li>
+                                                                                                        <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Back</a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+
+
+
+
+
+                <?php
+            } elseif ($row_jur['ticket'] == 'cancelled') {
+                ?>
+
+                                                                        <a href="javascript:void(0);" onClick="showDialogForm_ticket('<?php echo $ticket_count; ?>')" class="link_button href_cls" >Cancel Tickets Info</a>
+
+
+
+                                                                        <div class="modal" id="cancel_ticket_<?php echo $ticket_count; ?>" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Ticket Information</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body text-center">
+                                                                                        <form id="confirmed_form" action="<?php echo base_url() . 'index.php/traveladmin/confirm/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                                                                                            <div class="container-fluid">
+                                                                                                <table width="400" cellspacing="5" cellpadding="5">
+                                                                                                    <tr>
+                                                                                                        <td><label>Bill No</label></td>
+                                                                                                        <td><?= $row_jur["bill_no"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>Bill Date</label></td>
+                                                                                                        <td><?php
+                if ($row_jur["bill_date"] != '') {
+                    echo date('Y-m-d', strtotime($row_jur["bill_date"]));
+                }
+                ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>Amount</label></td>
+                                                                                                        <td><?= $row_jur["amount"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>Vendor</label></td>
+                                                                                                        <td><?= $row_jur["vendor_name"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>Credit Note Number</label></td>
+                                                                                                        <td><?= $row_jur["credit_note_no"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>Credit Amount</label></td>
+                                                                                                        <td><?= $row_jur["credit_amount"] ?></td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td><label>e-Ticket</label></td>
+                                                                                                        <td><a class="vital_yellow_btn wdt-100" href="<?= base_url() ?>uploads/tickets/<?php echo $row_jur['e_ticket'] ?>">
+                                                                                                                Download
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <div style="height:15px"></div>
+                                                                                                <div class="row ">
+                                                                                                    <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                                                                                        <ul class="vitals-links">
+                                                                                                            <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                            <?php }
+                                                        } ?>
+                                                            </td>
+                                                        </tr>
+
+        <?php
+        $ticket_count++;
+    }
+    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div style="height: 15px;"></div>
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Request Number :</label>
+                                                    <p>
+    <?php
+    if (isset($row["travel_request_id"]) && $row["travel_request_id"] != '') {
+        echo $row["travel_request_id"];
+    }
+    ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Journey Type:</label>
+                                                    <p><?= ucfirst($row["journey_type"]) ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Date of Requisition :</label>
+                                                    <p>
+                                                        <?php
+                                                        if (isset($row["date_of_requisition"]) && $row["date_of_requisition"] != '') {
+
+                                                            echo date('Y-m-d', strtotime($row["date_of_requisition"]));
+                                                        }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Compliance with HR manual (YES/NO)</label>
+                                                    <p><?php
+                                                        if (isset($row["compliance_with_hr_manual"]) && $row["compliance_with_hr_manual"] != '') {
+                                                            echo $row["compliance_with_hr_manual"];
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Is booking 5 days prior to travel. If not, reasons for the same</label>
+                                                    <p>
+    <?php
+    if (isset($row["prior_booking"]) && $row["prior_booking"] != '') {
+        echo $row["prior_booking"];
+    }
+    ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Purpose</label>
+                                                    <p><?php
+    if (isset($row["purpose"]) && $row["purpose"] != '') {
+        echo $row["purpose"];
+    }
+    ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Donor</label>
+
+                                                    <p><?php
+                                                        if ($row["donor"] == 0) {
+                                                            echo $row["other_donor"];
+                                                        } else {
+                                                            $condition = array('master_id' => $row["donor"]);
+                                                            $get_masterNames = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', '', true, 'ais');
+                                                            echo $get_masterNames[0]->master_name;
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Budget Head</label>
+                                                    <p><?php
+                                                        if ($row["budget_head"] == 0) {
+                                                            echo $row["other_budget_head"];
+                                                        } else {
+                                                            $condition = array('master_id' => $row["budget_head"]);
+                                                            $get_masterNames = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', '', true, 'ais');
+                                                            echo $get_masterNames[0]->master_name;
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Line Item</label>
+
+                                                    <p><?php
+                                                        if ($row["line_item"] == 0) {
+                                                            echo $row["other_line_item"];
+                                                        } else {
+                                                            $condition = array('master_id' => $row["line_item"]);
+                                                            $get_masterNames = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', '', true, 'ais');
+                                                            echo $get_masterNames[0]->master_name;
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Sub-line Item</label>
+                                                    <p><?php
+                                                        if ($row["cost_centre"] == 0) {
+                                                            echo $row["other_cost_centre"];
+                                                        } else {
+                                                            $condition = array('master_id' => $row["cost_centre"]);
+                                                            $get_masterNames = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', '', true, 'ais');
+                                                            echo $get_masterNames[0]->master_name;
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row approvalLabel">
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Programme</label>
+
+                                                    <p> <?php
+                                                        if (isset($row["programme"]) && $row["programme"] != '') {
+                                                            echo $row["programme"];
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                <div class="display-flex">
+                                                    <label>Reporting Officers  Approval</label>
+                                                    <p><?php
+                                                        if (isset($row["reporting_approval"]) && $row["reporting_approval"] != '') {
+                                                            echo $row["reporting_approval"];
+                                                        }
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row approvalLabel">
+                                                        <?php if ($row["cancel_reason"] != '') { ?>
+                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="display-flex">
+                                                        <label>Cancel Request Reason by Employee</label>
+
+                                                        <p> <?php
+                                                            if (isset($row["cancel_reason"]) && $row["cancel_reason"] != '') {
+                                                                echo $row["cancel_reason"];
+                                                            }
+                                                            ?></p>
+                                                    </div>
+                                                </div>
+    <?php } ?>
+
+                                                        <?php if ($row["cancel_reason_RO"] != '') { ?>
+                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="display-flex">
+                                                        <label>Cancel Reason by Reporting Officers</label>
+
+                                                        <p> <?php
+                                                            if (isset($row["cancel_reason_RO"]) && $row["cancel_reason_RO"] != '') {
+                                                                echo $row["cancel_reason_RO"];
+                                                            }
+                                                            ?></p>
+                                                    </div>
+                                                </div>
+    <?php } ?>
+
+                                        </div>
+
+
+
+                                        <div class="row approvalLabel">
+                                                        <?php if ($row["cancel_reason_admin"] != '') { ?>
+                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="display-flex">
+                                                        <label>Cancel Reason by Admin</label>
+
+                                                        <p> <?php
+                                                            if (isset($row["cancel_reason_admin"]) && $row["cancel_reason_admin"] != '') {
+                                                                echo $row["cancel_reason_admin"];
+                                                            }
+                                                            ?></p>
+                                                    </div>
+                                                </div>
+    <?php } ?>
+
+                                        </div>
+
+                                        <div style="height: 15px;"></div>
+                                        <div class="newApprovalNoteViewTbl">
+                                            <table class="table" style="margin-top: 0">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="15%">Name</th>
+                                                        <th width="15%">Age</th>
+                                                        <th width="15%">Sex</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($personsList as $row1) { ?>
+                                                        <tr class="metric_more">
+                                                            <td><?php echo $this->Mtravel->getEmployeeName($row1['name']); ?></td>
+                                                            <td><?= $row1['age'] ?></td>
+                                                            <td><?php if ($row1['sex'] != '') {
+                                                            if ($row1['sex'] == '2') {
+                                                                echo 'Female';
+                                                            } else {
+                                                                echo 'Male';
+                                                            }
+                                                        } ?></td>
+                                                        </tr>
+                <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+<?php } ?>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="cancelrequest" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Travel Booking - Cancel Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="auth_cancel_form" action="<?php echo base_url() . 'index.php/traveladmin/auth_cancel/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Enter Comments</label>
+                                    <textarea name="reasons" class="form-control" type="text"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="closeModal_cancel" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="deferrequest" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Approval Note - defered form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="roaction_form" action="<?php echo base_url() . 'index.php/traveladmin/roaction/' . $requestId . '/defered'; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Enter Comments</label>
+                                    <textarea name="comments_RO" class="form-control" type="text"></textarea>
+                                    <input type="hidden" name="from_employee" value="<?= $this->session->userdata('user'); ?>"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="closeModal_deferrequest" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal" id="approveModel" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Travel Booking - Cancel Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="cancel_form" action="<?php echo base_url() . 'index.php/traveladmin/admin_cancel/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Enter Comments</label>
+                                    <textarea name="reasons" class="form-control" type="text"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="closeModal" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="confirmed" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation Box</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="confirmed_form" action="<?php echo base_url() . 'index.php/traveladmin/confirm/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Are you sure want to confirm?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="closeModal_confirmed" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="approveModel_admin" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation Box</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="approvero_admin" action="<?php echo base_url() . 'index.php/traveladmin/approve_ro/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Are you sure want to confirm?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="approveModel_admin_btn" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="disapproveModel_admin" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation Box</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="disapprovero_admin" action="<?php echo base_url() . 'index.php/traveladmin/disapprove_ro/' . $requestId . '/' . $currentTab; ?>" cancel="" method="post">
+                    <div class="container-fluid">
+                        <div class="row leaveLabel">
+                            <div class="col-12 col-md-12 col-lg-10 col-xl-10">
+                                <div class="form-group text-left">
+                                    <label>Are you sure want to confirm?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:15px"></div>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12  col-md-12 text-left ">
+                                <ul class="vitals-links">
+                                    <li><a href="javascript:" data-toggle="modal" data-target="#approveSuccessModel" id="disapproveModel_admin_btn" class="vital_yellow_btn wdt-100">Send</a></li>
+                                    <li><a href="javascript:" data-dismiss="modal" aria-label="Close" class="vital_bordered_btn wdt-100">Cancel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<?php $this->load->view('vitals_footer.php', array('page_name' => 'datatable')); ?>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.bill_date').datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+        $(document).on('click', '.upload_ticket_confirm', function () {
+
+            var id = $(this).attr("data-aatr-count");
+            var bill_no = $(".bill_no_" + id).val();
+            var amount = $(".amount_" + id).val();
+            var bill_date = $(".bill_date_" + id).val();
+            $("#billno_err_" + id).html('');
+            $("#total_amt_err_" + id).html('');
+            $("#bill_err_" + id).html('');
+
+            err_count = 0;
+            if (bill_no == '') {
+                err_count++;
+                $("#billno_err_" + id).html('<label class="error">Enter bill number</label>');
+            }
+            if (amount == '') {
+                err_count++;
+                $("#total_amt_err_" + id).html('<label class="error">Enter amount</label>');
+            }
+            if (bill_date == '') {
+                err_count++;
+                $("#bill_err_" + id).html('<label class="error">Select bill date</label>');
+            }
+            if (err_count == 0) {
+                $(this).closest("form").submit();
+            }
+        });
+        $(document).on('click', '#reupload_ticket_confirm', function () {
+            var id = $(this).attr("data-aatr-count");
+            var bill_no = $(".bill_no_" + id).val();
+            var amount = $(".amount_" + id).val();
+            var bill_date = $(".bill_date_" + id).val();
+            $("#billno_err_" + id).html('');
+            $("#total_amt_err_" + id).html('');
+            $("#bill_err_" + id).html('');
+
+            err_count = 0;
+            if (bill_no == '') {
+                err_count++;
+                $("#billno_err_" + id).html('<label class="error">Enter bill number</label>');
+            }
+            if (amount == '') {
+                err_count++;
+                $("#total_amt_err_" + id).html('<label class="error">Enter amount</label>');
+            }
+            if (bill_date == '') {
+                err_count++;
+                $("#bill_err_" + id).html('<label class="error">Select bill date</label>');
+            }
+            if (err_count == 0) {
+                $("#reupload_ticket_form").submit();
+            }
+        });
+
+
+        $(document).on('click', '.ticket_cancel_confirm', function () {
+            var id = $(this).attr("data-aatr-count");
+
+
+            var credit_note_no = $(".credit_note_no_" + id).val();
+            var amount = $(".credit_amount_" + id).val();
+
+            $("#credit_noteno_err_" + id).html('');
+            $("#credit_amount_err_" + id).html('');
+            $("#bill_err_" + id).html('');
+
+            err_count = 0;
+            if (credit_note_no == '') {
+                err_count++;
+                $("#credit_noteno_err_" + id).html('<label class="error">Enter credit note number</label>');
+            }
+            if (amount == '') {
+                err_count++;
+                $("#credit_amount_err_" + id).html('<label class="error">Enter amount</label>');
+            }
+            if (err_count == 0) {
+                $(this).closest("form").submit();
+            }
+        });
+
+
+        $(document).on('click', '.ticket_cancel_confirm', function () {
+            //$(this).closest("form").submit();
+        });
+
+        $(document).on('click', '#closeModal', function () {
+            $('#cancel_form').submit();
+        });
+        $(document).on('click', '#closeModal_confirmed', function () {
+            $('#confirmed_form').submit();
+        });
+        $(document).on('click', '#closeModal_cancel', function () {
+            $('#auth_cancel_form').submit();
+        });
+        $(document).on('click', '#closeModal_deferrequest', function () {
+            $('#roaction_form').submit();
+        });
+        $(document).on('click', '#approveModel_admin_btn', function () {
+            $('#approvero_admin').submit();
+        });
+        $(document).on('click', '#disapproveModel_admin_btn', function () {
+            $('#disapprovero_admin').submit();
+        });
+        $(document).on('click', '.send_to_approve', function () {
+            var tag_id = $(this).attr("data-attr-tag-id");
+            var vendor = $("." + tag_id).val();
+
+            if (vendor != '') {
+                $("#" + tag_id + "_err").html('');
+                $(this).closest("form").submit();
+            } else {
+                $("#" + tag_id + "_err").html('<label class="error">Select vendor</label>');
+            }
+        });
+
+
+        $('#author').keypress(function (e) {
+            if (e.which == 13) {
+                filter_check();
+                return false;
+            }
+        });
+
+    });
+    function showDialog_reupload_ticket(ticket_count) {
+        $('.ticket_info_modal').modal('hide');
+        $('#' + ticket_count).modal('show');
+    }
+
+    function showDialog_upload_ticket(ticket_count) {
+        $('#' + ticket_count).modal('show');
+    }
+    function showDialog_send(ticket_count) {
+        $('#' + ticket_count).modal('show');
+    }
+    function showDialogForm_ticketcancel(ticket_count) {
+        $('#' + ticket_count).modal('show');
+    }
+
+    function showDialogForm(ticket_count) {
+        $('#view_ticket_' + ticket_count).modal('show');
+    }
+    function showDialogForm_ticket(ticket_count) {
+        $('#cancel_ticket_' + ticket_count).modal('show');
+    }
+
+    $(document).on('click', '#search_btn', function () {
+        filter_check();
+    });
+
+    $(document).on('click', '#reset_search', function () {
+        $('#purpose').val('');
+        $('#approval_no').val('');
+    });
+
+    $(document).on('input', '.commonAlphaNum', function () {
+        if (this.value.match(/[^a-zA-Z0-9.,:\-&\/() ]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z0-9.,:\-&\/() ]/g, '');
+        }
+    });
+
+    $(document).on('change', '.uploadlogo', function () {
+        var filename = readURL(this);
+
+        var reslt = filename.split('|*|');
+        $(this).parent().children('span').html(reslt[0]);
+        if (reslt[1] != '1') {
+            $(this).parent().parent().children('.sow_msg').show();
+            $(this).parent().parent().children('.sow_msg').text(reslt[1]);
+        } else {
+            $(this).parent().parent().children('.sow_msg').text('');
+            $(this).parent().parent().children('.sow_msg').hide();
+        }
+    });
+
+    function readURL(input) {
+        var url = input.value;
+        var path, filename;
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        //var bsize = input.files[0].size;
+        var bsize = (input.files.length && input.files[0].size) || '';
+        var fsize = Math.round(bsize / 1024);
+        if (fsize <= 10000) {
+            if (fsize != 0) {
+                if (input.files && input.files[0] && (ext == "pdf" || ext == "doc" || ext == "docx" || ext == "ppt" || ext == "pptx")) {
+                    path = $(input).val();
+                    filename = path.replace(/^.*\\/, "");
+                    return filename + '|*|1';
+                } else {
+                    filename = '<span><i class="fas fa-upload"></i> Upload</span>|*|Invalid file';
+                    return filename;
+                }
+            } else {
+                filename = '<span><i class="fas fa-upload"></i> Upload</span>|*|2';
+                return filename;
+            }
+        } else {
+            filename = '<span><i class="fas fa-upload"></i> Upload</span>|*|Invalid file size';
+            return filename;
+        }
+    }
+    $(document).on('input', '.commonAlphaNum', function (evt) {
+        var self = $(this);
+        self.val(self.val().replace(/[^0-9\.]/g, ''));
+        self.val(inrFormat(self.val()));
+        var patt = new RegExp(/[0-9\,.]*[.]{1}[0-9]{2}/i);
+        var matchedString = self.val().match(patt);
+        if (matchedString) {
+            self.val(matchedString);
+        }
+    });
+
+</script>

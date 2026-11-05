@@ -1,0 +1,109 @@
+/**
+*
+* Dashboard Stylesheet Page
+*
+* @PageName           dashboard.css
+* @Author             Sanjoy Dey
+* @Created Date       09-11-2011
+* @Modified Date      19-11-2011
+* @copyright          Copyright(c) 2011 
+* @version            CSS 3
+* @since              File available since Release Nov,2011
+* @Warning            Any change in this file may cause abnormal behaviour of application.
+*
+*/
+
+.slidebox {
+	padding:8px;
+	margin:16px;
+	border:1px solid #808080;
+	height:103px;
+}
+.assignTask {
+
+
+
+
+}
+.tablehead {
+   color:#454545;
+}
+.fontStyle {
+   font-weight:bold;
+
+}
+.gtable {
+	width:100%
+}
+.gtable th {
+	text-align:left;
+	padding:2px 5px
+}
+.gtable thead tr {
+	color:#333;
+	border:1px solid #ccc
+}
+.gtable thead th {
+	background:#efefef;
+	text-align:left;
+}
+.gtable thead th a{
+	color:#333;
+	line-height:normal;
+}
+.gtable tbody tr td {
+	border-bottom:1px solid #eee;
+	text-align:left;
+}
+.gtable tbody tr:nth-child(odd) td, .detailtable tbody tr.odd td {
+background-color:#fff
+}
+.gtable tbody tr:nth-child(even) td, .detailtable tbody tr.even td {
+background-color:#f7f7f7
+}
+.gtable tbody tr:hover td {
+	background-color:#FFFAE3
+}
+.gtable td {
+	padding:2px 5px
+}
+.gtable input {
+	vertical-align:middle
+}
+.gtable img {
+	vertical-align:middle;
+	margin-right:5px
+}
+.gtable tr.detail {
+	font-size:11px
+}
+.gtable tr.detail td {
+	padding:0
+}
+.gtable tr.detail td td, .gtable tr.detail td th {
+	padding:2px 10px;
+	color:#777
+}
+.gtable .detail table {
+	width:100%;
+	border:5px solid #fff7d1
+}
+.gtable .detail table tr td, .gtable .detail table tr th {
+	background:#ffffed;
+	border-bottom:1px solid #fff7d1
+}
+table.sortable img.move {
+	cursor:move
+}
+.tablefooter {
+	background:#f7f7f7;
+	border-top:1px solid #fff
+}
+.tablefooter .actions {
+	float:left;
+	padding:5px 10px
+}
+.tablefooter .pagination {
+	float:right;
+	padding:5px 10px
+}

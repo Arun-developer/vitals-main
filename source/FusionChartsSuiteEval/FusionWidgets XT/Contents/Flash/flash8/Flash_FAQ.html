@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>FusionWidgets &amp; Flash - FAQs</title>
+<link rel="stylesheet" href="../../assets/ui/css/style.css" type="text/css" />
+<script type="text/javascript" src="../../assets/prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../../assets/prettify/prettify.css" />
+<script type="text/javascript" src="../../assets/ui/js/jquery.min.js" ></script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+
+a.whtbtnhide, a.whtbtnshow, a.whtbtnhidenav , a.whtbtnshownav { border-bottom:none !important; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../../assets/ui/js/whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whtopic.js"></script>
+<script type="text/javascript" src="../../assets/ui/js/lib.js"></script>
+</head>
+
+<body>
+<!-- breadcrumb starts here -->
+<div id="breadcrumb"></div>
+<script type="text/javascript">
+	document.write( addFCBreadcrumb( [ "Home|../Introduction/Overview.html", "Guide for Flash 8 (AS2) Developers|Flash_Overview.html", "FAQs" ] ) );
+</script>
+<!-- breadcrumb ends here -->
+<table width="98%" border="0" cellspacing="0" cellpadding="3" align="center">
+  <tr> 
+    <td class="pageHeader"> FAQs</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td valign="top" class="header"><a name="faq1"></a>Can I have the charts pull data directly from an array or recordset or Web Service?     </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><p>No. FusionWidgets necessarily needs its data in XML format. If you've your data in arrays, recordsets or as Web Services, use your Flash code to retrieve the data from these sources and then convert it into XML at run-time (using string concatenation or XML Object methods). Finally, you can provide the XML to FusionWidgets. </p>
+    <p>You do not need to physically write XML files on disk. You can just provide the XML object instance FusionWidgets and it will read the same. </p></td>
+  </tr>
+ 
+  <tr>
+    <td valign="top" class="header"><a name="faq2" id="faq2"></a>How do I update the data of a chart that has already instantiated and is showing? </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><p>To do so, </p>
+      <ol>
+        <li>First call the <span class="codeInline">remove()</span> method of the chart object, so that all objects of the chart are removed. </li>
+        <li>Call the <span class="codeInline">reInit()</span> method of the chart object, to re-initialize chart</li>
+        <li>Set the new XML Data using <span class="codeInline">setXMLData()</span> method</li>
+        <li>Call <span class="codeInline">render() </span>method finally to render the chart   </li>
+    </ol></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="faq3"></a>I'm done working with the chart object and will not use it again in the movie. How should I dispose it? </td>
+  </tr>
+   <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">Just call the <span class="codeInline">destroy() </span>method of the chart object and our class will take care of the rest. </td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="faq4"></a>Can I dynamically resize a chart once it's loaded? </td>
+  </tr>
+   <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">No - you cannot re-set the size of the chart once it has loaded. The size of the chart can only be set in constructor function. </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="faq5"></a>Can I load FusionWidgets charts in Accordion/ScrollPane component? </td>
+  </tr>
+   <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">At the time of this writing - no. Those components can show only objects that derive from <span class="codeInline">UIObject</span> class. FusionWidgets derives from its own custom classes. </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+</table>
+<!-- footer links starts-->
+<div id="fcfooter"></div>
+<script type="text/javascript">
+	document.getElementById("fcfooter").innerHTML =  addFCFooter("Handling Loading/Rendering|Flash_Load.html","Number Formatting basics|../../Advanced/NumberFormat/Basics.html");
+</script>
+<!-- footer links ends -->
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+
+	highlightSearch();
+
+//-->
+</script>
+</body>
+</html>

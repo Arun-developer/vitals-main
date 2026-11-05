@@ -1,0 +1,12 @@
+<chart caption='Revenue & Profit(L) 'ubCaption='Weekly global report' numberPrefix='' sformatNumberScale='1' sNumberPrefix='' syncAxisLimits='0.5' rotateValues='1' showSum='0'>
+					<categories><category label='0'/></categories>
+                                <dataset seriesName='Number of'  showValues='0'><set value='50000'/><set value='2000'/></dataset>
+                                    <styles>
+                                    <definition>
+                                    <style name='captionFont' type='font' size='15' />
+                                    </definition>
+                                    <application>
+                                    <apply toObject='caption' styles='captionfont' />
+                                    </application>
+                                    </styles>
+                                </chart>

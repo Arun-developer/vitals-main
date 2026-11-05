@@ -1,0 +1,10 @@
+<chart bgcolor="#fbfbfb" caption="Project Wise" yAxisName="Hours" subcaption="Overall" showPercentValues="1" decimals="1" baseFontSize="11"><styles>
+
+                              <definition>
+                              <style type="font" name="captionFont" size="15"/>
+                              </definition>
+                              <application>
+                              <apply toObject="CAPTION" styles="captionFont"/>
+                              </application>
+                              </styles>
+                              </chart>

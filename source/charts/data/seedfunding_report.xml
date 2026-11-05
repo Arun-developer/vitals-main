@@ -1,0 +1,9 @@
+<chart bgcolor="#fbfbfb" yAxisName="Amount in Rs." caption="" subcaption="" showPercentValues="1" decimals="1" baseFontSize="11"><set label="Fund Approved" value="2544575"/><set label="Fund Disbursed" value=""/><set label="Fund Utilized" value=""/><styles>
+                              <definition>
+                              <style type="font" name="captionFont" size="15"/>
+                              </definition>
+                              <application>
+                              <apply toObject="CAPTION" styles="captionFont"/>
+                              </application>
+                              </styles>
+                              </chart>

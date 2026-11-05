@@ -1,0 +1,13 @@
+a {
+	color: #67A54B;
+}
+.button {
+	border: 1px solid #3b6e22;
+	background: #75ae5c;
+}
+header#top {
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#DDECCB), to(#fff));
+	background: -moz-linear-gradient(#DDECCB, #fff);
+	background: linear-gradient(#DDECCB, #fff);
+	-pie-background: linear-gradient(#DDECCB, #fff)
+}

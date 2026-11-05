@@ -1,0 +1,32 @@
+<!--z 7-->
+<!--s 7--><p><li class='even'><a href="msg/7.html">Managemet Information System</a> - <b>arvind</b> <i>24/Feb/2012</i>
+<!--o 7--> (1)
+<!--z 8-->
+<!--s 8--><ul><li><a href="msg/8.html">MIS</a> - <b>max payne</b> <i>24/Feb/2012</i>
+<!--o 8--> (0)
+</li></ul><!--k 8-->
+</li><!--k 7-->
+<!--z 5-->
+<!--s 5--><p><li><a href="msg/5.html">Screening</a> - <b>Admin</b> <i>24/Feb/2012</i>
+<!--o 5--> (1)
+<!--z 6-->
+<!--s 6--><ul><li><a href="msg/6.html">Re: Screening</a> - <b>Chakravarthy</b> <i>24/Feb/2012</i>
+<!--o 6--> (0)
+</li></ul><!--k 6-->
+</li><!--k 5-->
+<!--z 2-->
+<!--s 2--><p><li><a href="msg/2.html">adf</a> - <b>dsf</b> <i>23/Feb/2012</i>
+<!--o 2--> (2)
+<!--z 4-->
+<!--s 4--><ul><li><a href="msg/4.html">Answer</a> - <b>sanjoy</b> <i>24/Feb/2012</i>
+<!--o 4--> (0)
+</li></ul><!--k 4-->
+<!--z 3-->
+<!--s 3--><ul><li><a href="msg/3.html">Re: adf</a> - <b>arvind</b> <i>24/Feb/2012</i>
+<!--o 3--> (0)
+</li></ul><!--k 3-->
+</li><!--k 2-->
+<!--z 1-->
+<!--s 1--><p><li><a href="msg/1.html">adf</a> - <b>dsf</b> <i>23/Feb/2012</i>
+<!--o 1--> (0)
+</li><!--k 1-->

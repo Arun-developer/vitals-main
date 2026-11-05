@@ -1,0 +1,295 @@
+/*================
+Mobile Responsive
+=================*/
+
+@media only screen and (min-width:360px) and (max-width:767px) {
+    /*-------- Common Css ---------- */
+    .mob_fulfill {
+        width: 100%;
+        display: block;
+    }
+    .vitals-links li {
+        font-size: 12px;
+    }
+    .mar-bt8 {
+        margin-bottom: 8px !important;
+    }
+    .pad-lt15px {
+        padding-left: 6px !important;
+    }
+    .wdt_180 {
+        width: 100% !important;
+    }
+    .display-flex span {
+        padding: 0px 20px 15px 5px;
+    }
+    /* --------- Header Css ---------- */
+    .Vital-Newmenu {
+        display: none;
+    }
+    .show_mob {
+        display: block !important;
+    }
+    .vil-logo {
+        padding-left: 0px;
+    }
+    li.align-self-center.headerUserWl {
+        vertical-align: middle;
+        padding-left: 20px !important;
+    }
+    header .dropdown a.dropdown-toggle {
+        color: #333;
+        font-size: 12px !important;
+    }
+    header small {
+        font-size: 9px !important;
+    }
+    .newVitalheader .navbar {
+        width: auto;
+        padding: 0 10px 0 0 !important;
+    }
+    .activeMenuImg {
+        width: 30px;
+    }
+    header.newVitalheader {
+        height: 65px;
+        max-height: 65px;
+    }
+    .newVitalheader .navbar-light .navbar-toggler {
+        color: rgb(51, 123, 79) !important;
+        border-color: #fff !important;
+    }
+    .newVitalheader .navbar-toggler {
+        padding: .125rem .15rem !important;
+        font-size: 1rem !important;
+    }
+    .newVitalheader .navbar-collapse {
+        position: absolute;
+        top: 65px;
+        right: 100%;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    .newVitalheader .navbar-collapse.collapsing {
+        height: auto !important;
+        margin-right: 50%;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    .newVitalheader .navbar-collapse.show {
+        right: 0;
+    }
+    .newVitalheader .navbar-collapse.show ul {
+        width: 70%;
+        background: #fff;
+        padding: 0 10px 0 10px;
+        height: 100%;
+        box-shadow: 0px 9px 20px rgba(0, 0, 0, 0.07);
+    }
+    .newVitalheader .navbar-collapse.show ul li.nav-item {
+        padding: 3px 0 3px 5px;
+        border-bottom: 1px solid #dfefe5;
+    }
+    .newVitalheader .navbar-collapse.show ul li.nav-item a {
+        color: #212529;
+    }
+    .newVitalheader .navbar-collapse.show ul li.nav-item a i {
+        color: #308553;
+        padding-right: 6px;
+        width: 25px;
+    }
+    /* ------------- Inner Pages ------------- */
+    .vi-dashboard-vital {
+        margin-top: 65px;
+        padding: 0px 0px 0px;
+    }
+    .vitals_mainContent {
+        padding: 15px 0 0;
+    }
+    .pad-lf0 {
+        padding-left: 15px !important;
+    }
+    /* -------------- sidemeu --------------- */
+    #leftMenuLoad .navbar {
+        padding: 0;
+    }
+    .vitalMastersidenav .nav-item {
+        margin: 0 0 2px;
+        background: #414652;
+    }
+    .footer-link {
+        display: none;
+    }
+    .vitalMastersidenav .nav-item a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .vitalMastersidenav {
+        margin-bottom: 15px !important;
+    }
+    /* ----------- Main Content ----------- */
+    .dataconfig-content .dataconfig h4 {
+        padding: 0px 0px 15px;
+    }
+    .v_m_e_search .vitals-links {
+        padding: 15px 0 0 10px;
+    }
+    /* ----------- Tab Menus --------- */
+    .tab-slider--tabsform {
+        height: auto !important;
+    }
+    .vitals_mainContent .tab-slider--navform .tab-slider--tabsform {
+        border-bottom: none;
+    }
+    .vitals_mainContent .tab-slider--navform .tab-slider--tabsform .tab-slider--triggerform {
+        border-bottom: 1px solid #ccc;
+    }
+    .milestone-links li {
+        list-style: none;
+        display: inline-block;
+        padding: 0px 8px;
+    }
+    .milestone-links li.brd-left-onboard:first-child {
+        border-left: none;
+    }
+    .hgt-100v {
+        height: auto !important;
+        padding-top: 0px;
+    }
+    .hide-mob {
+        display: none;
+    }
+}
+
+
+/*================
+Tab Responsive
+=================*/
+
+@media only screen and (min-width:768px) and (max-width:1000px) {
+    /* Header Css */
+    header small {
+        font-size: 10px !important;
+    }
+    header .dropdown a.dropdown-toggle {
+        color: #333;
+        font-size: 13px !important;
+    }
+    .Vital-Newmenu ul li a {
+        font-size: 13px;
+    }
+    /* -------------- sidemeu --------------- */
+    #leftMenuLoad .navbar {
+        padding: 0;
+    }
+    .vitalMastersidenav .nav-item {
+        margin: 0 0 2px;
+        background: #414652;
+    }
+    .footer-link {
+        display: none;
+    }
+    .vitalMastersidenav .nav-item a {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 13px;
+    }
+    .vitalMastersidenav .nav-item a i {
+        display: none;
+    }
+    .vitalMastersidenav {
+        margin-bottom: 15px !important;
+    }
+    .vitalMastersidenav .nav-item.active ul li a span {
+        font-size: 12px;
+    }
+    /* ----------- Main Content ----------- */
+    .dataconfig-content .dataconfig h4 {
+        font-size: 16px;
+    }
+    .vitals-links li a,
+    .vitals-links li {
+        font-size: 13px;
+    }
+    .pad-lf0 {
+        padding-left: 15px !important;
+    }
+    .mar-bt8 {
+        margin-bottom: 0px !important;
+    }
+    /* ----------- Tab Menus --------- */
+    .tab-slider--tabsform {
+        height: auto !important;
+    }
+    .vitals_mainContent .tab-slider--navform .tab-slider--tabsform {
+        border-bottom: none;
+    }
+    .vitals_mainContent .tab-slider--navform .tab-slider--tabsform .tab-slider--triggerform {
+        border-bottom: 1px solid #ccc;
+    }
+    .vitals_mainContent .tab-slider--navform .tab-slider--tabsform .tab-slider--triggerform a {
+        font-size: 13px;
+        padding: 11px 10px;
+    }
+    .profilePicMaster {
+        flex: 0 0 100%;
+        flex-direction: column;
+        flex: 1
+    }
+    .masterPicUpdate {
+        flex: 0 0 100%;
+        flex-direction: column;
+        flex: 1
+    }
+    .align-bottom {
+        flex-wrap: wrap;
+    }
+    /* ----------- Table css --------- */
+    table tr td,
+    table tr th {
+        font-size: 13px;
+    }
+}
+
+
+/*================
+Laptop Responsive
+=================*/
+
+@media only screen and (min-width:1001px) and (max-width:1300px) {
+    .tab-slider--tabsform {
+        height: auto !important;
+    }
+    .tab-slider--triggerform a {
+        color: #2e8751;
+        padding: 11px 10px;
+        display: inline-block;
+    }
+}
+
+
+/*================
+PC Responsive
+=================*/
+
+@media only screen and (min-width:1201px) and (max-width:1400px) {
+    .tab-slider--tabsform {
+        height: auto !important;
+    }
+    .tab-slider--triggerform a {
+        color: #2e8751;
+        padding: 11px 10px;
+        display: inline-block;
+    }
+}
+
+
+/*================
+Large PC Responsive
+=================*/
+
+@media only screen and (min-width:1401px) and (max-width:1920px) {}

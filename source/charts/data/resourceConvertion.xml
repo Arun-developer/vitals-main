@@ -1,0 +1,13 @@
+<chart palette='2' caption='Resource-Convertion Report' showLabels='1' showvalues='0' decimals='3' numberPrefix='' clustered='0' exeTime='1.5' showPlotBorder='0' zGapPlot='30' zDepth='90' divLineEffect='emboss' startAngX='10' endAngX='18' startAngY='-10' endAngY='-40'><categories><category label='Subalakshmi T.R' /><category label='Chakravarthy A.B' /><category label='Deepti Arya' /><category label='James Rajanayagam' /></categories>
+							<dataset seriesName='Assigned'  showValues='0'><set value='1' /><set value='3' /><set value='1' /><set value='2' /></dataset>
+							<dataset seriesName='Entry'  showValues='0'><set value='0' /><set value='2' /><set value='1' /><set value='1' /></dataset>							
+							<dataset seriesName='Lead'  showValues='0'><set value='1' /><set value='1' /><set value='0' /><set value='1' /></dataset>
+							<styles>
+							<definition>
+							<style name='captionFont' type='font' size='15' />
+							</definition>
+							<application>
+							<apply toObject='caption' styles='captionfont' />
+							</application>
+							</styles>
+							</chart>

@@ -1,0 +1,29 @@
+<chart palette='2' caption='' showLabels='1' showvalues='0' decimals='0' numberPrefix=''>
+			<categories>
+			<category label='New - Entry' />
+			<category label='Entry - Lead' />
+			<category label='Lead - Detailed-diligence' />
+			<category label='Detailed diligence - Incubation' />
+			</categories>
+			<dataset seriesName='Max(Days)' color='AFD8F8' showValues='0'>
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+
+			</dataset>
+			<dataset seriesName='Avg(Days)' color='F6BD0F' showValues='0'>
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+
+			</dataset>
+			<dataset seriesName='Min(Days)' color='8BBA00' showValues='0'>
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+			<set value='0' />
+
+			</dataset>
+			</chart>

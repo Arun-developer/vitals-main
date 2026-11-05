@@ -1,0 +1,25 @@
+<chart bgColor='004D69' bgAlpha='100'  animation='0' editMode='1' lowerLimit='0' upperLimit='5' decimals='1' showBorder='1' borderColor='004D69' borderAlpha='100' majorTMColor='323433' majorTMNumber='6' minorTMNumber='4' minorTMHeight='-4' majorTMHeight='-8' placeValuesInside='1' showShadow='0' pointerRadius='5' pointerBgColor='E00000' pointerBorderColor='E00000' showGaugeBorder='0' baseFontColor='FFFFFF' gaugeFillMix=''  gaugeFillAlpha='0,0,0,0,0,0' sgaugeFillMix='{09DBFE},{32A6CF},{C1DFEA}' gaugeFillRatio='20,40,40' gaugeFillAngle='90' chartTopMargin='17' chartBottomMargin='10' chartLeftMargin='30' chartRightMargin='30' gaugeRoundRadius='7' ticksBelowGauge='0' valuePadding='0' >
+	<colorRange> 
+        	<color minValue='0' maxValue='5' alpha='0'/>
+	</colorRange>
+	<value>0</value>
+	<annotations>
+		<annotationGroup id='Grp1' showBelow='1' >
+			<annotation type='rectangle' x='13' y='15' toX='367' toY='70' radius='8' color='004D69' />
+			<annotation type='rectangle' x='13' y='54' toX='367' toY='70' radius='8' color='055472,1D89AF' fillAngle='90'/>
+			<annotation type='rectangle' x='13' y='13' toX='367' toY='52' radius='8' color='09DBFE,32A6CF,0177A7' fillRatio='20,40,40' fillAngle='90'/>
+			<annotation type='rectangle' x='15' y='15' toX='365' toY='50' radius='8' color='09DBFE,32A6CF,C1DFEA' fillRatio='20,40,40' fillAngle='90'/>
+		</annotationGroup>
+		<annotationGroup id='Grp2' showBelow='1'>
+			<annotation type='text' label='Support' size='12' color='004D69' bold='1' x='190' y='43'/>
+		</annotationGroup>
+	</annotations>
+	<styles>
+		<definition>
+			<style name='TTipFont' type='Font' color='FFFFFF' bgColor='004D69' borderColor='004D69'/>
+		</definition>
+		<application>
+			<apply toObject='TOOLTIP' styles='TTipFont' />
+		</application>	
+	</styles>
+</chart>

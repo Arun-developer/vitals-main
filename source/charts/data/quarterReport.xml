@@ -1,0 +1,4 @@
+<chart caption='Revenue' subCaption='Quarterly global report' numberPrefix='' sformatNumberScale='1' sNumberPrefix='' syncAxisLimits='0.5' rotateValues='1' showSum='0'>
+                        <categories></categories>
+        <dataset seriesName='Revenue'  showValues='0'></dataset>
+        </chart>

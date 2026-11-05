@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8" ?><indexdata><key name="3D" >
+   <topic name="3D chart attributes" url="../../../AttDesc/3D_Attributes" /></key><key name="ANCHORS" >
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Anchors Configuration" url="../../../AttDesc/Anchors.html" /></key><key name="Animaiton" >
+   <topic name="Animtion style type" url="../../../Styles/Animation.html" /></key><key name="Area 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" /></key><key name="Area2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" /></key><key name="Array" >
+   <topic name="Charting data from array using VB (ASP.NET)" url="../../../guide-for-web-developers/vbnet/VBNET_Array.html" />
+   <topic name="Charting data from array using C# (ASP.NET)" url="../../../guide-for-web-developers/csnet/CS_Array.html" />
+   <topic name="Charting data from array using Ruby on Rails" url="../../../Code/ROR/Ruby_array.html" />
+   <topic name="Charting data from array using J2EE" url="../../../Code/J2EE/JSP_Array.html" />
+   <topic name="Charting data from array using ColdFusion" url="../../../guide-for-web-developers/coldfusion/CFM_Array.html" />
+   <topic name="Charting data from array using PHP" url="../../../guide-for-web-developers/php/PHP_Array.html" />
+   <topic name="Charting data from array using ASP" url="../../../guide-for-web-developers/asp/ASP_Array.html" /></key><key name="ASP" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/asp/ASP_BasicExample.html" />
+   <topic name="Charting data from array" url="../../../guide-for-web-developers/asp/ASP_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/asp/ASP_Form.html" />
+   <topic name="Plotting from database" url="../../../guide-for-web-developers/asp/ASP_DB.html" />
+   <topic name="Creating drill down charts" url="../../../guide-for-web-developers/asp/ASP_Drill.html" />
+   <topic name="ASP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/asp/ASP_JS_URL.html" />
+   <topic name="ASP, JavaScript &amp; dataStr" url="../../../guide-for-web-developers/asp/ASP_JS_XML.html" />
+   <topic name="Transparent chart" url="../../../guide-for-web-developers/asp/ASP_Transparent.html" />
+   <topic name="Using Multilingual text" url="../../../guide-for-web-developers/asp/ASP_UTF8Example.html" /></key><key name="ASP class" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/asp-class/ASPClass_BasicExamples.html" />
+   <topic name="Charting data from Array" url="../../../guide-for-web-developers/asp-class/ASPClass_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/asp-class/ASPClass_Forms.html" />
+   <topic name="Charting data from database" url="../../../guide-for-web-developers/asp-class/ASPClass_DB.html" />
+   <topic name="Creating Drill down charts" url="../../../guide-for-web-developers/asp-class/ASPClass_Drill.html" />
+   <topic name="Using multilingual text" url="../../../guide-for-web-developers/asp-class/ASPClass_UTF8Example.html" />
+   <topic name="Overview" url="../../../guide-for-web-developers/fusioncharts-asp-class/Overview.html" />
+   <topic name="Basic set up" url="../../../guide-for-web-developers/fusioncharts-asp-class/Setup.html" />
+   <topic name="Creating first chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/FirstChart.html" />
+   <topic name="Creating multiple charts" url="../../../guide-for-web-developers/fusioncharts-asp-class/MultipleCharts.html" />
+   <topic name="Creating Multi-series chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/MultiSeriesChart.html" />
+   <topic name="Creating Stacked chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/StackedChart.html" />
+   <topic name="Creating combination chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/CombinationChart.html" />
+   <topic name="Creating Scatter-Bubble chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/ScatterBubble.html" />
+   <topic name="Creating MS Stacked Combination chart" url="../../../guide-for-web-developers/fusioncharts-asp-class/MSStackedCDY.html" />
+   <topic name="Creating a Grid" url="../../../guide-for-web-developers/fusioncharts-asp-class/SSGrid.html" />
+   <topic name="Providing chart attributes" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_chart.html" />
+   <topic name="Providing other elements attributes" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_OtherElmAttribs.html" />
+   <topic name="Creating trendlines and vertical trendlines" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_trendlines.html" />
+   <topic name="Creating vLines" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_vLines.html" />
+   <topic name="Applying styles" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_styles.html" />
+   <topic name="Setting chart messages" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_msg.html" />
+   <topic name="Handling delimiter" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_delim.html" />
+   <topic name="Using HTML embedding method" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_htmlembd.html" />
+   <topic name="FusionCharts ASP class API" url="../../../guide-for-web-developers/fusioncharts-asp-class/Functions.html" /></key><key name="BACKGROUND " >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Setting backgrounds for charts" url="../../../advanced/BgSWF.html" />
+   <topic name="Chart Border and Background Configuration" url="../../../AttDesc/Background.html" /></key><key name="Bar 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" /></key><key name="Bar2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" /></key><key name="Batch exporting" >
+   <topic name="Batch exporting" url="../../../exporting-image/batch-exporting/ECBatchOverview.html" />
+   <topic name="Setting it up" url="../../../exporting-image/batch-exporting/ECBatchSetup.html" />
+   <topic name="Setting JavaScript callback" url="../../../exporting-image/batch-exporting/ECBatchCallback.html" />
+   <topic name="Over-riding export parameters" url="../../../exporting-image/batch-exporting/ECBatchOverride.html" /></key><key name="Bevel" >
+   <topic name="Bevel style type" url="../../../Styles/Bevel.html" /></key><key name="Blur" >
+   <topic name="Blur style type" url="../../../Styles/Blur.html" /></key><key name="Bubble chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Bubble chart specification sheet" url="../../../ChartSS/Bubble.html" /></key><key name="Bubble.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Bubble chart specification sheet" url="../../../ChartSS/Bubble.html" /></key><key name="C# (ASP.NET)" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/csnet/CS_BasicExample.html" />
+   <topic name="Charting data from array" url="../../../guide-for-web-developers/csnet/CS_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/csnet/CS_Form.html" />
+   <topic name="Plotting from database" url="../../../guide-for-web-developers/csnet/CS_DB.html" />
+   <topic name="Creating drill down charts" url="../../../guide-for-web-developers/csnet/CS_Drill.html" />
+   <topic name="Using Master pages" url="../../../guide-for-web-developers/csnet/CS_MasterPages.html" />
+   <topic name="J2EE, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/csnet/CS_JS_URL.html" />
+   <topic name="J2EE, JavaScript &amp; dataStr" url="../../../guide-for-web-developers/csnet/CS_JS_XML.html" />
+   <topic name="Using update panel" url="../../../guide-for-web-developers/csnet/CS_UpdatePanel.html" />
+   <topic name="UTF8 example" url="../../../guide-for-web-developers/csnet/CS_UTF8Example.html" /></key><key name="CANVAS" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Chart Canvas Configuration" url="../../../AttDesc/Canvas.html" /></key><key name="CAPTION" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Chart Caption Configuration" url="../../../AttDesc/Titles.html" /></key><key name="&lt;categories&gt; element" >
+   <topic name="Multi-series Column 2D Chart Specification Sheet " url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="&lt;category&gt; element" >
+   <topic name="Multi-series Column 2D Chart Specification Sheet " url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="&lt;chart&gt; element" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="Chart messages" >
+   <topic name="Changing chart messages" url="../../../advanced/ChartMessages.html" />
+   <topic name="Setting chart messages using FusionCharts PHP class" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_msg.html" />
+   <topic name="Setting chart messages using FusionCharts ASP class" url="../../../guide-for-web-developers/fusioncharts-asp-class/advanced-usage/Adv_msg.html" /></key><key name="Chart XML API" >
+   <topic name="Column 2D chart" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="Client side exporting" >
+   <topic name="Client side exporting" url="../../../exporting-image/client-side/ECClientOverview.html" />
+   <topic name="Simple example" url="../../../exporting-image/client-side/ECClientSimple.html" />
+   <topic name="Setting for multiple charts" url="../../../exporting-image/client-side/ECClientMultiple.html" />
+   <topic name="Setting JavaScript callbacks" url="../../../exporting-image/client-side/ECClientCallback.html" />
+   <topic name="Component UI customization" url="../../../exporting-image/client-side/ECComponentUI.html" />
+   <topic name="Configuring export formats (client side)" url="../../../exporting-image/client-side/ECServerFormats.html" />
+   <topic name="Configuring export dialog (client side)" url="../../../exporting-image/client-side/ECExportDialog.html" /></key><key name="ColdFusion" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/coldfusion/CFM_BasicExample.html" />
+   <topic name="Charting data from array" url="../../../guide-for-web-developers/coldfusion/CFM_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/coldfusion/CFM_Form.html" />
+   <topic name="Plotting from database" url="../../../guide-for-web-developers/coldfusion/CFM_DB.html" />
+   <topic name="Creating drill down charts" url="../../../guide-for-web-developers/coldfusion/CFM_Drill.html" />
+   <topic name="PHP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/coldfusion/CFM_JS_URL.html" />
+   <topic name="PHP, JavaScript &amp; dataStr" url="../../../guide-for-web-developers/coldfusion/CFM_JS_XML.html" /></key><key name="Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" /></key><key name="Column 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" /></key><key name="Column2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" /></key><key name="Column3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" /></key><key name="Combination charts" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html#combi" />
+   <topic name="Combination charts XML structure" url="../../../DataFormats/XML/Combination.html" />
+   <topic name="Combination charts JSON structure" url="../../../DataFormats/JSON/Combination.html" />
+   <topic name="Creating Combination chart" url="../../../FirstChart/FirstCombinationChart.html" /></key><key name="CSV" >
+   <topic name="Using Delimiter separated data" url="../../../guide-for-general-users/external-data-sources/GUI_CSV.html" /></key><key name="Currency" >
+   <topic name="Using currency symbols" url="../../../advanced/special-chars/SpCharAll.html" /></key><key name="Database" >
+   <topic name="Creating Database driven charts" url="../../../FirstChart/DatabaseCharts.html" />
+   <topic name="Plotting from database using VB (ASP.NET)" url="../../../guide-for-web-developers/vbnet/VBNET_DB.html" />
+   <topic name="Plotting from database using C# (ASP.NET)" url="../../../guide-for-web-developers/csnet/CS_DB.html" />
+   <topic name="Plotting from database using Ruby on Rails" url="../../../Code/ROR/Ruby_db.html" />
+   <topic name="Plotting from database using J2EE" url="../../../Code/J2EE/JSP_DB.html" />
+   <topic name="Plotting from database using ColdFusion" url="../../../guide-for-web-developers/coldfusion/CFM_DB.html" />
+   <topic name="Plotting from database using PHP" url="../../../guide-for-web-developers/php/PHP_DB.html" />
+   <topic name="Plotting from database using ASP" url="../../../guide-for-web-developers/asp/ASP_DB.html" /></key><key name="DATALABELS" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Data Labels Configuration" url="../../../AttDesc/DataLabels.html" />
+   <topic name="Showing long data Labels" url="../../../advanced/Adv_DataLabels.html" />
+   <topic name="Smart Labels &amp; Lines" url="../../../AttDesc/SmartLabels.html" /></key><key name="DATAPLOT" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Data Plot Configuration" url="../../../AttDesc/DataPlot.html" /></key><key name="DATAPLOTAREA " >
+   <topic name="2D (Single Y) Combination Chart Specification Sheet " url="../../../ChartSS/Combi2D.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="DATAPLOTCOLUMN " >
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="DATAPLOTLINE" >
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="&lt;dataset&gt; element" >
+   <topic name="Multi-series Column 2D Chart Specification Sheet " url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="dataStr method" >
+   <topic name="ASP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/asp/ASP_JS_XML.html" />
+   <topic name="PHP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/php/PHP_JS_XML.html" />
+   <topic name="ColdFusion, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/coldfusion/CFM_JS_XML.html" />
+   <topic name="C# (ASP.NET), JavaScript &amp; dataURL" url="../../../guide-for-web-developers/csnet/CS_JS_XML.html" />
+   <topic name="VB (ASP.NET), JavaScript &amp; dataURL" url="../../../guide-for-web-developers/vbnet/VBNET_JS_XML.html" />
+   <topic name="J2EE, JavaScript &amp; dataURL" url="../../../Code/J2EE/JSP_JS_XML.html" />
+   <topic name="Ruby on Rails, JavaScript &amp; dataURL" url="../../../Code/ROR/Ruby_JS_xml.html" />
+   <topic name="Using XML embedded in the page" url="../../../FirstChart/DataXML.html" /></key><key name="DATATOOLTIP " >
+   <topic name="ZoomLine Chart Specification Sheet " url="../../../ChartSS/ZoomLine.html" /></key><key name="dataURL method" >
+   <topic name="ASP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/asp/ASP_JS_URL.html" />
+   <topic name="PHP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/php/PHP_JS_URL.html" />
+   <topic name="ColdFusion, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/coldfusion/CFM_JS_URL.html" />
+   <topic name="C# (ASP.NET), JavaScript &amp; dataURL" url="../../../guide-for-web-developers/csnet/CS_JS_URL.html" />
+   <topic name="VB (ASP.NET), JavaScript &amp; dataURL" url="../../../guide-for-web-developers/vbnet/VBNET_JS_URL.html" />
+   <topic name="J2EE, JavaScript &amp; dataURL" url="../../../Code/J2EE/JSP_JS_URL.html" />
+   <topic name="Ruby on Rails, JavaScript &amp; dataURL" url="../../../Code/ROR/Ruby_JS_url.html" />
+   <topic name="Using XML embedded in the page" url="../../../FirstChart/DataXML.html" /></key><key name="DATAVALUES" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" />
+   <topic name="Data Values Configuration" url="../../../AttDesc/DataValues.html" /></key><key name="Debug" >
+   <topic name="Export Component Debug Mode" url="../../../exporting-image/ECReferenceDebugJS.html" />
+   <topic name="Basic Troubleshooting" url="../../../Debug/Basic.html" />
+   <topic name="Advanced Troubleshooting" url="../../../Debug/Advanced.html" />
+   <topic name="New Debug window" url="../../../Debug/Window.html" />
+   <topic name="Debugging using JavaScript" url="../../../Debug/JS.html" />
+   <topic name="FAQs" url="../../../FAQ.html" /></key></indexdata>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?><indexdata><key name="MS Access" >
+   <topic name="Using data from MS Access" url="../../../guide-for-general-users/external-data-sources/GUI_Access.html" /></key><key name="MS Excel" >
+   <topic name="Using data from MS Excel" url="../../../guide-for-general-users/external-data-sources/GUI_Excel.html" /></key><key name="MS Word" >
+   <topic name="Using data from MS Word" url="../../../guide-for-general-users/external-data-sources/GUI_Word.html" /></key><key name="MSArea.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Area chart specification sheet" url="../../../ChartSS/MSArea2D.html" /></key><key name="MSBar2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Bar 2D chart specification sheet" url="../../../ChartSS/MSBar2D.html" /></key><key name="MSBar3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Bar 3D chart specification sheet" url="../../../ChartSS/MSBar3D.html" /></key><key name="MSColumn2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Column 2D chart specification sheet" url="../../../ChartSS/MSColumn2D.html" /></key><key name="MSColumn3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/MSColumn3D.html" /></key><key name="MSColumn3DLineDY.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/MSCol3DLineDY.html" /></key><key name="MSColumnLine3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Col3DLine.html" /></key><key name="MSCombi2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi2D.html" /></key><key name="MSCombi3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi3D.html" /></key><key name="MSCombiDY2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi2DDY.html" /></key><key name="MSLine.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Line chart specification sheet" url="../../../ChartSS/MSLine.html" /></key><key name="MSStackedColumn2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Stacked Column 2D chart specification sheet" url="../../../ChartSS/MSStCol.html" /></key><key name="MSStackedColumn2DLineDY.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Stacked Column 2D Line Dual Y chart specification sheet" url="../../../ChartSS/MSStColLineDY.html" /></key><key name="Multi Series Area chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Area chart specification sheet" url="../../../ChartSS/MSArea2D.html" /></key><key name="Multi series Bar 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Bar 2D chart specification sheet" url="../../../ChartSS/MSBar2D.html" /></key><key name="Multi series Bar 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Bar 3D chart specification sheet" url="../../../ChartSS/MSBar3D.html" /></key><key name="Multi series charts " >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html#ms" />
+   <topic name="Multi series XML structure" url="../../../DataFormats/XML/MultiSeries.html" />
+   <topic name="Multi series JSON structure" url="../../../DataFormats/JSON/MultiSeries.html" />
+   <topic name="First Multi Series chart" url="../../../FirstChart/FirstMultiSeriesChart.html" />
+   <topic name="First Multi series chart using FusionCharts ASP class" url="../../../guide-for-web-developers/fusioncharts-asp-class/MultiSeriesChart.html" />
+   <topic name="First Multi series chart using FusionCharts PHP class" url="../../../guide-for-web-developers/fusioncharts-php-class/MultiSeriesChart.html" /></key><key name="Multi series Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Column 2D chart specification sheet" url="../../../ChartSS/MSColumn2D.html" /></key><key name="Multi series Column 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Column 3D chart specification sheet" url="../../../ChartSS/MSColumn3D.html" /></key><key name="Multi series Column 3D Line Dual Y chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/MSCol3DLineDY.html" /></key><key name="Multi series Column Line 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Col3DLine.html" /></key><key name="Multi series Combination 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi2D.html" /></key><key name="Multi series Combination 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi3D.html" /></key><key name="Multi series Combination Dual Y 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Combi2DDY.html" /></key><key name="Multi series Line chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Line chart specification sheet" url="../../../ChartSS/MSLine.html" /></key><key name="Multi series stacked Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Stacked Column 2D chart specification sheet" url="../../../ChartSS/MSStCol.html" /></key><key name="Multi series stacked column 2D Line Dual Y" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="MS Stacked Column 2D Line Dual Y chart specification sheet" url="../../../ChartSS/MSStColLineDY.html" /></key><key name="Multilingual text" >
+   <topic name="Using multilingual text" url="../../../advanced/special-chars/SpChar.html" />
+   <topic name="Multilingual text using PHP" url="../../../guide-for-web-developers/php/PHP_UTF8Example.html" />
+   <topic name="Multilingual text using PHP class" url="../../../guide-for-web-developers/php-class/PHPClass_UTF8Example.html" />
+   <topic name="Multilingual text using ASP" url="../../../guide-for-web-developers/asp/ASP_UTF8Example.html" />
+   <topic name="Multilingual text using ASP class" url="../../../guide-for-web-developers/asp-class/ASPClass_UTF8Example.html" />
+   <topic name="Multilingual text using J2EE" url="../../../Code/J2EE/JSP_UTF8Example.html" />
+   <topic name="Multilingual text using C# (ASP.NET)" url="../../../guide-for-web-developers/csnet/CS_UTF8Example.html" />
+   <topic name="Multilingual text using VB (ASP.NET)" url="../../../guide-for-web-developers/vbnet/VBNET_UTF8Example.html" />
+   <topic name="Multilingual text using Ruby on Rails" url="../../../Code/ROR/Ruby_UTF8Example.html" /></key><key name="Number Format" >
+   <topic name="Number Formatting Basics" url=".../../../AttDesc/Number_Basics.html" /></key><key name="Number Scaling" >
+   <topic name="Number Scaling" url=".../../../AttDesc/Number_Scaling.html" /></key><key name="OVERLAYLABEL" >
+   <topic name="ZoomLine Chart Specification Sheet " url="../../../ChartSS/ZoomLine.html" /></key><key name="Padding" >
+   <topic name="Chart Padding" url="../../../AttDesc/Padding.html" /></key><key name="Palettes" >
+   <topic name="Chart Palettes" url="../../../AttDesc/ChartPalettes.html" /></key><key name="Pareto 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto chart" url="../../../AttDesc/ParetoChartAttributes.html" /></key><key name="Pareto 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Pareto chart" url="../../../AttDesc/ParetoChartAttributes.html" /></key><key name="Pareto2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" /></key><key name="Pareto3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" /></key><key name="PHP" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/php/PHP_BasicExample.html" />
+   <topic name="Charting data from array" url="../../../guide-for-web-developers/php/PHP_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/php/PHP_Form.html" />
+   <topic name="Plotting from database" url="../../../guide-for-web-developers/php/PHP_DB.html" />
+   <topic name="Creating drill down charts" url="../../../guide-for-web-developers/php/PHP_Drill.html" />
+   <topic name="PHP, JavaScript &amp; dataURL" url="../../../guide-for-web-developers/php/PHP_JS_URL.html" />
+   <topic name="PHP, JavaScript &amp; dataStr" url="../../../guide-for-web-developers/php/PHP_JS_XML.html" />
+   <topic name="Transparent chart" url="../../../guide-for-web-developers/php/PHP_Transparent.html" />
+   <topic name="Using Multilingual text" url="../../../guide-for-web-developers/php/PHP_UTF8Example.html" /></key><key name="PHP class" >
+   <topic name="Basic examples" url="../../../guide-for-web-developers/php-class/PHPClass_BasicExamples.html" />
+   <topic name="Charting data from Array" url="../../../guide-for-web-developers/php-class/PHPClass_Array.html" />
+   <topic name="Using with data in forms" url="../../../guide-for-web-developers/php-class/PHPClass_Forms.html" />
+   <topic name="Charting data from database" url="../../../guide-for-web-developers/php-class/PHPClass_DB.html" />
+   <topic name="Creating Drill down charts" url="../../../guide-for-web-developers/php-class/PHPClass_Drill.html" />
+   <topic name="Using multilingual text" url="../../../guide-for-web-developers/php-class/PHPClass_UTF8Example.html" />
+   <topic name="Overview" url="../../../guide-for-web-developers/fusioncharts-php-class/Overview.html" />
+   <topic name="Basic set up" url="../../../guide-for-web-developers/fusioncharts-php-class/Setup.html" />
+   <topic name="Creating first chart" url="../../../guide-for-web-developers/fusioncharts-php-class/FirstChart.html" />
+   <topic name="Creating multiple charts" url="../../../guide-for-web-developers/fusioncharts-php-class/MultipleCharts.html" />
+   <topic name="Creating Multi-series chart" url="../../../guide-for-web-developers/fusioncharts-php-class/MultiSeriesChart.html" />
+   <topic name="Creating Stacked chart" url="../../../guide-for-web-developers/fusioncharts-php-class/StackedChart.html" />
+   <topic name="Creating combination chart" url="../../../guide-for-web-developers/fusioncharts-php-class/CombinationChart.html" />
+   <topic name="Creating Scatter-Bubble chart" url="../../../guide-for-web-developers/fusioncharts-php-class/ScatterBubble.html" />
+   <topic name="Creating MS Stacked Combination chart" url="../../../guide-for-web-developers/fusioncharts-php-class/MSStackedCDY.html" />
+   <topic name="Creating a Grid" url="../../../guide-for-web-developers/fusioncharts-php-class/SSGrid.html" />
+   <topic name="Providing chart attributes" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_chart.html" />
+   <topic name="Providing other elements attributes" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_OtherElmAttribs.html" />
+   <topic name="Creating trendlines and vertical trendlines" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_trendlines.html" />
+   <topic name="Creating vLines" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_vLines.html" />
+   <topic name="Applying styles" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_styles.html" />
+   <topic name="Setting chart messages" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_msg.html" />
+   <topic name="Handling delimiter" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_delim.html" />
+   <topic name="Using HTML embedding method" url="../../../guide-for-web-developers/fusioncharts-php-class/advanced-usage/Adv_htmlembd.html" />
+   <topic name="FusionCharts PHP class API" url="../../../guide-for-web-developers/fusioncharts-php-class/Functions.html" /></key><key name="PHP class API" >
+   <topic name="FusionCharts PHP class API" url="../../../guide-for-web-developers/fusioncharts-php-class/Functions.html" /></key><key name="Pie 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie chart" url="../../../AttDesc/Pie_DoughnutChartAttributes.html" /></key><key name="Pie 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Pie chart" url="../../../AttDesc/Pie_DoughnutChartAttributes.html" /></key></indexdata>

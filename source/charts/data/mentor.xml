@@ -1,0 +1,2 @@
+<chart caption="Mentoring Report" yAxisName="Amount" bgColor="F7F7F7, E9E9E9" numVDivLines="10" divLineAlpha="30" labelPadding="10" yAxisValuesPadding="10" showValues="1" rotateValues="1" valuePosition="auto">
+	                <categories><category label="UTMT Pvt Ltd."/></categories><dataset seriesName="Company"><set value="Mukesh Sharma"/></dataset><dataset seriesName="Total Time Spend"><set value="0"/></dataset><dataset seriesName="Amount"><set value="0"/></dataset></chart>

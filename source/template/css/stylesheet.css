@@ -1,0 +1,27 @@
+th { 
+
+    background:#B9CE98; /*99CC99 */
+    color:#333; 
+}
+tr:nth-child(odd) { 
+    background: #C3FDB8;
+   
+}
+tr:nth-child(even) { 
+    background: whitesmoke;
+}
+h2 {
+    color:#902452;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+a { 
+    color:black;
+    text-decoration: none;
+}
+.footerTable {
+/*    background-color:#464646 ;
+    height:60px;*/
+    
+}

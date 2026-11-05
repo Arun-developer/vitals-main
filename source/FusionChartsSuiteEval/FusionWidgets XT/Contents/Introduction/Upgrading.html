@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>What's new in FusionWidgets XT</title>
+<link rel="stylesheet" href="../assets/ui/css/style.css" type="text/css" />
+<script type="text/javascript" src="../assets/prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/prettify/prettify.css" />
+<script type="text/javascript" src="../assets/ui/js/jquery.min.js" ></script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+
+a.whtbtnhide, a.whtbtnshow, a.whtbtnhidenav , a.whtbtnshownav { border-bottom:none !important; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="../assets/ui/js/whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../assets/ui/js/whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../assets/ui/js/whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../assets/ui/js/whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../assets/ui/js/whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../assets/ui/js/whtopic.js"></script>
+<script type="text/javascript" src="../assets/ui/js/lib.js"></script>
+</head>
+
+<body>
+<!-- breadcrumb starts here -->
+<div id="breadcrumb"></div>
+<script type="text/javascript">
+	document.write( addFCBreadcrumb( [ "Home|../Introduction/Overview.html", "Introduction", "Upgrading to XT" ] ) );
+</script>
+<!-- breadcrumb ends here -->
+<table width="98%" border="0" cellspacing="0" cellpadding="3" align="center">
+  <tr> 
+    <td class="pageHeader"><a name="xtfeaturelist"></a>Upgrading to XT (v3.2) from FusionWidgets v3.x.y</td>
+  </tr>
+  <tr> 
+    <td valign="top" class="text">
+      <p> This section is meant for users who have implemented v3.x.y (e.g., 3.0.2, 3.0.1, 3.1.1 etc.) of FusionWidgets in their applications and are now upgrading   to FusionWidgets XT (v3.2).</p>
+      <p>Here, we will discuss the following:</p>
+      <ol>
+         <li><a href="#upgradesteps">Steps to upgrade to FusionWidgets XT from FusionWidgets v3.x.y</a> </li>
+         <li>
+		   <div class="msg_handler_slider"><a>How to make use of the features introduced and changed in FusionWidgets XT </a>&raquo;			</div><div class="highlightBlock msg_body" style="width:620px; overflow:auto;margin-top:5px;"><ul><li><a href="#ipad">Enabling your gauges and charts to run on iPad/iPhone </a></li>
+			      <li><a href="#autojs">Enabling automatic JavaScript charts/gauges </a></li>
+			      <li><a href="#convert_js">Converting all your charts/gauges from Flash rendering to JavaScript rendering</a></li>
+			      <li><a href="#dynamic_resize">Creating dynamically resizable gauges and charts</a></li>
+			      <li><a href="#dynamicannresize">Creating dynamically resizable annotations</a></li>
+			      <li><a href="#annotation_macros">Using macros in annotations</a></li>
+			      <li><a href="#newjs_functions">Using FusionCharts JavaScript Class</a></li>
+			      <li><a href="#setchartattribute">Changing individual chart attribute at run-time using JavaScript</a></li>
+			      <li><a href="#newjs_events">Making use of new JavaScript events</a></li>
+			      <li><a href="#fcupdatedevent">Making use of new real-time update events</a></li>
+			      <li><a href="#managedprint">Enabling managed printing in Firefox/Chrome/Safari/Opera</a></li>
+			      <li><a href="#linkedcharts">Using <em>LinkedCharts </em></a><em></em></li>
+			      <li><a href="#jsonsupport">Adding support for JSON data </a></li>
+			      <li><a href="#jquery">Using FusionCharts jQuery plugin to render charts/gauges</a></li>
+			      <li><a href="#refreshInstantly">Making real-time charts update instantly after first render</a></li>
+			      <li><a href="#realtimevaluepadding">Using smarter  real-time value padding</a></li>
+			      <li><a href="#legendinfunnelpyramid">Showing legend in Funnel and Pyramid charts</a> </li>
+			      <li><a href="#displayimage">Setting display modes of background image</a></li>
+			      <li><a href="#imagealign">Setting alignment of background image</a></li>
+			      <li><a href="#captionfont">Using the default font size of the  caption and sub caption </a></li>
+			      <li><a href="#captionalignment">Controlling alignment of caption and sub-caption </a></li>
+			      <li><a href="#stackedminvalue">Specifying y-axis minimum value (lower limit) for Stacked charts </a></li>
+			      </ul>
+			</div>
+		 </li>
+         </ol>
+		 <p>Moreover, for users having FusionWidgets earlier to v3.1 we will discuss: </p>
+		 <ol>
+		    <li><a href="#31features">Features introduced in FusionWidgets v3.1</a></li>
+		    <li><a href="#droppedin31">Features of FusionWidgets v3.0.7 dropped in FusionWidgets v3.1 and above</a></li>
+	     </ol>
+		 <br/>
+      </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="upgradesteps" id="upgradesteps"></a>Steps to upgrade to FusionWidgets XT from FusionWidgets v3.x.y</td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>All the features of FusionWidgets XT (v3.2) are backward compatible with FusionWidgets v3.1. Hence, upgrading is as easy as copy-pasting files. Listed below are the things that you need to take care of while  upgrading:</p>
+        <ul>
+           <li>Copy all the chart SWF files from <span class="codeInline">Download Pack  &gt; Charts</span> folder and replace your existing chart SWF files in your&nbsp;deployed folder</li>
+           <li>Copy the new <span class="codeInline">FusionCharts.js</span> from <span class="codeInline">Download Pack &gt; Charts</span> folder and over-write the existing <span class="codeInline">FusionCharts.js</span> in your&nbsp;deployed application folder</li>
+           <li>Copy the  3 new JavaScript files - <span class="codeInline">FusionCharts.HC.js, FusionCharts.HC.Widgets.js </span>and<span class="codeInline"> jquery.min.js </span>from <span class="codeInline">Download Pack &gt; Charts</span> folder  to the same folder as <span class="codeInline">FusionCharts.js</span></li>
+           <li><strong>Clear your browser cache (very important step)</strong></li>
+        </ul>
+       <p class="highlightBlock">In case, you are also using charts from <a href="http://www.fusioncharts.com/" target="_blank">FusionCharts XT</a>  or earlier version, you need to download or update to the latest FusionCharts pack and copy <span class="codeInline">FusionCharts.HC.Charts.js</span> from the <span class="codeInline">Charts</span> folder of the downloaded FusionCharts pack.<br />
+          <br />
+       Moreover, if you are  using charts from <a href="http://www.fusioncharts.com/PowerCharts" target="_blank">PowerCharts</a> 3.2 or earlier version, you need to download or update to the latest PowerCharts pack and copy<span class="codeInline"> FusionCharts.HC.PowerCharts.js</span> from the <span class="codeInline">Charts</span> folder of the downloaded PowerCharts pack.</p>
+     <p>The above steps will convert all your FusionWidgets v3.x.y gauges/charts to FusionWidgets XT. You don't have  to modify any code, as all the charts are backward compatible. </p>
+        
+        <p class="highlightBlock"><span class="header"><a name="newfeatures" id="newfeatures"></a></span>FusionWidgets XT (v3.2) boasts of a plethora of enhancements. To make use of the new and modified features, you will have to modify your code to include the same. Given below are details of  code changes required for implementing some of the new features introduced in FusionWidgets XT (v3.2).</p>
+		  <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="ipad"></a>Enabling your gauges and charts to run on iPad/iPhone </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">
+    <p>After you've made the changes based on the<a href="#upgradesteps"> steps to upgrade</a> discussed above, your gauges and charts are automatically ready for iPad/iPhone. This has been made possible by the new <span class="codeInline">FusionCharts.js</span> (core class of FusionCharts JavaScript Class), which provides automatic fallback of charts (using <span class="codeInline">FusionCharts.HC.js, </span><span class="codeInline"> FusionCharts.HC.Widgets.js</span> and <span class="codeInline">jquery.min.js</span>). FusionCharts JavaScript Class (in FusionWidgets XT pack) is capable of detecting whether the browser is running in iPad, iPhone or iPod and it switches to pure JavaScript rendering architecture. Click <a href="../../Code/MyFirstChart/customer-satisfaction-js.html" target="_blank">here</a> to see  a live sample in your iPad/iPhone.</p>
+
+    <div class="highlightBlock" >
+    JavaScript rendering is supported by the following gauges and charts:
+    <table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+  <tr>
+    <td width="175" valign="top"> <ul>
+       <li>Angular gauge</li>
+       <li> Horizontal Linear gauge</li>
+       <li>Cylinder gauge </li>
+       <li>Thermometer gauge</li>
+       <li>Bulb gauge</li></ul>
+       </td>
+    <td width="175" valign="top">        <ul>
+       <li>Horizontal LED gauge</li>
+       <li>Vertical LED gauge</li>
+       <li>Spark column chart </li>
+       <li>Spark line chart</li>
+       <li>Spark win-loss chart</li>
+       </ul>
+	</td>
+    <td width="175" valign="top"><ul>
+          <li>Funnel chart </li>
+       <li>Pyramid chart </li>
+       <li>Horizontal Bullet graph</li>
+       <li>Vertical Bullet graph</li>
+ 
+    <li>Drawing Pad component </li>
+       </ul></td>
+  </tr>
+</table>
+    <br />
+    JavaScript rendering is NOT supported by the following charts: 
+    <table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+       <tr>
+          <td width="175" valign="top">
+             <ul>
+                <li>Real Time Column chart </li>
+                <li>Real Time Stacked Column chart </li>
+                <li>Real Time Line chart </li>
+                <li>Gantt chart </li>
+             </ul>
+          </td>
+          <td width="175" valign="top">
+             <ul>
+                <li>Real Time Area chart </li>
+                <li>Real Time Stacked Area chart </li>
+                <li>Real Time Line Dual Y chart </li>
+                </ul>
+          </td>
+       </tr>
+    </table>
+    </div>
+    <p>Click <a href="JSChartingCapabilities.html#limitations">here</a> to know how JavaScript gauges and charts are different from the Flash counterparts.</p>
+   <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="autojs"></a>Enabling automatic JavaScript charts/gauges in devices where Flash Player is disabled,  not-installed or not supported </td>
+  </tr>
+  <tr>
+    <td valign="top">
+       <p>Starting  FusionWidgets XT (v3.2), FusionCharts JavaScript Class  can automatically decide  whether to render JavaScript charts/gauges or Flash charts/gauges. Hence, in those browsers where Flash Player is disabled, not installed or not supported, FusionCharts JavaScript Class automatically switches to pure JavaScript charts/gauges. Click <a href="../../Code/MyFirstChart/customer-satisfaction-js.html" target="_blank">here</a> to see  a live example.</p>
+       <div class="highlightBlock" >
+       <div class="msg_handler removeonclick"><a>Click here to get the list of available JavaScript charts and gauges</a> &raquo; </div><div class="msg_body">JavaScript rendering is supported by the following gauges and charts:
+      <table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+  <tr>
+    <td width="175" valign="top"> <ul>
+       <li>Angular gauge</li>
+       <li> Horizontal Linear gauge</li>
+       <li>Cylinder gauge </li>
+       <li>Thermometer gauge</li>
+       <li>Bulb gauge</li></ul>
+       </td>
+    <td width="175" valign="top">        <ul>
+       <li>Horizontal LED gauge</li>
+       <li>Vertical LED gauge</li>
+       <li>Spark column chart </li>
+       <li>Spark line chart</li>
+       <li>Spark win-loss chart</li>
+       </ul>
+	</td>
+    <td width="175" valign="top"><ul>
+          <li>Funnel chart </li>
+       <li>Pyramid chart </li>
+       <li>Horizontal Bullet graph</li>
+       <li>Vertical Bullet graph</li>
+ 
+    <li>Drawing Pad component </li>
+       </ul></td>
+  </tr>
+</table>
+      <br />
+JavaScript rendering is NOT supported by the following charts:
+<table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+   <tr>
+      <td width="175" valign="top">
+         <ul>
+            <li>Real Time Column chart </li>
+            <li>Real Time Stacked Column chart </li>
+            <li>Real Time Line chart </li>
+            <li>Gantt chart</li>
+         </ul>
+      </td>
+      <td width="175" valign="top">
+         <ul>
+            <li>Real Time Area chart </li>
+            <li>Real Time Stacked Area chart </li>
+            <li>Real Time Line Dual Y chart </li>
+         </ul>
+      </td>
+   </tr>
+</table>
+       </div></div>
+	   <p>Click <a href="JSChartingCapabilities.html#limitations">here</a> to know how JavaScript gauges and charts are different from the Flash counterparts.</p>
+     <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="convert_js"></a>Converting all your charts/gauges from Flash rendering to JavaScript rendering ONLY </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">
+      <p>If you want to use JavaScript charting only (and not use Flash at all),  you can convert your existing charts/gauges to pure JavaScript charts/gauges (HTML5) by adding a single line of code. All you need to do is write the following code before you call FusionCharts constructor in your existing implementation:</p>
+      <pre class="code_container prettyprint">// This line helps in converting all existing Flash charts and gauges to JavaScript charts and gauges
+FusionCharts.setCurrentRenderer('javascript');</pre>
+      <br />
+
+      <div >
+       <div class="highlightBlock" >
+       <div class="msg_handler removeonclick"><a>Click here to get the list of available JavaScript charts and gauges</a> &raquo; </div><div class="msg_body">JavaScript rendering is supported by the following gauges and charts:
+    <table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+  <tr>
+    <td width="175" valign="top"> <ul>
+       <li>Angular gauge</li>
+       <li> Horizontal Linear gauge</li>
+       <li>Cylinder gauge </li>
+       <li>Thermometer gauge</li>
+       <li>Bulb gauge</li></ul>
+       </td>
+    <td width="175" valign="top">        <ul>
+       <li>Horizontal LED gauge</li>
+       <li>Vertical LED gauge</li>
+       <li>Spark column chart </li>
+       <li>Spark line chart</li>
+       <li>Spark win-loss chart</li>
+       </ul>
+	</td>
+    <td width="175" valign="top"><ul>
+          <li>Funnel chart </li>
+       <li>Pyramid chart </li>
+       <li>Horizontal Bullet graph</li>
+       <li>Vertical Bullet graph</li>
+ 
+    <li>Drawing Pad component </li>
+       </ul></td>
+  </tr>
+</table>
+
+    <br />
+JavaScript rendering is NOT supported by the following 6 charts:
+<table width="530" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
+   <tr>
+      <td width="175" valign="top">
+         <ul>
+            <li>Real Time Column chart </li>
+            <li>Real Time Stacked Column chart </li>
+            <li>Real Time Line chart</li>
+            <li>Gantt chart</li>
+         </ul>
+      </td>
+      <td width="175" valign="top">
+         <ul>
+            <li>Real Time Area chart </li>
+            <li>Real Time Stacked Area chart </li>
+            <li>Real Time Line Dual Y chart </li>
+         </ul>
+      </td>
+   </tr>
+</table>
+<br />
+
+      <span>Click  <a href="JSChartingCapabilities.html#limitations">here</a> to know how JavaScript gauges and charts are different from the Flash counterparts.</span>
+   </div>
+ </div>
+      
+<p>The code below will help to illustrate this:</p>
+
+      <pre class="code_container prettyprint" >&lt;html&gt;
+  &lt;head&gt; 
+    &lt;title&gt;My First chart using FusionWidgets - Using JavaScript&lt;/title&gt; 
+    &lt;script type=&quot;text/javascript&quot; src=&quot;FusionWidgets/FusionCharts.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt; 
+  &lt;body&gt; 
+    &lt;div id=&quot;chartContainer&quot;&gt;FusionWidgets will load here!&lt;/div&gt; 
+    &lt;script type=&quot;text/javascript&quot;&gt;&lt;!--
+	<strong>FusionCharts.setCurrentRenderer('javascript');</strong>
+	var myChart = new FusionCharts( &quot;Charts/AngularGauge.swf&quot;,&quot;myChartId&quot;, &quot;400&quot;, &quot;300&quot;, &quot;0&quot;, &quot;1&quot; );
+	myChart.setXMLUrl(&quot;Data.xml&quot;);
+	myChart.render(&quot;chartContainer&quot;); 
+    // --&gt; 
+    &lt;/script&gt;
+  &lt;/body&gt; 
+&lt;/html&gt;</pre>
+      <p>See it <a href="../../Code/MyFirstChart/customer-satisfaction-js.html" target="_blank">live</a>!</p>	
+	   <p class="highlightBlock">Note : Many browsers restrict JavaScript from accessing local file system owing   to security reasons. The JavaScript charts, when running locally, will not be able to access data provided as a URL. If you run the files from a server, it will run   absolutely fine, though. When running locally, however, if you provide   the data as string (using the <a href="../HowFWworks/DataXMLExp.html">Data String method</a>), it works fine.</p>
+      </div>
+	    <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	  </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="dynamic_resize" id="dynamic_resize"></a>Creating dynamically resizable gauges and charts</td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>Starting FusionWidgets XT (v3.2), all gauges and charts can resize automatically as per the changed size of the container element. The charts can accept width and height in percentage (%) and scale in percentage with respect to the containers' size. Whenever a container's size changes, the chart automatically resizes itself with respect to the new size of the container element. To achieve this, all you need to do is:</p>
+        <ul>
+           <li>Set percentage values as  the chart's width and height <br />
+             <br />
+           </li>
+        </ul>
+        <pre class="code_container prettyprint" >new FusionCharts(&quot;AngularGauge.swf&quot;,&quot;myChartId&quot;, <strong>&quot;80%&quot;, &quot;100%&quot;,</strong> &quot;0&quot;, &quot;1&quot;);</pre>
+        <br />
+
+        <ul>
+           <li>Set <span class="codeInline">manageResize=&quot;1&quot;</span> in <span class="codeInline">&lt;chart&gt;</span> element<br />
+             <br />
+           </li>
+        </ul>
+        <pre class="code_container prettyprint" >&lt;chart manageResize='1' ...&gt;</pre>
+		  <p>
+	      All charts and gauges in FusionWidgets can now resize automatically as per the changed size of the container element.</p>
+		 
+          <p class="highlightBlock">For more details on dynamic-resizing, please see the <a href="../Angular/AutoScaling.html">Dynamic Resizing </a> page from the <strong>Angular Gauge</strong> section.</p>
+         <p>In the example below, we've created a  very basic sample where the chart will fill up the whole web browser's space. When the browser's size is changed, the chart will resize itself. </p>
+          <pre class="code_container prettyprint">&lt;html&gt;
+  &lt;head&gt; 	
+    &lt;title&gt;My First chart - Using dynamically re sizable chart&lt;/title&gt;
+    	&lt;script type=&quot;text/javascript&quot; src=&quot;FusionCharts/FusionCharts.js&quot;&gt;&lt;/script&gt;   
+  &lt;/head&gt;   
+<strong>&lt;body style=&quot;height:100%;</strong>&quot;&gt; 
+    &lt;div id=&quot;chartContainer<strong>&quot; style=&quot;height:100%</strong>;&quot; &gt;Chart will load here&lt;/div&gt;          
+	&lt;script type=&quot;text/javascript&quot;&gt;&lt;!-- 		  
+		var myChart = new FusionCharts(&quot;FusionCharts/AngularGauge.swf&quot;, &quot;myChartId&quot;, &quot;<strong>100%&quot;, &quot;100%&quot;</strong>, &quot;0&quot;, &quot;1&quot;);       
+		myChart.setXMLUrl(&quot;ClockConfiguration.xml&quot;);         
+		myChart.render(&quot;chartContainer&quot;);          	  
+	// --&gt;     
+	&lt;/script&gt;
+&lt;/body&gt; 
+&lt;/html&gt;</pre>
+          <p>Click <a href="../../Code/demos/clock/index.html" target="_blank">here to view a dynamically resizable clock</a> which fills up the browser window and resizes when the browser window resizes. </p>
+          <p>In the above code we have:</p>
+          <ol>
+             <li>Set the height of the body to be 100%</li>
+             <li>Set the height of the container DIV to 100%, which means   that it will vertically fill up the body space of the HTML</li>
+             <li>Set the chart's width and height to 100%</li>
+          </ol>
+          <p>Moreover, we have set <span class="codeInline"> manageResize='1'</span>&nbsp;in the <span class="codeInline">&lt;chart&gt;</span> element of the chart's data (<span class="codeInline">ClockConfiguration.xml</span>).</p>
+<p>This makes the  chart resize itself automatically whenever  the browser's dimensions   change. </p>
+          <p>You can apply the same concept to HTML containers. All you need to do is set the chart with percentage width and height, set<span class="codeInline"> manageResize='1'</span> and put it inside the container. Click <a href="../../Code/MyFirstChart/change-size-percent-incontainer.html" target="_blank">here to check out a live example </a>of how a gauge dynamically resizes itself based on a resizable container.</p>
+          <p class="highlightBlock"><strong>Note</strong>: The dynamic resizing feature does not work if <span class="codeInline">autoScale</span> attribute is set to <span class="codeInline">0</span>. </p>
+		    <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	    </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="dynamicannresize" id="dynamicannresize"></a>Creating dynamically resizable annotations </td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>Starting FusionWidgets XT, <a href="../Annotations/Introduction.html">Annotations</a> present in a chart/gauge can also resize dynamically along with the dynamically resizable charts/gauge. For this, you need to make the chart/gauge dynamically resizable by:</p>
+        <ul>
+            <li>Setting percentage dimensions to the chart/gauge</li>
+            <li>Making the container of the chart/gauge capable of resizing (due to user interaction or using code)</li>
+            <li>Setting <span class="codeInline">manageResize=&quot;1&quot;</span> in the <span class="codeInline">&lt;chart&gt;</span> element</li>
+        </ul>
+        <p>By default, when a chart is rendered initially (before resizing), it draws the annotations based on the coordinates and size provided in the XML/JSON. It does not scale the annotations.</p>
+        <p>On further resizing (dynamically), the annotation groups and the annotation elements are scaled in the following way:</p>
+        <ul>
+            <li>The x and y positions of the annotation groups are first re-calculated and scaled. </li>
+            <li>Scaling of the x and y positions of the annotation groups is done without maintaining proportions.</li>
+            <li>Scaling is <strong>not</strong> applied on the values passed through the <span class="codeInline">xShift </span>and <span class="codeInline">yShift</span> attributes.</li>
+            <li>Scaling is also <strong>not</strong> applied on the values provided by annotation macros.  However, the numeric values (if not prefixed by a $) present in the macro expressions are scaled. </li>
+            <li>Scaling is further applied on the position (<span class="codeInline">x</span>, <span class="codeInline">y</span>, <span class="codeInline">toX</span> and <span class="codeInline">toY</span>) and size (<span class="codeInline">radius</span> etc.) of  the annotation elements. </li>
+            <li>All the annotation elements (rectangle, line, arc, circle, and polygon) are  scaled proportionally, i.e.,  preserving the proportions of the shapes to avoid distortion. To  maintain proportion, the annotations scale based on the least change between  the height and the width. </li>
+    </ul>
+        <ul>
+            <li>You can  scale the line and rectangle annotations without maintaining proportions by setting <span class="codeInline">constrainedScale='0'</span>. </li>
+            <li>To allow scaling of text and image annotations, you need to set <span class="codeInline">scaleText='1'</span> and <span class="codeInline">scaleImages='1'</span> respectively, in the <span class="codeInline">&lt;annotationGroup&gt;</span> element.</li>
+        </ul>
+<p class="highlightBlock"><strong>Note</strong>: The dynamic resizing feature does not work if <span class="codeInline">autoScale</span> attribute is set to <span class="codeInline">0</span>. This attribute can be set in the <span class="codeInline">&lt;chart&gt;</span> or <span class="codeInline">&lt;annotations&gt;</span>  element.</p>
+
+    <div class="code_container">
+        During  dynamic resizing, it is important that the annotations remain aligned with the other visual elements of the chart (like aligning the center of a circle annotation with the center of an angular gauge). Hence, while designing the annotations, it is imperative that you  follow a few simple thumb-rules, as stated below:
+            <ol>
+    <li>Position the annotation groups  (using <span class="codeInline">x</span>, <span class="codeInline">y</span>, <span class="codeInline">xShift</span> and <span class="codeInline">yShift</span> attributes) with respect to the other elements of the gauge. For example, align the annotation groups' origins with  center of an angular gauge.</li>
+    <li>Position an  annotation element relative to the position of  its annotation group. </li>
+    <li>Make proper use of the newly introduced <a href="../Annotations/macros.html">macros for annotations</a> to set dynamic positions to the annotation groups and individual annotation elements.</li>
+    </ol>
+     Read <a href="../Annotations/AutoScale.html">more &raquo;</a>
+    </div><br />
+<br />
+
+<div class="highlightBlock">
+    <strong>Note for users of FusionWidgets 3.1.1 or earlier:</strong>
+        <p>
+        If you are already using the Auto Scale feature of FusionWidgets v3.1.1 (setting <span class="codeInline">autoScale='1' </span>in the <span class="codeInline">&lt;chart&gt;</span>, <span class="codeInline">&lt;annotations&gt;</span> or <span class="codeInline">&lt;annotationGroup&gt;</span> element) to auto-scale annotations, you can continue to use it in FusionWidgets XT without facing any problem. <br />
+    <br />
+        However, if you want to use the dynamic resizing feature and macros introduced in FusionWidgets XT, you can set <span class="codeInline">manageResize='1'</span>. Also, please note that you may require to tweak your existing annotations to make them work (without getting distorted) in dynamically resizable charts. While tweaking, please remember the following:</p>
+        <ol>
+            <li>Position the annotation groups  (using <span class="codeInline">x</span>, <span class="codeInline">y</span>, <span class="codeInline">xShift</span> and <span class="codeInline">yShift</span> attributes) with respect to the other elements of the gauge. For example, align the annotation groups' origins with  center of an angular gauge.</li>
+            <li>Position an  annotation element relative to the position of  its annotation group. </li>
+            <li>Make proper use of the newly introduced <a href="../Annotations/macros.html">macros for annotations</a> to set dynamic positions to the annotation groups and individual annotation elements.</li>
+            <li><strong>Unconstrained scaling on circle, arc and  polygons will not be   applied </strong>while using the  dynamic resizing feature. </li>
+        </ol>
+</div>
+<p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="header"><a name="annotation_macros" ></a>Using macros in annotations</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><p>FusionWidgets XT&nbsp;introduces macros for annotations - pre-defined variables which assume values at run-time. These values are generated dynamically based on various configurations of a chart or gauge. The macros can be set as the value for the x and  y positions of an annotation or annotation group. For example, the macro <span class="codeInline">$chartCenterX</span> always provides the horizontal-center position of a chart or gauge. If you want to place a circle annotation at the center of a chart or gauge, set <span class="codeInline">x=&quot;$chartCenterX&quot;</span> and <span class="codeInline">y=&quot;$chartCenterY&quot;</span> while defining the circle annotation. The circle will be placed at the center of the chart or gauge. </p>
+    <p>Again, the values provided by  the macros change dynamically when a chart or gauge resizes. Thus, irrespective of the size of  a chart&nbsp;or gauge, the circle is always placed at the center of the chart or gauge. </p>
+    <p>Additionally, using macro expressions, you  can add numeric (integer) values to the macros or subtract numeric (integer) values from macros. For example, if you want to create a line 10 pixel from the top of the chart you can set <span class="codeInline">y=&quot;$ChartStartY+10&quot;</span> while defining the line annotation. Again, if you want a line to be 10 pixel inside the right margin of the chart, you can set <span class="codeInline">x=&quot;$ChartEndX-10&quot;</span>.</p>
+    <p><strong>Important Note: </strong>While using the dynamic resizing feature, the values provided by macros are not scaled. Rather, these values are re-set with the new values provided by the resized chart. However, the numeric values present in the macro expressions are scaled. For example, the value 10 in the expression<strong> $chartStartY+10</strong> is scaled while using dynamic resizing. If do not want this numeric part to be scaled while using the dynamic resizing feature, you need to prefix the number with $. For example, the value 10 in the expression <strong>$chartStartY+$10</strong> is NOT scaled while using dynamic resizing. </p>
+    <p>For more details on Macros for annotations,  read<strong> Annotations &gt; <a href="../Annotations/macros.html">Using Macros</a></strong> page.</p>
+	  <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	</td>
+  </tr>
+ 
+  <tr>
+     <td valign="top" class="header"><a name="newjs_functions"></a>Using FusionCharts JavaScript Class </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">
+       <p>Starting FusionWidgets XT, FusionCharts JavaScript Class provides a large set of APIs. Using these, you can do the following:</p>
+       <ol>
+         <li>Create pure <a href="../FirstChart/UsingPureJS.html#force">JavaScript charts</a> (not Flash)</li>
+         <li>Use the <a href="../JavaScript/API/Overview.html#quickref">object oriented JavaScript</a> implementation methods</li>
+         <li>Make use of new <a href="../JavaScript/JS_ChangeData.html">data providing functions </a>like <span class="codeInline">setXMLUrl,  setXMLData,  setChartData, setChartDataUrl</span> </li>
+         <li>Use the static function <span class="codeInline"><a href="../JavaScript/API/Methods.html#staticfusioncharts">FusionCharts</a></span> to access all chart instances present in a page</li>
+         <li>Configure and create <a href="../JavaScript/JS_LinkedCharts.html">'<i>LinkedCharts</i>'</a> which is a smart drill-down feature</li>
+         <li>Make use of the better printing support for all Mozilla based browsers using the <a href="../JavaScript/JS_PrintManager.html">PrintManager</a> class</li>
+         <li>Debug and  <a href="../JavaScript/JS_Errors.html">manage errors</a></li>
+         <li><a href="../JavaScript/JS_ChangeChartProperties.html">Set properties</a> of an existing chart using <span class="codeInline">setChartAttribute()</span> function </li>
+         <li>Provide chart data in <a href="../FirstChart/JSONData.html">JSON</a> format using <span class="codeInline">setJSONUrl,</span><span class="codeInline"> setJSONData, setChartData, setChartDataUrl</span> functions </li>
+         <li><a href="../JavaScript/JS_ChangeData.html#update">Update an existing chart's data </a>using chart's native AJAX capabilities or browser's AJAX support</li>
+         <li>Use API to get data back from chart in <a href="../JavaScript/API/Methods.html#getxmldata">XML</a>/<a href="../JavaScript/API/Methods.html#getjsondata">JSON</a>/<a href="../JavaScript/API/Methods.html#getdataascsv">CSV</a> format </li>
+         <li>Check the rendering state of a chart using  function like <span class="codeInline"><a href="../JavaScript/API/Methods.html#isactivemore">isActive</a>()</span></li>
+         <li><a href="../JavaScript/API/Methods.html#clonemore">Duplicate</a> an existing chart's configurations using <span class="codeInline">clone()</span> function </li>
+         <li><a href="../JavaScript/API/Methods.html#disposemore">Remove</a> and clean a chart object and free as much memory as possible using <span class="codeInline">dispose()</span> function </li>
+         <li>Make use of better and advanced JavaScript <a href="../JavaScript/JS_EventOverview.html#advanced">event model</a> (using <span class="codeInline">addEventListener</span> function) to listen to all events</li>
+       </ol>
+       <p>Existing JavaScript implementations using <span class="codeInline">setDataURL()</span>, <span class="codeInline">setDataXML()</span>, <span class="codeInline">FC_Rendered</span> event, <span class="codeInline">FC_DataUpdated</span> event etc.  will continue to function without any problem.       </p> 
+	     <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>   
+    </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="setchartattribute" id="setchartattribute"></a>Changing individual chart attribute at run-time using JavaScript </td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>FusionCharts JavaScript Class provides an option to set a chart attribute at run-time. This is as easy as calling a simple function. You just need to get the chart handler object and call <span class="codeInline">setChartAttribute()</span> function. Let's see a sample code where we change the caption of the chart:</p>
+        <pre class="code_container prettyprint" >var weekly_sales_chart = FusionCharts.items['JanuaryChartId'];
+weekly_sales_chart.<strong>setChartAttribute( &quot;caption&quot;, &quot;Updated Sales figures for the month of January&quot; );</strong></pre>
+        <p>In the code above, we get the chart handler from <span class="codeInline">FusionCharts.items</span> Array passing the DOMId of the chart. Next, we call <span class="codeInline">setChartAttribute()</span> function and pass two parameters to it. The first parameter is the name of the attribute that needs to be changed. The second parameter provides the new value of the attribute that needs to be set. Here we pass &quot;<span class="codeInline">caption</span>&quot; as the attribute name and set its new value to &quot;Updated Sales figures for the month of January&quot;.</p>
+        <p class="highlightBlock">In FusionWidgets XT (v3.2), whenever an attribute of chart is changed, the entire chart is re-drawn without animation. </p>
+       <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	   </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" class="header"><a name="newjs_events" id="newjs_events"></a>Making use of new JavaScript events</td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <p>FusionCharts JavaScript Class allows you to handle events using advanced JavaScript event model. You can use <span class="codeInline">addEventListener()</span> function to each chart object or global <span class="codeInline">FusionCharts</span> class to listen to various events related to chart loading, rendering, resizing, creating <i>LinkedCharts</i>, printing, error handling etc. If you intend to make use of the new JavaScript events or methods, you'll have to make the necessary modifications in your code. You need to get the chart reference and define the event listener function. You can  define a function separately and pass the reference to the function to the <span class="codeInline">addEventListener()</span>. You can also  declare an anonymous function along with the <span class="codeInline">addEventListener()</span> function call itself. The code snippets below describe how to use the two models: </p>
+      <div class="container">
+        <ul class="tabs">
+          <li><a href="#tabEventModel1">Listening to events - using named functions</a></li>
+          <li><a href="#tabEventModel2">Listening to events - using anonymous functions</a></li>
+        </ul>
+        <div class="tab_container">
+          <div id="tabEventModel1" class="tab_content">
+            <pre class="code_container prettyprint" >&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;FusionCharts - listen to DrawComplete event&lt;/title&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;FusionCharts/FusionCharts.js<strong>&quot;</strong>&gt;
+	&lt;/script&gt;
+&lt;/head&gt;   
+&lt;body&gt;
+	&lt;div id=&quot;<strong>chartContainer</strong>&quot;&gt;Funnel will load here!&lt;/div&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;&lt;!--
+		<strong>var myChart = new FusionCharts( &quot;FusionCharts/Funnel.swf&quot;, &quot;myChartId&quot;, &quot;400&quot;, &quot;300&quot;, &quot;0&quot;, &quot;1&quot; );</strong>
+		myChart.setXMLUrl(&quot;Data.xml&quot;);
+		myChart.render(&quot;chartContainer&quot;);
+		<strong>function myChartListener(event, parameter)</strong>{
+			alert( <strong>event</strong>.sender.id + &quot; has completed chart drawing&quot; );
+			}
+		<strong>FusionCharts(&quot;myChartId&quot;).addEventListener (&quot;DrawComplete&quot; , myChartListener );</strong>
+	// --&gt;
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+          </div>
+          <div id="tabEventModel2" class="tab_content">
+            <pre class="prettyprint code_container" >&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;FusionCharts - listen to DrawComplete event&lt;/title&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;FusionCharts/FusionCharts.js<strong>&quot;</strong>&gt;
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id=&quot;<strong>chartContainer</strong>&quot;&gt;Funnel will load here!&lt;/div&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;&lt;!-- 	
+		<strong>var myChart = new FusionCharts( &quot;FusionCharts/Funnel.swf&quot;, &quot;myChartId&quot;, &quot;400&quot;, &quot;300&quot;, &quot;0&quot;, &quot;1&quot; );</strong>
+		myChart.setXMLUrl(&quot;Data.xml&quot;);
+		myChart.render(&quot;chartContainer&quot;);<strong>
+		FusionCharts(&quot;myChartId&quot;).addEventListener (&quot;DrawComplete&quot; ,
+		function(event, parameter){
+			alert( <strong>event</strong>.sender.id + &quot; has completed chart drawing&quot; );
+		}
+		);
+	</strong>// --&gt;
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both"></div> <div style="clear:both"></div>
+       See it <a href="../../Code/JavaScript/Basics/ListeningToEvents/Using_JavaScript_advanced_event_registration_model.html" target="_blank">live</a>!
+      <p>The above code listens to <span class="codeInline">DrawComplete</span> event and shows a JavaScript alert when the event gets fired. To get details of each event please read FusionWidgets &amp; JavaScript &gt; API Reference &gt; <a href="../JavaScript/API/Events.html">Events</a> page.</p>
+      <p class="highlightBlock">Existing JavaScript implementations using <span class="codeInline">FC_Rendered</span>, <span class="codeInline">FC_Loaded</span> or <span class="codeInline"> FC_ChartUpdated </span> events  will continue to function without any problem. </p>    
+      <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	  </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="fcupdatedevent" id="fcupdatedevent"></a>Making use of new real-time update events</td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>FusionWidgets XT (v3.2) introduces two new events to track real-time updates on charts and gauges.  The names of the two events are: <span class="codeInline"><a href="../JavaScript/API/Events.html#realtimeupdatecomplete" >RealtimeUpdateComplete</a></span> and <span class="codeInline"><a href="../JavaScript/API/Events.html#realtimeupdateerror">RealtimeUpdateError</a></span>. </p>
+        <p><span class="codeInline"><a href="../JavaScript/API/Events.html#realtimeupdatecomplete">RealtimeUpdateComplete</a></span> event is raised when a real-time gauges or chart completes updating data. </p>
+        <p>Example implementation:</p>
+        <pre class="prettyprint code_container" >
+FusionCharts(&quot;myChartId&quot;).addEventListener (&quot;RealtimeUpdateComplete&quot; , 
+	function(event, parameter) 
+	{
+	  alert( event.sender.id + &quot; has updated data.&quot; );
+	}  
+);
+</pre>
+        <p class="highlightBlock">Existing JavaScript implementations using <span class="codeInline"> FC_ChartUpdated</span> event  will continue to function without any problem. </p>
+        <p>Click <a href="../../Code/demos/RealTimeJS/Index.html" target="_blank">here</a> to view a live demo. </p>
+        <p><span class="codeInline"><a href="../JavaScript/API/Events.html#realtimeupdateerror">RealtimeUpdateError</a></span> event is raised when error occurs while updating data in a real-time gauge or chart. This event passes the HTTP Status (as number) of the error occurred.</p>
+        <p>Example implementation:</p>
+        <pre class="prettyprint code_container" >
+FusionCharts(&quot;myChartId&quot;).addEventListener (&quot;RealtimeUpdateError&quot; , 
+	function(event, parameter) 
+	{
+	  alert( &quot;Problem occurred while updating real-time data. The error status code is&quot; + <strong> parameter.httpStatus</strong> );
+	}  
+);</pre>
+         <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  
+  
+
+  <tr>
+    <td valign="top" class="header"><a name="managedprint"></a>Enabling managed printing in Firefox/Chrome/Safari/Opera</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">    
+      <p>FusionWidgets XT provides a feature that correctly prints charts from  Firefox, Safari or other Mozilla/WebKit/Gecko based browsers. We call it <span class="codeInline">Managed Printing</span>. This is managed by adding a single line of code in the page :</p>       
+      <pre class="code_container prettyprint" >FusionCharts.printManager.enabled(true);</pre>       
+      <p>This feature, when enabled, prepares the charts in the page for printing. Once the chart is prepared, you can print the page  with all charts in the page either using <strong>File &gt; Print</strong> menu of the browser or using code: </p>      
+      <pre class="code_container prettyprint" >FusionCharts.printManager.managedPrint();
+</pre>
+      <p>The Print Manager internally does the following to achieve this: </p>
+      <ul>
+         <li>It gathers all aspects of the image data of the present state of the chart </li>
+         <li>It converts the image data into image using canvas HTML object</li>
+         <li>It hides the canvas image below the chart</li>
+         <li> It creates a parallel CSS based print media layout when print is invoked </li>
+         <li>It hides the Flash chart and displays the canvas image within this print media layout </li>
+         <li>It then sends the layout with the canvas image to the printer for print </li>
+      </ul>
+      <p>Print Manager also fires events when it has all the charts ready for managed print. The code below shows how it works:      </p>
+<pre class="code_container prettyprint">FusionCharts.addEventListener ( 
+          FusionChartsEvents.<strong>PrintReadyStateChange</strong> , 
+          function (identifier, parameter) {
+            if(<strong>parameter.ready</strong>){ 
+               alert("Chart is now ready for printing.");
+               document.getElementById('printButton').disabled = false;
+            }
+        });</pre>	
+		  <p>See it <a href="../../Code/MyFirstChart/PrintManager_MultipleChart.html" target="_blank">live</a>!</p>	
+      <p class="highlightBlock">Note that <span class="codeInline">PrintReadyStateChange</span> event is a global event. Thus, this event cannot be listened from individual chart instance. Only <span class="codeInline">FusionCharts </span>static class can listen to this event.</p>
+      <p>The <span class="codeInline">parameters</span> event argument contains a property -<span class="codeInline"> ready</span>. This property returns <span class="codeInline">true </span>when the Print Manager is ready to print all charts in a page. Once <span class="codeInline">true</span> is returned by the event, we show a JavaScript alert message-box. The button, which was disabled earlier,  is now enabled.</p>
+      <p>Now you can try printing from File &rarr; Print menu. You can also use a button or any function that calls <span class="codeInline">window.print()</span> function. </p>
+      <p>You can also use the following code to print the whole page using FusionCharts JavaScript Class:</p>
+     
+      <pre class="code_container prettyprint">FusionCharts.printManager.managedPrint();</pre>
+      <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>    	
+	</td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="linkedcharts" id="linkedcharts"></a>Using <em>LinkedCharts </em></td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>FusionWidgets XT (v3.2) introduces a new and smart drill-down feature - <em>LinkedCharts </em>- that allows you to create unlimited level of drill-down charts using a single data source. All the links originate from a parent chart and its data, which comprehensively contains data or Data URL for all descendant (child, grand-child) charts. Upon clicking the data plot items (funnel, pyramid, etc.) of the parent chart, users can drill-down into descendant charts. The descendant charts (or children charts) can either replace the parent chart with an option to drill-up, or can be opened in new dialogs or frames.</p>
+        <p class="text">To create <em>LinkedCharts</em>, you need  to follow these steps:</p>
+        <ul>
+           <li>First,  create the XML/JSON data for <strong>parent  chart</strong>. This is called the <strong>parent data source</strong> and comprehensively contains Data String or Data URL for all descendant charts. </li>
+           <li>Next, append the <strong>Data String </strong>or <strong>Data URL </strong>for all the <strong>descendant charts </strong>(also called child chart) within the parent data source. If <strong>Data String</strong> method is used, data for each descendant chart is embedded within the <strong>parent data source</strong> and linked using <strong>unique data identifiers</strong>.</li>
+           <li>You're done. Yes, no additional code is required! </li>
+        </ul>
+        <p>Click <a href="../FirstChart/LinkedCharts.html">here</a> to know more on <em>LinkedCharts</em>. </p>
+      <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	   </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" class="header"><a name="jsonsupport"></a>Adding support for JSON data </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">
+    <p>Apart from XML, FusionWidgets can also accept JSON data format. This functionality is provided by FusionCharts JavaScript class. You can pass chart JSON data in one of the three formats: JSON URL/feed, JSON Object (in JavaScript) or JSON String. The functions that help in accepting JSON data are <span class="codeInline">setJSONUrl, setJSONData, setChartData, setChartDataUrl</span>. Below are some examples of passing JSON data:</p>     
+     <p><strong>Passing JSON data from a URL:</strong></p>
+      <pre class="code_container prettyprint" >myChart.setJSONUrl("Data.json");</pre>
+	 
+	 
+	 <p><strong>Passing JSON data from a JSON data/JavaScript Object/JSON String embedded in a page:</strong></p>
+	 
+	 
+	  <pre class="code_container prettyprint" >myChart.setJSONData { 
+    "chart": { 
+      "caption" : "Weekly Sales Summary" ,
+      "xAxisName" : "Week",
+      "yAxisName" : "Sales",
+      "numberPrefix" : "$"
+    },
+
+    "data" : 
+      [
+        { "label" : "Week 1", "value" : "14400" },
+        { "label" : "Week 2", "value" : "19600" },
+        { "label" : "Week 3", "value" : "24000" },
+        { "label" : "Week 4", "value" : "15700" }
+      ]
+    }
+ );</pre>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">Like XML data, each chart and gauge in FusionWidgets pack expects JSON data in a specific format. JSON data format for each chart and gauge is discussed in the <strong>JSON Data format</strong> page under the respective chart/gauge section of this Documentation. <br/>
+      <p class="highlightBlock">When running the charts from a local file system, JSON data will not work on certain browsers due to security limitations of AJAX. You will need to run the charts on a server (localhost or remote) to make it work.</p>
+      <p class="code_container"><strong>Important Note:</strong> You cannot use JSON data while using <a href="../FirstChart/HTMLEmbed.html">HTML Embedding  method</a>.</p>
+      <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	</td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="jquery" id="jquery"></a>Using FusionCharts jQuery plugin to render charts/gauges</td>
+  </tr>
+  <tr>
+    <td valign="top">
+       <p>Starting FusionWidgets XT (v3.2), you can create charts/gauges using jQuery syntax using  FusionCharts jQuery plugin. FusionCharts jQuery plugin is the common jQuery plugin for all products of FusionCharts XT Suite. This plugin allows you to render FusionWidgets anywhere within a web page, update and retrieve chart data, update cosmetic and functional settings and use all existing features of FusionWidgets. <br />
+      <br />
+      <strong>Setting it up:</strong></p>
+      <p> Setting up of FusionCharts jQuery plugin is as simple as putting an additional reference to the plugin file (<span class="codeInline">FusionCharts.jqueryplugin.js</span>) as shown below:</p>
+      <pre class="code_container prettyprint">&lt;script type=&quot;text/javascript&quot; src=&quot;../Charts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../Charts/FusionCharts.js&quot;&gt;&lt;/script&gt;
+<strong>&lt;script type=&quot;text/javascript&quot; src=&quot;../Charts/FusionCharts.jqueryplugin.js&quot;&gt;&lt;/script&gt;</strong>
+</pre>
+		<p>    </p><div class="highlightBlock"> Please note that you need to follow all the primary steps required for FusionWidgets to perform, namely: <br />
+           <ul>
+             <li>Copy all the/required chart SWF files (from the <span class="codeInline">Download Pack <strong>&gt;</strong> Charts</span> folder) to your preferred folder</li>
+             <li>Copy   <span class="codeInline">FusionCharts.js</span> and <span class="codeInline">jquery.min.js</span> from  the <span class="codeInline">Download Pack <strong>&gt;</strong> Charts folder </span> to the preferred folder </li>
+             <li>To create JavaScript charts also copy <span class="codeInline"> FusionCharts.HC.js </span>and<span class="codeInline"> FusionCharts.HC.Widgets.js </span>from the <span class="codeInline">Download Pack <strong>&gt;</strong></span> <span class="codeInline">Charts</span> folder to the preferred folder </li>
+           </ul>
+		   <br/>
+		   You do not need to include <span class="codeInline"> FusionCharts.HC.js </span>and<span class="codeInline"> FusionCharts.HC.Widgets.js </span>  in your code. <span class="codeInline">FusionCharts.js</span> will automatically load these files based on requirement.      </div>
+	  
+	  
+		<p>Now, let's check a few code snippets using FusionCharts jQuery plugin below:</p>
+		<p><strong>Basic Usage:  </strong></p>
+      <p>The code snippet below shows how to use  <span class="codeInline">insertFusionCharts</span> 
+      method to render chart in element(s) having id - <span class="codeInline">chartContainer</span>. The parameters passed to this method are same as the <a href="../jQuery/Overview.html#chartparams">parameters passed to FusionCharts JavaScript Class constructor</a>.</p> 
+      <pre class="prettyprint code_container">$(document).ready(function(){
+          $(&quot;#chartContainer&quot;).<strong>insertFusionCharts</strong>({
+               swfUrl: &quot;Charts/AngularGauge.swf&quot;, 
+               dataSource: &quot;Data.xml&quot;, 
+               dataFormat: &quot;xmlurl&quot;, 
+               width: &quot;400&quot;, 
+               height: &quot;200&quot;, 
+               id: &quot;myChartId&quot;
+         });</pre>
+      
+      <p>See it <a href="../../Code/jquery/BasicExample/FirstChart.html" target="_blank">live</a>! </p>
+      <p>The above code will render a Flash chart. If you wish to render a pure JavaScript chart, you will only need to set the <span class="codeInline">renderer</span> property  to <span class="codeInline">javascript</span>. A code snippet is shown below: </p>
+      <pre class="code_container prettyprint lang-html">$(&quot;#chartContainer&quot;).<strong>insertFusionCharts</strong>({
+               swfUrl: &quot;Charts/AngularGauge.swf&quot;, 
+             <strong>  renderer : 'JavaScript',</strong>
+               width: &quot;400&quot;, 
+               height: &quot;200&quot;, 
+               id: &quot;myChartId&quot;,
+
+               dataFormat: &quot;xml&quot;, 
+               dataSource: &quot;&lt;chart lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' upperLimitDisplay='Good' numberSuffix='%' showValue='1'&gt; "+
+   "&lt;colorRange&gt; "+
+      "&lt;color minValue='0' maxValue='75' code='FF654F'/&gt; "+
+      "&lt;color minValue='75' maxValue='90' code='F6BD0F'/&gt; "+
+      "&lt;color minValue='90' maxValue='100' code='8BBA00'/&gt; "+
+   "&lt;/colorRange&gt; "+
+   "&lt;dials&gt; "+
+      "&lt;dial value='92' /&gt; "+
+   "&lt;/dials&gt; "+
+"&lt;/chart&gt;&quot;
+         }); </pre>
+      <p>See it <a href="../../Code/jquery/creatingcharts/javascript.html" target="_blank">live</a>! </p>
+      <p>You can also pass JSON as data source as shown below:</p>
+      <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).<strong>insertFusionCharts</strong>({
+	swfUrl: &quot;Charts/AngularGauge.swf&quot;, 
+	width: &quot;400&quot;, 
+	height: &quot;200&quot;, 
+	id: &quot;myChartId&quot;,
+	
+	<strong>dataFormat: &quot;json&quot;, </strong>
+	dataSource: <strong>{
+  "chart": {
+    "lowerlimit": "0",
+    "upperlimit": "100",
+    "lowerlimitdisplay": "Bad",
+    "upperlimitdisplay": "Good",
+    "numbersuffix": "%",
+    "showvalue": "1"
+  },
+  "colorrange": {
+    "color": [
+      {
+        "minvalue": "0",
+        "maxvalue": "75",
+        "code": "FF654F"
+      },
+      {
+        "minvalue": "75",
+        "maxvalue": "90",
+        "code": "F6BD0F"
+      },
+      {
+        "minvalue": "90",
+        "maxvalue": "100",
+        "code": "8BBA00"
+      }
+    ]
+  },
+  "dials": {
+    "dial": [
+      {
+        "value": "92"
+      }
+    ]
+  }
+}</strong>
+}); </pre>
+	  <p>See it <a href="../../Code/jquery/creatingcharts/insertFusionCharts_jsonobject.html" target="_blank">live</a>! </p>
+      <p>If you wish to add a chart to the existing content of an HTML element, without replacing it, you can use the <span class="codeInline">appendFusionCharts</span> method as shown below. This adds a chart at the end of existing content of that element. A code snippet using this method is provided below: </p>
+      <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).<strong>appendFusionCharts</strong>({
+   swfUrl: &quot;Charts/AngularGauge.swf&quot;, 
+   dataSource: &quot;NextQuarter.xml&quot;, 
+   dataFormat: &quot;xmlurl&quot;, 
+   width: &quot;200&quot;, 
+   height: &quot;100&quot;, 
+   id: &quot;myChartNextID&quot;
+}); </pre>
+		<p>See it <a href="../../Code/jquery/BasicExample/AppendPrepend.html" target="_blank">live</a>! </p>
+      <p>If you wish to add a chart to the  beginning of an HTML  element, without replacing the existing content, you can use  <span class="codeInline">prependFusionCharts</span> method as shown below:</p>
+      <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).<strong>prependFusionCharts</strong>({
+   swfUrl: &quot;Charts/AngularGauge.swf&quot;, 
+   dataSource: &quot;PreviousQuarter.xml&quot;, 
+   dataFormat: &quot;xmlurl&quot;, 
+   width: &quot;200&quot;, 
+   height: &quot;100&quot;, 
+   id: &quot;myChartPrevID&quot;
+}); </pre>
+      <p>See it <a href="../../Code/jquery/BasicExample/AppendPrepend.html" target="_blank">live</a>!</p>
+	  <p>You can also retrieve or update a chart's setting using <span class="codeInline">attrFusionCharts</span> method as shown below:</p>
+	  <pre class="code_container prettyprint">
+// Get the latest caption of the chart and show it as alert message
+var oldCaption = $(&quot;#chartContainer&quot;).<strong>attrFusionCharts</strong>(&quot;caption&quot;);
+	alert(&quot;The existing title of the chart is &quot;  + oldCaption);
+	// Set a new caption of the chart [ updating a single attribute of the chart ]
+	$(&quot;#chartContainer&quot;).<strong>attrFusionCharts</strong>(&quot;caption&quot;: &quot;Updated chart title&quot;);
+	// Set palette and paletteColors attributes [ updating multiple attributes of the chart ]
+	$(&quot;#chartContainer&quot;).<strong>attrFusionCharts</strong>({&quot;palette&quot;: &quot;5&quot;, &quot;paletteColors&quot;: &quot;D977B7&quot;});</pre>
+      <p>See these <a href="../../Code/jquery/BasicExample/attrFusionCharts.html" target="_blank">live</a>! </p>
+      <p>You can also change chart type, update a chart with   data or resize charts using <span class="codeInline">updateFusionCharts</span> method as shown below: </p>
+      <p><strong>Change chart type:</strong></p>
+      <pre class="code_container prettyprint">
+$(&quot;#chartContainer&quot;).<strong>updateFusionCharts</strong>({&quot;swfUrl&quot;: &quot;../Charts/Thermometer.swf&quot;});
+</pre>
+      <p>See it <a href="../../Code/jquery/BasicExample/ChangeType.html" target="_blank">live</a>! </p>
+      <p class="highlightBlock">Note that changing of chart type  is only recommended for charts that use   the same data format. When the chart type changes the data   is retained internally by FusionCharts jQuery plugin.</p>
+      <p><strong>Update data:</strong></p>
+      <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).<strong>updateFusionCharts</strong>({&quot;dataSource&quot;: &quot;new/January.json&quot;, &quot;dataFormat&quot;: &quot;jsonurl&quot;});</pre>
+      <p>See it <a href="../../Code/jquery/BasicExample/ChangeData.html" target="_blank">live</a>! </p>
+      <p><strong>Resize chart:</strong></p>
+      <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).<strong>updateFusionCharts</strong>({ width : 600, height : 300  });</pre>
+
+	  See it <a href="../../Code/jquery/BasicExample/ChangeSize.html" target="_blank">live</a>! 
+	  <p>You can clone a chart using <span class="codeInline">cloneFusionCharts</span> method as shown below:</p>
+	  <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).cloneFusionCharts( callbackFnAfterCloning, {width:300, height: 400} );</pre>
+	  <p>See it <a href="../../Code/jquery/clone/cloneFusionCharts.html" target="_blank">live</a>! </p>
+	  <p><strong> Using <span class="codeInline greyTr">:FusionCharts</span> Selector</strong></p>
+	  <p>You can use a custom selector <span class="codeInline greyTr">:FusionCharts</span> to find all the charts present in a page. It can be used in the following ways:</p>
+	  <ul>
+	    <li>	      <span class="codeBlock">$(&quot;:FusionCharts&quot;) </span>: This will return a jQuery array containing all the FusionCharts objects on the page</li>
+        <li>          <span class="codeBlock">$(&quot;#DashboardContent&quot;).find(&quot;:FusionCharts&quot;)</span> : This will give all the FusionCharts  objects (as jQuery array) which are inside the HTML element having id - <span class="codeInline">DashboardContent</span></li>
+	  </ul>
+	  <p>See it <a href="../../Code/jquery/Selector/UsingFusionChartsSelector.html" target="_blank">live</a>! </p>
+	  <p><strong>Event handling:</strong></p>
+	  <p>You can use the jQuery <span class="codeInline">bind</span> method to attach event handlers to FusionCharts specific events. The example below shows how you can bind to <span class="codeInline">DrawComplete</span> event of FusionCharts:</p>
+	  <pre class="code_container prettyprint">$(&quot;#chartContainer&quot;).bind( &quot;fusionchartsdrawcomplete&quot;, function (e, args) { 
+   alert(&quot;Chart named &quot; + e.sender.id + &quot; has completed chart drawing.&quot; ); 
+}); </pre>
+	  <p>See it <a href="../../Code/jquery/BasicExample/EventDrawComplete.html" target="_blank">live</a>! </p>
+	  <p class="highlightBlock">For more details of setting up and using FusionCharts jQuery plugin, please go through <strong><a href="../jQuery/Overview.html">FusionWidgets &amp; jQuery</a></strong> section. </p>
+      <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	</td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="refreshInstantly" id="refreshInstantly"></a>Making real-time charts update instantly after first render</td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>By default, the real-time charts and gauges, before updating real-time data, wait for a few seconds after the first render. To allow   the chart to start updating itself as soon as it is rendered, set:</p>
+        <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabA1">XML</a></li>
+              <li><a href="#tabA2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabA1" class="tab_content">
+                 <pre class="code_container prettyprint">&lt;chart ... refreshInstantly='1' ...&gt;</pre>
+              </div>
+              <div id="tabA2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot;: {  ...   &quot;refreshinstantly&quot; : &quot;1&quot; ...  }  }</pre>
+              </div>
+           </div>
+        </div><div style="clear:both"></div>
+       <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	   </td>
+  </tr>
+  <tr>
+     <td class="header"><a name="realtimevaluepadding"></a>Using smarter  real-time value padding </td>
+  </tr>
+  <tr>
+     <td class="text">
+        <p class="highlightBlock">Prior to FusionWidgets XT, you were required to define <span class="codeInline">realTimeValuePadding</span>, <span class="codeInline">xAxisNamePadding</span> or <span class="codeInline">legendPadding</span> attributes to avoid overlapping of the x-axis labels and the real-time values/x-axis name/legend. Starting FusionWidgets XT, you are not required to do so. If you were using any of these attributes to avoid overlapping, you can remove them from your XML as the updated charts will take care of this automatically.</p>
+        <p>Starting FusionWidgets XT, real-time charts automatically try to avoid overlapping of the incremental x-axis labels and the real-time values. A chart with an empty canvas (i.e., no historical data) automatically adds a padding between the canvas and the real-time values based on the vertical space occupied by the first updated x-axis label. This helps in avoiding overlapping of the x-axis labels and the real-time values as shown in the images below:</p>
+        <table border="0" cellspacing="5" cellpadding="">
+           <tr>
+              <td><img src="../DataStreaming/Images/DSC_Config_XAxis0.jpg" width="404" height="357" /></td>
+              <td><img src="../DataStreaming/Images/DSC_Config_XAxis1.jpg" width="404" height="357" /></td>
+           </tr>
+           <tr>
+              <td align="center" valign="top">Chart with an empty canvas (i.e., no historical data). <br />
+                 There is an empty space between the canvas and the <br />
+                 x-axis name &quot;Time&quot; to accommodate the real-time values. </td>
+              <td align="center" valign="top">Chart with the first update. 
+                 The chart automatically adds <br />
+                 vertical 
+                 space between 
+                 the canvas and the real-time values <br />
+                 to further accommodate the x-axis labels and avoid overlapping. </td>
+           </tr>
+        </table>
+        <p>If you further want to add more vertical space between the x-axis labels and the real-time values, you can use the <span class="codeInline">realTimeValuePadding</span> attribute as shown below:</p>
+        <div class="container">
+    <ul class="tabs">
+       <li><a href="#tabE1">XML</a></li>
+       <li><a href="#tabE2">JSON</a></li>
+    </ul>
+    <div class="tab_container">
+       <div id="tabE1" class="tab_content">
+	<pre class="code_container prettyprint">&lt;chart ... realTimeValuePadding='20' ...&gt;</pre>
+       </div>
+	<div id="tabE2" class="tab_content">
+  
+  <pre id="pre-datajson" class="prettyprint code_container">{
+  "chart" : {
+  "realTimeValuePadding" : "20",
+  ...
+  }'
+  }</pre>
+	</div></div></div><div style="clear:both;"></div>
+		
+		  <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  <tr>
+     <td class="header"><a name="legendinfunnelpyramid" id="legendinfunnelpyramid"></a>Showing legend in Funnel and Pyramid charts</td>
+  </tr>
+  <tr>
+     <td class="text">
+        <p>Starting FusionWidgets XT, you can choose to place the labels in separate legend box for Funnel and Pyramid charts. You can click on the legend items to slice in and slice-out the respective funnel/pyramid item as shown below:</p>
+       <table border="0" cellspacing="5" cellpadding="5">
+   <tr>
+      <td valign="bottom"><img src="../Funnel/Images/Legend1.jpg" width="405" height="405" /></td>
+      <td valign="bottom"><img src="../Pyramid/Images/Legend1.jpg" width="403" height="353" /></td>
+   </tr>
+</table>
+        <p>To show the legend (and hide the labels beside the pyramid) set:</p>
+        <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabAA1">XML</a></li>
+              <li><a href="#tabAA2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabAA1" class="tab_content">
+                 <pre class="prettyprint code_container">&lt;chart .. <strong>showLegend='1'</strong> showLabels='0'...&gt;</pre>
+              </div>
+              <div id="tabAA2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot; : {... <strong>&quot;showlegend&quot; : &quot;1&quot;</strong>, &quot;showlabels&quot;: &quot;0&quot; ... } }</pre>
+              </div>
+           </div>
+        </div>
+        <p>You can also place the legend at the right by setting the value of the <span class="codeInline">legendPosition</span> attribute to <span class="codeInline">RIGHT</span>:</p>
+        <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabBB1">XML</a></li>
+              <li><a href="#tabBB2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabBB1" class="tab_content">
+                 <pre class="prettyprint code_container">&lt;chart .. showLegend='1' <strong>legendPosition='RIGHT'</strong> showLabels='0'...&gt;</pre>
+              </div>
+              <div id="tabBB2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot; : {... &quot;showlegend&quot; : &quot;1&quot;, <strong>&quot;legendposition&quot;: &quot;RIGHT&quot;</strong>, &quot;showlabels&quot;: &quot;0&quot; ... } }</pre>
+              </div>
+           </div>
+        </div>
+        <div style="clear:both;"></div>
+        <p>The legend will be placed on the right as shown below:</p>
+        
+        <table border="0" cellspacing="5" cellpadding="5">
+   <tr>
+      <td valign="bottom"><img src="../Funnel/Images/Legend2.jpg" width="605" height="404" /></td>
+      <td valign="bottom"><img src="../Pyramid/Images/Legend2.jpg" width="404" height="353" /></td>
+   </tr>
+</table>
+        <br />
+     </td>
+  </tr>
+  <tr>
+     <td class="header"><a name="displayimage" id="displayimage"></a>Setting display modes of background image</td>
+  </tr>
+  <tr>
+     <td class="text">
+        <p>It is now possible to display chart's background images using stretch, tile, center etc. display modes. To apply a display mode to the background image, you need to use <span class="codeInline">bgImageDisplayMode</span> attribute in <span class="codeInline">&lt;chart&gt;</span> element. For example: </p>
+     </td>
+  </tr>
+  <tr>
+     <td>
+		   <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabC1">XML</a></li>
+              <li><a href="#tabC2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabC1" class="tab_content">
+                 <pre class="code_container prettyprint">&lt;chart bgImageDisplayMode='Stretch' ...&gt;</pre>
+              </div>
+              <div id="tabC2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot;: {  ...   &quot;bgImageDisplayMode&quot; : &quot;Stretch&quot; ...  }  }</pre>
+              </div>
+           </div>
+        </div><div style="clear:both;"></div>
+     </td>
+  </tr>
+  <tr>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+     <td class="text">There are six different modes. Sample charts showcasing each mode along with the  name and a brief definition are given below:<br/>
+          
+           <table cellspacing="5" cellpadding="5" border="0">
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/stretchMode.jpg" width="425" height="246" /></td>
+              </tr>
+              <tr align="left">
+                 <td align="center"><span class="codeInline">Stretch</span> - Expands the image to fit the entire chart area, <br />
+                    without maintaining original image constraints</td>
+              </tr>
+              <tr>
+                 <td align="center" class="text">&nbsp;</td>
+              </tr>
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/fitMode.jpg" width="426" height="245" /></td>
+              </tr>
+              <tr align="left">
+                 <td align="center"><span class="codeInline">Fit </span>- Fits the  image proportionately on the chart area</td>
+              </tr>
+              <tr>
+                 <td align="center" class="text">&nbsp;</td>
+              </tr>
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/fillMode.jpg" width="425" height="245" /></td>
+              </tr>
+              <tr align="left">
+                 <td align="center"><span class="codeInline">Fill</span> -Proportionately fills the entire chart area with the image</td>
+              </tr>
+              <tr>
+                 <td align="center" class="text">&nbsp;</td>
+              </tr>
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/tileMode.jpg" width="425" height="244" /></td>
+              </tr>
+              <tr align="left">
+                 <td align="center"><span class="codeInline">Tile</span> - The image is repeated as a pattern on the entire chart area</td>
+              </tr>
+              <tr>
+                 <td align="center" class="text">&nbsp;</td>
+              </tr>
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/center.jpg" width="423" height="244" /></td>
+              </tr>
+              <tr align="left">
+                 <td align="center"><span class="codeInline">Center</span> - The image is positioned at the center of the chart area</td>
+              </tr>
+              <tr>
+                 <td align="center" class="text">&nbsp;</td>
+              </tr>
+              <tr>
+                 <td align="center"><img src="../Advanced/Images/noneMode.jpg" width="428" height="246" /></td>
+              </tr>
+              <tr align="center">
+                 <td align="center"><span class="codeInline">none </span>- the original image is placed at the top left corner <br />
+                    of the chart background (default)</td>
+              </tr>
+           </table>
+		     <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  
+  <tr>
+     <td class="header"><a name="imagealign" id="imagealign"></a>Setting alignment of background image</td>
+  </tr>
+  <tr>
+     <td class="text">
+        <p> It is now possible to configure the vertical and horizontal alignment of chart's background image. The attributes used to apply the alignments are <span class="codeInline">bgImageVAlign </span>(possible values are - <span class="codeInline">top</span>, <span class="codeInline">middle</span> and <span class="codeInline">bottom</span>) and <span class="codeInline">bgImageHAlign</span> (possible values are <span class="codeInline">left</span>, <span class="codeInline">middle</span> and <span class="codeInline">right</span>) in the <span class="codeInline">&lt;chart&gt;</span> element. </p>
+     </td>
+  </tr>
+  <tr>
+     <td>
+		   <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabD1">XML</a></li>
+              <li><a href="#tabD2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabD1" class="tab_content">
+                 <pre class="code_container prettyprint">&lt;chart bgImageHAlign='top' bgImageVAlign='middle' ...&gt;</pre>
+              </div>
+              <div id="tabD2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot;: {  ...   &quot;bgImageHAlign&quot;: &quot;top&quot;, &quot;bgImageVAlign&quot;: &quot;middle&quot; ...  }  }</pre>
+              </div>
+           </div>
+        </div><div style="clear:both;"></div>
+     </td>
+  </tr>
+  <tr>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+     <td>The charts below show how the combinations of various alignments work in a chart: </td>
+  </tr>
+  <tr>
+     <td>
+        <table cellpadding="0" cellspacing="0" border="0">
+           <tr>
+              <td width="33%"><img src="../Advanced/Images/topLeft.jpg" width="310" height="247" /></td>
+              <td width="33%"><img src="../Advanced/Images/topMiddle.jpg" width="307" height="246" /></td>
+              <td width="33%"><img src="../Advanced/Images/topRight.jpg" width="307" height="247" /></td>
+           </tr>
+           <tr align="center">
+              <td class="text"><span class="codeInline">bgImageVAlign='top'</span> <br />
+                    <span class="codeInline">bgImageHAlign='left'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='top'</span> <span class="codeInline"><br />
+                 bgImageHAlign='middle'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='top'</span> <span class="codeInline"><br />
+                 bgImageHAlign='right'</span></td>
+           </tr>
+           <tr>
+              <td colspan="3">&nbsp;</td>
+           </tr>
+           <tr>
+              <td width="33%"><img src="../Advanced/Images/middleLeft.jpg" width="305" height="244" /></td>
+              <td width="33%"><img src="../Advanced/Images/middleMiddle.jpg" width="308" height="245" /></td>
+              <td width="33%"><img src="../Advanced/Images/middleRight.jpg" width="308" height="244" /></td>
+           </tr>
+           <tr align="center">
+              <td class="text"><span class="codeInline">bgImageVAlign='middle'</span> <br />
+                    <span class="codeInline">bgImageHAlign='left'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='middle'</span> <span class="codeInline"><br />
+                 bgImageHAlign='middle'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='middle'</span> <span class="codeInline"><br />
+                 bgImageHAlign='right'</span></td>
+           </tr>
+           <tr>
+              <td colspan="3">&nbsp;</td>
+           </tr>
+           <tr>
+              <td width="33%"><img src="../Advanced/Images/bottomLeft.jpg" width="306" height="245" /></td>
+              <td width="33%"><img src="../Advanced/Images/bottomMiddle.jpg" width="306" height="245" /></td>
+              <td width="33%"><img src="../Advanced/Images/bottomRight.jpg" width="308" height="245" /></td>
+           </tr>
+           <tr align="center">
+              <td class="text"><span class="codeInline">bgImageVAlign='bottom'</span> <span class="codeInline"><br />
+                 bgImageHAlign='left'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='bottom'</span> <br />
+                    <span class="codeInline">bgImageHAlign='middle'</span></td>
+              <td class="text"><span class="codeInline">bgImageVAlign='bottom'</span> <br />
+                    <span class="codeInline">bgImageHAlign='right'</span></td>
+           </tr>
+        </table>
+         <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  
+  <tr>
+     <td valign="top" class="header"><a name="captionfont" id="captionfont"></a>Using the default font size of the  caption and sub caption </td>
+  </tr>
+  <tr>
+     <td valign="top">
+        <p>Starting FusionWidgets XT, the default font size for caption and sub caption has been increased. Hence, you are no more required to apply  <a href="../Styles/Font.html">font <strong>Styles</strong></a> to increase the size of the caption or sub caption of a chart. The default font size for caption is 13 pixels and the default font size for the sub caption is 11 pixels. </p>
+          <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  <tr>
+     <td valign="top" class="header"><a name="captionalignment" id="captionalignment"></a>Controlling alignment of caption and sub-caption </td>
+  </tr>
+  <tr>
+     <td valign="top" class="text">
+        <p>It is now possible to set alignment of the chart caption and the sub caption with respect to the chart canvas. You can achieve this using the <span class="codeInline">align</span> attribute in Font style definition. This attribute is only applicable to <span class="codeInline">CAPTION</span> and <span class="codeInline">SUBCAPTION</span> objects of the chart. Let us see an example which aligns the caption to the left and the sub caption to the right.</p>
+        <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabXMLStyle">XML</a></li>
+              <li><a href="#tabJSONStyle">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabXMLStyle" class="tab_content">
+                 <pre class="code_container prettyprint" >&lt;styles&gt;
+  &lt;definition&gt;
+    &lt;style name='LeftAlignCaption' type='font'<strong> align='left'</strong>/&gt;
+    &lt;style name='RightAlignSubCaption' type='font' <strong>align='right'</strong>/&gt;
+  &lt;/definition&gt;
+  &lt;application&gt;
+    &lt;apply toObject='CAPTION' styles='LeftAlignCaption' /&gt;
+    &lt;apply toObject='SUBCAPTION' styles='RightAlignSubCaption' /&gt;
+  &lt;/application&gt; 
+&lt;/styles&gt;</pre>
+              </div>
+              <div id="tabJSONStyle" class="tab_content">
+                 <pre class="code_container prettyprint">
+{
+ ...
+ &quot;styles&quot;: {<br />    &quot;definition&quot;: [<br />      {<br />        &quot;name&quot;: &quot;LeftAlignCaption&quot;,<br />        &quot;type&quot;: &quot;font&quot;,<br />        &quot;align&quot;: &quot;left&quot;<br />      },<br />      {<br />        &quot;name&quot;: &quot;RightAlignSubCaption&quot;,<br />        &quot;type&quot;: &quot;font&quot;,<br />        &quot;align&quot;: &quot;right&quot;<br />      }<br />    ],<br />    &quot;application&quot;: [<br />      {<br />        &quot;toobject&quot;: &quot;CAPTION&quot;,<br />        &quot;styles&quot;: &quot;LeftAlignCaption&quot;<br />      },<br />      {<br />        &quot;toobject&quot;: &quot;SUBCAPTION&quot;,<br />        &quot;styles&quot;: &quot;RightAlignSubCaption&quot;<br />      }<br />    ]<br />  }
+}
+  </pre>
+              </div>
+           </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div style="clear:both;"></div>
+       <p class="highlightBlock">Controlling alignment of caption and sub-caption is not supported in JavaScript charts. </p>
+          <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" class="header"><a name="stackedminvalue"></a>Specifying y-axis minimum value (lower limit) for Stacked charts </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">
+       <p>Now it is possible to set a minimum value of the Y-Axis of all the stacked charts. For all single Y Axis charts<span class="codeInline"> yAxisMinValue</span> attribute is used to set this.</p>
+	   <div class="container">
+           <ul class="tabs">
+              <li><a href="#tabB1">XML</a></li>
+              <li><a href="#tabB2">JSON</a></li>
+           </ul>
+           <div class="tab_container">
+              <div id="tabB1" class="tab_content">
+                 <pre class="code_container prettyprint">&lt;chart yAxisMinValue='-100' ...&gt;</pre>
+              </div>
+              <div id="tabB2" class="tab_content">
+                 <pre id="pre-datajson" class="prettyprint code_container">{ &quot;chart&quot;: {  ...   &quot;yAxisMinValue&quot; : &quot;-100&quot; ...  }  }</pre>
+              </div>
+           </div>
+        </div><div style="clear:both;"></div>
+		  <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>   
+	   </td>
+  </tr>
+  
+  <tr>
+     <td valign="top" class="header"><a name="31features"></a>Features introduced in FusionWidgets v3.1      </td>
+  </tr>
+  
+  
+  <tr>
+     <td valign="top" class="text">
+        <p class="highlightBlock">This section is dedicated to those, who are upgrading to FusionWidgets XT from versions earlier to v3.1.</p>
+        <p><strong>Making use of % sizing (initial) </strong></p>
+        <div style="margin-left:20px; margin-bottom:30px;">
+		<p>Starting FusionWidgets v3.1, you can now specify your chart's width and height in percentage (during initialization only). This sets the chart size with respect to the parent container that contains it. Please note that dynamic sizing with respect to browser is still not possible i.e., if you resize your browser, the charts will NOT resize accordingly.</p>
+        <p class="highlightBlock">NOTE: However, starting FusionWidgets XT (v3.2), charts can resize according to the changed size of the browser of the container of the chart. To know more, please read <a href="#dynamic_resize">Dynamically resizable gauges and charts</a>. </p>
+		</div>
+        
+        <p><strong>Using Rotated fonts </strong></p>
+		<div style="margin-left:20px; margin-bottom:30px;">
+        <p>If you are using FusionWidgets in your Flash movies and using rotated fonts by embedding the fonts, you can now remove those embedded fonts. FusionWidgets v3.1 and above now displays rotated text without need for embedded fonts.</p>
+		</div>
+		  <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+     </td>
+  </tr>
+  
+  <tr>
+     <td valign="top" class="header"><a name="droppedin31" id="droppedin31"></a>Features of FusionWidgets v3.0.7 dropped in FusionWidgets v3.1 and above </td>
+  </tr>
+  
+  <tr>
+     <td valign="top" class="text">
+                <p class="highlightBlock">This section is dedicated to those, who are upgrading to FusionWidgets XT from FusionWidgets v3.0.7.</p>
+
+		<p>All the features of FusionWidgetsv3.1 and above are backward compatible with FusionWidgets v3.0.7, barring one - exporting charts as images/PDFs. So, if you're not using &quot;Export as image&quot; feature currently, you can just over-write your old chart SWF files with the new ones and the process is complete. However, if you do use the &quot;Export as image&quot; functionality and wish to use the new features of v3.1 and above, please follow the steps below:</p>
+        <ul>
+           <li>Update your chart SWF files with the new v3.1 SWF files</li>
+           <li>Update your server-side image-saving scripts with the new FusionWidgets  Export Handlers (server-side image saving scripts). </li>
+           <li> Configure the parameters in the chart XML, also specify the temporary folder path in server side FusionWidgets Export Handlers. Do this only if you intend to save the charts on server. </li>
+           <li>Change the parameter in the chart XML again if you want to use a different export format for the image </li>
+        </ul>
+        <p>If you intend to use the new client-side FusionCharts Export Component, please follow the instructions in the section &quot;<a href="../ExportingImage/ECOverview.html">Exporting as Image/PDF</a>&quot; </p>
+       <p class="back_to_top"><a href="#xtfeaturelist">Back to top <img src="../Images/Top.gif" border="0" alt="Back to Top" width="16" height="16" /></a></p>
+	 </td>
+  </tr>
+</table>
+<!-- footer links starts-->
+<div id="fcfooter"></div>
+<script type="text/javascript">
+	document.getElementById("fcfooter").innerHTML =  addFCFooter("Upgrading from Trial|UpgradingEval.html","Creating your first chart|../FirstChart/FirstChart.html");
+</script>
+<!-- footer links ends -->
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+
+	if($) $(".removeonclick").click( function() { $(this).slideUp(); } );
+	highlightSearch();
+
+//-->
+</script>
+</body>
+</html>

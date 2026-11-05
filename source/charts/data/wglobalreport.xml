@@ -1,0 +1,4 @@
+<chart caption='Revenue & Profit(L)' subCaption='Yearly global report' numberPrefix='' sformatNumberScale='1' sNumberPrefix='' syncAxisLimits='0.5' rotateValues='1' showSum='0'>
+                        <categories><category label='2012'/></categories>
+        <dataset seriesName='Revenue'  showValues='0'><set value='200'/><set value='650'/><set value='500'/><set value='50%'/><set value='890'/><set value='7890'/></dataset>
+        </chart>

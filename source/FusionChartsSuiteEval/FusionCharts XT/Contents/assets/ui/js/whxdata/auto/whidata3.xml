@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?><indexdata><key name="Pie2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" /></key><key name="Pie3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" /></key><key name="Punctuation" >
+   <topic name="Using special punctuation" url="../../../advanced/special-chars/SpPunctuation.html" /></key><key name="QUADRANTLABELS " >
+   <topic name="Scatter (XY Plot) Chart Specification Sheet " url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" /></key><key name="QUADRANTLINE " >
+   <topic name="Scatter (XY Plot) Chart Specification Sheet " url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" /></key><key name="Regression line" >
+   <topic name="Upgrading to XT from v3.x.y" url="../../../Introduction/Upgrading32.html" />
+   <topic name="Scatter and Bubble charts" url="../../../AttDesc/BubbleScatter.html" />
+   <topic name="Scatter Chart XML API" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart XML API" url="../../../ChartSS/Bubble.html" /></key><key name="Ruby on Rails" >
+   <topic name="Basic examples" url="../../../Code/ROR/Ruby_basicexample.html" />
+   <topic name="Charting data from array" url="../../../Code/ROR/Ruby_array.html" />
+   <topic name="Using with data in forms" url="../../../Code/ROR/Ruby_form.html" />
+   <topic name="Plotting from database" url="../../../Code/ROR/Ruby_db.html" />
+   <topic name="Creating drill down charts" url="../../../Code/ROR/Ruby_drill.html" />
+   <topic name="J2EE, JavaScript &amp; dataURL" url="../../../Code/ROR/Ruby_JS_url.html" />
+   <topic name="J2EE, JavaScript &amp; dataStr" url="../../../Code/ROR/Ruby_JS_xml.html" />
+   <topic name="UTF8 example" url="../../../Code/ROR/Ruby_UTF8Example.html" />
+   <topic name="AJAX Examples" url="../../../Code/ROR/Ruby_AJAX.html" /></key><key name="Scatter chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scatter chart specification sheet" url="../../../ChartSS/Scatter.html" /></key><key name="Scatter.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scatter chart specification sheet" url="../../../ChartSS/Scatter.html" /></key><key name="Scroll Area 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Area 2D chart specification sheet" url="../../../ChartSS/ScrollArea2D.html" /></key><key name="Scroll charts" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" /></key><key name="Scroll Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Column 2D chart specification sheet" url="../../../ChartSS/ScrollColumn2D.html" /></key><key name="Scroll Combination 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Combination 2D chart specification sheet" url="../../../ChartSS/ScrollCombi2D.html" /></key><key name="Scroll Combination Dual Y 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Combinatin Dual Y 2D chart specification sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="Scroll Line 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Line 2D chart specification sheet" url="../../../ChartSS/ScrollLine2D.html" /></key><key name="Scroll Stacked Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Stacked 2D chart specification sheet" url="../../../ChartSS/ScrollStackedCol2D.html" /></key><key name="ScrollArea2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Area 2D chart specification sheet" url="../../../ChartSS/ScrollArea2D.html" /></key><key name="SCROLLBAR " >
+   <topic name="ZoomLine Chart Specification Sheet " url="../../../ChartSS/ZoomLine.html" /></key><key name="ScrollColumn2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Column 2D chart specification sheet" url="../../../ChartSS/ScrollColumn2D.html" /></key><key name="ScrollCombi2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Combination 2D chart specification sheet" url="../../../ChartSS/ScrollCombi2D.html" /></key><key name="ScrollCombinDY2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Combination Dual Y 2D chart specification sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="ScrollLine2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Line 2D chart specification sheet" url="../../../ChartSS/ScrollLine2D.html" /></key><key name="SCROLLPANE" >
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="ScrollStackedColumn2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Scroll Stacked Column 2D chart specification sheet" url="../../../ChartSS/ScrollStackedCol2D.html" /></key><key name="Server side exporting" >
+   <topic name="Server side exporting " url="../../../exporting-image/server-side/ECServerOverview.html" />
+   <topic name="Returning image as download" url="../../../exporting-image/server-side/ECServerDownload.html" />
+   <topic name="Saving server to disk" url="../../../exporting-image/server-side/ECServerSave.html" />
+   <topic name="Configuring export formats (server side)" url="../../../exporting-image/server-side/ECServerFormats.html" />
+   <topic name="Configuring export dialog (server side)" url="../../../exporting-image/server-side/ECExportDialog.html" /></key><key name="&lt;set&gt; element" >
+   <topic name="Column 2D chart specification sheet" url="../../../ChartSS/Column2D.html" />
+   <topic name="Column 3D chart specification sheet" url="../../../ChartSS/Column3D.html" />
+   <topic name="Pie 2D chart specification sheet" url="../../../ChartSS/Pie2D.html" />
+   <topic name="Pie 3D chart specification sheet" url="../../../ChartSS/Pie3D.html" />
+   <topic name="Line 2D chart specification sheet" url="../../../ChartSS/Line2D.html" />
+   <topic name="Bar 2D chart specification sheet" url="../../../ChartSS/Bar2D.html" />
+   <topic name="Area 2D chart specification sheet" url="../../../ChartSS/Area2D.html" />
+   <topic name="Doughnut 2D chart specification sheet" url="../../../ChartSS/Doughnut2D.html" />
+   <topic name="Doughnut 3D chart specification sheet" url="../../../ChartSS/Doughnut3D.html" />
+   <topic name="Pareto 2D chart specification sheet" url="../../../ChartSS/Pareto2D.html" />
+   <topic name="Pareto 3D chart specification sheet" url="../../../ChartSS/Pareto3D.html" />
+   <topic name="Multi-series Column 2D Chart Specification Sheet" url="../../../ChartSS/MSColumn2D.html" />
+   <topic name="Multi-series Column 3D Chart Specification Sheet" url="../../../ChartSS/MSColumn3D.html" />
+   <topic name="Multi-series Line 2D Chart Specification Sheet" url="../../../ChartSS/MSLine.html" />
+   <topic name="ZoomLine Chart Specification Sheet" url="../../../ChartSS/ZoomLine.html" />
+   <topic name="Multi-series Area 2D Chart Specification Sheet" url="../../../ChartSS/MSArea2D.html" />
+   <topic name="Multi-series Bar 2D Chart Specification Sheet" url="../../../ChartSS/MSBar2D.html" />
+   <topic name="Multi-series Bar 3D Chart Specification Sheet" url="../../../ChartSS/MSBar3D.html" />
+   <topic name="Marimekko Chart Specification Sheet" url="../../../ChartSS/Marimekko.html" />
+   <topic name="Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/StCol2D.html" />
+   <topic name="Stacked Column 3D Chart Specification Sheet" url="../../../ChartSS/StCol3D.html" />
+   <topic name="Stacked Area 2D Chart Specification Sheet" url="../../../ChartSS/StArea2D.html" />
+   <topic name="Stacked Bar 2D Chart Specification Sheet" url="../../../ChartSS/StBar2D.html" />
+   <topic name="Stacked Bar 3D Chart Specification Sheet" url="../../../ChartSS/StackedBar3D.html" />
+   <topic name="Multi-series Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/MSStCol.html" />
+   <topic name="Combination 3D (Simulated) Chart (Single Y) Specification Sheet" url="../../../ChartSS/Combi3D.html" />
+   <topic name="2D (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Combi2D.html" />
+   <topic name="Column 3D Line (Single Y) Combination Chart Specification Sheet" url="../../../ChartSS/Col3DLine.html" />
+   <topic name="Stacked Column 2D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol2DLine.html" />
+   <topic name="Stacked Column 3D Line Single Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLine.html" />
+   <topic name="2D Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/Combi2DDY.html" />
+   <topic name="Multi-series Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSCol3DLineDY.html" />
+   <topic name="Stacked Column 3D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/StCol3DLineDY.html" />
+   <topic name="Multi-series Stacked Column 2D Line Dual Y Combination Chart Specification Sheet" url="../../../ChartSS/MSStColLineDY.html" />
+   <topic name="Scatter (XY Plot) Chart Specification Sheet" url="../../../ChartSS/Scatter.html" />
+   <topic name="Bubble Chart Specification Sheet" url="../../../ChartSS/Bubble.html" />
+   <topic name="Scroll Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollColumn2D.html" />
+   <topic name="Scroll Line 2D Chart Specification Sheet" url="../../../ChartSS/ScrollLine2D.html" />
+   <topic name="Scroll Area 2D Chart Specification Sheet" url="../../../ChartSS/ScrollArea2D.html" />
+   <topic name="Scroll Stacked Column 2D Chart Specification Sheet" url="../../../ChartSS/ScrollStackedCol2D.html" />
+   <topic name="Scroll Combination 2D Chart Specification Sheet" url="../../../ChartSS/ScrollCombi2D.html" />
+   <topic name="Scroll Combination 2D (Dual Y) Chart Specification Sheet" url="../../../ChartSS/ScrollCombiDY2D.html" /></key><key name="Shadow" >
+   <topic name="Shadow style type" url="../../../Styles/Shadow.html" /></key><key name="Single series charts" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html#ss" />
+   <topic name="Single series XML structure" url="../../../DataFormats/XML/SingleSeries.html" />
+   <topic name="Single series JSON structure" url="../../../DataFormats/JSON/SingleSeries.html" />
+   <topic name="Creating your first chart" url="../../../FirstChart/FirstChart.html" />
+   <topic name="First chart using FusionCharts ASP class" url="../../../guide-for-web-developers/fusioncharts-asp-class/FirstChart.html" />
+   <topic name="First chart using FusionCharts ASP class" url="../../../guide-for-web-developers/fusioncharts-php-class/FirstChart.html" /></key><key name="SSGrid" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" /></key><key name="SSGrid.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" /></key><key name="SSL/HTTPS" >
+   <topic name="Using chart on SSL/HTTPS" url="../../../advanced/SSL.html" /></key><key name="Stacked Area 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Area 2D chart specification sheet" url="../../../ChartSS/StArea2D.html" /></key><key name="Stacked Bar 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Bar 2D chart specification sheet" url="../../../ChartSS/StBar2D.html" /></key><key name="Stacked Bar 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Bar 3D chart specification sheet" url="../../../ChartSS/StBar3D.html" /></key><key name="Stacked charts" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html#st" />
+   <topic name="Stacked charts XML structure" url="../../../DataFormats/XML/MSStacked.html" />
+   <topic name="Stacked charts JSON structure" url="../../../DataFormats/JSON/MSStacked.html" />
+   <topic name="First Stacked chart" url="../../../FirstChart/FirstMultiSeriesChart.html#Stacked" />
+   <topic name="Stacked chart" url="../../../AttDesc/StackedChartAttributes.html" /></key><key name="Stacked Column 2D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 2D chart specification sheet" url="../../../ChartSS/StCol2D.html" /></key><key name="Stacked Column 2D Line chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 2D Line chart specification sheet" url="../../../ChartSS/StCol2DLine.html" /></key><key name="Stacked Column 3D chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 3D chart specification sheet" url="../../../ChartSS/StCol3D.html" /></key><key name="Stacked Column 3D Line chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 3D Line chart specification sheet" url="../../../ChartSS/StCol3DLine.html" /></key><key name="Stacked Column 3D Line Dual Y chart" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 3D Line Dual Y chart specification sheet" url="../../../ChartSS/StCol3DLineDY.html" /></key><key name="StackedArea2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Area 2D chart specification sheet" url="../../../ChartSS/StArea2D.html" /></key><key name="StackedBar2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Bar 2D chart specification sheet" url="../../../ChartSS/StBar2D.html" /></key><key name="StackedBar3D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Bar 3D chart specification sheet" url="../../../ChartSS/StBar3D.html" /></key><key name="StackedColumn2D.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 2D chart specification sheet" url="../../../ChartSS/StCol2D.html" /></key><key name="StackedColumn2DLine.swf" >
+   <topic name="List of charts" url="../../../Introduction/ChartList.html" />
+   <topic name="Stacked Column 2D Line chart specification sheet" url="../../../ChartSS/StCol2DLine.html" /></key></indexdata>

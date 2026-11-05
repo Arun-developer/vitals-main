@@ -1,0 +1,266 @@
+<?php $this->load->view('vitals_header.php', array('main_menu' => 'request', 'page_title' => 'Leave - Apply Leave')); ?>
+<div class="dataconfig-content page-wrapper vitals_mainContent ">
+    <div class="row">
+        <div class="col-lg-3 col-xl-3 col-md-3 col-12 position-relative">
+            <div id="leftMenuLoad">
+                <?php $this->load->view('vitals_leftmenu.php', array('left_menu' => 'approve', 'page' => 'leave', 'supervisor' => $chk_sup, 'approval_count' => $approval_count)); ?>
+            </div>
+        </div>
+        <div class="col-lg-9 col-xl-9 col-md-9 col-12 pad-lf0 ">
+            <main class="page-content">
+                <div class="row dataconfig d_v_d_c">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12 pad-none display-flex">
+                        <h4>Apply For Leave</h4>
+                    </div>
+                </div>
+                <div class="plan-structure-vital vital_windowScroll">
+                    <div>
+                        <div class="tab-slider--navform">
+                            <ul class="tab-slider--tabsform">
+                                <?php if ($this->session->userdata('user_type') == 'employee') { ?>
+                                    <li class="tab-slider--triggerform active"><a href="<?php echo base_url() . 'index.php/leave/apply_leave'; ?>">New Leave Request</a></li>
+                                <?php } ?>
+                                <li class="tab-slider--triggerform"><a href="<?php echo base_url() . 'index.php/leave/leave_summary'; ?>">Leave Allocation</a></li>
+                                <?php if ($this->session->userdata('user_type') == 'employee') { ?>
+                                    <li class="tab-slider--triggerform "><a href="<?php echo base_url() . 'index.php/leave/leave_list'; ?>">Leave Requests</a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-slider--container">
+                        <div id="tab1" class="tab-slider--body pad-none tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme">
+                            <main class="page-content">
+                                <div class="plan-structure-vital">
+                                    <main class="page-content">
+                                        <div class="inputplan-structureall plan-structure-new">
+                                            <form method="post" id="applyleaveForm" action="<?php echo base_url() . 'index.php/leave/addApplyleave'; ?>" autocomplete="off">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                        <?php
+                                                        $quota_list = array();
+                                                        if (count($leave_quotas) > 0) {
+
+                                                            foreach ($leave_quotas as $quotas) {
+                                                                if ($quotas['no_restrictions'] == 1) {
+                                                                    $quota_list[$quotas['leave_type_id']] = $quotas['leave_type_name'];
+                                                                } else {
+                                                                    $remaining = ($quotas['no_of_days_allotted'] + $quotas['leave_brought_forward']) - $quotas['leave_taken'];
+                                                                    if ($remaining > 0) {
+                                                                        $quota_list[$quotas['leave_type_id']] = $quotas['leave_type_name'];
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                        <div class="form-group">
+                                                            <label>Leave Type <small class="text-danger">*</small></label>
+                                                            <select class="form-control" name="leave_type" id="leave_type" required="">
+                                                                <option value="">Select Leave Type</option>
+                                                                <?php
+                                                                if (count($quota_list) > 0) {
+                                                                    foreach ($quota_list as $qlist => $qval) {
+                                                                        ?>
+                                                                        <option value="<?= $qlist; ?>"><?= $qval; ?></option>
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <option value="">No Leave Types</option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                        <div class="form-group">
+                                                            <label>Leave Length </label>
+                                                            <select class="form-control" name="leave_length" id="leave_length">
+
+                                                                <option value="1" selected>Full Day</option>                                            
+                                                                <option value="2">Half Day</option>             
+                                                            </select>
+                                                        </div>                                                  
+                                                    </div> 
+                                                </div>
+                                                <?php if (count($quota_list) <= 0) { ?>
+                                                    <div class="Vital-notes">
+                                                        <span>Leave Quota not allocated. Please consult HR Admin</span>
+                                                    </div>
+                                                <?php } ?>
+
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                        <div class="form-group">
+                                                            <label>From Date <small class="text-danger">*</small></label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control" name="leave_from_date" id="leave_from_date" required="" placeholder="dd-mm-yyyy" />
+                                                                <span class="calendar-position"><i class="far fa-calendar-alt"></i></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                        <div class="form-group">
+                                                            <label>To Date <small class="text-danger">*</small></label>
+                                                            <div class="position-relative">
+                                                                <input type="text" class="form-control"  placeholder="dd-mm-yyyy" name="leave_to_date" id="leave_to_date" required="" />
+                                                                <span class="calendar-position"><i class="far fa-calendar-alt"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                                        <div class="form-group">
+                                                            <label>Comments <small class="text-danger">*</small></label>
+                                                            <textarea class="form-control commonAlphaNum" name="comments" id="comments" required="" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col-12 col-sm-4  col-md-4 ">
+                                                        <ul class="vitals-links">
+                                                            <li><button type="submit" id="submit_btn" class="vital_yellow_btn wdt_100">Apply</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </main>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="modal" id="confirmModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body onboarding-permission text-center">
+                <div class="text-right">
+                    <a class="portfolioclose" data-dismiss="modal">Close</a>
+                </div>
+                <div class="popup-content">
+                    <p>Are you sure you want to apply the leave?</p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-secondary" onclick="submitRequest();" data-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $this->load->view('vitals_footer.php'); ?>
+
+<script type="text/javascript">
+    $(document).on('click', '#submit_btn', function (e) {
+        var check_val = $("#applyleaveForm").valid();
+        if (check_val == true) {
+            $('#confirmModal').modal('show');
+            e.preventDefault();
+        } else {
+            $('#confirmModal').modal('hide');
+        }
+
+    });
+
+    function submitRequest() {
+        $('#applyleaveForm').submit();
+    }
+
+    $('#applyleaveForm').validate({
+        rules: {
+            leave_type: "required",
+            leave_from_date: "required",
+            leave_to_date: "required",
+            comments: "required",
+            leave_length: "required"
+        },
+        messages: {
+            leave_type: "Select leave type",
+            leave_from_date: "Select from date",
+            leave_to_date: "Select to date",
+            comments: "Enter comments",
+            leave_length: "Select leave length"
+        }
+    });
+
+    $(document).on('input', '.commonAlphaNum', function () {
+        if (this.value.match(/[^a-zA-Z0-9.,:\-&\/() ]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z0-9.,:\-&\/() ]/g, '');
+        }
+    });
+
+    var datesArray = [<?php echo $holiday_list; ?>];
+
+    $("#leave_from_date").datepicker({
+        dateFormat: "dd-mm-yy",
+        beforeShowDay: function (date) {
+            var theday = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+            return [true, $.inArray(theday, datesArray) >= 0 ? "specialDate" : ''];
+        },
+        onSelect: function () {
+            var dt2 = $('#leave_to_date');
+            var startDate = $(this).datepicker('getDate');
+            startDate.setDate(startDate.getDate() + 30);
+            var minDate = $(this).datepicker('getDate');
+            var dt2Date = dt2.datepicker('getDate');
+            var dateDiff = (dt2Date - minDate) / (86400 * 1000);
+
+            if (dt2Date == null || dateDiff < 0) {
+                dt2.datepicker('setDate', minDate);
+            } else if (dateDiff > 30) {
+                dt2.datepicker('setDate', startDate);
+            }
+            dt2.datepicker('option', 'maxDate', startDate);
+            dt2.datepicker('option', 'minDate', minDate);
+        }
+    }).on("change", function () {
+        calcDiff();
+    });
+
+    $('#leave_to_date').datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: 0,
+        beforeShowDay: function (date) {
+            var theday = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+            return [true, $.inArray(theday, datesArray) >= 0 ? "specialDate" : ''];
+        },
+    }).on("change", function () {
+        calcDiff();
+    });
+
+    function calcDiff() {
+        var d1 = $('#leave_from_date').datepicker('getDate');
+        var d2 = $('#leave_to_date').datepicker('getDate');
+        var diff = 0;
+        if (d1 && d2) {
+    diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000); // ms per day
+}
+
+if(diff > 0) {
+        //$('#leave_length').css('display', 'none');
+        $("#leave_length").attr("disabled", true);
+        $("#leave_length").val(1);
+    } else {
+        //$('#leave_length').css('display', 'block');
+        $("#leave_length").attr("disabled", false);
+    } 
+}
+
+</script>
+
+<style type="text/css">
+    .ui-datepicker-week-end a {background: rgb(144, 238, 144) !important;}
+    .ui-datepicker .specialDate a {color: #fff !important; background: #dc3545 !important;}
+</style>
+
+</body>
+</html>

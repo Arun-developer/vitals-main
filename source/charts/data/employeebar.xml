@@ -1,0 +1,10 @@
+<chart bgcolor="#fbfbfb" caption="Employee Wise Analysis" subcaption="Overall" showPercentValues="1" decimals="1" baseFontSize="11"><set label="" value="2"/><set label="" value="62"/><set label="" value="6"/><set label="" value="46"/><set label="" value="3"/><set label="" value="27"/><set label="" value="2"/><set label="" value="11"/><set label="" value="27"/><set label="" value="9"/><set label="" value="27"/><set label="" value="23"/><set label="" value="54"/><set label="" value="51"/><set label="" value="71"/><set label="" value="99"/><set label="" value="63"/><set label="" value="27"/><set label="" value="30"/><set label="" value="17"/><set label="" value="62"/><set label="" value="8"/><set label="" value="2"/><set label="" value="149"/><set label="" value="62"/><set label="" value="117"/><set label="" value="51"/><set label="" value="16"/><set label="Pratim Raha" value="64"/><styles>
+
+                              <definition>
+                              <style type="font" name="captionFont" size="15"/>
+                              </definition>
+                              <application>
+                              <apply toObject="CAPTION" styles="captionFont"/>
+                              </application>
+                              </styles>
+                              </chart>

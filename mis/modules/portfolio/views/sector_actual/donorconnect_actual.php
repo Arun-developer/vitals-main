@@ -1,0 +1,649 @@
+<?php
+$emp_id = $this->session->userdata['emp_number'];
+if (count($donorconnect_actual) > 0) {
+    $enable = 1;
+} else {
+    $enable = 0;
+}
+
+$quater_month = array("1" => 'Jan', "2" => 'Feb', "3" => 'Mar', "4" => 'Apr', "5" => 'May', "6" => 'Jun', "7" => 'Jul', "8" => 'Aug', "9" => 'Sep', "10" => 'Oct', "11" => 'Nov', "12" => 'Dec');
+$actual_month = array("1" => 'Jan', "2" => 'Feb', "3" => 'Mar', "4" => 'Apr', "5" => 'May', "6" => 'Jun', "7" => 'Jul', "8" => 'Aug', "9" => 'Sep', "10" => 'Oct', "11" => 'Nov', "12" => 'Dec');
+$actual_quarter = array("1" => 'Q4', "2" => 'Q4', "3" => 'Q4', "4" => 'Q1', "5" => 'Q1', "6" => 'Q1', "7" => 'Q2', "8" => 'Q2', "9" => 'Q2', "10" => 'Q3', "11" => 'Q3', "12" => 'Q3');
+$get_quarter_fieldName = array("Q1" => 'q_one_desc', "Q2" => 'q_two_desc', "Q3" => 'q_three_desc', "Q4" => 'q_four_desc');
+$get_quarter_monthField = array("1" => 'jan_desc', "2" => 'feb_desc', "3" => 'mar_desc', "4" => 'apr_desc', "5" => 'may_desc', "6" => 'jun_desc', "7" => 'jul_desc', "8" => 'aug_desc', "9" => 'sep_desc', "10" => 'oct_desc', "11" => 'nov_desc', "12" => 'dec_desc');
+
+$last_month = date("F", mktime(0, 0, 0, $current_month, 1));
+$this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $sector_name . ' - Donor Connect Achievements', 'port_action' => 'sec_actual', 'sector_id' => $sector_id, 'sector_name' => $sector_name, 'fin_year' => $current_financial, 'add_class' => 'mar-tp140'));
+?>
+<!-- Inner Dashboard-->
+<div class="vi-dashboard onboardtabmenu mar-tp120">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link" id="nav-Companymaster-tab" href="<?= base_url() . 'index.php/portfolio/sector_actual/discovery/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>" aria-controls="nav-Companymaster" aria-selected="false">Pipeline</a>
+                        <a class="nav-item nav-link" id="nav-business-tab" href="<?= base_url() . 'index.php/portfolio/sector_actual/graduates/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>" aria-controls="nav-business" aria-selected="false">Graduates & Exits</a>
+                        <a class="nav-item nav-link active" id="nav-business-tab active" href="" aria-controls="nav-business" aria-selected="true">03</a>
+                        <a class="nav-item nav-link" id="nav-management-tab" href="<?= base_url() . 'index.php/portfolio/sector_actual/conference/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>" aria-controls="nav-management" aria-selected="false">Brand Building & Thought Leadership</a>
+                        <a class="nav-item nav-link" id="nav-governance-tab" href="<?= base_url() . 'index.php/portfolio/sector_actual/equity_investments/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>" aria-controls="nav-governance" aria-selected="false">Driving Financial Stability</a>
+                        <a class="nav-item nav-link brd-none bg-trasnparent" id="nav-about-tab" href="#nav-about" aria-controls="nav-about" aria-selected="false">&nbsp;</a>
+                    </div>
+                </nav>
+                <div class="tab-content  px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Companymaster" role="tabpanel" aria-labelledby="nav-Companymaster-tab">
+                        <div class="tabpanel-title">
+                            <div class="row">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                    <h4>Fundraise</h4>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
+                                    <ul class="milestone-links">
+                                        <?php if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                            <li><a class="saveContinue">Save &amp; Continue</a></li>
+                                        <?php } ?>
+                                        <li>
+                                            <a href="<?php echo base_url() . 'uploads/portfolio/data_legend_key.pdf'; ?>" target="_blank" class="legendKey" title="Data Legend"><i class="far fa-question-circle"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabpanel-details pad-none config-wrapper dataconfig-content page-wrapper chiller-theme">
+                            <div id="leftMenuLoad">
+                                <?php $this->load->view('sector_actual/leftmenu.php', array('monthlist' => $monthlist, 'actual_month' => $actual_month, 'quater_month' => $quater_month, 'get_yearMonth' => $get_yearMonth, 'class_name' => $current_month, 'pending_month' => $pending_month, 'module' => 'donorconnect', 'curfin_year' => $current_financial, 'fin_year' => $fin_year)); ?>
+                            </div>
+                            <main class="page-content">
+                                <div class="row dataconfig">
+                                    <div class="col-xl-10 col-lg-10 col-md-10 col-12">
+                                        <?php
+                                        if ($current_month == '1' || $current_month == '2' || $current_month == '3') {
+                                            $next_financial = $current_financial + 1;
+                                        } else {
+                                            $next_financial = $current_financial;
+                                        }
+                                        ?>
+                                        <h4>Fundraise Achievement > <span><?= $last_month . ' ' . $next_financial; ?></span></h4>
+                                    </div>
+                                    <?php if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-12 text-right">
+                                            <a href="javascript:void(0)" class="edit-btnconfig editBtn" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a></li>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div>
+                                    <div class="tab-slider--navform">
+                                        <ul class="tab-slider--tabsform">
+                                            <li class="tab-slider--triggerform "><a href="<?= base_url() . 'index.php/portfolio/sector_actual/donorengagement/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>">Current donor engagement plan</a></li>
+                                            <li class="tab-slider--triggerform active"><a href="<?= base_url() . 'index.php/portfolio/sector_actual/donorconnect/' . $sector_id . '/' . $current_financial . '/' . $current_month; ?>">New donors to connect with </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <?php
+                                $current_quarter = $actual_quarter[$current_month];
+                                $total_qualPlan = $get_quarter_fieldName[$current_quarter];
+                                $monthly_qualPlan = $get_quarter_monthField[$current_month];
+                                ?>
+                                <div class="tab-slider--container">
+                                    <div id="tab1" class="tab-slider--body pad-none tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme">
+                                        <main class="page-content">
+                                            <div class="inputplan-structureall plan-structure-new">
+                                                <form method="post" id="donorconnectForm" action="<?php echo base_url() . 'index.php/portfolio/sector_actual/addDonorconnect'; ?>" autocomplete="off">
+
+                                                    <div class="row achievementNewComt">
+                                                        <div class="col-xl-4 col-lg-4 col-ms-4 col-12">
+                                                            <p>Plan for <?= $current_quarter; ?></p>
+                                                            <div class="form-group quaterlyCardnew fieldDisabled">
+                                                                <textarea row="5" disabled placeholder="Plan for this quarter come here" class="mceEditor" id="quarterDesc" name="quarterDesc"><?= stripslashes(str_replace("\\r\\n", '', $qualitative_plan[0][$total_qualPlan])); ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-lg-4 col-ms-4 col-12">
+                                                            <p>Plan for <?= $last_month; ?></p>
+                                                            <div class="form-group quaterlyCardnew fieldDisabled">
+                                                                <textarea row="5" disabled placeholder="Plan for February month come here" class="mceEditor" id="monthContent" name='monthContent'><?= stripslashes(str_replace("\\r\\n", '', $qualitative_plan[0][$monthly_qualPlan])); ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-lg-4 col-ms-4 col-12">
+                                                            <p>Enter achievements for <?= $last_month; ?></p>
+                                                            <div class="form-group quaterlyCardnew" id="achieveField">
+                                                                <textarea row="5" class="mceEditorActive" id="achieveContent" name='achieveContent' autofocus><?= stripslashes(str_replace("\\r\\n", '', $qualitative_actual[0]['description'])); ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+
+                                                    <div class="table_configcontentnew pad-bt0">
+                                                        <div class="tabpanel-title">
+                                                            <div class="row">
+                                                                <div class="col-xl-6 col-lg-6 col-md-9 col-sm-9 col-9">
+                                                                    <h4 style="font-size:14px;padding: 15px 10px;">New Agreements Signed</h4>
+                                                                </div>
+                                                                <?php
+                                                                if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                                                    ?>
+                                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
+                                                                        <ul class="milestone-links">
+                                                                            <li><a href="javascript:void(0)" id="addMore"><i class="fas fa-plus-circle"></i>&nbsp;Add New</a> </li>
+                                                                            <li class="brd-left-onboard" id="editMentor"><a href="javascript:void(0)" id="edit_mentor" class="opacity5"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</a></li>
+                                                                            <li class="brd-left-onboard" id="disableBtn" style="cursor: not-allowed;">
+                                                                                <a class="deleteControl" href="javascript:void(0)" id="deleteBtn" style="pointer-events: none;"><i class="fas fa-trash"></i>&nbsp;Delete</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="table-responsive table_configcontentnew ">
+                                                        <table class="table mentor-table" id="accordion">
+                                                            <thead class="mentor-table-head">
+                                                                <tr>
+                                                                    <th  width="4%"></th>
+                                                                    <th width="14%" class="text-center">Donor</th>
+                                                                    <th width="14%" class="text-center">Grant</th>
+                                                                    <th width="14%" class="text-center">Grant Signed Date</th>
+                                                                    <th width="20%" class="text-center">Purpose</th>
+                                                                    <th width="14%" class="text-center">Grant Amount<br>(<?= 'in ' . $this->session->userdata['currency']; ?>)</th>
+                                                                    <th width="20%" class="text-center">Comments</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="add_tranche">
+                                                                <?php
+                                                                $j = 1;
+                                                                if (count($donorconnect_actual) <= 0) {
+                                                                    $sec_count = 1;
+                                                                } else {
+                                                                    $sec_count = count($donorconnect_actual);
+                                                                }
+                                                                for ($i = 0; $i < $sec_count; $i++) {
+                                                                    ?>
+                                                                    <tr id="donorconnect_tr_<?= $j; ?>" class="donorconnect_more">
+                                                                        <td>
+                                                                            <?php
+                                                                            if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                                                                if ($delete_row == 0) {
+                                                                                    ?>
+                                                                                    <input type="checkbox" class="check_box"
+                                                                                           aria-label="Checkbox for following text input"
+                                                                                           name="check_delete" id="check_delete_<?php echo $j; ?>"
+                                                                                           value="<?php echo $donorconnect_actual[$i]['id']; ?>">
+                                                                                           <?php
+                                                                                       } else if ($delete_row == 1) {
+                                                                                           ?>
+                                                                                    <span class="cursor" title="Remove" onclick="hideRow(<?= $j; ?>);"><i class="fas fa-minus-circle"></i></span>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select class="form-control form-control-sm donor_list" name="donor[]" id="donor_<?php echo $j; ?>" onchange="getGrantList('<?php echo $j; ?>', this.value);">
+                                                                                <option value="">-Select-</option>
+                                                                                <?php
+                                                                                foreach ($donor_list as $donor) {
+                                                                                    if ($donorconnect_actual[$i]['donor_id'] == $donor['id']) {
+                                                                                        $selected = 'selected';
+                                                                                    } else {
+                                                                                        $selected = '';
+                                                                                    }
+                                                                                    ?>
+                                                                                    <option value="<?php echo $donor['id']; ?>" <?= $selected; ?> ><?php echo $donor['name']; ?></option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                            <label class="error error_msg"></label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select class="form-control form-control-sm grant_list" name="grant[]" id="grant_<?php echo $j; ?>" onchange="getGrantDetails('<?php echo $j; ?>', this.value);">
+                                                                                <option value="">-Select-</option>
+                                                                            </select>
+                                                                            <label class="error error_msg"></label>
+                                                                            <input type="hidden" id="get_grant_<?= $j; ?>" value="<?= $donorconnect_actual[$i]['grant_id']; ?>">
+                                                                        </td>
+                                                                        <td>
+                                                                            <input class="form-control form-control-sm" type="text" name="signed_date[]" id="signed_date_<?= $j; ?>" disabled placeholder="dd-mm-yyyy">
+                                                                            <label class="error error_msg"></label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <textarea row="5" class="form-control" name="purpose[]" id="purpose_<?= $j; ?>" disabled></textarea>
+                                                                            <label class="error error_msg"></label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input class="form-control form-control-sm" type="text" name="grant_amount[]" id="grant_amount_<?= $j; ?>" value="" disabled placeholder="00">
+                                                                            <label class="error error_msg"></label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <textarea row="5" class="form-control" name="comments[]" id="comments_<?= $j; ?>"><?= $donorconnect_actual[$i]['comments']; ?></textarea>
+                                                                            <label class="error error_msg"></label>
+                                                                        </td>
+                                                                    </tr>
+                                                                <input type="hidden" name="donorconnect_id[]" id="donorconnect_id_<?= $j; ?>" value="<?= $donorconnect_actual[$i]['id']; ?>" />
+                                                                <?php
+                                                                $j++;
+                                                            }
+                                                            ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <input type='hidden' name='sector_id' id="sector_id" value="<?= $sector_id; ?>">
+                                                    <input type='hidden' name='financial_year' id="financial_year" value="<?= $current_financial; ?>">
+                                                    <input type='hidden' name='current_month' id="current_month" value="<?= $current_month; ?>">
+                                                    <!--<input type='hidden' name='updatePlan' id="updatePlan" value="0">-->
+                                                    <input type='hidden' name='module_id' id="module_id" value="<?= $module_id; ?>">
+                                                </form>
+                                            </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal" id="deletemodal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content delete-alert">
+            <div class="modal-body text-center">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="col-10">
+                            <h4>Are you sure you want to delete selected items?</h4>
+                            <p>you are about delete <span id="delCount"></span> selected information fields, you
+                                can't undo this</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"><a class="close portfolioclose" data-dismiss="modal" aria-label="Close">Cancel</a></button>
+                <button type="button" class="btn btn-success" id="deleteRecord"> Delete Selected</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="deleteID" value="">
+</div>
+
+<input type="hidden" id="qualitCount" value="<?= count($qualitative_actual); ?>">
+<input type="hidden" id="enableCount" value="<?= count($donorconnect_actual); ?>">
+
+<?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
+
+<script type="text/javascript">
+    $(window).on("load", function () {
+        // $('svg').attr("viewBox", "0 0 25 25");
+        // $('svg').css({"width": "20", "height": "20"});
+    });
+
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "mceEditor",
+        entity_encoding: "numeric",
+        menubar: false,
+        readonly: 1,
+        toolbar: [
+            ''
+        ],
+        valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li,br',
+        powerpaste_word_import: 'clean',
+        powerpaste_html_import: 'clean'
+    });
+
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "mceEditorActive",
+        entity_encoding: "numeric",
+        menubar: false,
+        auto_focus: "achieveContent",
+        plugins: [
+            'lists'
+        ],
+        toolbar: [
+            'bold italic | numlist bullist'
+        ],
+        valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li,br',
+        powerpaste_word_import: 'clean',
+        powerpaste_html_import: 'clean'
+    });
+
+    $(document).on('input', '.currencyfield', function (evt) {
+        var self = $(this);
+        self.val(self.val().replace(/[^0-9\.]/g, ''));
+        self.val(inrFormat(self.val()));
+        var patt = new RegExp(/[0-9\,.]*[.]{1}[0-9]{2}/i);
+        var matchedString = self.val().match(patt);
+        if (matchedString) {
+            self.val(matchedString);
+        }
+    });
+
+    function inrFormat(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        var z = 0;
+        var len = String(x1).length;
+        var num = parseInt((len / 2) - 1);
+        while (rgx.test(x1)) {
+            if (z > 0) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            } else {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                rgx = /(\d+)(\d{2})/;
+            }
+            z++;
+            num--;
+            if (num == 0) {
+                break;
+            }
+        }
+        return x1 + x2;
+    }
+
+    $(document).ready(function () {
+        onLoad();
+    });
+
+    window.onload = function () {
+        loadFunders();
+    };
+
+    function loadFunders() {
+        $('.donor_list').each(function (index, value) {
+            var incr = index + 1;
+            var donor = $("#donor_" + incr).val();
+            getGrantList(incr, donor, 1);
+        });
+    }
+
+    function onLoad() {
+        var qualitEdit = $('#qualitCount').val();
+        var editOpt = $('#enableCount').val();
+        if (qualitEdit > 0) {
+            tinymce.get('achieveContent').setMode('readonly');
+            $('#achieveField').addClass('fieldDisabled');
+        } else {
+            $('#achieveField').addClass('greenplantxt');
+        }
+        if (editOpt > 0) {
+            $('input[type="text"], select, textarea').attr('readonly', 'readonly');
+            $('.disDate, select').css('pointer-events', 'none');
+        } else {
+            datepickerEachFunction();
+        }
+        $('#financial_year').attr('readonly', false);
+        $('#financial_year').css("pointer-events", "");
+        $('#editBtn').addClass('opacity5');
+    }
+
+
+    $(document).on('click', '#editBtn', function () {
+//                                                                                                    $('input[type="text"], select, textarea').attr('readonly', false);
+//                                                                                                    $('.disDate, select').css('pointer-events', '');
+        $('.readOnly').attr('readonly', true);
+        $('#editBtn').removeClass('opacity5');
+        tinymce.get('achieveContent').setMode('design');
+        $('#achieveField').addClass('greenplantxt');
+        $('#achieveField').removeClass('fieldDisabled');
+        datepickerEachFunction();
+    });
+
+    function loadYear(year) {
+        var sector_id = $('#sector_id').val();
+        var month = $('#current_month').val();
+        window.location.href = '<?= base_url(); ?>' + 'index.php/portfolio/sector_actual/donorconnect/' + sector_id + '/' + year + '/' + month;
+    }
+
+    function pad(num) {
+        var s = num + "";
+        s = parseFloat(s, 10);
+        return s;
+    }
+
+    $(".numberField").on("input", function (evt) {
+        var self = $(this);
+        self.val(self.val().replace(/[^0-9]/g, ''));
+    });
+
+    $(document).on("input", ".volumefld", function (evt) {
+        var self = $(this);
+        if (self.val() != 0 || self.val() == '') {
+            self.val(self.val().replace(/[^0-9]/g, ''));
+        } else {
+            self.val(0);
+        }
+        if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+            evt.preventDefault();
+        }
+    });
+
+    $('#deleteBtn').on('click', function () {
+        $('#deletemodal').modal('show');
+        var sel_item = $("input:checkbox[name=check_delete]:checked").length;
+        $('#delCount').html(sel_item);
+    });
+
+    $(document).on('click', '.check_box', function () {
+        if ($("#donorconnectForm input:checkbox:checked").length > 0) {
+            $('#disableBtn').css("cursor", "pointer");
+            $('#deleteBtn').css("pointer-events", "");
+        } else {
+            $('#disableBtn').css("cursor", "not-allowed");
+            $('#deleteBtn').css("pointer-events", "none");
+        }
+    });
+
+    $('#deleteRecord').on('click', function () {
+        var deleteId = new Array();
+        $("input:checkbox[name=check_delete]:checked").each(function () {
+            deleteId.push($(this).val());
+        });
+        if ($("#donorconnectForm input:checkbox:checked").length > 0) {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>index.php/portfolio/sector_actual/deleteActualDetail",
+                data: {
+                    id: deleteId,
+                    table: 'sector_actual_donorconnect'
+                },
+                dataType: 'json',
+                success: function (msg) {
+                    $('#accordion').load(location.href + ' #accordion');
+                    $('#deletemodal').modal('hide');
+                    $('#deleteMsg').show();
+                    setTimeout(function () {
+//                                                    if (editOpt > 0) {
+                        onLoad();
+//                                                    }
+                        deleteMore();
+                        loadFunders();
+                    }, 500);
+                    setTimeout(function () {
+                        $('#deleteMsg').hide();
+                    }, 3000);
+                }
+            });
+        }
+    });
+    function deleteMore() {
+//                                    $('.check_box').on('click', function () {
+        if ($("#donorconnectForm input:checkbox:checked").length > 0) {
+            $('#disableBtn').css("cursor", "pointer");
+            $('#deleteBtn').css("pointer-events", "");
+        } else {
+            $('#disableBtn').css("cursor", "not-allowed");
+            $('#deleteBtn').css("pointer-events", "none");
+        }
+        loadFunders();
+//                                    });
+    }
+
+    $(document).on('click', '#edit_mentor', function () {
+        $('.saveContinue').text('Save');
+        $('#editMentor').html('<a href="javascript:void(0)" id="cancel_mentor"><i class="fas fa-times"></i>&nbsp;Cancel</a>')
+        $('#edit_mentor').removeClass('opacity5');
+        $('#accordion select').attr('readonly', false);
+        $('#accordion input[type="text"]').attr('readonly', false);
+        $('.disDate').css('pointer-events', '');
+        $('#accordion textarea').attr('readonly', false);
+        $("#accordion select").css("pointer-events", "");
+        datepickerEachFunction();
+    });
+
+    $(document).on('click', '#cancel_mentor', function () {
+        $('.saveContinue').text('Save');
+        $('#editMentor').html('<a href="javascript:void(0)" id="edit_mentor"><i class="fas fa-pencil-alt"></i>Edit</a>');
+        onLoad();
+        var editOpt = $('#enableCount').val();
+        if (editOpt > 0) {
+            $('#accordion select').attr('readonly', 'readonly');
+            $('#accordion input[type="text"]').attr('readonly', 'readonly');
+            $('#accordion textarea').attr('readonly', 'readonly');
+        }
+        $('#edit_mentor').addClass('opacity5');
+    });
+
+
+
+    $(document).on('click', '#addMore', function () {
+        var dyn = $(".donorconnect_more").length;
+        var i = parseInt(dyn) + 1;
+        var j = parseInt(dyn);
+        var datas = '<tr id="donorconnect_tr_' + i + '" class="donorconnect_more"><td><input type="checkbox" class="check_box" aria-label="Checkbox for following text input" name="check_delete" id="check_delete_' + i + '" value=""></td>';
+        datas += '<td><select class="form-control form-control-sm" name="donor[]" id="donor_' + i + '" onchange="getGrantList(' + i + ', this.value);"> <option value="">-Select-</option><?php foreach ($donor_list as $donor) { ?><option value="<?php echo $donor['id']; ?>"><?php echo $donor['name']; ?></option><?php } ?></select><label class="error error_msg"></label></td>';
+        datas += '<td><select class="form-control form-control-sm" name="grant[]" id="grant_' + i + '" onchange="getGrantDetails(' + i + ', this.value);"> <option value="">-Select-</option></select><label class="error error_msg"></label></td>';
+        datas += '<td><input class="form-control form-control-sm disDate dateCalendar" type="text" name="signed_date[]" id="signed_date_' + i + '" value="" disabled placeholder="dd-mm-yyyy"><label class="error error_msg"></label></td>';
+        datas += '<td><textarea row="5" class="form-control" name="purpose[]" id="purpose_' + i + '" disabled></textarea><label class="error error_msg"></label></td>';
+        datas += '<td><input class="form-control form-control-sm" type="text" name="grant_amount[]" id="grant_amount_' + i + '" value="" disabled placeholder="00"><label class="error error_msg"></label></td>';
+        datas += '<td><textarea row="5" class="form-control" name="comments[]" id="comments_' + i + '"></textarea><label class="error error_msg"></label></td></tr>';
+        $(datas).insertAfter($('#donorconnect_tr_' + dyn));
+        datepickerEachFunction();
+    });
+
+    function hideRow(id) {
+        $('#donorconnect_tr_' + id).closest('tr').remove();
+        var tr_count = $('.donorconnect_more').length;
+        if (tr_count == 0) {
+            var datas = '<tbody class="add_tranche"><tr id="donorconnect_tr_1" class="donorconnect_more"><td><input type="checkbox" class="check_box" aria-label="Checkbox for following text input" name="check_delete" id="check_delete_1" value=""></td>';
+            datas += '<td><select class="form-control form-control-sm" name="donor[]" id="donor_1" onchange="getGrantList(1, this.value);"> <option value="">-Select-</option><?php foreach ($donor_list as $donor) { ?><option value="<?php echo $donor['id']; ?>"><?php echo $donor['name']; ?></option><?php } ?></select><label class="error error_msg"></label></td>';
+            datas += '<td><select class="form-control form-control-sm" name="grant[]" id="grant_1" onchange="getGrantDetails(1, this.value);"> <option value="">-Select-</option></select><label class="error error_msg"></label></td>';
+            datas += '<td><input class="form-control form-control-sm disDate dateCalendar" type="text" name="signed_date[]" id="signed_date_1" value="" disabled placeholder="dd-mm-yyyy"><label class="error error_msg"></label></td>';
+            datas += '<td><textarea row="5" class="form-control" name="purpose[]" id="purpose_1" disabled></textarea><label class="error error_msg"></label></td>';
+            datas += '<td><input class="form-control form-control-sm" type="text" name="grant_amount[]" id="grant_amount_1" value="" disabled placeholder="00"><label class="error error_msg"></label></td>';
+            datas += '<td><textarea row="5" class="form-control" name="comments[]" id="comments_1"></textarea><label class="error error_msg"></label></td></tr></tbody>';
+            $(datas).insertAfter($('.mentor-table-head'));
+        }
+    }
+
+    function datepickerEachFunction() {
+        var sel_month = $('#current_month').val();
+        var sel_year = $('#financial_year').val();
+        if (sel_month < 4) {
+            sel_year = parseInt(sel_year) + 1;
+        }
+        $('.disDate').each(function (index, value) {
+            $("#signed_date_" + index).datepicker({
+                onSelect: function (selected) {
+                    $("#signed_date_" + index).datepicker("option", "dateFormat", 'mm/dd/yy');
+                    var dt = new Date(selected);
+                    var dateval = dt.getDate();
+                    var monthval = dt.getMonth() + 1;
+                    var yearval = dt.getFullYear();
+                    if (monthval < 10) {
+                        monthval = "0" + monthval;
+                    } else {
+                        monthval = monthval;
+                    }
+                    if (dateval < 10) {
+                        dateval = "0" + dateval;
+                    } else {
+                        dateval = dateval;
+                    }
+                    var fulldatevalue = dateval + '-' + monthval + '-' + yearval;
+                    $("#signed_date_" + index).val(fulldatevalue);
+                },
+                defaultDate: new Date(sel_year, sel_month - 1),
+                stepMonths: 0
+            });
+        });
+    }
+
+    $(document).on('click', ".saveContinue", function (e) {
+        if ($('#donorconnectForm').valid()) {
+            $('.saveContinue').css('pointer-events', 'none');
+            $('#donorconnectForm').submit();
+        }
+    });
+
+    $('.plan-structure-new').css({
+        'height': (($(window).height()) - 240) + 'px'
+    });
+
+    function getGrantList(id, val, detail = '') {
+        if (id != '') {
+            $.ajax({
+                url: "<?php echo base_url(); ?>index.php/portfolio/sector_actual/getGrantNameList",
+                type: 'POST',
+                "data": {'donor': val},
+                success: function (msg) {
+                    var output = [];
+                    output.push('<option value="">-Select-</option>');
+                    var split_arr = JSON.parse(msg);
+                    var i = 0;
+                    $.each(split_arr, function (key, value) {
+                        output.push('<option value="' + split_arr[i].id + '">' + split_arr[i].name + '</option>');
+                        i++;
+                    });
+                    $('#grant_' + id).html(output.join(''));
+                    var grant = $('#get_grant_' + id).val();
+                    $('#grant_' + id).val(grant);
+                    if (detail != '') {
+                        getGrantDetails(id, grant);
+                    }
+                }
+            });
+        }
+    }
+
+    function getGrantDetails(id, val) {
+        if (id != '') {
+            $.ajax({
+                url: "<?php echo base_url(); ?>index.php/portfolio/sector_actual/getGrantDetails",
+                type: 'POST',
+                "data": {'grant': val},
+                success: function (msg) {
+                    var message_details = JSON.parse(msg);
+                    var DateinISO = message_details[0].signed_date;
+                    var DateNewFormat = $.datepicker.formatDate("yy-mm-dd", new Date(DateinISO));
+
+                    var dateAr = DateNewFormat.split('-');
+                    var newDate = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
+
+                    $('#signed_date_' + id).val(newDate);
+                    $('#purpose_' + id).val(message_details[0].purpose);
+                    $('#grant_amount_' + id).val(message_details[0].grant_amount);
+
+                    var self = $('#grant_amount_' + id);
+                    self.val(self.val().replace(/[^0-9\.]/g, ''));
+                    self.val(inrFormat(self.val()));
+                    var patt = new RegExp(/[0-9\,.]*[.]{1}[0-9]{2}/i);
+                    var matchedString = self.val().match(patt);
+                    if (matchedString) {
+                        self.val(matchedString);
+                    }
+                }
+            });
+        }
+    }
+</script>
+</body>
+
+</html>

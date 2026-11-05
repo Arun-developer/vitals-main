@@ -1,0 +1,12 @@
+<chart caption='' xAxisName='Stages' yAxisName='No. Of Innovation' showValues='0' decimals='0' formatNumberScale='0' palette='4'>
+		<set label='New' value='211' />
+		<set label='Entry' value='23' />
+		<set label='Lead' value='0' />
+		<set label='Detailed-diligence' value='0' />
+		<set label='Incubation' value='0' />
+		<set label='Closed' value='0' />
+
+		<trendlines>
+		<line startValue='750' displayValue='Average' color='009900' valueOnRight='1' />
+		</trendlines>
+		</chart>

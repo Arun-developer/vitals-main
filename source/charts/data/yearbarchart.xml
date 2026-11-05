@@ -1,0 +1,12 @@
+<chart caption='Revenue & Profit(L)    ' subCaption='Yearly global report' numberPrefix='' sformatNumberScale='1' sNumberPrefix='' syncAxisLimits='0.5' rotateValues='1' showSum='0'>
+					<categories><category label='2012'/><category label='2013'/></categories>
+                                    <dataset seriesName='Number of'  showValues='0'><set value='128000'/><set value='540000'/><set value=''/><set value='56'/></dataset>
+                                        <styles>
+                                        <definition>
+                                        <style name='captionFont' type='font' size='15' />
+                                        </definition>
+                                        <application>
+                                        <apply toObject='caption' styles='captionfont' />
+                                        </application>
+                                        </styles>
+                                    </chart>

@@ -1,0 +1,639 @@
+<?php 
+$lang['iPitch_application_form'] = 'ऊष्मायन आवेदन पत्र';
+$lang['name_of_the_organisation'] = 'संगठन का नाम';
+$lang['name_of_the_organisation_a'] = 'संगठन का नाम';
+$lang['name_of_the_applicant'] = 'आवेदक का नाम';
+$lang['name_of_the_applicant_a'] = 'आवेदक का नाम';
+$lang['gst'] = 'जीएसटी';
+$lang['email'] = 'ईमेल';
+$lang['login'] = 'लॉग इन करें';
+$lang['register'] = 'रजिस्टर करें';
+$lang['already_register'] = 'पहले से पंजीकृत';
+$lang['gst_number'] = 'जीएसटी नंबर';
+$lang['gst_number_a'] = 'जीएसटी नंबर';
+$lang['confirm_password'] = 'पासवर्ड की पुष्टि करें';
+$lang['confirm_password_a'] = 'पासवर्ड की पुष्टि करें';
+$lang['mobile_number'] = 'मोबाइल नंबर';
+$lang['mobile_number_a'] = 'मोबाइल नंबर';
+$lang['alternate_phone_number'] = 'दवैकल्पिक फोन नंबर';
+$lang['alternate_phone_number_a'] = 'दवैकल्पिक फोन नंबर';
+$lang['headquarter_state'] = 'मुख्यालय का राज्य / केन्द्र शासित प्रदेश';
+$lang['headquarter_city'] = 'मुख्यालय का शहर';
+$lang['headquarter_city_a'] = 'मुख्यालय का शहर';
+$lang['city_name'] = 'शहर का नाम';
+$lang['city_name_a'] = 'शहर का नाम';
+$lang['i_agree_to_the'] = 'नियम';
+$lang['terms_and_conditions'] = 'और शर्तों से सहमत';
+$lang['of_the_iPitch_2019'] = 'iPitch 2020';
+$lang['logged_out_successfully'] = 'लॉग आउट सफलतापूर्वक';
+$lang['invalid_user_name_email_password'] = 'अमान्य उपयोगकर्ता नाम / ईमेल या पासवर्ड';
+$lang['select'] = 'चुनते हैं';
+$lang['forgot_password'] = 'पासवर्ड भूल गए';
+$lang['remember_me'] = 'मुझे याद रखना';
+$lang['password'] ='पासवर्ड';
+$lang['application_submit_success'] ='सफलतापूर्वक सबमिट किया गया आवेदन पूरा करने के लिए लॉगिन करें.';
+$lang['form_submission_failed'] ='फॉर्म जमा करने में विफल रहा.';
+$lang['mobile'] = 'मोबाइल नम्बर';
+$lang['country'] = 'देश';
+$lang['is_your_enterprise'] = 'कआपका व्यवसाय इनमें से कौन सा संगठन है?';
+$lang['non_profit_organization'] = 'गैर लाभकारी संगठन';
+$lang['for_profit_organization'] = 'लाभ संगठन के लिए';
+$lang['will_your_social_enterprise'] = 'क्या आपका सामाजिक उद्यम भारत में आधारित होगा';
+$lang['yes'] = 'हां';
+$lang['no'] = 'नहीं';
+$lang['login_sub'] = 'लॉग इन करें';
+$lang['sign_up'] = 'साइन अप करें';
+$lang['err_org_name'] ='कृपया संगठन का नाम दर्ज करें';
+$lang['err_app_name'] ='कृपया आवेदक का नाम दर्ज करें';
+$lang['age_req '] = 'कृपया उम्र दर्ज करें';
+$lang['age_num'] ='केवल संख्या की अनुमति है';
+$lang['gender_err'] = 'कृपया लिंग का चयन करें';
+$lang['gst_type_err'] = 'कृपया जीएसटी का चयन करें';
+$lang['gst_number_err'] = 'कृपया जीएसटी नंबर दर्ज करें';
+$lang['username_req_err'] = 'कृपया ईमेल दर्ज करें';
+$lang['username_req_email'] = 'कृपया वैध ईमेल दर्ज़ करें';
+$lang['password_err_msg'] = 'कृपया पासवर्ड दर्ज करें';
+$lang['password_confirm_err'] = 'पासवर्ड की पुष्टि करें पासवर्ड फ़ील्ड से मेल नहीं खाता है';
+$lang['mobileno_req'] = 'मोबाइल नंबर दर्ज करें';
+$lang['customphone_req'] = 'कृपया एक वैध नंबर डालें';
+$lang['customphone_minlength'] = "कृपया 10 अंकों का मोबाइल नंबर दर्ज करें";
+$lang['customphone_maxlength'] = "कृपया 10 अंकों का मोबाइल नंबर दर्ज करें";
+$lang['customphone_err'] = "कृपया एक वैध नंबर डालें";
+$lang['minlength_err'] = "कृपया 10 अंकों का मोबाइल नंबर दर्ज करें";
+$lang['maxlength_err'] = "कृपया 10 अंकों का मोबाइल नंबर दर्ज करें";
+$lang['city_err'] = "कृपया पिचिंग शहर का चयन करें";
+$lang['othercity_err'] = "कृपया शहर का नाम दर्ज करें";
+$lang['terms_err'] = "कृपया नियम और शर्तें जांचें";
+$lang['ajax_email_doesnt'] = "ईमेल मौजूद नहीं है. रजिस्टर करने का प्रयास करें";
+$lang['ajax_submit_application'] = "इस ईमेल आईडी के लिए प्रस्तुत आवेदन नहीं मिला.";
+$lang['already_exist_err'] ="पहले से ही मौजूद";
+$lang['your_password_reset_successfully'] ="आपका पासवर्ड सफलतापूर्वक रीसेट कर दिया गया है! कृपया अपनी पंजीकृत ईमेल आईडी देखें.";
+$lang['enter_your_email'] ="अपना ईमेल पता दर्ज करें";
+$lang['submit'] ="प्रस्तुत";
+$lang['user_name_err'] ="कृपया संगठन का नाम दर्ज करें";
+$lang['login_failed'] ="लॉगिन विफल.";
+
+
+
+$lang['instructions'] ="निर्देश ";
+$lang['dear_entrepreneur'] ="प्रिय उद्यमी ";
+$lang['thank_you_for_the_time'] ="आपका आवेदन जमा करने में लगने वाले समय और प्रयास के लिए धन्यवाद। .";
+$lang['unfortunately_due_to_app'] ="दुर्भाग्य से, अनुप्रयोगों की बड़ी मात्रा के कारण, हम केवल सीमित संख्या में उद्यमों का समर्थन कर सकते हैं और हमें आपको यह बताते हुए खेद है कि आपके आवेदन ने निम्नलिखित कारणों में से एक के कारण हमारे मूल्यांकन के अगले दौर में नहीं पहुंचाया है। :";
+$lang['enterprise_does_not_fit'] ="उद्यम निवेश जनादेश के लायक नहीं है";
+$lang['there_is_a_shortage'] ="प्रभाव की कमी है और/या अपने उत्पाद में नवीनता / सर्विस";
+$lang['enterprise_is_too_early_stage'] ="उद्यम बहुत प्रारंभिक चरण है";
+$lang['we_wish_you_the_best'] ="हम आपको जीवन को प्रभावित करने की अपनी यात्रा पर शुभकामनाएं देते हैं.";
+$lang['keep_up_the_meaningful'] ="सार्थक कार्य करते रहें और करते रहें.";
+$lang['subscribe'] ="सदस्यता लेने के";
+$lang['to_our_newsletter'] ="हमारे समाचार पत्र के साथ हमारे साथ संपर्क में रखने के लिए!";
+$lang['for_feedback_on_your_application'] ="आपके आवेदन पर प्रतिक्रिया के लिए,कृपया हमें ईमेल करें iPitch@villgro.org और हम इसकी परिणति पर लौट आएंगे iPitch. हमारी टीम का एक सदस्य 15 दिसंबर तक या उससे पहले आपके संपर्क में आ जाएगा.अगर आप इन-पर्सन फीडबैक चाहते हैं, ताज यशवंतपुर में 6 और 7 दिसंबर को यात्रा पर जाएं, बेंगलुरु और हमारी टीम से मिलिए. टिकट खरीदे जा सकते हैं";
+$lang['here'] ="यहाँ";
+$lang['at_discounted_rates'] ="रियायती दरों पर.";
+$lang['all_fields_marked_with_an'] ="सभी क्षेत्रों को एक तारांकन चिह्न से चिह्नित किया गया है * अनिवार्य हैं. यदि सभी आवश्यक फ़ील्ड नहीं भरे गए हैं,आप इस फॉर्म को जमा नहीं कर पाएंगे.";
+$lang['you_can_fill_this_form'] ="आप इस फॉर्म को कई मीटिंग्स में भर सकते हैं. आपको भरे हुए फॉर्म की एक प्रति अपने ईमेल में प्राप्त होगी, एक बार यह पूरा हो गया और सबमिट कर दिया गया.";
+$lang['kindly_submit_accurate_info'] ="कृपया सटीक जानकारी प्रस्तुत करें.";
+$lang['write_not_applicable'] ="लिखो ‘लागू नहीं’ आपके लिए लागू नहीं होने वाले प्रश्न.";
+$lang['save_your_work_periodically'] ="समय-समय पर अपना काम बचाएं. सुरक्षा उपाय के रूप में, यदि समय की अवधि के लिए खुला और निष्क्रिय छोड़ दिया जाता है, यह फ़ॉर्म स्वचालित रूप से समय निकाल देगा और आपको लॉगिन पृष्ठ पर पुनः निर्देशित करेगा. इस बिंदु पर खोई गई जानकारी खो जाएगी.";
+$lang['upon_online_form_submission'] ="ऑनलाइन फॉर्म जमा करने पर, शॉर्टलिस्ट किए गए उम्मीदवारों को सीधे iPitch टीम द्वारा संपर्क किया जाएगा.";
+$lang['all_decisions_made'] ="विल्ग्रो द्वारा किए गए सभी निर्णय अंतिम और निर्विवाद हैं.";
+$lang['for_queries_please'] ="प्रश्नों के लिए, कृपया संपर्क करें";
+$lang['application_form_saved_success'] ="आवेदन पत्र सफलतापूर्वक सहेजा गया";
+$lang['please_fill_the_applicant'] ="कृपया आवेदक सूचना फ़ॉर्म भरें और सहेजें";
+$lang['account_info'] ="खाता जानकारी";
+$lang['change_password'] ="पासवर्ड बदलें";
+$lang['application_status'] ="आवेदन की स्थिति";
+$lang['application_under_review'] ="समीक्षा के तहत आवेदन";
+$lang['application_shortlisted'] ="आवेदन शॉर्टलिस्ट किया गया";
+$lang['application_declined'] ="मूल्यांकन पैनल द्वारा अंतिम दौर में आवेदन में गिरावट आई";
+$lang['more'] ="अधिक";
+$lang['application_declined_only'] ="आवेदन अस्वीकार कर दिया";
+$lang['draft_not_submitted'] ="ड्राफ्ट - जमा नहीं किया गया";
+$lang['application_submitted'] ="आवेदन जमा किया गया";
+$lang['application_form_saved_successfully'] ="आवेदन जमा किया गया";
+$lang['applicant_info'] ="आवेदक सूचना";
+$lang['team_member'] ="टीम सदस्य";
+$lang['name'] ="नाम";
+$lang['title'] ="शीर्षक";
+$lang['email_id'] ="ईमेल आईडी";
+$lang['gender'] ="लिंग";
+$lang['male'] ="पुरुष";
+$lang['female'] ="महिला";
+$lang['Other'] ="अन्य";
+$lang['linkedin_profile_link'] ="लिंक्डइन प्रोफाइल का लिंक";
+$lang['company_information'] ="कंपनी की जानकारी";
+$lang['is_your_enterprise'] ="आपका व्यवसाय इनमें से कौन सा संगठन है:";
+$lang['for_profit_org'] ="लाभ के लिए संगठन";
+$lang['non_profit_org'] ="गैर लाभकारी संगठन";
+$lang['company_website_link'] ="क्या आपकी कंपनी की कोई वेबसाइट है? यदि हाँ, तो कृपया लिंक का उल्लेख करें। (यदि आपके पास वेबसाइट नहीं है तो NA निर्दिष्ट करें) ";
+$lang['year_of_incorporation'] ="निगमन का वर्ष";
+$lang['preview'] ="पूर्वावलोकन";
+$lang['pitch_application'] ="पिच आवेदन";
+$lang['registration_details'] ="पंजीकरण के विवरण";
+$lang['name_of_the_org'] ="संगठन का नाम";
+$lang['gst_num'] ="जीएसटी नंबर";
+$lang['linkedIn'] ="लिंक्डइन";
+$lang['enterprise_details'] ="एंटरप्राइज़ विवरण";
+$lang['enterprise_based_on'] ="उद्यम पर आधारित";
+$lang['company_website'] ="कंपनी की वेबसाइट";
+$lang['more_information_about_enterprise'] ="उद्यम के बारे में अधिक जानकारी";
+$lang['operation_stage'] ="ऑपरेशन चरण";
+$lang['sector'] ="क्षेत्र";
+$lang['sub_sector'] ="उप क्षेत्र";
+$lang['Other_sub_sector'] ="अन्य उप क्षेत्र";
+$lang['reduce_water_consum'] ="कृषि में पानी की खपत कम करें?";
+$lang['how_many_liters'] ="यदि आपने चुना है - (सिंचाई / जल प्रबंधन) और (व्यावसायिक या वाणिज्यिक पायलट / बाजार में लॉन्च किया गया या वृद्धि चरण / रेवेन्यू या राजस्व पैदा कर रहा है), तो बतायिये कि, पिछले एक साल में आपने कितने लीटर पानी बचाया है??";
+$lang['revenue_of_company'] =" कंपनी का राजस्व या रेवेन्यू ";
+$lang['do_you_have_any_patents'] ="क्या आपके पास कोई पेटेंट है?";
+$lang['have_you_raised'] ="क्या आपने अब तक धन जुटाया है?";
+$lang['if_yes_how_mutch'] ="यदि हाँ, तो कितना";
+$lang['when_did_you_last'] ="आपने पिछली बार कब धन उगाही / अनुदान जीता था? कृपया माह और वर्ष निर्दिष्ट करें। फंडिंग के स्रोत को भी निर्दिष्ट करें.";
+$lang['how_you_won_a_prize'] ="क्या आपने अपने उद्यम के लिए पुरस्कार, मान्यता, पुरस्कार जीता है? यदि हाँ, तो कृपया नीचे उल्लेख करें.";
+$lang['briefly_explain'] =" जिस समस्या को आप संबोधित कर रहे हैं, उसे संक्षेप में समझाएं।";
+$lang['describe_your_idea'] ="अपने विचार, उत्पाद या सेवा का वर्णन करें और यह समस्या को कैसे संबोधित करता है।";
+$lang['how_is_your_product'] ="आपका उत्पाद, विचार या सेवा सामाजिक प्रभाव कैसे बना रही है?";
+$lang['how_is_your_company'] ='क्या आपकी कंपनी को किसी संस्थान द्वारा इनक्यूबेट / त्वरित किया गया है?';
+$lang['if_yes_please'] ="यदि हाँ, तो इनक्यूबेटर / त्वरक का नाम और भागीदारी का वर्ष (अधिकतम 50 शब्द) निर्दिष्ट करें। .";
+$lang['how_did_you'] ="आपको हमारे बारे में कैसे पता चला";
+$lang['upload_doc'] ="दस्तावेज अपलोड किए";
+$lang['close'] ="बंद करे";
+$lang['please_enter_the_name'] ="कृपया नाम दर्ज करें";
+$lang['please_enter_the_title'] ="कृपया शीर्षक दर्ज करें";
+$lang['please_enter_the_enterprise'] ="कृपया उद्यम प्रकार चुनें";
+$lang['please_enter_your_website'] ="कृपया अपनी वेबसाइट दर्ज करें";
+$lang['please_enter_year'] ="कृपया वर्ष दर्ज करें";
+$lang['logout'] ="लॉग आउट";
+$lang['next'] ="आगे";
+
+$lang['application_form_completed'] ="आवेदन पत्र सफलतापूर्वक पूरा हुआ";
+$lang['find_out_this_year'] ="इस वर्ष की 6 वीं और 7 दिसंबर, 2019 को ताज यशवंतपुर, बेंगलुरू में गैर-निवेश पर iPitch निवेश करें.";
+$lang['register_for_uncon'] ="IPitch रियायती दरों पर असंबद्धता के लिए पंजीकरण करें";
+$lang['please_fill_the_info'] ="कृपया एंटरप्राइज़ फ़ॉर्म के बारे में जानकारी भरें और सहेजें";
+$lang['info_about_enter'] ="उद्यम के बारे में जानकारी";
+$lang['stage_of_operation'] ="ऑपरेशन या संचालन का चरण";
+$lang['idea'] ="विचार";
+$lang['commercial_piolt'] ="व्यावसायिक या वाणिज्यिक पायलट / बाजार में लॉन्च किया गया";
+$lang['minimum_viable'] =" न्यूनतम व्यवहार्य उत्पाद / प्रोटोटाइप तैयार";
+$lang['scaling_up_rapid'] ="तेजी / तेजी से बिक्री में वृद्धि";
+$lang['please_sel_sub_sec'] ="कृपया उप क्षेत्र चुनें";
+$lang['does_your_business'] ="क्या आपका व्यवसाय कृषि में पानी की खपत का संरक्षण / प्रबंधन / प्रबंधन करता है?";
+$lang['when_did_yoy_last'] ="आपने पिछली बार कब धन उगाही / अनुदान जीता था? कृपया माह और वर्ष निर्दिष्ट करें। फंडिंग के स्रोत को भी निर्दिष्ट करें। (अधिकतम 50 शब्द)";
+$lang['max_words_fifty'] ="(अधिकतम शब्द: 50)। आपके पास";
+$lang['max_words_one_fifty'] ="(अधिकतम शब्द: 150)। आपके पास";
+$lang['max_words_two_fifty'] ="(अधिकतम शब्द: 250)। आपके पास";
+$lang['max_words_two_hund'] ="(अधिकतम शब्द: 200)। आपके पास";
+$lang['words_left'] ="शब्द शेष हैं.";
+$lang['have_you_won_a_prize'] ="क्या आपने अपने उद्यम के लिए पुरस्कार, मान्यता, पुरस्कार जीता है? यदि हाँ, तो कृपया नीचे उल्लेख करें (अधिकतम 100 शब्द)";
+$lang['max_words_hundered'] ="(अधिकतम शब्द: 100)। आपके पास";
+$lang['briefly_explain_the_spec'] ="उस विशिष्ट समस्या के बारे में संक्षेप में बताएं जो आपके नवाचार को संबोधित करती है। (अधिकतम 150 शब्द)";
+$lang['describe_your_idea'] ="अपने विचार, उत्पाद या सेवा का वर्णन करें और यह समस्या को कैसे संबोधित करता है। (अधिकतम 250 शब्द)";
+$lang['describe_your_idea_pre'] ="अपने विचार, उत्पाद या सेवा का वर्णन करें और यह समस्या को कैसे संबोधित करता है";
+$lang['how_is_your_two_hund'] ="आपका समाधान सामाजिक प्रभाव कैसे बना रहा है (अधिकतम 200 शब्द)";
+$lang['how_your_company'] ="क्या आपकी कंपनी को किसी संस्थान द्वारा इनक्यूबेट / त्वरित किया गया है?";
+$lang['if_yes_please_provoid'] ="यदि हाँ, तो कृपया इनक्यूबेटर / त्वरक का नाम और भागीदारी का वर्ष प्रदान करें। (अधिकतम 50 शब्द)";
+$lang['how_did_you_hear'] ="आपको हमारे बारे में कैसे पता चला?";
+$lang['villgro_mailer_news'] ="विलग्रो मेलर / न्यूज़लैटर";
+$lang['other_mailer_news'] ="अन्य मेलर्स / न्यूज़लेटर / सोशल मीडिया";
+$lang['name_of_the_part'] ="साथी का नाम";
+$lang['facebook'] ="फेसबुक";
+$lang['twitter'] ="ट्विटर";
+$lang['instagram'] ="इंस्टाग्राम";
+$lang['yourstory'] ="तुम्हारी कहानी";
+$lang['the_better_india'] ="द बेटर इंडिया";
+$lang['press_media'] ="पत्रकारिता माध्यम";
+$lang['referral'] ="रेफरल";
+$lang['by_whome'] ="किसके द्वारा";
+$lang['google_search'] ="गूगल खोज";
+$lang['upload_document'] ="दस्तावेज़ अपलोड करें";
+$lang['max_10_mb'] ="(अधिकतम आकार 10 एमबी)";
+$lang['please_upload_a_pre'] ="कृपया निम्नलिखित के साथ एक प्रस्तुति अपलोड करें";
+$lang['guidelines'] ="guidelines";
+$lang['presentation_should_limit'] ="प्रस्तुति 15 स्लाइड तक सीमित होनी चाहिए। (अधिकतम आकार 10 एमबी। पीपीटी, पीपीटीएक्स या केवल पीडीएफ प्रारूप)";
+$lang['presentation_to_follow'] ="नीचे दिए गए टेम्पलेट का पालन करने के लिए प्रस्तुति";
+$lang['org_name_your_cont'] ="संगठन का नाम, आपका नाम और संपर्क जानकारी";
+$lang['summary'] ="सारांश";
+$lang['high_level_sum'] = "आपके व्यवसाय का उच्च स्तर सारांश";
+$lang['problem'] = "संकट";
+$lang['describe_the_pain'] = "उस दर्द का वर्णन करें जिसे आपका नवाचार संबोधित कर रहा है";
+$lang['solution'] = "उपाय";
+$lang['explain_how_your_val'] = "बताएं कि आपका मूल्य प्रस्ताव इस दर्द को कैसे कम करता है";
+$lang['what_is_your_buss'] = "आपका बिजनेस मॉडल क्या है?";
+$lang['customers_channels'] = "ग्राहक, वितरण के चैनल, सकल मार्जिन आदि (अधिकतम 400 शब्द)";
+$lang['what_is_the_usp'] = "आपके व्यवसाय की यूएसपी क्या है?";
+$lang['desc_tech_any_pat'] = "तकनीक, किसी भी पेटेंट और अपनी पेशकश की अनूठी विशेषताओं का वर्णन करें। (अधिकतम 400 शब्द)";
+$lang['marketing_and_sales'] = "विपणन और बिक्री";
+$lang['how_did_you'] = "आप और / या अपने ग्राहकों तक पहुंचने का इरादा कैसे रखते हैं? (अधिकतम 400 शब्द)";
+$lang['competition'] = "प्रतियोगिता";
+$lang['what_are_the_avai'] = "बाजार में उपलब्ध विकल्प क्या हैं? (अधिकतम 300 शब्द)";
+$lang['briefly_desc_found'] = "अपनी संस्थापक टीम का संक्षेप में वर्णन करें";
+$lang['max_hund_word'] = "(अधिकतम 100 शब्द)";
+$lang['max_four_hund_word'] = "(अधिकतम 400 शब्द)";
+$lang['financial_proj'] = "वित्तीय अनुमान और प्रमुख मैट्रिक्स";
+$lang['type_of_imp_ben'] = "प्रभाव और लाभार्थियों का प्रकार";
+$lang['fund_req_plan'] = "अनुदान की आवश्यकताएँ और योजना";
+$lang['how_much_funding'] = "आप कितने फंड की तलाश कर रहे हैं? आप इसे कैसे उपयोग करने की योजना बना रहे हैं?";
+$lang['add_appendices'] = "परिशिष्ट जोड़ें";
+$lang['if_any'] = "यदि कोई.";
+$lang['thank_you_for_apply_vill'] = "विल्ग्रो के iPitch प्रोग्राम में आवेदन करने के लिए धन्यवाद";
+$lang['you_have_now_succes_sub'] = "अब आपने अपना आवेदन सफलतापूर्वक जमा कर दिया है। हम अगले कुछ हफ्तों में आपके आवेदन फॉर्म की सावधानीपूर्वक समीक्षा करेंगे और निर्णय लेंगे। जब आप अपनी पंजीकृत उपयोगकर्ता आईडी और पासवर्ड का उपयोग करके लॉगिन करते हैं, तो आप अपने फ़ॉर्म की स्थिति की जांच कर सकते हैं.";
+$lang['find_your_ipitch_inv'] = "इस वर्ष की 6 वीं और 7 दिसंबर, 2019 को ताज यशवंतपुर, बेंगलुरू में गैर-निवेश पर iPitch निवेश करें। IPitch रियायती दरों पर असंबद्धता के लिए पंजीकरण करें";
+$lang['ok'] = "ठीक है";
+$lang['pitch_app'] = "पिच आवेदन";
+
+$lang['please_select_sector'] = "कृपया सेक्टर चुनें";
+$lang['please_select_sub_sector'] = "कृपया उप क्षेत्र चुनें";
+$lang['addr_enter_desc'] = "कृपया विवरण दर्ज करें";
+$lang['plaase_enter_reve'] = "कृपया राजस्व दर्ज करें";
+$lang['plaase_enter_patents'] = "कृपया पेटेंट का चयन करें";
+$lang['plaase_select_fundr'] = "कृपया धनराशि का चयन करें";
+$lang['plaase_select_option'] = "कृपया विकल्प चुनें";
+$lang['plaase_select_document'] = "कृपया दस्तावेज़ अपलोड करें";
+$lang['plaase_enter_the_sub_sector'] = "कृपया उप क्षेत्र में प्रवेश करें";
+$lang['plaase_enter_the_stage'] = "कृपया मंच चुनें";
+$lang['plaase_enter_the_amt'] = "कृपया राशि दर्ज करें";
+$lang['plaase_enter_partner_name'] = "कृपया साथी का नाम दर्ज करें";
+$lang['plaase_enter_referral_name'] = "कृपया साथी का नाम दर्ज करें";
+$lang['plaase_enter_saved_water'] = "कृपया सहेजे गए पानी को लीटर में दर्ज करें";
+$lang['change_made_cont_without'] = "प्रपत्र में किए गए परिवर्तन सहेजे नहीं गए हैं। क्या आप बिना सहेजे जारी रखना चाहते हैं?";
+$lang['only_ppt_pptx_pdf'] = "केवल पीपीटी, पीपीटीएक्स, पीडीएफ फाइलें स्वीकार की जाती हैं";
+$lang['the_file_size_cannot_exec'] = "फ़ाइल का आकार 10MB से अधिक नहीं हो सकता है";
+$lang['guidelines'] ="दिशा निर्देशों";
+$lang['please_unblock_cookies'] = "कृपया अपने ब्राउज़र पर कुकीज़ को निम्नानुसार अनब्लॉक करें";
+$lang['internet_opt_privacy_advance'] = "इंटरनेट विकल्प -> गोपनीयता -> उन्नत -> तृतीय-पक्ष कुकीज़ को अनचेक करें <br> संपर्क ipitch@villgro.org यदि समस्या बनी रहती है.";
+$lang['preferences_content_block'] = "वरीयताएँ (लगभग: प्राथमिकताएँ) -> गोपनीयता -> सामग्री अवरोधन - कस्टम -> कुकीज़ -> सभी कुकीज़ अचयनित करें <br> संपर्क ipitch@villgro.org यदि समस्या बनी रहती है।";
+$lang['settings_site_cookies'] = "सेटिंग्स (क्रोम: // सेटिंग्स /) -> उन्नत सेटिंग्स -> साइट सेटिंग्स -> कुकीज़ -> <br> साइटों को कुकी डेटा को सहेजने और पढ़ने की अनुमति दें - ON <br> <br> तृतीय-पक्ष कुकीज़ को अवरोधित करें - बंद करें <br> संपर्क ipitch @ villgro.org यदि समस्या बनी रहती है।";
+$lang['contact_villgro_if_persists'] = "यदि समस्या बनी रहती है, तो ipitch@villgro.org से संपर्क करें।";
+
+$lang['your_password_reset_success'] = "आपका पासवर्ड सफलतापूर्वक रीसेट कर दिया गया है! कृपया अपने नए पासवर्ड से लॉगिन करें.";
+$lang['your_old_password_wrong'] = "आपका पुराना पासवर्ड गलत है";
+$lang['your_old_password_new_passsword'] = "आपका पुराना पासवर्ड और नया पासवर्ड समान हैं";
+$lang['old_password'] = "पुराना पासवर्ड";
+$lang['new_password'] = "नया पासवर्ड";
+$lang['back_to_application'] = "एप्लिकेशन पर वापस जाएं";
+$lang['please_enter_old_password'] = "कृपया पुराना पासवर्ड दर्ज करें";
+$lang['please_enter_new_password'] = "कृपया नया पासवर्ड दर्ज करें";
+$lang['confirm_password_not_match'] = "पासवर्ड की पुष्टि करें पासवर्ड क्षेत्र से मेल नहीं खाता";
+
+$lang['account_info'] = "खाते की जानकारी";
+$lang['account_info_update_succes'] = "खाता जानकारी सफलतापूर्वक अपडेट की गई है!.";
+$lang['can_not_update_info'] = "आपकी खाता जानकारी अपडेट नहीं की जा सकती";
+$lang['pitching_city'] = "पिचिंग शहर";
+$lang['please_enter_the_valid'] = "कृपया मान्य फ़ोन नंबर दर्ज करें";
+
+//dropdown values
+$lang['Irrigation / Water management'] = "आजीविका और रोजगार सृजन";
+$lang['Post harvest processing and/or sales'] = "कटाई प्रसंस्करण और / या बिक्री के बाद";
+$lang['Precision Agriculture - IoT, Monitors, Automation'] = "परिशुद्धता (प्रीसीशण) कृषि - IoT, मॉनिटर्स, स्वचालन";
+$lang['Storage & Logistics (forward & reverse)'] = "भंडारण और रसद (आगे और रिवर्स)";
+$lang['Others'] = "अन्य";
+$lang['Livelihoods & Job creation'] = "आजीविका और रोजगार सृजन";
+
+$lang['ERP Solutions, LMS, IT Solutions, Assessment Platforms'] = "ईआरपी समाधान, एलएमएस, आईटी समाधान, मूल्यांकन प्लेटफार्म";
+$lang['Financial Services'] = "वित्तीय सेवाएं";
+$lang['Language - English'] = "भाषा भाषा";
+$lang['Life skills - Problem Solving, Critical Thinking etc'] = "जीवन कौशल - समस्या समाधान, गंभीर सोच आदि";
+$lang['STEM'] = "स्टेम";
+$lang['Teacher training, school leader training/development, school reviews'] = "शिक्षक प्रशिक्षण, स्कूल नेता प्रशिक्षण / विकास, स्कूल समीक्षा";
+$lang['Test Preparation'] = "परीक्षा की तैयारी";
+$lang['Whole school solutions'] = "संपूर्ण विद्यालय समाधान";
+
+$lang['Access to energy'] = "संपूर्ण विद्यालय समाधान";
+$lang['Energy Efficiency'] = "ऊर्जा दक्षता";
+$lang['Productive use of energy'] = "ऊर्जा का उत्पादक उपयोग";
+$lang['Sustainable Mobility'] = "स्थायी गतिशीलता";
+$lang['Waste to Wealth'] = "धन की बर्बादी";
+$lang['Solid waste management & sewage treatment'] = "ठोस अपशिष्ट प्रबंधन और सीवेज उपचार";
+
+$lang['Assistive Tech / Disabilities / Geriatrics '] = "सहायक तकनीक / विकलांगता / जराचिकित्सा";
+$lang['disabilities'] = "विकलांगता";
+$lang['Cancer / Diabetes / Respiratory'] = "कैंसर / मधुमेह / श्वसन";
+$lang['Diagnostic Services'] = "Diagnostic Services";
+$lang['Digital Health Platform (Telemedicine / ICT / others)'] = "नैदानिक ​​सेवाएं";
+$lang['Infection detection - Anti Microbial Resistance'] = "संक्रमण का पता लगाना - एंटी माइक्रोबियल प्रतिरोध";
+$lang['Maternal & Child Health'] = "मातृ एवं शिशु स्वास्थ्य";
+
+$lang['Diagnostic Services'] = "नैदानिक ​​सेवाएं";
+$lang['Agriculture & allied'] = "कृषि और सम्बंधित";
+$lang['Arts & handicrafts'] = "कला और हस्तशिल्प";
+$lang['Employability & wage enhancement'] = "रोजगार और वेतन वृद्धि";
+$lang['Healthcare & caregiving'] = " स्वास्थ्य देखभाल और देखभाल सम्बंधित";
+$lang['Renewable Energy'] = "नवीकरणीय ऊर्जा";
+$lang['Retail brands'] = "खुदरा ब्रांड";
+$lang['Skilling & vocational training'] = "कौशल और व्यावसायिक प्रशिक्षण";
+
+$lang['Assessment Platforms'] = "आकलन के मंच या प्लेटफार्म";
+$lang['Financial services'] = "वित्तीय सेवाएं";
+$lang['Job platforms'] = "नौकरी / जॉब के मंच या प्लेटफॉर्म";
+$lang['Life skills - Problem solving, critical thinking etc'] = "जीवन कौशल - समस्या का समाधान, महत्वपूर्ण सोच आदि";
+$lang['Programming skills (Computer Language)'] = "प्रोग्रामिंग कौशल (कंप्यूटर भाषा)";
+$lang['Soft skills'] = "सॉफ्ट स्किल्स";
+$lang['Technical skills'] = "तकनीकी कौशल";
+
+$lang['Ahmedabad'] = 'अहमदाबाद';
+$lang['Bangalore'] = 'बैंगलोर';
+$lang['Chennai'] =  'चेन्नई';
+$lang['Delhi-NCR'] = 'दिल्ली-एनसीआर';
+$lang['Guwahati'] = 'गुवाहाटी';
+$lang['Hyderabad'] = 'हैदराबाद';
+$lang['Indore'] = 'इंदौर';
+$lang['Jaipur'] = 'जयपुर';
+$lang['Kanpur&Lucknow'] = 'कानपुर और लखनऊ';
+$lang['lucknow'] = 'लखनऊ';
+$lang['Kochi'] = 'कोच्चि';
+$lang['Kolkata'] = 'कोच्चि';
+$lang['Mumbai'] = 'मुंबई';
+$lang['Pune'] = 'पुणे';
+
+$lang['designation_of_the_applicant_a']= 'आवेदक का पदनाम';
+$lang['gender_of_applicant']= 'आवेदक का लिंग';
+$lang['gender_of_applicant_a']= 'आवेदक का लिंग';
+$lang['please_enter_desigination']= 'आवेदक का पद दर्ज करें';
+
+$lang['is_your_company_registered']='क्या आपकी कंपनी MCA के तहत पंजीकृत है?';
+$lang['cin_number']='तो CIN नंबर';
+$lang['dipp_reg']='DIPP पंजीकरण';
+$lang['dipp_num']='DIPP नंबर';
+$lang['total_number_of_management']='पप्रबंधन टीम के सदस्यों की कुल संख्या';
+$lang['no_of_male']='पुरुष की संख्या';
+$lang['no_of_female']='महिला की संख्या';
+$lang['no_of_transgender']='ट्रांसजेंडर की संख्या';
+$lang['please_enter_cin_number']='कृपया cin संख्या दर्ज करें';
+$lang['please_enter_dipp_number']='कृपया डीपीपी नंबर दर्ज करें';
+$lang['please_enter_no_of_male']='कृपया पुरुष की संख्या दर्ज करें';
+$lang['please_enter_no_of_transgender']='कृपया ट्रांसजेंडर की संख्या दर्ज करें';
+$lang['save']='बचाना';
+$lang['state']='राज्य';
+$lang['city']='शहर';
+$lang['age']='आयु';
+$lang['highest_eucational_qualification']='उच्चतम शैक्षिक योग्यता';
+$lang['what_would_best_describe']='आपके द्वारा दिए जाने वाले समाधान का सबसे अच्छा वर्णन क्या होगा';
+$lang['have_you_filed_for']='क्या आपने किसी पेटेंट के लिए आवेदन किया है';
+$lang['if_yes_what_is_the_patent']=' यदि हाँ, तो पेटेंट किसके लिए है:';
+$lang['have_you_raised_funds']='म क्या आपने अतीत में धन जुटाया है?';
+$lang['total_grant_amount']='कुल अनुदान राशि';
+$lang['total_equity_amount']='कुल इक्विटी राशि';
+$lang['have_you_won_a_prize']=' क्या आपने अपने समाधान के लिए पुरस्कार, मान्यता या पुरस्कार जीता है';
+$lang['if_yes_specify']='यदि हां, तो विवरण/लेबल निर्दिष्ट करें';
+$lang['if_yes_specify_name_of_incubator']='यदि हां, तो इनक्यूबेटर/त्वरक का नाम और भागीदारी का वर्ष निर्दिष्ट करें।';
+$lang['does_your_solution']='क्या आपका समाधान महिलाओं और लड़कियों को सीधे प्रभावित करता है?';
+$lang['please_enter_no_of_female']='कृपया महिला की संख्या दर्ज करें';
+$lang['transgender'] ="ट्रांसजेंडर";
+$lang['please_select_state']='कृपया राज्य का चयन करें';
+$lang['please_select_city']='कृपया शहर का चयन करें';
+$lang['please enter_no_of_transgender'] = "कृपया ट्रांसजेंडर की संख्या दर्ज करें";
+$lang['pleas_select_the_mca_status'] = 'कृपयाए मसीए स्थिति चुनें';
+
+$lang['idea_stage']= 'विचार का स्तर';
+$lang['commercial_pilot_launched']= 'व्यावसायिक या वाणिज्यिक पायलट / बाजार में लॉन्च किया गया';
+$lang['growth_stage_generating_revenue']= ' वृद्धि चरण / रेवेन्यू या राजस्व पैदा कर रहा है';
+$lang['if_yes_how']= 'यदि हाँ, तो कैसे ?';
+
+
+
+
+$lang['agri_business']= 'कृषि व्यापार';
+$lang['cleantech']= 'क्लीनटेक';
+$lang['education']= 'शिक्षा';
+$lang['energy_cleantech']= 'एनर्जी और क्लीनटेक/ ऊर्जा और स्वच्छ तकनीक';
+$lang['health']= 'स्वास्थ्य';
+$lang['waste_management']= 'अपशिष्ट प्रबंधन';
+$lang['skill_development']= 'कौशल विकास';
+$lang['housing']= 'मकान देना';
+$lang['ict']= 'आईसीटी';
+$lang['livelihoods_job_creation']= 'आजीविका और नौकरी निर्माण';
+$lang['water_and_sanitation']= 'जल और स्वच्छता';
+$lang['others']= 'अन्य';
+$lang['inputs_protection']= 'इनपुट और संरक्षण';
+$lang['animal_health']= 'पशु स्वास्थ्य';
+$lang['mechanisation__precision_farming']= 'मशीनीकरण/प्रेसिजन खेती';
+$lang['irrigation__water_management']= 'सिंचाई / जल प्रबंधन';
+$lang['precision_agriculture_iot_monitors_automation']= 'परिशुद्धता (प्रीसीशण) कृषि - IoT, मॉनिटर्स, स्वचालन';
+$lang['farm_management_advisory_software_biased_']= 'फार्म प्रबंधन और सलाहकार (पक्षपातपूर्ण सॉफ्टवेयर)';
+$lang['post_harvest_processing_andor_sales']= 'फसल प्रसंस्करण और/या बिक्री के बाद';
+$lang['marketplaces_retail_and_aggregation']= 'मार्केटप्लेस, खुदरा और एकत्रीकरण';
+$lang['storage_logistics_forward_reverse_']= 'भंडारण और रसद (आगे और रिवर्स)';
+$lang['value_from_waste']= 'अपशिष्ट से मूल्य';
+$lang['clean_water']= 'स्वच्छ पानी';
+$lang['clean_air']= 'स्वच्छ हवा';
+$lang['clean_transport']= 'स्वच्छ परिवहन';
+$lang['green_buildings']= 'ग्रीन इमारतें';
+$lang['others']= 'अन्य';
+$lang['language_english']= 'भाषा';
+$lang['stem']= 'स्टेम (STEM)';
+$lang['test_preparation']= ' परीक्षा की तैयारी और जीवन कौशल';
+$lang['life_skills_problem_solving_critical_thinking_etc']= 'जीवन कौशल - समस्या हल करना, गंभीर सोच आदि';
+$lang['financial_services']= 'वित्तीय सेवाएँ';
+$lang['erp_solutions_lms_it_solutions_assessment_platforms']= 'ईआरपी (ERP) सॉल्यूशंस, एलएमएस (LMS), आईटी सॉल्यूशंस, आकलन के मंच या प्लेटफार्म';
+$lang['teacher_training_school_leader_trainingdevelopment_school_reviews']= 'शिक्षक प्रशिक्षण, स्कूल नेता प्रशिक्षण / विकास, स्कूल समीक्षा';
+$lang['whole_school_solutions']= 'पूरे स्कूल समाधान';
+$lang['access_to_energy']= 'ऊर्जा तक पहुंच';
+$lang['energy_efficiency']= 'ऊर्जा दक्षता';
+$lang['waste_to_wealth']= 'धन के लिए अपशिष्ट';
+$lang['others']= 'अन्य';
+$lang['mch']= 'एमसीएच';
+$lang['communicable_diseases_diagnostic_solutions']= 'संचारी रोग - नैदानिक समाधान';
+$lang['communicable_diseases_therapeutic_solutions']= 'संचारी रोग - चिकित्सीय समाधान';
+$lang['non_communicable_diseases_cardio_vascular']= 'गैर-संचारी रोग - कार्डियो-वैस्कुलर';
+$lang['non_communicable_diseases_cancer_related']= 'गैर-संचारी रोग - कैंसर और संबंधित';
+$lang['non_communicable_diseases_diabetes_related']= 'गैर-संचारी रोग - मधुमेह और संबंधित';
+$lang['other_devices']= 'अन्य उपकरण';
+$lang['other_diagnostics']= 'अन्य निदान';
+$lang['telemedicine_ml_ai_nlp_']= 'टेलीमेडिसिन (एमएल, एआई, एनएलपी)';
+$lang['livelihoods']= 'आजीविका';
+$lang['arts_crafts']= 'कला और शिल्प';
+$lang['housing']= 'मकान देना';
+$lang['fintech']= 'फिनटेक';
+$lang['ict']= 'आईसीटी';
+$lang['others']= 'अन्य';
+$lang['soft_skills']= 'नरम कौशल';
+$lang['technical_skills']= 'तकनीकी कौशल';
+$lang['programming_skills_computer_language_']= 'प्रोग्रामिंग कौशल (कंप्यूटर भाषा)';
+$lang['life_skills_problem_solving_critical_thinking_etc']= 'जीवन कौशल - समस्या हल करना, महत्वपूर्ण सोच आदि';
+$lang['financial_services']= 'वित्तीय सेवाएं';
+$lang['job_platforms']= 'कार्य प्लेटफॉर्म्स';
+$lang['test_preparation']= 'परीक्षण की तैयारी';
+$lang['assessment_platforms']= 'आकलन प्लेटफार्म';
+$lang['others']= 'अन्य';
+$lang['employability']= 'नियोक्तात्मकता';
+$lang['livelihoods_job_creation']= 'आजीविका और नौकरी निर्माण';
+$lang['others']= 'अन्य';
+$lang['market_intelligence']= 'मार्केट इंटेलिजेंस';
+$lang['farm_inputs']= 'कृषि इनपुट';
+$lang['farm_mechanisation_machinery_power_']= 'फार्म मशीनीकरण (मशीनरी और शक्ति)';
+$lang['agri_financing_insurance']= 'कृषि वित्तपोषण और बीमा';
+$lang['information_extension_services']= 'सूचना और विस्तार सेवाएं';
+$lang['market_linkages']= 'मार्केट लिंकेज';
+$lang['agri_processing_primary_secondary_tertiary']= 'कृषि प्रसंस्करण - प्राथमिक, माध्यमिक, तृतीयक';
+$lang['farm_waste_utilisation']= 'कृषि अपशिष्ट उपयोग';
+$lang['consumer_food_brands']= 'उपभोक्ता खाद्य ब्रांड';
+$lang['others']= 'अन्य';
+$lang['livelihoods_job_creation']= 'आजीविका और नौकरी निर्माण';
+$lang['productive_use_of_energy']= 'आजीविका और नौकरी निर्माण';
+$lang['livelihoods_job_creation']= 'आजीविका और नौकरी निर्माण';
+$lang['agriculture_allied']= 'कृषि और संबद्ध';
+$lang['healthcare_caregiving']= 'हेल्थकेयर और देखभाल';
+$lang['skilling_vocational_training']= 'कौशल और व्यावसायिक प्रशिक्षण';
+$lang['employability_wage_enhancement']= 'नियोक्तात्मकता और वेतन वृद्धि';
+$lang['renewable_energy']= 'नवीकरणीय ऊर्जा';
+$lang['arts_handicrafts']= 'कला और हस्तशिल्प';
+$lang['retail_brands']= 'खुदरा ब्रांड';
+$lang['others']= 'अन्य';
+$lang['assistive_technologies__disability']= 'सहायक प्रौद्योगिकिया/ विकलांगता';
+$lang['antimicrobial_resistance_related']= 'रोगाणुरोधी प्रतिरोध संबंधित';
+$lang['others']= 'अन्य';
+$lang['assistive_tech__disabilities__geriatrics_']= 'सहायक टेक/विकलांग/ जेरियाट्रिक्स';
+$lang['cancer__diabetes__respiratory']= 'कर्क/ मधुमेह/श्वसन';
+$lang['infection_detection_anti_microbial_resistance']= 'संक्रमण का पता लगाने - एंटी माइक्रोबियल प्रतिरोध';
+$lang['digital_health_platform']= 'डिजिटल हेल्थ प्लेटफार्म';
+$lang['maternal_child_health']= 'मातृ एवं शिशु स्वास्थ्य';
+$lang['diagnostic_services']= 'नैदानिक सेवाएं';
+$lang['sustainable_mobility']= 'स्थायी परिवहन';
+$lang['solid_waste_management_sewage_treatment']= 'ठोस अपशिष्ट प्रबंधन और सीवेज उपचार';
+$lang['agriculture_fish']= 'कृषि और मछली';
+$lang['textile']= 'वस्त्र';
+$lang['dairy']= 'डेयरी';
+$lang['fishery']= 'मत्स्य पालन';
+$lang['others']= 'अन्य';
+$lang['sheltertech_housing']= 'शेल्टरटेक एंड हाउसिंग / आश्रय तकनीक और आवास';
+$lang['financial_inclusion']= ' वित्तीय समावेशन';
+$lang['ncd_detection_management']= 'NCD / एनसीडी - जांच, प्रबंधन';
+$lang['infectious_diseases_detection_management_prevention']= 'संक्रामक रोग - जांच, प्रबंधन, रोकथाम';
+$lang['sustainable_housing']= 'स्थायी आवास';
+$lang['housing_finance']= 'आवास वित्त';
+$lang['market_access']= 'बाजार की पहुंच';
+$lang['sustainable_housing_design_for_low_income_households']= 'कम आय वाले घरों के लिए स्थायी आवास डिजाइन';
+$lang['sanitation_sanitation_tech_for_housing']= 'आवास के लिए स्वच्छता / स्वच्छता तकनीक';
+$lang['waste_management_waste_tech_for_housing']= 'आवास के लिए अपशिष्ट प्रबंधन / अपशिष्ट तकनीक';
+$lang['energy_solutions_for_housing']= 'आवास के लिए ऊर्जा समाधान';
+$lang['rental_housing_for_lower_income_segments']= 'कम आय वाले क्षेत्रों के लिए किराये के आवास';
+$lang['labour_land_rights']= 'श्रम और भूमि अधिकार';
+$lang['others']= 'अन्य';
+$lang['access_to_credit_solutions']= 'क्रेडिट समाधान तक पहुंच';
+$lang['access_to_savings_products']= 'बचत उत्पादों तक पहुंच';
+$lang['driving_financial_literacy']= 'वित्तीय साक्षरता ड्राइविंग';
+$lang['innovations_in_insurance_solutions']= 'बीमा समाधान में नवाचार';
+$lang['others']= 'अन्य';
+$lang['farm_management_market_intelligence']= 'फार्म प्रबंधन और बाजार आसूचना (मार्केट इंटेलिजेन्स)';
+$lang['farm_mechanisation_machinery_power_']= 'फार्म मशीनीकरण (मशीनरी और बिजली)';
+$lang['farm_waste_utilisation_waste_to_energy']= 'कृषि अपशिष्ट का उपयोग, अपशिष्ट से ऊर्जा';
+$lang['agri_value_chain_financing_insurance']= 'कृषि मूल्य श्रृंखला वित्तपोषण और बीमा';
+$lang['novel_input_sciences_technology']= 'न्यूनतम निवेश (नोवेल इनपुट) विज्ञान और प्रौद्योगिकी';
+$lang['financial_services']= 'वित्तीय सेवाएं';
+$lang['job_platforms']= 'कार्य प्लेटफॉर्म्स';
+$lang['assessment_platforms']= 'आकलन प्लेटफार्म';
+$lang['assessment_platforms']= 'आकलन प्लेटफार्म';
+
+
+$lang['what_is_the_probem']= 'समस्या क्या है और आप इसके लिए कैसे हल कर रहे हैं';
+$lang['what_do_you_believe']= 'आपको विश्वास क्यों है कि यह एक बड़ा मुद्दा है और अंतर्दृष्टि क्या हैं जो आपके तर्क का समर्थन करते हैं';
+$lang['describe_your_product']= 'अपने उत्पाद, अपने ग्राहक और बाजार खंडों का वर्णन करें।';
+$lang['who_are_your_competitors']= 'अपने प्रतियोगियों कौन हैं? आप अलग कैसे हैं?';
+$lang['how_do_you_create']= 'आप प्रभाव कैसे बनाते हैं और आप इसे कैसे माप रहे हैं? पिछले वर्ष के लिए आपके प्रभाव संख्या क्या हैं?आप लाभार्थी कौन हैं?';
+$lang['what_are_your_sales']= 'आपकी बिक्री, राजस्व और सकल मार्जिन क्या हैं? आपकी बिक्री और वित्तीय अनुमान क्या हैं?';
+$lang['briefly_describe_your_founding']= 'संक्षेप में अपने संस्थापक टीम का वर्णन। वित्तीय अनुमान और कुंजी मेट्रिक्स (अधिकतम 400 शब्द)';
+$lang['how_much_funding_are_you']= 'आप कितने धन की तलाश कर रहे हैं? आप इसका उपयोग करने की योजना कैसे बनाते हैं?';
+$lang['a']= 'ए';
+$lang['b']= 'ब';
+$lang['c']= 'क';
+$lang['d']= 'ड';
+$lang['e']= 'ए';
+$lang['f']= 'फ़';
+$lang['g']= 'ग';
+$lang['h']= 'ह';
+$lang['i']= 'ई';
+$lang['designation_of_the_applicant']= 'आवेदक का पद';
+$lang['gender_of_applicant']= 'आवेदक का लिंग';
+$lang['clinical_decision_support_systems__diagnostic_services']= 'नैदानिक (क्लीनिकल) निर्णय समर्थन प्रणाली / नैदानिक (डायग्नोस्टिक) सेवाएँ';
+$lang['both_are_critical']= 'दोनों ही महत्वपूर्ण हैं';
+$lang['service_based']= 'सेवा आधारित';
+$lang['hardware_based']= 'हार्डवेयर आधारित';
+$lang['ande']= 'ऐ एन डी ई ';
+$lang['avpn']= 'ऐ वी पी एन';
+$lang['cartier_women_initiative']= 'कार्टियर वोमेन इनिशिएटिव';
+$lang['dhriiti']= 'धृति';
+$lang['nasscom']= 'एन ऐ एस एस सी ओ एम एम';
+$lang['tie']= 'टी आइ ई ';
+$lang['name_of_organization']= 'संगठन का नाम निर्दिष्ट करें';
+$lang['inc42']= 'इंक42';
+$lang['please_attach_your_latest']= ' कृपया अपना नवीनतम पिच डेक (पावरपोईंट प्रेज़ेंटेशन) संलग्न करें, और यह सुनिश्चित करें कि उसमें  निम्नलिखित जानकारी हो';
+
+$lang['is_your_incubatee_a']= 'क्या आपका इनक्यूबेटी एक';
+$lang['more_information_about_incubatee']= 'इनक्यूबेटी के बारे में अधिक जानकारी';
+$lang['basic_information']= 'बुनियादी जानकारी';
+$lang['innovation_id']= 'अभिनव आईडी';
+$lang['partner']= 'साथी';
+$lang['what_is_your_enterprise_registered_as']= 'आपके उद्यम के रूप में पंजीकृत क्या है';
+$lang['email_address']= 'ईमेल पता';
+$lang['email_address_a']= 'ईमेल पता';
+$lang['date_created']= 'बनाया गया दिनांक';
+$lang['components']= 'अवयव';
+$lang['primary_beneficiaries']= 'प्राथमिक लाभार्थियों';
+$lang['source']= 'स्रोत';
+$lang['additional_informationi']= 'अतिरिक्त जानकारी';
+$lang['if_yes_how_many_liters_of_water_only']= 'यदि हां, तो बतायिये कि, पिछले एक साल में आपने कितने लीटर पानी बचाया है';
+$lang['how_many_liters_of_water_one_year']= 'यदि हां, तो बतायिये कि, पिछले एक साल में आपने कितने लीटर पानी बचाया है';
+$lang['save']= 'बचाओ';
+$lang['submit_application']= 'आवेदन जमा करें';
+$lang['if_yes_specify_the_details']= 'यदि हाँ, तो विवरण निर्दिष्ट करें ';
+$lang['how_did_you_come_to_know_abou']= 'कैसे आप के बारे में पता करने के लिए आया था';
+$lang['application_information']= 'आवेदन जानकारी';
+
+$lang['please_enter_the_solution_directly_impact']= 'कृपया समाधान दर्ज करें सीधे महिलाओं और लड़कियों को प्रभावित';
+$lang['please_enter_the_equity_amount']= 'कृपया इक्विटी राशि दर्ज करें';
+$lang['please_enter_the_patent']= 'कृपया पेटेंट दर्ज करें';
+$lang['please_enter_the_social_imapact']= 'आपका समाधान सामाजिक प्रभाव कैसे बना रहा हैं';
+$lang['please_enter_the_grant_amount']= 'कृपया अनुदान राशि दर्ज करें';
+$lang['some_questions_have_been_left_unanswered']= 'कुछ प्रश्नों को अनुत्तरित छोड़ दिया गया है। प्रस्तुत करने में सक्षम होने के लिए कृपया उन्हें भरें';
+$lang['you_are_about_to_submit']= 'आप अपना आवेदन पत्र जमा करने वाले हैं। सबमिट किए जाने पर आप फ़ॉर्म को संपादित करने में सक्षम नहीं होंगे। जारी रखें?';
+$lang['please_enter_a_valid_phone_number']= 'कृपया एक वैध फ़ोन नंबर दर्ज करें';
+$lang['please_enter_a_valid_profile_link']= 'कृपया एक वैध प्रोफ़ाइल लिंक दर्ज करें';
+$lang['please_enter_a_atleast_10']= 'कृपया कम से कम 10 अक्षर दर्ज करें।';
+$lang['if_yes']= 'यदि हां';
+$lang['changes_made_in_form_are_not']= 'प्रपत्र में किए गए परिवर्तन सहेजे नहीं गए हैं  क्या आप बिना सहेजे जारी रखना चाहते हैं';
+
+$lang['digital_health_platform_telemedicine__ict__others_']= ' डिजिटल स्वास्थ्य मंच';
+$lang['agri_processing_storage_logistics']= 'कृषि प्रसंस्करण, भंडारण और रसद';
+$lang['sustainable_livelihoods']= 'स्थायी आजीविका';
+$lang['waste_to_value']= 'कचरे से मूल्य निकलना';
+$lang['productive_use_of_renewable_energy']= 'अक्षय ऊर्जा का उत्पादक उपयोग';
+$lang['education_employability']= 'शिक्षा';
+$lang['clinical_decision_support_systems__diagnostic_services'] = "नैदानिक (क्लीनिकल) निर्णय समर्थन प्रणाली / नैदानिक (डायग्नोस्टिक) सेवाएँ";
+$lang['thank_you_for_apply_vill']= "आइपिच  Villgro's (IPitch) 2020 में आवेदन करने के लिए धन्यवाद!";
+$lang['application_submitted']= 'आवेदन पत्र सफलतापूर्वक सबमिट किया गया';
+$lang['sign_up']= 'पारिस्थितिकी';
+$lang['updates_on_Unconvention']= '(ईकोसिस्टम) में एक से अधिक हितधारकों को एक साथ लाने वाले विलग्रो के फ्लैगशिप सम्मेलन, अनकन्वेन्शन के अपडेट के लिए यहां साइन-अप करें।';
+$lang['you_have_now_successfully_submitted']= 'अब आपने अपना आवेदन सफलतापूर्वक सबमिट कर दिया है। हम अगले कुछ हफ्तों में ध्यान से आपके आवेदन पत्र की समीक्षा करेंगे और निर्णय पर आएंगे। जब आप अपने पंजीकृत ईमेल आईडी और पासवर्ड का उपयोग करके लॉगिन करते हैं तो आप अपने फॉर्म की स्थिति की जांच कर सकते हैं।';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

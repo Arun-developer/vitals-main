@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>FusionWidgets &amp; Flash - Loading external XML data</title>
+<link rel="stylesheet" href="../../assets/ui/css/style.css" type="text/css" />
+<script type="text/javascript" src="../../assets/prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../../assets/prettify/prettify.css" />
+<script type="text/javascript" src="../../assets/ui/js/jquery.min.js" ></script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+
+a.whtbtnhide, a.whtbtnshow, a.whtbtnhidenav , a.whtbtnshownav { border-bottom:none !important; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../../assets/ui/js/whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../assets/ui/js/whtopic.js"></script>
+<script type="text/javascript" src="../../assets/ui/js/lib.js"></script>
+
+</head>
+
+<body>
+<!-- breadcrumb starts here -->
+<div id="breadcrumb"></div>
+<script type="text/javascript">
+	document.write( addFCBreadcrumb( [ "Home|../Introduction/Overview.html", "Guide for Flash 8 (AS2) Developers|Flash_Overview.html", "Using external data" ] ) );
+</script>
+<!-- breadcrumb ends here -->
+<table width="98%" border="0" cellspacing="0" cellpadding="3" align="center">
+  <tr> 
+    <td class="pageHeader">Loading external XML Data </td>
+  </tr>
+  <tr> 
+    <td valign="top" class="text"><p>In our previous examples, we had seen how to build XML data in a string variable using concatenation and then provide it to the chart. </p>
+      <p>However, often you'll feel the need to load external XML data and then provide it to the chart. However, FusionWidgets chart doesn't directly accept path to the XML file. As such, you'll need to load the XML data in your code and then pass the XML object to the chart.</p>
+      <p>Here, we'll see an example.  </p></td>
+  </tr>
+ 
+  <tr>
+    <td valign="top" class="header"><a name="externaldata"></a>An example </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><p>For this example, we first create a physical XML file named as <span class="codeInline">MyData.xml</span> and store the following data in this. We'll use this data to plot an angular gauge: </p></td>
+  </tr>
+  <tr>
+    <td>
+
+	<pre class="code_container prettyprint">&lt;chart showBorder='0' bgColor='FFFFFF' lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' upperLimitDisplay='Good' gaugeStartAngle='180' gaugeEndAngle='0' palette='1' numberSuffix='%' tickValueDistance='20' showValue='1'&gt;
+&nbsp;&nbsp;&nbsp;&lt;colorRange&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;color minValue='0' maxValue='75' code='FF654F'/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;color minValue='75' maxValue='90' code='F6BD0F'/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;color minValue='90' maxValue='100' code='8BBA00'/&gt;
+&nbsp;&nbsp;&nbsp;&lt;/colorRange&gt;
+&nbsp;&nbsp;&nbsp;&lt;dials&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dial value='92' rearExtension='10'/&gt;
+&nbsp;&nbsp;&nbsp;&lt;/dials&gt;
+&lt;/chart&gt;</pre>
+</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">Now, we create <span class="codeInline">ExternalData.fla</span> in the same folder. It contains the background and other setup like <span class="codeInline">MyFirstChart.fla</span>. We just change the code present in <span class="codeInline">Actions</span> layer to: </td>
+  </tr>
+   <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+       <pre class="code_container prettyprint">/** 
+ * In this example, we'll show to load data stored in external XML files in the chart. 
+ * Since the chart accepts only XML Objects (and not path to XML), you'll need to load 
+ * the XML in your code and then pass the object to chart. 
+ * In this example, we've stored data in an external XML file called MyData.xml 
+ */ 
+
+//Include the relevant files 
+#include &quot;com/fusioncharts/is/includes/LoadingFunctions.as&quot; 
+#include &quot;com/fusioncharts/is/includes/AppMessages.as&quot; 
+
+//Import the required chart class. 
+import com.fusioncharts.is.core.charts.AngularGauge; 
+
+// ------------- Load XML Data for the chart -------------- // 
+var xmlData:XML = new XML(); 
+//Delegate the onLoad event of XML to our custom createChart function 
+xmlData.onLoad = createChart; 
+xmlData.load(&quot;MyData.xml&quot;); 
+
+//createChart method is called when XML has loaded 
+function createChart(success){ 
+	if (success){ 
+		
+		//Create the container movie clip. Note the use of _root here, as we're still 
+		//in scope of XML object. To come out of that, you may use Delegate class. 
+		var chartContainerMC:MovieClip = _root.createEmptyMovieClip(&quot;ChartHolder&quot;,1); 
+		
+		//Now, instantiate the chart using Constructor function of the chart. 
+		var myFirstChart:AngularGauge = new AngularGauge(chartContainerMC, 1, 450, 220, 20, 15, false, false, &quot;&quot;, &quot;EN&quot;, &quot;noScale&quot;); 
+		
+		//Convey the XML data object to chart. 
+		myFirstChart.setXMLData(xmlData); 
+		
+		//Draw the chart 
+		myFirstChart.render(); 
+	}
+	else
+	{ 
+		trace(&quot;Error in loading data&quot;); 
+	} 
+} 
+
+//Stop 
+stop();</pre>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><p>In the above code, we're:</p>
+      <ol>
+        <li>First including <span class="codeInline">com/fusioncharts/is/includes/LoadingFunctions.as</span> &amp;   <span class="codeInline">com/fusioncharts/is/includes/AppMessages.as</span> -   required files for pre-loading chart. </li>
+        <li>Thereafter, we import the <span class="codeInline">AngularGauge</span> class. </li>
+        <li>Now, since our data is present in the external <span class="codeInline">MyData.xml</span> file, we create an XML object named as <span class="codeInline">xmlData</span> and load this XML. </li>
+        <li>We define the <span class="codeInline">onLoad</span> event handler of this XML object as our custom function <span class="codeInline">createChart</span>. </li>
+        <li>Now, it is inside this function  that we do the work of chart creation and rendering. We create the empty movie clip, initialize chart, set XML data as our XML object (<span class="codeInline">xmlData</span>) and finally render the chart. </li>
+    </ol>
+    <p>As you can see, the only basic difference is that, here you're loading the XML in your objects and then providing it to the chart. </p>
+    <p>When you now compile the file, you'll get similar results. </p></td>
+  </tr>
+  <tr>
+    <td valign="top" class="text"><img src="../Images/Flash_O_Out.jpg" width="512" height="308" /></td>
+  </tr>
+   <tr>
+    <td valign="top" class="text">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" class="text">Next, we'll see how to use the APIs exposed by chart. </td>
+  </tr>
+</table>
+<!-- footer links starts-->
+<div id="fcfooter"></div>
+<script type="text/javascript">
+	document.getElementById("fcfooter").innerHTML =  addFCFooter("Overview|Flash_Overview.html","Loading multiple charts|Flash_Multiple.html");
+</script>
+<!-- footer links ends -->
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+
+	highlightSearch();
+
+//-->
+</body>
+</html>
+</script></body></html>

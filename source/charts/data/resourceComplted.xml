@@ -1,0 +1,16 @@
+<chart palette='2' caption='' showLabels='1' showvalues='0' decimals='3' numberPrefix='' clustered='0' exeTime='1.5' showPlotBorder='0' zGapPlot='30' zDepth='90' divLineEffect='emboss' startAngX='10' endAngX='18'><categories><category label='Chakravarthy A.B' /><category label='Aparna Ram' /><category label='Emily Paarmann' /></categories>
+							<dataset seriesName='Assigned'  showValues='0'><set value='22' /><set value='12' /><set value='20' /></dataset>
+							<dataset seriesName='Completed'  showValues='0'><set value='18' /><set value='8' /><set value='5' /></dataset>
+							<dataset seriesName='Follow-Ups'  showValues='0'><set value='4' /><set value='4' /><set value='15' /></dataset>
+							<dataset seriesName='Detailed-diligence'  showValues='0'><set value='' /><set value='' /><set value='' /></dataset>
+							<dataset seriesName='Incubation'  showValues='0'><set value='' /><set value='' /><set value='' /></dataset>
+
+							<styles>
+							<definition>
+							<style name='captionFont' type='font' size='15' />
+							</definition>
+							<application>
+							<apply toObject='caption' styles='captionfont' />
+							</application>
+							</styles>
+							</chart>

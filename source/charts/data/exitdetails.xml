@@ -1,0 +1,2 @@
+<chart caption="Exit Details Report" yAxisName="Amount" bgColor="F7F7F7, E9E9E9" numVDivLines="10" divLineAlpha="30" labelPadding="10" yAxisValuesPadding="10" showValues="1" rotateValues="1" valuePosition="auto">
+	                <categories></categories><dataset seriesName="Amout"></dataset><dataset seriesName="Stage"></dataset><dataset seriesName="From Date"></dataset></chart>
