@@ -44,7 +44,7 @@ class Login extends CI_Controller {
             $mail = $this->Mmail->MailDetails($whereM);
             $mail_count = count($mail);
 
-            /* used to replace the from & to hash value in mail content */
+            /* used to replace the from & to hash value in mail contents */
 
             $mail_list['sender_id'];
             $from = $this->Minnovation_mail->getSender($mail_list['sender_id'], '');
