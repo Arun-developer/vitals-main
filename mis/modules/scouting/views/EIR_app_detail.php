@@ -159,7 +159,7 @@ foreach ($basic_info as $row):
                     <tr class="odd">
                         <td>Have you raised any funding for your incubatee?</td>
                         <td>
-                            <? echo $val = ($app['funding'] == '1') ? 'YES' : 'No'; ?>
+                            <?php echo $val = ($app['funding'] == '1') ? 'YES' : 'No'; ?>
                         </td>
                     </tr>
                     <?php
@@ -174,7 +174,7 @@ foreach ($basic_info as $row):
                     <tr class="odd">
                         <td>Have you set up an incubatee previously?</td>
                         <td>
-                            <? echo $val = ($app['enterprise_setup'] == '1') ? 'YES' : 'No'; ?>
+                            <?php echo $val = ($app['enterprise_setup'] == '1') ? 'YES' : 'No'; ?>
                         </td>
                     </tr>
                     <?php
@@ -189,14 +189,14 @@ foreach ($basic_info as $row):
                     <tr class="odd">
                         <td>Are you incorporated as a for-profit entity?</td>
                         <td>
-                            <? echo $val = ($app['for_profit'] == '1') ? 'YES' : 'No'; ?>
+                            <?php echo $val = ($app['for_profit'] == '1') ? 'YES' : 'No'; ?>
                         </td>
                     </tr>
                     <tr class="even">
                         <td>The Entrepreneur-in-Residence program is a full-time, 12-month commitment. Are you willing to commit
                             12 months to establishing your business?</td>
                         <td>
-                            <? echo $val = ($app['program_time'] == '1') ? 'YES' : 'No'; ?>
+                            <?php echo $val = ($app['program_time'] == '1') ? 'YES' : 'No'; ?>
                         </td>
                     </tr>
                     <tr class="odd">

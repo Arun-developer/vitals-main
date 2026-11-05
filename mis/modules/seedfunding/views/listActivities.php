@@ -180,7 +180,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
                 <th width="292"><?=$ins['from']?> - <?=$ins['to']?>
 
                     <br />( Installment
-                    <? echo ++$i;?>) &nbsp; in (<img src="<?=base_url();?>source/template/images/show_image_helcat.png"
+                    <?php echo ++$i;?>) &nbsp; in (<img src="<?=base_url();?>source/template/images/show_image_helcat.png"
                         width="18px" height="12px" />)</th>
 
                 <?php 
@@ -361,7 +361,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
             </tr>
 
-            <?
+            <?php
 
 	} ?>
 

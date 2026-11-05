@@ -146,7 +146,7 @@ $form_name = 'incub_progress_master';
                                 <tr>
                                     <td colspan='9' align='center'>No Records found!</td>
                                 </tr>
-                            <? }
+                            <?php }
                             ?>
                         </tbody>
                     </table>

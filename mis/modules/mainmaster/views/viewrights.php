@@ -84,7 +84,7 @@ $this->jquery->fancybox();
 
                         </td>
                         <td align="left" valign="middle" width="60">
-                            <? if ($row["viewing"] == '1') {
+                            <?php if ($row["viewing"] == '1') {
                                 ?>
 
                                 <input type="checkbox" title="Make Inctive" onclick="window.location = '<?= site_url('mainmaster/useraccess/changestatus/' . $row["userg_id"] . '/' . $row['mod_id'] . '/' . $row['smod_id'] . '/view' . '/0') ?>';" class="view_<?= $r; ?>" name="view_<?= $r; ?>" checked="checked"/>
@@ -97,7 +97,7 @@ $this->jquery->fancybox();
                             <?php } ?>
                         </td>
                         <td align="left" valign="middle" width="60">
-                            <? if ($row["deletion"] == '1') {
+                            <?php if ($row["deletion"] == '1') {
                                 ?>
                                 <input type="checkbox"  title="Make Inctive"  onclick="window.location = '<?= site_url('mainmaster/useraccess/changestatus/' . $row["userg_id"] . '/' . $row['mod_id'] . '/' . $row['smod_id'] . '/del' . '/0') ?>';" class="del_<?= $r; ?>" name="del_<?= $r; ?>" checked="checked" />
                                 <?php
@@ -108,7 +108,7 @@ $this->jquery->fancybox();
 
                         </td>
                         <td align="left" valign="middle" width="60">
-                            <? if ($row["approve"] == '1') {
+                            <?php if ($row["approve"] == '1') {
                                 ?>
 
                                 <input type="checkbox" onclick="window.location = '<?= site_url('mainmaster/useraccess/changestatus/' . $row["userg_id"] . '/' . $row['mod_id'] . '/' . $row['smod_id'] . '/app' . '/0') ?>';"  title="Make Inctive"  class="approve_<?= $r; ?>" name="approve_<?= $r; ?>" checked="checked"/>
@@ -171,7 +171,7 @@ $this->jquery->fancybox();
             <tr>
                 <td colspan='9' align='center'>No Records found!</td>
             </tr>
-        <? }
+        <?php }
         ?>
         </tbody>
     </table>

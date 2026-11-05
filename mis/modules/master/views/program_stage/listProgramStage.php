@@ -101,7 +101,7 @@ $form_name = 'program_stage_list';
                 <tr>
                     <td colspan='7' align='center'>No Records found!</td>
                 </tr>
-            <? }
+            <?php }
             ?>
 
         </tbody>

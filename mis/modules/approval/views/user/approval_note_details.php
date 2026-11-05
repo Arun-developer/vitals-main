@@ -538,7 +538,7 @@ if ($approvalNoteDetails[0]['status'] == 'pending') {
                                                         <div class="display-flex">
                                                         <label>Reporting Officer Approval :</label>
                                                         <p>
-                                                        <? (ucfirst($row['RO_status']) == 'Defered' ? 'Deferred' : ucfirst($row['RO_status'])); ?>
+                                                        <?php (ucfirst($row['RO_status']) == 'Defered' ? 'Deferred' : ucfirst($row['RO_status'])); ?>
                                                         <?php
                                                         if (isset($approvalNoteDetails[0]['RO_status']) && $approvalNoteDetails[0]['RO_status'] != '') {
                                                             if (ucfirst($row['RO_status']) == 'Defered') {

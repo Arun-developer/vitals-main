@@ -101,7 +101,7 @@ $form_name = 'query_list';
             <td align="left" valign="middle"><?=$row["created_emp"]?></td>
             <td align="left" valign="middle"><?=$row["employee_name"]?></td>
             <td align="left" valign="middle">
-                <? 
+                <?php 
                 if($row["query_status"]=='1') { 
                     echo anchor('query/changestatus/'.$activity.'/'.$row["id"].'/0',"Open",'class=""'); 
                 }else{ 
@@ -126,7 +126,7 @@ $form_name = 'query_list';
         <tr>
             <td colspan='11' align='center'>No Records found!</td>
         </tr>
-        <?
+        <?php
 	} ?>
 
     </tbody>

@@ -71,9 +71,9 @@ $form_name = 'instance_list';
             <td align="left" valign="middle">
 			<?php if(!empty($row["document"])){ ?>
               <a href="<?=base_url()?>uploads/instance/<?=$row["document"]?>" target="_blank" ><img width="16" height="16" src="<?php echo base_url(); ?>source/template/images/icons/download.gif"></a>
-             <? }?>
+             <?php }?>
             </td>
-			<td align="left" valign="middle"><? 
+			<td align="left" valign="middle"><?php 
 			if($row["status"]=='1') 
 			{ ?>
 			    <a href="<?=site_url('master/instance/changestatus/'.$row["source_id"].'/'.$row["id"].'/0') ?>"  title="Make Inactive" >
@@ -104,7 +104,7 @@ $form_name = 'instance_list';
 		<tr>
 		<td colspan='7' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 		
 	</tbody>

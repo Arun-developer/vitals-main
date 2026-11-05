@@ -88,7 +88,7 @@ $form_name = 'source_list';
                         <td align="left" valign="middle">
                             <a href="<?= site_url('master/instance/view_list/' . $row['id']) ?>"  class="">View Instance</a></td>
                         <?php if ($isAuth) { ?>
-                            <td align="left" valign="middle"><?
+                            <td align="left" valign="middle"><?php
                                 if ($row["status"] == '1') {
                                     ?>
                                     <a href="<?= site_url('master/source/changestatus/' . $row["id"] . '/0') ?>"  title="Make Inactive" >

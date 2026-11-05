@@ -143,7 +143,7 @@
                         <tr>
                             <td colspan='2' align='center' style="color:red;">No Matching Records found!</td>
                         </tr>
-                        <?
+                        <?php
 	} ?>
                     </tbody>
                 </table>

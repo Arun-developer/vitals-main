@@ -112,7 +112,7 @@ if(count($discussionDetails)!='0'){
         {
 		?>
 		<li>No Comments Added!</li>
-	<?
+	<?php
 	} ?>
 </ul>
  <form action=""  method="post" name="discussionSearch" id="discussionSearch"></form>

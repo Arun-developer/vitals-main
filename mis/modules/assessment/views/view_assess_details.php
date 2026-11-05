@@ -41,7 +41,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                         <li>
                             <div class="comment-body clearfix">
                                 <h3><?= $row['title'] ?></h3>
-                                <div style="width:100%; overflow:auto;"><?
+                                <div style="width:100%; overflow:auto;"><?php
                                     $source = $row['description'];
                                     $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i';
                                     preg_match_all($imgLink, $source, $matches);

@@ -2,7 +2,7 @@
     <form id="approverequestform"
           action="<?= site_url('mentor/changevillgrostatus/approve/' . $innovationid . '/' . $requestid); ?>"
           class="uniform" method="post">
-              <? $status = 1; ?>
+              <?php $status = 1; ?>
         <input type="hidden" name="requestid" value="<?= $requestid; ?>" />
         <input type="hidden" name="villgrostatus" value="<?= $status; ?>" />
         <input type="hidden" name="mentorid" value="<?= $mentorid; ?>" />

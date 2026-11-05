@@ -14,7 +14,7 @@ echo "<h2>".@$cpagetitle."</h2>";
 </div><br/>
 	<div id="cssform">
 
-	<? $sort=(@$sort_order == 'desc') ? ('asc') : ('desc'); ?>
+	<?php $sort=(@$sort_order == 'desc') ? ('asc') : ('desc'); ?>
 		<table cellpadding="0" cellspacing="0" border="0" id="table" class="tablelist gtable">
 		<thead>
 			<tr>
@@ -79,7 +79,7 @@ echo "<h2>".@$cpagetitle."</h2>";
 			<tr>
 			<td colspan='9' align='center'>No Records found!</td>
 			</tr>
-		<?
+		<?php
 		} ?>
 			 </tbody></table>
 	

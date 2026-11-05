@@ -46,7 +46,7 @@ else
             <td align="left" valign="middle"><?=ucfirst($row["required"]);?></td>
             <td align="left" valign="middle"  width="400"><?=(is_array($row["value"]))?implode(',',$row["value"]):$row["value"];?></td>
 			<td align="left" valign="middle" width="60">
-			<? if($row["status"]=='1')
+			<?php if($row["status"]=='1')
 			{
 				 echo anchor('master/incub_progress_master/changestatus/'.$row["id"].'/0/'.$pid.'/sub',"Active",'class="button"'); 		
 			}else{ 
@@ -69,7 +69,7 @@ else
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
 	</table>

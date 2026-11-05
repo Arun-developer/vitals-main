@@ -1,6 +1,6 @@
 		<section id="main" style="height:100px !important;">
 		<form id="rejectrequestform" action="<?=site_url('training/liststatus/reject/'.$innovationid.'/'.$id);?>" class="uniform" method="post">
-		  <? $status=1; ?>
+		  <?php $status=1; ?>
 		 <input type="hidden" name="innovationid" value="<?= $innovationid;?>" />
 		 <input type="hidden" name="id" value="<?=$id;?>" />
 		 <input type="hidden" name="status" value="<?=$status;?>" />

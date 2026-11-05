@@ -132,7 +132,7 @@ if($this->session->userdata('user_type') != 'incubatee')
         <tr>
             <td colspan='4' align='center'>No Records found!</td>
         </tr>
-        <?
+        <?php
 	} ?>
     </tbody>
 </table>
@@ -195,7 +195,7 @@ if($this->session->userdata('user_type') != 'incubatee')
         <tr>
             <td colspan='4' align='center'>No Records found!</td>
         </tr>
-        <?
+        <?php
 	} ?>
     </tbody>
 </table>

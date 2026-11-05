@@ -88,7 +88,7 @@ $experience = isset($_REQUEST["experience"])?$_REQUEST["experience"]:"";
 					<tr>
 					  <td colspan='7' align='center'>No Records found!</td>
 					</tr>
-					<?
+					<?php
 			} ?>
           <br/>
           </tbody>

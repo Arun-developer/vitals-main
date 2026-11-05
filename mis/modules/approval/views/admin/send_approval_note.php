@@ -89,7 +89,7 @@
                                                                     <label>Programme<span>*</span></label>
                                                                     <select class="form-control" name="programme" id='programme_id' onchange="getDonorList('1', this.value); removeAddMore();">
                                                                         <option value=''>--Select--</option>
-                                                                        <? foreach ($program_list as $program) { ?>
+                                                                        <?php foreach ($program_list as $program) { ?>
                                                                             <option value='<?= $program['programme_id']; ?>'><?= $program['programme']; ?></option>
                                                                         <?php } ?>
                                                                     </select>

@@ -46,7 +46,7 @@
             <tr>
                 <td colspan='7' align='center'>No Records found!</td>
             </tr>
-            <?
+            <?php
 	} ?>
         </tbody>
     </table>

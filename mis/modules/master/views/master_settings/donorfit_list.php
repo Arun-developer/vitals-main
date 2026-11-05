@@ -143,7 +143,7 @@ if (isset($_REQUEST['fit_name']) && $_REQUEST['fit_name'] != '') {
             <tr>
                 <td colspan='7' align='center'>No Records found!</td>
             </tr>
-        <? }
+        <?php }
         ?>
 
     </tbody>

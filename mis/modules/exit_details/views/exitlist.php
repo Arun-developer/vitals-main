@@ -68,7 +68,7 @@ $this->load->model('exit_details/mexitdetails');
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
 	</table>

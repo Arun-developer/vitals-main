@@ -24,7 +24,7 @@
              ?>
                 <th width="292"><?=$ins['from']?> - <?=$ins['to']?>
                     <br />( Installment
-                    <? echo ++$i;?>)</th>
+                    <?php echo ++$i;?>)</th>
                 <?php 
             endforeach;
             ?>
@@ -105,7 +105,7 @@
             <tr>
                 <td colspan='7' align='center'>No Records found!</td>
             </tr>
-            <?
+            <?php
 	} ?>
         </tbody>
     </table>

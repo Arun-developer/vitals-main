@@ -23,5 +23,5 @@ if($na != $na_new)
 <tr>
 <td style="padding-left:50px;"><?=$item['label']?></td>
 </tr>
-<? } ?>
+<?php } ?>
 </table>

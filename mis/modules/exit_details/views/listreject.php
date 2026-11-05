@@ -1,6 +1,6 @@
 		<section id="main" style="height:100px !important;">
 		<form id="rejectrequestform" action="<?=site_url('media/liststatus/reject/'.$innovationid.'/'.$id);?>" class="uniform" method="post">
-		  <? $decision=2; ?>
+		  <?php $decision=2; ?>
 		 <input type="hidden" name="innovationid" value="<?= $innovationid;?>" />
 		 <input type="hidden" name="id" value="<?=$id;?>" />
 		 <input type="hidden" name="decision" value="<?=$decision;?>" />

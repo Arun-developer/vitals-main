@@ -403,7 +403,7 @@ $keywordSearchType = array('word' => 'Documents','pdf' => 'Pdf','excel' => 'Exce
                 <tr>
                     <td colspan='9' align='center'>No Records found!</td>
                 </tr>
-                <?
+                <?php
 	} ?>
             </tbody>
         </table>

@@ -20,7 +20,7 @@ $from = isset($val["from"]) ? $val["from"] : "";
 <p style="float:right; color:red; font-weight:bold;">Fields marked with (*) represents required. </p>
 <section id="main" style="height:200px !important;">
     <form id="rejectrequestform" action="<?=$formAction;?>" class="uniform" method="post">
-        <? $editrequest_status=1; ?>
+        <?php $editrequest_status=1; ?>
         <input type="hidden" name="innovationid" value="<?=$innovationid;?>" />
         <input type="hidden" name="editrequest_status" value="<?=$editrequest_status;?>" />
         <input type="hidden" name="olddocument" value="<?=$documents?>" />

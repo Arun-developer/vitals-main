@@ -55,7 +55,7 @@ $aisDomain = "http://localhost/ais/index.php/";
 		<tr>
 		<td colspan='7' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?> 
 	</tbody>
 	</table>

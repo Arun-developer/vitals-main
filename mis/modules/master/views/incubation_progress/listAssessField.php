@@ -42,7 +42,7 @@ $nullLink = "javascript:void(0);";
 			<a href="<?=$nullLink?>" class="button makeOrderDown" criteria="<?=$row['pid']?>" id="<?=$row["id"]?>"  >Down</a>
 			</td>
 			<td align="left" valign="middle" width="60">
-			<? if($row["status"]=='1')
+			<?php if($row["status"]=='1')
 			{
 				 echo anchor('master/incub_progress_master/changestatus/'.$row["id"].'/0/'.$pid,"Active",'class="button"'); 		
 			}else{ 

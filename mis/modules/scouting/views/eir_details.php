@@ -263,7 +263,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     <td style="border-right:thick solid #fff;" width="30%">Have you raised any funding for
                                         your incubatee?</td>
                                     <td width="60%">
-                                        <? echo $val = ($eir_detail[0]['funding'] == '1') ? 'YES' : 'No'; ?>
+                                        <?php echo $val = ($eir_detail[0]['funding'] == '1') ? 'YES' : 'No'; ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -279,7 +279,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     <td style="border-right:thick solid #fff;" width="30%">Have you set up an incubatee
                                         previously?</td>
                                     <td width="60%">
-                                        <? echo $val = ($eir_detail[0]['enterprise_setup'] == '1') ? 'YES' : 'No'; ?>
+                                        <?php echo $val = ($eir_detail[0]['enterprise_setup'] == '1') ? 'YES' : 'No'; ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -296,7 +296,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     <td style="border-right:thick solid #fff;" width="30%">Are you incorporated as a
                                         for-profit entity?</td>
                                     <td width="60%">
-                                        <? echo $val = ($eir_detail[0]['for_profit'] == '1') ? 'YES' : 'No'; ?>
+                                        <?php echo $val = ($eir_detail[0]['for_profit'] == '1') ? 'YES' : 'No'; ?>
                                     </td>
                                 </tr>
                                 <tr class="even">
@@ -304,7 +304,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                         program is a full-time, 12-month commitment. Are you willing to commit 12 months to
                                         establishing your business?</td>
                                     <td width="60%">
-                                        <? echo $val = ($eir_detail[0]['program_time'] == '1') ? 'YES' : 'No'; ?>
+                                        <?php echo $val = ($eir_detail[0]['program_time'] == '1') ? 'YES' : 'No'; ?>
                                     </td>
                                 </tr>
                                 <tr class="odd">

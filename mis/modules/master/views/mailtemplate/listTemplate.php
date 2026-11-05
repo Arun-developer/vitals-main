@@ -48,7 +48,7 @@
 	</div> 
 	<div id="cssform">
 
-	<? $sort=(@$sort_order == 'desc') ? ('asc') : ('desc'); ?>
+	<?php $sort=(@$sort_order == 'desc') ? ('asc') : ('desc'); ?>
 		<table cellpadding="0" cellspacing="0" border="0" id="table" class="tablelist gtable">
 		<thead>
 			<tr>
@@ -73,7 +73,7 @@
 			<td align="left" valign="middle"><?=$row["messagetype"]; ?></td>
 			<td align="left" valign="middle"><?=$row["messagesubject"]?></td>
 			
-			<td align="left" valign="middle"><? if($row["status"]=='1') { echo anchor('master/mailtemplate/view_mailtemplate/status/'.$row["id"].'/0',"<img src='".base_url()."source/template/images/icons/active.png' border='0'  / >"); }else{ echo anchor('master/mailtemplate/view_mailtemplate/status/'.$row["id"].'/1',"<img src='".base_url()."source/template/images/icons/inactive.png' border='0'  / >"); }
+			<td align="left" valign="middle"><?php if($row["status"]=='1') { echo anchor('master/mailtemplate/view_mailtemplate/status/'.$row["id"].'/0',"<img src='".base_url()."source/template/images/icons/active.png' border='0'  / >"); }else{ echo anchor('master/mailtemplate/view_mailtemplate/status/'.$row["id"].'/1',"<img src='".base_url()."source/template/images/icons/inactive.png' border='0'  / >"); }
 			?></td>
 			<td align="left" valign='middle' nowrap="nowrap" >
 			<?php echo anchor('master/mailtemplate/view_mailtemplate/edit/'.$row["id"],"<img src='".base_url()."source/template/images/icons/edit.png' border='0' height='20' / >");	?>
@@ -92,7 +92,7 @@
 			<tr>
 			<td colspan='9' align='center'>No Records found!</td>
 			</tr>
-		<?
+		<?php
 		} ?>
 			 </tbody></table>
 	

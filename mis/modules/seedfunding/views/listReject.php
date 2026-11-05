@@ -1,7 +1,7 @@
 		<section id="main" style="height:100px !important;">
 		    <form id="rejectrequestform" action="<?=site_url('seedfunding/liststatus/reject/'.$innovationid);?>"
 		        class="uniform" method="post">
-		        <? $editrequest_status=2; ?>
+		        <?php $editrequest_status=2; ?>
 		        <input type="hidden" name="innovationid" value="<?= $innovationid;?>" />
 		        <input type="hidden" name="editrequest_status" value="<?=$editrequest_status;?>" />
 		        <h1><?=$cpagetitle?></h1>

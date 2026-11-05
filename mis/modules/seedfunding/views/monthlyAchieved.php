@@ -50,7 +50,7 @@
                                 <a href="<?= site_url('seedfunding/progress_status/' . $innovation['id'] . '/' . $row['mid'] . '/1') ?>">Completed</a> &nbsp; <?php
                             } if ($row['progress_status'] != '2') {
                                 ?>
-                                <a href="<?= site_url('seedfunding/progress_status/' . $innovation['id'] . '/' . $row['mid'] . '/2') ?>">Not Completed</a><?
+                                <a href="<?= site_url('seedfunding/progress_status/' . $innovation['id'] . '/' . $row['mid'] . '/2') ?>">Not Completed</a><?php
                             }
                         }
                         ?>

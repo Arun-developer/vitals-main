@@ -426,7 +426,7 @@ foreach ($eir_user as $row):
                             <input type="radio" name="funding" value='0'
                             <?php echo $checked = (isset($eir_app[0]['funding']) && ($eir_app[0]['funding'] == '0')) ? 'checked=checked' : ''; ?>
                                    onchange="show_fund_div(this.value, 'funding');" /> No
-                            <!--<? echo $val = ($eir_app[0]['funding'] == '1') ? 'YES' : 'No'; ?>-->
+                            <!--<?php echo $val = ($eir_app[0]['funding'] == '1') ? 'YES' : 'No'; ?>-->
                         </td>
                     </tr>
 

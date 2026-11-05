@@ -209,7 +209,7 @@
                     <tr>
                         <td colspan='7' align='center'>No Matching Records found!</td>
                     </tr>
-                <? }
+                <?php }
                 ?>
 
             </tbody>

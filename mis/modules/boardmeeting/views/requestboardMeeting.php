@@ -7,7 +7,7 @@
 </script>
 
 <!-- start id-form -->
-<form name="addBoard" id="addBoard" enctype="multipart/form-data" action="<?//=$formAction;?>" method="post" >
+<form name="addBoard" id="addBoard" enctype="multipart/form-data" action="<?php //=$formAction;?>" method="post" >
 <input type="hidden" value="<?=$action?>" name="action" />
 <input type="hidden" value="<?=$id?>" name="id" />
 <input type="hidden" value="<?=$innovationid?>" name="innovationid" />

@@ -111,7 +111,7 @@ $if = (!$isincubAuth);
             <tr>
                 <td colspan='9' align='center'>No Records found!</td>
             </tr>
-            <?
+            <?php
 	} ?>
         </tbody>
     </table>

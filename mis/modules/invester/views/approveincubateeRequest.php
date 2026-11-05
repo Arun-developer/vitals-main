@@ -1,6 +1,6 @@
 <section id="main">
     <form id="approverequestform" action="<?= site_url('invester/changeincubateestatus/approve/' . $innovationid . '/' . $requestid); ?>" class="uniform" method="post">
-        <? $status = 1; ?>
+        <?php $status = 1; ?>
         <input type="hidden" name="requestid" value="<?= $requestid; ?>" />
         <input type="hidden" name="id" value="<?= $id; ?>" />
         <input type="hidden" name="incubateestatus" value="<?= $status; ?>" />

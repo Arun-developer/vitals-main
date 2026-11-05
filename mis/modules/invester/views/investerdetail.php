@@ -276,7 +276,7 @@ $val=$investerDetails[0];
 		<tr>
 		<td colspan='7' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	
 	 

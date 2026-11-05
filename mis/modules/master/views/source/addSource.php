@@ -181,7 +181,7 @@ $(document).ready(function(){
         <input type="file" name="document" value="<?=$document ?>"   />
          <?php if(!empty($document)){ ?>
           <a href="<?=base_url()?>uploads/source/<?=$document?>" target="_blank" class="button">Download</a>
-         <? }?>
+         <?php }?>
      </dd>  
 	  <dt> 
 	    <dd>

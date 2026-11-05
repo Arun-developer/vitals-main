@@ -142,7 +142,7 @@ dd { padding-bottom: 15px }
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
         

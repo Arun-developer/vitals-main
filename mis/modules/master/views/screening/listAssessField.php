@@ -42,7 +42,7 @@ $nullLink = "javascript:void(0);";
               <a href="<?=$nullLink?>" class="button makeOrderDown" criteria="<?=$row['pid']?>" id="<?=$row["id"]?>"  >Down</a>
 			  </td>
 			<td align="left" valign="middle" width="60">
-			<? if($row["status"]=='1')
+			<?php if($row["status"]=='1')
 			{
 				 echo anchor('master/screening_master/changestatus/'.$row["id"].'/0/'.$pid,"Active",'class="button"'); 		
 			}else{ 
@@ -62,7 +62,7 @@ $nullLink = "javascript:void(0);";
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
 	</table>

@@ -95,7 +95,7 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
 	</table>

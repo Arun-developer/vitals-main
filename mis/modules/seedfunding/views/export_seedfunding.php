@@ -45,7 +45,7 @@
 
              <th width="auto" style="background:#99cc99;color:#333;"><?=$ins['from']?> - <?=$ins['to']?> 
 
-             <br/>( Installment <? echo ++$i;?>) &nbsp; in (<img src="<?=base_url();?>source/template/images/show_image_helcat.png" width="18px" height="12px"/>)</th>
+             <br/>( Installment <?php echo ++$i;?>) &nbsp; in (<img src="<?=base_url();?>source/template/images/show_image_helcat.png" width="18px" height="12px"/>)</th>
 			
 			<?php 
 
@@ -177,7 +177,7 @@
 
 		</tr>
 
-	<?
+	<?php
 
 	} ?>
 
@@ -342,7 +342,7 @@
 
 		</tr>
 
-	<?
+	<?php
 
 	} ?>
 

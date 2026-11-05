@@ -52,7 +52,7 @@ dfsfssdfddf
 			
            
 			<td align="left" valign="middle" width="60">
-			<? if($row["status"]=='1')
+			<?php if($row["status"]=='1')
 			{
 				 echo anchor('master/screening_master/changestatus/'.$row["id"].'/0/sub',"status"); 		
 			}else{ 
@@ -77,7 +77,7 @@ dfsfssdfddf
 		<tr>
 		<td colspan='9' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	</tbody>
 	</table>

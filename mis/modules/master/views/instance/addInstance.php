@@ -70,7 +70,7 @@
         <input type="file" name="document"  />
          <?php if(!empty($document)){ ?>
           <a href="<?=base_url()?>uploads/instance/<?=$document?>" target="_blank" class="button">Download</a>
-         <? }?>
+         <?php }?>
         </dd>
        
  </dl>      

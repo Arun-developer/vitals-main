@@ -98,7 +98,7 @@ $qualification = isset($_REQUEST["qualification"])?$_REQUEST["qualification"]:""
 		<tr>
 		<td colspan='7' align='center'>No Records found!</td>
 		</tr>
-	<?
+	<?php
 	} ?>
 	 <br/>
 	

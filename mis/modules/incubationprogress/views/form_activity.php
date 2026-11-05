@@ -301,7 +301,7 @@ table {
 		$months = date("M");  	
 	}
 	?>
-	<form name="monthchangeform" action="<?site_url('incubationprogress/form')?>" method="post">
+	<form name="monthchangeform" action="<?php site_url('incubationprogress/form')?>" method="post">
 	<select name="monthdropdown" onchange="monthchange(this.value);">
 	<option value="0" <?=($monthcount == 0)?'selected':''?>>Jan</option>
 	<option value="1" <?=($monthcount == 1)?'selected':''?>>Feb</option>

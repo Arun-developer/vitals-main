@@ -175,7 +175,7 @@ $gtag_user = $first_name . '_' . $partner_str . '_' . $this->session->userdata['
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <?php if ($search_value != '') { ?>
                             <p class="aprvd-deals">Showing search results for '<?= $search_value; ?>'</p>
-                        <? } else { ?>
+                        <?php } else { ?>
                             <p class="aprvd-deals"></p>
                         <?php } ?>
                         <div class="Diagnostic-graph">

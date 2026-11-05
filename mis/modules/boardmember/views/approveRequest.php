@@ -1,6 +1,6 @@
 <section id="main">
     <form id="approverequestform" action="<?= site_url('boardmember/changevillgrostatus/approve/' . $innovationid . '/' . $id); ?>" class="uniform" method="post">
-        <? $status = 1; ?>
+        <?php $status = 1; ?>
 
         <input type="hidden" name="villgrostatus" value="<?= $status; ?>" />
         <input type="hidden" name="requestid" value="<?= $requestid; ?>" />

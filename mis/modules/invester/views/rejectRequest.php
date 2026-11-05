@@ -1,6 +1,6 @@
 		<section id="main" style="height:200px !important;">
 			<form id="rejectrequestform" action="<?=site_url('invester/changevillgrostatus/reject/'.$innovationid.'/'.$id);?>" class="uniform" method="post">
-			  <? $status=2; ?>
+			  <?php $status=2; ?>
 			  <input type="hidden" name="requestid" value="<?=$requestid;?>" />
 		      <input type="hidden" name="villgrostatus" value="<?= $status;?>" />
 		      <input type="hidden" name="investerid" value="<?= $investerid;?>" />
