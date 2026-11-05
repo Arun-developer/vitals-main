@@ -1,7 +1,7 @@
 <?php 
 $nullLink = "javascript:void(0);";
 
-if(count($mentorDetails)>0)
+if(php72_count($mentorDetails)>0)
 {
 $val=array();
 $val=$mentorDetails[0];
@@ -67,7 +67,7 @@ $val=$mentorDetails[0];
             </thead>
             <tbody>
                 <?php
-	if(count($assignmentorList))
+	if(php72_count($assignmentorList))
 	{   
 	   $r=1;
 		foreach($assignmentorList as $row)

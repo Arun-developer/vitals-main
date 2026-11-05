@@ -43,7 +43,7 @@ $form_name = 'weekly_report';
 	</thead>
 	<tbody>
     <?php
-	if(count($resourceReport)){
+	if(php72_count($resourceReport)){
 		foreach($resourceReport as $row):
 		?>
 			<tr>

@@ -214,7 +214,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
         </div>
     </div>
 
-    <input type="hidden" id="enableCount" value="<?= count($business_nature); ?>">
+    <input type="hidden" id="enableCount" value="<?= php72_count($business_nature); ?>">
 
     <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio')); ?>
 	

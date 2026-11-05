@@ -29,7 +29,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
 if ($isGrade && $innovation['stage'] > '1') {
     $currentStage = $this->Mprogram_stage->getCurrentStage('1');
     $activity = $this->Mactivities->getActivityForGrading($innovation['id'], $currentStage);
-    if (count($activity)) {?>
+    if (php72_count($activity)) {?>
 <li><a href="<?=site_url('grading/view/' . $activity['0']['id']);?>" class="button" >View Grading &amp; Feedback</a></li>
 <?php }}?>
 <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || $innovation['isAssociate']) {?>

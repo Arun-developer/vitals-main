@@ -202,21 +202,21 @@ if($isEdit){
 
     <?php
 
-	$count = count($fieldsList);
+	$count = php72_count($fieldsList);
 	$question = 0;
 	$answer = 0;
 	$myanswer =0;
 	foreach($fieldsList as $key => $value) {
 				
-		$question += count($fieldsList[$key]['label']);
+		$question += php72_count($fieldsList[$key]['label']);
 		if($fieldsList[$key]['answer'] == "") {
 			$answer  = "0";
 		} else {
-			$answer += count($fieldsList[$key]['answer']);		
+			$answer += php72_count($fieldsList[$key]['answer']);		
 			
 		}	
 		
-		 $myanswer +=count($fieldsList[$key]['answer']);
+		 $myanswer +=php72_count($fieldsList[$key]['answer']);
 	}	
 	
 	?>
@@ -227,15 +227,15 @@ if($isEdit){
 	$this->load->model('master/Mprogram_service');
 	$answerincub = $this->Mscreening->getInnovationService($innovation['id']);
     $programService = $this->Mprogram_service->getProgramServiceCombo('46');
-	$count = count($programService);
+	$count = php72_count($programService);
 	$questionIncubation = 0;
 	$answerIncubation = 0;
 	foreach($programService as $row) {
 			
-		$questionIncubation += count($row['title']);
+		$questionIncubation += php72_count($row['title']);
 	}
 	foreach($answerincub as $answerkey => $answervalue) {
-			$answerIncubation += count($answerincub[$answerkey]);	
+			$answerIncubation += php72_count($answerincub[$answerkey]);	
 	}
 	
 ?>
@@ -314,7 +314,7 @@ foreach($fieldsList as $row):
 					foreach($row['value'] as $key=>$value): ?>
             <input type="hidden" name="<?=$row['id']?>[]"
                 class="<?=$suQuesion?> <?=($row['required'] == 'yes')?'required':'';?> <?=$row['class']?>"
-                value="<?=$value?>" <?=(in_array($value,$cfValue))?'checked="checked"':'';?> />
+                value="<?=$value?>" <?=(php72_in_array($value,$cfValue))?'checked="checked"':'';?> />
             <br />
             <?php
 					 endforeach;

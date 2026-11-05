@@ -12,7 +12,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) ||
 <?php
 
 $isReinvite = false;
-if(count($sentInfo)>0)
+if(php72_count($sentInfo)>0)
 {
 	?>
     <table class="gtable detailtable">

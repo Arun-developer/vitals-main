@@ -105,7 +105,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         <main class="page-content">
                                             <?php
                                             $tot_volume = 0;
-                                            if (count($approved_channel) > 0) {
+                                            if (php72_count($approved_channel) > 0) {
                                                 foreach ($approved_channel as $channel) {
                                                     $get_mnth = $actual_month[$current_month];
                                                     $get_volume = json_decode($channel['data']);
@@ -143,7 +143,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 <tbody>
                                                                     <?php
                                                                     $i = 1;
-                                                                    if (count($approved_channel) > 0) {
+                                                                    if (php72_count($approved_channel) > 0) {
                                                                         foreach ($approved_channel as $channel) {
                                                                             $cond['channel_id'] = $channel['id'];
                                                                             $cond['inv_id'] = $channel['inv_id'];
@@ -205,7 +205,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($channel_plan); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($channel_plan); ?>">
 <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio')); ?>

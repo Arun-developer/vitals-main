@@ -106,7 +106,7 @@ class Master extends MY_Controller {
             $config['display_pages'] = TRUE;
             $config['page_query_string'] = TRUE;
             $config['base_url'] = $search_base_url;
-            $config['total_rows'] = count($getMasterData_count);
+            $config['total_rows'] = php72_count($getMasterData_count);
             $config['per_page'] = $limit;
             $config['uri_segment'] = 4;
             $config['num_links'] = 3;
@@ -255,7 +255,7 @@ class Master extends MY_Controller {
             $config['display_pages'] = TRUE;
             $config['page_query_string'] = TRUE;
             $config['base_url'] = $search_base_url;
-            $config['total_rows'] = count($getMasterData_count);
+            $config['total_rows'] = php72_count($getMasterData_count);
             $config['per_page'] = $limit;
             $config['uri_segment'] = 4;
             $config['num_links'] = 3;
@@ -482,7 +482,7 @@ class Master extends MY_Controller {
             $field = array('id');$table_name =  'hr_job_specification';$change_db = false;$db_name = '';
         }
         if(!empty($master_id) && !empty($master_name) && !empty($status)){
-           for($id=0;$id<=count($master_id)-1;$id++){
+           for($id=0;$id<=php72_count($master_id)-1;$id++){
                 if($master_type == 'pay_grade'){
                     $condition=array('id'=>$master_id[$id]);
                     $data = array(
@@ -510,7 +510,7 @@ class Master extends MY_Controller {
            }
            $this->setErrorMessage('Success','Record Updated Sucessfully');
         }else{
-            for($id=0;$id<=count($master_name)-1;$id++){
+            for($id=0;$id<=php72_count($master_name)-1;$id++){
                 if($master_type == 'pay_grade'){
                     $data = array(
                         'grade_name'=>$master_name[$id],
@@ -535,7 +535,7 @@ class Master extends MY_Controller {
         $budget_head = $this->input->post('budget_head');
         $pid= 0;
         if(!empty($master_id) && !empty($master_name) && !empty($status)){
-           for($id=0;$id<=count($master_id)-1;$id++){ 
+           for($id=0;$id<=php72_count($master_id)-1;$id++){ 
                 $condition=array('master_id'=>$master_id[$id]);
                 $data = array('master_name'=>trim($master_name[$id]), 'status'=>$status[$id]);
                 if($donor_master_id[$id] !=''){
@@ -564,7 +564,7 @@ class Master extends MY_Controller {
         $status = $this->input->post('status');
         $master_type = trim($this->input->post('master_type')); 
         if(isset($id) && isset($programmes) && isset($donor_master_id) && isset($budget_head) && isset($master_name)){
-           for($i=0;$i<=count($id)-1;$i++){ 
+           for($i=0;$i<=php72_count($id)-1;$i++){ 
                 $condition = array('id'=>$id[$i]);
                 $data = array('programme'=>$programmes[$i],
                                 'donor'=>$donor_master_id[$i],
@@ -747,7 +747,7 @@ class Master extends MY_Controller {
             $field = array('id');$table_name =  'hr_job_specification';$change_db = false;$db_name = '';
         }
         if(isset($master_id) && isset($master_err_id) && isset($master_name)){
-            for($i=0;$i<=count($master_id)-1;$i++){
+            for($i=0;$i<=php72_count($master_id)-1;$i++){
                 $c_master_name =  $master_name[$i];
                 $c_master_id =  $master_id[$i];
                 $c_description = $description[$i];$c_duties = $duties[$i];
@@ -806,7 +806,7 @@ class Master extends MY_Controller {
         $budget_head = $this->input->post('budget_head');
         $pid= 0;
         if(!empty($master_id) && !empty($master_name) && !empty($status)){
-           for($id=0;$id<=count($master_id)-1;$id++){ 
+           for($id=0;$id<=php72_count($master_id)-1;$id++){ 
                 $condition=array('master_id'=>$master_id[$id]);
                 $data = array('master_name'=>trim($master_name[$id]), 'status'=>$status[$id]);
                 if($donor_master_id[$id] !=''){
@@ -834,7 +834,7 @@ class Master extends MY_Controller {
         $data = array();$status = array();
         $returnArr['status'] = 0;  $status_sum = $c_master_name = $c_master_id = '';
         if(!empty($master_id) && !empty($master_name) && $master_type!=''){
-            for($i=0;$i<=count($master_id)-1;$i++){ 
+            for($i=0;$i<=php72_count($master_id)-1;$i++){ 
                 if($donor_master_id[$i] !=''){
                     $pid = $donor_master_id[$i];
                 }
@@ -970,8 +970,8 @@ class Master extends MY_Controller {
     #echo'<pre>';print_r($getGrantData);die;
     $json_data = array(
         "draw" => intval($draw),
-        "recordsTotal" => intval(count($master_get_results)),
-        "recordsFiltered" => intval(count($PayGradeCount)),
+        "recordsTotal" => intval(php72_count($master_get_results)),
+        "recordsFiltered" => intval(php72_count($PayGradeCount)),
         "data" => $data,
         'POST'=>$_POST
     );

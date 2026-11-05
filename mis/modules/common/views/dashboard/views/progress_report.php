@@ -151,7 +151,7 @@ function submitform()
                     <td class="table_HEADER"><?=$value;?></td>
                 <?php endforeach; ?>
       </tr>
-      <?php $na_new=""; for($i=0;$i<count($sales_report);$i++)
+      <?php $na_new=""; for($i=0;$i<php72_count($sales_report);$i++)
       {
           $na = $sales_report[$i]['NAME_OF_ENTERPRISE'];
 

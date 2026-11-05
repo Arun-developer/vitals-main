@@ -177,7 +177,7 @@ table {
 	?>
 	</tr>
 	<?php 
-	for($i=0;$i < count($yearreport); $i++)
+	for($i=0;$i < php72_count($yearreport); $i++)
 	{
 		echo '<tr>';
 		echo '<td title="'.$yearreport[$i]['info'].'">'.$yearreport[$i]['label'].'</td>';
@@ -381,7 +381,7 @@ table {
 	</tr>
 	<?php 
 	
-	for($i=0;$i<count($quarterlyreport); $i++)
+	for($i=0;$i<php72_count($quarterlyreport); $i++)
 	{
 	
 		echo '<tr>';
@@ -612,7 +612,7 @@ table {
 			<th scope="rowgroup" colspan="4"><?php echo date("M", mktime(0, 0, 0, $currentmonth, 1, 2000));?></th>
 		</tr>
 		<?php
-		for($i=0;$i<count($monthreportanswer); $i++)
+		for($i=0;$i<php72_count($monthreportanswer); $i++)
 		{
 			echo '<tr>';
 			echo '<td style="text-align:left;!important;">'.$monthreportanswer[$i]['name'].'</td>';
@@ -662,7 +662,7 @@ table {
 	<th scope="rowgroup" colspan="4"><?php echo date("M", mktime(0, 0, 0, $months+1, 1, 2000));?></th>
 	</tr>
 	<?php
-	for($i=0;$i<count($monthreport); $i++)
+	for($i=0;$i<php72_count($monthreport); $i++)
 	{
 			echo '<tr scope="row">';
 			echo '<td width="70%"><a class="fancybox" style="color:black" href="'.site_url("incubationprogress/assign/".$defaultyearly.'/'.$defaultmonthly.'/'.$monthreport[$i]['id'].'/'.$defaulttype.'/'.$innovation).'">'.$monthreport[$i]['label'].'</a></td>';
@@ -877,7 +877,7 @@ table {
 	?>
 	</tr>
 	<?php 
-	for($i=0;$i<count($weekreport); $i++)
+	for($i=0;$i<php72_count($weekreport); $i++)
 	{
 		echo '<tr>';
 		echo '<td>'.$weekreport[$i]['label'].'</td>';
@@ -925,7 +925,7 @@ table {
 <?php 
 function buildtable($arr,$monthcount,$defaulttype,$innovation,$defaultyearly,$depth=0)
 {
-	if(array_key_exists('children',$arr))
+	if(php72_array_key_exists('children',$arr))
 	{
 	foreach($arr['children'] as $row)
 	{

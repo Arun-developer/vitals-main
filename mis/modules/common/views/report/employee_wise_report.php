@@ -23,13 +23,13 @@ $nullLink = "javascript:void(0);";
 	</thead>
 	<tbody>
     <?php
-	if(count($employeeWiseReport)){
+	if(php72_count($employeeWiseReport)){
 		$i='odd';
 		foreach($employeeWiseReport as $row): 
 		$i = ($i=='odd')?'even':'odd';
 		?>
 			<tr class="<?=$i?>">
-            	<td rowspan="<?=count($row['report'])+1?>"><?=$row['created_emp']?></td>
+            	<td rowspan="<?=php72_count($row['report'])+1?>"><?=$row['created_emp']?></td>
 				</tr>
                 <?php foreach($row['report'] as $value): ?>
                 <tr class="<?=$i?>">

@@ -73,13 +73,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -154,7 +154,7 @@
                                             <hr class="cofig-spliter">
                                             <?php
                                             $tot_volume = 0;
-                                            if (count($approved_channel) > 0) {
+                                            if (php72_count($approved_channel) > 0) {
                                                 foreach ($approved_channel as $channel) {
                                                     $get_mnth = $actual_month[$current_month];
                                                     $get_volume = json_decode($channel['data']);
@@ -195,7 +195,7 @@
                                                                 <tbody>
                                                                     <?php
                                                                     $i = 1;
-                                                                    if (count($approved_channel) > 0) {
+                                                                    if (php72_count($approved_channel) > 0) {
                                                                         foreach ($approved_channel as $channel) {
                                                                             $cond['channel_id'] = $channel['id'];
                                                                             $cond['inv_id'] = $channel['inv_id'];
@@ -253,7 +253,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($channel_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($channel_plan); ?>">
         <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/bootstrap.min.js'; ?>"></script>

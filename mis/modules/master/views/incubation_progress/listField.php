@@ -91,7 +91,7 @@ $form_name = 'incub_progress_master';
                         </thead>
                         <tbody>
                             <?php
-                            if (count($progressList)) {
+                            if (php72_count($progressList)) {
                                 $r = 1;
 
                                 foreach ($progressList as $row) {

@@ -69,7 +69,7 @@ foreach ($inv_user as $row) {
                 <td>Who will be the beneficiaries of your product / service?</td>
                 <td><?php
                     $benificary = unserialize($row['benificiary']);
-                    echo implode(',', $benificary);
+                    echo php72_implode(',', $benificary);
                     ?></td>
             </tr>
 
@@ -81,7 +81,7 @@ foreach ($inv_user as $row) {
             <tr>
                 <td colspan="2"><a href="#bottom" id="inv_info" style="color:#719e41;">** Additional Information</a>
                     <table id="inv_add_info" class="gtable " width="100%">
-                        <?php if (count($inv_team) > 0) { ?>
+                        <?php if (php72_count($inv_team) > 0) { ?>
                             <tr class="even">
                                 <td colspan="2" style="background-color:#FFF"></td>
                             </tr>

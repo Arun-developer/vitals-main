@@ -119,7 +119,7 @@ class Grading extends CI_Controller {
         $currentStage = $this->Mprogram_stage->getCurrentStage($innovationInfo['stage']);
         $activity = $this->Mactivities->getActivityForGrading($id, $currentStage);
 
-        if (count($activity)) {
+        if (php72_count($activity)) {
             redirect('grading/view/' . $this->uri->segment('4'));
         } else {
             $form['program_stage'] = $currentStage;
@@ -142,7 +142,7 @@ class Grading extends CI_Controller {
         $innovationInfo = $this->Minnovation->getInnovation($id);
         $currentStage = $this->Mprogram_stage->getCurrentStage($innovationInfo['stage']);
         $activity = $this->Mactivities->getActivityForGrading($id, $currentStage);
-        if (count($activity)) {
+        if (php72_count($activity)) {
             redirect('grading/view/' . $activity['0']['id'] . '/' . $this->uri->segment('4'));
         }
     }

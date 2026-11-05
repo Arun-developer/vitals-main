@@ -17,7 +17,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
                     sort($stageArray);
                     foreach ($stageArray as $st):
                         ?>
-                        <option value="<?= $st ?>" <?= (in_array($st, $stageAr)) ? 'selected' : ''; ?>><?= $st; ?> </option><?php
+                        <option value="<?= $st ?>" <?= (php72_in_array($st, $stageAr)) ? 'selected' : ''; ?>><?= $st; ?> </option><?php
                     endforeach;
                     ?>
                 </select>
@@ -74,7 +74,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
     </thead>
     <tbody>
         <?php
-        if (count($innovationDoc)) {
+        if (php72_count($innovationDoc)) {
             ?>
                                                                                                                                                                                                                                                                                                                     <!--<tr class="odd"><td colspan="10" align="center"><b>INNOVATION</b></td></tr>-->
             <?php
@@ -92,7 +92,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
             endforeach;
         }
 
-        if (count($innovationsupportDoc)) {
+        if (php72_count($innovationsupportDoc)) {
             $path = base_url() . "uploads/innovaton/supporting_documents/";
             $i = 'odd';
             foreach ($innovationsupportDoc as $row):
@@ -111,7 +111,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
             endforeach;
         }
 
-        if (count($assesmentDoc)) {
+        if (php72_count($assesmentDoc)) {
             ?>
             <?php
             $path = base_url() . "uploads/assessment/";
@@ -130,7 +130,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
             endforeach;
         }
 
-        if (count($presentDoc)) {
+        if (php72_count($presentDoc)) {
             ?>
             <?php
             $path = base_url() . "uploads/presentation/";
@@ -149,7 +149,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
             endforeach;
         }
 
-        if (count($screeningDoc)) {
+        if (php72_count($screeningDoc)) {
             ?>
             <?php
             $path = base_url() . "uploads/screening/";
@@ -168,7 +168,7 @@ $stageArray = array('Innovation', 'Assessment', 'Presentation', 'Screening', 'Te
             endforeach;
         }
 
-        if (count($signDoc)) {
+        if (php72_count($signDoc)) {
             ?>
             <?php
             $path = base_url() . "uploads/agreement/";

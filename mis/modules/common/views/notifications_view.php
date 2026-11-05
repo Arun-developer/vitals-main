@@ -1,6 +1,6 @@
 
     
-                <h2 style="color:#902452;"> Innovation Stage Notifications </h2> <?php $countNotification = count($notification_Details); ?>
+                <h2 style="color:#902452;"> Innovation Stage Notifications </h2> <?php $countNotification = php72_count($notification_Details); ?>
                 
                 <hr>
                <?php foreach($notification_Details as $row) { ?>

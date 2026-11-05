@@ -106,7 +106,7 @@
                                                 <input type='hidden' name='finance_Year' id="finance_Year" value="<?= $current_financial; ?>">
                                                 <?php
                                                 $i = 1;
-                                                if (count($sales_data) > 0) {
+                                                if (php72_count($sales_data) > 0) {
                                                     foreach ($sales_data as $row) {
                                                         $get_unit = $row['unit'];
                                                         $get_volume = json_decode($row['volume']);
@@ -115,7 +115,7 @@
                                                         $enable_volume = json_decode($row['volume'], true);
                                                         $enable_value = json_decode($row['value'], true);
 
-                                                        if (!array_filter($enable_volume) && !array_filter($enable_volume) && $row['other'] == '' && $row['unit'] == '') {
+                                                        if (!php72_array_filter($enable_volume) && !php72_array_filter($enable_volume) && $row['other'] == '' && $row['unit'] == '') {
                                                             $enable = 0;
                                                         } else {
                                                             $enable = 1;

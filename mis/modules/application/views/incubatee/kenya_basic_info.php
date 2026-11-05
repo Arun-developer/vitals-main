@@ -80,11 +80,11 @@
                                             <div class="form-group">
                                                 <label>Who will be the beneficiaries of your product/service?<span>*</span></label>
                                                 <select class="form-control fieldDisable" disabled multiple name="txtBeneficiary[]" id="txtBeneficiary" >
-                                                    <option value="People at the base of the pyramid" <?php if (in_array('People at the base of the pyramid', $benificary_val)) echo "selected"; ?>>People at the base of the pyramid</option>
-                                                    <option value="Rural poor" <?php if (in_array('Rural poor', $benificary_val)) echo "selected"; ?>>Rural poor</option>
-                                                    <option value="Urban poor" <?php if (in_array('Urban poor', $benificary_val)) echo "selected"; ?>>Urban poor</option>
-                                                    <option value="Rural or urban middle income" <?php if (in_array('Rural or urban middle income', $benificary_val)) echo "selected"; ?>>Rural or urban middle income</option>
-                                                    <option value="Rural or urban high income" <?php if (in_array('Rural or urban high income', $benificary_val)) echo "selected"; ?>>Rural or urban high income</option>
+                                                    <option value="People at the base of the pyramid" <?php if (php72_in_array('People at the base of the pyramid', $benificary_val)) echo "selected"; ?>>People at the base of the pyramid</option>
+                                                    <option value="Rural poor" <?php if (php72_in_array('Rural poor', $benificary_val)) echo "selected"; ?>>Rural poor</option>
+                                                    <option value="Urban poor" <?php if (php72_in_array('Urban poor', $benificary_val)) echo "selected"; ?>>Urban poor</option>
+                                                    <option value="Rural or urban middle income" <?php if (php72_in_array('Rural or urban middle income', $benificary_val)) echo "selected"; ?>>Rural or urban middle income</option>
+                                                    <option value="Rural or urban high income" <?php if (php72_in_array('Rural or urban high income', $benificary_val)) echo "selected"; ?>>Rural or urban high income</option>
                                                 </select>
                                                 <div id="beneficiary_err"></div>
                                             </div>

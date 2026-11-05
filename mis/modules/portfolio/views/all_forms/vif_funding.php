@@ -7,7 +7,7 @@ $get_quarter_fieldName = array("Q1" => 'q_one_desc', "Q2" => 'q_two_desc', "Q3" 
 $get_quarter_monthField = array("1" => 'jan_desc', "2" => 'feb_desc', "3" => 'mar_desc', "4" => 'apr_desc', "5" => 'may_desc', "6" => 'jun_desc', "7" => 'jul_desc', "8" => 'aug_desc', "9" => 'sep_desc', "10" => 'oct_desc', "11" => 'nov_desc', "12" => 'dec_desc');
 
 $plan = $vif_plan[0];
-$vif_count = isset($plan) ? count($vif_plan) : 1;
+$vif_count = isset($plan) ? php72_count($vif_plan) : 1;
 $last_month = date("F", mktime(0, 0, 0, $current_month, 1));
 
 $reg_city = isset($plan_header) ? $plan_header['company_data'][0]['reg_city'] : '';
@@ -136,8 +136,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php
-                                                                            if (count($vif_config) > 0) {
-                                                                                for ($i = 0; $i < count($vif_config); $i++) {
+                                                                            if (php72_count($vif_config) > 0) {
+                                                                                for ($i = 0; $i < php72_count($vif_config); $i++) {
                                                                                     $cond['port_vif_id'] = $vif_config[$i]['id'];
                                                                                     $cond['inv_id'] = $vif_config[$i]['inv_id'];
                                                                                     $cond['financial_year'] = $vif_config[$i]['financial_year'];
@@ -210,7 +210,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                                 <input type="hidden" name="id[]" value="<?php echo $get_data[0]['id']; ?>" />
                                                                                 <input type="hidden" name="port_vif_id[]" id="port_vif_id" value="<?php echo $vif_config[$i]['id']; ?>" />
                                                                                 </tr>
-                                                                                <input type="hidden" id="enableCount" value="<?= count($get_data); ?>">
+                                                                                <input type="hidden" id="enableCount" value="<?= php72_count($get_data); ?>">
                                                                                 <?php
                                                                             }
                                                                         } else {
@@ -245,7 +245,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                             </div>
                                                         </div>
                                                         <div class=" table_configcontentnew" id="loadEquityData">
-                                                            <input type="hidden" id="equityCount" value="<?= count($equity_list); ?>">
+                                                            <input type="hidden" id="equityCount" value="<?= php72_count($equity_list); ?>">
                                                             <table class="table mentor-table" id="accordion">
                                                                 <thead class="mentor-table-head">
                                                                     <tr>
@@ -259,7 +259,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 </thead>
                                                                 <tbody class="add_more_equity">
                                                                     <?php
-                                                                    $equityData_count = isset($equity_list) && count($equity_list) > 0 ? count($equity_list) : '1';
+                                                                    $equityData_count = isset($equity_list) && php72_count($equity_list) > 0 ? php72_count($equity_list) : '1';
                                                                     $j = 1;
                                                                     for ($i = 0; $i < $equityData_count; $i++) {
                                                                         $get_sha_date = (isset($equity_list[$i]['sha_date']) && $equity_list[$i]['sha_date'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($equity_list[$i]['sha_date'])) : '';
@@ -411,7 +411,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="qualitCount" value="<?= count($qual_achieve); ?>">
+<input type="hidden" id="qualitCount" value="<?= php72_count($qual_achieve); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

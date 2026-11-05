@@ -40,7 +40,7 @@ class Internaladmin extends CI_Controller {
     $totalrows = $this->Mapproval->getDTApprovalNotesCount($search_field, $search_value, $current_user, $columns, $requestData);
     $query = $this->Mapproval->getDTApprovalNotes($requestData['length'], $requestData['start'], $search_field, $search_value, $current_user, $columns, $requestData);
     $totalFiltered = $totalrows;
-    $totalData = count($query);
+    $totalData = php72_count($query);
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
@@ -184,7 +184,7 @@ class Internaladmin extends CI_Controller {
 		if(!empty($getFinanceUser)){
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
 			if(!empty($financeUserId)){
-				if(in_array($user_id, $financeUserId)){
+				if(php72_in_array($user_id, $financeUserId)){
 					$data['finance_user_status'] =  '1';
 				}
 			}
@@ -220,7 +220,7 @@ class Internaladmin extends CI_Controller {
         foreach ($donorAN as $rows):
           $amt_required[] = $rows['amt_required'];
         endforeach;
-        $data['total_amount'] = array_sum($amt_required);
+        $data['total_amount'] = php72_array_sum($amt_required);
 
 		if($internalNoteDetails[0]["donor"]!=''){
 			$get_funder= $this->Minternal->getVendorBankDetails('funder_list', array('id'=>$internalNoteDetails[0]["donor"]),array('id','fcra_status'));
@@ -251,7 +251,7 @@ class Internaladmin extends CI_Controller {
 		if(!empty($getFinanceUser)){
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
 			if(!empty($financeUserId)){
-				if(in_array($user_id, $financeUserId)){
+				if(php72_in_array($user_id, $financeUserId)){
 					$data['finance_user_status'] = $finance_user_status = '1';
 				}
 			}
@@ -364,10 +364,10 @@ class Internaladmin extends CI_Controller {
           if ($this->input->post('purpose') != "")
             $searchArray[] = "AP.purpose like '%" . $this->input->post('purpose') . "%'";
 
-          $where = implode(" and ", $searchArray);
+          $where = php72_implode(" and ", $searchArray);
           $rowExport = $this->Mapproval->getLimitApprovalNotes($where, NULL, NULL, '', '', 'show All');
 
-          if (count($rowExport) != 0) {
+          if (php72_count($rowExport) != 0) {
             $this->Mmaster->customExport($this->input->post('report_name'), $rowExport);
             exit;
           }
@@ -397,12 +397,12 @@ class Internaladmin extends CI_Controller {
           $searchArray[] = "INTER.date >='" . $this->input->post('date1') . "'";
           $searchArray[] = "INTER.date <='" . $this->input->post('date2') . "'";
         }
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $approvalCount = $this->Minternal->getLimitInternalNotes('2', $where, '', '', $sort_column, $columnSortOrder, 'show All', 'report');
-        $getAll_count = count($approvalCount);
+        $getAll_count = php72_count($approvalCount);
         $approval_lists = $this->Minternal->getLimitInternalNotes('2', $where, $limit, $start, $sort_column, $columnSortOrder, 'show All', 'report');
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($approval_lists as $lists) {
           $date = '';
@@ -449,7 +449,7 @@ class Internaladmin extends CI_Controller {
           $searchArray[] = "INTER.date >='" . $this->input->post('date1') . "'";
           $searchArray[] = "INTER.date <='" . $this->input->post('date2') . "'";
         }
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         $data_lists = $this->Minternal->getLimitInternalNotes('2', $where, '', '', $sort_column, $columnSortOrder, 'show All', 'report');
 
         header("Content-type: application/csv");
@@ -1069,9 +1069,9 @@ class Internaladmin extends CI_Controller {
         $where = implode(" and ", $searchArray);
 
         $internalCount = $this->Minternal->getLimitInternalNotes('1', $where, '', '', $sort_column, $columnSortOrder, 'show All');
-        $getAll_count = count($internalCount);
+        $getAll_count = php72_count($internalCount);
         $internal_lists = $this->Minternal->getLimitInternalNotes('1', $where, $limit, $start, $sort_column, $columnSortOrder, 'show All');
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($internal_lists as $lists) {
 
@@ -1228,10 +1228,10 @@ class Internaladmin extends CI_Controller {
           $where = "2=2";
 
         $internalCount = $this->Minternal->getarchiveInternalNotes($from, $to, NULL, NULL, $where);
-        $getAll_count = count($internalCount);
+        $getAll_count = php72_count($internalCount);
 
         $internal_lists = $this->Minternal->getarchiveInternalNotes($from, $to, $limit, $start, $where);
-        $getLimit_count = count($internal_lists);
+        $getLimit_count = php72_count($internal_lists);
 
         foreach ($internal_lists as $lists) {
 
@@ -1511,7 +1511,7 @@ error_reporting(E_ALL);
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
 
         $data['fin_Usercount'] = '0';
-        if (in_array($emp_id, $finance)) {
+        if (php72_in_array($emp_id, $finance)) {
           $data['fin_Usercount'] = '1';
         }
 
@@ -1521,7 +1521,7 @@ error_reporting(E_ALL);
         /* amount recoverable */
         if ($data['fin_Usercount'] == 1) {
           $data['recover_detail'] = $recover_detail = $this->Minternal->getRecoveredDetail($id);
-          if (count($recover_detail) > 0) {
+          if (php72_count($recover_detail) > 0) {
             $data['recover_amt'] = $this->Minternal->getRecoveredAmount($recover_detail[0]['id']);
           }
         }
@@ -1542,9 +1542,9 @@ error_reporting(E_ALL);
 
         if ($internalNoteDetails[0]['an_from_emp'] == $internalNoteDetails[0]['from']) {
           $data['ro_officer_name'] = $this->Minternal->getUserNameInfo($internalNoteDetails[0]['to_RO']);
-        } elseif ($internalNoteDetails[0]['an_from_emp'] != $internalNoteDetails[0]['from'] && count($sp) == 1) {
+        } elseif ($internalNoteDetails[0]['an_from_emp'] != $internalNoteDetails[0]['from'] && php72_count($sp) == 1) {
           $data['ro_officer_name'] = $sp['0']['user_name'];
-        } elseif ($internalNoteDetails[0]['an_from_emp'] != $internalNoteDetails[0]['from'] && count($sp) > 1) {
+        } elseif ($internalNoteDetails[0]['an_from_emp'] != $internalNoteDetails[0]['from'] && php72_count($sp) > 1) {
           $data['ro_officer_name'] = $this->Minternal->getUserNameInfo($internalNoteDetails[0]['to_RO']);
         }
         $get_grantName = $this->Minternal->get_grantName($internalNoteDetails[0]['grant_id']);
@@ -1649,7 +1649,7 @@ error_reporting(E_ALL);
 
       function check_calucalations() {
         if (!empty($_REQUEST)) {
-          $count = count($_REQUEST["donor"]);
+          $count = php72_count($_REQUEST["donor"]);
           $return = array();
           for ($i = 0; $i < $count; $i++) {
             if ($_REQUEST["donor"][$i] != "" && $_REQUEST["budgethead"][$i] != "" && $_REQUEST["lineitem"][$i] != "") {
@@ -1700,7 +1700,7 @@ error_reporting(E_ALL);
 
       function PreCheckExist($data = '') {
         $r = array();
-        $c = count($data["donor"]);
+        $c = php72_count($data["donor"]);
         $id = $data['id'];
         for ($i = 0; $i < $c; $i++) {
           $r[$i]["donor"] = $data["donor"][$i];
@@ -1722,7 +1722,7 @@ error_reporting(E_ALL);
       }
 
       function CheckExist($data = '', $d = '', $b = '', $l = '') {
-        $c = count($data);
+        $c = php72_count($data);
         $return = 0;
         if ($c > 0) {
           for ($i = 0; $i < $c; $i++) {
@@ -1833,12 +1833,12 @@ error_reporting(E_ALL);
           $searchArray[] = "AP.date_of_seeking_approval >= '" . $from_date . "' and AP.date_of_seeking_approval <= '" . $to_date . "'";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         $total = $this->Mapproval->getarchiveApprovalNotesCount($from, $to, $where);
-        $getAll_count = count($total);
+        $getAll_count = php72_count($total);
 
         $approval_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, $limit, $start, $where, $sort_column, $columnSortOrder);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($approval_lists as $lists) {
           $requestDate = '';
@@ -1911,9 +1911,9 @@ error_reporting(E_ALL);
         $option['offset'] = '';
         $option['num'] = '';
         $approval_list = $this->Mapproval->getApprovalActionHistory($option);
-        $getAll_count = count($approval_list);
+        $getAll_count = php72_count($approval_list);
         $approval_lists = $this->Mapproval->getApprovalActionHistory($options);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
         foreach ($approval_lists as $lists) {
           $assigned_date = '';
           if ($lists['assigned_date'] != '') {
@@ -1936,7 +1936,7 @@ error_reporting(E_ALL);
           $url = base_url() . 'index.php/approval/approval_note_details/' . $lists['approval_id'] . '/mylist';
 
           $internalnoteList = $this->Mapproval->getInternalNote($lists["approval_id"]);
-          if (count($internalnoteList) > 0) {
+          if (php72_count($internalnoteList) > 0) {
             $view_btn = "<a href='javascript:void(0)' data-attr=" . $lists["approval_id"] . " class='view_internal bordergrn-btn-outline' >" . 'View' . "</a>";
           } else {
             $view_btn = "Not Assigned";
@@ -1993,7 +1993,7 @@ error_reporting(E_ALL);
         foreach ($RO_user as $ro) {
           $rolist[] = $ro['id'];
         }
-        if (($internalNoteDetails['0']['programme_head'] == $RO_user['0']['id']) || (in_array($internalNoteDetails['0']['programme_head'], $rolist))) {
+        if (($internalNoteDetails['0']['programme_head'] == $RO_user['0']['id']) || (php72_in_array($internalNoteDetails['0']['programme_head'], $rolist))) {
           switch ($option) {
             case 'approve' :
             $tmplate = 'Internal Note Confirmed by PH';
@@ -2178,7 +2178,7 @@ error_reporting(E_ALL);
 
 			$mail->MsgHTML($messageBody);
 			//$attach = array('uploads/support_docs/Villgro_Email_testing_file.pdf');
-			 if (count($attach)) {
+			 if (php72_count($attach)) {
 				foreach ($attach as $key => $value):
 					if (file_exists($value)) {
 						$mail->addAttachment($value);
@@ -2271,7 +2271,7 @@ error_reporting(E_ALL);
         }
 
         $notes = $this->Minternal->getSupportingDocsByInternalNo($internalNos);
-        $foundNos = array_column($notes, 'internal_no');
+        $foundNos = php72_array_column($notes, 'internal_no');
         $report = array();
 
         foreach ($internalNos as $internalNo) {

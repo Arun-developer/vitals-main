@@ -41,7 +41,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'order' => $this->getOrderCount($options['criteria'], 'main') + 1);
 			#echo'<pre>';print_r($data);die;
         $result = $this->db->insert('screening_master', $data);
@@ -54,7 +54,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 			#echo'<pre>';print_r($data);die;
         $this->db->where('id', $options['id']);
         $result = $this->db->update('screening_master', $data);
@@ -68,7 +68,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'order' => $this->getOrderCount($options['pid'], 'sub') + 1);
 			#echo'<pre>';print_r($data);die;
         $result = $this->db->insert('screening_master', $data);
@@ -81,7 +81,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
         $this->db->where('id', $options['id']);
 		#echo'<pre>';print_r($data);die;
         $result = $this->db->update('screening_master', $data);
@@ -96,7 +96,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 			#echo'<pre>';print_r($data);die;
         $result = $this->db->insert('screening_master', $data);
         return $result;
@@ -109,7 +109,7 @@ class Mscreening_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 			#echo'<pre>';print_r($data);die;
         $this->db->where('id', $options['id']);
         $result = $this->db->update('screening_master', $data);

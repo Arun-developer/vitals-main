@@ -10,7 +10,7 @@ class Mscreening_documents extends CI_Model
     {
 
         $data = array('innovation' => $form['innovation'],
-            'checklist' => implode(',', $form['checklist']));
+            'checklist' => php72_implode(',', $form['checklist']));
         if ($this->checkDuplicateChecklist($form['innovation'])) {
             $this->db->insert('checklist_innovation', $data);
         } else {
@@ -79,7 +79,7 @@ class Mscreening_documents extends CI_Model
 								as documents");
         $this->db->order_by('CM.area', 'asc');
         $this->db->where('CM.status', '1');
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('CM.id', $checklist);
         $query = $this->db->get('checklist_master CM');
         if ($query->num_rows() > 0) {

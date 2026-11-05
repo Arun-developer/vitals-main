@@ -51,7 +51,7 @@ class Screening extends CI_Controller {
 
         if ($this->Mauth->isLogged()) {
 
-            if (!empty($invite_code) && count($this->Minnovation->getInnovationDetails($invite_code))) {
+            if (!empty($invite_code) && php72_count($this->Minnovation->getInnovationDetails($invite_code))) {
 
                 return $invite_code;
             }
@@ -65,7 +65,7 @@ class Screening extends CI_Controller {
 
         $invitation = $this->Minvitation->getInvitationByCode($invite_code);
 
-        if (count($invitation)) {
+        if (php72_count($invitation)) {
             if ($invitation['0']['status'] == '1') {
                 return $invitation['0']['innovation'];
             } else {
@@ -129,7 +129,7 @@ class Screening extends CI_Controller {
 
         $innovation = $this->Minnovation->getInnovation($id);
 
-        if (!count($innovation) || $id == '') {
+        if (!php72_count($innovation) || $id == '') {
             show_error('Page not Found');
         }
 
@@ -143,7 +143,7 @@ class Screening extends CI_Controller {
 
             $template = '../template';
 
-            if (count($ndaList) && $innovation['accept_status'] == '0') {
+            if (php72_count($ndaList) && $innovation['accept_status'] == '0') {
 
                 redirect('screening/nda_list/' . $code);
             }
@@ -153,7 +153,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $this->makePost($innovation['name_of_enterprise']);
             }
@@ -303,7 +303,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $this->makeAssessmentFilePost($innovationInfo['name_of_enterprise']);
             }
@@ -394,7 +394,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtDocSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $this->makeDocsProducePost($innovationInfo['name_of_enterprise']);
             }
@@ -428,7 +428,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtFileSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $_POST['uploaddocs'] = $_FILES['uploadDocs']['name'];
 
@@ -865,7 +865,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtsiteSubmit'])) {
 
-            $count = count($_POST['criteria']);
+            $count = php72_count($_POST['criteria']);
             $result = $this->Mscreening->insertSiteVisit($_POST, $innovation);
 
             $msg = "Records inserted!";
@@ -1099,7 +1099,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $code = $_POST['innovation'];
 
@@ -1428,7 +1428,7 @@ class Screening extends CI_Controller {
         if (isset($_POST['txtSubmit'])) {
             $innovation = $this->Minnovation->getInnovation($id);
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $this->makePost($innovation['name_of_enterprise']);
             }
@@ -1624,7 +1624,7 @@ class Screening extends CI_Controller {
 
         if (isset($_POST['txtSubmit'])) {
 
-            if (count($_FILES) > 0) {
+            if (php72_count($_FILES) > 0) {
 
                 $this->makePost($innovationInfo['name_of_enterprise']);
             }
@@ -1764,7 +1764,7 @@ class Screening extends CI_Controller {
                     if ($signedcopy[0]['signed_copy1'] != '' && $signedcopy[0]['signed_copy2'] != '') {
                         $ids = $_POST['innovation'];
                         $employees = $this->Sector_model->getEmpId($ids);
-                        $emp_Ids = array_map(function ($emp_Ids) {
+                        $emp_Ids = php72_array_map(function ($emp_Ids) {
                             return $emp_Ids['associate_employee'];
                         }, $employees);
                         $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1874,7 +1874,7 @@ class Screening extends CI_Controller {
 
         $ids = $data['innovation']['id'];
 
-        if (count($data['inviteInfo']) != 0) {
+        if (php72_count($data['inviteInfo']) != 0) {
 
             $data['status'] = $data['inviteInfo'][0]['status'];
         } else {
@@ -1886,7 +1886,7 @@ class Screening extends CI_Controller {
             $this->Minnovation->diligence_stage($id);
 
             $employees = $this->Sector_model->getEmpId($ids);
-            $emp_Ids = array_map(function ($emp_Ids) {
+            $emp_Ids = php72_array_map(function ($emp_Ids) {
                 return $emp_Ids['associate_employee'];
             }, $employees);
             $employees_id = rtrim(implode(',', $emp_Ids), ',');

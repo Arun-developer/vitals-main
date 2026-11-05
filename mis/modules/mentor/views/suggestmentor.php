@@ -99,11 +99,11 @@ $experience = isset($_REQUEST["experience"])?$_REQUEST["experience"]:"";
                     <tbody id="lineitemTable">
                         <?php 
 		
-			 if(count($searchmember))
+			 if(php72_count($searchmember))
 			{    
 					$rowtype = 'odd';
 					foreach($searchmember as $row):
-					if(!in_array($row['id'],$assign))
+					if(!php72_in_array($row['id'],$assign))
 					{
 					?>
                         <tr class="<?=$rowtype = ($rowtype == 'odd')?'even':'odd';?>">
@@ -192,7 +192,7 @@ $experience = isset($_REQUEST["experience"])?$_REQUEST["experience"]:"";
                     <tbody id="lineitemTable">
                         <?php 
 	
-		 if(count($emplist))
+		 if(php72_count($emplist))
 		{    
 				$rowtype = 'odd';
 				$company="Villgro";

@@ -52,7 +52,7 @@ class Mmaster extends CI_Model {
         $data = array();
         $data = $this->getUserNameInfo($userid);
 
-        if (count($data))
+        if (php72_count($data))
             return $data['0']['user_name'];
         else
             return '--';
@@ -335,7 +335,7 @@ class Mmaster extends CI_Model {
                 $row2['finance'] = @unserialize($row2['finance']);
             }
         }
-        $data[] = array_merge($row, $row2);
+        $data[] = php72_array_merge($row, $row2);
         return array_pop($data);
     }
 

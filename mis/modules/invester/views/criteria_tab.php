@@ -1,7 +1,7 @@
 <ul class="tabs">
     
 	<?php 
-	if(count($match)>0)
+	if(php72_count($match)>0)
 	{
 	foreach($match as $row):
 	   $url= $this->uri->segment('5');

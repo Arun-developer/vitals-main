@@ -21,7 +21,7 @@
         </thead>
         <tbody id="activitiesTable">
             <?php 
-	if(count($actionhistory))
+	if(php72_count($actionhistory))
 	{       
 			$rowtype = 'odd';
 			foreach($actionhistory as $row):

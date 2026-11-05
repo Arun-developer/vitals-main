@@ -178,10 +178,10 @@ if (isset($_POST['txtSubmit']) && $_POST['txtSubmit']) {
         $_POST['copy_id'] = str_replace("_", "ab", $_POST['copy_id']);
     }
     $url_post = '';
-    $post = implode(':', array_map(function ($key, $val) {
+    $post = implode(':', php72_array_map(function ($key, $val) {
 
                 return $key . '-' . $val;
-            }, array_keys($_POST), $_POST)
+            }, php72_array_keys($_POST), $_POST)
     );
     $url_post .= '"' . $post . '"';
 }
@@ -1195,7 +1195,7 @@ if (isset($_REQUEST['ordertype'])) {
             </div>
         </div>
         <?php
-        if ($currentTab == 'lead' && count($innovationList) && $isAssign) {
+        if ($currentTab == 'lead' && php72_count($innovationList) && $isAssign) {
             ?>
             <a href="<?= site_url('scouting/multi_cycle/') ?>" class="fancyboxt button">Assign Cycle</a>
             <?php

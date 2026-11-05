@@ -66,13 +66,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -172,9 +172,9 @@
                                                             <tbody>
                                                                 <?php
                                                                 $plan = $tap_plan[0];
-                                                                $tap_count = isset($plan) ? count($tap_plan) : 1;
+                                                                $tap_count = isset($plan) ? php72_count($tap_plan) : 1;
                                                                 $j = 1;
-                                                                if (count($tap_plan) != 0) {
+                                                                if (php72_count($tap_plan) != 0) {
                                                                     for ($i = 0; $i < $tap_count; $i++) {
                                                                         $need_date = (isset($tap_plan[$i]['need_by']) && $tap_plan[$i]['need_by'] != '0000-00-00 00:00:00' && $tap_plan[$i]['need_by'] != '') ? date('d-m-Y', strtotime($tap_plan[$i]['need_by'])) : '';
                                                                         $engage_date = (isset($tap_plan[$i]['month_engaged']) && $tap_plan[$i]['month_engaged'] != '0000-00-00' && $tap_plan[$i]['month_engaged'] != '') ? date('d-m-Y', strtotime($tap_plan[$i]['month_engaged'])) : '';
@@ -211,9 +211,9 @@
                                                                     <?php
                                                                     $j++;
                                                                 }
-                                                            } else if (count($tap_config) != 0) {
+                                                            } else if (php72_count($tap_config) != 0) {
                                                                 $config = $tap_config[0];
-                                                                $config_count = isset($config) ? count($tap_config) : 1;
+                                                                $config_count = isset($config) ? php72_count($tap_config) : 1;
                                                                 $j = 1;
                                                                 for ($i = 0; $i < $config_count; $i++) {
                                                                     $need_date = (isset($tap_config[$i]['need_by']) && $tap_config[$i]['need_by'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($tap_config[$i]['need_by'])) : '';
@@ -270,7 +270,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($tap_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($tap_plan); ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery.validate.min.js'; ?>"></script>
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery-ui.min.js'; ?>"></script>

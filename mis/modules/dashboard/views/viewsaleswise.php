@@ -9,7 +9,7 @@
               <td width="14%" class="table_HEADER"><?=$rw['YEAR'];?></td>
           <?php endforeach; ?>
       </tr>
-      <?php for($i=0;$i<count($salesreport);$i++)
+      <?php for($i=0;$i<php72_count($salesreport);$i++)
       {
         ?>
       <tr>

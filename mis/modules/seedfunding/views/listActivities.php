@@ -207,7 +207,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
 		  $j=1;
 
-	  	if(count($activitiesList))
+	  	if(php72_count($activitiesList))
 
 		{    
 

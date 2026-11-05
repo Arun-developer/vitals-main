@@ -18,7 +18,7 @@
     </thead>
     <tbody id="activitiesTable">
         <?php
-        if (count($activitiesList)) {
+        if (php72_count($activitiesList)) {
             $rowtype = 'odd';
             foreach ($activitiesList as $row):
                 ?>
@@ -30,7 +30,7 @@
                         <td align="left" valign="middle">
                             <?php
                             $monthlyReport = $this->Mseedfunding->getTargetList($innovation['id'], $row['mid']);
-                            if (count($monthlyReport)) {
+                            if (php72_count($monthlyReport)) {
                                 foreach ($monthlyReport as $mt):
                                     ?>
                                     <br/>

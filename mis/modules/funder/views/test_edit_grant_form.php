@@ -485,7 +485,7 @@ $ci =& get_instance();
                                 <tr>
                                     <?php
                                     $width = '18%';
-                                    if (count($lists) > 0) {
+                                    if (php72_count($lists) > 0) {
                                         $width = '18%';
                                     }
                                     ?>

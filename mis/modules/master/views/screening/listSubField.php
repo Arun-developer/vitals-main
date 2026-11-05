@@ -30,7 +30,7 @@ else
     </thead>
 	<tbody>
 	<?php
-	if(count($subfieldList))
+	if(php72_count($subfieldList))
 	{    
 		$r=1;
 		foreach($subfieldList as $row)
@@ -43,7 +43,7 @@ else
 			<td align="left" valign="middle"><?=$row["label"];?></td>
             <td align="left" valign="middle"><?=$row["input_type"];?></td>
             <td align="left" valign="middle"><?=ucfirst($row["required"]);?></td>
-            <td align="left" valign="middle"  width="400"><?=(is_array($row["value"]))?implode(',',$row["value"]):$row["value"];?></td>
+            <td align="left" valign="middle"  width="400"><?=(is_array($row["value"]))?php72_implode(',',$row["value"]):$row["value"];?></td>
 			<td align="left" valign="middle" width="60">
 			<?php if($row["status"]=='1')
 			{

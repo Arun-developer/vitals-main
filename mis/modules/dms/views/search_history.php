@@ -559,7 +559,7 @@ $i=0;
 
 $r= 0;
 
-if(count($aryResults)) {
+if(php72_count($aryResults)) {
 
             foreach (@$aryResults as $value) {
 

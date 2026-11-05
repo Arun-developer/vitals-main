@@ -3,7 +3,7 @@ $formAction = site_url('login/deals_mail');
 $id = '';
 $val = array();
 $action = 'Send';
-if (count($mailDetails)) {
+if (php72_count($mailDetails)) {
     $val = $mailDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;
@@ -25,7 +25,7 @@ if (isset($_POST['mail_type'])) {
     $partner_id = $this->session->userdata('partner_id');
     $mailContent = $this->Mmail->getBulkMailContent($_POST['mail_type'], $partner_id);
 
-    if (count($mailContent)) {
+    if (php72_count($mailContent)) {
         $subject = $mailContent[0]['subject'];
         $body = $mailContent[0]['body'];
         $from = $mailContent[0]['from'];

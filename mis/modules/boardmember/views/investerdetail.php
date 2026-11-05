@@ -1,6 +1,6 @@
 <?php 
 
-if(count($investerDetails)>0)
+if(php72_count($investerDetails)>0)
 {
 $val=array();
 $val=$investerDetails[0];
@@ -74,7 +74,7 @@ $val=$investerDetails[0];
 		<tbody id="lineitemTable">
     <?php 
 	
-	 if(count($assignedinvester))
+	 if(php72_count($assignedinvester))
 	{       
 			$rowtype = 'odd';
 			foreach($assignedinvester as $row):

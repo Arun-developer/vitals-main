@@ -44,7 +44,7 @@ $if = (!$isincubAuth);
         </thead>
         <tbody>
             <?php
-	if(count($trainingslist))
+	if(php72_count($trainingslist))
 	{    
 		$r=1;
 		foreach($trainingslist as $row)

@@ -8,7 +8,7 @@ class Msupporting_documents extends CI_Model
     }
     public function insertSuportingDocuments($id, $form)
     {
-        if (count(@$form['document_type_value'])) {
+        if (php72_count(@$form['document_type_value'])) {
             foreach ($form['document_type_value'] as $key => $value):
                 $data = array('innovation' => $id,
                     'document_type' => $value,

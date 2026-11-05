@@ -15,8 +15,8 @@ $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city']
 
 $cap_data = $capTableDetails[0];
 $capdd_data = $get_capdd[0];
-$cap_count = isset($cap_data) ? count($capTableDetails) : 1;
-$cap_ddcount = isset($capdd_data) ? count($get_capdd) : 1;
+$cap_count = isset($cap_data) ? php72_count($capTableDetails) : 1;
+$cap_ddcount = isset($capdd_data) ? php72_count($get_capdd) : 1;
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Info', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'add_class' => 'mar-tp140'));
 ?>
 
@@ -110,7 +110,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         </thead>
                                         <tbody class="add_more_cap">
                                             <?php
-                                            if (count($capTableDetails) != 0) {
+                                            if (php72_count($capTableDetails) != 0) {
                                                 for ($i = 0; $i < $cap_count; $i++) {
                                                     ?>
 
@@ -261,7 +261,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($capTableDetails); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($capTableDetails); ?>">
 
 <div class="modal" id="deletemodal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">

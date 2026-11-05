@@ -102,7 +102,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         <main class="page-content">
                                             <?php
                                             $tot_open = $tot_under = $tot_close = $tot_reject = $annual = 0;
-                                            if (count($pipe_config) > 0) {
+                                            if (php72_count($pipe_config) > 0) {
                                                 foreach ($pipe_config as $pipe) {
                                                     $get_open = json_decode($pipe['open_pipeline'], true);
                                                     $get_under = json_decode($pipe['under_discussion'], true);
@@ -153,7 +153,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 
                                                                     <?php
                                                                     $i = 1;
-                                                                    if (count($pipe_plan) > 0) {
+                                                                    if (php72_count($pipe_plan) > 0) {
                                                                         $get_open_value = $pipe_plan[0]['open'];
                                                                         $get_under_value = $pipe_plan[0]['under_discussion'];
                                                                         $get_close_value = $pipe_plan[0]['rejected'];
@@ -309,7 +309,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($pipe_plan); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($pipe_plan); ?>">
 <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio')); ?>

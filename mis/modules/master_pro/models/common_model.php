@@ -22,7 +22,7 @@
                     $data = unserialize($row['donor']);
                 }
             }
-            $data = ($data != '') ? implode(',', $data) : '';
+            $data = ($data != '') ? php72_implode(',', $data) : '';
             return $data;
         }
     

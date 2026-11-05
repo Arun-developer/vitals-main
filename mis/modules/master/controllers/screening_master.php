@@ -62,7 +62,7 @@ class Screening_master extends CI_Controller
         $data['screeningDetails'] = array();
         if ($id != '') {
             $data['screeningDetails'] = $this->Mscreening_master->getReportsInfo($id);
-            if (count($data['screeningDetails']) == 0) {
+            if (php72_count($data['screeningDetails']) == 0) {
                 redirect('master/screening_master/form');
             }
 
@@ -92,7 +92,7 @@ class Screening_master extends CI_Controller
         $data['pid'] = $pid;
         if ($pid != '') {
             $data['screeningDetails'] = $this->Mscreening_master->getReportsInfo($pid);
-            if (count($data['screeningDetails']) == 0) {
+            if (php72_count($data['screeningDetails']) == 0) {
                 redirect('master/screening_master/view_list');
             }
         } else {
@@ -113,7 +113,7 @@ class Screening_master extends CI_Controller
         $data['assessDetails'] = array();
         if ($id != '') {
             $data['assessDetails'] = $this->Mscreening_master->getReportsInfo($id);
-            if (count($data['assessDetails']) == 0) {
+            if (php72_count($data['assessDetails']) == 0) {
                 redirect('master/screening_master/assessform/' . $pid);
             }
 
@@ -220,7 +220,7 @@ class Screening_master extends CI_Controller
         $data['subfieldsDetails'] = array();
         if ($id != '') {
             $data['subfieldsDetails'] = $this->Mscreening_master->getReportsInfo($id);
-            if (count($data['subfieldsDetails']) == 0) {
+            if (php72_count($data['subfieldsDetails']) == 0) {
                 redirect('master/screening_master/sub_field/' . $pid);
             }
 

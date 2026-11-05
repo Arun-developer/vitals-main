@@ -8,7 +8,7 @@ $nullLink = 'javascript:void(0);';
 $form_name = 'query_list';
 ?>
 
-<?php if(count($discussionDetails)=='0'){ ?>
+<?php if(php72_count($discussionDetails)=='0'){ ?>
 
 
 <form id="discussion" action="<?=site_url('discussion/create/'.$activity)?>" enctype="multipart/form-data" method="post" name="discussion" class="uniform">
@@ -75,13 +75,13 @@ endforeach;
           </ul>
 <?php }
 
-if(count($discussionDetails)!='0'){
+if(php72_count($discussionDetails)!='0'){
 ?><br />
 
 <h1>Comments (<?=@$row['no_of_comments']?>)</h1>
 <ul class="comments">
 	   <?php
-        if(count($commentsList))
+        if(php72_count($commentsList))
         {    
             $r=1;
             foreach($commentsList as $row)

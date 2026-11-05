@@ -157,8 +157,8 @@
 
         <div class="container">
             <?php
-            $teamcount = count($teamData);
-            $sharecount = count($shareData);
+            $teamcount = php72_count($teamData);
+            $sharecount = php72_count($shareData);
             $suc_msg = $this->session->userdata['company_sucmsg'];
 
             $date_value = $masterData[0]['incorporation_date'];
@@ -409,7 +409,7 @@
                                     </tr>
                                     <?php
                                     if ($teamcount == 0) {
-                                        if (count($mem_data) > 0) {
+                                        if (php72_count($mem_data) > 0) {
                                             foreach ($mem_data as $k => $v) {
 
                                                 if (isset($v['resume']) && $v['resume'] != '') {

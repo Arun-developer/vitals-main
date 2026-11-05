@@ -670,7 +670,7 @@ class Mmasters extends My_Model {
         }
         if ($headerArray['20'] == 'Is expense estimated in work plan')
             $headerArray['21'] = 'Is expense above 50000';
-        for ($i = 0; $i < count($rowExport); $i++) {
+        for ($i = 0; $i < php72_count($rowExport); $i++) {
             $dataArray[$i] = array();
             array_push($dataArray[$i], ($i + 1));
             foreach ($report_data as $key => $value) {
@@ -717,14 +717,14 @@ class Mmasters extends My_Model {
             endforeach;
         endforeach;
 
-        if (in_array('1', $sum_columns))
+        if (php72_in_array('1', $sum_columns))
             $sum_value['0'] = 'Total';
-        $lent = count($dataArray);
+        $lent = php72_count($dataArray);
         $dataArray[$lent] = array();
         foreach ($sum_value as $key => $value):
             array_push($dataArray[$lent], $value);
         endforeach;
-        for ($i = 0; $i < count($dataArray); $i++) {
+        for ($i = 0; $i < php72_count($dataArray); $i++) {
             if (!empty($data[$i]['3'])) {
                 $dataArray[$i]['3'] = date('d/m/Y', strtotime($dataArray[$i]['3']));
             }
@@ -1283,7 +1283,7 @@ class Mmasters extends My_Model {
 			/* echo'<pre>';print_r($key);
 			echo'<pre>';print_r($options['old_BH']);die; */
             if (isset($options['changereason'])) {
-                if (array_key_exists($key, $options['old_BH'])) {
+                if (php72_array_key_exists($key, $options['old_BH'])) {
                     if (($this->input->post('programme') != $this->input->post('old_program')) || ($this->input->post('donor') != $this->input->post('old_donor')) || ($options['budgethead'][$key] != $options['old_BH'][$key]) || ($options['lineitem'][$key] != $options['old_LI'][$key]) || ($options['Sublineitem'][$key] != $options['old_SLI'][$key]) || ($options['amount'][$key] != $options['old_amount'][$key])) {
                         $change = array(
                             'programme_id' => $this->input->post('programme'),
@@ -1304,7 +1304,7 @@ class Mmasters extends My_Model {
                         $result3 = $this->db->insert('balance_sheet_edit_history', $change);
                     }
                 } else {
-                    if ((!array_key_exists($key, $options['old_BH']) && array_key_exists($key, $options['budgethead'])) && (!array_key_exists($key, $options['old_LI']) && array_key_exists($key, $options['lineitem'])) && (!array_key_exists($key, $options['old_SLI']) && array_key_exists($key, $options['Sublineitem'])) && (!array_key_exists($key, $options['old_amount']) && array_key_exists($key, $options['amount']))) {
+                    if ((!php72_array_key_exists($key, $options['old_BH']) && php72_array_key_exists($key, $options['budgethead'])) && (!php72_array_key_exists($key, $options['old_LI']) && php72_array_key_exists($key, $options['lineitem'])) && (!php72_array_key_exists($key, $options['old_SLI']) && php72_array_key_exists($key, $options['Sublineitem'])) && (!php72_array_key_exists($key, $options['old_amount']) && php72_array_key_exists($key, $options['amount']))) {
                         $changes = array(
                             'programme_id' => $this->input->post('programme'),
                             'donor_id' => $this->input->post('donor'),
@@ -1617,7 +1617,7 @@ class Mmasters extends My_Model {
             $searchArray[] = "AN.date_of_request <= '" . $todate . "'";
         }
 
-        $where = implode(" AND ", $searchArray);
+        $where = php72_implode(" AND ", $searchArray);
         if (!empty($where)) {
             $this->db->where($where);
         }

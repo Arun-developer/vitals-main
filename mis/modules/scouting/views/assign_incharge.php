@@ -67,7 +67,7 @@ $(document).ready(function() {
 			if(!in_array($row['emp_number'],$restrict)){
 			 ?>
                 <option value="<?=$row['emp_number']?>"
-                    <?php if(in_array($row['emp_number'],$associate_employee)){  echo 'selected'; } ?>>
+                    <?php if(php72_in_array($row['emp_number'],$associate_employee)){  echo 'selected'; } ?>>
                     <?=$row['emp_name']?></option>
                 <?php } } ?>
 

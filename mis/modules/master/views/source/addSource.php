@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$formAction = site_url('master/source/add');
 		$id = '';
 		$val = array();
-		if(count($sourceDetails))
+		if(php72_count($sourceDetails))
 		{
 			$val = $sourceDetails['0'];
 			$formAction = site_url('master/source/sourceform/'.$val['id']);

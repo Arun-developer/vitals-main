@@ -266,7 +266,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($dp_plan); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($dp_plan); ?>">
 
 <style type="text/css">
     .fileUpload {

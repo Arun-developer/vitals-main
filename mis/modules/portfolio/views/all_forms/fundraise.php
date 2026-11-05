@@ -147,7 +147,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                             <tbody class="add_more_equity">
                                                                                 <?php
                                                                                 $equity_data = $equity_plan[0];
-                                                                                $equity_count = isset($equity_data) ? count($equity_plan) : 1;
+                                                                                $equity_count = isset($equity_data) ? php72_count($equity_plan) : 1;
                                                                                 for ($i = 0; $i < $equity_count; $i++) {
                                                                                     ?>
                                                                                     <tr>
@@ -232,7 +232,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                             <tbody class="add_more_grand">
                                                                                 <?php
                                                                                 $grand_data = $grand_plan[0];
-                                                                                $grand_count = isset($grand_data) ? count($grand_plan) : 1;
+                                                                                $grand_count = isset($grand_data) ? php72_count($grand_plan) : 1;
                                                                                 for ($i = 0; $i < $grand_count; $i++) {
                                                                                     ?>
                                                                                     <tr>
@@ -317,7 +317,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                             <tbody class="add_more_short">
                                                                                 <?php
                                                                                 $short_data = $short_plan[0];
-                                                                                $short_count = isset($short_data) ? count($short_plan) : 1;
+                                                                                $short_count = isset($short_data) ? php72_count($short_plan) : 1;
                                                                                 for ($i = 0; $i < $short_count; $i++) {
                                                                                     ?>
                                                                                     <tr>
@@ -401,7 +401,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                             <tbody class="add_more_long">
                                                                                 <?php
                                                                                 $long_data = $long_plan[0];
-                                                                                $long_count = isset($long_data) ? count($long_plan) : 1;
+                                                                                $long_count = isset($long_data) ? php72_count($long_plan) : 1;
                                                                                 for ($i = 0; $i < $long_count; $i++) {
                                                                                     ?>
                                                                                     <tr>
@@ -479,11 +479,11 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 													
 													
                                                 </form>
-                                                <input type="hidden" id="qualitCount" value="<?= count($qual_achieve); ?>">
-                                                <input type="hidden" id="equityCount" value="<?= count($equity_plan); ?>">
-                                                <input type="hidden" id="grandCount" value="<?= count($grand_plan); ?>">
-                                                <input type="hidden" id="shortCount" value="<?= count($short_plan); ?>">
-                                                <input type="hidden" id="longCount" value="<?= count($long_plan); ?>">
+                                                <input type="hidden" id="qualitCount" value="<?= php72_count($qual_achieve); ?>">
+                                                <input type="hidden" id="equityCount" value="<?= php72_count($equity_plan); ?>">
+                                                <input type="hidden" id="grandCount" value="<?= php72_count($grand_plan); ?>">
+                                                <input type="hidden" id="shortCount" value="<?= php72_count($short_plan); ?>">
+                                                <input type="hidden" id="longCount" value="<?= php72_count($long_plan); ?>">
                                                 <input type="hidden" id="partnerCurrency" value="<?= $this->session->userdata['currency']; ?>">
                                             </div>
                                         </main>

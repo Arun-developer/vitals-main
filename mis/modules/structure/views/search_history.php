@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <?php
-    if(count($docList))
+    if(php72_count($docList))
 	{
 		$r=1;
         $i=0;

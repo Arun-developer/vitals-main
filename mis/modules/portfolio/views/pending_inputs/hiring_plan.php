@@ -67,13 +67,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -183,13 +183,13 @@
                                                                     $j = 1;
                                                                     $total_ytd_hire = array();
                                                                     $hire_job = $job_list[0];
-                                                                    $hire_count = isset($hire_job) ? count($job_list) : count($designation_list);
+                                                                    $hire_count = isset($hire_job) ? php72_count($job_list) : php72_count($designation_list);
 
                                                                     for ($i = 0; $i < $hire_count; $i++) {
                                                                         $plan = $team_plan[0];
-                                                                        $plan_count = isset($plan) ? count($team_plan) : 0;
+                                                                        $plan_count = isset($plan) ? php72_count($team_plan) : 0;
 
-                                                                        if (count($hire_job) == 0) {
+                                                                        if (php72_count($hire_job) == 0) {
                                                                             $job_title = $designation_list[$i]['name'];
                                                                         } else {
                                                                             $job_title = $job_list[$i]['job_name'];
@@ -236,7 +236,7 @@
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <?php if (count($team_plan) > 0) { ?>
+                                                                        <?php if (php72_count($team_plan) > 0) { ?>
                                                                             <a class="deleteteaminput text-danger deleteTeam" data-dyn="<?php echo $j; ?>" data-dyn-name="team" href="javascript:void(0)">
                                                                                 <i class="fas fa-trash"></i>
                                                                             </a>
@@ -309,7 +309,7 @@
             <input type="hidden" id="deleteName" value="">
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($team_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($team_plan); ?>">
         <style>
             i.fas.fa-minus-circle{
                 color:#ffae42;

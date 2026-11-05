@@ -50,7 +50,7 @@ $deleteLink = 'master/documents/delete/'.$activity_id;
     </thead>
 	<tbody>
 	<?php
-	if(count($documentsList))
+	if(php72_count($documentsList))
 	{    
 		$r=1;
 		foreach($documentsList as $documents)

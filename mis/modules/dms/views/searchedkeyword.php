@@ -19,7 +19,7 @@
         <tbody>
             <?php
 error_reporting(0);
-	if(count($getkeyresult))
+	if(php72_count($getkeyresult))
 	{
 		$r=1;
 		foreach($getkeyresult as $row)

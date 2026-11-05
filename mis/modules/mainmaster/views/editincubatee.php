@@ -1,7 +1,7 @@
 <?php
 $formAction = "";
 $val = array();
-if (count($incubateelist) > 0) {
+if (php72_count($incubateelist) > 0) {
 
     $action = 'edit';
     $val = $incubateelist[0];

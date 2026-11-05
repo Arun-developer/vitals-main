@@ -70,7 +70,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    if (count($innovationList)) {
+                    if (php72_count($innovationList)) {
                         $i = 'odd';
                         $j = 0;
                         foreach ($innovationList as $row):
@@ -126,7 +126,7 @@
                                 <td>
         <?php
         $names = $this->Minnovation->getDonorFitName($row['donor_fit']);
-        $donor_fit = implode(',', $names);
+        $donor_fit = php72_implode(',', $names);
         echo $donor_fit;
         ?>
                                 </td>

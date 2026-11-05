@@ -53,7 +53,7 @@
                         $rational = unserialize($assesst[0]['rational']);
                         $risk = unserialize($assesst[0]['risk']);
                     }
-                    $count_area = count($area);
+                    $count_area = php72_count($area);
                     foreach ($area as $area) {
                         ?>
                         <tr class="parent" id="row<?php echo $area['id']; ?>">
@@ -71,7 +71,7 @@
                         </tr>
                         <?php
                         $sub_category = $this->Massessment->getSubCategory($area['id']);
-                        $sub_count = count($sub_category);
+                        $sub_count = php72_count($sub_category);
                         $i = 0;
                         if (isset($sub_assesst)) {
                             foreach ($sub_assesst as $sub) {
@@ -84,8 +84,8 @@
                         }
                         foreach ($sub_category as $sub) {
                             $addscore = '';
-                            if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                                $key = array_search($sub['id'], $category_id);
+                            if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                                $key = php72_array_search($sub['id'], $category_id);
                                 $subscore = $sub_score[$key];
                                 $addscore = $add_score[$key];
                             }

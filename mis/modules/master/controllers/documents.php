@@ -57,7 +57,7 @@ class Documents extends CI_Controller
 
             $msg = $this->upload($_FILES);
             $options = $_POST;
-            for ($i = 0; $i < count($_FILES['document']['name']); $i++) {
+            for ($i = 0; $i < php72_count($_FILES['document']['name']); $i++) {
                 $_POST['document'][$i] = $_FILES['document']['name'][$i];
             }
             if ($msg == '') {
@@ -79,7 +79,7 @@ class Documents extends CI_Controller
         $data['documentsDetails'] = array();
         if ($id != '') {
             $data['documentsDetails'] = $this->Mdocuments->getDocumentsInfo($id);
-            if (count($data['documentsDetails']) == 0) {
+            if (php72_count($data['documentsDetails']) == 0) {
                 redirect('master/documents/form/' . $activity_id);
             }
 
@@ -143,7 +143,7 @@ class Documents extends CI_Controller
         $config['allowed_types'] = '*';
         $_POST['document'] = '';
         $this->load->library('upload');
-        for ($i = 0; $i < count($options['document']['name']); $i++) {
+        for ($i = 0; $i < php72_count($options['document']['name']); $i++) {
             if ($options['document']['name'][$i] != '') {
                 $_FILES['ty']['name'] = $options['document']['name'][$i];
             }

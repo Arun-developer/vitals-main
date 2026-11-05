@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('#financialTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($financialList) == 0){ ?>
+    <?php if(php72_count($financialList) == 0){ ?>
     var arow = $('.cloneFinancial').clone().removeClass('cloneFinancial').addClass('odd');
     $('#financialTable').append(arow);
     ordering('sNo');

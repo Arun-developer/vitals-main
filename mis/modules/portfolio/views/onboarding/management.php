@@ -16,8 +16,8 @@ $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city']
 $mgmt_data = $managementDetails[0];
 $mgmtdd_data = $get_mgdd[0];
 
-$managementDetails_count = isset($mgmt_data) ? count($managementDetails) : 1;
-$mgdd_count = isset($mgmtdd_data) ? count($get_mgdd) : 1;
+$managementDetails_count = isset($mgmt_data) ? php72_count($managementDetails) : 1;
+$mgdd_count = isset($mgmtdd_data) ? php72_count($get_mgdd) : 1;
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Info', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'add_class' => 'mar-tp140'));
 ?>
 
@@ -109,7 +109,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                 <div>
                                                     <tbody id='mgmt_add' class="plan-structure-new">
                                                         <?php
-                                                        if (count($managementDetails) != 0) {
+                                                        if (php72_count($managementDetails) != 0) {
                                                             $j = 1;
                                                             for ($i = 0; $i < $managementDetails_count; $i++) {
                                                                 ?>
@@ -249,7 +249,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($managementDetails); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($managementDetails); ?>">
 
 <!-- Model (Delete and select) -->
 <div class="modal" id="deletemodal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">

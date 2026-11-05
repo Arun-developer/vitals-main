@@ -288,7 +288,7 @@ class Trainings extends CI_Controller
         $data['fundDetails'] = array();
         if ($fu_id != '') {
             $data['fundDetails'] = $this->Mtrainings->getFundUtilization($fu_id);
-            if (count($data['fundDetails']) == 0) {
+            if (php72_count($data['fundDetails']) == 0) {
                 redirect('trainings/getinstallment/' . $innovation . '/' . $installment);
             }
 
@@ -373,7 +373,7 @@ class Trainings extends CI_Controller
     {
         $options = array();
         $options = $_POST;
-        for ($i = 0; $i < count($options['id']); $i++) {
+        for ($i = 0; $i < php72_count($options['id']); $i++) {
             if (!empty($options['status'][$i])) {
                 $data['status'][$options['status'][$i]][] = $options['id'][$i];
 

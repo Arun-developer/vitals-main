@@ -56,7 +56,7 @@
   $html = '<ul id="org" style="display:none">'.PHP_EOL;
   foreach ($arr as $v){
     $html .= '<li>' . $v['title'];
-    if (array_key_exists('children', $v)){
+    if (php72_array_key_exists('children', $v)){
       $html .= toUL($v['children']);
     }
     $html .= '</li>'.PHP_EOL;

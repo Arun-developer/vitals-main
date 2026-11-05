@@ -3,7 +3,7 @@ $formAction = "";
 $id = '';
 
 $val = array();
-if (count($applicantDetails) > 0) {
+if (php72_count($applicantDetails) > 0) {
     $val = $applicantDetails['0'];
     $formAction = site_url('applicant/form/' . $innovationid . '/' . $val['id']);
     $id = $val['id'];

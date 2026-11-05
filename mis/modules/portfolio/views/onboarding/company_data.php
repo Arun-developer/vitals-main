@@ -313,7 +313,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                     </div>
                                     <div class="add_more_invest" id="loadInvestData">
                                         <?php
-                                        $investData_count = isset($invest_list) && count($invest_list) > 0 ? count($invest_list) : '1';
+                                        $investData_count = isset($invest_list) && php72_count($invest_list) > 0 ? php72_count($invest_list) : '1';
                                         $j = 1;
                                         for ($i = 0; $i < $investData_count; $i++) {
                                             ?>
@@ -342,7 +342,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                         <label for="">&nbsp</label>
                                                     <?php } ?>
                                                     <i title="Add More" class="fa fa-plus bg-success text-left px-2 py-2 text-white cursor" onclick="addInvest();" aria-hidden="true"></i>
-                                                    <?php if (count($invest_list) > 0) { ?>
+                                                    <?php if (php72_count($invest_list) > 0) { ?>
                                                         <i title="Delete" class="fa fa-trash bg-danger text-left px-2 py-2 text-white cursor" onclick="deleteInvest(<?= $invest_list[$i]['id']; ?>);" aria-hidden="true"></i>
                                                     <?php } ?>
                                                 </div>
@@ -396,7 +396,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($company_data); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($company_data); ?>">
 <input type="hidden" id="prev_compStatus" value="<?= $company_status; ?>">
 <input type="hidden" name="innovationId" id="innovationId" value="<?php echo $inv_data['id']; ?>">
 

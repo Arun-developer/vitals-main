@@ -224,9 +224,9 @@ function submitform()
         <?php endforeach;?>
       </tr>
        <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan="6" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($scoutingyear);$k++){
+              <?php  for($k=0;$k<php72_count($scoutingyear);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=date("M", mktime(0, 0, 0, $scoutingyear[$k]['month'], 1, 2000));?></td>

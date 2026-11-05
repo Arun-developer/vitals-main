@@ -231,10 +231,10 @@
             $doc_rec_val = $asses_val = '-';
 
             $docs_type = array('1', '2', '3', '4', '5', '6');
-            for ($i = 0; $i < count($all_docs); $i++) {
+            for ($i = 0; $i < php72_count($all_docs); $i++) {
                 $get_docs[$all_docs[$i]['doc_type']] = $all_docs[$i]['doc_type'];
             }
-            $avail_docs = array_keys($get_docs);
+            $avail_docs = php72_array_keys($get_docs);
 
             if (!empty($all_docs) && !array_diff($docs_type, $avail_docs)) {
                 $doc_rec = 'green';

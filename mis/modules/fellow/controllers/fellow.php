@@ -494,7 +494,7 @@ class Fellow extends CI_Controller
         $data['fundDetails'] = array();
         if ($fu_id != '') {
             $data['fundDetails'] = $this->Mfellow->getFundUtilization($fu_id);
-            if (count($data['fundDetails']) == 0) {
+            if (php72_count($data['fundDetails']) == 0) {
                 redirect('fellow/getinstallment/' . $innovation . '/' . $installment);
             }
 

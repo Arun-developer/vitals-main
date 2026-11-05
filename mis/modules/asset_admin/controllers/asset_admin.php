@@ -133,19 +133,19 @@ class Asset_admin extends CI_Controller {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
 
 
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
         if ($columnArr[$columnIndex] != '') {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($searchArray);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         //print_r($where);die;
         $assetListCount = $this->Masset->getLimitAssetall($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetall($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
 
         #echo'<pre>';print_r($assetList);die;
         foreach ($assetList as $lists) {
@@ -268,11 +268,11 @@ class Asset_admin extends CI_Controller {
         }
         if ($this->input->post('employee_id') != "") {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
 
         #echo'<pre>';print_r($searchArray);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $AN_report = $assetListCount = $this->Masset->getLimitAssetall($where, '', '', '', '');
 
@@ -385,7 +385,7 @@ class Asset_admin extends CI_Controller {
 
         if ($this->input->post('employee_id') != "") {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
 
         if ($this->input->post('date_from') != "" && $this->input->post('date_to') != "") {
@@ -398,7 +398,7 @@ class Asset_admin extends CI_Controller {
 
 
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getExportAssetTransfer($where, '', '', 1);
         #echo "<pre>";print_r($assetListCount);die;
@@ -526,7 +526,7 @@ class Asset_admin extends CI_Controller {
 
         if ($this->input->post('employee_id') != "") {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
 
         if ($this->input->post('date_from') != "" && $this->input->post('date_to') != "") {
@@ -541,13 +541,13 @@ class Asset_admin extends CI_Controller {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getLimitAssetTransfer($where, '', '', $sort_column, $columnSortOrder,1);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetTransfer($where, $limit, $start, $sort_column, $columnSortOrder,1);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
 
         foreach ($assetList as $lists) {
             $emp_name = '';
@@ -609,7 +609,7 @@ class Asset_admin extends CI_Controller {
         }
         if ($this->input->post('employee_id') != "") {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
 
         if ($this->input->post('date_from') != "" && $this->input->post('date_to') != "") {
@@ -628,7 +628,7 @@ class Asset_admin extends CI_Controller {
             $searchArray[] = "return_date >= '" . date('Y-m-d', strtotime($date_to)) . "'";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         $assetListCount = $this->Masset->getExportAssetTransfer($where, '', '', '', '');
 
         #echo'<pre>';print_r($AN_report);die;
@@ -743,7 +743,7 @@ class Asset_admin extends CI_Controller {
         }
         if ($this->input->post('employee_id') != "") {
             $empAsset = $this->Masset->getAssetEmpSearch($this->input->post('employee_id'));
-            $searchArray[] = "master_asset.asset_id IN ('" . implode("','", $empAsset) . "')";
+            $searchArray[] = "master_asset.asset_id IN ('" . php72_implode("','", $empAsset) . "')";
         }
 
         if ($this->input->post('date_from') != "" && $this->input->post('date_to') != "") {
@@ -766,13 +766,13 @@ class Asset_admin extends CI_Controller {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getLimitAssetTransfer($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
         #echo $where;
         $assetList = $this->Masset->getLimitAssetTransfer($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
         /*  echo'<pre>';print_r($where);
           echo'<pre>';print_r($assetList);die;
          */
@@ -847,7 +847,7 @@ class Asset_admin extends CI_Controller {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getExportAssetNotavail($where, '', '', $sort_column, $columnSortOrder, 'Show All');
 
@@ -921,14 +921,14 @@ class Asset_admin extends CI_Controller {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getExportAssetNotavail($where, '', '', $sort_column, $columnSortOrder, 'Show All');
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getExportAssetNotavail($where, $limit, $start, $sort_column, $columnSortOrder, 'Show All');
         #echo'<pre>';print_r($assetList);die;
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
 
         foreach ($assetList as $lists) {
             $emp_name = '';
@@ -1112,7 +1112,7 @@ class Asset_admin extends CI_Controller {
         if ($asset_id != '') {
             $searchArray[] = "master_asset.asset_id = '" . $asset_id . "'";
             $searchArray[] = "master_vendor.vendor_id = '" . $vendor_id . "'";
-            $where = implode(" and ", $searchArray);
+            $where = php72_implode(" and ", $searchArray);
             $assetList = $this->Masset->getLimitAssetall($where, $limit, $start, $sort_column, $columnSortOrder);
 
             if (!empty($assetList[0])) {
@@ -1131,7 +1131,7 @@ class Asset_admin extends CI_Controller {
     function transfer() {
         $this->load->helper('common_helper');
         #echo'<pre>';print_r($_POST);die;
-        if (count($_POST) > 2) {
+        if (php72_count($_POST) > 2) {
             $result = $this->Masset->transferAsset();
             $this->sendTransferMail($result);
         }
@@ -1140,7 +1140,7 @@ class Asset_admin extends CI_Controller {
     }
 
     function return_asset() {
-        if (count($_POST) > 2) {
+        if (php72_count($_POST) > 2) {
             $this->Masset->transferReturn();
             $this->sendReturnMail($this->input->post("transfer_id"));
             $this->session->set_flashdata('successMsg', 'Asset Returned Successfully!');
@@ -1220,7 +1220,7 @@ class Asset_admin extends CI_Controller {
             $searchArray[] = "asset_payment.bill_date >= '" . date('Y-m-d', strtotime($date_to)) . "'";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $assetListCount = $this->Masset->getExportAssetPayment($where, '', '', '', '');
         #echo "<pre>";  print_r($assetListCount);die;
@@ -1375,7 +1375,7 @@ class Asset_admin extends CI_Controller {
         }
 
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
 
         $columnArr = array('master_asset.asset_no', '', '', '', 'master_vendor.vendor_name', 'asset_payment.payment_type', 'asset_payment.payment_period1', 'asset_payment.bill_date', 'asset_payment.bill_no', 'asset_payment.total_amount', 'asset_payment.ceiling_amount');
@@ -1384,10 +1384,10 @@ class Asset_admin extends CI_Controller {
         }
 
         $assetListCount = $this->Masset->getLimitAssetPayment($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetPayment($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
         #echo'<pre>';print_r($assetList);die;
         $sum=0;
         foreach ($assetList as $lists) {
@@ -1527,7 +1527,7 @@ class Asset_admin extends CI_Controller {
         }
 
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $assetListCount = $this->Masset->getExportAssetPayment($where, '', '', '', '');
 
@@ -1692,7 +1692,7 @@ class Asset_admin extends CI_Controller {
         }
 
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
 
         $columnArr = array('master_asset.asset_no', '', '', '', 'master_vendor.vendor_name', 'asset_payment.payment_type', 'asset_payment.payment_period1', 'asset_payment.bill_date', 'asset_payment.bill_no', 'asset_payment.total_amount', 'asset_payment.ceiling_amount');
@@ -1701,10 +1701,10 @@ class Asset_admin extends CI_Controller {
         }
 
         $assetListCount = $this->Masset->getLimitAssetPaymentEmployee($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetPaymentEmployee($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
         #echo'<pre>';print_r($assetList);die;
         $totamountsum=$ceiling_amountsum=$deduction_amountsum=0;
         foreach ($assetList as $lists) {

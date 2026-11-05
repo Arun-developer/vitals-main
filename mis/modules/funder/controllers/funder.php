@@ -111,8 +111,8 @@ class Funder extends MY_Controller {
         $getFunderData = $this->funder_model->get_all_details('funder_list', $condition, $fields, '', '', $order_by, '', '', $join, $groupBy);
 
         $get_DisbAmt = json_decode(json_encode($getGrantAmount), true);
-        $get_GrantId = array_column($get_DisbAmt, 'grant_id');
-        $get_Amount = array_column($get_DisbAmt, 'amount');
+        $get_GrantId = php72_array_column($get_DisbAmt, 'grant_id');
+        $get_Amount = php72_array_column($get_DisbAmt, 'amount');
         $GetSumAmount = array_combine($get_GrantId, $get_Amount);
         $data['totalAmount'] = array();
         if (!empty($GetSumAmount)) {
@@ -164,7 +164,7 @@ class Funder extends MY_Controller {
         $resdfs = '';
         $mainlist = array();
         foreach ($funderLimtArr as $result) {
-            $COUNTS += count($result);
+            $COUNTS += php72_count($result);
             foreach ($result as $res) {
 
                 $resdfs += $i;
@@ -189,8 +189,8 @@ class Funder extends MY_Controller {
         $groupBy_in = array('donor');
         $getInternalAmt = $this->funder_model->get_all_details('internal_note', array(), array('SUM(amount_toapprove) as approval_amount', 'donor'), '', '', '', true, 'ais', '', $groupBy_in);
         $getInternaAmt_arr = json_decode(json_encode($getInternalAmt), true);
-        $approval_amount = array_column($getInternaAmt_arr, 'approval_amount');
-        $donor_ids = array_column($getInternaAmt_arr, 'donor');
+        $approval_amount = php72_array_column($getInternaAmt_arr, 'approval_amount');
+        $donor_ids = php72_array_column($getInternaAmt_arr, 'donor');
         $GetDonorApp_amt = array_combine($donor_ids, $approval_amount);
         $data['total_utilized'] = $GetDonorApp_amt;
 
@@ -525,11 +525,11 @@ class Funder extends MY_Controller {
 
         $InsertDataArr = $dataArr = array();
 
-        for ($i = 0; $i <= count($contact_name); $i++) {
-            $c_name = array_values($contact_name[$i])[0];
-            $c_designation = array_values($designation[$i])[0];
-            $c_email = array_values($email[$i])[0];
-            $c_mobile_number = array_values($mobile_number[$i])[0];
+        for ($i = 0; $i <= php72_count($contact_name); $i++) {
+            $c_name = php72_array_values($contact_name[$i])[0];
+            $c_designation = php72_array_values($designation[$i])[0];
+            $c_email = php72_array_values($email[$i])[0];
+            $c_mobile_number = php72_array_values($mobile_number[$i])[0];
 
             if ($c_name != '' || $c_designation != '' || $c_email != '' || $c_mobile_number != '') {
                 if (isset($contact_id[$i]) && $contact_id[$i] != '') {
@@ -575,26 +575,26 @@ function insert_EditFunder_Doc($type = '', $funder_id = '') {
     $file_dataArr = $filenameArr = $images = array();
 
     if (!empty($_FILES['file_upload'])) {
-        if (count($_FILES['file_upload']['name']) > 0) {
+        if (php72_count($_FILES['file_upload']['name']) > 0) {
             $user_id = $this->session->userdata('emp_number');
 
-                for ($i = 0; $i < count($_FILES['file_upload']['name']); $i++) { #echo array_values($_FILES['file_upload']['type'][$i])[0];die;
-                $fName = array_values($_FILES['file_upload']['name'][$i])[0];
+                for ($i = 0; $i < php72_count($_FILES['file_upload']['name']); $i++) { #echo array_values($_FILES['file_upload']['type'][$i])[0];die;
+                $fName = php72_array_values($_FILES['file_upload']['name'][$i])[0];
                 if ($fName != '') {
                     $fileType = pathinfo($fName, PATHINFO_EXTENSION);
                     $file_name = uniqid(md5($fName . '' . time())) . '.' . $fileType;
 
                     $_FILES['images[]']['name'] = $file_name;
-                    $_FILES['images[]']['type'] = $file_type = array_values($_FILES['file_upload']['type'][$i])[0];
-                    $_FILES['images[]']['tmp_name'] = array_values($_FILES['file_upload']['tmp_name'][$i])[0];
-                    $_FILES['images[]']['error'] = array_values($_FILES['file_upload']['error'][$i])[0];
-                    $_FILES['images[]']['size'] = array_values($_FILES['file_upload']['size'][$i])[0];
+                    $_FILES['images[]']['type'] = $file_type = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                    $_FILES['images[]']['tmp_name'] = php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0];
+                    $_FILES['images[]']['error'] = php72_array_values($_FILES['file_upload']['error'][$i])[0];
+                    $_FILES['images[]']['size'] = php72_array_values($_FILES['file_upload']['size'][$i])[0];
 
                     $fileName = $file_name;
                     $images[] = $fileName;
                     $filenameArr[] = $fileName;
                         #echo'<pre>';print_r($_FILES);die;
-                    $f_description = array_values($description[$i])[0];
+                    $f_description = php72_array_values($description[$i])[0];
 
                     if ($fName != '' || $file_type != '' || $f_description != '') {
                         $res = $this->upload->initialize($config);
@@ -642,15 +642,15 @@ function editFunder_Documents() {
         $doc_id = '';
         $countErr = 0;
 
-        for ($i = 0; $i < count($description); $i++) {
+        for ($i = 0; $i < php72_count($description); $i++) {
 
-            $Check_fname = array_values($_FILES['file_upload']['name'][$i])[0];
-            $Check_description_val = array_values($description[$i])[0];
+            $Check_fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
+            $Check_description_val = php72_array_values($description[$i])[0];
             $countErr++;
             if (!empty($_FILES['file_upload'])) {
-                if (count($_FILES['file_upload']['name']) > 0) {
-                    $fname = array_values($_FILES['file_upload']['name'][$i])[0];
-                    $description_val = array_values($description[$i])[0];
+                if (php72_count($_FILES['file_upload']['name']) > 0) {
+                    $fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
+                    $description_val = php72_array_values($description[$i])[0];
 
                     $file_dataArr = array();
                     if (isset($fname) && $fname != '') {
@@ -658,10 +658,10 @@ function editFunder_Documents() {
                         $file_name = uniqid(md5($fName . '' . time())) . '.' . $fileType;
 
                         $_FILES['images[]']['name'] = $file_name;
-                        $_FILES['images[]']['type'] = $file_type = array_values($_FILES['file_upload']['type'][$i])[0];
-                        $_FILES['images[]']['tmp_name'] = array_values($_FILES['file_upload']['tmp_name'][$i])[0];
-                        $_FILES['images[]']['error'] = array_values($_FILES['file_upload']['error'][$i])[0];
-                        $_FILES['images[]']['size'] = array_values($_FILES['file_upload']['size'][$i])[0];
+                        $_FILES['images[]']['type'] = $file_type = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                        $_FILES['images[]']['tmp_name'] = php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0];
+                        $_FILES['images[]']['error'] = php72_array_values($_FILES['file_upload']['error'][$i])[0];
+                        $_FILES['images[]']['size'] = php72_array_values($_FILES['file_upload']['size'][$i])[0];
 
                         $fileName = $file_name;
                         $images[] = $fileName;
@@ -861,13 +861,13 @@ function editFunder_Documents() {
             $file_dataArr = $dataArr = $filenameArr = $images = array();
 
             if (!empty($grantreport_dop)) {
-                if (count($grantreport_dop) > 0) {
-                    for ($i = 0; $i < count($grantreport_dop); $i++) { #echo array_values($_FILES['file_upload']['type'][$i])[0];die;
-                    $f_grantreport_sub = array_values($grantreport_sub[$i])[0];
-                    $f_grantreport_resp = array_values($grantreport_resp[$i])[0];
-                    $f_grantreport_cmd = array_values($grantreport_cmd[$i])[0];
-                    $fType = array_values($_FILES['file_upload']['type'][$i])[0];
-                    $f_grantreport_dop = array_values($grantreport_dop[$i])[0];
+                if (php72_count($grantreport_dop) > 0) {
+                    for ($i = 0; $i < php72_count($grantreport_dop); $i++) { #echo array_values($_FILES['file_upload']['type'][$i])[0];die;
+                    $f_grantreport_sub = php72_array_values($grantreport_sub[$i])[0];
+                    $f_grantreport_resp = php72_array_values($grantreport_resp[$i])[0];
+                    $f_grantreport_cmd = php72_array_values($grantreport_cmd[$i])[0];
+                    $fType = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                    $f_grantreport_dop = php72_array_values($grantreport_dop[$i])[0];
 
                     $grantreport_dop_val = $grantreport_sub_val = '';
                     if ($f_grantreport_dop != '')
@@ -878,20 +878,20 @@ function editFunder_Documents() {
 
                     if ($f_grantreport_dop != '' || $f_grantreport_resp != '' || $f_grantreport_cmd != '' || $fType != '') {
                         if (!empty($_FILES['file_upload'])) {
-                            if (count($_FILES['file_upload']['name']) > 0) {
-                                $fName = array_values($_FILES['file_upload']['name'][$i])[0];
+                            if (php72_count($_FILES['file_upload']['name']) > 0) {
+                                $fName = php72_array_values($_FILES['file_upload']['name'][$i])[0];
                                 if ($fName != '') {
-                                    $fType = array_values($_FILES['file_upload']['type'][$i])[0];
+                                    $fType = php72_array_values($_FILES['file_upload']['type'][$i])[0];
                                     $fileTypeArr = explode("/", $fType);
                                     $fileType = $fileTypeArr[1];
                                     $fileType = pathinfo($fName, PATHINFO_EXTENSION);
 
                                     $file_name = uniqid(md5($fName)) . '.' . $fileType;
                                     $_FILES['images[]']['name'] = $file_name;
-                                    $_FILES['images[]']['type'] = $file_type = array_values($_FILES['file_upload']['type'][$i])[0];
-                                    $_FILES['images[]']['tmp_name'] = array_values($_FILES['file_upload']['tmp_name'][$i])[0];
-                                    $_FILES['images[]']['error'] = array_values($_FILES['file_upload']['error'][$i])[0];
-                                    $_FILES['images[]']['size'] = array_values($_FILES['file_upload']['size'][$i])[0];
+                                    $_FILES['images[]']['type'] = $file_type = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                                    $_FILES['images[]']['tmp_name'] = php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0];
+                                    $_FILES['images[]']['error'] = php72_array_values($_FILES['file_upload']['error'][$i])[0];
+                                    $_FILES['images[]']['size'] = php72_array_values($_FILES['file_upload']['size'][$i])[0];
 
 
 
@@ -959,12 +959,12 @@ function editFunder_Documents() {
         $programme = $this->input->post('programme');
     }
     $InsertDataArr = $dataArr = array();
-    for ($i = 0; $i <= count($budget) - 1; $i++) {
-        $g_budget = array_values($budget[$i])[0];
-        $g_line_item = array_values($line_item[$i])[0];
-        $g_sub_line = array_values($sub_line[$i])[0];
-        $g_grant_amount = str_replace(',', '', array_values($grant_amount[$i])[0]);
-        $g_grant_comments = array_values($grant_comments[$i])[0];
+    for ($i = 0; $i <= php72_count($budget) - 1; $i++) {
+        $g_budget = php72_array_values($budget[$i])[0];
+        $g_line_item = php72_array_values($line_item[$i])[0];
+        $g_sub_line = php72_array_values($sub_line[$i])[0];
+        $g_grant_amount = str_replace(',', '', php72_array_values($grant_amount[$i])[0]);
+        $g_grant_comments = php72_array_values($grant_comments[$i])[0];
 
         if (isset($garntline_id[$i]) && $garntline_id[$i] != '') {
             $condition = array('id' => $garntline_id[$i]);
@@ -1022,13 +1022,13 @@ function editFunder_Documents() {
     }
 
     $InsertDataArr = $dataArr = array();
-    for ($i = 0; $i <= count($disbursement_mile) - 1; $i++) {
-        $d_disbursement_mile = array_values($disbursement_mile[$i])[0];
-        $d_date_disbursement = array_values($date_disbursement[$i])[0];
-        $d_disbursement_amount = str_replace(',', '', array_values($disbursement_amount[$i])[0]);
-        $d_date_deposite = array_values($date_deposite[$i])[0];
-        $d_amount_deposite = str_replace(',', '', array_values($amount_deposite[$i])[0]);
-        $d_disbursement_cmd = array_values($disbursement_cmd[$i])[0];
+    for ($i = 0; $i <= php72_count($disbursement_mile) - 1; $i++) {
+        $d_disbursement_mile = php72_array_values($disbursement_mile[$i])[0];
+        $d_date_disbursement = php72_array_values($date_disbursement[$i])[0];
+        $d_disbursement_amount = str_replace(',', '', php72_array_values($disbursement_amount[$i])[0]);
+        $d_date_deposite = php72_array_values($date_deposite[$i])[0];
+        $d_amount_deposite = str_replace(',', '', php72_array_values($amount_deposite[$i])[0]);
+        $d_disbursement_cmd = php72_array_values($disbursement_cmd[$i])[0];
 
         if (isset($disbursement_id[$i]) && $disbursement_id[$i] != '') {
             $condition = array('id' => $disbursement_id[$i]);
@@ -1128,27 +1128,27 @@ function editFunder_Documents() {
         $config['upload_path'] = './uploads/file_documents/';
         $this->load->library('upload', $config);
         $doc_id = $f_grantreport_dop = $fname = $f_grantreport_resp = $f_grantreport_cmd = '';
-        for ($i = 0; $i < count($grantreport_dop); $i++) {
+        for ($i = 0; $i < php72_count($grantreport_dop); $i++) {
             $grantreport_ids = $grantreport_id[$i];
-            $check_fname = array_values($_FILES['file_upload']['name'][$i])[0];
-            $f_grantreport_sub = array_values($grantreport_sub[$i])[0];
-            $f_grantreport_dop = array_values($grantreport_dop[$i])[0];
-            $f_grantreport_resp = array_values($grantreport_resp[$i])[0];
-            $f_grantreport_cmd = array_values($grantreport_cmd[$i])[0];
+            $check_fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
+            $f_grantreport_sub = php72_array_values($grantreport_sub[$i])[0];
+            $f_grantreport_dop = php72_array_values($grantreport_dop[$i])[0];
+            $f_grantreport_resp = php72_array_values($grantreport_resp[$i])[0];
+            $f_grantreport_cmd = php72_array_values($grantreport_cmd[$i])[0];
 
             if (!empty($_FILES['file_upload'])) {
-                if (count($_FILES['file_upload']['name']) > 0) {
-                    $fname = array_values($_FILES['file_upload']['name'][$i])[0];
+                if (php72_count($_FILES['file_upload']['name']) > 0) {
+                    $fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
 
                     if (isset($fname) && $fname != '') {
                         $fileType = pathinfo($fname, PATHINFO_EXTENSION);
 
                         $file_name = uniqid(md5($fName . '' . time())) . '.' . $fileType;
                         $_FILES['images[]']['name'] = $file_name;
-                        $_FILES['images[]']['type'] = $file_type = array_values($_FILES['file_upload']['type'][$i])[0];
-                        $_FILES['images[]']['tmp_name'] = array_values($_FILES['file_upload']['tmp_name'][$i])[0];
-                        $_FILES['images[]']['error'] = array_values($_FILES['file_upload']['error'][$i])[0];
-                        $_FILES['images[]']['size'] = array_values($_FILES['file_upload']['size'][$i])[0];
+                        $_FILES['images[]']['type'] = $file_type = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                        $_FILES['images[]']['tmp_name'] = php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0];
+                        $_FILES['images[]']['error'] = php72_array_values($_FILES['file_upload']['error'][$i])[0];
+                        $_FILES['images[]']['size'] = php72_array_values($_FILES['file_upload']['size'][$i])[0];
 
                         $fileName = $file_name;
                         $images[] = $fileName;
@@ -1241,8 +1241,8 @@ function editFunder_Documents() {
         $email = $this->input->post('email');
         $pan = $this->input->post('pan');
         $contact_id = $this->input->post('contact_id');
-        $mobile_id = array_filter($this->input->post('mobile_id'));
-        $email_id = array_filter($this->input->post('email_id'));
+        $mobile_id = php72_array_filter($this->input->post('mobile_id'));
+        $email_id = php72_array_filter($this->input->post('email_id'));
 
         $dataArr = $funder_data = $get_contacts = array();
         $data = array();
@@ -1278,11 +1278,11 @@ function editFunder_Documents() {
         unset($condition['name']);
         unset($condition['pan']);
 
-        for ($i = 0; $i <= count($mobile_number) - 1; $i++) {
+        for ($i = 0; $i <= php72_count($mobile_number) - 1; $i++) {
             $c_mobile_number = $mobile_number[$i];
             if ($c_mobile_number != '') {
                 $get_id = array_search($c_mobile_number, $mobile_id);
-                $mobile_error_key = array_keys($mobile_number)[$i];
+                $mobile_error_key = php72_array_keys($mobile_number)[$i];
                 $condition2 = array('mobile_number' => $c_mobile_number);
                 if ($get_id != '') {
                     $condition2['id !='] = $get_id;
@@ -1302,8 +1302,8 @@ function editFunder_Documents() {
     if (!empty($email)) {
         unset($condition['name']);
         unset($condition['pan']);
-        for ($i = 0; $i <= count($email) - 1; $i++) {
-            $email_error_key = array_keys($email)[$i];
+        for ($i = 0; $i <= php72_count($email) - 1; $i++) {
+            $email_error_key = php72_array_keys($email)[$i];
             $c_email = $email[$i];
             $condition = array('email' => $c_email);
             $get_id = array_search($c_email, $email_id);
@@ -1442,7 +1442,7 @@ function editFunder_Documents() {
         $common_id = $this->input->post('common_id');
         $formType = $this->input->post('formType');
         $grant_id = $this->input->post('grant_id');
-        $common_id = array_values(array_filter($common_id));
+        $common_id = array_values(php72_array_filter($common_id));
         if (!empty($common_id) && $formType != '') {
 
             $condition = array('id' => $common_id);
@@ -1549,8 +1549,8 @@ function ajax_log_datatable() {
     $data = $nestedData;
     $json_data = array(
         "draw" => intval($draw),
-        "recordsTotal" => intval(count($getFunder_Logs)),
-        "recordsFiltered" => intval(count($getFunder_LogsCount)),
+        "recordsTotal" => intval(php72_count($getFunder_Logs)),
+        "recordsFiltered" => intval(php72_count($getFunder_LogsCount)),
         "data" => $data,
         'POST' => $_POST
     );
@@ -1578,8 +1578,8 @@ function ajax_load_datatable() {
     $data['total_amount_rec'] = $getGrantAmount = $this->funder_model->get_all_details('disbursement_schedule', array(), array('grant_id', 'SUM(amount_deposite) AS amount'), '', '', '', '', '', '', array('grant_id'), '');
 
     $get_DisbAmt = json_decode(json_encode($getGrantAmount), true);
-    $get_GrantId = array_column($get_DisbAmt, 'grant_id');
-    $get_Amount = array_column($get_DisbAmt, 'amount');
+    $get_GrantId = php72_array_column($get_DisbAmt, 'grant_id');
+    $get_Amount = php72_array_column($get_DisbAmt, 'amount');
     $GetSumAmount = array_combine($get_GrantId, $get_Amount);
 
     $getInternalAmt = $this->funder_model->get_all_details('internal_note', array('donor' => $funder_id), array('SUM(amount_toapprove) as approval_amount'), '', '', '', true, 'ais');
@@ -1592,8 +1592,8 @@ function ajax_load_datatable() {
     $get_aprovalGrant_amt = '';
     $getAndAmount = $this->funder_model->get_all_details('approval_note_donors', array('donor' => $funder_id, 'grant_id !=' => ''), array('amt_required', 'grant_id'), '', '', '', true, 'ais', '', $groupBy);
     $getAprovalGrant = json_decode(json_encode($getAndAmount), true);
-    $get_aprovalGrant = array_column($getAprovalGrant, 'grant_id');
-    $get_aprovalAmt = array_column($getAprovalGrant, 'amt_required');
+    $get_aprovalGrant = php72_array_column($getAprovalGrant, 'grant_id');
+    $get_aprovalAmt = php72_array_column($getAprovalGrant, 'amt_required');
     $get_aprovalGrant_amt = array_combine($get_aprovalGrant, $get_aprovalAmt);
 
         #echo'<pre>';print_r($getInternalAmt);die;
@@ -1620,8 +1620,8 @@ function ajax_load_datatable() {
         #echo'<pre>';print_r($getGrantData);die;
     $json_data = array(
         "draw" => intval($draw),
-        "recordsTotal" => intval(count($getGrantData)),
-        "recordsFiltered" => intval(count($getGrantCount)),
+        "recordsTotal" => intval(php72_count($getGrantData)),
+        "recordsFiltered" => intval(php72_count($getGrantCount)),
         "data" => $data,
         'POST' => $_POST
     );
@@ -1649,8 +1649,8 @@ function deleted_grant_list() {
 
     function delete_summay_list() { #echo'<pre>';print_r($_POST);die;
     checkAuth();
-    $funder_id = array_filter($this->input->post('funder_id'));
-    $grant_id = array_filter($this->input->post('grant_id'));
+    $funder_id = php72_array_filter($this->input->post('funder_id'));
+    $grant_id = php72_array_filter($this->input->post('grant_id'));
     if (!empty($grant_id)) {
         $conditionGrant = array('grant_id' => $grant_id);
         $this->funder_model->delete_data_in('grant_list', array('id' => $grant_id));
@@ -1679,8 +1679,8 @@ function deleted_grant_list() {
 
     function test_delete_summay_list() { #echo'<pre>';print_r($_POST);die;
     checkAuth();
-    $funder_id = array_filter($this->input->post('funder_id'));
-    $grant_id = array_filter($this->input->post('grant_id'));
+    $funder_id = php72_array_filter($this->input->post('funder_id'));
+    $grant_id = php72_array_filter($this->input->post('grant_id'));
     if (!empty($grant_id)) {
         $conditionGrant = array('grant_id' => $grant_id);
         $this->funder_model->delete_data_in('grant_list', array('id' => $grant_id));
@@ -1926,8 +1926,8 @@ function print_grant_pdf() {
     $getFunderData = $this->funder_model->get_all_details('funder_list', $condition, $fields, '', '', $order_by, '', '', $join, $groupBy);
 
     $get_DisbAmt = json_decode(json_encode($getGrantAmount), true);
-    $get_GrantId = array_column($get_DisbAmt, 'grant_id');
-    $get_Amount = array_column($get_DisbAmt, 'amount');
+    $get_GrantId = php72_array_column($get_DisbAmt, 'grant_id');
+    $get_Amount = php72_array_column($get_DisbAmt, 'amount');
     $GetSumAmount = array_combine($get_GrantId, $get_Amount);
     $data['totalAmount'] = array();
     if (!empty($GetSumAmount)) {
@@ -1950,7 +1950,7 @@ function print_grant_pdf() {
     $resdfs = '';
     $mainlist = array();
     foreach ($funderLimtArr as $result) {
-        $COUNTS += count($result);
+        $COUNTS += php72_count($result);
         foreach ($result as $res) {
             $resdfs += $i;
             $mainlist[] = $res;
@@ -1974,8 +1974,8 @@ function print_grant_pdf() {
     $groupBy_in = array('donor');
     $getInternalAmt = $this->funder_model->get_all_details('internal_note', array(), array('SUM(amount_toapprove) as approval_amount', 'donor'), '', '', '', true, 'ais', '', $groupBy_in);
     $getInternaAmt_arr = json_decode(json_encode($getInternalAmt), true);
-    $approval_amount = array_column($getInternaAmt_arr, 'approval_amount');
-    $donor_ids = array_column($getInternaAmt_arr, 'donor');
+    $approval_amount = php72_array_column($getInternaAmt_arr, 'approval_amount');
+    $donor_ids = php72_array_column($getInternaAmt_arr, 'donor');
     $GetDonorApp_amt = array_combine($donor_ids, $approval_amount);
     $data['total_utilized'] = $GetDonorApp_amt;
         #echo'<pre>';print_r($funder_details);die;
@@ -2106,8 +2106,8 @@ function print_grant_pdf() {
     $getFunderData = $this->funder_model->get_all_details('funder_list', $condition, $fields, '', '', $order_by, '', '', $join, $groupBy);
 
     $get_DisbAmt = json_decode(json_encode($getGrantAmount), true);
-    $get_GrantId = array_column($get_DisbAmt, 'grant_id');
-    $get_Amount = array_column($get_DisbAmt, 'amount');
+    $get_GrantId = php72_array_column($get_DisbAmt, 'grant_id');
+    $get_Amount = php72_array_column($get_DisbAmt, 'amount');
     $GetSumAmount = array_combine($get_GrantId, $get_Amount);
     $data['totalAmount'] = array();
     if (!empty($GetSumAmount)) {
@@ -2130,15 +2130,15 @@ function print_grant_pdf() {
     $groupBy_in = array('donor');
     $getInternalAmt = $this->funder_model->get_all_details('internal_note', array(), array('SUM(amount_toapprove) as approval_amount', 'donor'), '', '', '', true, 'ais', '', $groupBy_in);
     $getInternaAmt_arr = json_decode(json_encode($getInternalAmt), true);
-    $approval_amount = array_column($getInternaAmt_arr, 'approval_amount');
-    $donor_ids = array_column($getInternaAmt_arr, 'donor');
+    $approval_amount = php72_array_column($getInternaAmt_arr, 'approval_amount');
+    $donor_ids = php72_array_column($getInternaAmt_arr, 'donor');
     $GetDonorApp_amt = array_combine($donor_ids, $approval_amount);
     $data['total_utilized'] = $GetDonorApp_amt;
 
     $res = array_slice($funder_details, 0, 10);
     $count_sum = '';
     foreach ($res as $keys => $val) {
-        $count_sum += count($val);
+        $count_sum += php72_count($val);
     }
     $data['pagination_limit'] = $count_sum - 2;
 
@@ -2363,7 +2363,7 @@ function test() {
 
 	public function deleteBank() {
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $table = $_POST['table'];
         $query = $this->funder_model->deleteBankDetail($table, $condition);
 
@@ -2402,7 +2402,7 @@ function test() {
 		$query = $this->funder_model->getDTBankDetails($requestData['length'], $requestData['start'], $search_field, $search_value, $current_user, $columns, $requestData,$cond);
 		#echo'<pre>';print_r($query);die;
 		$totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {

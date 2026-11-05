@@ -56,12 +56,12 @@ class Document_system extends CI_Controller
             $path = "\\\\\\\\" . $_SERVER['HTTP_HOST'] . "\\\\public_html\\\\" . $newpath;
             $this->Mdms->hasKeyword($userid, $key, $path, $keywordornot, $searchtype);
             $counter = 0;
-            if (isset($_POST['counter'])) {$counter = $_POST['counter'] - 1;}
+            if (isset($_POST['counter'])) {$counter = php72_num($_POST['counter']) - 1;}
             if ($key != "") {
                 $docdetails = $this->chkkeyword($key, $userid, $counter);
             }
             if (!empty($docdetails)) {
-                echo "<span style='color:#999999;float:left;margin-bottom:5px;'>About " . count($docdetails) . " Results</span><br>";
+                echo "<span style='color:#999999;float:left;margin-bottom:5px;'>About " . php72_count($docdetails) . " Results</span><br>";
             }
             if (empty($docdetails)) {
                 echo "<span style='color:#999999;float:left;margin-bottom:5px;'>No results found </span><br>";
@@ -78,7 +78,7 @@ class Document_system extends CI_Controller
             }
             echo "<div id='paging_button' align='center'>";
             echo "<ul id='pageulID'>";
-            $count = count($docdetails);
+            $count = php72_count($docdetails);
             $pages = ceil($count / $per_page);
             for ($i = 1; $i <= $pages; $i++) {
                 echo "<li class='page' id='" . $i . "'>" . $i . "</li>";
@@ -162,7 +162,7 @@ class Document_system extends CI_Controller
         $paths = glob($path . '*', GLOB_MARK | GLOB_ONLYDIR | GLOB_NOSORT);
         $files = glob($path . $pattern, $flags);
         foreach ($paths as $path) {
-            $files = array_merge($files, $this->rglob($pattern, $flags, $path));
+            $files = php72_array_merge($files, $this->rglob($pattern, $flags, $path));
 
         }
         return $files;

@@ -44,7 +44,7 @@ class Assessment extends CI_Controller {
             if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio'))) {
                 $data['exist'] = $this->Massessment->checkassessexist($id, $this->session->userdata('emp_number'));
                 if ($data['exist'] == 0 || $data['exist'] == '') {
-                    $no_assigned = count($assigned_incharge);
+                    $no_assigned = php72_count($assigned_incharge);
                     if ($no_assigned > 1) {
                         foreach ($assigned_incharge as $incharge) {
                             $assign_exist = $this->Massessment->checkassessexist($id, $incharge);
@@ -62,7 +62,7 @@ class Assessment extends CI_Controller {
             $data['files'] = $this->Massessment->getfiles($id);
             $data['assessDetails'] = $assessDetails;
             $data['cpagetitle'] = "Assessment";
-            if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+            if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
                 $data['cpage'] = "assessment/assessment";
             } else {
                 redirect('grading/view/' . $id);
@@ -114,7 +114,7 @@ class Assessment extends CI_Controller {
         $data['cpagetitle'] = "Assessment";
 
         /* -----Checking assign incharge for an innovation----- */
-        if (in_array($this->session->userdata('emp_number'), $assigned_incharge) || in_array($this->session->userdata('emp_number'), $assessor_emp)) {
+        if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) || in_array($this->session->userdata('emp_number'), $assessor_emp)) {
             $data['cpage'] = "assessment/assesst_form";
         } else {
             redirect('assessment/assess_summary/' . $id);
@@ -188,7 +188,7 @@ class Assessment extends CI_Controller {
                 $risk = unserialize($assesst[0]['risk']);
             }
 
-            $count_area = count($area);
+            $count_area = php72_count($area);
             foreach ($area as $area) {
 
                 $col = 0;
@@ -200,7 +200,7 @@ class Assessment extends CI_Controller {
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $score[$area['id']]);
 
                 $sub_category = $this->Massessment->getSubCategory($area['id']);
-                $sub_count = count($sub_category);
+                $sub_count = php72_count($sub_category);
                 $i = 0;
                 if (isset($sub_assesst)) {
                     foreach ($sub_assesst as $sub) {
@@ -214,8 +214,8 @@ class Assessment extends CI_Controller {
                 }
                 foreach ($sub_category as $sub) {
                     $addscore = '';
-                    if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                        $key = array_search($sub['id'], $category_id);
+                    if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                        $key = php72_array_search($sub['id'], $category_id);
                         $subscore = $sub_score[$key];
                         $addscore = $add_score[$key];
                     }
@@ -438,7 +438,7 @@ class Assessment extends CI_Controller {
                 $risk = unserialize($assesst[0]['risk']);
             }
 
-            $count_area = count($area);
+            $count_area = php72_count($area);
             foreach ($area as $area) {
 
                 $col = 0;
@@ -450,7 +450,7 @@ class Assessment extends CI_Controller {
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $score[$area['id']]);
 
                 $sub_category = $this->Massessment->getSubCategory($area['id']);
-                $sub_count = count($sub_category);
+                $sub_count = php72_count($sub_category);
                 $i = 0;
 
                 if (isset($sub_assesst)) {
@@ -464,8 +464,8 @@ class Assessment extends CI_Controller {
                 }
                 foreach ($sub_category as $sub) {
                     $addscore = '';
-                    if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                        $key = array_search($sub['id'], $category_id);
+                    if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                        $key = php72_array_search($sub['id'], $category_id);
                         $subscore = $sub_score[$key];
                         $addscore = $add_score[$key];
                     }
@@ -602,10 +602,10 @@ class Assessment extends CI_Controller {
 
         $check_main = $check_individual = 0;
         foreach ($_POST['checkall'] as $check) {
-            $check_main += count($check);
+            $check_main += php72_count($check);
         }
         foreach ($_POST['check'] as $check) {
-            $check_individual += count($check);
+            $check_individual += php72_count($check);
         }
 
         $rationale_string = preg_replace('/[^A-Za-z0-9\n\r\s\_ .,\/\@$%&*():;\'"?-]/', '', $_POST['rational']);
@@ -790,7 +790,7 @@ class Assessment extends CI_Controller {
             $data['feed_back'] = $this->Massessment->getFeedback($id);
             $deals_donor = $data['feed_back'][0]['donor_fit'];
         }
-        if (!empty($assigned_incharge) && in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+        if (!empty($assigned_incharge) && php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
             $data['assesst'] = $this->Massessment->getAssesst($id, $this->session->userdata('emp_number'));
         }
 
@@ -803,7 +803,7 @@ class Assessment extends CI_Controller {
             $existing_donor = $this->Massessment->getExistDonorFit($deals_donor);
         }
 
-        $d_fitList = array_merge($active_donor_fit, $existing_donor);
+        $d_fitList = php72_array_merge($active_donor_fit, $existing_donor);
         foreach ($d_fitList as $fit) {
             foreach ($fit as $key => $value) {
                 if (!isset($sortArray[$key])) {
@@ -842,7 +842,7 @@ class Assessment extends CI_Controller {
         $innovation = $this->Minnovation->getInnovation($_POST['innovation_id']);
         $cio_emp_id = $this->Mmaster->getEmpIdBySetUP('cio', $this->session->userdata('partner_id'));
         $don_fit1 = explode(',', $_POST['donor_fit1']);
-        $donor_fit = (isset($_POST['donor_fit'])) ? implode(',', $_POST['donor_fit']) : $_POST['donor_fit1'];
+        $donor_fit = (isset($_POST['donor_fit'])) ? php72_implode(',', $_POST['donor_fit']) : $_POST['donor_fit1'];
         $fund_recom = array();
         $fund_approved = array();
         $don_fit = !empty($_POST['donor_fit']) ? $_POST['donor_fit'] : $don_fit1;
@@ -973,7 +973,7 @@ class Assessment extends CI_Controller {
 
             $ids = $_POST['innovation_id'];
             $employees = $this->Sector_model->getEmpId($ids);
-            $emp_Ids = array_map(function ($emp_Ids) {
+            $emp_Ids = php72_array_map(function ($emp_Ids) {
                 return $emp_Ids['associate_employee'];
             }, $employees);
             $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1051,7 +1051,7 @@ class Assessment extends CI_Controller {
 
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1080,7 +1080,7 @@ class Assessment extends CI_Controller {
                 $ids = $_POST['innovation_id'];
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1276,7 +1276,7 @@ class Assessment extends CI_Controller {
     public function next_grading($id) {
         $activity = $this->Mactivities->getActivityForGrading($id);
 
-        if (count($activity)) {
+        if (php72_count($activity)) {
             redirect('grading/view/' . $this->uri->segment('3'));
         } else {
             $form['program_stage'] = '5';
@@ -1361,7 +1361,7 @@ class Assessment extends CI_Controller {
     public function imgUrl($source) {
         $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i';
         preg_match_all($imgLink, $source, $matches);
-        $matchVal = array_filter($matches);
+        $matchVal = php72_array_filter($matches);
         $count = count($matchVal);
         if ($count != 0) {
             $imageArray = $matchVal['1'];

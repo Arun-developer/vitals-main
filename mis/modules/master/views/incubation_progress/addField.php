@@ -3,7 +3,7 @@
 $formAction = site_url('master/incub_progress_master/form');
 $id = '';
 $val = array();
-if (count($screeningDetails)) {
+if (php72_count($screeningDetails)) {
     $val = $screeningDetails['0'];
     $formAction = site_url('master/incub_progress_master/form/' . $val['id']);
     $id = $val['id'];
@@ -42,7 +42,7 @@ $inputArray = array('Text', 'Textarea', 'Listbox', 'Radio', 'Checkbox', 'File', 
        <dd>
 	       <select name="mastertype" id="sel_mastertype" onchange="change(this.value);">
 			<option value="">Select</option>
-			    <?php $countCriteria = count($mastertype);
+			    <?php $countCriteria = php72_count($mastertype);
 
 foreach ($mastertype as $mymastertype) {
     ?>

@@ -43,17 +43,17 @@
                                                     <label>Show leave with status</label>
                                                     <select class="form-control" name="l_status[]" id="multiselect" multiple="multiple">
                                                         <option value="0" <?php
-                                                        if (in_array(0, $l_status)) {
+                                                        if (php72_in_array(0, $l_status)) {
                                                             echo 'selected';
                                                         }
                                                         ?>>Pending Approval</option>
                                                         <option value="1" <?php
-                                                        if ($l_status != '' && (in_array(1, $l_status) || in_array(2, $l_status))) {
+                                                        if ($l_status != '' && (php72_in_array(1, $l_status) || php72_in_array(2, $l_status))) {
                                                             echo 'selected';
                                                         }
                                                         ?>>Approved </option>
                                                         <option value="4" <?php
-                                                        if ($l_status != '' && (in_array(4, $l_status) || in_array(3, $l_status))) {
+                                                        if ($l_status != '' && (php72_in_array(4, $l_status) || php72_in_array(3, $l_status))) {
                                                             echo 'selected';
                                                         }
                                                         ?>>Cancelled </option>

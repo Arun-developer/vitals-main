@@ -1,7 +1,7 @@
 <?php 
 $nullLink = "javascript:void(0);";
 
-if(count($applicantList)>0)
+if(php72_count($applicantList)>0)
 {
 $val=array();
 $val=$applicantList[0];

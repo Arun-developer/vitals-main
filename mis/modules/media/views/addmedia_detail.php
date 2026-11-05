@@ -5,7 +5,7 @@
 	});
 </script>
 <?php
-if (count($mediaDetails) > 0) {
+if (php72_count($mediaDetails) > 0) {
     $formAction = site_url('media/addmedia_detail/' . $innovationid . '/' . $id);
     $val = $mediaDetails['list1'][0];
     $val1 = $mediaDetails['list2'];
@@ -47,7 +47,7 @@ if (count($mediaDetails) > 0) {
 			<input type="text" name="publish_date" class="input-text   datepicker required" size="50" />
 		</dd>
 		<?php
-for ($i = 0; $i < count($val1); $i++) {
+for ($i = 0; $i < php72_count($val1); $i++) {
     if ($i == 0) {
         $media_name = "<select name='media_name'>";
         $media_type = "<select name='media_type'>";

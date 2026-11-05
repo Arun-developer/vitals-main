@@ -190,7 +190,7 @@
                                                                     echo"display:none;";
                                                                 }
                                                                 ?>" class="form-control tbl_checkbox tbl_parent parent_checkbox_<?php echo $list[0]['id']; ?>" data-attr-type ='parent' data-attr ='child_checkbox_<?php echo $list[0]['id']; ?>' type="checkbox" name="funder_id[]" value="<?php echo $list[0]['id']; ?>"></td>
-                                                        <td><?php if (count($list) != 0) { ?><a class="getFunderRow tlf_row<?php echo $i + 1; ?>" id="<?php echo $i + 1; ?>" href="javascript:"><i class="fas fa-caret-down" style="<?php
+                                                        <td><?php if (php72_count($list) != 0) { ?><a class="getFunderRow tlf_row<?php echo $i + 1; ?>" id="<?php echo $i + 1; ?>" href="javascript:"><i class="fas fa-caret-down" style="<?php
                                                                     if ($list[0]['gl_id']) {
                                                                         echo "display: block;";
                                                                     } else {
@@ -201,8 +201,8 @@
 
                                                             <input class="get_count" type="hidden" value="<?php
                                                             if ($list[0]['gl_id']) {
-                                                                if (count($list) > 0) {
-                                                                    echo count($list) + 1;
+                                                                if (php72_count($list) > 0) {
+                                                                    echo php72_count($list) + 1;
                                                                 }
                                                             } else {
                                                                 echo "1";
@@ -212,8 +212,8 @@
 
                                                             <a href="<?php echo base_url() . 'index.php/funder/edit_funder_form/' . $list[0]['id']; ?>"><?php echo $list[0]['name']; ?>(<?php
                                                                 if ($list[0]['gl_id']) {
-                                                                    $arr_cnts[] = count($list) + 1;
-                                                                    echo count($list);
+                                                                    $arr_cnts[] = php72_count($list) + 1;
+                                                                    echo php72_count($list);
                                                                 } else {
                                                                     $arr_cnts[] = 1;
                                                                     echo "0";

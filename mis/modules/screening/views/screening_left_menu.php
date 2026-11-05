@@ -69,7 +69,7 @@ $result_Assessment = $this->Mscreening->getAssessmentStatusByInnovation($innovat
 				if((empty($resultAssesment)) AND (empty($resultDocsProduce)))  {	?>
 					<li><a href="<?=site_url('screening/assessform/'.$innovation.'/'.'m1'.'/'.'11');?>" >View Detailed Assessment Sheet</a></li>
 				<?php  } 
-				if(count($resultPeopletoMeet) == '0') {		?>		
+				if(php72_count($resultPeopletoMeet) == '0') {		?>		
 					<li><a href="<?=site_url('screening/view_peoplelist/'.$innovation.'/');?>">Site visit Schedule</a></li>
 				<?php 	} ?>
 				<li><a href="<?php echo site_url('screening/peopleform/'.$innovation);?>">Add Site visit Schedule</a> </li>
@@ -80,7 +80,7 @@ $result_Assessment = $this->Mscreening->getAssessmentStatusByInnovation($innovat
     }else{
         $currentStage = $this->Mprogram_stage->getCurrentStage('4');
         $activity = $this->Mactivities->getActivityForGrading($innovation['id'],$currentStage);
-        if(count($activity)){ ?>
+        if(php72_count($activity)){ ?>
         <li><a href="<?=site_url('grading/view/'.$activity['0']['id']);?>" >View Grading &amp; Feedback</a></li>
         <?php }}
     ?>

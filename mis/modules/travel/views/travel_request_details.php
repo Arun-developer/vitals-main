@@ -77,7 +77,7 @@ $requestId = $this->uri->segment(4);
                     <div class="col-xl-8 col-lg-6 col-md-12 col-12 text-right">
                         <ul class="vitals-links">
 						<?php  foreach ($requestListInfo as $row) { ?>
-							<?php if (in_array($row['employee_id'], $subUsers)) {
+							<?php if (php72_in_array($row['employee_id'], $subUsers)) {
 									switch ($row['reporting_approval']) {
 									case 'pending':
 								?>
@@ -99,7 +99,7 @@ $requestId = $this->uri->segment(4);
 						<?php } ?>	
 						
 						<?php  if ($row["cancel_request"] == 'pending') { ?>
-							<?php if ($row["reporting_approval"] == 'pending' && in_array($row['employee_id'], $subUsers)) { ?>
+							<?php if ($row["reporting_approval"] == 'pending' && php72_in_array($row['employee_id'], $subUsers)) { ?>
 								<li class="edit"><a  href="<?php echo base_url() . 'index.php/approval/edit_approval_note/' . $requestId; ?>" class="master_aduser summaryEdit"><span><i class="fas fa-pencil-alt"></i></span>Confirm</a></li>
 							<?php } ?>
 						<?php } ?>

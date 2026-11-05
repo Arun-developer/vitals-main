@@ -488,7 +488,7 @@ $field_enable = '0';
 </div>
 <?php
 $obj = json_decode($fund['data'], true);
-if (!array_filter($obj)) {
+if (!php72_array_filter($obj)) {
     $enable = 0;
 } else {
     $enable = 1;

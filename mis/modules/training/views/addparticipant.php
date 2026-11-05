@@ -27,7 +27,7 @@ function today_date()
 <?php
 $formAction = "";
 $val = array();
-if (count($trainingDetails) > 0) {
+if (php72_count($trainingDetails) > 0) {
     $formAction = site_url('training/addparticipant/' . $innovationid . '/' . $id);
     $action = 'edit';
     $val = $trainingDetails[0];

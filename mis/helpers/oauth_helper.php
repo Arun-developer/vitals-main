@@ -50,7 +50,7 @@ function sign_hmac_sha1($method, $baseurl, $secret, array $parameters)
     ksort($parameters);
     //Put the token secret in if it does not exist. It
     //will be empty if it does not exist as per the spec.
-    if(!array_key_exists('oauth_token_secret', $parameters))$parameters['oauth_token_secret'] = '';
+    if(!php72_array_key_exists('oauth_token_secret', $parameters))$parameters['oauth_token_secret'] = '';
     foreach($parameters as $key => $value)
     {
         //Don't include the token secret into the base string
@@ -132,7 +132,7 @@ function build_auth_array($baseurl, $key, $secret, $extra = array(), $method = '
     $auth['oauth_nonce'] = md5(uniqid(rand(), true));
     $auth['oauth_version'] = '1.0';
 
-    $auth = array_merge($auth, $extra);
+    $auth = php72_array_merge($auth, $extra);
     
     //We want to remove any query parameters from the base url
     $urlsegs = explode("?", $baseurl);
@@ -144,7 +144,7 @@ function build_auth_array($baseurl, $key, $secret, $extra = array(), $method = '
     if(count($urlsegs) > 1)
     {
         preg_match_all("/([\w\-]+)\=([\w\d\-\%\.\$\+\*]+)\&?/", $urlsegs[1], $matches);
-        $signing = $signing + array_combine($matches[1], $matches[2]);
+        $signing = $signing + php72_array_combine($matches[1], $matches[2]);
     }
     
     if(strtoupper($algo) == OAUTH_ALGORITHMS::HMAC_SHA1)$auth['oauth_signature'] = sign_hmac_sha1($method, $baseurl, $secret, $signing);

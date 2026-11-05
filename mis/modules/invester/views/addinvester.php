@@ -3,7 +3,7 @@
         $id = '';
 		
 		$val = array();
-		if(count($investerDetails)>0)
+		if(php72_count($investerDetails)>0)
 		{  
 			$val = $investerDetails['0'];
 			$formAction = site_url('invester/form/'.$innovationid.'/'.$val['id']);

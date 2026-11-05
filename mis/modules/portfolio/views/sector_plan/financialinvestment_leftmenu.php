@@ -64,13 +64,13 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                     <div class="sidebar-submenu">
                         <ul>
                             <li class="<?= $sale_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/equity_investments/' . $sector_id . '/' . $fin_year; ?>">Equity Investments
-                                    <?php if ($config_data != '' && count($config_data['equityinvestCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['equityinvestCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <!-- <li class="<?= $channel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/share_investments/' ?>">Make revenue share investments</a></li> -->
                             <li class="<?= $pipe_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/consulting_engagements/' . $sector_id . '/' . $fin_year; ?>">Service Agreements
-                                    <?php if ($config_data != '' && count($config_data['portfolioreturnCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['portfolioreturnCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>

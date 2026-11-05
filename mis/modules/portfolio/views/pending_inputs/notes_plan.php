@@ -13,7 +13,7 @@
         $errorMsg = ($this->session->flashdata('errorMsg')) ? $this->session->flashdata('errorMsg') : '';
 
         $plan_data = $note_plan[0];
-        $note_count = isset($plan_data) ? count($note_plan) : 1;
+        $note_count = isset($plan_data) ? php72_count($note_plan) : 1;
 
         $company_name = isset($plan_header) ? $plan_header['company_data'][0]['name'] : '';
         $reg_city = isset($plan_header) ? $plan_header['company_data'][0]['reg_city'] : '';
@@ -232,7 +232,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($note_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($note_plan); ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/bootstrap.min.js'; ?>"></script>
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery.validate.min.js'; ?>"></script>

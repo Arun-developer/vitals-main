@@ -24,7 +24,7 @@ $(document).ready(function() {
         addRow();
     });
 
-    <?php if(count($installmentList) == 0){ echo "addRow();"; } ?>
+    <?php if(php72_count($installmentList) == 0){ echo "addRow();"; } ?>
 
     function addRow() {
         var arow = $('.cloneInstallment').clone().removeClass('cloneInstallment').addClass('odd');

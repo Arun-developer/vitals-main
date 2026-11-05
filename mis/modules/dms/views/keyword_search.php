@@ -16,7 +16,7 @@
         <tbody>
             <?php
 error_reporting(0);
-	if(count($totalkeywordList))
+	if(php72_count($totalkeywordList))
 	{
 		$r=1;
 		foreach($totalkeywordList as $row)

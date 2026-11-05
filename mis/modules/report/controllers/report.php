@@ -103,7 +103,7 @@ class Report extends CI_Controller {
         #echo'<pre>';print_r($donorList);die;
         $option .= "<option value=''>--Select--</option>";
         foreach ($donorList as $rows) {
-            if (in_array($rows['master_id'], $donor_programme)) {
+            if (php72_in_array($rows['master_id'], $donor_programme)) {
                 $option .= "<option value=" . $rows['master_id'] . " > " . $rows['master_name'] . "</option>";
             }
         }
@@ -177,10 +177,10 @@ class Report extends CI_Controller {
 
         $innovationlist = $this->Minnovation->get_sheet_ajax_test($option, $where);
         $an_in_list_count = $innovationlist['aaData'];
-        $getAll_count = count($an_in_list_count);
+        $getAll_count = php72_count($an_in_list_count);
         $innovationlists = $this->Minnovation->get_sheet_ajax_test($options, $where);
         $an_in_list = $innovationlists['aaData'];
-        $getLimit_count = count($an_in_list);
+        $getLimit_count = php72_count($an_in_list);
 
         foreach ($an_in_list as $lists) {
             $status = '';
@@ -280,10 +280,10 @@ class Report extends CI_Controller {
 
         $innovationlist = $this->Minnovation->get_sheet_ajax($option, $where);
         $an_in_list_count = $innovationlist['aaData'];
-        $getAll_count = count($an_in_list_count);
+        $getAll_count = php72_count($an_in_list_count);
         $innovationlists = $this->Minnovation->get_sheet_ajax($options, $where);
         $an_in_list = $innovationlists['aaData'];
-        $getLimit_count = count($an_in_list);
+        $getLimit_count = php72_count($an_in_list);
 
         foreach ($an_in_list as $lists) {
             $status = '';
@@ -743,9 +743,9 @@ class Report extends CI_Controller {
         $option['offset'] = '';
         $option['num'] = '';
         $innovationlist = $this->Minnovation->getoldinnovation($where, $option);
-        $getAll_count = count($innovationlist);
+        $getAll_count = php72_count($innovationlist);
         $innovationlists = $this->Minnovation->getoldinnovation($where, $options);
-        $getLimit_count = count($innovationlists);
+        $getLimit_count = php72_count($innovationlists);
 
 
         foreach ($innovationlists as $lists) {
@@ -850,22 +850,22 @@ class Report extends CI_Controller {
 
 
         $innovationList = $this->Rminnovation_reports->getLimitReportRecords($options);
-        $innovationList_count = count($innovationList);
+        $innovationList_count = php72_count($innovationList);
 
         $identified_by = $this->Rminnovation_reports->getLimitReportRecords($optionss);
-        $identified_count = count($identified_by);
+        $identified_count = php72_count($identified_by);
 
         $followups = $this->Rminnovation_reports->getLimitReportRecords($options_s);
-        $followups_count = count($followups);
+        $followups_count = php72_count($followups);
 
         $decision_pending = $this->Rminnovation_reports->getLimitReportRecords($option);
-        $decision_pending_count = count($decision_pending);
+        $decision_pending_count = php72_count($decision_pending);
 
         $entry_closed = $this->Rminnovation_reports->getLimitReportRecords($optionec);
-        $entry_closed_count = count($entry_closed);
+        $entry_closed_count = php72_count($entry_closed);
 
         $total_deals = $this->Rminnovation_reports->getLimitReportRecords($optiontotal);
-        $total_deals_count = count($total_deals);
+        $total_deals_count = php72_count($total_deals);
 
         $date = '';
         if ($_POST['date_from'] != '' && $_POST['date_to'] != '') {
@@ -975,7 +975,7 @@ class Report extends CI_Controller {
             $searchArray[] = "OAN.from_employee = '" . $this->session->userdata['emp_number'] . "'";
         }
         //$searchArray[] = "OAN.status = 'confirmed'";
-        $where = implode(" AND ", $searchArray);
+        $where = php72_implode(" AND ", $searchArray);
 
         if (isset($_POST['iDisplayStart']) && $_POST['iDisplayLength'] != '-1') {
             $options['offset'] = intval($_POST['iDisplayStart']);
@@ -1136,14 +1136,14 @@ class Report extends CI_Controller {
         $options['num'] = $limit;
 
         $innovationlists = $this->Minnovation->findopenamt_new_ajax($options, $where);
-        $get_innovationlists_count = count($innovationlists['result']);
+        $get_innovationlists_count = php72_count($innovationlists['result']);
 
         unset($options['offset']);
         unset($options['num']);
 		/* echo'<pre>';print_r($options);
 		echo'<pre>';print_r($where);die; */
         $innovationlists_count = $this->Minnovation->findopenamt_new_ajax($options, $where);
-        $getAll_count = count($innovationlists_count['result']);
+        $getAll_count = php72_count($innovationlists_count['result']);
 
         $data = array();
         $innovationlist_arr = $innovationlists['result'];
@@ -1237,9 +1237,9 @@ class Report extends CI_Controller {
         $option['offset'] = '';
         $option['num'] = '';
         $innovationlist = $this->Minnovation->getoldinnovation($where, $option);
-        $getAll_count = count($innovationlist);
+        $getAll_count = php72_count($innovationlist);
         $innovationlists = $this->Minnovation->getoldinnovation($where, $options);
-        $getLimit_count = count($innovationlists);
+        $getLimit_count = php72_count($innovationlists);
 
         foreach ($innovationlists as $lists) {
             $status = '';
@@ -1307,9 +1307,9 @@ class Report extends CI_Controller {
         $option['num'] = '';
         $where = '';
         $innovationlist = $this->Minnovation->getoldcount($where, $option);
-        $getAll_count = count($innovationlist);
+        $getAll_count = php72_count($innovationlist);
         $innovationlists = $this->Minnovation->getoldinnovations($where, $options);
-        $getLimit_count = count($innovationlists);
+        $getLimit_count = php72_count($innovationlists);
         #echo'<pre>';print_r($innovationlists);die;
         foreach ($innovationlists as $lists) {
             $status = '';
@@ -1399,12 +1399,12 @@ class Report extends CI_Controller {
         $innovationList = $this->Rminnovation_reports->getLimitReportRecords($options);
         $stage = $this->Minnovation->getInnvationStage();
         $status = $this->Minnovation->getInnvationStatus();
-        $getLimit_count = count($innovationList);
+        $getLimit_count = php72_count($innovationList);
 
         unset($options['offset']);
         unset($options['num']);
         $innovationList_count = $this->Rminnovation_reports->getLimitReportRecords($options);
-        $getLimit_count_all = count($innovationList_count);
+        $getLimit_count_all = php72_count($innovationList_count);
 
         foreach ($innovationList as $lists) {#echo'<pre>';print_r($lists);die;
         $nestedData = array();
@@ -1470,9 +1470,9 @@ public function paypro_list() {
         $option['offset'] = '';
         $option['num'] = '';
         $innovationlist = $this->Minnovation->getPayProData($where, $option);
-        $getAll_count = count($innovationlist);
+        $getAll_count = php72_count($innovationlist);
         $innovationlists = $this->Minnovation->getPayProData($where, $options);
-        $getLimit_count = count($innovationlists);
+        $getLimit_count = php72_count($innovationlists);
 		
 		$vendor_bank_id  = '';
 		$debit_bank_id  = '';

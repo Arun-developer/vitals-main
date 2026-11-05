@@ -27,7 +27,7 @@
                                         <div class="col-xl-6 col-lg-6 col-md-9 col-sm-9 col-9"></div>
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
                                             <ul class="milestone-links">
-                                                <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
+                                                <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
                                                     <li class="brd-left-onboard" id="disableSave"><a href="javascript:void(0)" id="addMore" class="edit-btnconfig mar-tp15"><i class="fas fa-plus-circle"></i>&nbsp;Add New</a></li>
                                                     <li class="brd-left-onboard" id="disableBtn"><a href="javascript:void(0)" class="deleteControl" id="deleteBtn"><i class="fas fa-trash-alt"></i> Delete</a></li>
                                                     <li class="brd-left-onboard"><a href="javascript:void(0)" class="saveContinue" id="saveForm">Save</a></li>
@@ -300,8 +300,8 @@
 
                                         <?php
                                         $j = 1;
-                                        if (count($type_list) > 0) {
-                                            for ($i = 0; $i < count($type_list); $i++) {
+                                        if (php72_count($type_list) > 0) {
+                                            for ($i = 0; $i < php72_count($type_list); $i++) {
                                                 ?>
 
                                                 <tr id="document_tr_<?php echo $j; ?>" class="document_more">
@@ -439,7 +439,7 @@
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($type_list); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($type_list); ?>">
 
 <script type="text/javascript">
     $(document).ready(function () {

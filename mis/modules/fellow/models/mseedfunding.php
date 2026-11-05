@@ -46,7 +46,7 @@ class Mseedfunding extends CI_Model
         $q .= " left join master_settings D on D.master_id= AN.donor";
         $q .= " left join master_settings BH on BH.master_id= AN.budget_head";
         $q .= " left join master_settings LI on LI.master_id= AN.line_item";
-        $q .= " where AP.approval_id IN (" . implode(',', $approval_note) . ")";
+        $q .= " where AP.approval_id IN (" . php72_implode(',', $approval_note) . ")";
         $q .= " group by AP.approval_id";
         $query = $this->ais->query($q);
         if ($query->num_rows() > 0) {

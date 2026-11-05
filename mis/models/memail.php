@@ -19,14 +19,14 @@ class Memail extends CI_Model {
     }
 
     public function _parseContent($main, $replace) {
-        $main = str_replace(array_keys($replace), array_values($replace), $main);
+        $main = str_replace(php72_array_keys($replace), php72_array_values($replace), $main);
         return $main;
     }
 
     //send mail
     public function _send($fromEmail, $toEmail = array(), $content, $template = null, $partner_id, $sector = '', $attach = array(), $reply = '') {
         $templateContent = $this->Mmailtemplate->getMailTemplate($template, $partner_id);
-        if (count($templateContent)) {
+        if (php72_count($templateContent)) {
             $template = $this->parseContent($content, $templateContent);
 //            $msg_subj = imap_utf8($template['subject']);
 //            $msg_body = imap_utf8($template['body']);
@@ -58,7 +58,7 @@ class Memail extends CI_Model {
             $this->email->reply_to($reply);
         }
 
-        if (count($attach)) {
+        if (php72_count($attach)) {
             foreach ($attach as $key => $value):
                 if (file_exists($value)) {
                     $this->email->attach($value);
@@ -74,7 +74,7 @@ class Memail extends CI_Model {
 	
 	 public function _send_phpmailer($fromEmail, $toEmail = array(), $content, $template = null, $partner_id, $sector = '', $attach = array(), $reply = '') {
         $templateContent = $this->Mmailtemplate->getMailTemplate($template, $partner_id);
-        if (count($templateContent)) {
+        if (php72_count($templateContent)) {
             $template = $this->parseContent($content, $templateContent);
 
             $this->sendphpmailer($fromEmail, $toEmail, $template['subject'], $template['body'], $partner_id, $sector, $attach, $reply);
@@ -111,7 +111,7 @@ class Memail extends CI_Model {
 			$mail->Subject = $messageSubject;
 
 			$mail->MsgHTML($messageBody);
-			 if (count($attach)) {
+			 if (php72_count($attach)) {
 				foreach ($attach as $key => $value):
 					if (file_exists($value)) {
 						$mail->addAttachment($value);

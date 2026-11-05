@@ -75,7 +75,7 @@ class Mprogress extends CI_Model
             if ($field == 'services') {
                 $this->insertInnovationServices($innovation, $answer);
             } else {
-                $answer = is_array($answer) ? implode(',', $answer) : $answer;
+                $answer = is_array($answer) ? php72_implode(',', $answer) : $answer;
 
                 $data = array('criteria' => $criteria,
                     'innovation' => $innovation,
@@ -294,7 +294,7 @@ class Mprogress extends CI_Model
         $data['periodValue'] = $periodValue;
         $data['option'] = $option;
         $this->load->vars($data);
-        if (count($data['fieldsList'])) {
+        if (php72_count($data['fieldsList'])) {
             if ($option == 'view') {
                 $page = 'ajax_view';
             } else {
@@ -311,7 +311,7 @@ class Mprogress extends CI_Model
     public function insertInnovationServices($innovation, $services)
     {
         $data = array('innovation' => $innovation,
-            'services' => implode(",", $services));
+            'services' => php72_implode(",", $services));
         if ($this->checkDuplicateService($innovation)) {
             $this->db->insert('innovation_services', $data);
         } else {
@@ -359,7 +359,7 @@ class Mprogress extends CI_Model
     }
     public function add_incubatee_report($options)
     {
-        for ($i = 0; $i < count($options['document']); $i++) {
+        for ($i = 0; $i < php72_count($options['document']); $i++) {
             $data = array('innovation' => $options['innovation'],
                 'document_description' => $options['description'],
                 'documents' => $options['document'][$i],

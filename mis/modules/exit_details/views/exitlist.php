@@ -17,7 +17,7 @@ $this->load->model('exit_details/mexitdetails');
     </thead>
 	<tbody>
 	<?php
-	if(count($exitdetails))
+	if(php72_count($exitdetails))
 	{    
 		$r=1;
 		foreach($exitdetails as $row)

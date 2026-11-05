@@ -36,7 +36,7 @@
             <?php
 		  $i=0;
 		  $j=1;
-	  	if(count($activitieshistory))
+	  	if(php72_count($activitieshistory))
 	    {    
 		 $key1 = 0;  
 		 $na="";

@@ -36,7 +36,7 @@ class Mactivities extends CI_Model
         $this->db->insert('activities', $data1);
         $activity_id = $this->db->insert_id();
 
-        for ($i = 0; $i < count($form['document']); $i++) {
+        for ($i = 0; $i < php72_count($form['document']); $i++) {
             $data = array('table' => $this->session->userdata('user_name'),
                 'field' => $activity_id,
                 'document' => $form['document'][$i],
@@ -67,7 +67,7 @@ class Mactivities extends CI_Model
         $this->db->where('id', $form['id']);
         $this->db->update('activities', $data1);
 
-        for ($i = 0; $i < count($form['document']); $i++) {
+        for ($i = 0; $i < php72_count($form['document']); $i++) {
             $data = array('document' => $form['document'][$i],
                 'tag' => $form['tags']);
             $this->db->where('field', $form['id']);
@@ -196,10 +196,10 @@ class Mactivities extends CI_Model
 
         $currentStage = $this->Mprogram_stage->getCurrentStage($program_stage);
         $list = $this->getActivityForGrading($id);
-        if (count($list)) {
+        if (php72_count($list)) {
             $gradingAll = $this->getGeadingAll($list['0']['id']);
             $gradingAdmin = $this->getGeadingAdmin($list['0']['id']);
-            if (count($gradingAll) != '0' && count($gradingAdmin) == '0') {
+            if (php72_count($gradingAll) != '0' && php72_count($gradingAdmin) == '0') {
                 return $list['0']['id'];
             }
         }

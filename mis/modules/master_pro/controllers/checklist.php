@@ -65,7 +65,7 @@ class Checklist extends CI_Controller
         $data['checklistDetails'] = array();
         if ($id != '') {
             $data['checklistDetails'] = $this->Mchecklist->getChecklistInfo($id);
-            if (count($data['checklistDetails']) == 0) {
+            if (php72_count($data['checklistDetails']) == 0) {
                 redirect('master/checklist/form');
             }
 

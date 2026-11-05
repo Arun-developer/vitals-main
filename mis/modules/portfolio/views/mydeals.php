@@ -45,16 +45,16 @@ if (isset($_POST['txtSubmit']) && $_POST['txtSubmit']) {
         $_POST['stage'] = str_replace("-", "^", $_POST['stage']);
     }
     if ($_POST['status'] != '') {
-        $_POST['status'] = implode('_', $_POST['status']);
+        $_POST['status'] = php72_implode('_', $_POST['status']);
     }
     if ($_POST['copy_id']) {
         $_POST['copy_id'] = str_replace("_", "ab", $_POST['copy_id']);
     }
 
     $url_post = '';
-    $post = implode(':', array_map(function ($key, $val) {
+    $post = implode(':', php72_array_map(function ($key, $val) {
         return $key . '-' . $val;
-    }, array_keys($_POST), $_POST)
+    }, php72_array_keys($_POST), $_POST)
 );
     $url_post .= '"' . $post . '"';
 }
@@ -78,7 +78,7 @@ $sector = isset($_REQUEST['sector']) ? $_REQUEST['sector'] : '';
 $stage_post = isset($_REQUEST['stage']) ? $_REQUEST['stage'] : "";
 
 if (isset($_REQUEST['status']) && $_REQUEST['status'] != '') {
-    $status_post = implode(',', $_REQUEST['status']);
+    $status_post = php72_implode(',', $_REQUEST['status']);
 } else {
     $status_post = "";
 }
@@ -585,7 +585,7 @@ $gtag_user = $first_name . '_' . $partner_str . '_' . $this->session->userdata['
                                                                                 ?>
                                                                                 <option value="<?= $key ?>"
                                                                                     <?php
-                                                                                    if (in_array($key, $status_array_post)) {
+                                                                                    if (php72_in_array($key, $status_array_post)) {
                                                                                         echo 'selected';
                                                                                     }
                                                                                     ?>>

@@ -36,11 +36,11 @@ foreach ($programService as $rw):
             <?php
 $detail_link = '<a id="descriptionLink_' . $rw["id"] . '" href="#description_' . $rw["id"] . '" > (Info) </a>';
 if ($isView) {
-    echo (in_array($rw['id'], $cfValue)) ? $rw['title'] . $detail_link . '<br/>' : '';
+    echo (php72_in_array($rw['id'], $cfValue)) ? $rw['title'] . $detail_link . '<br/>' : '';
 } else {
     ?>
             <label><input type="checkbox" name="services[]" value="<?=$rw['id']?>"
-                    <?=(in_array($rw['id'], $cfValue)) ? 'checked="checked"' : '';?> />
+                    <?=(php72_in_array($rw['id'], $cfValue)) ? 'checked="checked"' : '';?> />
                 <?=$rw['title']?></label><?=$detail_link?><br />
             <?php
 }

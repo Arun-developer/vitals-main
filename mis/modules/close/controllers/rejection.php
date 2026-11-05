@@ -175,7 +175,7 @@ class Rejection extends CI_Controller {
     public function imgUrl($source) {
         $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i';
         preg_match_all($imgLink, $source, $matches);
-        $matchVal = array_filter($matches);
+        $matchVal = php72_array_filter($matches);
         $count = count($matchVal);
         if ($count != 0) {
             $imageArray = $matchVal['1'];

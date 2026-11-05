@@ -14,7 +14,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')))
 $form = true;
 $nullLink = 'javascript:void(0);';
 $form_name = 'grading';
-if(count($gradingDetails))
+if(php72_count($gradingDetails))
 {
 	foreach($gradingDetails as $row):
 		$grading_id = $row['id'];
@@ -118,7 +118,7 @@ $(document).ready(function(){
 		
 });
 </script>
-<?php if(count($gradingList)>0){ ?>
+<?php if(php72_count($gradingList)>0){ ?>
 <h2>Grading Results</h2>
  <table class="gtable sortable">
 	<thead>
@@ -165,7 +165,7 @@ $(document).ready(function(){
             </td>
 			</tr>
       <?php endforeach;
-	  if(count($gradingList)=='0'){
+	  if(php72_count($gradingList)=='0'){
 		?>
          <tr class="odd"><td colspan="8" align="center">No Records Found!</td></tr>
         <?php  
@@ -216,7 +216,7 @@ if($form){
 	$rowType = ($rowType=='odd')?'even':'odd';
 	$grade_result = '';
 	$commentsRow ='';
-	if(count($gradesList))
+	if(php72_count($gradesList))
 	{
 		foreach($gradesList as $grd):
 			if($grd['grading_master'] == $row['category'])

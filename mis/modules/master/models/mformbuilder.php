@@ -142,9 +142,9 @@ class Mformbuilder extends CI_Model {
     public function insert($options = array()) {
         $data = array(
             'form_name' => $options['form_name'],
-            'label' => serialize(array_filter($options['label'])),
-            'input_type' => serialize(array_filter($options['input_type'])),
-            'value' => serialize(array_filter($options['value'])),
+            'label' => serialize(php72_array_filter($options['label'])),
+            'input_type' => serialize(php72_array_filter($options['input_type'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'created_by' => $this->session->userdata('user_name'),
             'created_date' => date('d,m,y'));
         $result = $this->db->insert('formbuilder', $data);
@@ -169,7 +169,7 @@ class Mformbuilder extends CI_Model {
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 
         $this->db->where('id', $options['id']);
 
@@ -186,7 +186,7 @@ class Mformbuilder extends CI_Model {
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'order' => $this->getOrderCount($options['pid'], 'sub') + 1);
 
         $result = $this->db->insert('formbuilder', $data);
@@ -201,7 +201,7 @@ class Mformbuilder extends CI_Model {
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 
         $this->db->where('id', $options['id']);
 
@@ -219,7 +219,7 @@ class Mformbuilder extends CI_Model {
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 
         $result = $this->db->insert('formbuilder', $data);
 
@@ -234,7 +234,7 @@ class Mformbuilder extends CI_Model {
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 
         $this->db->where('id', $options['id']);
 

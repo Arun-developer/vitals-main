@@ -161,7 +161,7 @@ class Mrepayment extends CI_Model
         $template = "repayment";
         $templateContent = $this->getMailTemplate($template);
 
-        if (count($templateContent)) {
+        if (php72_count($templateContent)) {
             $template = $this->parseContent($content, $templateContent);
             $this->send($fromEmail, $toEmail, $template['subject'], $template['body']);
         }
@@ -176,7 +176,7 @@ class Mrepayment extends CI_Model
     public function _parseContent($main, $replace)
     {
 
-        $main = str_replace(array_keys($replace), array_values($replace), $main);
+        $main = str_replace(php72_array_keys($replace), php72_array_values($replace), $main);
         return $main;
     }
 

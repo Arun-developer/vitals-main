@@ -16,7 +16,7 @@ $role_id = $this->session->userdata('role_id');
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-12 text-right">
         <ul class="vitals-links">
-            <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
+            <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
                 <?php if ($program == '0' || $program == '11') { ?>
                     <li class="edit"><a href="javascript:void(0);" class="edt_btnVital summaryEdit"><i class="fas fa-pencil-alt"></i> Edit</a></li>
                 <?php } ?>
@@ -241,7 +241,7 @@ $role_id = $this->session->userdata('role_id');
                             }
                             $shortlist_comment = $this->Minnovation->getShortlistComments($application_id, $emp_comment);
 
-                            if (count($shortlist_comment) > 0) {
+                            if (php72_count($shortlist_comment) > 0) {
                                 foreach ($shortlist_comment as $row) {
                                     $date = date('d-m-Y', strtotime($row['created_date']));
                                     $created_by = $row['created_by'];

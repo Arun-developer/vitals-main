@@ -73,7 +73,7 @@ $form_name = 'source_list';
         </thead>
         <tbody>
             <?php
-            if (count($sourceList)) {
+            if (php72_count($sourceList)) {
                 $r = 1;
                 foreach ($sourceList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

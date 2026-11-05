@@ -217,9 +217,9 @@ function submitform()
         <?php endforeach;?>
       </tr>
        <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan ="5" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($quarterly);$k++){
+              <?php  for($k=0;$k<php72_count($quarterly);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?="Q".$quarterly[$k];?></td>

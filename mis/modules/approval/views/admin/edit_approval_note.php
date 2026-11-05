@@ -46,7 +46,7 @@
                                                 </div>
                                             </div>
                                             <?php
-                                            if ($approvalNoteDetails[0]['to_RO'] == $reporting_list[0]['emp_id'] && count($reporting_list) == 1) {
+                                            if ($approvalNoteDetails[0]['to_RO'] == $reporting_list[0]['emp_id'] && php72_count($reporting_list) == 1) {
                                                 $ro_field = 'readonly';
                                                 $ro_class = 'none-pointer';
                                             } else {
@@ -139,7 +139,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    if (count($donorAN) > 0) {
+                                                    if (php72_count($donorAN) > 0) {
                                                         $j = 1;
                                                         foreach ($donorAN as $dataList) {
                                                             ?>
@@ -150,7 +150,7 @@
                                                                         <option value="">--Select--</option>
                                                                         <?php
                                                                         foreach ($donorList as $rows) {
-                                                                            if (in_array($rows['master_id'], $donors)) {
+                                                                            if (php72_in_array($rows['master_id'], $donors)) {
                                                                                 ?>
                                                                                 <option value="<?php echo $rows['master_id']; ?>" <?php
                                                                                 if ($rows['master_id'] == $dataList['donor']) {
@@ -198,7 +198,7 @@
                                                                     <option value="">--Select--</option>
                                                                     <?php
                                                                     foreach ($donorList as $rows) {
-                                                                        if (in_array($rows['master_id'], $donors)) {
+                                                                        if (php72_in_array($rows['master_id'], $donors)) {
                                                                             ?>
                                                                             <option value="<?php echo $rows['master_id']; ?>" <?php
                                                                             if ($rows['master_id'] == $dataList['donor']) {
@@ -271,7 +271,7 @@
                                                     $s = 0;
                                                     $supprt_doc = $approvalNoteDetails[0]['supporting_documents'];
                                                     $expld_doc = explode(',', $supprt_doc);
-                                                    if (count(unserialize($approvalNoteDetails[0]['attachment']))) {
+                                                    if (php72_count(unserialize($approvalNoteDetails[0]['attachment']))) {
                                                         foreach (unserialize($approvalNoteDetails[0]['attachment']) as $key => $value) {
                                                             //if (file_exists('uploads/support_docs/' . $value)){<tr id="document_tr_1" class="document_more remove_more"><td width="20%">
                                                             ?>

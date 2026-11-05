@@ -121,7 +121,7 @@ if ($cat_type != '') {
             var select_type = split_cid[0];
             var select_count = split_cid[1];
 
-            var addinfo_length = '<?php echo count($get_results) + 1; ?>';
+            var addinfo_length = '<?php echo php72_count($get_results) + 1; ?>';
             console.log('addinfo_length' + addinfo_length);
             console.log('current_id' + current_id);
             var donor_option_txt = budget_option_txt = line_option_txt = '-- Select --';

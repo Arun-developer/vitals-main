@@ -54,7 +54,7 @@ class Sector_actual extends CI_Controller {
         foreach ($business_nature as $inv) {
             $inv_id[] = $inv['inv_id'];
         }
-        $innovation_id = array_unique($inv_id);
+        $innovation_id = php72_array_unique($inv_id);
         $assign_status = 1;
         $assign_list = $this->Mportfolio->getArrayListingDetails('assign_associate', $innovation_id, $assign_status);
         foreach ($assign_list as $emp) {
@@ -86,7 +86,7 @@ class Sector_actual extends CI_Controller {
         $this->db->set('status', 3);
         $id = $this->input->post('id');
         $table = $this->input->post('table');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $m_query = $this->Mportfolio->deleteMentorDetail($table, $condition, 'id');
         if ($m_query) {
             echo '1';
@@ -116,21 +116,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_diligence', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_diligence', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -151,9 +151,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -167,9 +167,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -186,10 +186,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -215,7 +215,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -285,21 +285,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_diligence', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_diligence', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -320,9 +320,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -336,9 +336,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -355,10 +355,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -382,7 +382,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -402,7 +402,7 @@ class Sector_actual extends CI_Controller {
         foreach ($month_arr as $keys => $values) {
 
             $pard_allcount = $this->Sectorplan->pard_allCount($id, $f_year, $keys);
-            if (count($pard_allcount) != 0) {
+            if (php72_count($pard_allcount) != 0) {
                 foreach ($pard_allcount as $pards) {
                     if (!isset($pard_count[$pards['id']])) {
                         $pard_count[$pards['id']] = 1;
@@ -413,7 +413,7 @@ class Sector_actual extends CI_Controller {
                 }
             }
             $IIC_allCount = $this->Sectorplan->IIC_allCount($id, $f_year, $keys);
-            if (count($IIC_allCount) != 0) {
+            if (php72_count($IIC_allCount) != 0) {
                 foreach ($IIC_allCount as $iics) {
                     if (!isset($iic_count[$iics['id']])) {
                         $iic_count[$iics['id']] = 1;
@@ -425,7 +425,7 @@ class Sector_actual extends CI_Controller {
             }
 
             $EIC_allcount = $this->Sectorplan->EIC_allcount($id, $f_year, $keys);
-            if (count($EIC_allcount) != 0) {
+            if (php72_count($EIC_allcount) != 0) {
                 foreach ($EIC_allcount as $eics) {
                     if (!isset($eic_count[$eics['id']])) {
                         $eic_count[$eics['id']] = 1;
@@ -463,21 +463,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_selection', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_selection', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -498,9 +498,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -514,9 +514,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -533,10 +533,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -559,7 +559,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -607,21 +607,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_graduates', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_graduates', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -642,9 +642,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -658,9 +658,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -677,10 +677,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -703,7 +703,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -746,21 +746,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_exits', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_exits', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -781,9 +781,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -797,9 +797,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -816,10 +816,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -842,7 +842,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -895,21 +895,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_donorengagement', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_donorengagement', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -930,9 +930,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -946,9 +946,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -965,10 +965,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -991,7 +991,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1014,13 +1014,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['donor']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['donor']); $i++) {
             if ($_POST['donor'][$i] != '') {
                 $option['id'] = $_POST['donorengage_id'][$i];
                 $data['donor_id'] = $_POST['donor'][$i];
@@ -1028,7 +1028,7 @@ class Sector_actual extends CI_Controller {
                 $data['comments'] = $_POST['comments'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_donorengagement', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_donorengagement', $data, $option);
@@ -1069,21 +1069,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_donorconnect', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_donorconnect', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1104,9 +1104,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1120,9 +1120,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1139,10 +1139,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1166,7 +1166,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1189,13 +1189,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['donor']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['donor']); $i++) {
             if ($_POST['donor'][$i] != '') {
                 $option['id'] = $_POST['donorconnect_id'][$i];
                 $data['donor_id'] = $_POST['donor'][$i];
@@ -1203,7 +1203,7 @@ class Sector_actual extends CI_Controller {
                 $data['comments'] = $_POST['comments'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_donorconnect', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_donorconnect', $data, $option);
@@ -1244,21 +1244,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_conference', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_conference', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1279,9 +1279,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1295,9 +1295,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1314,10 +1314,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1340,7 +1340,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1363,13 +1363,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['conferencedate']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['conferencedate']); $i++) {
             if ($_POST['conferencedate'][$i] != '') {
                 $option['id'] = $_POST['conference_id'][$i];
                 $data['date'] = (isset($_POST['conferencedate'][$i]) && $_POST['conferencedate'][$i] != '') ? date('Y-m-d', strtotime($_POST['conferencedate'][$i])) : '';
@@ -1377,7 +1377,7 @@ class Sector_actual extends CI_Controller {
                 $data['details'] = $_POST['details'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_conference', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_conference', $data, $option);
@@ -1418,21 +1418,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_blogpost', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_blogpost', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1453,9 +1453,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1469,9 +1469,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1488,10 +1488,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1514,7 +1514,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1537,13 +1537,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['datepost']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['datepost']); $i++) {
             if ($_POST['datepost'][$i] != '') {
                 $option['id'] = $_POST['blogpost_id'][$i];
                 $data['date_post'] = (isset($_POST['datepost'][$i]) && $_POST['datepost'][$i] != '') ? date('Y-m-d', strtotime($_POST['datepost'][$i])) : '';
@@ -1551,7 +1551,7 @@ class Sector_actual extends CI_Controller {
                 $data['details'] = $_POST['details'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_blogpost', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_blogpost', $data, $option);
@@ -1592,21 +1592,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_publisharticle', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_publisharticle', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1627,9 +1627,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1643,9 +1643,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1662,10 +1662,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1688,7 +1688,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1724,21 +1724,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_speakingengagement', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_speakingengagement', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1759,9 +1759,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1775,9 +1775,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1793,10 +1793,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1818,7 +1818,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1854,21 +1854,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_jurypanels', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_jurypanels', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1889,9 +1889,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1905,9 +1905,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1923,10 +1923,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1949,7 +1949,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -1985,21 +1985,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_casestudy', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_casestudy', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2020,9 +2020,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2036,9 +2036,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2055,10 +2055,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2081,7 +2081,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -2103,20 +2103,20 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['datepost']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['datepost']); $i++) {
             if ($_POST['datepost'][$i] != '') {
                 $option['id'] = $_POST[$_POST['redirect'] . '_id'][$i];
                 $data['date'] = (isset($_POST['datepost'][$i]) && $_POST['datepost'][$i] != '') ? date('Y-m-d', strtotime($_POST['datepost'][$i])) : '';
                 $data['details'] = $_POST['details'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails($table, $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail($table, $data, $option);
@@ -2157,21 +2157,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_equity', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_equity', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2192,9 +2192,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2208,9 +2208,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2227,10 +2227,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2253,7 +2253,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -2276,13 +2276,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['conferencedate']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['conferencedate']); $i++) {
             if ($_POST['conferencedate'][$i] != '') {
                 $option['id'] = $_POST['conference_id'][$i];
                 $data['date'] = (isset($_POST['conferencedate'][$i]) && $_POST['conferencedate'][$i] != '') ? date('Y-m-d', strtotime($_POST['conferencedate'][$i])) : '';
@@ -2290,7 +2290,7 @@ class Sector_actual extends CI_Controller {
                 $data['details'] = $_POST['details'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_conference', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_conference', $data, $option);
@@ -2331,21 +2331,21 @@ class Sector_actual extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
 
         $get_monthCount = $this->Sectorplan->getUpdatesCount('sector_actual_portfolioreturns', $id, $least_month, $f_year);
         $get_plan_pending = $this->Sectorplan->getPlanMonths('sector_actual_portfolioreturns', $id, '', $f_year);
         $get_qualitative = $this->Sectorplan->getPlanMonths('sector_actual_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2366,9 +2366,9 @@ class Sector_actual extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2382,9 +2382,9 @@ class Sector_actual extends CI_Controller {
         $actual_option['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2401,10 +2401,10 @@ class Sector_actual extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2427,7 +2427,7 @@ class Sector_actual extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         /* end operation */
 
@@ -2450,13 +2450,13 @@ class Sector_actual extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['financial_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['financial_year'] + 1;
+            $fyear = php72_num($_POST['financial_year']) + 1;
         } else {
             $fyear = $_POST['financial_year'];
         }
 
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
-        for ($i = 0; $i < count($_POST['donor']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['donor']); $i++) {
             if ($_POST['donor'][$i] != '') {
                 $option['id'] = $_POST['portfolio_returns_id'][$i];
                 $data['donor_id'] = $_POST['donor'][$i];
@@ -2465,7 +2465,7 @@ class Sector_actual extends CI_Controller {
                 $data['comment'] = $_POST['comments'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('sector_actual_portfolioreturns', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_portfolioreturns', $data, $option);
@@ -2513,7 +2513,7 @@ class Sector_actual extends CI_Controller {
         $qual_data['fy_date'] = $fyear . '-' . $post['current_month'] . '-01 00:00:00';
 
         $checkExist = $this->Mportfolio->getDetails('sector_actual_qualitative_data', $qual_option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $qual_data['updated_by'] = $this->session->userdata('emp_number');
             $qual_data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('sector_actual_qualitative_data', $qual_data, $qual_option);

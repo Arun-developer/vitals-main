@@ -8,7 +8,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) ||
 ?>
 <h1><?php echo $cpagetitle.' - '.$innovation['name_of_enterprise']; ?></h1>
 
-<?php if($isAuth && count($ndaList) == 0){ ?>
+<?php if($isAuth && php72_count($ndaList) == 0){ ?>
 <div style="margin-left:480px;">
 
     <form name="frmEdit" action="<?=site_url('screening/editnda_docs/'.$innovation['id']);?>" method="post">
@@ -33,7 +33,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) ||
 
 <!--End NDA Docs -->
 <?php 
-if(count($ndaList)) {
+if(php72_count($ndaList)) {
 $i = 0;
 foreach($ndaList as $row):
 		?>

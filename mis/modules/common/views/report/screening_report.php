@@ -259,7 +259,7 @@ foreach ($status as $key => $value):
 
         <tr align="right">
 
-            <td>Total No of Innovations :<?php echo count($due_diligence); ?> </td>
+            <td>Total No of Innovations :<?php echo php72_count($due_diligence); ?> </td>
 
         </tr>
 

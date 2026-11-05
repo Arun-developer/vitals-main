@@ -82,7 +82,7 @@ $form_name = 'query_list';
     </thead>
     <tbody>
         <?php
-	if(count($queryList))
+	if(php72_count($queryList))
 	{    
 		$r=1;
 		foreach($queryList as $row)

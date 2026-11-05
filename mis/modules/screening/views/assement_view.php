@@ -74,7 +74,7 @@ switch($row['input_type']){
 		$cfValue = (isset($_POST['txtSubmit']))?$_POST[$row['id']]:explode(',',$row['answer']);
 		foreach($row['value'] as $key=>$value): ?>
         <label><input type="checkbox"  name="<?=$row['id']?>[]" class="assessin <?=($row['required'] == 'yes')?'required':'';?> <?=$row['class']?>" value="<?=$value?>" 
-         <?=(in_array($value,$cfValue))?'checked="checked"':'';?> /> 
+         <?=(php72_in_array($value,$cfValue))?'checked="checked"':'';?> /> 
         <?=$value?></label><br/>
         <?php
 		 endforeach;

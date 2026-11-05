@@ -358,7 +358,7 @@ class Sectorplan extends CI_Model {
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -498,7 +498,7 @@ class Sectorplan extends CI_Model {
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -545,7 +545,7 @@ class Sectorplan extends CI_Model {
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -584,7 +584,7 @@ class Sectorplan extends CI_Model {
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }

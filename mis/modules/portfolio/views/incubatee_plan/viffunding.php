@@ -8,7 +8,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 
 $field_enable = '0';
 $get_data = $vif_data[0];
-$vif_count = isset($get_data) ? count($vif_data) : 1;
+$vif_count = isset($get_data) ? php72_count($vif_data) : 1;
 
 $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', "08" => 'Aug', "09" => 'Sep', "10" => 'Oct', "11" => 'Nov', "12" => 'Dec', "01" => 'Jan', "02" => 'Feb', "03" => 'Mar');
 ?>
@@ -248,7 +248,7 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
                                                                     <tr id="vif_add_tr_<?= $j; ?>" class="vif_more">
                                                                         <td>
                                                                             <?php
-                                                                            if (in_array($emp_id, $assign_sectorlead) || $isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                                                            if (php72_in_array($emp_id, $assign_sectorlead) || $isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
                                                                                 if ($delete_row == 0) {
                                                                                     ?>
                                                                                     <input type="checkbox" class="check_box" aria-label="Checkbox for following text input" name="check_delete" id="check_delete_<?php echo $j; ?>" value="<?php echo $vif_data[$i]['id']; ?>">
@@ -630,7 +630,7 @@ if ($current_month == '1' || $current_month == '2' || $current_month == '3') {
 ?>
 <input type="hidden" id="active_editor" value="<?= $month_id; ?>">
 <input type="hidden" id="current_month" value="<?= date('n'); ?>" />
-<input type="hidden" id="enableCount" value="<?= count($vif_data); ?>" />
+<input type="hidden" id="enableCount" value="<?= php72_count($vif_data); ?>" />
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

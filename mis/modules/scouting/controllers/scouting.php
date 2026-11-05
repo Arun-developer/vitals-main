@@ -46,7 +46,7 @@ class Scouting extends CI_Controller {
         $this->Minnovation->pitch_update($table, $user_data, $user_where);
 
         $employees = $this->Sector_model->getEmpId($id);
-        $emp_Ids = array_map(function ($emp_Ids) {
+        $emp_Ids = php72_array_map(function ($emp_Ids) {
             return $emp_Ids['associate_employee'];
         }, $employees);
         $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -273,9 +273,9 @@ class Scouting extends CI_Controller {
             $sapp_id = $this->Minnovation->insert_seed($table, $seed_user);
 
 
-            $oper_count = count($_POST['operate']);
+            $oper_count = php72_count($_POST['operate']);
 
-            $sector = implode(',', $_POST['operate']);
+            $sector = php72_implode(',', $_POST['operate']);
 
             $sector = ($_POST['operate_other'] != '') ? $sector . ',' . $_POST['operate_other'] : $sector;
 
@@ -483,7 +483,7 @@ class Scouting extends CI_Controller {
 ///////////////////// Pitch user update ends //////////////////
 //////////////////// Pitch member update /////////////////////
 
-            $mem_count = count($_POST['pitch_name']);
+            $mem_count = php72_count($_POST['pitch_name']);
             for ($i = 1; $i <= $mem_count; $i++) {
 
                 $member_data = array(
@@ -512,7 +512,7 @@ class Scouting extends CI_Controller {
 ////////////////// Pitch Org info update ///////////////////////
 
             $sector_other = '';
-            if (in_array('others', $this->input->post('sector')) || $this->input->post('sector') == 'others') {
+            if (php72_in_array('others', $this->input->post('sector')) || $this->input->post('sector') == 'others') {
                 $sector_other = $this->input->post('sector_other');
             }
             $fund_from = '';
@@ -520,7 +520,7 @@ class Scouting extends CI_Controller {
                 $fund_from = $this->input->post('pitch_fund_from');
             }
 
-            $abt_vill = implode(',', $this->input->post('abt_vill'));
+            $abt_vill = php72_implode(',', $this->input->post('abt_vill'));
             $get_sector = $this->Sector_model->getSectorCategory($this->input->post('sector'));
 
             $org_data = array(
@@ -562,7 +562,7 @@ class Scouting extends CI_Controller {
             $partner_id = $this->session->userdata('partner_id');
             $employee_number = $this->Sector_model->getEmployeeNumberByID($this->input->post('sector'), $partner_id);
 
-            $emp_num = array_map(function ($emp_num) {
+            $emp_num = php72_array_map(function ($emp_num) {
                 return $emp_num['associate_employee'];
             }, $employee_number);
 
@@ -647,7 +647,7 @@ class Scouting extends CI_Controller {
                 'address_line1' => $this->db->escape_str($this->input->post('address1')),
                 'address_line2' => $this->db->escape_str($this->input->post('address2')),
                 'country' => $count_name,
-                'sector' => ($this->input->post('sector') != '') ? implode(',', $this->input->post('sector')) : $this->input->post('inv_sector'),
+                'sector' => ($this->input->post('sector') != '') ? php72_implode(',', $this->input->post('sector')) : $this->input->post('inv_sector'),
                 'status' => $status,
                 'stage' => '7',
                 'program' => '0',
@@ -674,7 +674,7 @@ class Scouting extends CI_Controller {
                 'country' => $this->db->escape_str(@$this->input->post('country')),
                 'ent_type' => $this->db->escape_str($this->input->post('compnay_type')),
                 'india_based' => $this->db->escape_str($this->input->post('location')),
-                'ent_sector' => ($this->input->post('sector') != '') ? implode(',', $this->input->post('sector')) : $this->input->post('inv_sector'),
+                'ent_sector' => ($this->input->post('sector') != '') ? php72_implode(',', $this->input->post('sector')) : $this->input->post('inv_sector'),
                 'sub_sector' => $this->input->post('sub_sector'),
                 'benificiary' => serialize($this->input->post('beneficiary')),
                 'impact_of_product' => $this->db->escape_str($this->input->post('impact_type')),
@@ -689,7 +689,7 @@ class Scouting extends CI_Controller {
 ///////////////////// Innovation user insert ends //////////////////
 //////////////////// Innovation member insert /////////////////////
             $this->load->library('upload');
-            $mem_count = count($_POST['team_name']);
+            $mem_count = php72_count($_POST['team_name']);
             for ($i = 1; $i <= $mem_count; $i++) {
                 $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/IncubationForm/uploads';
                 $resume_path[$i] = '';
@@ -739,7 +739,7 @@ class Scouting extends CI_Controller {
                 'inv_user_id' => $inv_user_id,
                 'ent_name_info' => $this->db->escape_str($this->input->post('ent_name')),
                 'in_operation' => $this->db->escape_str($this->input->post('in_operation')),
-                'operate_on_state' => implode(',', $this->input->post('inv_state')),
+                'operate_on_state' => php72_implode(',', $this->input->post('inv_state')),
                 'develop_product' => $this->db->escape_str($this->input->post('type_prod')),
                 'stage_product' => $this->db->escape_str($this->input->post('stage_prod')),
                 'inv_desc' => $this->db->escape_str($this->input->post('inno_desc')),
@@ -789,9 +789,9 @@ class Scouting extends CI_Controller {
 
             $additional_info_data = array(
                 'inv_user_id' => $inv_user_id,
-                'from_villgro' => implode(',', $this->input->post('vill_support')),
+                'from_villgro' => php72_implode(',', $this->input->post('vill_support')),
                 'support_name' => $this->db->escape_str($this->input->post('otr_support')),
-                'hear_abt' => implode(',', $this->input->post('abt_vill')),
+                'hear_abt' => php72_implode(',', $this->input->post('abt_vill')),
                 'referal_name' => $this->db->escape_str($this->input->post('ref_name')),
                 'ant_org' => $this->input->post('with_other_org'),
                 'ant_org_name' => $this->db->escape_str($this->input->post('other_org_name')),
@@ -808,7 +808,7 @@ class Scouting extends CI_Controller {
 
             $partnerId = $this->session->userdata('partner_id');
             $employee_number = $this->Sector_model->getEmployeeNumberByID($this->input->post('inv_sector'), $partnerId);
-            $emp_num = array_map(function ($emp_num) {
+            $emp_num = php72_array_map(function ($emp_num) {
                 return $emp_num['associate_employee'];
             }, $employee_number);
 
@@ -978,9 +978,9 @@ class Scouting extends CI_Controller {
                     $data['errorMsg'] = 'Please Enter valid Email Address';
                 } else if (count($arr) <= 1) {
                     $data['errorMsg'] = 'Please Fill up the Columns with Values';
-                } else if (in_array('', $first) && in_array('', $second)) {
+                } else if (php72_in_array('', $first) && php72_in_array('', $second)) {
                     $data['errorMsg'] = 'Name of the Enterprise or Summary of the Business column value is empty please fill the columns';
-                } else if (count($arr[0]) > 18) {
+                } else if (php72_count($arr[0]) > 18) {
                     $data['errorMsg'] = 'More Columns are used in the CSV File Please Keep in Format.';
                 } else {
 
@@ -1151,7 +1151,7 @@ class Scouting extends CI_Controller {
             $data['usersABIList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
             $data['usersList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
             $data['usersListEmployee'] = $this->Muser->getUsersListNotAbi($userSetup1['abi'], $branch_id);
-            $data['users'] = array_merge($data['usersList'], $data['usersListEmployee']);
+            $data['users'] = php72_array_merge($data['usersList'], $data['usersListEmployee']);
             $data['donor_fit'] = $this->Minnovation->getDonorFit();
 
             $this->load->model('master/Mstageefficiency');
@@ -1232,7 +1232,7 @@ class Scouting extends CI_Controller {
         $data['usersABIList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
         $data['usersList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
         $data['usersListEmployee'] = $this->Muser->getUsersListNotAbi($userSetup1['abi'], $branch_id);
-        $data['users'] = array_merge($data['usersList'], $data['usersListEmployee']);
+        $data['users'] = php72_array_merge($data['usersList'], $data['usersListEmployee']);
         $data['donor_fit'] = $this->Minnovation->getDonorFit();
 
         $this->load->model('master/Mstageefficiency');
@@ -1538,7 +1538,7 @@ class Scouting extends CI_Controller {
         $data['usersListEmployee'] = $this->Muser->getUsersListNotAbi($userSetup['abi']);
         echo 'usersEmployee :';
         var_dump($data['usersListEmployee']);
-        $data['users'] = array_merge($data['usersList'], $data['usersListEmployee']);
+        $data['users'] = php72_array_merge($data['usersList'], $data['usersListEmployee']);
 
         $this->load->model('master/Mstageefficiency');
         $data['timelimit'] = $this->Mstageefficiency->getMaxDays();
@@ -1569,7 +1569,7 @@ class Scouting extends CI_Controller {
         $data['status'] = $this->Minnovation->getInnvationStatus();
         $this->load->model('Minnovation_reports');
         $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-        if (count($reportData)) {
+        if (php72_count($reportData)) {
             foreach ($reportData as $r):
                 $r['stage'] = $data['stage'][$r['stage']];
                 $r['status'] = $data['status'][$r['status']];
@@ -1839,7 +1839,7 @@ class Scouting extends CI_Controller {
         $this->load->model('Msupporting_documents');
         if ($rid != '') {
             $docInfo = $this->Msupporting_documents->getInnovationDocuments($id, $rid);
-            if (count($docInfo)) {
+            if (php72_count($docInfo)) {
                 $file_path = 'uploads/innovaton/supporting_documents/' . $docInfo['0']['document'];
                 if (file_exists($file_path))
                     unlink($file_path);
@@ -1913,7 +1913,7 @@ class Scouting extends CI_Controller {
                 $ids = $data['innovation']['id'];
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2016,7 +2016,7 @@ class Scouting extends CI_Controller {
                 $ids = $data['innovation']['id'];
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2121,7 +2121,7 @@ class Scouting extends CI_Controller {
             $ids = $_POST['innovations'];
             $innovationDetails = $this->Minnovation->getInnovation($ids);
 
-            $acnt = count($employee);
+            $acnt = php72_count($employee);
 
             if ($acnt) {
                 $this->Mincharge->removeOldIncharge($ids);
@@ -2132,7 +2132,7 @@ class Scouting extends CI_Controller {
             }
             $employees = $this->Sector_model->getEmpId($ids);
 
-            $emp_Ids = array_map(function ($emp_Ids) {
+            $emp_Ids = php72_array_map(function ($emp_Ids) {
                 return $emp_Ids['associate_employee'];
             }, $employees);
             $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2342,7 +2342,7 @@ class Scouting extends CI_Controller {
 
                     $employees = $this->Sector_model->getEmpId($id);
 
-                    $emp_Ids = array_map(function ($emp_Ids) {
+                    $emp_Ids = php72_array_map(function ($emp_Ids) {
                         return $emp_Ids['associate_employee'];
                     }, $employees);
                     $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2366,12 +2366,12 @@ class Scouting extends CI_Controller {
                     $id = $ids[$i];
                     $innovation = $this->Minnovation->getInnovation($id);
                     $assigned_id = $this->Mincharge->getActiveIncharge($id);
-                    $assign_combine = array_merge($employee, $assigned_id);
+                    $assign_combine = php72_array_merge($employee, $assigned_id);
                     array_unique($assign_combine);
                     $this->Mincharge->assignmulincharge($id, $assign_combine, $partner_id);
                     $employees = $this->Sector_model->getEmpId($id);
 
-                    $emp_Ids = array_map(function ($emp_Ids) {
+                    $emp_Ids = php72_array_map(function ($emp_Ids) {
                         return $emp_Ids['associate_employee'];
                     }, $employees);
                     $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2432,7 +2432,7 @@ class Scouting extends CI_Controller {
 
                     $employees = $this->Sector_model->getEmpId($id);
 
-                    $emp_Ids = array_map(function ($emp_Ids) {
+                    $emp_Ids = php72_array_map(function ($emp_Ids) {
                         return $emp_Ids['associate_employee'];
                     }, $employees);
                     $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2498,7 +2498,7 @@ class Scouting extends CI_Controller {
                     $this->Mincharge->assignmulincharge($id, $employee, $partner_id, $pa_rd);
 
                     $employees = $this->Sector_model->getEmpId($id);
-                    $emp_Ids = array_map(function ($emp_Ids) {
+                    $emp_Ids = php72_array_map(function ($emp_Ids) {
                         return $emp_Ids['associate_employee'];
                     }, $employees);
                     $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2588,7 +2588,7 @@ class Scouting extends CI_Controller {
         if ($tab == "assigned") {  // for my deals
             $this->load->model('Mincharge');
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-            $innovation = (count($innovation)) ? $innovation : array();
+            $innovation = (php72_count($innovation)) ? $innovation : array();
             $options['associate'] = $innovation;
             if ($options['stage'] == '')
                 $options['sstage'] = '!5'; // incubation stage
@@ -2711,7 +2711,7 @@ class Scouting extends CI_Controller {
         $this->load->model('login/Muser');
         $data['usersList'] = $this->Muser->getUsersList($userSetup['abi']);
         $data['usersListEmployee'] = $this->Muser->getUsersListNotAbi($userSetup['abi']);
-        $data['users'] = array_merge($data['usersList'], $data['usersListEmployee']);
+        $data['users'] = php72_array_merge($data['usersList'], $data['usersListEmployee']);
 
 
         $this->load->model('master/Mstageefficiency');
@@ -2783,8 +2783,8 @@ class Scouting extends CI_Controller {
 ///////////////// innovation inser process ends ////////////////////////
 //////////////// seed form  insert process //////////////////////////////
 
-        $oper_count = count($_POST['operate']);
-        $sector = implode(',', $_POST['operate']);
+        $oper_count = php72_count($_POST['operate']);
+        $sector = php72_implode(',', $_POST['operate']);
         $sector = ($_POST['operate_other'] != '') ? $sector . ',' . $_POST['operate_other'] : $sector;
         $state = $this->Eirmodel->get_city_state($this->input->post('city_seed'), 'state');
         $city = $this->Eirmodel->get_city_state($this->input->post('city_seed'), 'city');
@@ -3185,7 +3185,7 @@ class Scouting extends CI_Controller {
 ///////////////////// Pitch user update ends //////////////////
 //////////////////// Pitch member update /////////////////////
 
-            $mem_count = count($_POST['pitch_name']);
+            $mem_count = php72_count($_POST['pitch_name']);
             for ($i = 1; $i <= $mem_count; $i++) {
                 if ($_POST['pitch_name'][$i] != '' || $_POST['pitch_org'][$i] != '' || $_POST['pitch_email'][$i] != '' || $_POST['pitch_mob'][$i] != '' || $_POST['pitch_gender'][$i] != '') {
                     $member_data = array(
@@ -3216,7 +3216,7 @@ class Scouting extends CI_Controller {
 ////////////////// Pitch Org info update ///////////////////////
 
             $sector_other = '';
-            if (in_array('others', $this->input->post('sector')) || $this->input->post('sector') == 'others') {
+            if (php72_in_array('others', $this->input->post('sector')) || $this->input->post('sector') == 'others') {
                 $sector_other = $this->input->post('sector_other');
             }
             $fund_from = '';
@@ -3226,7 +3226,7 @@ class Scouting extends CI_Controller {
 
             $get_sector = $this->Sector_model->getSectorCategory($this->input->post('sector'));
 
-            $abt_vill = implode(',', $this->input->post('abt_vill'));
+            $abt_vill = php72_implode(',', $this->input->post('abt_vill'));
             $org_data = array(
                 'addr_problem' => $this->input->post('problem_addresed'),
                 'quest_1' => $this->input->post('product_service'),
@@ -3505,7 +3505,7 @@ class Scouting extends CI_Controller {
                 $ent_info_data = array(
                     'ent_name_info' => $this->input->post('ent_name'),
                     'in_operation' => $this->input->post('in_operation'),
-                    'operate_on_state' => implode(',', $this->input->post('inv_state')),
+                    'operate_on_state' => php72_implode(',', $this->input->post('inv_state')),
                     'develop_product' => $this->input->post('type_prod'),
                     'stage_product' => $this->input->post('stage_prod'),
                     'inv_desc' => $this->input->post('inno_desc'),
@@ -3559,9 +3559,9 @@ class Scouting extends CI_Controller {
                 }
 
                 $additional_info_data = array(
-                    'from_villgro' => implode(',', $this->input->post('vill_support')),
+                    'from_villgro' => php72_implode(',', $this->input->post('vill_support')),
                     'support_name' => $this->input->post('otr_support'),
-                    'hear_abt' => implode(',', $this->input->post('abt_vill')),
+                    'hear_abt' => php72_implode(',', $this->input->post('abt_vill')),
                     'referal_name' => $this->input->post('ref_name'),
                     'ant_org' => $this->input->post('with_other_org'),
                     'ant_org_name' => $this->input->post('other_org_name'),
@@ -3830,7 +3830,7 @@ class Scouting extends CI_Controller {
             $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('1', '13')->applyFromArray($stylebody);
             $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('1', '13', $sector_name[0]['sector']);
             $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('1', '14')->applyFromArray($stylebody);
-            $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('1', '14', implode(',', unserialize($inv_user[0]['benificiary'])));
+            $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('1', '14', php72_implode(',', unserialize($inv_user[0]['benificiary'])));
             $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('1', '15')->applyFromArray($stylebody);
             $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('1', '15', $inv_user[0]['impact_of_product']);
             $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('1', '16')->applyFromArray($styleheader2);
@@ -5155,7 +5155,7 @@ class Scouting extends CI_Controller {
             case 'assigned':
             $this->load->model('Mincharge');
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-            $innovation = (count($innovation)) ? $innovation : array();
+            $innovation = (php72_count($innovation)) ? $innovation : array();
             $options['associate'] = $innovation;
             if (!isset($_POST['stage']))
                     $options['sstage'] = '!11'; // incubation stage
@@ -5163,7 +5163,7 @@ class Scouting extends CI_Controller {
                 case 'assigned_incubation':
                 $this->load->model('Mincharge');
                 $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-                $innovation = (count($innovation)) ? $innovation : array();
+                $innovation = (php72_count($innovation)) ? $innovation : array();
                 $options['associate'] = $innovation;
                 $options['istage'] = '11';
                 break;
@@ -5477,7 +5477,7 @@ class Scouting extends CI_Controller {
             $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('10', '1')->applyFromArray($styleheader);
             $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('10', '1', 'Submitted Date');
 
-            for ($i = 1; $i <= count($data); $i++) {
+            for ($i = 1; $i <= php72_count($data); $i++) {
                 $j = $i + 1;
                 $k = $i - 1;
                 $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('0', $j)->applyFromArray($stylebody);

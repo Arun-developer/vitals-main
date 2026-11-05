@@ -29,7 +29,7 @@
 	            <?php 
 		        $i=0;
                 $j=1;
-         if(count($progressList))
+         if(php72_count($progressList))
          {
                 $key1 = 0;  
                 $na="";

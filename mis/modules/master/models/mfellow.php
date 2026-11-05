@@ -8,7 +8,7 @@ class Mfellow extends CI_Model
 {
     public function add_kra($options)
     {
-        for ($i = 0; $i < count($options['kra']); $i++) {
+        for ($i = 0; $i < php72_count($options['kra']); $i++) {
             $data = array('employee' => $options['employee'],
                 'from_date' => $options['from-date'],
                 'to_date' => $options['to-date'],

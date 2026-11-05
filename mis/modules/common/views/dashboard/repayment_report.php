@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <?php
-            if (count($allrepayment)) {
+            if (php72_count($allrepayment)) {
                 $i = 'odd';
                 foreach ($allrepayment as $row):
                     $i = ($i == 'odd') ? 'even' : 'odd';

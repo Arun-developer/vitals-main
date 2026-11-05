@@ -1,7 +1,7 @@
 <?php $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page_title' => 'Send Mail - ' . $innovation['name_of_enterprise'])); ?>
 
 <?php
-if (count($mailDetails) > 0) {
+if (php72_count($mailDetails) > 0) {
     $send_btn = 'Resend';
     $subject = isset($mailDetails[0]["subject"]) ? $mailDetails[0]["subject"] : "";
     $mail_type = isset($mailDetails[0]["mail_type"]) ? $mailDetails[0]["mail_type"] : "";

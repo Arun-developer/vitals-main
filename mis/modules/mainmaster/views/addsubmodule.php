@@ -1,7 +1,7 @@
 <?php
 $formAction = "";
 $val = array();
-if (count($submodule) > 0) {
+if (php72_count($submodule) > 0) {
     $action = 'edit';
     $val = $submodule[0];
     $id = $val['id'];

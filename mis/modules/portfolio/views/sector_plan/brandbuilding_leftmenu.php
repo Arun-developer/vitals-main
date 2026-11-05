@@ -64,32 +64,32 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                     <div class="sidebar-submenu">
                         <ul>
                             <li class="<?= $sale_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/conferences/' . $sector_id . '/' . $fin_year; ?>">Conferences
-                                    <?php if ($config_data != '' && count($config_data['conferenceCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['conferenceCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $channel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/blogpost/' . $sector_id . '/' . $fin_year; ?>">Write Blog Post
-                                    <?php if ($config_data != '' && count($config_data['blogspotCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['blogspotCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $pipe_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/article/' . $sector_id . '/' . $fin_year; ?>">Publish Article
-                                    <?php if ($config_data != '' && count($config_data['publisharticleCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['publisharticleCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $revenue_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/speaking_engagement/' . $sector_id . '/' . $fin_year; ?>">Speaking Engagement
-                                    <?php if ($config_data != '' && count($config_data['speakingengagementCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['speakingengagementCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $profit_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/jury_panel/' . $sector_id . '/' . $fin_year; ?>">Attend Jury Panels
-                                    <?php if ($config_data != '' && count($config_data['jurypanelsCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['jurypanelsCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $vif_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/case_study/' . $sector_id . '/' . $fin_year; ?>">Case Study
-                                    <?php if ($config_data != '' && count($config_data['casestudyCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['casestudyCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>

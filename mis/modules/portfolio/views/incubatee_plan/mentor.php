@@ -7,10 +7,10 @@ $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city']
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Plan', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'fin_year' => $current_financial, 'add_class' => 'mar-tp140'));
 
 $assign_mentor = $villgro_mentor[0];
-$assign_mentor_count = isset($assign_mentor) ? count($villgro_mentor) : 1;
+$assign_mentor_count = isset($assign_mentor) ? php72_count($villgro_mentor) : 1;
 
 $men_data = $config_mentor[0];
-$mentorData_count = isset($men_data) ? count($config_mentor) : $assign_mentor_count;
+$mentorData_count = isset($men_data) ? php72_count($config_mentor) : $assign_mentor_count;
 
 if ((isset($this->session->userdata['sector_lead']) && $this->session->userdata['sector_lead'] == 1) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
     $notify_icon = isset($dataConfig) ? $dataConfig : '';
@@ -301,7 +301,7 @@ $field_enable = '0';
                                                                         <?php
                                                                         $j = 1;
                                                                         for ($i = 0; $i < $mentorData_count; $i++) {
-                                                                            if (count($config_mentor) > 0) {
+                                                                            if (php72_count($config_mentor) > 0) {
                                                                                 $cond['id'] = $config_mentor[$i]['master_id'];
                                                                                 // $mentor_details = $this->Mportfolio->getCommonData('port_villgro_relation_mentor', $cond);
                                                                                 $mentor_details = $config_mentor;
@@ -333,7 +333,7 @@ $field_enable = '0';
                                                                                                    name="check_delete" id="check_delete_<?php echo $j; ?>"
                                                                                                    value="<?php echo $mentor_details[$inc]['id']; ?>">
                                                                                                    <?php
-                                                                                               } else if (count($villgro_mentor) > 0 && $delete_row == 1) {
+                                                                                               } else if (php72_count($villgro_mentor) > 0 && $delete_row == 1) {
                                                                                                    ?>
                                                                                             <span class="cursor" title="Remove" onclick="hideRow(<?= $j; ?>);"><i class="fas fa-minus-circle"></i></span>
                                                                                             <?php
@@ -448,7 +448,7 @@ $field_enable = '0';
                                                                     }
                                                                     ?>
                                                                     </tbody>
-                                                                    <input type="hidden" id="enableCount" value="<?= count($config_mentor); ?>">
+                                                                    <input type="hidden" id="enableCount" value="<?= php72_count($config_mentor); ?>">
                                                                     <!-- <tbody id='mentor_add'></tbody> -->
                                                                 </table>
                                                             </div>

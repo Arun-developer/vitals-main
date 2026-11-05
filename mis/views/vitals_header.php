@@ -368,7 +368,7 @@ if ($this->session->userdata['user_type'] == 'admin' || $this->session->userdata
     $columnSortOrder = 'asc';
     $admin = 'Show all';
     $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-    $getAll_count = count($approvalCount);
+    $getAll_count = php72_count($approvalCount);
   }
 
   if ($ph_Usercount == '1' && $ceo_Usercount == '1') {
@@ -593,7 +593,7 @@ if ($this->session->userdata['role_id'] != '4' || ($this->session->userdata['rol
                 <li>
                   <select class="form-control form-control-sm" name="financial_year" id="financial_year" onchange="loadYear(this.value);">
                     <?php
-                    if (count($fin_list) > 0) {
+                    if (php72_count($fin_list) > 0) {
                       foreach ($fin_list as $year) {
                         $nxt_fyear = $year['fin_year'] + 1;
                         ?>

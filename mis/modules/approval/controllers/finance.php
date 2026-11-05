@@ -85,13 +85,13 @@ class Finance extends CI_Controller {
 			$searchArray[] = "AP.purpose like '%" . $this->input->post('purpose') . "%'";
 
 
-		$where = implode(" and ", $searchArray);
+		$where = php72_implode(" and ", $searchArray);
 
 		$approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, 'show All');
-		$getAll_count = count($approvalCount);
+		$getAll_count = php72_count($approvalCount);
 
 		$approval_lists = $this->Mapproval->getLimitApprovalNotes($where, $limit, $start, $sort_column, $columnSortOrder, 'show All');
-		$getLimit_count = count($approval_lists);
+		$getLimit_count = php72_count($approval_lists);
 
 		foreach ($approval_lists as $lists) {
 			$requestDate = '';
@@ -251,13 +251,13 @@ class Finance extends CI_Controller {
 		if ($this->input->post('status') != "")
 			$searchArray[] = "AP.status like '%" . $this->input->post('status') . "%'";
 
-		$where = implode(" and ", $searchArray);
+		$where = php72_implode(" and ", $searchArray);
 
 		$total = $this->Mapproval->getarchiveApprovalNotesCount($from, $to, $where);
-		$getAll_count = count($total);
+		$getAll_count = php72_count($total);
 
 		$approval_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, $limit, $start, $where, $sort_column, $columnSortOrder);
-		$getLimit_count = count($approval_lists);
+		$getLimit_count = php72_count($approval_lists);
 
 		foreach ($approval_lists as $lists) {
 			$requestDate = '';
@@ -400,13 +400,13 @@ class Finance extends CI_Controller {
 		if ($this->input->post('status') != "")
 			$searchArray[] = "AP.status like '%" . $this->input->post('status') . "%'";
 
-		$where = implode(" and ", $searchArray);
+		$where = php72_implode(" and ", $searchArray);
 
 		$total = $this->Mapproval->getarchiveApprovalNotesCount($from, $to, $where);
-		$getAll_count = count($total);
+		$getAll_count = php72_count($total);
 
 		$approval_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, $limit, $start, $where, $sort_column, $columnSortOrder);
-		$getLimit_count = count($approval_lists);
+		$getLimit_count = php72_count($approval_lists);
 
 		foreach ($approval_lists as $lists) {
 			$requestDate = '';
@@ -461,7 +461,7 @@ class Finance extends CI_Controller {
 		}
 		$data['section'] = $section;
 		$finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-		if (in_array($this->session->userdata('user'), $finance)) {
+		if (php72_in_array($this->session->userdata('user'), $finance)) {
 			$data['isFinance'] = 'Yes';
 		} else {
 			$data['isFinance'] = 'No';

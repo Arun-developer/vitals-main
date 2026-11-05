@@ -572,13 +572,13 @@
                                     </tr>
 
                                     <?php
-                                    if (count($type_list) > 0) {
-                                        for ($i = 0; $i < count($type_list); $i++) {
+                                    if (php72_count($type_list) > 0) {
+                                        for ($i = 0; $i < php72_count($type_list); $i++) {
                                             ?>
 
                                             <tr>
                                                 <td class="append_document">
-                                                    <input type="hidden" id="doc_listcount" value="<?php echo count($type_list); ?>" />
+                                                    <input type="hidden" id="doc_listcount" value="<?php echo php72_count($type_list); ?>" />
                                                     <form name="typeForm" id="typeForm_<?= $i; ?>" class="addForm" method="post" action="<?php echo base_url() . 'index.php/detailed_diligence/save_document'; ?>" enctype="multipart/form-data">
                                                         <table width="100%" cellpadding="0" cellspacing="0">
                                                             <tr>
@@ -723,8 +723,8 @@
                                 </tr>
 
                                 <?php
-                                if (count($meeting_list) > 0) {
-                                    for ($i = 0; $i < count($meeting_list); $i++) {
+                                if (php72_count($meeting_list) > 0) {
+                                    for ($i = 0; $i < php72_count($meeting_list); $i++) {
                                         ?>
 
                                         <tr>

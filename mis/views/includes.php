@@ -81,7 +81,7 @@
 <?php
 if (isset($custom_js)) {
 
-    if (count($custom_js)) {
+    if (php72_count($custom_js)) {
 
         foreach ($custom_js as $js_file):
             ?>

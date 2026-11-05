@@ -62,7 +62,7 @@ $form_name = 'program_service_list';
         </thead>
         <tbody>
             <?php
-            if (count($programServiceList)) {
+            if (php72_count($programServiceList)) {
                 $r = 1;
                 foreach ($programServiceList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

@@ -187,7 +187,7 @@ class Mincubation_reports extends CI_Model
         for ($i = 0; $i < strlen($value); $i++) {
             if (stristr($splitstring, $value[$i]) == true) {
                 'operand = ' . $operand . ', ';
-                if (array_key_exists($operand, $fieldvalues)) {
+                if (php72_array_key_exists($operand, $fieldvalues)) {
                     $toadd = $fieldvalues[$operand];
                 } else {
                     $toadd = $operand;
@@ -204,7 +204,7 @@ class Mincubation_reports extends CI_Model
         }
 
         if ($operand != '') {
-            if (array_key_exists($operand, $fieldvalues)) {
+            if (php72_array_key_exists($operand, $fieldvalues)) {
                 $toadd = $fieldvalues[$operand];
             } else {
                 $toadd = $operand;
@@ -236,7 +236,7 @@ class Mincubation_reports extends CI_Model
             foreach ($result->result_array() as $row) {
                 $data[] = $row;
             }
-            for ($i = 0; $i < count($data); $i++) {
+            for ($i = 0; $i < php72_count($data); $i++) {
                 $data[$i]['approved_amount'] = $this->getapprovedamount($data[$i]['approval_note']);
                 $data[$i]['fund_utilized'] = $this->mwglobal_report->getutilizedamount($data[$i]['id']);
             }

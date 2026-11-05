@@ -19,7 +19,7 @@ $if = (!$isincubAuth);
     </thead>
 	<tbody>
 	<?php
-	if(count($linkdoc))
+	if(php72_count($linkdoc))
 	{    
 		$r=1;
 		foreach($linkdoc as $row)

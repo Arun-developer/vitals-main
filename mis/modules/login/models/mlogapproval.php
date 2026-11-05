@@ -175,7 +175,7 @@ class Mlogapproval extends CI_Model {
     }
 
     public function getApprovalDashboard($section, $currentTab) {
-        $subUsers = implode("','", $this->reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", $this->reportingUser('subUser', 'userId'));
         $searchArray = array();
         $status = 'status';
         $admin = null;
@@ -292,7 +292,7 @@ class Mlogapproval extends CI_Model {
 	
 	
 	public function getApprovalDashboard_test($section, $currentTab) {
-        $subUsers = implode("','", $this->reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", $this->reportingUser('subUser', 'userId'));
         $searchArray = array();
         $status = 'status';
         $admin = null;
@@ -423,7 +423,7 @@ class Mlogapproval extends CI_Model {
     public function getInternalDashboard($section = 'mylist', $currentTab = 'pending') {
         $searchArray = array();
 
-        $subUsers = implode("','", $this->reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", $this->reportingUser('subUser', 'userId'));
 
         $status = 'status';
 
@@ -448,7 +448,7 @@ class Mlogapproval extends CI_Model {
                 $emp_num = $emp->result_array();
                 $sub_supUser = $this->reportingUser('supUser', 'All', $emp_num[0]['id']);
 
-                $count = count($sub_supUser);
+                $count = php72_count($sub_supUser);
 
                 if ($count == 1) {
                     $single[] = $row;
@@ -459,10 +459,10 @@ class Mlogapproval extends CI_Model {
                     $users[] = $row;
                 }
             }
-            $sub_user1 = implode("','", $sub_user);
-            $single1 = implode("','", @$single);
-            $users1 = implode("','", @$users);
-            $having1 = implode("','", @$having);
+            $sub_user1 = php72_implode("','", $sub_user);
+            $single1 = php72_implode("','", @$single);
+            $users1 = php72_implode("','", @$users);
+            $having1 = php72_implode("','", @$having);
             $searchArray[] = "((INTER.to IN ('" . $this->session->userdata('user_id') . "')) or (AN.to_RO ='" . $this->session->userdata('user_id') . "'))";
             $admin = 'Show all';
 
@@ -606,7 +606,7 @@ class Mlogapproval extends CI_Model {
             }
 
             if (isset($subuser) && !empty($subuser)) {
-                $array = '"' . implode('" , " ', $subuser) . '"';
+                $array = '"' . php72_implode('" , " ', $subuser) . '"';
                 $emp_where .= " or  `employee_id` IN (" . $array . ")";
             }
         }
@@ -664,7 +664,7 @@ class Mlogapproval extends CI_Model {
             }
 
             if (isset($subuser) && !empty($subuser)) {
-                $array = '"' . implode('" , " ', $subuser) . '"';
+                $array = '"' . php72_implode('" , " ', $subuser) . '"';
                 $emp_where .= " or  `employee_id` IN (" . $array . ")";
             }
         }
@@ -718,7 +718,7 @@ class Mlogapproval extends CI_Model {
             }
 
             if (isset($subuser) && !empty($subuser)) {
-                $array = '"' . implode('" , " ', $subuser) . '"';
+                $array = '"' . php72_implode('" , " ', $subuser) . '"';
                 $emp_where .= " `employee_id` IN (" . $array . ")";
             }
             $emp_where .= ")";

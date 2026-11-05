@@ -4,7 +4,7 @@ $formAction = site_url('master/screening_master/sub_field/' . $pid);
 $id = '';
 $val = array();
 $paraentValues = isset($screeningDetails['0']["value"]) ? $screeningDetails['0']["value"] : array();
-if (count($subfieldsDetails)) {
+if (php72_count($subfieldsDetails)) {
     $val = $subfieldsDetails['0'];
     $formAction = site_url('master/screening_master/sub_field/' . $pid . '/' . $val['id']);
     $id = $val['id'];
@@ -81,7 +81,7 @@ $inputArray = array('Text', 'Textarea', 'Listbox', 'Radio', 'Checkbox', 'File');
   </dl>
     <?php
 
-if (count($value)) {
+if (php72_count($value)) {
     foreach ($value as $in => $val):
     ?>
     <dl class="inline valueField">

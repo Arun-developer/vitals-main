@@ -1,5 +1,5 @@
 <?php
-if (count($targetDetails)) {
+if (php72_count($targetDetails)) {
     $val = $targetDetails['0'];
 }
 $month = isset($val["month"]) ? $val["month"] : "";

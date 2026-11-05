@@ -168,7 +168,7 @@ class Detailed_diligence extends CI_Controller {
 
     public function team_data() {
         $this->load->library('upload');
-        $count = count($_POST['name']);
+        $count = php72_count($_POST['name']);
         for ($i = 0; $i < $count; $i++) {
             $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/' . base_upload_path() . 'uploads/detailed_diligence';
             $resume_path = '';
@@ -245,7 +245,7 @@ class Detailed_diligence extends CI_Controller {
     }
 
     public function share_data() {
-        $count = count($_POST['holder']);
+        $count = php72_count($_POST['holder']);
         for ($i = 0; $i < $count; $i++) {
             $get_innovation = $this->Mdiligence->get_data('share_details', $_POST['innovation_id']);
             if (!empty($get_innovation) && $_POST['shareId'][$i] != '') {
@@ -1948,8 +1948,8 @@ class Detailed_diligence extends CI_Controller {
             'posVerticalRel' => 'line',
         ));
         $section->addTextBreak(5);
-        $member_count = count($team_members);
-        $share_count = count($share_details);
+        $member_count = php72_count($team_members);
+        $share_count = php72_count($share_details);
         $styleCell = array('borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
         $styleRightCell = array('borderLeftSize' => 1, 'borderLeftColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
 

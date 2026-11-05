@@ -194,7 +194,7 @@ class Leave extends CI_Controller {
 
         if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
             $chk_sup = $this->Mleave->getSupervisor($empid);
-            if (count($chk_sup) > 0) {
+            if (php72_count($chk_sup) > 0) {
                 $subs_id = array();
                 foreach ($chk_sup as $sups) {
                     $subs_id[] = $sups['erep_sub_emp_number'];
@@ -204,7 +204,7 @@ class Leave extends CI_Controller {
             }
         }
 
-        $result_cond = implode(' and ', $cond_arr);
+        $result_cond = php72_implode(' and ', $cond_arr);
         $data['approval_count'] = $this->Mleave->getDTLeaveCount($result_cond);
         /* check if user is supervisor or not */
         $empid = $this->session->userdata['emp_number'];
@@ -234,12 +234,12 @@ class Leave extends CI_Controller {
         $data['from_date'] = $fromyear = (isset($_POST['from_date']) && $_POST['from_date'] != '') ? date('Y-m-d', strtotime($_POST['from_date'])) : '';
         $data['to_date'] = $toyear = (isset($_POST['to_date']) && $_POST['to_date'] != '') ? date('Y-m-d', strtotime($_POST['to_date'])) : '';
         $filter_status = isset($_POST['filter_status']) ? $_POST['filter_status'] : '';
-        if (in_array(1, $filter_status)) {
+        if (php72_in_array(1, $filter_status)) {
             array_push($filter_status, 2);
-        } else if (in_array(4, $filter_status)) {
+        } else if (php72_in_array(4, $filter_status)) {
             array_push($filter_status, 3);
         }
-        $l_status = implode(',', $filter_status);
+        $l_status = php72_implode(',', $filter_status);
 
         if ($fromyear != '' && $toyear != '') {
             $cond_arr[] = "t1.leave_startdate >= '" . $fromyear . "' and t1.leave_startdate <= '" . $toyear . "'";
@@ -264,13 +264,13 @@ class Leave extends CI_Controller {
             $cond_arr[] = "t3.partner_id = '" . $partner_id . "'";
         }
         $cond_arr[] = "t3.status = 1";
-        $result_cond = implode(' and ', $cond_arr);
+        $result_cond = php72_implode(' and ', $cond_arr);
 
         $totalrows = $this->Mleave->getDTLeaveCount($result_cond, $columns, $requestData);
         $query = $this->Mleave->getDTLeaveDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
 		#ECHO'<pre>';print_r($query);die;
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -278,7 +278,7 @@ class Leave extends CI_Controller {
                 $sup_name = $this->Mleave->getSupervisor('', $row['employee_id']);
             } else {
                 $superadmin_chk = $this->Mleave->getchecksuperadmin($row['approved_by']);
-                if (count($superadmin_chk) > 0) {
+                if (php72_count($superadmin_chk) > 0) {
                     $superr_ad = 1;
                 } else {
                     $superr_ad = 0;
@@ -397,12 +397,12 @@ class Leave extends CI_Controller {
         $data['from_date'] = $fromyear = (isset($_POST['from_date']) && $_POST['from_date'] != '') ? date('Y-m-d', strtotime($_POST['from_date'])) : '';
         $data['to_date'] = $toyear = (isset($_POST['to_date']) && $_POST['to_date'] != '') ? date('Y-m-d', strtotime($_POST['to_date'])) : '';
         $filter_status = isset($_POST['filter_status']) ? $_POST['filter_status'] : '';
-        if (in_array(1, $filter_status)) {
+        if (php72_in_array(1, $filter_status)) {
             array_push($filter_status, 2);
-        } else if (in_array(4, $filter_status)) {
+        } else if (php72_in_array(4, $filter_status)) {
             array_push($filter_status, 3);
         }
-        $l_status = implode(',', $filter_status);
+        $l_status = php72_implode(',', $filter_status);
 
         $partner_search = isset($_POST['partner_search']) ? $_POST['partner_search'] : '';
 
@@ -427,7 +427,7 @@ class Leave extends CI_Controller {
 
         if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
             // $empid = $this->session->userdata['emp_number'];
-            if (count($chk_sup) > 0) {
+            if (php72_count($chk_sup) > 0) {
                 $subs_id = array();
                 foreach ($chk_sup as $sups) {
                     $subs_id[] = $sups['erep_sub_emp_number'];
@@ -442,12 +442,12 @@ class Leave extends CI_Controller {
             $cond_arr[] = "t3.partner_id = '" . $partner_id . "'";
         }
 
-        $result_cond = implode(' and ', $cond_arr);
+        $result_cond = php72_implode(' and ', $cond_arr);
         $totalrows = $this->Mleave->getDTLeaveCount($result_cond, $columns, $requestData);
         $query = $this->Mleave->getDTLeaveDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -564,7 +564,7 @@ public function leave_archieve($year = '') {
 
     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
         $chk_sup = $this->Mleave->getSupervisor($empid);
-        if (count($chk_sup) > 0) {
+        if (php72_count($chk_sup) > 0) {
             $subs_id = array();
             foreach ($chk_sup as $sups) {
                 $subs_id[] = $sups['erep_sub_emp_number'];
@@ -574,7 +574,7 @@ public function leave_archieve($year = '') {
         }
     }
 
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
     $data['approval_count'] = $this->Mleave->getDTLeaveCount($result_cond);
     /* check if user is supervisor or not */
     $data['chk_sup'] = $this->Mleave->getSupervisor($empid);
@@ -610,7 +610,7 @@ public function apply_leave() {
 
     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
         $chk_sup = $this->Mleave->getSupervisor($empid);
-        if (count($chk_sup) > 0) {
+        if (php72_count($chk_sup) > 0) {
             $subs_id = array();
             foreach ($chk_sup as $sups) {
                 $subs_id[] = $sups['erep_sub_emp_number'];
@@ -621,7 +621,7 @@ public function apply_leave() {
     }
 
 
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
     $data['approval_count'] = $this->Mleave->getDTLeaveCount($result_cond);
     $data['chk_sup'] = $this->Mleave->getSupervisor($empid);
 
@@ -829,7 +829,7 @@ public function addApplyleave() {
 
 
 
-        if (count($chk_weekends) > 0) {
+        if (php72_count($chk_weekends) > 0) {
             if($leavetypec=='LTY014'){
 
             $leavedetails['leave_length_days'] = $length = 1;
@@ -846,7 +846,7 @@ public function addApplyleave() {
 //echo "<pre>";  print_r($chk_workingdays);die;
 
         if ($length == 1) {
-            if (count($chk_holidays) > 0) {
+            if (php72_count($chk_holidays) > 0) {
                 $leavedetails['leave_length_days'] = $length = 0;
                 $leavedetails['leave_status'] = 4;
             } else {
@@ -855,7 +855,7 @@ public function addApplyleave() {
             }
         }
 
-        if (count($chk_workingdays) > 0) {
+        if (php72_count($chk_workingdays) > 0) {
             $leavedetails['leave_length_days'] = $length = 1;
             $leavedetails['leave_status'] = 0;
         }
@@ -877,7 +877,7 @@ public function addApplyleave() {
 
     if($remaining_days >= $req_length_new || $leave_type_name == "Work From Home"){
 
-        $leaverequest = count($dataleave_request);
+        $leaverequest = php72_count($dataleave_request);
         if ($leaverequest == 0) {
             $new_allocate['year'] = $year;
             $new_allocate['employee_id'] = $emp_id;
@@ -898,7 +898,7 @@ public function addApplyleave() {
         /* checking leave date already exist */
 
         $chk_leavedates = $this->Mleave->checkLeavedates($fromdate, $empid);
-        if (count($chk_leavedates) == 0) {
+        if (php72_count($chk_leavedates) == 0) {
 
             $applieddate = date('Y-m-d', strtotime($_POST['leave_from_date']));
             if (date('Y-m-d') == $applieddate) {
@@ -924,7 +924,7 @@ public function addApplyleave() {
                     /* check with holiday details */
                     $days = date('l', strtotime($ldates));
                     $chk_weekends = $this->Mleave->checkWeekends($days);
-                    if (count($chk_weekends) > 0) {
+                    if (php72_count($chk_weekends) > 0) {
                         if($leavetypec=='LTY014'){
 
             $leavedetails['leave_length_days'] = $length = 1;
@@ -941,7 +941,7 @@ public function addApplyleave() {
                     }
 
                     if ($length == 1) {
-                        if (count($chk_holidays) > 0) {
+                        if (php72_count($chk_holidays) > 0) {
                             $leavedetails['leave_length_days'] = $length = 0;
                             $leavedetails['leave_status'] = 4;
                         } else {
@@ -950,7 +950,7 @@ public function addApplyleave() {
                         }
                     }
 
-                    if (count($chk_workingdays) > 0) {
+                    if (php72_count($chk_workingdays) > 0) {
                         $leavedetails['leave_length_days'] = $length = 1;
                         $leavedetails['leave_status'] = 0;
                     }
@@ -1037,7 +1037,7 @@ public function addApplyleave() {
 					}
 
 
-                    $reporting = implode(', ', $reportto_name);
+                    $reporting = php72_implode(', ', $reportto_name);
                     array_push($reportto_name, $mail_employee);
                     array_push($tomails, $posted_employee[0]['official_email']);
                     $mi = 0;
@@ -1113,7 +1113,7 @@ public function approve_leave_list($formresult = '') {
     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
         $empid = $this->session->userdata['emp_number'];
         $data['chk_sup'] = $chk_sup = $this->Mleave->getSupervisor($empid);
-        if (count($chk_sup) == 0) {
+        if (php72_count($chk_sup) == 0) {
             redirect('leave/leave_list/');
         }
     }
@@ -1132,7 +1132,7 @@ public function approve_leave_list($formresult = '') {
 
     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
             // $chk_sup = $this->Mleave->getSupervisor($empid);
-        if (count($chk_sup) > 0) {
+        if (php72_count($chk_sup) > 0) {
             $subs_id = array();
             foreach ($chk_sup as $sups) {
                 $subs_id[] = $sups['erep_sub_emp_number'];
@@ -1141,7 +1141,7 @@ public function approve_leave_list($formresult = '') {
             $cond_arr[] = "t2.id IN (" . $sub_emp_id . ")";
         }
     }
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
 
     $option['status'] = 1;
     $data['partner_types'] = $this->Mportfolio->getDetails('hr_partner_type', $option);
@@ -1306,7 +1306,7 @@ public function leavereq_approve() {
             foreach ($posted_supervisor as $reportto) {
                 $reportto_name[] = $reportto['emp_firstname'] . ' ' . $reportto['emp_lastname'];
             }
-            $reporting = implode(',', $reportto_name);
+            $reporting = php72_implode(',', $reportto_name);
             $mail_message = "<p>Hi " . $mail_employee . ",</p><p>" . $following . "<br/></p><p>From Employee: " . $mail_employee . "<br/> Reporting Manager: " . $reporting . "<br/> Request: " . $mail_type . "<br/> Start Date: " . $mail_startdate . "<br/> End Date: " . $mail_enddate . "<br/> Reason: " . $mail_comments . "<br/></p>
             <p>Thanks,<br/>Villgro</p>";
 
@@ -1381,7 +1381,7 @@ public function leave_summary($formresult = '') {
 
     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
         $chk_sup = $this->Mleave->getSupervisor($empid);
-        if (count($chk_sup) > 0) {
+        if (php72_count($chk_sup) > 0) {
             $subs_id = array();
             foreach ($chk_sup as $sups) {
                 $subs_id[] = $sups['erep_sub_emp_number'];
@@ -1391,7 +1391,7 @@ public function leave_summary($formresult = '') {
         }
     }
 
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
     $data['approval_count'] = $this->Mleave->getDTLeaveCount($result_cond);
     $data['chk_sup'] = $this->Mleave->getSupervisor($empid);
     $this->load->vars($data);
@@ -1469,16 +1469,16 @@ public function DTleavesummary() {
     }
     $cond_arr[] = $user_cond[] = "status = '1'";
 
-    $result_quota = implode(' and ', $cond_arr);
-    $result_user = implode(' and ', $user_cond);
+    $result_quota = php72_implode(' and ', $cond_arr);
+    $result_user = php72_implode(' and ', $user_cond);
 
     $totalrows = $this->Mleave->getDTuserDetails('', '', $result_user, $columns, $requestData);
     $query = $this->Mleave->getDTuserDetails($requestData['length'], $requestData['start'], $result_user, $columns, $requestData);
 
     //echo "<pre>";print_r($query);die;
 
-    $totalFiltered = count($totalrows);
-    $totalData = count($query);
+    $totalFiltered = php72_count($totalrows);
+    $totalData = php72_count($query);
     $data = array();
 
     $get_lastQuota = $this->Mleave->getLastQuotaID();
@@ -1489,7 +1489,7 @@ public function DTleavesummary() {
         foreach ($l_types as $leave) {
             $quota_result = $result_quota . " and t1.leave_type_id = '" . $leave['leave_type_id'] . "'";
             $get_existQuota = $this->Mleave->getUserQuotaDetails($quota_result, $row['id']);
-            if (count($get_existQuota) > 0) {
+            if (php72_count($get_existQuota) > 0) {
                 $schd_arr = array();
                 $schd_curdate = date('Y-m-d');
                 $schd_arr[] = "employee_id = '" . $get_existQuota[0]['employee_id'] . "'";
@@ -1633,7 +1633,7 @@ public function add_holiday($holiday_id = '') {
 public function addHolidays() {
 
    
-    for ($i = 0; $i < count($_POST['holiday_name']); $i++) {
+    for ($i = 0; $i < php72_count($_POST['holiday_name']); $i++) {
         if ($_POST['holiday_name'][$i] != '') {
             $option['id'] = $_POST['holiday_edit_id'][$i];
             $holidaydata['holiday_name'] = $_POST['holiday_name'][$i];
@@ -1646,12 +1646,12 @@ public function addHolidays() {
                 // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
             $checkExist = $this->Mportfolio->getDetails('hr_holidays', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $holidaydata['updated_by'] = $this->session->userdata('emp_number');
                 $hm_query = $this->Mleave->updateLeaveDetail('hr_holidays', $option, $holidaydata);
             } else {
                  $existing_date_check = $this->Mleave->getholidaybydate($holidaydata['date']);
-                 if(count($existing_date_check)>0){
+                 if(php72_count($existing_date_check)>0){
                 
                  $this->session->set_flashdata('errorMsg', "Mentioned date is already added in holiday list.");
 
@@ -1715,7 +1715,7 @@ public function DTholiday() {
     $query = $this->Mleave->getDTHolidayDetails($requestData['length'], $requestData['start'], $year, $columns, $requestData);
 
     $totalFiltered = $totalrows;
-    $totalData = count($query);
+    $totalData = php72_count($query);
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
@@ -1786,7 +1786,7 @@ public function DTholidayarchieve() {
     $query = $this->Mleave->getDTHolidayDetails($requestData['length'], $requestData['start'], $year, $columns, $requestData);
 
     $totalFiltered = $totalrows;
-    $totalData = count($query);
+    $totalData = php72_count($query);
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
@@ -1916,7 +1916,7 @@ public function DTworkingday() {
     $query = $this->Mleave->getDTWorkingdayDetails($requestData['length'], $requestData['start'], $year, $columns, $requestData);
 
     $totalFiltered = $totalrows;
-    $totalData = count($query);
+    $totalData = php72_count($query);
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
@@ -1956,7 +1956,7 @@ public function DTworkingday() {
 
 public function addWorkingdays() {
 
-    for ($i = 0; $i < count($_POST['working_days_name']); $i++) {
+    for ($i = 0; $i < php72_count($_POST['working_days_name']); $i++) {
         $workingdaydata = array();
         if ($_POST['working_days_name'][$i] != '') {
             $option['id'] = $_POST['workingday_edit_id'][$i];
@@ -1966,7 +1966,7 @@ public function addWorkingdays() {
             $workingdaydata['status'] = 1;
 
             $checkExist = $this->Mportfolio->getDetails('hr_working_days', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $hm_query = $this->Mleave->updateLeaveDetail('hr_working_days', $option, $workingdaydata);
             } else {
                 $workingdaydata['created_by'] = $this->session->userdata('emp_number');
@@ -2040,7 +2040,7 @@ public function leave_type() {
     $data['leave_types'] = $leavetypes = $this->Mleave->getLeaveTypes();
 
     $data['partner_id'] = $partner_id = $this->session->userdata('partner_id');
-    $count_type = count($leavetypes);
+    $count_type = php72_count($leavetypes);
     if ($count_type > 0) {
         $arr = $count_type - 1;
         $typename = $leavetypes[$arr]['leave_type_id'];
@@ -2059,7 +2059,7 @@ public function leave_type() {
     foreach ($restriction_list as $rests) {
         $restrict[] = $rests['leave_type_id'];
     }
-    $data['restrictids'] = implode(',', $restrict);
+    $data['restrictids'] = php72_implode(',', $restrict);
     $this->load->vars($data);
     $this->load->view('leave/leave_type');
 }
@@ -2074,7 +2074,7 @@ public function DTLeavetype() {
     );
     $leavetypes = $this->Mleave->getLeaveTypes();
 
-    $count_type = count($leavetypes);
+    $count_type = php72_count($leavetypes);
     if ($count_type > 0) {
         $arr = $count_type - 1;
         $typename = $leavetypes[$arr]['leave_type_id'];
@@ -2088,7 +2088,7 @@ public function DTLeavetype() {
     $totalrows = $this->Mleave->getDTLeavetypeCount('', $columns, $requestData);
     $query = $this->Mleave->getDTLeavetypeDetails($requestData['length'], $requestData['start'], '', $columns, $requestData);
     $totalFiltered = $totalrows;
-    $totalData = count($query);
+    $totalData = php72_count($query);
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
@@ -2135,7 +2135,7 @@ public function add_leave_type($id) {
 public function addLeavetype() {
     $partner_id = $this->session->userdata('partner_id');
     if ($_POST['leave_type_name'][0] != '') {
-        for ($i = 0; $i < count($_POST['leave_type_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['leave_type_name']); $i++) {
             $leavedata = array();
 
 
@@ -2145,7 +2145,7 @@ public function addLeavetype() {
             $leavedata['status'] = 1;
 
             $checkExist = $this->Mportfolio->getDetails('hr_leave_type', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $hm_query = $this->Mleave->updateLeaveDetail('hr_leave_type', $option, $leavedata);
             } else {
                 $leavedata['partner_id'] = $partner_id;
@@ -2177,7 +2177,7 @@ public function addLeavetype() {
 
                 $restriction_list = $this->Mportfolio->getDetails('hr_leave_type', $norest_options);
                 foreach ($restriction_list as $restricts) {
-                    if (in_array($restricts['leave_type_id'], $leave_restrictions)) {
+                    if (php72_in_array($restricts['leave_type_id'], $leave_restrictions)) {
 
                         $norest_data['no_restrictions'] = 1;
                     } else {
@@ -2344,7 +2344,7 @@ function leave_export($fromdate, $todate, $multifilter, $page = '') {
         if (!isset($page) || $page == '') {
             $cond_arr[] = "t2.id = '" . $empid . "'";
         } else if (isset($page) && $page != '') {
-            if (count($chk_sup) > 0) {
+            if (php72_count($chk_sup) > 0) {
                 $subs_id = array();
                 foreach ($chk_sup as $sups) {
                     $subs_id[] = $sups['erep_sub_emp_number'];
@@ -2354,7 +2354,7 @@ function leave_export($fromdate, $todate, $multifilter, $page = '') {
             }
         }
     }
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
 
 
     $query = $this->Mleave->getDTLeaveDetails('', '', $result_cond);
@@ -2514,7 +2514,7 @@ function leavesummary_export($filter_year = '', $filter_leavetype = '', $filter_
     }
     $cond_arr[] = "t2.status = '1'";
 
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
 
     $query = $this->Mleave->getDTLeavesummaryDetails('', '', $result_cond);
 

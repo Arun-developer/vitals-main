@@ -33,7 +33,7 @@ class Mscreening extends CI_Model
                 $this->insertInnovationServices($innovation, $answer);
             } else {
 
-                $answer = is_array($answer) ? implode(',', $answer) : $answer;
+                $answer = is_array($answer) ? php72_implode(',', $answer) : $answer;
 
                 $data = array('criteria' => $criteria,
 
@@ -325,7 +325,7 @@ class Mscreening extends CI_Model
 
         foreach ($form as $key => $value) {
 
-            for ($i = 0; $i < count($form['field']); $i++) {
+            for ($i = 0; $i < php72_count($form['field']); $i++) {
 
                 $data = array(
 
@@ -1459,7 +1459,7 @@ class Mscreening extends CI_Model
 
         $this->load->vars($data);
 
-        if (count($data['fieldsList'])) {
+        if (php72_count($data['fieldsList'])) {
 
             if ($option == 'view') {
                 $page = 'ajax_view';
@@ -1480,7 +1480,7 @@ class Mscreening extends CI_Model
 
         $data = array('innovation' => $innovation,
 
-            'services' => implode(",", $services));
+            'services' => php72_implode(",", $services));
 
         if ($this->checkDuplicateService($innovation)) {
 

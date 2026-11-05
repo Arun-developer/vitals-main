@@ -132,7 +132,7 @@ $tmdata['total'] = $tmdata['company'] = $tmdata['hours'] = $tmdata['money'] = ''
 $tmtdata['count'] = '';
 $trdata['answer'] = '';
 $tydata['amount'] = '';
-for($i=0;$i<count($yearanswer); $i++)
+for($i=0;$i<php72_count($yearanswer); $i++)
 {
 	$tdata['amount'] .= '<td>'.$yearanswer[$i][0]['amount'].'</td>';	
 	$tdata['approved_amount'] .= '<td>'.$yearanswer[$i][0]['approved_amount'].'</td>';	
@@ -164,7 +164,7 @@ echo '<td>Total Fund Utilized(in Rs.)</td>'.$tdata['fund_utilized'];
 echo '</tr>';
 
 }
-for($i=0;$i<count($yearmeeting);$i++)
+for($i=0;$i<php72_count($yearmeeting);$i++)
 {
 	$tmdata['count'] .= '<td>'.$yearmeeting[$i][0]['id'].'</td>';
 }
@@ -182,7 +182,7 @@ else
 }
 echo '</tr>';
 
-for($i=0;$i<count($yearraise);$i++)
+for($i=0;$i<php72_count($yearraise);$i++)
 {
 	$tydata['amount'] .= '<td>'.$yearraise[$i][0]['amount_approved'].'</td>';
 }
@@ -191,7 +191,7 @@ echo '<tr>';
 echo '<td>Investment Raised</td>'.$tydata['amount'];
 echo '</tr>';
 
-for($i=0;$i<count($yearfellow);$i++)
+for($i=0;$i<php72_count($yearfellow);$i++)
 {
 	$tfdata['total'] .= '<td>'.$yearfellow[$i][0]['total'].'</td>';
 	$tfdata['accept'] .= '<td>'.$yearfellow[$i][0]['accept'].'</td>';
@@ -223,7 +223,7 @@ echo '<td>Reject</td>'.$tfdata['reject'];
 echo '</tr>';
 }
 
-for($i=0;$i<count($yearmedia);$i++)
+for($i=0;$i<php72_count($yearmedia);$i++)
 {
 	$tmdata['total'] .= '<td>'.$yearmedia[$i][0]['created_emp'].'</td>';
 	$tmdata['company'] .= '<td>'.$yearmedia[$i][0]['company'].'</td>';
@@ -263,7 +263,7 @@ echo '<td>Mentor Money</td>'.$tmdata['money'];
 echo '</tr>';
 }
 
-for($i=0;$i<count($yearrevenue);$i++)
+for($i=0;$i<php72_count($yearrevenue);$i++)
 {
 	$trdata['answer'] .= '<td>'.$yearrevenue[$i][0]['answer'].'</td>';
 }
@@ -298,7 +298,7 @@ $tmdata['total'] = $tmdata['accept'] = $tmdata['reject'] = '';
 $tmtdata['count'] = '';
 $trdata['total'] = '';
 $tqdata['amount'] = '';
-for($i=0;$i<count($quarteranswer); $i++)
+for($i=0;$i<php72_count($quarteranswer); $i++)
 {
 	$tdata['amount'] .= '<td>'.$quarteranswer[$i][0]['amount'].'</td>';	
 	$tdata['approved_amount'] .= '<td>'.$quarteranswer[$i][0]['approved_amount'].'</td>';	
@@ -315,7 +315,7 @@ echo '<tr>';
 echo '<td>Total Fund Utilized</td>'.$tdata['fund_utilized'];
 echo '</tr>';
 
-for($i=0;$i<count($quarterraise);$i++)
+for($i=0;$i<php72_count($quarterraise);$i++)
 {
 	$tqdata['amount'] .= '<td>'.$quarterraise[$i][0]['amount_approved'].'</td>';
 }
@@ -324,7 +324,7 @@ echo '<tr>';
 echo '<td>Investment Raised</td>'.$tqdata['amount'];
 echo '</tr>';
 
-for($i=0;$i<count($quarterfellow);$i++)
+for($i=0;$i<php72_count($quarterfellow);$i++)
 {
 	$tfdata['total'] .= '<td>'.$quarterfellow[$i][0]['total'].'</td>';
 	$tfdata['accept'] .= '<td>'.$quarterfellow[$i][0]['accept'].'</td>';
@@ -340,7 +340,7 @@ echo '</tr>';
 echo '<tr>';
 echo '<td>Reject</td>'.$tfdata['reject'];
 echo '</tr>';
-for($i=0;$i<count($quartermedia);$i++)
+for($i=0;$i<php72_count($quartermedia);$i++)
 {
 	$tmdata['total'] .= '<td>'.$quartermedia[$i][0]['created_emp'].'</td>';
 	$tmdata['accept'] .= '<td>'.$quartermedia[$i][0]['company'].'</td>';
@@ -356,7 +356,7 @@ echo '</tr>';
 echo '<tr>';
 echo '<td>Hours</td>'.$tmdata['reject'];
 echo '</tr>';
-for($i=0;$i<count($quartermeeting);$i++)
+for($i=0;$i<php72_count($quartermeeting);$i++)
 {
 	$tmdata['count'] .= '<td>'.$quartermeeting[$i][0]['id'].'</td>';
 }
@@ -364,7 +364,7 @@ echo '<tr><td colspan="8"><h2 align="left">Board Meeting Report</h2></td></tr>';
 echo '<tr>';
 echo '<td>Total</td>'.$tmdata['count'];
 echo '</tr>';
-for($i=0;$i<count($quarterrevenue);$i++)
+for($i=0;$i<php72_count($quarterrevenue);$i++)
 {
 	$tdata['answer'] .= '<td>'.$quarterrevenue[$i][0]['answer'].'</td>';
 	echo $quarterreveune[$i]['answer'];
@@ -399,7 +399,7 @@ $tfdata['total'] = $tfdata['accept'] = $tfdata['reject'] = '';
 $tmdata['total'] = $tmdata['accept'] = $tmdata['reject'] = '';
 $tmtdata['count'] = '';
 $trdata['amount'] = '';
-for($i=0;$i<count($monthanswer); $i++)
+for($i=0;$i<php72_count($monthanswer); $i++)
 {
 	$tdata['amount'] .= '<td>'.$monthanswer[$i][0]['amount'].'</td>';	
 	$tdata['approved_amount'] .= '<td>'.$monthanswer[$i][0]['approved_amount'].'</td>';	
@@ -415,7 +415,7 @@ echo '</tr>';
 echo '<tr>';
 echo '<td>Total Fund Utilized</td>'.$tdata['fund_utilized'];
 echo '</tr>';
-for($i=0;$i<count($monthraise);$i++)
+for($i=0;$i<php72_count($monthraise);$i++)
 {
 	$trdata['amount'] .= '<td>'.$monthraise[$i][0]['amount_approved'].'</td>';
 }
@@ -425,7 +425,7 @@ echo '<td>Investment Raised</td>'.$trdata['amount'];
 echo '</tr>';
 
 
-for($i=0;$i<count($monthfellow);$i++)
+for($i=0;$i<php72_count($monthfellow);$i++)
 {
 	$tfdata['total'] .= '<td>'.$monthfellow[$i][0]['total'].'</td>';
 	$tfdata['accept'] .= '<td>'.$monthfellow[$i][0]['accept'].'</td>';
@@ -441,7 +441,7 @@ echo '</tr>';
 echo '<tr>';
 echo '<td>Reject</td>'.$tfdata['reject'];
 echo '</tr>';
-for($i=0;$i<count($monthmedia);$i++)
+for($i=0;$i<php72_count($monthmedia);$i++)
 {
 	$tmdata['total'] .= '<td>'.$monthmedia[$i][0]['total'].'</td>';
 	$tmdata['accept'] .= '<td>'.$monthmedia[$i][0]['accept'].'</td>';
@@ -457,7 +457,7 @@ echo '</tr>';
 echo '<tr>';
 echo '<td>Reject</td>'.$tmdata['reject'];
 echo '</tr>';
-for($i=0;$i<count($monthmeeting);$i++)
+for($i=0;$i<php72_count($monthmeeting);$i++)
 {
 	$tmdata['count'] .= '<td>'.$monthmeeting[$i][0]['id'].'</td>';
 }
@@ -465,7 +465,7 @@ echo '<tr><td colspan="13"><h2 align="left">Board Meeting Report</h2></td></tr>'
 echo '<tr>';
 echo '<td>Total</td>'.$tmdata['count'];
 echo '</tr>';
-for($i=0;$i<count($monthrevenue);$i++)
+for($i=0;$i<php72_count($monthrevenue);$i++)
 {
 	$trdata['total'] .= '<td>'.$monthrevenue[$i][0]['answer'].'</td>';
 }

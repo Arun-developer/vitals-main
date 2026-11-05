@@ -196,7 +196,7 @@ if (isset($last_logtime) && $last_logtime != '') {
                               $columnSortOrder = 'asc';
                               $admin = 'Show all';
                               $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-                              $getAll_count = count($approvalCount);
+                              $getAll_count = php72_count($approvalCount);
                           }
 
                           if($ph_Usercount=='1' &&  $ceo_Usercount=='1'){ $type=1;

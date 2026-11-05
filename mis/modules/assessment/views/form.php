@@ -11,7 +11,7 @@
 </script>
 <?php
 	$val = array();
-	if(count($assessInfo)) { 
+	if(php72_count($assessInfo)) { 
 		$action = 'Update';
 		$val = $assessInfo['0'];
 		$val_grade= $gradevalue['0'];//getting grade value

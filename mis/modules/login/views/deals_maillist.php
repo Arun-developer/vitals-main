@@ -41,7 +41,7 @@
     </thead>
     <tbody>
         <?php
-        if (count($mail)) {
+        if (php72_count($mail)) {
             $row_type = 'even';
             $partner_id = $this->session->userdata('partner_id');
             $mail_config = partner_smtp();
@@ -52,12 +52,12 @@
                 $pendarr = $sucarr = $failarr = array();
                 $pendarr[] = "status = 0";
                 $pendarr[] = "bulk_id = " . $row['id'];
-                $pendarrwhr = implode(' and ', $pendarr);
+                $pendarrwhr = php72_implode(' and ', $pendarr);
                 $pend_mail = $this->Mmail->MailDetails($pendarrwhr);
 
                 $sucarr[] = "status = 1";
                 $sucarr[] = "bulk_id = " . $row['id'];
-                $sucarrwhr = implode(' and ', $sucarr);
+                $sucarrwhr = php72_implode(' and ', $sucarr);
                 $suc_mail = $this->Mmail->MailDetails($sucarrwhr);
 
                 $failarr[] = "status = 2";
@@ -88,9 +88,9 @@
                     <td style="text-align: center;"><a href="<?= site_url('master/mailtemplate/form/' . $mailtypes[0]["id"]); ?>" target="_blank"><?= $row["mail_type"]; ?></a></td>
                     <td style="text-align: center;"><?= $row["mail_subject"]; ?></td>
                     <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"]); ?>" class="fancybox"><?= $row["receipients_count"]; ?></a></td>
-                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/1'); ?>" class="fancybox"><?= count($suc_mail); ?></a></td>
-                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/2'); ?>" class="fancybox"><?= count($fail_mail); ?></a></td>
-                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/0'); ?>" class="fancybox"><?= count($pend_mail); ?></a></td>
+                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/1'); ?>" class="fancybox"><?= php72_count($suc_mail); ?></a></td>
+                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/2'); ?>" class="fancybox"><?= php72_count($fail_mail); ?></a></td>
+                    <td style="text-align: center;"><a href="<?= site_url('login/mailist_view/' . $row["id"] . '/0'); ?>" class="fancybox"><?= php72_count($pend_mail); ?></a></td>
 
 
                 </tr>

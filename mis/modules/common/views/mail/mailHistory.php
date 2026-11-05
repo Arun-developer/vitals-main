@@ -107,7 +107,7 @@ $form_name = 'templete_list';
     </thead>
     <tbody>
         <?php
-        if (count($mailList)) {
+        if (php72_count($mailList)) {
             $row_type = 'even';
             foreach ($mailList as $row) {
                 $row_type = ($row_type == 'odd') ? ('even') : ('odd');
@@ -149,7 +149,7 @@ $form_name = 'templete_list';
             <th><a href="<?= $nullLink ?>" field="subject" class="sortlink">Document</a></th>
         </tr>
         <?php
-        $emailcnt = count($ext_maillist);
+        $emailcnt = php72_count($ext_maillist);
         if ($emailcnt) {
             for ($i = 0; $i < $emailcnt; $i++) {
                 ?>

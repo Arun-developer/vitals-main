@@ -215,7 +215,7 @@
                                             <li>
                                                 <select class="form-control form-control-sm" name="financial_year" id="financial_year" onchange="load_year(this.value);">
                                                     <?php
-                                                    if (count($fin_year) > 0) {
+                                                    if (php72_count($fin_year) > 0) {
                                                         foreach ($fin_year as $year) {
                                                             $nxt_fyear = $year['fin_year'] + 1;
                                                             ?>
@@ -525,7 +525,7 @@
             <div class="sidebar-item">
                 <aside class="portfolio-sidebar make-me-sticky">
                     <div class="portfolio-Incubatees">
-                        <label>Incubatees (<span id="incubatee_count"><?= count($company_list); ?></span>)</label>
+                        <label>Incubatees (<span id="incubatee_count"><?= php72_count($company_list); ?></span>)</label>
                         <ul class="scroll-company">
                             <?php
                             $curr_user_inv = array();
@@ -539,7 +539,7 @@
                                     $exited_inv[$i]['company_status'] = $company['company_status'];
                                     $exited_inv[$i]['emp_id'] = $company['emp_id'];
                                 } else {
-                                    if (in_array($company['id'], $assignlist)) {
+                                    if (php72_in_array($company['id'], $assignlist)) {
                                         $curr_user_inv[$i]['id'] = $company['id'];
                                         $curr_user_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
                                         $curr_user_inv[$i]['company_status'] = $company['company_status'];

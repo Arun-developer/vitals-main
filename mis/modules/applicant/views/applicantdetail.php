@@ -1,7 +1,7 @@
 <?php
 $nullLink = "javascript:void(0);";
 
-if (count($applicantDetails) > 0) {
+if (php72_count($applicantDetails) > 0) {
     $val = array();
     $val = $applicantDetails[0];
 }
@@ -55,7 +55,7 @@ if (count($applicantDetails) > 0) {
         </thead>
         <tbody>
             <?php
-            if (count($applicantList)) {
+            if (php72_count($applicantList)) {
                 $r = 1;
                 foreach ($applicantList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

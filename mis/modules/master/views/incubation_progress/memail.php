@@ -17,7 +17,7 @@ class Memail extends CI_Model
 
     public function _parseContent($main, $replace)
     {
-        $main = str_replace(array_keys($replace), array_values($replace), $main);
+        $main = str_replace(php72_array_keys($replace), php72_array_values($replace), $main);
         return $main;
     }
 
@@ -25,7 +25,7 @@ class Memail extends CI_Model
     public function _send($fromEmail, $toEmail, $content, $template, $attach = array())
     {
         $templateContent = $this->Mmailtemplate->getMailTemplate($template);
-        if (count($templateContent)) {
+        if (php72_count($templateContent)) {
             $template = $this->Memail->parseContent($content, $templateContent);
             $this->Memail->send($fromEmail, $toEmail, $template['subject'], $template['body'], $attach);
         }
@@ -42,7 +42,7 @@ class Memail extends CI_Model
         $this->email->set_newline("\r\n");
         $this->email->from($fromEmail, "Incubation Committee, test.villgroapps.org");
         $this->email->to($toEmail);
-        if (count($attach)) {
+        if (php72_count($attach)) {
             foreach ($attach as $key => $value):
                 $this->email->attach($value);
             endforeach;

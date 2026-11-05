@@ -30,7 +30,7 @@ $(document).ready(function() {
         $('#milestoneTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($milestoneList) == 0){ ?>
+    <?php if(php72_count($milestoneList) == 0){ ?>
     var arow = $('.cloneBudget').clone().removeClass('cloneBudget').addClass('odd');
     $('#milestoneTable').append(arow);
     ordering('sNo');

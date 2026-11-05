@@ -61,7 +61,7 @@
 		
 		<tbody>
 		<?php
-		if(count($templateList))
+		if(php72_count($templateList))
 		{    
 			$r=1;
 			foreach($templateList as $row)

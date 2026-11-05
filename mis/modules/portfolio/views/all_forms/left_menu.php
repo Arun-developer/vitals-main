@@ -113,12 +113,12 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                                 }
                                 $flip_mnths = array_flip($mnths);
                                 foreach ($chnk_month[0] as $months) {
-                                    $url = array_search($months, $actual_month);
+                                    $url = php72_array_search($months, $actual_month);
                                     $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                     $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                     $pend = (array_diff_key($actual_month, $flip_mnths));
 
-                                    $pend_keys = array_keys($quater_month);
+                                    $pend_keys = php72_array_keys($quater_month);
                                     $curdate = date('n');
                                     if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                         unset($pend_keys[$ky]);
@@ -145,7 +145,7 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                         </div>
                     </li>
                     <?php
-                    if (count($chnk_month[1]) > 0) {
+                    if (php72_count($chnk_month[1]) > 0) {
                         $active_q2_a1 = strtolower(date('F', strtotime($monthlist[3]))) . '_active';
                         $active_q2_a2 = strtolower(date('F', strtotime($monthlist[4]))) . '_active';
                         $active_q2_a3 = strtolower(date('F', strtotime($monthlist[5]))) . '_active';
@@ -171,11 +171,11 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                                     }
                                     $flip_mnths = array_flip($mnths);
                                     foreach ($chnk_month[1] as $months) {
-                                        $url = array_search($months, $actual_month);
+                                        $url = php72_array_search($months, $actual_month);
                                         $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                         $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                         $pend = (array_diff_key($actual_month, $flip_mnths));
-                                        $pend_keys = array_keys($quater_month);
+                                        $pend_keys = php72_array_keys($quater_month);
                                         $curdate = date('n');
                                         if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                             unset($pend_keys[$ky]);
@@ -203,7 +203,7 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                         </li>
                         <?php
                     }
-                    if (count($chnk_month[2]) > 0) {
+                    if (php72_count($chnk_month[2]) > 0) {
                         $active_q3_a1 = strtolower(date('F', strtotime($monthlist[6]))) . '_active';
                         $active_q3_a2 = strtolower(date('F', strtotime($monthlist[7]))) . '_active';
                         $active_q3_a3 = strtolower(date('F', strtotime($monthlist[8]))) . '_active';
@@ -229,11 +229,11 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                                     }
                                     $flip_mnths = array_flip($mnths);
                                     foreach ($chnk_month[2] as $months) {
-                                        $url = array_search($months, $actual_month);
+                                        $url = php72_array_search($months, $actual_month);
                                         $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                         $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                         $pend = (array_diff_key($actual_month, $flip_mnths));
-                                        $pend_keys = array_keys($quater_month);
+                                        $pend_keys = php72_array_keys($quater_month);
                                         $curdate = date('n');
                                         if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                             unset($pend_keys[$ky]);
@@ -261,7 +261,7 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                         </li>
                         <?php
                     }
-                    if (count($chnk_month[3]) > 0) {
+                    if (php72_count($chnk_month[3]) > 0) {
                         $active_q4_a1 = strtolower(date('F', strtotime($monthlist[9]))) . '_active';
                         $active_q4_a2 = strtolower(date('F', strtotime($monthlist[10]))) . '_active';
                         $active_q4_a3 = strtolower(date('F', strtotime($monthlist[11]))) . '_active';
@@ -287,11 +287,11 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                                     }
                                     $flip_mnths = array_flip($mnths);
                                     foreach ($chnk_month[3] as $months) {
-                                        $url = array_search($months, $actual_month);
+                                        $url = php72_array_search($months, $actual_month);
                                         $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                         $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                         $pend = (array_diff_key($actual_month, $flip_mnths));
-                                        $pend_keys = array_keys($quater_month);
+                                        $pend_keys = php72_array_keys($quater_month);
                                         $curdate = date('n');
                                         if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                             unset($pend_keys[$ky]);

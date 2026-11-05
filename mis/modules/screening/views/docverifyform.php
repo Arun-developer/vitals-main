@@ -58,7 +58,7 @@ if ($this->uri->segment("4") == "m2") {?>
         <tr>
             <td><label for="" style="font-weight:bold;">Document to verify :</label></td>
             <?php
-$countValue = count($fileDetails);
+$countValue = php72_count($fileDetails);
         foreach ($fileDetails as $row) {?>
         <tr>
             <td><?php echo $row['document_description']; ?> </td>

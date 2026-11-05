@@ -33,7 +33,7 @@ class Mincharge extends CI_Model {
     }
 
     public function removeIncharges($ids) {
-        for ($i = 0; $i < count($ids); $i++) {
+        for ($i = 0; $i < php72_count($ids); $i++) {
             $this->db->set('status', 0);
             $this->db->where('innovation', $ids[$i]);
             $this->db->update('assign_associate');
@@ -130,7 +130,7 @@ class Mincharge extends CI_Model {
                 $get_city = $query->result_array();
             }
         }
-        $dataArr = array_merge($get_state, $get_city);
+        $dataArr = php72_array_merge($get_state, $get_city);
         $result = '';
         if (!empty($dataArr)) {
             $result = $dataArr;

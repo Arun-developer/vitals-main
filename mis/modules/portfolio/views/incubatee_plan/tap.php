@@ -200,7 +200,7 @@ $field_enable = '0';
                                                                 </thead>
 
                                                                 <?php
-                                                                $recordCount = isset($get_tap[0]) ? count($get_tap) : 1;
+                                                                $recordCount = isset($get_tap[0]) ? php72_count($get_tap) : 1;
                                                                 for ($i = 0; $i < $recordCount; $i++) {
                                                                     $need_date = (isset($get_tap[$i]['need_by']) && $get_tap[$i]['need_by'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($get_tap[$i]['need_by'])) : '';
                                                                     ?>
@@ -252,7 +252,7 @@ $field_enable = '0';
                                                                             </td>
                                                                             <td width="27%"></td>
                                                                         </tr>
-                                                                    <input type="hidden" id="enableCount" value="<?= count($get_tap); ?>">
+                                                                    <input type="hidden" id="enableCount" value="<?= php72_count($get_tap); ?>">
                                                                     <input type="hidden" name="id[]" class="tapid" value="<?php echo $get_tap[$i]['tap_id']; ?>" />
                                                                     <?php
                                                                 }

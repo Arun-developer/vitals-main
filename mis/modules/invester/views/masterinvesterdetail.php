@@ -1,6 +1,6 @@
 <?php 
 
-if(count($investertotaldetail)>0)
+if(php72_count($investertotaldetail)>0)
 {
  $val=$investertotaldetail[0];
 }

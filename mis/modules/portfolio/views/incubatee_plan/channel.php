@@ -174,12 +174,12 @@ if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['us
                                                         <input type='hidden' name='updatePlan' id="updatePlan" value="0">
                                                         <?php
                                                         $i = 1;
-                                                        if (count($channel_data) > 0) {
+                                                        if (php72_count($channel_data) > 0) {
                                                             foreach ($channel_data as $row) {
                                                                 $get_month = json_decode($row['data']);
 
                                                                 $obj = json_decode($row['data'], true);
-                                                                if (!array_filter($obj)) {
+                                                                if (!php72_array_filter($obj)) {
                                                                     $enable = 0;
                                                                 } else {
                                                                     $enable = 1;

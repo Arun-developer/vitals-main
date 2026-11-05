@@ -228,7 +228,7 @@
                                                                 }
                                                                 ?>
                                                                 <?php
-                                                                if (count($value_lists) > 0) {
+                                                                if (php72_count($value_lists) > 0) {
                                                                     $i = 0;
                                                                     foreach ($value_lists as $lits) {
                                                                         ?>

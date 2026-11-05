@@ -193,7 +193,7 @@ function approve_leave_list($formresult = '') {
     $cond_arr[] = "t1.leave_length_days > 0 ";
 
     if ($ci->session->userdata('user_type') != 'admin' && $ci->session->userdata('user_type') != 'superadmin') {
-        if (count($chk_sup) > 0) {
+        if (php72_count($chk_sup) > 0) {
             $subs_id = array();
             foreach ($chk_sup as $sups) {
                 $subs_id[] = $sups['erep_sub_emp_number'];
@@ -212,7 +212,7 @@ function approve_leave_list($formresult = '') {
     $to = date('Y').'12';
     $cond_arr[] = "EXTRACT(YEAR_MONTH FROM t1.leave_date) >= '$from' and EXTRACT(YEAR_MONTH FROM t1.leave_date) <= '$to'";
 
-    $result_cond = implode(' and ', $cond_arr);
+    $result_cond = php72_implode(' and ', $cond_arr);
     $option['status'] = 1;
 
     $approval_count = $ci->Mleave->getDTLeaveCount($result_cond);
@@ -248,7 +248,7 @@ function total_pending_count_dashboard($type = "") {
         if (in_array($ci->session->userdata('user_id'), $ceoteam)) {
             #$apn_count += $ci->Mlogapproval->getApprovalDashboard('ceolist', 'pending');
         }
-        if (in_array($ci->session->userdata('user_id'), $financeteam)) {
+        if (php72_in_array($ci->session->userdata('user_id'), $financeteam)) {
             $int_count += $ci->Mlogapproval->getInternalDashboard('finance', 'pending');
         }
     } else {
@@ -297,7 +297,7 @@ function total_pending_count_test($type = "") {
         if (in_array($ci->session->userdata('user_id'), $ceoteam)) {
             #$apn_count += $ci->Mlogapproval->getApprovalDashboard('ceolist', 'pending');
         }
-        if (in_array($ci->session->userdata('user_id'), $financeteam)) {
+        if (php72_in_array($ci->session->userdata('user_id'), $financeteam)) {
             $int_count += $ci->Mlogapproval->getInternalDashboard('finance', 'pending');
         }
     } else {
@@ -339,7 +339,7 @@ function total_pending_count_test_dash($type = "") {
         if (in_array($ci->session->userdata('user_id'), $ceoteam)) {
             $apn_count += $ci->Mlogapproval->getApprovalDashboard('ceolist', 'pending');
         }
-        if (in_array($ci->session->userdata('user_id'), $financeteam)) {
+        if (php72_in_array($ci->session->userdata('user_id'), $financeteam)) {
             $int_count += $ci->Mlogapproval->getInternalDashboard('finance', 'pending');
         }
     } else {
@@ -382,7 +382,7 @@ function total_pending_count($type = "") {
         if (in_array($ci->session->userdata('user_id'), $ceoteam)) {
             $apn_count += $ci->Mlogapproval->getApprovalDashboard('ceolist', 'pending');
         }
-        if (in_array($ci->session->userdata('user_id'), $financeteam)) {
+        if (php72_in_array($ci->session->userdata('user_id'), $financeteam)) {
             $int_count += $ci->Mlogapproval->getInternalDashboard('finance', 'pending');
         }
     } else {
@@ -410,9 +410,9 @@ function total_apppending_count() {
     $ci->load->model('approval/Mapproval');
     $apn_count = 0;
     $searchArray[] = "AP.status = 'pending'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', 'AP.approval_no', 'asc', 'show All');
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -423,7 +423,7 @@ function total_an_ceo_count() {
     $columnSortOrder = 'asc';
     $admin = 'Show all';
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-    $getAll_count = count($approvalCount);
+    $getAll_count = php72_count($approvalCount);
     return $getAll_count;
 }
 
@@ -449,9 +449,9 @@ function total_ropending_count($empid) {
 	$searchArray[] = "AP.RO_status = 'Pending'";
     $searchArray[] = "AP.status = 'pending'";
 	$searchArray[] = "(AP.PH_status = 'pending' OR AP.PH_status = 'confirmed')"; 
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', 'AP.approval_no', 'asc', 'show All');
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 	
 }
@@ -466,10 +466,10 @@ function total_phpending_count_assign($empid) {
 	$searchArray[] = "AP.assigned_user = '" . $empid . "'";
     $searchArray[] = "AP.RO_status = 'confirmed'";
     $searchArray[] = "AP.PH_status = 'pending' AND AP.status = 'pending'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', 'AP.approval_no', 'asc', 'show All');
 	#echo'<pre>';print_r($approvalCount);die;
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -493,10 +493,10 @@ function total_phpending_count($empid) {
 	$searchArray[] = "AP.assigned_user = '" . $empid . "'";
     $searchArray[] = "AP.RO_status = 'confirmed'";
     $searchArray[] = "AP.PH_status = 'pending' AND AP.status = 'pending'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', 'AP.approval_no', 'asc', 'show All');
 	#echo'<pre>';print_r($approvalCount);die;
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 	
 }
@@ -508,10 +508,10 @@ function total_ropending_count_test($empid) {
 
     $searchArray[] = "AP.from_employee ='" . $empid . "'";
     $searchArray[] = "AP.status = 'pending'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes_test($where, '', '', 'AP.approval_no', 'asc', 'show All');
 	#echo'<pre>';print_r($approvalCount);die;
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -525,9 +525,9 @@ function total_roOnlypending_count($empid) {
 	$searchArray[] = "AP.to_RO = '" . $empid . "'";
     $searchArray[] = "AP.RO_status = 'pending'";
     $searchArray[] = "AP.status = 'pending'";
-    $where = implode(" and ", $searchArray); 
+    $where = php72_implode(" and ", $searchArray); 
     $approvalCount = $ci->Mapproval->getLimitApprovalNotes($where, '', '', 'AP.approval_no', 'asc', 'show All');
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -545,9 +545,9 @@ function totalin_apppending_count($empid = '') {
     }
     $partner_id = $ci->session->userdata('partner_id');
     $searchArray[] = "INTER.status = 'pending' and INTER.partner_id ='$partner_id'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Minternal->getLimitInternalNotes('1', $where, '', '', 'INTER.internal_no', 'asc', $admin);
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -558,9 +558,9 @@ function totalin_ropending_count($empid) {
     $partner_id = $ci->session->userdata('partner_id');
     $searchArray[] = "((INTER.to IN ('" . $empid . "')) or (AN.to_RO ='" . $empid . "'))";
     $searchArray[] = "INTER.status = 'pending' and INTER.partner_id ='$partner_id'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Minternal->getLimitInternalNotes('1', $where, '', '', 'INTER.internal_no', 'asc', 'show All');
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
 	#echo'<pre>';print_r( $approvalCount);die;
     return $apn_count;
 }
@@ -572,9 +572,9 @@ function totalin_finpending_count() {
     $partner_id = $ci->session->userdata('partner_id');
     $searchArray[] = "INTER.status ='confirmed' and INTER.finance_status ='inprogress'";
     $searchArray[] = "INTER.partner_id ='$partner_id'";
-    $where = implode(" and ", $searchArray);
+    $where = php72_implode(" and ", $searchArray);
     $approvalCount = $ci->Minternal->getLimitInternalNotes('1', $where, '', '', 'INTER.internal_no', 'asc', 'show All');
-    $apn_count = count($approvalCount);
+    $apn_count = php72_count($approvalCount);
     return $apn_count;
 }
 
@@ -582,7 +582,7 @@ function financeuser_count($empid) {
     $ci = &get_instance();
     $ci->load->model('approval/Mapproval');
     $finance = unserialize($ci->Mapproval->getApprovalSetting('finance'));
-    if (in_array($empid, $finance)) {
+    if (php72_in_array($empid, $finance)) {
         $fin_usercount = '1';
         return $fin_usercount;
     }
@@ -593,7 +593,7 @@ function configStatus($inv_id) {
     $ci->load->model('portfolio/mportfolio');
     $appoption['inv_id'] = $inv_id;
     $data['approvals'] = $approvals = $ci->Mportfolio->getDetails('port_config_approval', $appoption);
-    $cnt = count($approvals);
+    $cnt = php72_count($approvals);
     for ($i = 0; $i < $cnt; $i++) {
         if (($approvals[$i]['sales_approvals'] || $approvals[$i]['channel_approval'] || $approvals[0]['pipeline_approval'] || $approvals[0]['revenue_approval'] || $approvals[0]['netprofit_approval'] || $approvals[0]['vif_approval'] || $approvals[0]['fundraise_approval'] || $approvals[0]['mentor_approval'] || $approvals[0]['tap_approval'] || $approvals[0]['nontap_approval'] || $approvals[0]['board_approval'] || $approvals[0]['impact_approval'] || $approvals[0]['project_approval']) == 1) {
 
@@ -654,7 +654,7 @@ function sendMail($from = NULL, $to = array(), $tamplate = NULL, $mailContant = 
 function bookStatus($bookId, $employee) {
     $ci = &get_instance();
     $result = $ci->Mlibrary->getbookAvailabelStatus($bookId, $employee);
-    if (count($result)) {
+    if (php72_count($result)) {
         return $result['0']['status'];
     } else {
         return 'no';

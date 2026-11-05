@@ -23,7 +23,7 @@
 									
                                     $from_employee = $approvalNoteDetails[0]['from_employee'];
                                     $emp_number = $Emp_number;
-                                    $super_count = count($sup_user);
+                                    $super_count = php72_count($sup_user);
                                     foreach ($approvalNoteDetails as $row) {
 										
                                         ?>

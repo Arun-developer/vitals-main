@@ -37,7 +37,7 @@
                                             <tbody>
                                                 <?php
                                                 $no_data = 0;
-                                                if (count($innovationDoc)) {
+                                                if (php72_count($innovationDoc)) {
                                                     $i = 'odd';
                                                     foreach ($innovationDoc as $row):
                                                         if ($row['business_plan_document'] != '') {
@@ -56,7 +56,7 @@
                                                     endforeach;
                                                 }
 
-                                                if (count($innovationsupportDoc)) {
+                                                if (php72_count($innovationsupportDoc)) {
                                                     $path = base_url() . "uploads/innovaton/supporting_documents/";
                                                     $i = 'odd';
                                                     foreach ($innovationsupportDoc as $row):
@@ -73,7 +73,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($assesmentDoc)) {
+                                                if (php72_count($assesmentDoc)) {
                                                     $path = base_url() . "uploads/assessment/";
                                                     $i = 'odd';
                                                     foreach ($assesmentDoc as $row):
@@ -90,7 +90,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($presentDoc)) {
+                                                if (php72_count($presentDoc)) {
                                                     $path = base_url() . "uploads/presentation/";
                                                     $i = 'odd';
                                                     foreach ($presentDoc as $row):
@@ -107,7 +107,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($screeningDoc)) {
+                                                if (php72_count($screeningDoc)) {
                                                     $path = base_url() . "uploads/screening/";
                                                     $i = 'odd';
                                                     foreach ($screeningDoc as $row):
@@ -124,7 +124,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($signDoc)) {
+                                                if (php72_count($signDoc)) {
                                                     $path = base_url() . "uploads/agreement/";
                                                     $i = 'odd';
                                                     foreach ($signDoc as $row):
@@ -141,7 +141,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($generaldocument)) {
+                                                if (php72_count($generaldocument)) {
                                                     $path = base_url() . "uploads/upload_document/";
                                                     $i = 'odd';
                                                     foreach ($generaldocument as $row):
@@ -158,7 +158,7 @@
                                                     $no_data = 1;
                                                 }
 
-                                                if (count($files)) {
+                                                if (php72_count($files)) {
                                                     foreach ($files as $key => $value):
                                                         $i = ($i == 'odd') ? 'even' : 'odd';
                                                         $doc = end(explode('/', $value));

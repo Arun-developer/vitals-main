@@ -214,7 +214,7 @@
 													$supprt_doc = $vendorDetails->supporting_documents;
 													$expld_doc = explode(',', $supprt_doc);
 													#echo'<pre>';print_r($vendorDetails->upload_invoice);die;
-													if (count(unserialize($vendorDetails->upload_invoice))) {
+													if (php72_count(unserialize($vendorDetails->upload_invoice))) {
 														foreach (unserialize($vendorDetails->upload_invoice) as $key => $value) {
                                                             ?>
 

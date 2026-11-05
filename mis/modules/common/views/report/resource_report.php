@@ -21,7 +21,7 @@ $nullLink = "javascript:void(0);";
     </thead>
     <tbody>
         <?php
-        if (count($innovationList)) {
+        if (php72_count($innovationList)) {
             $i = 'odd';
             foreach ($innovationList as $row):
                 $i = ($i == 'odd') ? 'even' : 'odd';

@@ -52,9 +52,9 @@ class Mauth extends CI_Model {
                 return 'ceo';
             if ($emp_number == $user['cio'])
                 return 'cio';
-            if (in_array($emp_number, $user['icm']))
+            if (php72_in_array($emp_number, $user['icm']))
                 return 'icm';
-            if (in_array($emp_number, $user['abi']))
+            if (php72_in_array($emp_number, $user['abi']))
                 return 'abi';
         }
         if ($role == 2) {

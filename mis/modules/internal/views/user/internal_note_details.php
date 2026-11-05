@@ -502,7 +502,7 @@
                                     </div>
                                 <?php } ?>
 
-                                <?php if (count($recover_amt) > 0) { ?>
+                                <?php if (php72_count($recover_amt) > 0) { ?>
                                     <div class="row approvalLabel pad-tp12">
                                         <div class="col-xl-12">
                                             <h6>Recovered Amount</h6>
@@ -768,7 +768,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    if (isset($recover_amt) && count($recover_amt) > 0) {
+                                                    if (isset($recover_amt) && php72_count($recover_amt) > 0) {
                                                         ?>
                                                         <input type="hidden" name="recovery_id" id="recovery_id" value="<?php echo $recover_amt[0]['recover_id']; ?>" />
                                                         <?php

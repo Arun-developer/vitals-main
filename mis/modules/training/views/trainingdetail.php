@@ -1,6 +1,6 @@
 <?php 
 $nullLink = "javascript:void(0);";
-if(count($traininglist)>0)
+if(php72_count($traininglist)>0)
 {
 $val=array();
 $val=$traininglist[0];
@@ -66,7 +66,7 @@ $val=$traininglist[0];
             </thead>
             <tbody>
             <?php
-	if(count($trainingDetails))
+	if(php72_count($trainingDetails))
 	{    
 		$i=0;
 		foreach($trainingDetails   as $row)

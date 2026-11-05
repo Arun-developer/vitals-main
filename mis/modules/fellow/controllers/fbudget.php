@@ -114,7 +114,7 @@ class Fbudget extends CI_Controller
         $data['fundDetails'] = array();
         if ($fu_id != '') {
             $data['fundDetails'] = $this->Mseedfunding->getFundUtilization($fu_id);
-            if (count($data['fundDetails']) == 0) {
+            if (php72_count($data['fundDetails']) == 0) {
                 redirect('seedfunding/getinstallment/' . $innovation . '/' . $installment);
             }
 
@@ -174,7 +174,7 @@ class Fbudget extends CI_Controller
         $data['targetDetails'] = array();
         if ($id != '') {
             $data['targetDetails'] = $this->Mseedfunding->getTargetDetails($id);
-            if (count($data['targetDetails']) == 0) {
+            if (php72_count($data['targetDetails']) == 0) {
                 redirect('seedfunding/monthly_progress/' . $innovation);
             }
 

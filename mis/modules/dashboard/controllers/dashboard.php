@@ -155,7 +155,7 @@ class Dashboard extends CI_Controller
             $chart .= '<set value="' . $row['total_screening'] . '"/>';
             $chart .= '<set value="' . $row['total_incubation'] . '"/>';
             $i++;
-            if ($i > count($year)) {
+            if ($i > php72_count($year)) {
                 $i = 1;
                 $chart .= '</dataset>';
             }
@@ -187,7 +187,7 @@ class Dashboard extends CI_Controller
             $chart .= '<set value="' . $row['total_screening'] . '"/>';
             $chart .= '<set value="' . $row['incubation_precentage'] . '"/>';
             $i++;
-            if ($i > count($year)) {
+            if ($i > php72_count($year)) {
                 $i = 1;
                 $chart .= '</dataset>';
             }
@@ -274,7 +274,7 @@ class Dashboard extends CI_Controller
             }
             $chart .= '<set value="' . $row['TOTAL'] . '"/>';
             $i++;
-            if ($i > count($year)) {
+            if ($i > php72_count($year)) {
                 $i = 1;
                 $chart .= '</dataset>';
             }

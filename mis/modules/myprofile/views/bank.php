@@ -91,7 +91,7 @@
                                     <tbody>
                                       <?php
                                       $j = 1;
-                                      $bank_count = isset($bank_list[0]['id']) ? count($bank_list) : 0;
+                                      $bank_count = isset($bank_list[0]['id']) ? php72_count($bank_list) : 0;
                                       if ($bank_count > 0) {
                                         for ($i = 0; $i < $bank_count; $i++) {
                                           ?>
@@ -156,7 +156,7 @@
           </div>
         </div>
 
-        <input type="hidden" id="enable_bank" value="<?= count($bank_list); ?>">
+        <input type="hidden" id="enable_bank" value="<?= php72_count($bank_list); ?>">
         <input type="hidden" id="enable_save" value="0">
 
         <?php $this->load->view('vitals_footer.php', array('page_name' => 'datatable')); ?>

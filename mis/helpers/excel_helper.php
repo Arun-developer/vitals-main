@@ -62,7 +62,7 @@ function dataarray_to_excel($headerArray, $dataArray, $filename = 'exceloutput')
     $headers = ''; // just creating the var for field headers to append to below
     $data = ''; // just creating the var for field data to append to below
     $obj = &get_instance();
-    if (count($dataArray) == 0) {
+    if (php72_count($dataArray) == 0) {
         echo '<p>The table appears to have no data.</p>';
     } else {
         foreach ($headerArray as $field) {

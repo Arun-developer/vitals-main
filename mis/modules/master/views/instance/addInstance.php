@@ -14,7 +14,7 @@
 		$formAction = site_url('master/instance/instanceform/'.$source);
 		$id = '';
 		$val = array();
-		if(count($instanceDetails))
+		if(php72_count($instanceDetails))
 		{
 			$val = $instanceDetails['0'];
 			$formAction = site_url('master/instance/instanceform/'.$source.'/'.$val['id']);

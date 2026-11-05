@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('#goalTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($goalList) == 0){ ?>
+    <?php if(php72_count($goalList) == 0){ ?>
     var arow = $('.cloneBudget').clone().removeClass('cloneBudget').addClass('odd');
     $('#goalTable').append(arow);
     ordering('sNo');

@@ -17,7 +17,7 @@ function multidimensional_search($parents, $searched) {
  
 $nullLink = "javascript:void(0);";
 
-if(count($applicantDetails)>0)
+if(php72_count($applicantDetails)>0)
 {
 $val=array();
 $val=$applicantDetails[0];
@@ -92,7 +92,7 @@ $val=$applicantDetails[0];
     </thead>
 	<tbody>
 <?php
-	if(count($applicantList))
+	if(php72_count($applicantList))
 	{    
 		$i=0;
 		foreach($applicantList as $row)

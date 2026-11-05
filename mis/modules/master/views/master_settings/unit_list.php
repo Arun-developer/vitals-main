@@ -40,7 +40,7 @@
 </thead>
 <tbody>
     <?php
-    if (count($jobList)) {
+    if (php72_count($jobList)) {
         $r = 1;
         foreach ($jobList as $master) {
             $row_type = ($r % 2 == 0) ? ('even') : ('odd');

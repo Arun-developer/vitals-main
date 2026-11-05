@@ -1,5 +1,5 @@
 <?php 
-if(count($memberDetails)>0)
+if(php72_count($memberDetails)>0)
 {
 $val=array();
 $val=$memberDetails[0];
@@ -75,7 +75,7 @@ $val=$memberDetails[0];
 		<tbody id="lineitemTable">
     <?php 
 	
-	 	if(count($assignedmember))
+	 	if(php72_count($assignedmember))
 		{    
 			$rowtype = 'odd';
 			foreach($assignedmember as $row):

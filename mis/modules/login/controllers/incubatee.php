@@ -16,7 +16,7 @@ class Incubatee extends CI_Controller
             $this->form_validation->set_rules('incubateeUsername', 'Username', 'required');
             $this->form_validation->set_rules('incubateePassword', 'Password', 'required');
             if ($this->form_validation->run() != false) {
-                $responce = $this->Mincubateeuser->loginUser($this->input->post('incubateeUsername'), $this->input->post('incubateePassword'));if (count($responce) > 0) {
+                $responce = $this->Mincubateeuser->loginUser($this->input->post('incubateeUsername'), $this->input->post('incubateePassword'));if (php72_count($responce) > 0) {
                     foreach ($responce as $result) {
                         $userDetails = array(
                             'user_id' => $result['id'],

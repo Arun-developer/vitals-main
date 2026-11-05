@@ -233,7 +233,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                         </div>
 
                                                         <div class=" table_configcontentnew" id="loadHireData">
-                                                            <input type="hidden" id="hireCount" value="<?= count($hire_list); ?>">
+                                                            <input type="hidden" id="hireCount" value="<?= php72_count($hire_list); ?>">
                                                             <table class="table" style="margin-top: 0">
                                                                 <thead>
                                                                     <tr>
@@ -248,7 +248,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 </thead>
                                                                 <tbody class="add_more_hires">
                                                                     <?php
-                                                                    $hireData_count = isset($hire_list) && count($hire_list) > 0 ? count($hire_list) : '1';
+                                                                    $hireData_count = isset($hire_list) && php72_count($hire_list) > 0 ? php72_count($hire_list) : '1';
                                                                     $j = 1;
                                                                     for ($i = 0; $i < $hireData_count; $i++) {
                                                                         $get_open_date = (isset($hire_list[$i]['date_value']) && $hire_list[$i]['date_value'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($hire_list[$i]['date_value'])) : '';
@@ -321,7 +321,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                             </div>
                                                         </div>
                                                         <div class=" table_configcontentnew" id="loadExitData">
-                                                            <input type="hidden" id="exitCount" value="<?= count($exit_list); ?>">
+                                                            <input type="hidden" id="exitCount" value="<?= php72_count($exit_list); ?>">
                                                             <table class="table" style="margin-top: 0">
                                                                 <thead>
                                                                     <tr>
@@ -335,7 +335,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 </thead>
                                                                 <tbody class="add_more_exit">
                                                                     <?php
-                                                                    $exitData_count = isset($exit_list) && count($exit_list) > 0 ? count($exit_list) : '1';
+                                                                    $exitData_count = isset($exit_list) && php72_count($exit_list) > 0 ? php72_count($exit_list) : '1';
                                                                     $k = 1;
                                                                     for ($i = 0; $i < $exitData_count; $i++) {
                                                                         $get_exit_date = (isset($exit_list[$i]['date_value']) && $exit_list[$i]['date_value'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($exit_list[$i]['date_value'])) : '';
@@ -412,7 +412,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                         </div>
 
                                                         <div class=" table_configcontentnew" id="loadSurveyData">
-                                                            <input type="hidden" id="surveyCount" value="<?= count($survey_list); ?>">
+                                                            <input type="hidden" id="surveyCount" value="<?= php72_count($survey_list); ?>">
                                                             <table class="table" style="margin-top: 0">
                                                                 <thead>
                                                                     <tr>
@@ -425,7 +425,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 </thead>
                                                                 <tbody class="add_more_survey">
                                                                     <?php
-                                                                    $surveyData_count = isset($survey_list) && count($survey_list) > 0 ? count($survey_list) : '1';
+                                                                    $surveyData_count = isset($survey_list) && php72_count($survey_list) > 0 ? php72_count($survey_list) : '1';
                                                                     $m = 1;
                                                                     for ($i = 0; $i < $surveyData_count; $i++) {
                                                                         $get_survey_date = (isset($survey_list[$i]['date_value']) && $survey_list[$i]['date_value'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($survey_list[$i]['date_value'])) : '';
@@ -615,7 +615,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="qualitCount" value="<?= count($qual_achieve); ?>">
+<input type="hidden" id="qualitCount" value="<?= php72_count($qual_achieve); ?>">
 
 <style type="text/css">
     i.fas.fa-minus-circle{

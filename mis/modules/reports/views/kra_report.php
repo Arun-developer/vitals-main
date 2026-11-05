@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody id="activitiesTable">
-                    <?php if(count($kra_details)) { foreach($kra_details as $row) { ?>
+                    <?php if(php72_count($kra_details)) { foreach($kra_details as $row) { ?>
                     <tr>
                         <td align="left" valign="middle"><?=$row['kra'];?></td>
                         <td align="left" valign="middle"><?=$row['kpi'];?></td>

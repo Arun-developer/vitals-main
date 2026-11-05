@@ -143,7 +143,7 @@
                                                     <tbody>
                                                       <?php
                                                       $j = 1;
-                                                      $supervisor_count = isset($supervisor_list[0]['id']) ? count($supervisor_list) : 0;
+                                                      $supervisor_count = isset($supervisor_list[0]['id']) ? php72_count($supervisor_list) : 0;
                                                       if ($supervisor_count > 0) {
                                                         for ($i = 0; $i < $supervisor_count; $i++) {
                                                           ?>
@@ -203,7 +203,7 @@
                                                     <div class="row">
                                                       <?php
                                                       $j = 1;
-                                                      $subordinate_count = isset($subordinate_list[0]['id']) ? count($subordinate_list) : 0;
+                                                      $subordinate_count = isset($subordinate_list[0]['id']) ? php72_count($subordinate_list) : 0;
                                                       if ($subordinate_count > 0) {
 
                                                         ?>
@@ -239,7 +239,7 @@
                                                     <tbody>
                                                       <?php
                                                       $j = 1;
-                                                      $subordinate_count = isset($subordinate_list[0]['id']) ? count($subordinate_list) : 0;
+                                                      $subordinate_count = isset($subordinate_list[0]['id']) ? php72_count($subordinate_list) : 0;
                                                       if ($subordinate_count > 0) {
                                                         for ($i = 0; $i < $subordinate_count; $i++) {
                                                           ?>

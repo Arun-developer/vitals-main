@@ -97,7 +97,7 @@ class Dashboard extends CI_Controller
             }
             $chart .= '<set value="' . $row['TOTAL'] . '"/>';
             $i++;
-            if ($i > count($year)) {
+            if ($i > php72_count($year)) {
                 $i = 1;
                 $chart .= '</dataset>';
             }
@@ -347,14 +347,14 @@ class Dashboard extends CI_Controller
     public function user()
     {
         $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-        $options['associate'] = (count($innovation)) ? $innovation : array('');
+        $options['associate'] = (php72_count($innovation)) ? $innovation : array('');
         $username = $this->session->userdata('user_name');
         $data['latestUpdates'] = $this->Minnovation_reports->getlatestUpdates($username);
         $notification_Details = $this->getStageDetails();
         $data['notification_Details'] = $notification_Details;
         $data['entryInnovations'] = $this->Minnovation_reports->getInnovationUserCount($options, '1');
         $data['leadInnovations'] = $this->Minnovation_reports->getInnovationUserCount($options, '2');
-        $data['activeInnovations'] = count(array_filter($innovation));
+        $data['activeInnovations'] = count(php72_array_filter($innovation));
         $data['notification_Details'] = $this->getStageDetails();
         $data['left_box'] = array('ajax_left_box');
         $data['cpagetitle'] = "Dashboard";
@@ -503,7 +503,7 @@ class Dashboard extends CI_Controller
         fwrite($fh, $resourceChat);
         fclose($fh);
 
-        return count($resourceComplete);
+        return php72_count($resourceComplete);
     }
     public function generalReport($year)
     {

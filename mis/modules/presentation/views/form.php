@@ -1,6 +1,6 @@
 <?php
 $val = array();
-if (count($presentationInfo)) {
+if (php72_count($presentationInfo)) {
 
     $action = 'Update';
     $val = $presentationInfo['0'];} else {

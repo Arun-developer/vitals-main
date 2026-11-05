@@ -123,7 +123,7 @@ class Boardmeeting extends CI_Controller
         }
 
         $data['meetingDetails'] = $this->Mmeeting->getMeetingDetailstotal($innovationid, $meetingid);
-        if (count($data['meetingDetails'])) {
+        if (php72_count($data['meetingDetails'])) {
             $meeting_id = $data['meetingDetails']['0']['id'];
         } else {
             $meeting_id = '';
@@ -151,8 +151,8 @@ class Boardmeeting extends CI_Controller
 
         $data['boardList'] = $this->Mmeeting->getBoardList($innovationid);
         $data['usersList'] = $this->Mmeeting->getUsersList($innovationid);
-        $count = count($data['boardList']);
-        for ($i = 0; $i < count($data['usersList']); $i++) {
+        $count = php72_count($data['boardList']);
+        for ($i = 0; $i < php72_count($data['usersList']); $i++) {
 
             $data['boardList'][$count]['members'] = $data['usersList'][$i]['emp_firstname'];
             $data['boardList'][$count]['email'] = $data['usersList'][$i]['emp_work_email'];
@@ -198,8 +198,8 @@ class Boardmeeting extends CI_Controller
             $this->upload->initialize($config);
             if (isset($key)) {
                 if (!is_array($value['name'])) {
-                    if (count($value['name']) > 1) {
-                        for ($i = 0; $i < count($value['name']); $i++) {
+                    if (php72_count($value['name']) > 1) {
+                        for ($i = 0; $i < php72_count($value['name']); $i++) {
                             $_FILES['support']['name'] = $value['name'][$i];
                             $_FILES['support']['type'] = $value['type'][$i];
                             $_FILES['support']['tmp_name'] = $value['tmp_name'][$i];

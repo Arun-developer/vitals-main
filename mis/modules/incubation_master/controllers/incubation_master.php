@@ -1398,7 +1398,7 @@ die; */
 		}
  
         $getReject_reason = $this->Common_model->get_all_details('master_metrics', $condition, array(), '', '', $orderby_sec);
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -1437,7 +1437,7 @@ die; */
 		
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getReject_details)),
+            "recordsTotal" => intval(php72_count($getReject_details)),
             "recordsFiltered" => intval($count_reject),
             "data" => $data
         );
@@ -1516,7 +1516,7 @@ public function DTProgramMaster() {
 		if($lists->sector!=''){
 			$getSectorIds = explode(",",$lists->sector);
 			$getSector = $this->Sector_model->getSectorDetails($getSectorIds);
-			$getSectorArray = array_column($getSector,'sector');
+			$getSectorArray = php72_array_column($getSector,'sector');
 			if(!empty($getSectorArray)){
 				 $mappedSectorList  = implode(', ', $getSectorArray);
 			}
@@ -1530,8 +1530,8 @@ public function DTProgramMaster() {
 	}
 	$json_data = array(
 		"draw" => intval($requestData['draw']),
-		"recordsTotal" => intval(count($get_program_details)),
-		"recordsFiltered" => intval(count($getProgramCount)),
+		"recordsTotal" => intval(php72_count($get_program_details)),
+		"recordsFiltered" => intval(php72_count($getProgramCount)),
 		"data" => $data,
 		"POST" => $_POST
 	);
@@ -1617,7 +1617,7 @@ public function DTsector() {
     }
     $employee_lists = $this->Common_model->get_all_details('assign_sector_lead', $condition_1, array());
     $datas['employee_lists'] = json_decode(json_encode($employee_lists), true);
-    $count = count($datas['employee_lists']);
+    $count = php72_count($datas['employee_lists']);
     $response = array();
 
     foreach ($datas['sector_details'] as $key => $value) {
@@ -1638,7 +1638,7 @@ public function DTsector() {
     }
         #error_reporting(-1);
     $data1['employee_lists_sec'] = $employee_lists_sec = $this->Sector_model->getEmployeePartner($branch_id);
-    $count = count($data1['employee_lists_sec']);
+    $count = php72_count($data1['employee_lists_sec']);
     $response1 = array();
     foreach ($datas['sector_details'] as $key1 => $value1) {
         foreach ($data1['employee_lists_sec'] as $k => $val1) {
@@ -1701,8 +1701,8 @@ public function DTsector() {
         #$data = msort($data, array(2),SORT_DESC);
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($sector_details)),
-            "recordsFiltered" => intval(count($getSectorCount)),
+            "recordsTotal" => intval(php72_count($sector_details)),
+            "recordsFiltered" => intval(php72_count($getSectorCount)),
             "data" => $data,
             "POST" => $_POST
         );
@@ -1735,7 +1735,7 @@ public function DTsector() {
         }
 
         $getReject_reason = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', $orderby_sec);
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -1788,7 +1788,7 @@ public function DTsector() {
 
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getReject_details)),
+            "recordsTotal" => intval(php72_count($getReject_details)),
             "recordsFiltered" => intval($count_reject),
             "data" => $data,
             "POST" => $_POST
@@ -1824,7 +1824,7 @@ public function DTsector() {
         }
 
         $getReject_reason = $this->Common_model->get_all_details('preliminary_reasons', $condition, array(), '', '', $orderby_sec);
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -1878,7 +1878,7 @@ public function DTsector() {
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($count_reject),
-            "recordsFiltered" => intval(count($getReject_details)),
+            "recordsFiltered" => intval(php72_count($getReject_details)),
             "data" => $data,
             "POST" => $_POST
         );
@@ -1911,7 +1911,7 @@ public function DTsector() {
         }
 
         $getReject_reason = $this->Common_model->get_all_details('donor_fit_master', $condition, array(), '', '', $orderby_sec);
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -1964,7 +1964,7 @@ public function DTsector() {
 
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getReject_details)),
+            "recordsTotal" => intval(php72_count($getReject_details)),
             "recordsFiltered" => intval($count_reject),
             "data" => $data
         );
@@ -1989,7 +1989,7 @@ public function DTsector() {
 
         $condition = array('status !=' => 3, 'type' => 1);
         $getDocument_type = $this->Common_model->get_all_details('diligence_document_types', $condition, array(), '', '', $orderby);
-        $count_Document = count($getDocument_type);
+        $count_Document = php72_count($getDocument_type);
 
         $limit = 10;
         $getDocument_details = $this->Common_model->get_all_details('diligence_document_types', $condition, array(), $limit, $start, $orderby);
@@ -2019,7 +2019,7 @@ public function DTsector() {
 
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getDocument_details)),
+            "recordsTotal" => intval(php72_count($getDocument_details)),
             "recordsFiltered" => intval($count_Document),
             "data" => $data
         );
@@ -2044,7 +2044,7 @@ public function DTsector() {
 
         $condition = array('status !=' => 3);
         $getDocument_type = $this->Common_model->get_all_details('diligence_meeting_type', $condition, array(), '', '', $orderby);
-        $count_Document = count($getDocument_type);
+        $count_Document = php72_count($getDocument_type);
 
         $limit = 10;
         $getDocument_details = $this->Common_model->get_all_details('diligence_meeting_type', $condition, array(), $limit, $start, $orderby);
@@ -2074,7 +2074,7 @@ public function DTsector() {
 
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getDocument_details)),
+            "recordsTotal" => intval(php72_count($getDocument_details)),
             "recordsFiltered" => intval($count_Document),
             "data" => $data
         );
@@ -2105,7 +2105,7 @@ public function DTsector() {
         }
 
         $getReject_reason = $this->Common_model->get_all_details('master_settings', $condition, array(), '', '', $orderby_sec);
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = $length;
@@ -2142,7 +2142,7 @@ public function DTsector() {
 
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getReject_details)),
+            "recordsTotal" => intval(php72_count($getReject_details)),
             "recordsFiltered" => intval($count_reject),
             "data" => $data,
             "POST" => $_POST
@@ -2174,12 +2174,12 @@ public function DTsector() {
 
 
         $getReject_reason = $this->Common_model->get_all_details($table_name, $condition, array());
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 10;
         $get_details = $this->Common_model->get_all_details($table_name, $condition, array(), $limit, $start, $orderby_sec);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         $getBranch_records = $this->Common_model->get_all_details('hs_hr_branch', array('status' => 'active'), array(), '', '', '', true, 'hris');
         $option_list = '';
 
@@ -2249,12 +2249,12 @@ public function DTsector() {
         $condition = array("status !=" => 3, "partner_id" => $this->session->userdata('partner_id'));
 
         $getReject_reason = $this->Common_model->get_all_details('port_dashboard_master', $condition, array());
-        $count_reject = count($getReject_reason);
+        $count_reject = php72_count($getReject_reason);
 
         $start = $this->input->post('start');
         $limit = 5;
         $get_details = $this->Common_model->get_all_details('port_dashboard_master', $condition, array(), $limit, $start, $orderby_sec);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         $getBranch_records = $this->Common_model->get_all_details('hs_hr_branch', array('status' => 'active'), array(), '', '', '', true, 'hris');
         $option_list = '';
 
@@ -2338,10 +2338,10 @@ public function DTsector() {
         }
 
         $getCountDetails = $this->Common_model->getLimitRecords($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
 
         $get_details = $this->Common_model->getLimitRecords($options, $condition);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $periods = array(1 => 'Weekly Report', 2 => 'Monthly Report', 3 => 'Quarterly Report', 4 => 'Yearly Report');
         $baseUrl = base_url() . 'index.php/';
@@ -2401,7 +2401,7 @@ public function DTsector() {
         }
         $condition = array('pid' => $id);
         $get_details = $this->Common_model->get_all_details('progress_master', $condition, array(), '', '');
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -2416,7 +2416,7 @@ public function DTsector() {
 
             $unserializeData = unserialize($lists["value"]);
             if (is_array($unserializeData)) {
-                $values = implode(', ', $unserializeData);
+                $values = php72_implode(', ', $unserializeData);
             } else {
                 $values = $unserializeData;
             }
@@ -2442,7 +2442,7 @@ public function DTsector() {
         #echo'<pre>';print_r($data);die;
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getProgressMaster)),
+            "recordsTotal" => intval(php72_count($getProgressMaster)),
             "recordsFiltered" => intval($get_details_count),
             "data" => $data,
             "POST" => $_POST
@@ -2484,7 +2484,7 @@ public function DTsector() {
         $condition = array('pid' => $pid, 'parent_value !=' => '');
 
         $get_details = $this->Common_model->get_all_details('screening_master', $condition, array(), '', '');
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -2503,7 +2503,7 @@ public function DTsector() {
         foreach ($getProgressMaster as $lists) {
             $unserializeData = unserialize($lists["value"]);
             if (is_array($unserializeData)) {
-                $values = implode(', ', $unserializeData);
+                $values = php72_implode(', ', $unserializeData);
             } else {
                 $values = $unserializeData;
             }
@@ -2530,7 +2530,7 @@ public function DTsector() {
         #echo'<pre>';print_r($data);die;
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getProgressMaster)),
+            "recordsTotal" => intval(php72_count($getProgressMaster)),
             "recordsFiltered" => intval($get_details_count),
             "data" => $data,
             "POST" => $_POST
@@ -2572,7 +2572,7 @@ public function DTsector() {
         $condition = array('pid' => $pid, 'parent_value' => null);
 
         $get_details = $this->Common_model->get_all_details('screening_master', $condition, array(), '', '');
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -2591,7 +2591,7 @@ public function DTsector() {
         foreach ($getProgressMaster as $lists) {
             $unserializeData = unserialize($lists["value"]);
             if (is_array($unserializeData)) {
-                $values = implode(', ', $unserializeData);
+                $values = php72_implode(', ', $unserializeData);
             } else {
                 $values = $unserializeData;
             }
@@ -2615,7 +2615,7 @@ public function DTsector() {
         #echo'<pre>';print_r($data);die;
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getProgressMaster)),
+            "recordsTotal" => intval(php72_count($getProgressMaster)),
             "recordsFiltered" => intval($get_details_count),
             "data" => $data,
             "POST" => $_POST
@@ -2712,11 +2712,11 @@ public function DTsector() {
         /* echo'<pre>';print_r($options);
         echo'<pre>';print_r($condition);die; */
         $getCountDetails = $this->Common_model->get_source_master($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
 
         #echo'<pre>';print_r($options);
         $get_details = $this->Common_model->get_source_master($options, $condition);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         #echo'<pre>';print_r($get_details);die;
 
         $periods = array(1 => 'Weekly Report', 2 => 'Monthly Report', 3 => 'Quarterly Report', 4 => 'Yearly Report');
@@ -2806,9 +2806,9 @@ public function DTsector() {
         $join[0]['type'] = "LEFT";
 
         $getcount = $this->Common_model->get_all_details('instance_master', $condition, array(), '', '', $orderby, '', '', $join);
-        $count_num = count($getcount);
+        $count_num = php72_count($getcount);
         $get_details = $this->Common_model->get_all_details('instance_master', $condition, array(), $limit, $start, $orderby, '', '', $join);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         #echo'<pre>';print_r($get_details);die;
         $editUrl = base_url() . 'index.php/incubation_master/addEdit_source_instance/';
         $selected = '';
@@ -2883,10 +2883,10 @@ public function DTsector() {
 
         #echo'<pre>';print_r($options);die;
         $getCountDetails = $this->Common_model->get_screeningRecords($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
 
         $get_details = $this->Common_model->get_screeningRecords($options, $condition);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $editUrl = base_url() . 'index.php/incubation_master/edit_screening_field/';
         $listingSubfield = base_url() . 'index.php/incubation_master/screening_subfields/';
@@ -2956,9 +2956,9 @@ public function DTsector() {
 
         $fields = array('means_validation.*,(select master_name from master_settings where id=means_validation.criteria) as criteria_title');
         $getcount = $this->Common_model->get_all_details('means_validation', $condition, $fields, '', '', $orderby);
-        $count_num = count($getcount);
+        $count_num = php72_count($getcount);
         $get_details = $this->Common_model->get_all_details('means_validation', $condition, $fields, $limit, $start, $orderby);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         $selected = '';
         foreach ($get_details as $lists) {
 
@@ -3032,9 +3032,9 @@ public function DTsector() {
         }
 
         $getCountDetails = $this->Common_model->get_checklist($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
         $get_details = $this->Common_model->get_checklist($options, $condition);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         $selected = '';
         foreach ($get_details as $lists) {
 
@@ -3090,12 +3090,12 @@ public function DTsector() {
         }
         $fields = array('program_service_offering.*,(select master_name from master_settings where id=program_service_offering.program_type) as master_name');
         $getcount = $this->Common_model->get_all_details('program_service_offering', $condition, $fields, '', '', $orderby);
-        $count_num = count($getcount);
+        $count_num = php72_count($getcount);
 
         $start = $this->input->post('start');
         $limit = 10;
         $get_details = $this->Common_model->get_all_details('program_service_offering', $condition, $fields, $limit, $start, $orderby);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         $editUrl = base_url() . 'index.php/incubation_master/addEdit_program_service/';
         #echo'<pre>';print_r($get_details);die;
@@ -3167,10 +3167,10 @@ public function DTsector() {
         }
 
         $getCountDetails = $this->Common_model->getProgram_stage($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
 
         $get_details = $this->Common_model->getProgram_stage($options, $condition);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
         $selected = '';
         foreach ($get_details as $lists) {
 
@@ -3228,12 +3228,12 @@ public function DTsector() {
 
         $fields = array('ms.id as master_id,ms.master_name as master_name');
         $getcount = $this->Common_model->get_all_details('grading_master', $condition, $fields, '', '', $orderby, '', '', $join);
-        $count_num = count($getcount);
+        $count_num = php72_count($getcount);
 
         $start = $this->input->post('start');
         $limit = 10;
         $get_details = $this->Common_model->get_all_details('grading_master', $condition, $fields, $limit, $start, $orderby, '', '', $join);
-        $get_details_count = count($get_details);
+        $get_details_count = php72_count($get_details);
 
         foreach ($get_details as $lists) {
 
@@ -3302,12 +3302,12 @@ public function DTsector() {
                 $condition['messagetype LIKE'] = "%$search_field%";
             }
             $getmail_reason = $this->Common_model->get_all_details('master_mailtemplate', $condition, array());
-            $count_mail = count($getmail_reason);
+            $count_mail = php72_count($getmail_reason);
 
             $start = $this->input->post('start');
             $limit = 10;
             $get_details = $this->Common_model->get_all_details('master_mailtemplate', $condition, array(), $limit, $start, $orderby);
-            $get_details_count = count($get_details);
+            $get_details_count = php72_count($get_details);
             $get_details = $this->Common_model->get_all_details('master_mailtemplate', $condition, array(), $limit, $start, $orderby);
         } else if ($module == 'ais') {
             $mail_template_type = 1;
@@ -3319,11 +3319,11 @@ public function DTsector() {
             }
             $getmail_reason = $this->Common_model->get_all_details('mailtemplate', $condition, array(), '', '', '', true, 'ais');
 
-            $count_mail = count($getmail_reason);
+            $count_mail = php72_count($getmail_reason);
             $start = $this->input->post('start');
             $limit = 10;
             $get_details = $this->Common_model->get_all_details('mailtemplate', $condition, array(), $limit, $start, $orderby, true, 'ais');
-            $get_details_count = count($get_details);
+            $get_details_count = php72_count($get_details);
         }
         $selected = '';
         foreach ($get_details as $lists) {
@@ -3355,7 +3355,7 @@ public function DTsector() {
     }
 
     public function msort($array, $key, $sort_flags = SORT_REGULAR, $order = SORT_ASC) {
-        if (is_array($array) && count($array) > 0) {
+        if (is_array($array) && php72_count($array) > 0) {
             if (!empty($key)) {
                 $mapping = array();
                 foreach ($array as $k => $v) {
@@ -3407,15 +3407,15 @@ public function DTsector() {
             $this->load->model('scouting/Mincharge');
             $data['inchargeList'] = $this->Mincharge->getSectors($id);
 			
-            $inchargeId = array_column($data['inchargeList'], 'associate_employee');
+            $inchargeId = php72_array_column($data['inchargeList'], 'associate_employee');
         } else if ($sector_type == 1) {
             $this->load->model('scouting/Mincharge');
             $data['inchargeList'] = $this->Mincharge->getSectorLeads($id);
-            $inchargeId = array_column($data['inchargeList'], 'employee_id');
+            $inchargeId = php72_array_column($data['inchargeList'], 'employee_id');
         }else if ($sector_type == 2) {
             $this->load->model('scouting/Mincharge'); 
             $data['inchargeList'] = $this->Mincharge->getAnSectorRequester($id);
-            $inchargeId = array_column($data['inchargeList'], 'employee_id');
+            $inchargeId = php72_array_column($data['inchargeList'], 'employee_id');
 			
 			$this->load->model('user/Common_model');
 			$branch = $this->input->post('branch');
@@ -3509,11 +3509,11 @@ public function DTsector() {
 		
 		if ($program_name != '') {
 			$getProgramCountDetails = $this->Common_model->get_all_details('program_type', array(), array());
-			$getProgramCount = count(json_decode(json_encode($getProgramCountDetails), true));
+			$getProgramCount = php72_count(json_decode(json_encode($getProgramCountDetails), true));
 			
 			$sectorIds = '';	
 			if(!empty($associate_sector)){
-				$sectorIds =  implode(',',$associate_sector);
+				$sectorIds =  php72_implode(',',$associate_sector);
 			}
 			 $InsetData = array('program_id' =>$getProgramCount+1,'program_name' =>$program_name,'status' => 1,'sector'=>$sectorIds);
 			 
@@ -3535,7 +3535,7 @@ public function DTsector() {
 			$condition = array('id' => $program_id);
 			$sectorIds = '';
 			if(!empty($associate_sector)){
-				$sectorIds = implode(',',$associate_sector);
+				$sectorIds = php72_implode(',',$associate_sector);
 			}
 			$updateData = array('sector' => $sectorIds);
 			$this->Common_model->update_data('program_type', $condition, $updateData);
@@ -4215,7 +4215,7 @@ public function DTsector() {
         $incubation_field_id = $this->input->post('incubation_field_id');
         $post_data = $_POST;
         if (!empty($post_data)) {
-            $values = serialize(array_filter($this->input->post('value')));
+            $values = serialize(php72_array_filter($this->input->post('value')));
             unset($post_data['value']);
             $post_data['value'] = $values;
             $post_data['type'] = 'metrices';
@@ -4244,7 +4244,7 @@ public function DTsector() {
         $id = $this->input->post('id');
         $post_data = $_POST;
         if (!empty($post_data)) {
-            $values = serialize(array_filter($this->input->post('value')));
+            $values = serialize(php72_array_filter($this->input->post('value')));
             unset($post_data['value']);
             unset($post_data['type']);
             unset($post_data['criteria']);
@@ -4274,7 +4274,7 @@ public function DTsector() {
         $id = $this->input->post('id');
         $post_data = $_POST;
         if (!empty($post_data)) {
-            $values = serialize(array_filter($this->input->post('value')));
+            $values = serialize(php72_array_filter($this->input->post('value')));
             unset($post_data['value']);
             $post_data['value'] = $values;
             if ($id != '') {
@@ -4298,7 +4298,7 @@ public function DTsector() {
         $id = $this->input->post('id');
         $post_data = $_POST;
         if (!empty($post_data)) {
-            $values = serialize(array_filter($this->input->post('value')));
+            $values = serialize(php72_array_filter($this->input->post('value')));
             unset($post_data['value']);
             $post_data['value'] = $values;
             if ($id != '') {
@@ -4328,7 +4328,7 @@ public function DTsector() {
         if (!empty($post_data)) {
 
             if ($id != '') {
-                $values = serialize(array_filter($this->input->post('value')));
+                $values = serialize(php72_array_filter($this->input->post('value')));
                 unset($post_data['id']);
                 unset($post_data['value']);
                 $post_data['value'] = $values;
@@ -4557,7 +4557,7 @@ public function DTsector() {
         );
 
         $getCountDetails = $this->Common_model->get_source_master($optionsCount, $condition);
-        $count_num = count($getCountDetails);
+        $count_num = php72_count($getCountDetails);
 
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
@@ -4655,7 +4655,7 @@ public function DTsector() {
 }
 
 public function commonDelete() {
-    $id = array_filter($this->input->post('id'));
+    $id = php72_array_filter($this->input->post('id'));
     $table = $this->input->post('table');
     $returnArr['status'] = '0';
     if (!empty($id) && $table != '') {

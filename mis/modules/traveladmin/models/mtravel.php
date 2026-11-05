@@ -122,7 +122,7 @@ function getPersonsList($travel_request_id) {
         $roname_Arr[$val['emp_id']] = $val['emp_name'];
     }
     $ro_name = $roname_Arr[$requestListInfo['0']['ro_id']];
-    if (count($reportingAuth))
+    if (php72_count($reportingAuth))
         # $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['official_email'];
         $reportAuthEmail = $roArr[$requestListInfo[0]['ro_id']];
     else
@@ -590,7 +590,7 @@ function insertMultipleJourney($travel_booking_id) {
         $arr_key = '';
 
         foreach ($file_name as $key => $value):
-            $arr_key = array_keys($value)[$key];
+            $arr_key = php72_array_keys($value)[$key];
 
             if ($value[$arr_key] != '') {
                 $fName = rand() . "_" . str_replace(" ", "_", $value[$arr_key]);
@@ -618,7 +618,7 @@ function insertMultipleJourney($travel_booking_id) {
 //        else
 //            $financial_date = date("Y:m:d");
         #$supporting_documents = implode(',', $this->input->post('supporting_documents'));
-        $supporting_documents = implode(',', $this->input->post('meet_desc'));
+        $supporting_documents = php72_implode(',', $this->input->post('meet_desc'));
 
         $data = array(
             'approval_no' => $this->approvalNumber(),

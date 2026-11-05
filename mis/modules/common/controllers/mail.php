@@ -37,7 +37,7 @@ class Mail extends CI_Controller {
             "per_page" => 15,
         );
         //new array
-        $newArray = array("total_rows" => count($this->Mmail->getExtMailList($options1)),
+        $newArray = array("total_rows" => php72_count($this->Mmail->getExtMailList($options1)),
             "per_page" => 15,
         );
 

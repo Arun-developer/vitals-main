@@ -1,7 +1,7 @@
 <?php
 $company_name = isset($plan_header) ? $plan_header['company_data'][0]['name'] : '';
 $plan_data = $note_plan[0];
-$note_count = isset($plan_data) ? count($note_plan) : 1;
+$note_count = isset($plan_data) ? php72_count($note_plan) : 1;
 
 $reg_city = isset($plan_header) ? $plan_header['company_data'][0]['reg_city'] : '';
 $sector_name = isset($plan_header) ? $plan_header['sector_name'] : '';
@@ -226,7 +226,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($note_plan); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($note_plan); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio')); ?>
 

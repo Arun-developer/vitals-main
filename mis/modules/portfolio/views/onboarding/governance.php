@@ -14,7 +14,7 @@ $dataconfig_link = base_url() . 'index.php/portfolio/product/' . $innovation_id;
 $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city'];
 
 $gov_data = $governanceDetails[0];
-$governanceDetails_count = isset($gov_data) ? count($governanceDetails) : 1;
+$governanceDetails_count = isset($gov_data) ? php72_count($governanceDetails) : 1;
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Info', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'add_class' => 'mar-tp140'));
 ?>
 
@@ -158,7 +158,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($governanceDetails); ?>" >
+<input type="hidden" id="enableCount" value="<?= php72_count($governanceDetails); ?>" >
 
 <div class="modal" id="deletemodal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">

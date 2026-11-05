@@ -141,7 +141,7 @@ class Mapproval extends My_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -181,7 +181,7 @@ class Mapproval extends My_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -364,7 +364,7 @@ class Mapproval extends My_Model {
             'comments_PH' => '',
             'programme' => $this->input->post('programme'),
             'UCID' => $this->input->post('UCID'),
-            'supporting_documents' => implode(',', $this->input->post('supporting_documents')),
+            'supporting_documents' => php72_implode(',', $this->input->post('supporting_documents')),
             'estimated_in_workplan' => $yes,
             'partner_id' => $this->session->userdata('partner_id'),
             'above_50000' => $above,
@@ -503,7 +503,7 @@ class Mapproval extends My_Model {
 //            'date_payment_required' => ddmmyyyy2mysql($this->input->post('date_payment_required')),
             'purpose' => $this->input->post('purpose'),
             'to_RO' => $this->input->post('to_RO'),
-            'supporting_documents' => implode(',', $this->input->post('supporting_documents')),
+            'supporting_documents' => php72_implode(',', $this->input->post('supporting_documents')),
             'estimated_in_workplan' => $work_plan,
             'above_50000' => $above,
             'RO_status' => $ro_status,
@@ -576,7 +576,7 @@ class Mapproval extends My_Model {
             'purpose' => $this->input->post('purpose'),
             'programme' => $this->input->post('programme'),
             'UCID' => $this->input->post('UCID'),
-            'supporting_documents' => implode(',', $this->input->post('supporting_documents')),
+            'supporting_documents' => php72_implode(',', $this->input->post('supporting_documents')),
             'above_50000' => $above,
             'status' => 'draft',
             'comments_RO' => '',
@@ -770,7 +770,7 @@ class Mapproval extends My_Model {
             foreach ($row1 as $rs) {
                 $req_amount[] = $rs['amt_required'];
             }
-            $tot_req_amount = array_sum($req_amount);
+            $tot_req_amount = php72_array_sum($req_amount);
         }
         $this->db->select_sum('amount_toapprove', 'int_amount');
         $this->db->where($conarray);
@@ -1015,9 +1015,9 @@ class Mapproval extends My_Model {
         $empEmail = $employeeDetails['0']['emp_work_email'] != '' ? $employeeDetails['0']['emp_work_email'] : $employeeDetails['0']['emp_oth_email'];
         $reportingAuth = reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
         $roName = $reportingAuth[0]['user_name'];
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = $reportingAuth['0']['emp_work_email'] != '' ? $reportingAuth['0']['emp_work_email'] : $reportingAuth['0']['emp_oth_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->Mlogin->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = $rodetails['0']['emp_work_email'] != '' ? $rodetails['0']['emp_work_email'] : $rodetails['0']['emp_oth_email'];
         } else
@@ -1162,9 +1162,9 @@ class Mapproval extends My_Model {
         $empEmail = ($employeeDetails['0']['emp_work_email'] != '') ? $employeeDetails['0']['emp_work_email'] : $employeeDetails['0']['emp_oth_email'];
         //reporting authority
         $reportingAuth = reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
-        if (count($reportingAuth))
+        if (php72_count($reportingAuth))
             $reportAuthEmail = ($reportingAuth['0']['emp_work_email'] != '') ? $reportingAuth['0']['emp_work_email'] : $reportingAuth['0']['emp_oth_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->Mlogin->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = ($rodetails['0']['emp_work_email'] != '') ? $rodetails['0']['emp_work_email'] : $rodetails['0']['emp_oth_email'];
         } else
@@ -1271,7 +1271,7 @@ class Mapproval extends My_Model {
     /* newly added on 4/6/14 end */
 
     function getApprovalDashboard($section, $currentTab) {
-        $subUsers = implode("','", reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", reportingUser('subUser', 'userId'));
         $searchArray = array();
         $status = 'status';
         $admin = NULL;

@@ -140,7 +140,7 @@
                 <?php $benificary = unserialize($inv_user[0]['benificiary']); ?>
                 <tr>
                     <td style="width:30%;"><b>Who will be the beneficiaries of your product / service?</b></td>
-                    <td style="width:70%;"><?php echo implode(', ', $benificary); ?></td>
+                    <td style="width:70%;"><?php echo php72_implode(', ', $benificary); ?></td>
                 </tr>
                 <tr>
                     <td style="width:30%;"><b>What type of impact will your product / service have on the BoP / poor?</b></td>
@@ -1309,7 +1309,7 @@
 					<?php $benificary = unserialize($inv_user[0]['benificiary']);
 					 
 							if(!empty($benificary)){
-									echo implode(', ',$benificary);
+									echo php72_implode(', ',$benificary);
 							}
 
 					 ?>

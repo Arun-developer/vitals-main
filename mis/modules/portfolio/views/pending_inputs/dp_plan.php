@@ -66,13 +66,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -282,7 +282,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($dp_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($dp_plan); ?>">
         <style>
             .fileUpload {
                 width: 80%;

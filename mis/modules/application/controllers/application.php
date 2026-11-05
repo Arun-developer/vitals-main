@@ -161,7 +161,7 @@ class Application extends CI_Controller {
 
         $partner_id = $this->session->userdata('partner_id');
         $employee_number = $this->Sector_model->getEmployeeNumberByID($this->input->post('txtSector'), $partner_id);
-        $emp_num = array_map(function ($emp_num) {
+        $emp_num = php72_array_map(function ($emp_num) {
             return $emp_num['associate_employee'];
         }, $employee_number);
 
@@ -221,7 +221,7 @@ class Application extends CI_Controller {
         $innovation_partnerid = str_pad($partner, 2, "0", STR_PAD_LEFT);
         $email = $this->Mapplication->checkEmailExistValue($current_email, $innovation_partnerid);
 
-        if (count($email) > 0) {
+        if (php72_count($email) > 0) {
             $response = 'false';
         } else {
             $response = 'true';
@@ -368,7 +368,7 @@ class Application extends CI_Controller {
             $innovation['program']='0';
         }
 
-        if (count($check_innovation) > 0) {
+        if (php72_count($check_innovation) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('innovation_pool', $innovation, $inno_cond);
         }
 
@@ -385,7 +385,7 @@ class Application extends CI_Controller {
         $basic['benificiary'] = serialize($this->input->post('txtBeneficiary'));
         $basic['impact_of_product'] = $this->db->escape_str($this->input->post('txtImpact'));
 
-        if (count($check_basic) > 0) {
+        if (php72_count($check_basic) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('inv_user', $basic, $cond);
         }
         if ($e_query) {
@@ -407,7 +407,7 @@ class Application extends CI_Controller {
         $innovation['name_of_enterprise'] = $this->db->escape_str($this->input->post('txtEnterprise'));
         $innovation['mobile_no'] = $this->db->escape_str($this->input->post('txtMobile'));
 
-        if (count($check_innovation) > 0) {
+        if (php72_count($check_innovation) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('innovation_pool', $innovation, $inno_cond);
         }
 
@@ -419,7 +419,7 @@ class Application extends CI_Controller {
         $basic['impact_of_product'] = $this->db->escape_str($this->input->post('txtImpact'));
         $basic['website'] = $this->db->escape_str($this->input->post('txtWebsite'));
 
-        if (count($check_basic) > 0) {
+        if (php72_count($check_basic) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('inv_user', $basic, $cond);
         }
         if ($e_query) {
@@ -556,7 +556,7 @@ class Application extends CI_Controller {
                 }
 
                 $checkTeamData = $this->Mapplication->getTeamInfo($cond);
-                if (count($checkTeamData) > 0) {
+                if (php72_count($checkTeamData) > 0) {
                     $e_query = $this->Mapplication->updateApplicationDetail('inv_member', $team, $cond);
                 } else {
                     $e_query = $this->Mapplication->insertApplicationDetail('inv_member', $team);
@@ -737,7 +737,7 @@ class Application extends CI_Controller {
         $check_additional = $this->Mapplication->checkApplicationDetails('inv_additional_info', $inv_user_id);
 
         $enterprise['in_operation'] = $this->input->post('in_operation');
-        $enterprise['operate_on_state'] = implode(',', $this->input->post('select_state'));
+        $enterprise['operate_on_state'] = php72_implode(',', $this->input->post('select_state'));
 
         $additional['ant_org'] = $this->input->post('with_other_org');
         $additional['ant_org_name'] = $this->db->escape_str($this->input->post('other_org_name'));
@@ -745,13 +745,13 @@ class Application extends CI_Controller {
         $additional['competition_name'] = $this->db->escape_str($this->input->post('business_compet'));
 
 
-        if (count($check_enterprise) > 0) {
+        if (php72_count($check_enterprise) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('inv_ent_info', $enterprise, $cond);
         } else {
             $e_query = $this->Mapplication->insertApplicationDetail('inv_ent_info', $enterprise);
         }
 
-        if (count($check_additional) > 0) {
+        if (php72_count($check_additional) > 0) {
             $a_query = $this->Mapplication->updateApplicationDetail('inv_additional_info', $additional, $cond);
         } else {
             $a_query = $this->Mapplication->insertApplicationDetail('inv_additional_info', $additional);
@@ -978,13 +978,13 @@ class Application extends CI_Controller {
         $impact['inv_impact'] = $this->db->escape_str($this->input->post('no_impact'));
         $impact['others_benefit'] = $this->db->escape_str($this->input->post('service_benefit'));
 
-        if (count($check_enterprise) > 0) {
+        if (php72_count($check_enterprise) > 0) {
             $e_query = $this->Mapplication->updateApplicationDetail('inv_ent_info', $enterprise, $cond);
         } else {
             $e_query = $this->Mapplication->insertApplicationDetail('inv_ent_info', $enterprise);
         }
 
-        if (count($check_impact) > 0) {
+        if (php72_count($check_impact) > 0) {
             $a_query = $this->Mapplication->updateApplicationDetail('inv_impact', $impact, $cond);
         } else {
             $a_query = $this->Mapplication->insertApplicationDetail('inv_impact', $impact);
@@ -1144,14 +1144,14 @@ class Application extends CI_Controller {
         $inv_user_id = $cond['inv_user_id'] = $additional['inv_user_id'] = $this->input->post('inv_user_id');
         $check_additional = $this->Mapplication->checkApplicationDetails('inv_additional_info', $inv_user_id);
 
-        $additional['from_villgro'] = implode(',', $this->input->post('vill_support'));
-        if (in_array('Other', $this->input->post('vill_support'))) {
+        $additional['from_villgro'] = php72_implode(',', $this->input->post('vill_support'));
+        if (php72_in_array('Other', $this->input->post('vill_support'))) {
             $additional['support_name'] = $this->input->post('otr_support');
         } else {
             $additional['support_name'] = '';
         }
-        $additional['hear_abt'] = implode(',', $this->input->post('abt_vill'));
-        if (in_array('Other', $this->input->post('abt_vill'))) {
+        $additional['hear_abt'] = php72_implode(',', $this->input->post('abt_vill'));
+        if (php72_in_array('Other', $this->input->post('abt_vill'))) {
             $additional['referal_name'] = $this->input->post('ref_name');
         } else {
             $additional['referal_name'] = '';
@@ -1225,7 +1225,7 @@ class Application extends CI_Controller {
             $additional['add_info'] = '';
         }
 
-        if (count($check_additional) > 0) {
+        if (php72_count($check_additional) > 0) {
             $a_query = $this->Mapplication->updateApplicationDetail('inv_additional_info', $additional, $cond);
         } else {
             $a_query = $this->Mapplication->insertApplicationDetail('inv_additional_info', $additional);
@@ -1247,14 +1247,14 @@ class Application extends CI_Controller {
         $inv_user['india_based'] = $this->input->post('inno_based');
         $additional['company_description'] = $this->input->post('company_desc');
         $additional['inv_idea_ent'] = $this->input->post('inv_idea_ent');
-        $additional['hear_abt'] = implode(',', $this->input->post('abt_vill'));
-        $innovation['sector'] = $inv_user['ent_sector'] = implode(',', $this->input->post('sector'));
+        $additional['hear_abt'] = php72_implode(',', $this->input->post('abt_vill'));
+        $innovation['sector'] = $inv_user['ent_sector'] = php72_implode(',', $this->input->post('sector'));
         $innovation['sector_others'] = $this->input->post('sector_other');
 
         $inno_query = $this->Mapplication->updateApplicationDetail('innovation_pool', $innovation, $inno);
         $inv_query = $this->Mapplication->updateApplicationDetail('inv_user', $inv_user, $inv_cond);
 
-        if (count($check_additional) > 0) {
+        if (php72_count($check_additional) > 0) {
             $a_query = $this->Mapplication->updateApplicationDetail('inv_additional_info', $additional, $cond);
         } else {
             $a_query = $this->Mapplication->insertApplicationDetail('inv_additional_info', $additional);
@@ -1274,7 +1274,7 @@ class Application extends CI_Controller {
         $ids = $data['innovation']['id'];
         $employees = $this->Sector_model->getEmpId($ids);
 
-        $emp_Ids = array_map(function ($emp_Ids) {
+        $emp_Ids = php72_array_map(function ($emp_Ids) {
             return $emp_Ids['associate_employee'];
         }, $employees);
         $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1309,7 +1309,7 @@ class Application extends CI_Controller {
         $ids = $_POST['innovations'];
         $innovationDetails = $this->Minnovation->getInnovation($ids);
 
-        $acnt = count($employee);
+        $acnt = php72_count($employee);
 
         if ($acnt) {
             $this->Mincharge->removeOldIncharge($ids);
@@ -1320,7 +1320,7 @@ class Application extends CI_Controller {
         }
         $employees = $this->Sector_model->getEmpId($ids);
 
-        $emp_Ids = array_map(function ($emp_Ids) {
+        $emp_Ids = php72_array_map(function ($emp_Ids) {
             return $emp_Ids['associate_employee'];
         }, $employees);
         $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -1360,7 +1360,7 @@ class Application extends CI_Controller {
             if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio'))) {
                 $data['exist'] = $this->Massessment->checkassessexist($id, $this->session->userdata('emp_number'));
                 if ($data['exist'] == 0 || $data['exist'] == '') {
-                    $no_assigned = count($assigned_incharge);
+                    $no_assigned = php72_count($assigned_incharge);
                     if ($no_assigned > 1) {
                         foreach ($assigned_incharge as $incharge) {
                             $assign_exist = $this->Massessment->checkassessexist($id, $incharge);
@@ -1380,7 +1380,7 @@ class Application extends CI_Controller {
             $data['files'] = $this->Massessment->getfiles($id);
             $data['assessDetails'] = $assessDetails;
             $data['cpagetitle'] = "Assessment";
-            if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+            if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
                 $data['cpage'] = "assessment/assessment";
             } else {
                 redirect('grading/view/' . $id);
@@ -1428,7 +1428,7 @@ class Application extends CI_Controller {
         $data['cpagetitle'] = "Assessment";
 
         /* -----Checking assign incharge for an innovation----- */
-        if (in_array($this->session->userdata('emp_number'), $assigned_incharge) || in_array($this->session->userdata('emp_number'), $assessor_emp)) {
+        if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) || in_array($this->session->userdata('emp_number'), $assessor_emp)) {
             $data['cpage'] = "application/assessment/assessment_scoring";
         } else {
             redirect('application/assessment_summary/' . $id);
@@ -1501,7 +1501,7 @@ class Application extends CI_Controller {
                 $risk = unserialize($assesst[0]['risk']);
             }
 
-            $count_area = count($area);
+            $count_area = php72_count($area);
             foreach ($area as $area) {
 
                 $col = 0;
@@ -1513,7 +1513,7 @@ class Application extends CI_Controller {
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $score[$area['id']]);
 
                 $sub_category = $this->Massessment->getSubCategory($area['id']);
-                $sub_count = count($sub_category);
+                $sub_count = php72_count($sub_category);
                 $i = 0;
                 if (isset($sub_assesst)) {
                     foreach ($sub_assesst as $sub) {
@@ -1527,8 +1527,8 @@ class Application extends CI_Controller {
                 }
                 foreach ($sub_category as $sub) {
                     $addscore = '';
-                    if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                        $key = array_search($sub['id'], $category_id);
+                    if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                        $key = php72_array_search($sub['id'], $category_id);
                         $subscore = $sub_score[$key];
                         $addscore = $add_score[$key];
                     }
@@ -1675,10 +1675,10 @@ class Application extends CI_Controller {
 
         $check_main = $check_individual = 0;
         foreach ($_POST['checkall'] as $check) {
-            $check_main += count($check);
+            $check_main += php72_count($check);
         }
         foreach ($_POST['check'] as $check) {
-            $check_individual += count($check);
+            $check_individual += php72_count($check);
         }
 
         $rationale_string = preg_replace('/[^A-Za-z0-9\n\r\s\_ .,\/\@$%&*():;\'"?-]/', '', $_POST['rational']);
@@ -1812,7 +1812,7 @@ class Application extends CI_Controller {
             $data['feed_back'] = $this->Massessment->getFeedback($id);
             $deals_donor = $data['feed_back'][0]['donor_fit'];
         }
-        if (!empty($assigned_incharge) && in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+        if (!empty($assigned_incharge) && php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
             $data['assesst'] = $this->Massessment->getAssesst($id, $this->session->userdata('emp_number'));
         }
 
@@ -1825,7 +1825,7 @@ class Application extends CI_Controller {
             $existing_donor = $this->Massessment->getExistDonorFit($deals_donor);
         }
 
-        $d_fitList = array_merge($active_donor_fit, $existing_donor);
+        $d_fitList = php72_array_merge($active_donor_fit, $existing_donor);
         foreach ($d_fitList as $fit) {
             foreach ($fit as $key => $value) {
                 if (!isset($sortArray[$key])) {
@@ -1861,7 +1861,7 @@ class Application extends CI_Controller {
         $innovation = $this->Minnovation->getInnovation($_POST['innovation_id']);
         $cio_emp_id = $this->Mmaster->getEmpIdBySetUP('cio', $this->session->userdata('partner_id'));
         $don_fit1 = explode(',', $_POST['donor_fit1']);
-        $donor_fit = (isset($_POST['donor_fit'])) ? implode(',', $_POST['donor_fit']) : $_POST['donor_fit1'];
+        $donor_fit = (isset($_POST['donor_fit'])) ? php72_implode(',', $_POST['donor_fit']) : $_POST['donor_fit1'];
         $fund_recom = array();
         $fund_approved = array();
         $don_fit = !empty($_POST['donor_fit']) ? $_POST['donor_fit'] : $don_fit1;
@@ -1992,7 +1992,7 @@ class Application extends CI_Controller {
 
             $ids = $_POST['innovation_id'];
             $employees = $this->Sector_model->getEmpId($ids);
-            $emp_Ids = array_map(function ($emp_Ids) {
+            $emp_Ids = php72_array_map(function ($emp_Ids) {
                 return $emp_Ids['associate_employee'];
             }, $employees);
             $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2070,7 +2070,7 @@ class Application extends CI_Controller {
 
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2099,7 +2099,7 @@ class Application extends CI_Controller {
                 $ids = $_POST['innovation_id'];
                 $employees = $this->Sector_model->getEmpId($ids);
 
-                $emp_Ids = array_map(function ($emp_Ids) {
+                $emp_Ids = php72_array_map(function ($emp_Ids) {
                     return $emp_Ids['associate_employee'];
                 }, $employees);
                 $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2199,7 +2199,7 @@ class Application extends CI_Controller {
         $totalrows = $this->Mapplication->getDTInternalMailCount($option, $columns, $requestData);
         $query = $this->Mapplication->getDTInternalMailDetails($requestData['length'], $requestData['start'], $option, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2241,7 +2241,7 @@ class Application extends CI_Controller {
         $totalrows = $this->Mapplication->getDTExternalMailCount($option, $columns, $requestData);
         $query = $this->Mapplication->getDTExternalMailDetails($requestData['length'], $requestData['start'], $option, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2738,7 +2738,7 @@ class Application extends CI_Controller {
     }
 
     public function save_diligence_management() {
-        $add_count = count($_POST['name']);
+        $add_count = php72_count($_POST['name']);
         for ($i = 0; $i < $add_count; $i++) {
             if ($_POST['name'][$i] != '') {
                 $data['innovation_id'] = 'INV' . $_POST['inv_id'];
@@ -2884,7 +2884,7 @@ class Application extends CI_Controller {
 
     public function save_diligence_share() {
         $inv_id = 'INV' . $_POST['inv_id'];
-        $count = count($_POST['holder']);
+        $count = php72_count($_POST['holder']);
         for ($i = 0; $i < $count; $i++) {
             $get_innovation = $this->Mdiligence->get_data('share_details', $inv_id);
             if (!empty($get_innovation) && $_POST['shareId'][$i] != '') {
@@ -3024,7 +3024,7 @@ class Application extends CI_Controller {
             $send_data = 1;
         }
 
-        $add_count = count($_POST['add_doc_type']);
+        $add_count = php72_count($_POST['add_doc_type']);
         for ($i = 0; $i < $add_count; $i++) {
             if ($_POST['add_doc_type'][$i] != '') {
                 $data['innovation_id'] = $innovation_id = 'INV' . $inv_id;
@@ -3213,7 +3213,7 @@ class Application extends CI_Controller {
     }
 
     public function save_diligence_meeting() {
-        $add_count = count($_POST['meet_type']);
+        $add_count = php72_count($_POST['meet_type']);
         for ($i = 0; $i < $add_count; $i++) {
             if ($_POST['meet_type'][$i] != '') {
                 $data['innovation_id'] = 'INV' . $_POST['inv_id'];
@@ -4936,8 +4936,8 @@ class Application extends CI_Controller {
         ));
 
         $section->addTextBreak(5);
-        $member_count = count($team_members);
-        $share_count = count($share_details);
+        $member_count = php72_count($team_members);
+        $share_count = php72_count($share_details);
         $styleCell = array('borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
         $styleRightCell = array('borderLeftSize' => 1, 'borderLeftColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
 
@@ -5294,13 +5294,13 @@ class Application extends CI_Controller {
         $cond['innovation'] = $_POST['inv_id'];
         $status['status'] = 0;
         $update_assign = $this->Mapplication->updateDetails('assign_associate', $status, $cond);
-        for ($i = 0; $i < count($_POST['select_assign']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['select_assign']); $i++) {
             if ($_POST['select_assign'][$i] != '') {
                 $data['innovation'] = $option['innovation'] = $_POST['inv_id'];
                 $data['associate_employee'] = $option['associate_employee'] = $_POST['select_assign'][$i];
                 $data['status'] = '1';
                 $checkExist = $this->Mportfolio->getDetails('assign_associate', $option);
-                if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+                if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
                     $data['modified_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('assign_associate', $data, $option);
                 } else {
@@ -5343,7 +5343,7 @@ class Application extends CI_Controller {
         $ids = $data['innovation']['id'];
         $employees = $this->Sector_model->getEmpId($ids);
 
-        $emp_Ids = array_map(function ($emp_Ids) {
+        $emp_Ids = php72_array_map(function ($emp_Ids) {
             return $emp_Ids['associate_employee'];
         }, $employees);
         $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -5409,7 +5409,7 @@ class Application extends CI_Controller {
         $ids = $data['innovation']['id'];
         $employees = $this->Sector_model->getEmpId($ids);
 
-        $emp_Ids = array_map(function ($emp_Ids) {
+        $emp_Ids = php72_array_map(function ($emp_Ids) {
             return $emp_Ids['associate_employee'];
         }, $employees);
         $employees_id = rtrim(implode(',', $emp_Ids), ',');

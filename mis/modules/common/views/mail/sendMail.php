@@ -3,7 +3,7 @@ $formAction = site_url('common/mail/form/' . $innovation['id']);
 $id = '';
 $val = array();
 $action = 'Send';
-if (count($mailDetails)) {
+if (php72_count($mailDetails)) {
     $val = $mailDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;
@@ -22,7 +22,7 @@ if (isset($_POST['mail_type'])) {
     $partner_id = $this->session->userdata('partner_id');
     $mailContent = $this->Mmail->getMailContent($innovation['id'], $_POST['mail_type'], $partner_id);
 
-    if (count($mailContent)) {
+    if (php72_count($mailContent)) {
         $subject = $mailContent['subject'];
         $body = $mailContent['body'];
         $from = $mailContent['from'];

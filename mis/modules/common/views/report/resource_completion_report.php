@@ -44,7 +44,7 @@ $form_name = 'resource_completion';
 	</thead>
 	<tbody>
     <?php
-	if(count($resourceReport)){
+	if(php72_count($resourceReport)){
 		foreach($resourceReport as $row):
 		?>
 			<tr>

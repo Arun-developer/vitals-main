@@ -31,7 +31,7 @@
             <tr>
                 <td><?=++$key;?></td>
                 <td style="width:500px;"><?php echo $row['document_description']; ?></td>
-                <td><?=(in_array($row['id'],$innovationChecklist))?'<font color="green">Applicable</font>':'<font color="red">Not Applicable</font>';?>
+                <td><?=(php72_in_array($row['id'],$innovationChecklist))?'<font color="green">Applicable</font>':'<font color="red">Not Applicable</font>';?>
                 </td>
                 <td><?php if($row['documents'] != ''){?>
                     <strong>YES</strong>&nbsp;&nbsp;<a href="<?=base_url()?>uploads/screening/<?=$row['documents']?>"

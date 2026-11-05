@@ -469,7 +469,7 @@ $field_enable = '0';
 <?php
 $obj_plan = json_decode($meeting['dp_plan'], true);
 $obj_ext = json_decode($meeting['dp_external'], true);
-if (!array_filter($obj_plan) && !array_filter($obj_ext)) {
+if (!php72_array_filter($obj_plan) && !php72_array_filter($obj_ext)) {
     $enable = 0;
 } else {
     $enable = 1;

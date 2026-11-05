@@ -6,7 +6,7 @@
 </script>
 <?php
 
-if (count($mediaDetails) > 0) {
+if (php72_count($mediaDetails) > 0) {
     $val = $mediaDetails[0];
     $action = 'edit';
     $formAction = site_url('master/media/form/' . $id);

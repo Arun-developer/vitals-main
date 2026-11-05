@@ -3,7 +3,7 @@ $formAction = site_url('seedfunding/liststatus/approve/' . $innovationid);
 $id = '';
 $val = array();
 $action = 'Send';
-if (count(@$mailDetails)) {
+if (php72_count(@$mailDetails)) {
     $val = @$mailDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;

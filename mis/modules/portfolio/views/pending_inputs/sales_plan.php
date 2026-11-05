@@ -71,14 +71,14 @@
                                     </div>
                                 </div>
                                 <?php
-                                if (count($pending_month) > 0) {
+                                if (php72_count($pending_month) > 0) {
                                     ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -154,7 +154,7 @@
 
                                             <?php
                                             $month_volume = $tot_volume = 0;
-                                            if (count($approved_sales) > 0) {
+                                            if (php72_count($approved_sales) > 0) {
                                                 foreach ($approved_sales as $sales) {
                                                     $get_mnth = $actual_month[$current_month];
                                                     $get_volume = json_decode($sales['value']);
@@ -209,7 +209,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
-                                                                    if (count($approved_sales) > 0) {
+                                                                    if (php72_count($approved_sales) > 0) {
                                                                         foreach ($approved_sales as $sales) {
                                                                             $cond['product_id'] = $sales['id'];
                                                                             $cond['inv_id'] = $sales['inv_id'];
@@ -255,7 +255,7 @@
                                                                 <tbody>
                                                                     <?php
                                                                     $i = 1;
-                                                                    if (count($approved_sales) > 0) {
+                                                                    if (php72_count($approved_sales) > 0) {
                                                                         foreach ($approved_sales as $sales) {
                                                                             $cond['product_id'] = $sales['id'];
                                                                             $cond['inv_id'] = $sales['inv_id'];
@@ -312,7 +312,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($sales_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($sales_plan); ?>">
         <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/bootstrap.min.js'; ?>"></script>

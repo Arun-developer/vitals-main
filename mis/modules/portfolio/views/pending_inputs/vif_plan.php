@@ -15,7 +15,7 @@
         $errorMsg = ($this->session->flashdata('errorMsg')) ? $this->session->flashdata('errorMsg') : '';
 
         $plan_data = $vif_plan[0];
-        $vif_count = isset($plan_data) ? count($vif_plan) : 1;
+        $vif_count = isset($plan_data) ? php72_count($vif_plan) : 1;
 
         $company_name = isset($plan_header) ? $plan_header['company_data'][0]['name'] : '';
         $reg_city = isset($plan_header) ? $plan_header['company_data'][0]['reg_city'] : '';
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <!--                                    <div>
                                                                             <div class="tab-slider--nav">
                                                                                 <label class="float-left">Pending</label>
@@ -177,8 +177,8 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <?php
-                                                                        if (count($vif_config) > 0) {
-                                                                            for ($i = 0; $i < count($vif_config); $i++) {
+                                                                        if (php72_count($vif_config) > 0) {
+                                                                            for ($i = 0; $i < php72_count($vif_config); $i++) {
                                                                                 $cond['port_vif_id'] = $vif_config[$i]['id'];
                                                                                 $cond['inv_id'] = $vif_config[$i]['inv_id'];
                                                                                 $cond['financial_year'] = $vif_config[$i]['financial_year'];
@@ -259,7 +259,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($vif_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($vif_plan); ?>">
 
 
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />

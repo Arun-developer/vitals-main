@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-xl-5 col-lg-5 col-md-5 col-12 text-right">
                                 <ul class="vitals-links ">
-                                    <?php if (count($job_designation) == 0) { ?>
+                                    <?php if (php72_count($job_designation) == 0) { ?>
                                         <li>
                                             <a href="<?php echo base_url() . 'index.php/job/copy_job'; ?>" class="master_aduser" title="Copy master data from Villgro India"><i class="fas fa-clone"></i> Copy Master</a>
                                         </li>

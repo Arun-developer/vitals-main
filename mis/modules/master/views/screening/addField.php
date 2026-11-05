@@ -3,7 +3,7 @@
 $formAction = site_url('master/screening_master/form');
 $id = '';
 $val = array();
-if (count($screeningDetails)) {
+if (php72_count($screeningDetails)) {
     $val = $screeningDetails['0'];
     $formAction = site_url('master/screening_master/form/' . $val['id']);
     $id = $val['id'];
@@ -84,7 +84,7 @@ $inputArray = array('Text', 'Textarea', 'Listbox', 'Radio', 'Checkbox', 'File', 
 </dl>
     <?php
 
-if (count($value)) {
+if (php72_count($value)) {
     foreach ($value as $in => $val):
     ?>
     <dl class="inline">

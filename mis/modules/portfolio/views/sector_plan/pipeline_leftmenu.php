@@ -64,17 +64,17 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                     <div class="sidebar-submenu">
                         <ul>
                             <li class="<?= $sale_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/discovery/' . $sector_id . '/' . $fin_year; ?>">Discovery
-                                    <?php if ($config_data != '' && count($config_data['discoveryCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['discoveryCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $channel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/diligence/' . $sector_id . '/' . $fin_year; ?>">Diligence
-                                    <?php if ($config_data != '' && count($config_data['diligenceCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['diligenceCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $pipe_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/selection/' . $sector_id . '/' . $fin_year; ?>">Selection
-                                    <?php if ($config_data != '' && count($config_data['selectionCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['selectionCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>

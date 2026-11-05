@@ -25,7 +25,7 @@ class Eirapplication extends CI_Controller
                 $error = "";
                 $errors = validation_errors();
                 $errors = explode("\n", $errors);
-                $error = implode('|', $errors);
+                $error = php72_implode('|', $errors);
                 $error = str_ireplace('<p>', '', rtrim($error, '|'));
                 $error = str_ireplace('</p>', '', rtrim($error, '|'));
                 redirect($form_path . "login.php?sign_msg=Failed&sign_errors=" . $error);

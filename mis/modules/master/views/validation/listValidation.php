@@ -52,7 +52,7 @@ $form_name = 'means_validation';
         </thead>
         <tbody>
             <?php
-            if (count($validationList)) {
+            if (php72_count($validationList)) {
                 $r = 1;
                 foreach ($validationList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

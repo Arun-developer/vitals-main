@@ -38,7 +38,7 @@
             </td>
 			</tr>
       <?php endforeach;
-	  if(count($gradingList)=='0'){
+	  if(php72_count($gradingList)=='0'){
 		?>
          <tr class="odd"><td colspan="8" align="center">No Records Found!</td></tr>
         <?php  

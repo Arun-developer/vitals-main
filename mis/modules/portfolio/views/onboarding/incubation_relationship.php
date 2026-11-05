@@ -344,7 +344,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($villgro_incubation); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($villgro_incubation); ?>">
 <input type="hidden" name="innovationId" id="innovationId" value="<?php echo $innovation_id; ?>">
 <input type="hidden" id="delete_type">
 <input type="hidden" id="delete_date">

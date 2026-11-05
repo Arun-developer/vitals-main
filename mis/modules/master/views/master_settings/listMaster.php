@@ -44,7 +44,7 @@ echo '<h1>' . $cpagetitle . '</h1>';
     </thead>
     <tbody>
         <?php
-        if (count($masterList)) {
+        if (php72_count($masterList)) {
             $r = 1;
             foreach ($masterList as $master) {
                 $row_type = ($r % 2 == 0) ? ('even') : ('odd');

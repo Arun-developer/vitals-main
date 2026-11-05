@@ -28,7 +28,7 @@ $nullLink = "javascript:void(0);";
         </thead>
         <tbody>
             <?php
-            if (count($boardList)) {
+            if (php72_count($boardList)) {
                 $r = 1;
                 foreach ($boardList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

@@ -104,7 +104,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                             </tr>
                                         </thead>
                                         <?php
-                                        $recordCount = isset($otherInterests[0]) ? count($otherInterests) : 1;
+                                        $recordCount = isset($otherInterests[0]) ? php72_count($otherInterests) : 1;
                                         for ($i = 0; $i < $recordCount; $i++) {
                                             ?>
                                             <tbody class="add_more_interests">
@@ -155,7 +155,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         <input type="hidden" name="innovation_id"
                                                value="<?php echo $innovation_id; ?>" />
                                     </table>
-                                    <input type="hidden" id="enableCount" value="<?= count($otherInterests); ?>">
+                                    <input type="hidden" id="enableCount" value="<?= php72_count($otherInterests); ?>">
                                 </div>
                             </div>
                         </div>

@@ -37,7 +37,7 @@ $this->jquery->fancybox();
         </thead>
         <tbody>
             <?php
-            if (count($viewrights)) {
+            if (php72_count($viewrights)) {
                 $i = 0;
                 $r = 1;
                 foreach ($viewrights as $row) {

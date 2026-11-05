@@ -48,7 +48,7 @@ foreach ($innovationDetails as $row):
                    }
                    ?></li>
             <li><strong>Status</strong> : <?= $status[$row['status']] ?></li>
-            <?php if (count($cycle)) { ?>
+            <?php if (php72_count($cycle)) { ?>
                 <li><strong>Incubation Cycle</strong> :<a href="<?= site_url('scouting/cycle/' . $row['id']) ?>"
                                                           class="fancybox"><?= $cycle['0']['cycle_name'] ?></a> ( <a
                                                           href="<?= site_url('scouting/cycle_history/' . $row['id']) ?>" class="fancybox">View History</a> )</li>

@@ -657,11 +657,11 @@
             <?php
             $beneficiary = unserialize($inv_user[0]['benificiary']);
             ?>
-            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="People at the base of the pyramid" <?php if (in_array('People at the base of the pyramid', $beneficiary)) echo "checked='checked'"; ?> >People at the base of the pyramid <br/>
-            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural poor" <?php if (in_array('Rural poor', $beneficiary)) echo "checked='checked'"; ?>>Rural poor <br/>
-            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Urban poor" <?php if (in_array('Urban poor', $beneficiary)) echo "checked='checked'"; ?>>Urban poor <br/>
-            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural or urban middle income" <?php if (in_array('Rural or urban middle income', $beneficiary)) echo "checked='checked'"; ?>>Rural or urban middle income <br/>
-            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural or urban high income" <?php if (in_array('Rural or urban high income', $beneficiary)) echo "checked='checked'"; ?> >Rural or urban high income <br/>
+            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="People at the base of the pyramid" <?php if (php72_in_array('People at the base of the pyramid', $beneficiary)) echo "checked='checked'"; ?> >People at the base of the pyramid <br/>
+            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural poor" <?php if (php72_in_array('Rural poor', $beneficiary)) echo "checked='checked'"; ?>>Rural poor <br/>
+            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Urban poor" <?php if (php72_in_array('Urban poor', $beneficiary)) echo "checked='checked'"; ?>>Urban poor <br/>
+            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural or urban middle income" <?php if (php72_in_array('Rural or urban middle income', $beneficiary)) echo "checked='checked'"; ?>>Rural or urban middle income <br/>
+            <input type="checkbox" name="beneficiary[]" id="beneficiary" value="Rural or urban high income" <?php if (php72_in_array('Rural or urban high income', $beneficiary)) echo "checked='checked'"; ?> >Rural or urban high income <br/>
             <label for="beneficiary" class="error" id="error1" style="display:none"></label>
         </dd>
         <dt>

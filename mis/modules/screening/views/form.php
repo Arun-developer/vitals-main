@@ -192,17 +192,17 @@ if($isEdit){
 
 
     <?php
-	$count = count($fieldsList);
+	$count = php72_count($fieldsList);
 	$question = 0;
 	$answer = 0;
 	$myanswer =0;
 	foreach($fieldsList as $key => $value) {
 				
-		$question += count($fieldsList[$key]['label']);
+		$question += php72_count($fieldsList[$key]['label']);
 		if($fieldsList[$key]['answer'] == "") {
 			$answer  = "0";
 		} else {
-			$myanswer +=count($fieldsList[$key]['answer']);
+			$myanswer +=php72_count($fieldsList[$key]['answer']);
 		}	
 		
 		 
@@ -274,7 +274,7 @@ else
 			foreach($row['value'] as $key=>$value): ?>
             <label><input type="checkbox" name="<?=$row['id']?>[]"
                     class="<?=$suQuesion?> <?=($row['required'] == 'yes')?'required':'';?> <?=$row['class']?>"
-                    value="<?=$value?>" <?=(in_array($value,$cfValue))?'checked="checked"':'';?> />
+                    value="<?=$value?>" <?=(php72_in_array($value,$cfValue))?'checked="checked"':'';?> />
                 <?=$value?></label><br />
             <?php
 			 endforeach;

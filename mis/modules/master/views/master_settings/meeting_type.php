@@ -63,7 +63,7 @@ $(document).ready( function() {
 	</thead>
 	<tbody>
    <?php
-	if(count($type_list)) {   
+	if(php72_count($type_list)) {   
 		$r=1;
 		foreach($type_list as $doc) {
 			$row_type = ($r%2 == 0) ? ('even'):('odd');

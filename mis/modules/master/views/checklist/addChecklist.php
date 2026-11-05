@@ -2,7 +2,7 @@
 $formAction = site_url('master/checklist/form');
 $id = '';
 $val = array();
-if (count($checklistDetails)) {
+if (php72_count($checklistDetails)) {
     $val = $checklistDetails['0'];
     $formAction = site_url('master/checklist/form/' . $val['id']);
     $id = $val['id'];

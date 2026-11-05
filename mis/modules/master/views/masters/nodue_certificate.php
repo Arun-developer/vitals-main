@@ -129,7 +129,7 @@
                                                     <tbody>
                                                         <?php
                                                         $book = '';
-                                                        if (count($library_dues)) {
+                                                        if (php72_count($library_dues)) {
                                                             foreach ($library_dues as $rows) {
                                                                 $book .= "Book Number - " . $rows['book_number'] . "<br>Book Name - " . $rows['book_name'] . "<br><br>";
                                                                 ?> <?php
@@ -147,7 +147,7 @@
                                                         </tr>
                                                         <?php
                                                         $asset = '';
-                                                        if (count($asset_dues)) {
+                                                        if (php72_count($asset_dues)) {
                                                             $asset = '';
                                                             foreach ($asset_dues as $rows) {
                                                                 $ass_type = $this->Mmaster->showMaster($rows['asset_type']);

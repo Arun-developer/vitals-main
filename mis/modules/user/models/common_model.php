@@ -114,7 +114,7 @@ class Common_model extends My_Model {
                 $row2['finance'] = @unserialize($row2['finance']);
             }
         }
-        $data[] = array_merge($row, $row2);
+        $data[] = php72_array_merge($row, $row2);
         return array_pop($data);
     }
 
@@ -422,7 +422,7 @@ class Common_model extends My_Model {
                 $row2['finance'] = @unserialize($row2['finance']);
             }
         }
-        $data[] = array_merge($row2, $row);
+        $data[] = php72_array_merge($row2, $row);
         return array_pop($data);
     }
 

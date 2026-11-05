@@ -58,7 +58,7 @@ $('#response').change(function() {
 });
 </script>
 <?php 
-if(count($meetingDetails))
+if(php72_count($meetingDetails))
 {
 	$meeting_id = $meetingDetails['0']['id'];
 	$meeting_date = mysql2date($meetingDetails['0']['meeting_date']);

@@ -31,7 +31,7 @@ $nullLink = "javascript:void(0);";
         </thead>
         <tbody>
             <?php
-            if (count($mentorList)) {
+            if (php72_count($mentorList)) {
                 $r = 1;
                 foreach ($mentorList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

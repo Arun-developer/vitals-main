@@ -286,7 +286,7 @@
                                         </tr>
                                         <?php
                                         $j = 0;
-                                        for ($i = 0; $i < count($monthreport); $i++) {
+                                        for ($i = 0; $i < php72_count($monthreport); $i++) {
                                             echo '<tr scope="row">';
                                             if ($defaulttype == 'metrices') {
                                                 echo '<th>' . $monthreport[$i]['label'] . '</th>';
@@ -624,7 +624,7 @@ if ($defaultfrequency == '4') {
                                 ?>
             </tr>
                                 <?php
-                                for ($i = 0; $i < count($yearreport); $i++) {
+                                for ($i = 0; $i < php72_count($yearreport); $i++) {
                                     echo '<tr>';
                                     echo '<td>' . $yearreport[$i]['label'] . '</td>';
                                     $yearcount = 0;
@@ -701,7 +701,7 @@ if ($defaultfrequency == '4') {
             ?>
             </tr>
             <?php
-            for ($i = 0; $i < count($quarterlyreport); $i++) {
+            for ($i = 0; $i < php72_count($quarterlyreport); $i++) {
                 echo '<tr>';
                 echo '<td>' . $quarterlyreport[$i]['label'] . '</td>';
                 $quartercount = 0;
@@ -745,7 +745,7 @@ if ($defaultfrequency == '4') {
             ?>
             </tr>
             <?php
-            for ($i = 0; $i < count($weekreport); $i++) {
+            for ($i = 0; $i < php72_count($weekreport); $i++) {
                 echo '<tr>';
                 echo '<td>' . $weekreport[$i]['label'] . '</td>';
                 $weekcount = 0;

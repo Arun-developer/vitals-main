@@ -114,7 +114,7 @@ dd { padding-bottom: 15px }
                <select multiple="multiple"  id="usergroup">
                     <option>(all)</option>
 	<?php
-	if(count($users))
+	if(php72_count($users))
 	{    
 		$r=1;
 		foreach($users as $row)

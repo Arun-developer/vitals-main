@@ -43,7 +43,7 @@ $form_name = 'weekly_report';
 	<tbody>
     <?php
 	$total = array();
-	if(count($weeklyReport)){
+	if(php72_count($weeklyReport)){
 		foreach($weeklyReport as $row):
 		$total[] = $row['total'];
 		?>

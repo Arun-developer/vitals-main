@@ -398,7 +398,7 @@ if ($current_month == '1' || $current_month == '2' || $current_month == '3') {
 ?>
 
 <input type="hidden" id="active_editor" value="<?= $month_id; ?>">
-<input type="hidden" id="QualDataCount" value="<?= count($qualitative_data); ?>">
+<input type="hidden" id="QualDataCount" value="<?= php72_count($qualitative_data); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

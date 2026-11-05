@@ -15,7 +15,7 @@
 	$tmdata['count'] = '';
 	$tick  = "<img src='".base_url()."source/template/images/icons/tick.png'  />";
 	$wrong = "<img src='".base_url()."source/template/images/icons/wrong.gif'  />";
-	for($i=0;$i<count($quartermeeting);$i++)
+	for($i=0;$i<php72_count($quartermeeting);$i++)
 	{
 	   if($quartermeeting[$i][0]['id'] != '0')
 	   {

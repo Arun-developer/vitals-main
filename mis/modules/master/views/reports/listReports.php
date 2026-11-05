@@ -52,7 +52,7 @@ $form_name = 'reports';
         </thead>
         <tbody>
             <?php
-            if (count($reportsList)) {
+            if (php72_count($reportsList)) {
                 $r = 1;
                 foreach ($reportsList as $reports) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

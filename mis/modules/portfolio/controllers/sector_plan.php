@@ -110,7 +110,7 @@ class Sector_plan extends CI_Controller {
         foreach ($business_nature as $inv) {
             $inv_id[] = $inv['inv_id'];
         }
-        $innovation_id = array_unique($inv_id);
+        $innovation_id = php72_array_unique($inv_id);
         $assign_status = 1;
         if ($innovation_id != '') {
             $assign_list = $this->Mportfolio->getArrayListingDetails('assign_associate', $innovation_id, $assign_status);
@@ -382,9 +382,9 @@ class Sector_plan extends CI_Controller {
                 $master_fields['ext_annual'] = $data['q1_exits'] + $data['q2_exits'] + $data['q3_exits'] + $data['q4_exits'];
             }
 
-            if (isset($master_fields) && count($master_fields) > 0) {
+            if (isset($master_fields) && php72_count($master_fields) > 0) {
                 $get_masterdetails = $this->Mportfolio->getDetails('port_dashboard_master', $master_option);
-                if (count($get_masterdetails) > 0) {
+                if (php72_count($get_masterdetails) > 0) {
                     $update_master = $this->Mportfolio->approvalCompany('port_dashboard_master', $master_option, $master_fields);
                 } else {
                     $master_fields['partner_id'] = $this->session->userdata('partner_id');
@@ -536,9 +536,9 @@ class Sector_plan extends CI_Controller {
                         $master_fields['ext_annual'] = $data['q1_exits'] + $data['q2_exits'] + $data['q3_exits'] + $data['q4_exits'];
                     }
 
-                    if (isset($master_fields) && count($master_fields) > 0) {
+                    if (isset($master_fields) && php72_count($master_fields) > 0) {
                         $get_masterdetails = $this->Mportfolio->getDetails('port_dashboard_master', $master_option);
-                        if (count($get_masterdetails) > 0) {
+                        if (php72_count($get_masterdetails) > 0) {
                             $update_master = $this->Mportfolio->approvalCompany('port_dashboard_master', $master_option, $master_fields);
                         } else {
                             $master_fields['partner_id'] = $this->session->userdata('partner_id');
@@ -583,7 +583,7 @@ class Sector_plan extends CI_Controller {
         $qual_option['module_id'] = $module;
 
         $getQual_tempDetails = $this->Mportfolio->getDetails('temp_sectorplan_qualitative_data', $qual_option, $status);
-        if (count($getQual_tempDetails) > 0) {
+        if (php72_count($getQual_tempDetails) > 0) {
             $qual_data['q_one_desc'] = $getQual_tempDetails[0]['q_one_desc'];
             $qual_data['apr_desc'] = $getQual_tempDetails[0]['apr_desc'];
             $qual_data['may_desc'] = $getQual_tempDetails[0]['may_desc'];
@@ -610,7 +610,7 @@ class Sector_plan extends CI_Controller {
     public function deleteSubsectorDetail() {
         $this->db->set('status', 3);
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $m_query = $this->Mportfolio->deleteMentorDetail('sector_plan_discoverysubsector', $condition, 'id');
         $t_query = $this->Mportfolio->deleteMentorDetail('temp_sectorplan_discoverysubsector', $condition, 'id');
         if ($m_query) {
@@ -673,7 +673,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id); 
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -709,7 +709,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'discovery_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/discovery/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -759,7 +759,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -780,7 +780,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -800,12 +800,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_discovery', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discovery', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_discovery', $data1, $option);
             $discovery_id = $_POST["discovery_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discovery', $edited, $option);
@@ -821,7 +821,7 @@ class Sector_plan extends CI_Controller {
 
         $arr = array();
         $j = 1;
-        for ($i = 0; $i < count($_POST['subtheme']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['subtheme']); $i++) {
             if ($_POST['subtheme'][$i] != '') {
 
                 $c_option['id'] = $_POST["subsector_discovery_id"][$i];
@@ -839,11 +839,11 @@ class Sector_plan extends CI_Controller {
                 $m_option['status'] = 0;
 
                 $checkExist3 = $this->Mportfolio->getDetails('sector_plan_discoverysubsector', $c_option);
-                if (count($checkExist3) > 0 && $checkExist3[0]['status'] == 0) {
+                if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 0) {
                     $m_option['updated_by'] = $this->session->userdata('emp_number');
                     $mc_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discoverysubsector', $m_option, $c_option);
                     $tc_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_discoverysubsector', $m_option, $c_option);
-                } else if (count($checkExist3) > 0 && $checkExist3[0]['status'] == 1) {
+                } else if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 1) {
                     $m_option['updated_by'] = $this->session->userdata('emp_number');
                     $edited['edited_status'] = 1;
                     $mc_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discoverysubsector', $edited, $c_option);
@@ -859,7 +859,7 @@ class Sector_plan extends CI_Controller {
         }
         if ($t_query || $tc_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -885,10 +885,10 @@ class Sector_plan extends CI_Controller {
         $getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 		
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
         $inc_sectors = array();
         foreach ($get_inc_sector as $sect) {
@@ -928,7 +928,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 		
@@ -966,7 +966,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'diligence_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/diligence/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -1014,7 +1014,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -1035,7 +1035,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -1063,12 +1063,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_diligence', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_diligence', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_diligence', $data1, $option);
             $diligence_id = $_POST["diligence_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_diligence', $edited, $option);
@@ -1084,7 +1084,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -1108,10 +1108,10 @@ class Sector_plan extends CI_Controller {
         $get_inc_sector = $this->Mportfolio->getIncSector();
         $getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
         $inc_sectors = array();
         foreach ($get_inc_sector as $sect) {
@@ -1152,7 +1152,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -1190,7 +1190,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'selection_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/selection/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -1238,7 +1238,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -1259,7 +1259,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -1287,12 +1287,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_selection', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_selection', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_selection', $data1, $option);
             $selection_id = $_POST["selection_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_selection', $edited, $option);
@@ -1308,7 +1308,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -1333,10 +1333,10 @@ class Sector_plan extends CI_Controller {
         $getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 		
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
         $inc_sectors = array();
         foreach ($get_inc_sector as $sect) {
@@ -1376,7 +1376,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -1414,7 +1414,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'graduates_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/graduates/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -1462,7 +1462,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -1483,7 +1483,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -1503,12 +1503,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_graduates', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_graduates', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_graduates', $data1, $option);
             $graduates_id = $_POST["graduates_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_graduates', $edited, $option);
@@ -1524,7 +1524,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -1548,10 +1548,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1591,7 +1591,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -1629,7 +1629,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'exits_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/exits/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -1677,7 +1677,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -1698,7 +1698,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -1718,12 +1718,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_exits', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_exits', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_exits', $data1, $option);
             $exits_id = $_POST["exits_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_exits', $edited, $option);
@@ -1739,7 +1739,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -1763,10 +1763,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -1801,7 +1801,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -1839,7 +1839,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'donorengagement_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/donorengagement/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -1887,7 +1887,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -1908,7 +1908,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -1928,12 +1928,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_donorengagement', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorengagement', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_donorengagement', $data1, $option);
             $donorengage_id = $_POST["donorengage_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorengagement', $edited, $option);
@@ -1949,7 +1949,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -1973,10 +1973,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2012,7 +2012,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -2050,7 +2050,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'donorconnect_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/donorconnect/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -2098,7 +2098,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -2119,7 +2119,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -2139,12 +2139,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_donorconnect', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorconnect', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_donorconnect', $data1, $option);
             $donorconnect_id = $_POST["donorconnect_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorconnect', $edited, $option);
@@ -2160,7 +2160,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -2190,10 +2190,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2228,7 +2228,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -2266,7 +2266,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'conferences_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/conferences/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -2314,7 +2314,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -2335,7 +2335,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -2355,12 +2355,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_conferences', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_conferences', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_conferences', $data1, $option);
             $conferences_id = $_POST["conferences_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_conferences', $edited, $option);
@@ -2376,7 +2376,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -2406,10 +2406,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2445,7 +2445,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = array_unique($sector_merge);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
@@ -2484,7 +2484,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'blog_post_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/blogpost/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -2532,7 +2532,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -2553,7 +2553,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -2573,12 +2573,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_blogpost', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_blogpost', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_blogpost', $data1, $option);
             $blogpost_id = $_POST["blogpost_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_blogpost', $edited, $option);
@@ -2594,7 +2594,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -2624,10 +2624,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2662,7 +2662,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -2700,7 +2700,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'publish_article_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/article/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -2748,7 +2748,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -2769,7 +2769,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -2789,12 +2789,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_publisharticle', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_publisharticle', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_publisharticle', $data1, $option);
             $article_id = $_POST["article_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_publisharticle', $edited, $option);
@@ -2810,7 +2810,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -2840,10 +2840,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -2878,7 +2878,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -2917,7 +2917,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'speakingengagement_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/speaking_engagement/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -2965,7 +2965,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -2986,7 +2986,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -3006,12 +3006,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_speakingengagement', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_speakingengagement', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_speakingengagement', $data1, $option);
             $speaking_engagement_id = $_POST["speaking_engagement_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_speakingengagement', $edited, $option);
@@ -3027,7 +3027,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -3055,10 +3055,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -3093,7 +3093,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -3131,7 +3131,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'jury_panels_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/jury_panel/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -3179,7 +3179,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -3200,7 +3200,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -3220,12 +3220,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_jurypanels', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_jurypanels', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_jurypanels', $data1, $option);
             $jury_panel_id = $_POST["jury_panel_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_jurypanels', $edited, $option);
@@ -3241,7 +3241,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -3270,10 +3270,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -3308,7 +3308,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -3346,7 +3346,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'case_study_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/case_study/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -3394,7 +3394,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -3415,7 +3415,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -3435,12 +3435,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_casestudy', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_casestudy', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_casestudy', $data1, $option);
             $case_study_id = $_POST["case_study_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_casestudy', $edited, $option);
@@ -3456,7 +3456,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -3486,10 +3486,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -3524,7 +3524,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -3562,7 +3562,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'equity_investment_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/equity_investments/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -3610,7 +3610,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -3631,7 +3631,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -3651,12 +3651,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_equity', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_equity', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_equity', $data1, $option);
             $equity_id = $_POST["equity_investment_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_equity', $edited, $option);
@@ -3672,7 +3672,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -3702,10 +3702,10 @@ class Sector_plan extends CI_Controller {
 		$getIncSector_cr = $this->Mportfolio->getIncSector_cr();
 
 		if(!empty($getIncSector_cr)){
-			$allSectors = array_map(function($item) {
+			$allSectors = php72_array_map(function($item) {
 				return explode(',', $item['sector']);
 			}, $getIncSector_cr);
-			$uniqueSectors = array_unique(array_merge(...$allSectors));
+			$uniqueSectors = array_unique(php72_array_merge(...$allSectors));
 		}
 		$inc_sectors = array();
 		foreach ($get_inc_sector as $sect) {
@@ -3741,7 +3741,7 @@ class Sector_plan extends CI_Controller {
         /* fetching sector leads and assign incharge */
         $data['app_sectorlead'] = $s_lead = $this->getSectorLead($id);
         $data['app_assinglead'] = $assoc_lead = $this->getAssociateSectorLead($id);
-        $sector_merge = array_merge($s_lead, $assoc_lead);
+        $sector_merge = php72_array_merge($s_lead, $assoc_lead);
         $data['assign_sectorlead'] = $assign_sectorlead = array_unique($sector_merge);
         /* end operation */
 
@@ -3779,7 +3779,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'portfolio_return_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/consulting_engagements/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }
@@ -3827,7 +3827,7 @@ class Sector_plan extends CI_Controller {
         $qual_approval['config_approval'] = 1;
 
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
-        if (count($check_qualit_exist) > 0) {
+        if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
             if ($check_qualit_exist[0]['status'] == 1) {
                 $qual_edited['edited_status'] = 1;
@@ -3848,7 +3848,7 @@ class Sector_plan extends CI_Controller {
 
         if ($qt_query) {
             $qual_checkExist1 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($qual_checkExist1) > 0) {
+            if (php72_count($qual_checkExist1) > 0) {
                 $qual_query1 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $qual_approval, $app_option);
             } else {
                 $qual_query1 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $qual_approval);
@@ -3868,12 +3868,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_portfolioreturns', $option);
-        if (count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_portfolioreturns', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_portfolioreturns', $data1, $option);
             $portfolio_returns_id = $_POST["portfolio_returns_id"];
-        } else if (count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_portfolioreturns', $edited, $option);
@@ -3889,7 +3889,7 @@ class Sector_plan extends CI_Controller {
 
         if ($t_query) {
             $checkExist4 = $this->Mportfolio->getDetails('sector_plan_approval', $app_option);
-            if (count($checkExist4) > 0) {
+            if (php72_count($checkExist4) > 0) {
                 $query3 = $this->Mportfolio->updatePortfolioDetail('sector_plan_approval', $approval, $app_option);
             } else {
                 $query3 = $this->Mportfolio->insertPortfolioDetail('sector_plan_approval', $approval);
@@ -4092,77 +4092,77 @@ class Sector_plan extends CI_Controller {
         $qualit_equity = $this->Mportfolio->getQualitativePlanExport('sectorplan_qualitative_data', $qual_plan, '1', $f_year, '14');
         $qualit_portfolio_returns = $this->Mportfolio->getQualitativePlanExport('sectorplan_qualitative_data', $qual_plan, '1', $f_year, '15');
 
-        if (isset($qualit_discovery) && count($qualit_discovery) > 0) {
+        if (isset($qualit_discovery) && php72_count($qualit_discovery) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '5', $this->qualitative_excelAlign($qualit_discovery[0][$tablevals]));
             }
         }
-        if (isset($qualit_diligence) && count($qualit_diligence) > 0) {
+        if (isset($qualit_diligence) && php72_count($qualit_diligence) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '6', $this->qualitative_excelAlign($qualit_diligence[0][$tablevals]));
             }
         }
-        if (isset($qualit_selection) && count($qualit_selection) > 0) {
+        if (isset($qualit_selection) && php72_count($qualit_selection) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '7', $this->qualitative_excelAlign($qualit_selection[0][$tablevals]));
             }
         }
-        if (isset($qualit_graduates) && count($qualit_graduates) > 0) {
+        if (isset($qualit_graduates) && php72_count($qualit_graduates) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '8', $this->qualitative_excelAlign($qualit_graduates[0][$tablevals]));
             }
         }
-        if (isset($qualit_exits) && count($qualit_exits) > 0) {
+        if (isset($qualit_exits) && php72_count($qualit_exits) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '9', $this->qualitative_excelAlign($qualit_exits[0][$tablevals]));
             }
         }
-        if (isset($qualit_donor_engage) && count($qualit_donor_engage) > 0) {
+        if (isset($qualit_donor_engage) && php72_count($qualit_donor_engage) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '10', $this->qualitative_excelAlign($qualit_donor_engage[0][$tablevals]));
             }
         }
-        if (isset($qualit_donor_connect) && count($qualit_donor_connect) > 0) {
+        if (isset($qualit_donor_connect) && php72_count($qualit_donor_connect) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '11', $this->qualitative_excelAlign($qualit_donor_connect[0][$tablevals]));
             }
         }
-        if (isset($qualit_conference) && count($qualit_conference) > 0) {
+        if (isset($qualit_conference) && php72_count($qualit_conference) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '12', $this->qualitative_excelAlign($qualit_conference[0][$tablevals]));
             }
         }
-        if (isset($qualit_blogpost) && count($qualit_blogpost) > 0) {
+        if (isset($qualit_blogpost) && php72_count($qualit_blogpost) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '13', $this->qualitative_excelAlign($qualit_blogpost[0][$tablevals]));
             }
         }
-        if (isset($qualit_article) && count($qualit_article) > 0) {
+        if (isset($qualit_article) && php72_count($qualit_article) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '14', $this->qualitative_excelAlign($qualit_article[0][$tablevals]));
             }
         }
-        if (isset($qualit_speaking) && count($qualit_speaking) > 0) {
+        if (isset($qualit_speaking) && php72_count($qualit_speaking) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '15', $this->qualitative_excelAlign($qualit_speaking[0][$tablevals]));
             }
         }
-        if (isset($qualit_jury_panels) && count($qualit_jury_panels) > 0) {
+        if (isset($qualit_jury_panels) && php72_count($qualit_jury_panels) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '16', $this->qualitative_excelAlign($qualit_jury_panels[0][$tablevals]));
             }
         }
-        if (isset($qualit_case_study) && count($qualit_case_study) > 0) {
+        if (isset($qualit_case_study) && php72_count($qualit_case_study) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '17', $this->qualitative_excelAlign($qualit_case_study[0][$tablevals]));
             }
         }
-        if (isset($qualit_equity) && count($qualit_equity) > 0) {
+        if (isset($qualit_equity) && php72_count($qualit_equity) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '18', $this->qualitative_excelAlign($qualit_equity[0][$tablevals]));
             }
         }
-        if (isset($qualit_portfolio_returns) && count($qualit_portfolio_returns) > 0) {
+        if (isset($qualit_portfolio_returns) && php72_count($qualit_portfolio_returns) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '19', $this->qualitative_excelAlign($qualit_portfolio_returns[0][$tablevals]));
             }
@@ -4244,14 +4244,14 @@ class Sector_plan extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $row_no, 'Pipeline');
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Discovery');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'Total no. of applications');
-        if (isset($sectorplan_discovery) && count($sectorplan_discovery) > 0) {
+        if (isset($sectorplan_discovery) && php72_count($sectorplan_discovery) > 0) {
 
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_discovery[0]['total_applications_q1']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_discovery[0]['total_applications_q2']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_discovery[0]['total_applications_q3']);
             $objPHPExcel->getActiveSheet()->setCellValue('G' . $row_no, $sectorplan_discovery[0]['total_applications_q4']);
         }
-        if (isset($sectorplan_discoverysub) && count($sectorplan_discoverysub) > 0) {
+        if (isset($sectorplan_discoverysub) && php72_count($sectorplan_discoverysub) > 0) {
             foreach ($sectorplan_discoverysub as $sub) {
                 $row_no++;
                 $subsector = $this->Mportfolio->getSummary_SectorName($sub['subsector_id']);
@@ -4311,7 +4311,7 @@ class Sector_plan extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $row_no, 'Graduates & Exits');
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Graduates (Non-financial)');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of graduates (non-financial)');
-        if (isset($sectorplan_graduates) && count($sectorplan_graduates) > 0) {
+        if (isset($sectorplan_graduates) && php72_count($sectorplan_graduates) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_graduates[0]['q1_graduates']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_graduates[0]['q2_graduates']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_graduates[0]['q3_graduates']);
@@ -4321,7 +4321,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Exits (With Equity)');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of exits (Villgro has equity)');
-        if (isset($sectorplan_exits) && count($sectorplan_exits) > 0) {
+        if (isset($sectorplan_exits) && php72_count($sectorplan_exits) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_exits[0]['q1_exits']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_exits[0]['q2_exits']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_exits[0]['q3_exits']);
@@ -4338,7 +4338,7 @@ class Sector_plan extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $row_no, 'Fundraise');
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Donor engagement plan');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, "Value of renewal agreements ($currency_text)");
-        if (isset($sectorplan_donor_engage) && count($sectorplan_donor_engage) > 0) {
+        if (isset($sectorplan_donor_engage) && php72_count($sectorplan_donor_engage) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_donor_engage[0]['q1_renewal_agreements']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_donor_engage[0]['q2_renewal_agreements']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_donor_engage[0]['q3_renewal_agreements']);
@@ -4348,7 +4348,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'New donors to connect with ');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, "Value of new agreements signed ($currency_text)");
-        if (isset($sectorplan_donor_connect) && count($sectorplan_donor_connect) > 0) {
+        if (isset($sectorplan_donor_connect) && php72_count($sectorplan_donor_connect) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_donor_connect[0]['q1_new_agreements']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_donor_connect[0]['q2_new_agreements']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_donor_connect[0]['q3_new_agreements']);
@@ -4359,7 +4359,7 @@ class Sector_plan extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $row_no, 'Brand building & Thought leadership');
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Conferences');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of conferences attended');
-        if (isset($sectorplan_conference) && count($sectorplan_conference) > 0) {
+        if (isset($sectorplan_conference) && php72_count($sectorplan_conference) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_conference[0]['q1_conferences']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_conference[0]['q2_conferences']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_conference[0]['q3_conferences']);
@@ -4369,7 +4369,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Write blog post');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of blog posts');
-        if (isset($sectorplan_blogpost) && count($sectorplan_blogpost) > 0) {
+        if (isset($sectorplan_blogpost) && php72_count($sectorplan_blogpost) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_blogpost[0]['q1_blogpost']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_blogpost[0]['q2_blogpost']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_blogpost[0]['q3_blogpost']);
@@ -4379,7 +4379,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Publish article');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of articles');
-        if (isset($sectorplan_article) && count($sectorplan_article) > 0) {
+        if (isset($sectorplan_article) && php72_count($sectorplan_article) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_article[0]['q1_publisharticle']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_article[0]['q2_publisharticle']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_article[0]['q3_publisharticle']);
@@ -4389,7 +4389,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Speaking engagement');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of speaking engagements');
-        if (isset($sectorplan_speaking) && count($sectorplan_speaking) > 0) {
+        if (isset($sectorplan_speaking) && php72_count($sectorplan_speaking) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_speaking[0]['q1_speakingengagement']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_speaking[0]['q2_speakingengagement']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_speaking[0]['q3_speakingengagement']);
@@ -4399,7 +4399,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Attend Jury Panels');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of jury panels');
-        if (isset($sectorplan_jury_panels) && count($sectorplan_jury_panels) > 0) {
+        if (isset($sectorplan_jury_panels) && php72_count($sectorplan_jury_panels) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_jury_panels[0]['q1_jurypanels']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_jury_panels[0]['q2_jurypanels']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_jury_panels[0]['q3_jurypanels']);
@@ -4409,7 +4409,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Case Study');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of case studies');
-        if (isset($sectorplan_case_study) && count($sectorplan_case_study) > 0) {
+        if (isset($sectorplan_case_study) && php72_count($sectorplan_case_study) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_case_study[0]['q1_casestudy']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_case_study[0]['q2_casestudy']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_case_study[0]['q3_casestudy']);
@@ -4420,7 +4420,7 @@ class Sector_plan extends CI_Controller {
         $objPHPExcel->getActiveSheet()->setCellValue('A' . $row_no, 'Drive Villgro towards financial sustainability');
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Make equity investments');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of equity investment deals');
-        if (isset($sectorplan_equity) && count($sectorplan_equity) > 0) {
+        if (isset($sectorplan_equity) && php72_count($sectorplan_equity) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_equity[0]['q1_equity']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_equity[0]['q2_equity']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_equity[0]['q3_equity']);
@@ -4430,7 +4430,7 @@ class Sector_plan extends CI_Controller {
         $row_no += 1;
         $objPHPExcel->getActiveSheet()->setCellValue('B' . $row_no, 'Generate returns from portfolio');
         $objPHPExcel->getActiveSheet()->setCellValue('C' . $row_no, 'No. of service agreements planned');
-        if (isset($sectorplan_portfolio_returns) && count($sectorplan_portfolio_returns) > 0) {
+        if (isset($sectorplan_portfolio_returns) && php72_count($sectorplan_portfolio_returns) > 0) {
             $objPHPExcel->getActiveSheet()->setCellValue('D' . $row_no, $sectorplan_portfolio_returns[0]['q1_portfolioreturns']);
             $objPHPExcel->getActiveSheet()->setCellValue('E' . $row_no, $sectorplan_portfolio_returns[0]['q2_portfolioreturns']);
             $objPHPExcel->getActiveSheet()->setCellValue('F' . $row_no, $sectorplan_portfolio_returns[0]['q3_portfolioreturns']);
@@ -4545,182 +4545,182 @@ class Sector_plan extends CI_Controller {
         $qualit_equity_actual = $this->Mportfolio->getQualitativeActualExport('sector_actual_qualitative_data', $qual_actual, '3', $f_year, '14');
         $qualit_portfolio_returns_actual = $this->Mportfolio->getQualitativeActualExport('sector_actual_qualitative_data', $qual_actual, '3', $f_year, '15');
 
-        if (isset($qualit_discovery) && count($qualit_discovery) > 0) {
+        if (isset($qualit_discovery) && php72_count($qualit_discovery) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '6', $this->qualitative_excelAlign($qualit_discovery[0][$tablevals]));
             }
         }
-        if (isset($qualit_diligence) && count($qualit_diligence) > 0) {
+        if (isset($qualit_diligence) && php72_count($qualit_diligence) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '9', $this->qualitative_excelAlign($qualit_diligence[0][$tablevals]));
             }
         }
-        if (isset($qualit_selection) && count($qualit_selection) > 0) {
+        if (isset($qualit_selection) && php72_count($qualit_selection) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '12', $this->qualitative_excelAlign($qualit_selection[0][$tablevals]));
             }
         }
-        if (isset($qualit_graduates) && count($qualit_graduates) > 0) {
+        if (isset($qualit_graduates) && php72_count($qualit_graduates) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '15', $this->qualitative_excelAlign($qualit_graduates[0][$tablevals]));
             }
         }
-        if (isset($qualit_exits) && count($qualit_exits) > 0) {
+        if (isset($qualit_exits) && php72_count($qualit_exits) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '18', $this->qualitative_excelAlign($qualit_exits[0][$tablevals]));
             }
         }
-        if (isset($qualit_donor_engage) && count($qualit_donor_engage) > 0) {
+        if (isset($qualit_donor_engage) && php72_count($qualit_donor_engage) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '21', $this->qualitative_excelAlign($qualit_donor_engage[0][$tablevals]));
             }
         }
-        if (isset($qualit_donor_connect) && count($qualit_donor_connect) > 0) {
+        if (isset($qualit_donor_connect) && php72_count($qualit_donor_connect) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '24', $this->qualitative_excelAlign($qualit_donor_connect[0][$tablevals]));
             }
         }
-        if (isset($qualit_conference) && count($qualit_conference) > 0) {
+        if (isset($qualit_conference) && php72_count($qualit_conference) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '27', $this->qualitative_excelAlign($qualit_conference[0][$tablevals]));
             }
         }
-        if (isset($qualit_blogpost) && count($qualit_blogpost) > 0) {
+        if (isset($qualit_blogpost) && php72_count($qualit_blogpost) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '30', $this->qualitative_excelAlign($qualit_blogpost[0][$tablevals]));
             }
         }
-        if (isset($qualit_article) && count($qualit_article) > 0) {
+        if (isset($qualit_article) && php72_count($qualit_article) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '33', $this->qualitative_excelAlign($qualit_article[0][$tablevals]));
             }
         }
-        if (isset($qualit_speaking) && count($qualit_speaking) > 0) {
+        if (isset($qualit_speaking) && php72_count($qualit_speaking) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '36', $this->qualitative_excelAlign($qualit_speaking[0][$tablevals]));
             }
         }
-        if (isset($qualit_jury_panels) && count($qualit_jury_panels) > 0) {
+        if (isset($qualit_jury_panels) && php72_count($qualit_jury_panels) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '39', $this->qualitative_excelAlign($qualit_jury_panels[0][$tablevals]));
             }
         }
-        if (isset($qualit_case_study) && count($qualit_case_study) > 0) {
+        if (isset($qualit_case_study) && php72_count($qualit_case_study) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '42', $this->qualitative_excelAlign($qualit_case_study[0][$tablevals]));
             }
         }
-        if (isset($qualit_equity) && count($qualit_equity) > 0) {
+        if (isset($qualit_equity) && php72_count($qualit_equity) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '45', $this->qualitative_excelAlign($qualit_equity[0][$tablevals]));
             }
         }
-        if (isset($qualit_portfolio_returns) && count($qualit_portfolio_returns) > 0) {
+        if (isset($qualit_portfolio_returns) && php72_count($qualit_portfolio_returns) > 0) {
             foreach ($rowHead_tables as $tablekeys => $tablevals) {
                 $objPHPExcel->getActiveSheet()->setCellValue($tablekeys . '48', $this->qualitative_excelAlign($qualit_portfolio_returns[0][$tablevals]));
             }
         }
 
 
-        if (isset($qualit_discovery_actual) && count($qualit_discovery_actual) > 0) {
+        if (isset($qualit_discovery_actual) && php72_count($qualit_discovery_actual) > 0) {
             foreach ($qualit_discovery_actual as $discovery_actual) {
                 $position = $achieve_position[$discovery_actual['month']] . '7';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($discovery_actual['description']));
             }
         }
 
-        if (isset($qualit_diligence_actual) && count($qualit_diligence_actual) > 0) {
+        if (isset($qualit_diligence_actual) && php72_count($qualit_diligence_actual) > 0) {
             foreach ($qualit_diligence_actual as $diligence_actual) {
                 $position = $achieve_position[$diligence_actual['month']] . '10';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($diligence_actual['description']));
             }
         }
 
-        if (isset($qualit_selection_actual) && count($qualit_selection_actual) > 0) {
+        if (isset($qualit_selection_actual) && php72_count($qualit_selection_actual) > 0) {
             foreach ($qualit_selection_actual as $selection_actual) {
                 $position = $achieve_position[$selection_actual['month']] . '13';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($selection_actual['description']));
             }
         }
 
-        if (isset($qualit_graduates_actual) && count($qualit_graduates_actual) > 0) {
+        if (isset($qualit_graduates_actual) && php72_count($qualit_graduates_actual) > 0) {
             foreach ($qualit_graduates_actual as $graduates_actual) {
                 $position = $achieve_position[$graduates_actual['month']] . '16';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($graduates_actual['description']));
             }
         }
 
-        if (isset($qualit_exits_actual) && count($qualit_exits_actual) > 0) {
+        if (isset($qualit_exits_actual) && php72_count($qualit_exits_actual) > 0) {
             foreach ($qualit_exits_actual as $exits_actual) {
                 $position = $achieve_position[$exits_actual['month']] . '19';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($exits_actual['description']));
             }
         }
 
-        if (isset($qualit_donor_engage_actual) && count($qualit_donor_engage_actual) > 0) {
+        if (isset($qualit_donor_engage_actual) && php72_count($qualit_donor_engage_actual) > 0) {
             foreach ($qualit_donor_engage_actual as $donorengage_actual) {
                 $position = $achieve_position[$donorengage_actual['month']] . '22';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($donorengage_actual['description']));
             }
         }
 
-        if (isset($qualit_donor_connect_actual) && count($qualit_donor_connect_actual) > 0) {
+        if (isset($qualit_donor_connect_actual) && php72_count($qualit_donor_connect_actual) > 0) {
             foreach ($qualit_donor_connect_actual as $donorconnect_actual) {
                 $position = $achieve_position[$donorconnect_actual['month']] . '25';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($donorconnect_actual['description']));
             }
         }
 
-        if (isset($qualit_conference_actual) && count($qualit_conference_actual) > 0) {
+        if (isset($qualit_conference_actual) && php72_count($qualit_conference_actual) > 0) {
             foreach ($qualit_conference_actual as $conference_actual) {
                 $position = $achieve_position[$conference_actual['month']] . '28';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($conference_actual['description']));
             }
         }
 
-        if (isset($qualit_blogpost_actual) && count($qualit_blogpost_actual) > 0) {
+        if (isset($qualit_blogpost_actual) && php72_count($qualit_blogpost_actual) > 0) {
             foreach ($qualit_blogpost_actual as $blogpost_actual) {
                 $position = $achieve_position[$blogpost_actual['month']] . '31';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($blogpost_actual['description']));
             }
         }
 
-        if (isset($qualit_article_actual) && count($qualit_article_actual) > 0) {
+        if (isset($qualit_article_actual) && php72_count($qualit_article_actual) > 0) {
             foreach ($qualit_article_actual as $article_actual) {
                 $position = $achieve_position[$article_actual['month']] . '34';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($article_actual['description']));
             }
         }
 
-        if (isset($qualit_speaking_actual) && count($qualit_speaking_actual) > 0) {
+        if (isset($qualit_speaking_actual) && php72_count($qualit_speaking_actual) > 0) {
             foreach ($qualit_speaking_actual as $speaking_actual) {
                 $position = $achieve_position[$speaking_actual['month']] . '37';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($speaking_actual['description']));
             }
         }
 
-        if (isset($qualit_jury_panels_actual) && count($qualit_jury_panels_actual) > 0) {
+        if (isset($qualit_jury_panels_actual) && php72_count($qualit_jury_panels_actual) > 0) {
             foreach ($qualit_jury_panels_actual as $jurypanels_actual) {
                 $position = $achieve_position[$jurypanels_actual['month']] . '40';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($jurypanels_actual['description']));
             }
         }
 
-        if (isset($qualit_case_study_actual) && count($qualit_case_study_actual) > 0) {
+        if (isset($qualit_case_study_actual) && php72_count($qualit_case_study_actual) > 0) {
             foreach ($qualit_case_study_actual as $casestudy_actual) {
                 $position = $achieve_position[$casestudy_actual['month']] . '43';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($casestudy_actual['description']));
             }
         }
 
-        if (isset($qualit_equity_actual) && count($qualit_equity_actual) > 0) {
+        if (isset($qualit_equity_actual) && php72_count($qualit_equity_actual) > 0) {
             foreach ($qualit_equity_actual as $equity_actual) {
                 $position = $achieve_position[$equity_actual['month']] . '46';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($equity_actual['description']));
             }
         }
 
-        if (isset($qualit_portfolio_returns_actual) && count($qualit_portfolio_returns_actual) > 0) {
+        if (isset($qualit_portfolio_returns_actual) && php72_count($qualit_portfolio_returns_actual) > 0) {
             foreach ($qualit_portfolio_returns_actual as $portfolio_actual) {
                 $position = $achieve_position[$portfolio_actual['month']] . '49';
                 $objPHPExcel->getActiveSheet()->setCellValue($position, $this->qualitative_excelAlign($portfolio_actual['description']));

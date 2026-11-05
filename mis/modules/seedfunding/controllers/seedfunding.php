@@ -145,8 +145,8 @@ class Seedfunding extends CI_Controller
 
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = '*';
-            for ($i = 0; $i < count($_FILES['supporting_documents']['name']); $i++) {
-                $_POST['document'] = implode(',', $_FILES['supporting_documents']['name']);
+            for ($i = 0; $i < php72_count($_FILES['supporting_documents']['name']); $i++) {
+                $_POST['document'] = php72_implode(',', $_FILES['supporting_documents']['name']);
                 if ($_FILES['supporting_documents']['name'] != '') {
                     $_FILES['ty']['name'] = $_FILES['supporting_documents']['name'][$i];
                     $_FILES['ty']['tmp_name'] = $_FILES['supporting_documents']['tmp_name'][$i];
@@ -170,7 +170,7 @@ class Seedfunding extends CI_Controller
         $data['fundDetails'] = array();
         if ($fu_id != '') {
             $data['fundDetails'] = $this->Mseedfunding->getFundUtilization($fu_id);
-            if (count($data['fundDetails']) == 0) {
+            if (php72_count($data['fundDetails']) == 0) {
                 redirect('seedfunding/getinstallment/' . $innovation . '/' . $installment);
             }
 
@@ -246,7 +246,7 @@ class Seedfunding extends CI_Controller
                 $result = $this->Mseedfunding->updateTarget($_POST);
                 $msg = "Record Updated!";
             } else {
-                $_POST['lineitem'] = implode(',', $_POST['lineitem']);
+                $_POST['lineitem'] = php72_implode(',', $_POST['lineitem']);
                 $result = $this->Mseedfunding->insertTarget($_POST);
                 $msg = "Record inserted!";
             }
@@ -257,7 +257,7 @@ class Seedfunding extends CI_Controller
         $data['targetDetails'] = array();
         if ($id != '') {
             $data['targetDetails'] = $this->Mseedfunding->getTargetDetails($id);
-            if (count($data['targetDetails']) == 0) {
+            if (php72_count($data['targetDetails']) == 0) {
                 redirect('seedfunding/monthly_progress/' . $innovation);
             }
 

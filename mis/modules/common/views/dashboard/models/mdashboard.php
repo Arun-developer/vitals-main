@@ -40,7 +40,7 @@ class Mdashboard extends CI_Model
     public function getemployeename($employee)
     {
         $data = array();
-        $query = "select emp_firstname from villtest_hris.hs_hr_employee where emp_number IN('" . implode("','", $employee) . "')";
+        $query = "select emp_firstname from villtest_hris.hs_hr_employee where emp_number IN('" . php72_implode("','", $employee) . "')";
         $result = $this->db->query($query);
         foreach ($result->result_array() as $row) {
             $data[] = $row;
@@ -294,7 +294,7 @@ ORDER BY C.NAME_OF_ENTERPRISE, C.YEAR ";
     }
     public function sectorsearchreport($sector)
     {
-        $query = "SELECT IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as value from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) JOIN screening_master as SM ON(S.field = SM.id) WHERE SM.id = '80' and  S.answer IN('" . implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
+        $query = "SELECT IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as value from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) JOIN screening_master as SM ON(S.field = SM.id) WHERE SM.id = '80' and  S.answer IN('" . php72_implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
         $result = $this->db->query($query);
         return $result->result_array();
 
@@ -319,11 +319,11 @@ ORDER BY C.NAME_OF_ENTERPRISE, C.YEAR ";
         } elseif ($employee['0'] == "" && $source['0'] != "" && $sector['0'] == "") {
             $query1 = "SELECT MS.master_name,count(IP.id) as VALUE,IP.stage,EXTRACT(YEAR FROM IP.created_date) as year FROM
   master_settings as MS LEFT OUTER JOIN source_master as SM ON
-  SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON SM.id = IP.source WHERE  MS.master_type = 'Source Type' and MS.master_name IN('" . implode("','", $source) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
+  SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON SM.id = IP.source WHERE  MS.master_type = 'Source Type' and MS.master_name IN('" . php72_implode("','", $source) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
             $result1 = $this->db->query($query1);
             return $result1->result_array();
         } elseif ($employee['0'] == "" && $source['0'] == "" && $sector['0'] != "") {
-            $query1 = "SELECT IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) WHERE S.answer IN('" . implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
+            $query1 = "SELECT IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) WHERE S.answer IN('" . php72_implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
             $result1 = $this->db->query($query1);
 
             return $result1->result_array();
@@ -334,15 +334,15 @@ ORDER BY C.NAME_OF_ENTERPRISE, C.YEAR ";
                                 AA.innovation = IP.id
                                 LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON
                                 HE.emp_number = AA.associate_employee
-                                 WHERE HE.emp_number IN('" . implode("','", $employee) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
+                                 WHERE HE.emp_number IN('" . php72_implode("','", $employee) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
             $result2 = $this->db->query($query2);
             return $result2->result_array();
         } elseif ($source['0'] != "" && $employee['0'] != "" && $sector['0'] == "") {
-            $query3 = "SELECT MS.master_name,HE.emp_firstname,HE.emp_number,count(IP.id) as VALUE,IP.stage,EXTRACT(YEAR FROM IP.created_date) as year FROM  master_settings as MS LEFT OUTER JOIN source_master as SM ON SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON  SM.id = IP.source LEFT OUTER JOIN assign_associate as AA ON  AA.innovation = IP.id LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON HE.emp_number = AA.associate_employee WHERE HE.emp_number IN('" . implode("','", $employee) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . implode("','", $source) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
+            $query3 = "SELECT MS.master_name,HE.emp_firstname,HE.emp_number,count(IP.id) as VALUE,IP.stage,EXTRACT(YEAR FROM IP.created_date) as year FROM  master_settings as MS LEFT OUTER JOIN source_master as SM ON SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON  SM.id = IP.source LEFT OUTER JOIN assign_associate as AA ON  AA.innovation = IP.id LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON HE.emp_number = AA.associate_employee WHERE HE.emp_number IN('" . php72_implode("','", $employee) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . php72_implode("','", $source) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
             $result3 = $this->db->query($query3);
             return $result3->result_array();
         } elseif ($source['0'] != "" && $employee['0'] == "" && $sector['0'] != "") {
-            $dbquery = "SELECT MS.master_name,IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) LEFT OUTER JOIN source_master as SM ON (SM.id= IP.source) LEFT OUTER JOIN master_settings as MS ON(MS.id = SM.source_type) WHERE S.answer IN('" . implode("','", $sector) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . implode("','", $source) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
+            $dbquery = "SELECT MS.master_name,IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) LEFT OUTER JOIN source_master as SM ON (SM.id= IP.source) LEFT OUTER JOIN master_settings as MS ON(MS.id = SM.source_type) WHERE S.answer IN('" . php72_implode("','", $sector) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . php72_implode("','", $source) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
             $result4 = $this->db->query($dbquery);
             return $result4->result_array();
         }
@@ -389,7 +389,7 @@ SUM(CASE WHEN FIND_IN_SET(8,IA.services) THEN 1 ELSE 0 END) AS total4,
 SUM(CASE WHEN FIND_IN_SET(9,IA.services) THEN 1 ELSE 0 END) AS total5,
 (SELECT TITLE FROM program_service_offering WHERE ID = 10) AS title_6,
 SUM(CASE WHEN FIND_IN_SET(10,IA.services) THEN 1 ELSE 0 END) AS total6
-FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovation)  WHERE IP.name_of_enterprise IN ('" . implode("','", $service) . "')  GROUP BY EXTRACT(YEAR FROM IP.created_date)";
+FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovation)  WHERE IP.name_of_enterprise IN ('" . php72_implode("','", $service) . "')  GROUP BY EXTRACT(YEAR FROM IP.created_date)";
             $result1 = $this->db->query($query1);
             return $result1->result_array();
         } elseif ($employee['0'] == "" && $service['0'] == "" && $sector['0'] != "") {
@@ -408,7 +408,7 @@ SUM(CASE WHEN FIND_IN_SET(8,IA.services) THEN 1 ELSE 0 END) AS total4,
 SUM(CASE WHEN FIND_IN_SET(9,IA.services) THEN 1 ELSE 0 END) AS total5,
 (SELECT TITLE FROM program_service_offering WHERE ID = 10) AS title_6,
 SUM(CASE WHEN FIND_IN_SET(10,IA.services) THEN 1 ELSE 0 END) AS total6
-FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovation) LEFT OUTER JOIN screening as S ON (IP.id = S.innovation) WHERE S.answer IN('" . implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
+FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovation) LEFT OUTER JOIN screening as S ON (IP.id = S.innovation) WHERE S.answer IN('" . php72_implode("','", $sector) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
             $result1 = $this->db->query($query1);
 
             return $result1->result_array();
@@ -432,15 +432,15 @@ SUM(CASE WHEN FIND_IN_SET(10,IA.services) THEN 1 ELSE 0 END) AS total6
 FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovation) LEFT OUTER JOIN assign_associate as AA ON
                                 AA.innovation = IP.id LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON
                                 HE.emp_number = AA.associate_employee
-                                 WHERE HE.emp_number IN('" . implode("','", $employee) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
+                                 WHERE HE.emp_number IN('" . php72_implode("','", $employee) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
             $result2 = $this->db->query($query2);
             return $result2->result_array();
         } elseif ($service['0'] != "" && $employee['0'] != "" && $sector['0'] == "") {
-            $query3 = "SELECT MS.master_name,HE.emp_firstname,HE.emp_number,count(IP.id) as VALUE,IP.stage,EXTRACT(YEAR FROM IP.created_date) as year FROM  master_settings as MS LEFT OUTER JOIN source_master as SM ON SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON  SM.id = IP.source LEFT OUTER JOIN assign_associate as AA ON  AA.innovation = IP.id LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON HE.emp_number = AA.associate_employee WHERE HE.emp_number IN('" . implode("','", $employee) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . implode("','", $service) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
+            $query3 = "SELECT MS.master_name,HE.emp_firstname,HE.emp_number,count(IP.id) as VALUE,IP.stage,EXTRACT(YEAR FROM IP.created_date) as year FROM  master_settings as MS LEFT OUTER JOIN source_master as SM ON SM.source_type = MS.id  LEFT OUTER JOIN innovation_pool as IP ON  SM.id = IP.source LEFT OUTER JOIN assign_associate as AA ON  AA.innovation = IP.id LEFT OUTER JOIN villtest_hris.hs_hr_employee as HE ON HE.emp_number = AA.associate_employee WHERE HE.emp_number IN('" . php72_implode("','", $employee) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . php72_implode("','", $service) . "') GROUP BY IP.stage,IP.source ORDER BY EXTRACT(YEAR FROM IP.created_date) DESC";
             $result3 = $this->db->query($query3);
             return $result3->result_array();
         } elseif ($service['0'] != "" && $employee['0'] == "" && $sector['0'] != "") {
-            $dbquery = "SELECT MS.master_name,IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) LEFT OUTER JOIN source_master as SM ON (SM.id= IP.source) LEFT OUTER JOIN master_settings as MS ON(MS.id = SM.source_type) WHERE S.answer IN('" . implode("','", $sector) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . implode("','", $service) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
+            $dbquery = "SELECT MS.master_name,IP.name_of_enterprise,S.answer,EXTRACT(YEAR FROM IP.created_date) as year,IP.stage,count(IP.id) as VALUE from innovation_pool as IP LEFT OUTER JOIN screening as S ON(IP.id = S.innovation) LEFT OUTER JOIN source_master as SM ON (SM.id= IP.source) LEFT OUTER JOIN master_settings as MS ON(MS.id = SM.source_type) WHERE S.answer IN('" . php72_implode("','", $sector) . "') and MS.master_type = 'Source Type' and MS.master_name IN('" . php72_implode("','", $service) . "') GROUP BY IP.stage,EXTRACT(YEAR FROM IP.created_date)";
             $result4 = $this->db->query($dbquery);
             return $result4->result_array();
         }
@@ -473,7 +473,7 @@ FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovati
     }
     public function getprogresscompare($metrics)
     {
-        $query = "SELECT sum(P.answer) as total,IP.name_of_enterprise,EXTRACT(YEAR FROM IP.created_date) as year from innovation_pool as IP JOIN progress as P ON (IP.id = P.innovation) JOIN progress_master as PM ON(P.field = PM.id) where PM.label IN('" . implode("','", $metrics) . "') GROUP BY P.innovation";
+        $query = "SELECT sum(P.answer) as total,IP.name_of_enterprise,EXTRACT(YEAR FROM IP.created_date) as year from innovation_pool as IP JOIN progress as P ON (IP.id = P.innovation) JOIN progress_master as PM ON(P.field = PM.id) where PM.label IN('" . php72_implode("','", $metrics) . "') GROUP BY P.innovation";
         $result = $this->db->query($query);
         return $result->result_array();
     }
@@ -554,7 +554,7 @@ FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovati
             $this->db->where_in('source', $options['source']);
         } elseif (isset($options['source'])) {
 
-            $options['source'] = (count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
+            $options['source'] = (php72_count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
             $this->db->where('source', $options['source']);
         }
 
@@ -582,7 +582,7 @@ FROM innovation_services as IA JOIN innovation_pool as IP ON(IP.id = IA.innovati
     }
     public function getsectorwisereport($sector)
     {
-        $query = "SELECT S.answer as VALUE,EXTRACT(YEAR FROM IP.created_date) as year,SUM( IF( IP.stage =  '0', 1, 0 ) ) as `total_new`,SUM( IF( IP.stage =  '1', 1, 0 ) ) as `total_entry`,SUM( IF( IP.stage =  '2', 1, 0 ) ) as `total_lead`,SUM( IF( IP.stage =  '3', 1, 0 ) ) as `total_shortlist`,SUM( IF( IP.stage =  '4', 1, 0 ) ) as `total_screening`,SUM( IF( IP.stage =  '5', 1, 0 ) ) as `total_incubation` from innovation_pool as IP JOIN screening as S ON(S.innovation = IP.id) JOIN screening_master as SM ON(S.field = SM.id) where SM.id = 80 and S.answer IN ('" . implode("','", $sector) . "') GROUP BY EXTRACT(YEAR FROM IP.created_date)";
+        $query = "SELECT S.answer as VALUE,EXTRACT(YEAR FROM IP.created_date) as year,SUM( IF( IP.stage =  '0', 1, 0 ) ) as `total_new`,SUM( IF( IP.stage =  '1', 1, 0 ) ) as `total_entry`,SUM( IF( IP.stage =  '2', 1, 0 ) ) as `total_lead`,SUM( IF( IP.stage =  '3', 1, 0 ) ) as `total_shortlist`,SUM( IF( IP.stage =  '4', 1, 0 ) ) as `total_screening`,SUM( IF( IP.stage =  '5', 1, 0 ) ) as `total_incubation` from innovation_pool as IP JOIN screening as S ON(S.innovation = IP.id) JOIN screening_master as SM ON(S.field = SM.id) where SM.id = 80 and S.answer IN ('" . php72_implode("','", $sector) . "') GROUP BY EXTRACT(YEAR FROM IP.created_date)";
         $result = $this->db->query($query);
         return $result->result_array();
     }

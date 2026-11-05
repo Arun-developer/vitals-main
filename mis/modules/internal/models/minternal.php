@@ -43,7 +43,7 @@ class Minternal extends CI_Model {
 		$additional_list = $this->input->post('additional_list');
 		$additional_infoId = 0;
 		if(!empty($additional_list)){
-			$check_additional = array_values(array_filter($additional_list));
+			$check_additional = array_values(php72_array_filter($additional_list));
 			if(!empty($check_additional)){
 				if($check_additional[0] !=''){
 					$additional_infoId = $check_additional[0];
@@ -165,7 +165,7 @@ class Minternal extends CI_Model {
 		$additional_list = $this->input->post('additional_list');
 		$additional_infoId = 0;
 		if(!empty($additional_list)){
-			$check_additional = array_values(array_filter($additional_list));
+			$check_additional = array_values(php72_array_filter($additional_list));
 			if(!empty($check_additional)){
 				if($check_additional[0] !=''){
 					$additional_infoId = $check_additional[0];
@@ -548,7 +548,7 @@ class Minternal extends CI_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -592,7 +592,7 @@ class Minternal extends CI_Model {
         $financeuser = array_pop($this->getfinanceusers());
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -812,9 +812,9 @@ class Minternal extends CI_Model {
         $reportingAuth = $this->employeeDetails($get_RO['0']['to_RO']);
         $roName = $reportingAuth[0]['emp_name'];
 
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $reportingAuth[0]['emp_name'];
             $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
         } else
@@ -907,7 +907,7 @@ class Minternal extends CI_Model {
 
     function getInternalDashboard($section = 'mylist', $currentTab = 'pending') {
         $searchArray = array();
-        $subUsers = implode("','", reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", reportingUser('subUser', 'userId'));
         $status = 'status';
         switch ($section) {
             case 'mylist':
@@ -925,7 +925,7 @@ class Minternal extends CI_Model {
                 $emp = $this->db->get('hr_user_login');
                 $emp_num = $emp->result_array();
                 $sub_supUser = reportingUser('supUser', 'All', $emp_num[0]['emp_id']);
-                $count = count($sub_supUser);
+                $count = php72_count($sub_supUser);
                 if ($count == 1) {
                     $single[] = $row;
                 } elseif ($count > 1) {
@@ -935,10 +935,10 @@ class Minternal extends CI_Model {
                     $users[] = $row;
                 }
             }
-            $sub_user1 = implode("','", $sub_user);
-            $single1 = implode("','", @$single);
-            $users1 = implode("','", @$users);
-            $having1 = implode("','", @$having);
+            $sub_user1 = php72_implode("','", $sub_user);
+            $single1 = php72_implode("','", @$single);
+            $users1 = php72_implode("','", @$users);
+            $having1 = php72_implode("','", @$having);
             $searchArray[] = "((INTER.to IN ('" . $this->session->userdata('user') . "')) or (AN.to_RO ='" . $this->session->userdata('user') . "'))";
             $admin = 'Show all';
             $status = 'RO_status';
@@ -1157,7 +1157,7 @@ class Minternal extends CI_Model {
 
     function getEmployeeFromUserId($userId) {
         $data = $this->getUserInfo($userId);
-        if (count($data)) {
+        if (php72_count($data)) {
             return $this->employeeDetails($data['0']['emp_id']);
         } else
         return true;
@@ -1347,7 +1347,7 @@ class Minternal extends CI_Model {
             foreach ($row1 as $rs) {
                 $req_amount[] = $rs['amt_required'];
             }
-            $tot_req_amount = array_sum($req_amount);
+            $tot_req_amount = php72_array_sum($req_amount);
         }
         $this->ais->select_sum('amount_toapprove', 'int_amount');
         $this->ais->where($conarray);

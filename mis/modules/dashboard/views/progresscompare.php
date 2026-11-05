@@ -153,7 +153,7 @@ function submitform()
         <td width="10%" class="table_HEADER" style="color:#fff;"><?=$value;?></td>
         <?php endforeach; ?>
       </tr>
-      <?php for($i=0;$i<count($progresscompare);$i++)
+      <?php for($i=0;$i<php72_count($progresscompare);$i++)
       {
         ?>
       <tr>

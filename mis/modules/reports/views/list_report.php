@@ -59,7 +59,7 @@
 
                     <?php  
 
-    	  if(count($report_list))
+    	  if(php72_count($report_list))
 
           {
 

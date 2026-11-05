@@ -55,7 +55,7 @@ $form_name = 'checklist';
     </thead>
     <tbody>
         <?php
-        if (count($checkList)) {
+        if (php72_count($checkList)) {
             $r = 1;
             foreach ($checkList as $row) {
                 $row_type = ($r % 2 == 0) ? ('even') : ('odd');

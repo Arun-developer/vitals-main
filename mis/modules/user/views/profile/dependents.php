@@ -131,7 +131,7 @@
                                             <tbody>
                                                 <?php
                                                 $j = 1;
-                                                $dependent_count = isset($dependent_list[0]['id']) ? count($dependent_list) : 0;
+                                                $dependent_count = isset($dependent_list[0]['id']) ? php72_count($dependent_list) : 0;
                                                 if ($dependent_count > 0) {
                                                     for ($i = 0; $i < $dependent_count; $i++) {
                                                         $birth_date = isset($dependent_list[$i]['birth_date']) && $dependent_list[$i]['birth_date'] != '0000-00-00 00:00:00' ? date('d-m-Y', strtotime($dependent_list[$i]['birth_date'])) : '';
@@ -225,7 +225,7 @@
     </div>
 </div>
 
-<input type="hidden" id="enable_dependent" value="<?= count($dependent_list); ?>">
+<input type="hidden" id="enable_dependent" value="<?= php72_count($dependent_list); ?>">
 <input type="hidden" id="enable_save" value="0">
 
 <?php $this->load->view('vitals_footer.php', array('page_name' => 'datatable')); ?>

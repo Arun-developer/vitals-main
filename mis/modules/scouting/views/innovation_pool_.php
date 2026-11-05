@@ -186,7 +186,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')))
     </thead>
     <tbody>
         <?php
-	if(count($innovationList)){
+	if(php72_count($innovationList)){
 		$i='odd';
                 $j=0;
 		foreach($innovationList as $row): 
@@ -327,7 +327,7 @@ if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')))
     </tbody>
 </table>
 <?php 
-if($currentTab == 'lead' && count($innovationList) && $isAssign){ 
+if($currentTab == 'lead' && php72_count($innovationList) && $isAssign){ 
 ?>
 <a href="<?=site_url('scouting/multi_cycle/')?>" class="fancyboxt button">Assign Cycle</a>
 <?php

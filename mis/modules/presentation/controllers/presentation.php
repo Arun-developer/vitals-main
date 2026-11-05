@@ -100,7 +100,7 @@ class Presentation extends CI_Controller
     {
         $activity = $this->Mactivities->getActivityForGrading($id);
 
-        if (count($activity)) {
+        if (php72_count($activity)) {
             redirect('grading/view/' . $activity['0']['id']);
         } else {
             $form['program_stage'] = '5';

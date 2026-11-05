@@ -66,13 +66,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -172,8 +172,8 @@
                                                                 <?php
                                                                 $j = 1;
                                                                 $men_data = $mentor_master[0];
-                                                                $mentorData_count = isset($men_data) ? count($mentor_master) : 1;
-                                                                if (count($mentor_master) != 0) {
+                                                                $mentorData_count = isset($men_data) ? php72_count($mentor_master) : 1;
+                                                                if (php72_count($mentor_master) != 0) {
                                                                     for ($i = 0; $i < $mentorData_count; $i++) {
                                                                         $master['id'] = $mentor_master[$i]['master_id'];
                                                                         $get_emp = $this->Mportfolio->getMentorsInput('port_villgro_relation_mentor', $master, '3');
@@ -241,7 +241,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($mentor_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($mentor_plan); ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/bootstrap.min.js'; ?>"></script>
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery.validate.min.js'; ?>"></script>

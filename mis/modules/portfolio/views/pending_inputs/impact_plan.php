@@ -68,13 +68,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -129,13 +129,13 @@
                                             $metric_key++;
                                         }
 
-                                        if (!array_filter($impacts) && $impact_plan[0]['beneficiaries'] == '' && $impact_plan[0]['jobs_created'] == '') {
+                                        if (!php72_array_filter($impacts) && $impact_plan[0]['beneficiaries'] == '' && $impact_plan[0]['jobs_created'] == '') {
                                             $imp_enable = 0;
                                         } else {
                                             $imp_enable = 1;
                                         }
 
-                                        if (!array_filter($metrics1)) {
+                                        if (!php72_array_filter($metrics1)) {
                                             $met_enable = 0;
                                         } else {
                                             $met_enable = 1;
@@ -246,7 +246,7 @@
                                                                     <table class="input-fundtable">
                                                                         <tbody>
                                                                             <?php
-                                                                            if (count($metrics1) > 0) {
+                                                                            if (php72_count($metrics1) > 0) {
                                                                                 $j = 1;
                                                                                 foreach ($metrics1 as $key => $val1) {
                                                                                     ?>
@@ -269,14 +269,14 @@
                                                                             }
                                                                         } else {
 
-                                                                            if (count($metrics) > 0) {
-                                                                                $metric_count = count($metrics);
+                                                                            if (php72_count($metrics) > 0) {
+                                                                                $metric_count = php72_count($metrics);
                                                                             } else {
                                                                                 $metric_count = 1;
                                                                             }
                                                                             $j = 1;
                                                                             for ($i = 0; $i < $metric_count; $i++) {
-                                                                                if (count($metrics) > 0) {
+                                                                                if (php72_count($metrics) > 0) {
                                                                                     $metric_values = explode("*|*", $metrics[$i]);
                                                                                 }
                                                                                 ?>
@@ -324,7 +324,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($impact_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($impact_plan); ?>">
         <input type="hidden" name="port_impact_id" id="port_impact_id" value="<?php echo isset($impact_plan[0]['id']) ? $impact_plan[0]['id'] : $impact_config[0]['id']; ?>" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

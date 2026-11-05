@@ -115,7 +115,7 @@
 				<?php $benificary = unserialize($inv_user[0]['benificiary']); ?>
 				<tr>
 					<td style="width:30%;"><b>Who will be the beneficiaries of your product / service?</b></td>
-					<td style="width:70%;"><?php echo implode(', ', $benificary); ?></td>
+					<td style="width:70%;"><?php echo php72_implode(', ', $benificary); ?></td>
 				</tr>
 				<tr>
 					<td style="width:30%;"><b>What type of impact will your product / service have on the BoP / poor?</b></td>
@@ -224,7 +224,7 @@
 				   	<?php 
 						$active_location = '';
 						if($inv_ent_info[0]["startup_challenge"]!=''){
-								$active_location = implode(',', unserialize($inv_ent_info[0]["startup_challenge"]));
+								$active_location = php72_implode(',', unserialize($inv_ent_info[0]["startup_challenge"]));
 						}
 					?>
                     <td style="width:30%;"><b>Please select if your solution is currently active in any of the following location</b></td>
@@ -243,7 +243,7 @@
 				   	<?php 
 						$org_short_desc = '';
 						if($inv_ent_info[0]["org_short_desc"]!=''){
-								$org_short_desc = implode(',', unserialize($inv_ent_info[0]["org_short_desc"]));
+								$org_short_desc = php72_implode(',', unserialize($inv_ent_info[0]["org_short_desc"]));
 						}
 					?>
                     <td style="width:30%;"><b>Which solutions does your project align with</b></td>
@@ -253,7 +253,7 @@
 				   	<?php 
 						$type_prod = '';
 						if($inv_ent_info[0]["type_prod"]!=''){
-								$type_prod = implode(',', unserialize($inv_ent_info[0]["type_prod"]));
+								$type_prod = php72_implode(',', unserialize($inv_ent_info[0]["type_prod"]));
 						}
 					?>
                     <td style="width:30%;"><b>Which stages of the water value chain does your enterprise operate in</b></td>
@@ -294,7 +294,7 @@
 					<?php 
 						$social_media ='';
 						if($inv_ent_info[0]['social_media']!=''){
-							$social_media = implode(',',unserialize($inv_ent_info[0]["social_media"]));
+							$social_media = php72_implode(',',unserialize($inv_ent_info[0]["social_media"]));
 						}
 
 					?>

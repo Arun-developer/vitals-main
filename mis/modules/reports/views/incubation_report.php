@@ -96,7 +96,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(count($monthreport))
+                <?php if(php72_count($monthreport))
 	{
 		foreach($monthreport as $row):
 	?>

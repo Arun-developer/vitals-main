@@ -55,7 +55,7 @@ $form_name = 'instance_list';
 	</thead>
 	<tbody>
    <?php
-	if(count($instanceList))
+	if(php72_count($instanceList))
 	{    
 		$r=1;
 		foreach($instanceList as $row)

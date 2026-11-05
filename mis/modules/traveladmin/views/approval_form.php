@@ -120,9 +120,9 @@
 																<!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4">
 																	<div class="form-group">
 																		<label>To(RO)<span>*</span></label>
-																		<?php if (count($RO) == 1 || count($RO) == 0) { ?>
+																		<?php if (php72_count($RO) == 1 || php72_count($RO) == 0) { ?>
 																			<input class="form-control" readonly name="to_RO_show" id="to_RO_show" value="<?php echo $RO[0]['user_name']; ?>" type="text" placeholder="Enter here">
-																		<?php  }else if (count($RO) > 1) { ?>
+																		<?php  }else if (php72_count($RO) > 1) { ?>
 																			<select class="form-control">    
 																				<?php  foreach ($RO as $list) {   ?>	                        
 																					<option value="<?php echo $list['user_id']; ?>" ><?php echo $list['user_name']; ?></option>

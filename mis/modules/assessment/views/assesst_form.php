@@ -454,7 +454,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && !isset(
     $display = 'style = "display:none"';
 }
 
-if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
     $readonly = '';
     $disabled = '';
     $display = '';
@@ -466,7 +466,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
     <table class="gtable detailtable">
         <thead>
             <?php
-            if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && ($inno_status == '3' || $inno_status == '9' )) {
+            if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && ($inno_status == '3' || $inno_status == '9' )) {
                 ?>
                 <tr>
                     <th>Assessor</th>
@@ -491,7 +491,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                     $restrict[] = $employee[$i];
                     ?>
                     <?php
-                    if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && ($inno_status == '3' || $inno_status == '9' )) {
+                    if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && ($inno_status == '3' || $inno_status == '9' )) {
                         ?>
                         <tr>
                             <td><?php echo Massessment::getEmployeeName($employee[$i]); ?></td>
@@ -508,7 +508,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
         </tbody>
     </table>
     <?php
-    if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status != '3' && $inno_status != '9') {
+    if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status != '3' && $inno_status != '9') {
         ?>
         <script type="text/javascript">
             function validate()
@@ -542,10 +542,10 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                         <select id="assessor_employee" class="multiselect" multiple="multiple" name="assessor_employee[]" style="height:100px;width:485px;" >
                             <?php
                             foreach ($emplist as $row) {
-                                if (!in_array($row['emp_number'], $assigned_incharge)) {
+                                if (!php72_in_array($row['emp_number'], $assigned_incharge)) {
                                     ?>
                                     <option value="<?= $row['emp_number'] ?>" <?php
-                                    if (in_array($row['emp_number'], $assessor_employee)) {
+                                    if (php72_in_array($row['emp_number'], $assessor_employee)) {
                                         echo 'selected="selected"';
                                     }
                                     ?>><?= $row['emp_name'] ?></option>
@@ -578,7 +578,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                 <li><a id="logStatusModal" class="fancybox button" href="#status_log" style="cursor:pointer;">Application Status Log</a></li>
                 <li><a class="button" href="<?php echo site_url('assessment/view_assesst/' . $this->uri->segment(3) . '/export'); ?>">Download</a></li>
                 <?php
-                if (in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
+                if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) {
                     ?>
                     <li><a class="button fancybox" id="" href="#add">Add Assessors</a></li>
                 <?php } ?>
@@ -613,7 +613,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                             $rational = unserialize($assesst[0]['rational']);
                             $risk = unserialize($assesst[0]['risk']);
                         }
-                        $count_area = count($area);
+                        $count_area = php72_count($area);
                         // $i=1;
                         foreach ($area as $area) {
                             $i = isset($i) && $i != '' ? $i : 1;
@@ -645,8 +645,8 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                                     }
                                     $area_subscore = '';
                                     foreach ($sub_category1 as $sub) {
-                                        if (isset($category_id1) && in_array($sub['id'], $category_id1)) {
-                                            $key = array_search($sub['id'], $category_id1);
+                                        if (isset($category_id1) && php72_in_array($sub['id'], $category_id1)) {
+                                            $key = php72_array_search($sub['id'], $category_id1);
                                             if ($sub_score[$key] == '-1') {
                                                 $area_subscore = $sub_score[$key];
                                             }
@@ -655,7 +655,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
 
                                     /* customize */
                                     $sub_cate = $this->Massessment->getSubCategory($area['id']);
-                                    $sub_count1 = count($sub_cate);
+                                    $sub_count1 = php72_count($sub_cate);
 
                                     if (isset($sub_assesst)) {
                                         foreach ($sub_assesst as $subs) {
@@ -667,15 +667,15 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                                     }
 
                                     $check_addscore = 0;
-                                    if (isset($cate_id) && in_array($sub_cate[0]['id'], $cate_id)) {
-                                        $key1 = array_search($sub_cate[0]['id'], $cate_id);
+                                    if (isset($cate_id) && php72_in_array($sub_cate[0]['id'], $cate_id)) {
+                                        $key1 = php72_array_search($sub_cate[0]['id'], $cate_id);
                                         $subscore1 = $sub_score[$key1];
                                         $addscore1 = $add_score[$key1];
                                     }
 
                                     foreach ($add_score as $key => $value) {
                                         if ($value != '') {
-                                            $check_addscore += count($value);
+                                            $check_addscore += php72_count($value);
                                         }
                                     }
 
@@ -710,7 +710,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                             </tr>
                             <?php
                             $sub_category = $this->Massessment->getSubCategory($area['id']);
-                            $sub_count = count($sub_category);
+                            $sub_count = php72_count($sub_category);
                             $i = 0;
                             if (isset($sub_assesst)) {
                                 foreach ($sub_assesst as $sub) {
@@ -722,8 +722,8 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && in_arra
                                 }
                             }
                             foreach ($sub_category as $sub) {
-                                if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                                    $key = array_search($sub['id'], $category_id);
+                                if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                                    $key = php72_array_search($sub['id'], $category_id);
                                     $subscore = $sub_score[$key];
                                     $addscore = $add_score[$key];
                                 }

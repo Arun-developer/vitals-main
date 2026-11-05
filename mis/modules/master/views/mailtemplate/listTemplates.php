@@ -115,7 +115,7 @@ $form_name = 'templete_list';
         </thead>
         <tbody>
             <?php
-            if (count($templateList)) {
+            if (php72_count($templateList)) {
                 $r = 1;
                 foreach ($templateList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

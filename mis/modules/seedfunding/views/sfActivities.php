@@ -117,7 +117,7 @@ else{
 
 		  $j=1;
 
-	  	if(count($activitiesList))
+	  	if(php72_count($activitiesList))
 
 		{    
 

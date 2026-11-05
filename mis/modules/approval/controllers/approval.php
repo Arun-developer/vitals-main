@@ -69,8 +69,8 @@ class Approval extends CI_Controller {
                 $financialArray = $this->Mapproval->findCurrentFinancialYears();
                 $from = $this->Mlogapproval->convertMonthYearFrom($financialArray[0]['from']);
                 $to = $this->Mlogapproval->convertMonthYearTo($financialArray[0]['to']);
-                $prog_count = count($progID);
-                $int_count2 = count($internalID);
+                $prog_count = php72_count($progID);
+                $int_count2 = php72_count($internalID);
                 for ($i = 0; $i < $prog_count; $i++) {
                     $internal_amount = 0;
                     for ($j = 0; $j < $int_count2; $j++) {
@@ -97,8 +97,8 @@ class Approval extends CI_Controller {
                 $financialArray = $this->Mapproval->findCurrentFinancialYears();
                 $from = $this->Mlogapproval->convertMonthYearFrom($financialArray[0]['from']);
                 $to = $this->Mlogapproval->convertMonthYearTo($financialArray[0]['to']);
-                $prog_count = count($progID);
-                $int_count2 = count($internalID);
+                $prog_count = php72_count($progID);
+                $int_count2 = php72_count($internalID);
                 for ($i = 0; $i < $prog_count; $i++) {
                     $internal_amount = 0;
                     for ($j = 0; $j < $int_count2; $j++) {
@@ -133,9 +133,9 @@ class Approval extends CI_Controller {
                 $this->Mapproval->action_close('closed', $approval_id);
                 $this->session->set_flashdata('successMsg', 'Approval Note Closed Successfully');
             }
-        } else if (($currentTab == 'pending' || $currentTab == 'draft' || $currentTab == 'defered') && count($internalID) == 0) {
+        } else if (($currentTab == 'pending' || $currentTab == 'draft' || $currentTab == 'defered') && php72_count($internalID) == 0) {
             $internal_amount = 0;
-            $prog_count = count($progID);
+            $prog_count = php72_count($progID);
             for ($i = 0; $i < $prog_count; $i++) {
                 $this->Mapproval->update_apn($approval_id, $internal_amount, $progID[$i]['approval_donor_id']);
             }
@@ -331,7 +331,7 @@ class Approval extends CI_Controller {
             $columnSortOrder = 'asc';
             $admin = 'Show all';
             $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-            $getAll_count = count($approvalCount);
+            $getAll_count = php72_count($approvalCount);
             $data['pending_ceo_count'] = $getAll_count;
         }
 
@@ -394,7 +394,7 @@ class Approval extends CI_Controller {
             $columnSortOrder = 'asc';
             $admin = 'Show all';
             $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-            $getAll_count = count($approvalCount);
+            $getAll_count = php72_count($approvalCount);
             $data['pending_ceo_count'] = $getAll_count;
         }
 
@@ -558,7 +558,7 @@ class Approval extends CI_Controller {
             $searchArray[] = "AP.status IN ($split_status)";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 		
 		if($this->input->post('currentTab') =='approved'){
 			$where = "AP.ro_approved_user =  '" . $this->session->userdata('emp_number') . "' OR ph_approved_user ='" . $this->session->userdata('emp_number') . "' OR ceo_approved_user ='" . $this->session->userdata('emp_number') . "'";
@@ -568,10 +568,10 @@ class Approval extends CI_Controller {
 		#echo'<pre>';print_r($where);die;
 		#echo'asd';die;
         $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-        $getAll_count = count($approvalCount);
+        $getAll_count = php72_count($approvalCount);
 	
         $approval_lists = $this->Mapproval->getLimitApprovalNotes($where, $limit, $start, $sort_column, $columnSortOrder, $admin);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 			#echo'<pre>';print_r($approval_lists);die;
         foreach ($approval_lists as $lists) {
             $requestDate = '';
@@ -825,13 +825,13 @@ class Approval extends CI_Controller {
             $searchArray[] = "AP.status IN ($split_status)";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-        $getAll_count = count($approvalCount);
+        $getAll_count = php72_count($approvalCount);
 
         $approval_lists = $this->Mapproval->getLimitApprovalNotes($where, $limit, $start, $sort_column, $columnSortOrder, $admin);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($approval_lists as $lists) {
             $requestDate = '';
@@ -1038,7 +1038,7 @@ class Approval extends CI_Controller {
             $split_status = implode(",", $status_arry);
             $searchArray[] = "AP.status IN ($split_status)";
         }
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $data_lists = $this->Mapproval->getLimitApprovalNotes($where, '', '', array(), array(), $admin);
 
@@ -1133,7 +1133,7 @@ class Approval extends CI_Controller {
             $columnSortOrder = 'asc';
             $admin = 'Show all';
             $approvalCount = $this->Mapproval->getLimitApprovalNotes($where, '', '', $sort_column, $columnSortOrder, $admin);
-            $getAll_count = count($approvalCount);
+            $getAll_count = php72_count($approvalCount);
             $data['pending_ceo_count'] = $getAll_count;
         }
 
@@ -1247,7 +1247,7 @@ class Approval extends CI_Controller {
           $searchArray[] = "AP.status like '%" . $this->input->post('status') . "%'"; */
 
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-        if (in_array($this->session->userdata['emp_number'], $finance)) {
+        if (php72_in_array($this->session->userdata['emp_number'], $finance)) {
             #$searchArray[] = "";
         } else {
             $searchArray[] = "AP.from_employee = '" . $this->session->userdata['emp_number'] . "'";
@@ -1273,7 +1273,7 @@ class Approval extends CI_Controller {
             #echo'<pre>';print_r($esf);die;
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         /* echo'<pre>';print_r($_POST);
           ECHO $where;DIE; */
@@ -1281,7 +1281,7 @@ class Approval extends CI_Controller {
         $getAll_count = $this->Mapproval->getarchiveApprovalNotesCount($from, $to, $where);
 
         $approval_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, $limit, $start, $where, $sort_column, $columnSortOrder);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($approval_lists as $lists) {
             $requestDate = '';
@@ -1418,7 +1418,7 @@ class Approval extends CI_Controller {
             $searchArray[] = "AP.status IN ($split_status)";
         }
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-        if (in_array($this->session->userdata('emp_number'), $finance)) {
+        if (php72_in_array($this->session->userdata('emp_number'), $finance)) {
             #$searchArray[] = "";
         } else {
             $searchArray[] = "AP.from_employee = '" . $this->session->userdata('emp_number') . "'";
@@ -1428,7 +1428,7 @@ class Approval extends CI_Controller {
         }
 
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         $data_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, '', '', $where, array(), array());
 
         header("Content-type: application/csv");
@@ -1608,13 +1608,13 @@ class Approval extends CI_Controller {
         if ($this->input->post('status') != "")
             $searchArray[] = "AP.status like '%" . $this->input->post('status') . "%'";
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $total = $this->Mapproval->getarchiveApprovalNotesCount($from, $to, $where);
-        $getAll_count = count($total);
+        $getAll_count = php72_count($total);
 
         $approval_lists = $this->Mapproval->getarchiveApprovalNotes($from, $to, $limit, $start, $where, $sort_column, $columnSortOrder);
-        $getLimit_count = count($approval_lists);
+        $getLimit_count = php72_count($approval_lists);
 
         foreach ($approval_lists as $lists) {
             $requestDate = '';
@@ -1671,7 +1671,7 @@ class Approval extends CI_Controller {
         }
         $data['section'] = $section;
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-        if (in_array($this->session->userdata('user'), $finance)) {
+        if (php72_in_array($this->session->userdata('user'), $finance)) {
             $data['isFinance'] = 'Yes';
         } else {
             $data['isFinance'] = 'No';
@@ -1768,7 +1768,7 @@ class Approval extends CI_Controller {
         }
         $data['section'] = $section;
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-        if (in_array($this->session->userdata('user'), $finance)) {
+        if (php72_in_array($this->session->userdata('user'), $finance)) {
             $data['isFinance'] = 'Yes';
         } else {
             $data['isFinance'] = 'No';
@@ -2445,7 +2445,7 @@ class Approval extends CI_Controller {
 				 }
 				 if(!empty($default)){
 					if(!empty($default['non_sector_user'])){
-						if (in_array($user_id, $default['non_sector_user'])) {
+						if (php72_in_array($user_id, $default['non_sector_user'])) {
 							$data['an_request_user_status'] = '1';
 						}
 					}
@@ -2469,7 +2469,7 @@ class Approval extends CI_Controller {
 		$get_grantIds =array();
 		if($program!=''){
 			if(!empty($data)){ 
-				$get_grantIds =array_column($data,'id');
+				$get_grantIds =php72_array_column($data,'id');
 				$checkdata = $this->Mapproval->checkGrantList_balanceamt($donor_id,$get_grantIds,$program);
 				$data = $checkdata;
 			}
@@ -2506,7 +2506,7 @@ class Approval extends CI_Controller {
 
     function check_calucalations_old() {
         if (!empty($_REQUEST)) {
-            $count = count($_REQUEST["donor"]);
+            $count = php72_count($_REQUEST["donor"]);
             $return = array();
             for ($i = 0; $i < $count; $i++) {
                 if ($_REQUEST["donor"][$i] != "" && $_REQUEST["budgethead"][$i] != "" && $_REQUEST["lineitem"][$i] != "") {
@@ -2557,7 +2557,7 @@ class Approval extends CI_Controller {
 
     function check_calucalations() {
         if (!empty($_REQUEST)) {
-            $count = count($_REQUEST["donor"]);
+            $count = php72_count($_REQUEST["donor"]);
             $return = array();
 
             for ($i = 0; $i < $count; $i++) {
@@ -2619,7 +2619,7 @@ class Approval extends CI_Controller {
 
     function PreCheckExist($data = '') {
         $r = array();
-        $c = count($data["donor"]);
+        $c = php72_count($data["donor"]);
         $id = $data['id'];
         for ($i = 0; $i < $c; $i++) {
             $r[$i]["donor"] = $data["donor"][$i];
@@ -2641,7 +2641,7 @@ class Approval extends CI_Controller {
     }
 
     function CheckExist($data = '', $d = '', $b = '', $l = '') {
-        $c = count($data);
+        $c = php72_count($data);
         $return = 0;
         if ($c > 0) {
             for ($i = 0; $i < $c; $i++) {
@@ -3037,7 +3037,7 @@ class Approval extends CI_Controller {
         if ($option == 'defer') {
             $toName = 'from_employee';
             $toEmail = 'employeeEmail';
-        } else if (($approvalNoteDetails['0']['programme_head'] != $RO_user['0']['id'] || !in_array($approvalNoteDetails['0']['programme_head'], $rolist)) && $approvalNoteDetails['0']['programme_head'] != $approvalNoteDetails['0']['from_employee']) {
+        } else if (($approvalNoteDetails['0']['programme_head'] != $RO_user['0']['id'] || !php72_in_array($approvalNoteDetails['0']['programme_head'], $rolist)) && $approvalNoteDetails['0']['programme_head'] != $approvalNoteDetails['0']['from_employee']) {
             $toName = 'ph';
             $toEmail = 'phEmail';
         }
@@ -3131,7 +3131,7 @@ class Approval extends CI_Controller {
 
 			$mail->MsgHTML($messageBody);
 			//$attach = array('uploads/support_docs/Villgro_Email_testing_file.pdf');
-			 if (count($attach)) {
+			 if (php72_count($attach)) {
 				foreach ($attach as $key => $value):
 					if (file_exists($value)) {
 						$mail->addAttachment($value);

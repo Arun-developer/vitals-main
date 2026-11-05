@@ -226,7 +226,7 @@ $field_enable = '0';
                                                     <input type='hidden' name='module_id' id="module_id" value="2">
                                                     <?php
                                                     $i = 1;
-                                                    if (count($sales_data) > 0) {
+                                                    if (php72_count($sales_data) > 0) {
                                                         foreach ($sales_data as $row) {
                                                             $get_unit = $row['unit'];
                                                             $get_volume = json_decode($row['volume']);
@@ -235,7 +235,7 @@ $field_enable = '0';
                                                             $enable_volume = json_decode($row['volume'], true);
                                                             $enable_value = json_decode($row['value'], true);
 
-                                                            if (!array_filter($enable_volume) && !array_filter($enable_volume) && $row['other'] == '' && $row['unit'] == '') {
+                                                            if (!php72_array_filter($enable_volume) && !php72_array_filter($enable_volume) && $row['other'] == '' && $row['unit'] == '') {
                                                                 $enable = 0;
                                                             } else {
                                                                 $enable = 1;
@@ -757,7 +757,7 @@ if ($current_month == '1' || $current_month == '2' || $current_month == '3') {
 }
 ?>
 <input type="hidden" id="active_editor" value="<?= $month_id; ?>">
-<input type="hidden" id="QualDataCount" value="<?= count($qualitative_data); ?>">
+<input type="hidden" id="QualDataCount" value="<?= php72_count($qualitative_data); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

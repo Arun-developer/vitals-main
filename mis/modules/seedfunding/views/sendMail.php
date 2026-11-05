@@ -3,7 +3,7 @@ $formAction = site_url('seedfunding/mail_form/' . $innovation['id']);
 $id = '';
 $val = array();
 $action = 'Send';
-if (count($mailDetails)) {
+if (php72_count($mailDetails)) {
     $val = $mailDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;
@@ -18,7 +18,7 @@ $from = isset($val["from"]) ? $val["from"] : "";
 
 if (isset($_POST['mail_type'])) {
     $mailContent = $this->Mmail->getMailContent($innovation['id'], $_POST['mail_type']);
-    if (count($mailContent)) {
+    if (php72_count($mailContent)) {
         $subject = $mailContent['subject'];
         $body = $mailContent['body'];
         $from = $mailContent['from'];

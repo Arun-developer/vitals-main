@@ -12,7 +12,7 @@
 
 
         <?php
-        if (count($allfunddisbursed)) {
+        if (php72_count($allfunddisbursed)) {
             $i = 'odd';
             foreach ($allfunddisbursed as $row):
                 $i = ($i == 'odd') ? 'even' : 'odd';

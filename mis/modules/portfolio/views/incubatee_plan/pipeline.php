@@ -577,7 +577,7 @@ $obj_open = json_decode($pipeline['open_pipeline'], true);
 $obj_under = json_decode($pipeline['under_discussion'], true);
 $obj_reject = json_decode($pipeline['closed_pipeline'], true);
 $obj_convert = json_decode($pipeline['converted_pipeline'], true);
-if (!array_filter($obj_open) && !array_filter($obj_under) && !array_filter($obj_reject) && !array_filter($obj_convert)) {
+if (!php72_array_filter($obj_open) && !php72_array_filter($obj_under) && !php72_array_filter($obj_reject) && !php72_array_filter($obj_convert)) {
     $enable = 0;
 } else {
     $enable = 1;

@@ -32,7 +32,7 @@ Back</A></div>
 		<tr>
 			<td><?=++$key;?></td>
 			<td style="width:500px;"><?php echo $row['label']; ?></td>
-			<td><?=(in_array($row['id'],$innovationChecklist))?'<font color="green">Applicable</font>':'<font color="red">Not Applicable</font>';?></td>
+			<td><?=(php72_in_array($row['id'],$innovationChecklist))?'<font color="green">Applicable</font>':'<font color="red">Not Applicable</font>';?></td>
 		</tr>
     <?php 
 	endforeach;

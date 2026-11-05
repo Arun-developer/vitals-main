@@ -394,7 +394,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($finance_plan); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($finance_plan); ?>">
 <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>

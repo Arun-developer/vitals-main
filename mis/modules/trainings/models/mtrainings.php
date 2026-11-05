@@ -261,7 +261,7 @@ class Mtrainings extends CI_Model
         $q .= " left join master_settings D on D.master_id= AN.donor";
         $q .= " left join master_settings BH on BH.master_id= AN.budget_head";
         $q .= " left join master_settings LI on LI.master_id= AN.line_item";
-        $q .= " where AP.approval_id IN (" . implode(',', $approval_note) . ")";
+        $q .= " where AP.approval_id IN (" . php72_implode(',', $approval_note) . ")";
         $q .= " group by AP.approval_id";
         $query = $this->ais->query($q);
         if ($query->num_rows() > 0) {
@@ -347,7 +347,7 @@ class Mtrainings extends CI_Model
     {
         if (!empty($update['status'])) {
             foreach ($update['status'] as $key => $value) {
-                $query = "update trainings_participant set `status` = '" . $key . "' where `id` IN ('" . implode("'", $value) . "')";
+                $query = "update trainings_participant set `status` = '" . $key . "' where `id` IN ('" . php72_implode("'", $value) . "')";
                 $this->db->query($query);
 
             }

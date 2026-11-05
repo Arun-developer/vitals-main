@@ -74,7 +74,7 @@ if ($page == 'leave') {
                     </li>
                 <?php } ?>
                     <?php
-                    if($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'superadmin' || count($supervisor) > 0){
+                    if($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'superadmin' || php72_count($supervisor) > 0){
                         ?>
                     <li class="nav-item" >
                         <a class="nav-link" href="<?php echo base_url() . 'index.php/leave/approve_leave_list'; ?>">

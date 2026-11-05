@@ -74,27 +74,27 @@ if ((isset($this->session->userdata['sector_lead']) && $this->session->userdata[
                     <div class="sidebar-submenu <?= $product_menu; ?> <?= $sale_menu; ?> <?= $channel_menu; ?> <?= $pipe_menu; ?> <?= $revenue_menu; ?> <?= $profit_menu; ?> <?= $fund_menu; ?> <?= $board_menu; ?> <?= $impact_menu; ?> <?= $project_menu; ?>">
                         <ul>
                             <li class="<?= $product_active; ?> <?= $sale_active; ?> <?= $channel_active; ?> <?= $pipe_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/product/' . $innovation_id . '/' . $fin_year; ?>">Product &amp; Sales
-                                    <?php if ($config_data != '' && (count($config_data['productCount']) > 0 || count($config_data['salesCount']) > 0 || count($config_data['channelCount']) > 0 || count($config_data['pipeCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['productCount']) > 0 || php72_count($config_data['salesCount']) > 0 || php72_count($config_data['channelCount']) > 0 || php72_count($config_data['pipeCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class=" <?= $revenue_active; ?> <?= $profit_active; ?> <?= $fund_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/revenue/' . $innovation_id . '/' . $fin_year; ?>">Finance &amp; Follow-on Fundraise
-                                    <?php if ($config_data != '' && (count($config_data['revenueCount']) > 0 || count($config_data['netCount']) > 0 || count($config_data['fundCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['revenueCount']) > 0 || php72_count($config_data['netCount']) > 0 || php72_count($config_data['fundCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $team_active; ?> <?= $board_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/team/' . $innovation_id . '/' . $fin_year; ?>">Team &amp; Board meetings
-                                    <?php if ($config_data != '' && (count($config_data['teamCount']) > 0 || count($config_data['boardCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['teamCount']) > 0 || php72_count($config_data['boardCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $impact_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/impact/' . $innovation_id . '/' . $fin_year; ?>">Impact
-                                    <?php if ($config_data != '' && (count($config_data['impactCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['impactCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $project_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/milestone/' . $innovation_id . '/' . $fin_year; ?>">Milestone Tracker
-                                    <?php if ($config_data != '' && (count($config_data['projectCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['projectCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
@@ -113,13 +113,13 @@ if ((isset($this->session->userdata['sector_lead']) && $this->session->userdata[
                         <ul>
                             <li class="<?= $mentor_active; ?> <?= $tap_active; ?> <?= $nontap_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/mentor/' . $innovation_id . '/' . $fin_year; ?>">Mentors &amp; Partnerships
                                     <?php /* if ($config_data != '' && count($config_data['mentorCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } */ ?>
-                                    <?php if ($config_data != '' && (count($config_data['mentorCount']) > 0 || count($config_data['tapCount']) > 0 || count($config_data['nontapCount']) > 0)) { ?>
+                                    <?php if ($config_data != '' && (php72_count($config_data['mentorCount']) > 0 || php72_count($config_data['tapCount']) > 0 || php72_count($config_data['nontapCount']) > 0)) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
-                            <li class="<?= $panel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/diagnosticpanel/' . $innovation_id . '/' . $fin_year; ?>">Diagnostic Panels <?php if ($config_data != '' && count($config_data['dpCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>
-                            <li class="<?= $vif_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/viffunding/' . $innovation_id . '/' . $fin_year; ?>">Seed Funding <?php if ($config_data != '' && count($config_data['vifCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>
-                            <!--<li class="<?= $tracker_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/mentor/' . $innovation_id . '/' . $fin_year; ?>">Activity Tracker <?php if ($config_data != '' && count($config_data['trackerCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>-->
+                            <li class="<?= $panel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/diagnosticpanel/' . $innovation_id . '/' . $fin_year; ?>">Diagnostic Panels <?php if ($config_data != '' && php72_count($config_data['dpCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>
+                            <li class="<?= $vif_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/viffunding/' . $innovation_id . '/' . $fin_year; ?>">Seed Funding <?php if ($config_data != '' && php72_count($config_data['vifCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>
+                            <!--<li class="<?= $tracker_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/mentor/' . $innovation_id . '/' . $fin_year; ?>">Activity Tracker <?php if ($config_data != '' && php72_count($config_data['trackerCount']) > 0) { ?><span class="text-danger"><i class="fas fa-exclamation-circle"></i></span><?php } ?></a></li>-->
                         </ul>
                     </div>
                 </li>

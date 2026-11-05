@@ -1,5 +1,5 @@
 <?php
-if (count($conversation) > 0) {
+if (php72_count($conversation) > 0) {
     foreach ($conversation as $chart) {
         $split_name = explode(' ', $chart['emp_name']);
         $first_name = ucfirst($split_name[0]);

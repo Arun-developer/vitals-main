@@ -22,7 +22,7 @@ $this->jquery->fancybox();
 						
 		<tbody id="lineitemTable">
     <?php 
-	 if(count($activityDetails))
+	 if(php72_count($activityDetails))
 	{    
 			$rowtype = 'odd';
 			foreach($activityDetails as $row):

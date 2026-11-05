@@ -19,7 +19,7 @@
   	$source = $row['description'];
     $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i'; 
 			preg_match_all($imgLink, $source, $matches);
-			$matchVal = array_filter($matches);
+			$matchVal = php72_array_filter($matches);
 			$count = count($matchVal); 
 			if($count != 0)
 			{
@@ -48,7 +48,7 @@
     </p>
      <?php 
 	 $assessComments = $this->Massessment->getAssessComments($row['id']);
-	 if(count($assessComments))
+	 if(php72_count($assessComments))
 	 {
 		 echo '<h2>Comments</h2>';
 	 }
@@ -71,13 +71,13 @@
 	 ?>
     </div>
     <?php endforeach; ?>
-    <?php if(!count($assessDetails)){ echo ' <p class="t-center">No Details</p>';} ?>
+    <?php if(!php72_count($assessDetails)){ echo ' <p class="t-center">No Details</p>';} ?>
     </td>
     </tr>
     <?php
 	$currentStage = $this->Mprogram_stage->getCurrentStage('1');
 	$activity = $this->Mactivities->getActivityForGrading($innovationInfo['id'],$currentStage);
-	if(count($activity)){ ?>
+	if(php72_count($activity)){ ?>
     <tr><td>
     <h3>Spider Map</h3>
     <?php

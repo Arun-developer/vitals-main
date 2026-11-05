@@ -57,7 +57,7 @@ switch($row['input_type']){
 		foreach($row['value'] as $key=>$value): ?>
             <label><input type="checkbox" name="<?=$row['id']?>[]"
                     class="<?=$suQuesion?> <?=($row['required'] == 'yes')?'required':'';?> <?=$row['class']?>"
-                    value="<?=$value?>" <?=(in_array($value,$cfValue))?'checked="checked"':'';?> />
+                    value="<?=$value?>" <?=(php72_in_array($value,$cfValue))?'checked="checked"':'';?> />
                 <?=$value?></label><br />
             <?php
 		 endforeach;

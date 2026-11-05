@@ -20,7 +20,7 @@ class MY_Model extends CI_Model {
         }
 
         if (!empty($join)) {
-            for ($i = 0; $i < count($join); $i++) {
+            for ($i = 0; $i < php72_count($join); $i++) {
                 $db_var->select($join[$i]['select']);
                 $db_var->join($join[$i]['table'], $join [$i]['condition'], $join [$i] ['type']);
             }
@@ -42,7 +42,7 @@ class MY_Model extends CI_Model {
 //        }
 
         if (!empty($order_by)) {
-            $db_var->order_by(array_keys($order_by)[0], array_values($order_by)[0]);
+            $db_var->order_by(php72_array_keys($order_by)[0], php72_array_values($order_by)[0]);
         }
 
         if ($limit != '') {
@@ -71,7 +71,7 @@ class MY_Model extends CI_Model {
             }
         }
         if (!empty($order_by)) {
-            $db_var->order_by(array_keys($order_by)[0], array_values($order_by)[0]);
+            $db_var->order_by(php72_array_keys($order_by)[0], php72_array_values($order_by)[0]);
         }
 
         if ($limit != '') {

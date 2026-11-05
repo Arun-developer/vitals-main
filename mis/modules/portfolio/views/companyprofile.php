@@ -18,49 +18,49 @@ $company_text = $nature_text = $mgmnt_text = $govern_text = $vilrel_text = $incr
 $company_icon = $nature_icon = $mgmnt_icon = $govern_icon = $vilrel_icon = $increl_icon = $cap_icon = $int_icon = $plan_icon = '<i class="fas fa-exclamation-circle"></i>';
 $company_msg = $nature_msg = $mgmnt_msg = $govern_msg = $vilrel_msg = $increl_msg = $cap_msg = $int_msg = $plan_msg = 'text-warning';
 
-if (count($company_data) > 0) {
+if (php72_count($company_data) > 0) {
     $company_class = '';
     $company_text = 'Done';
     $company_icon = '<i class="fas fa-check-circle"></i>';
     $company_msg = 'text-success';
 }
-if (count($business_nature) > 0) {
+if (php72_count($business_nature) > 0) {
     $nature_class = '';
     $nature_text = 'Done';
     $nature_icon = '<i class="fas fa-check-circle"></i>';
     $nature_msg = 'text-success';
 }
-if (count($managementDetails) > 0) {
+if (php72_count($managementDetails) > 0) {
     $mgmnt_class = '';
     $mgmnt_text = 'Done';
     $mgmnt_icon = '<i class="fas fa-check-circle"></i>';
     $mgmnt_msg = 'text-success';
 }
-if (count($governanceDetails) > 0) {
+if (php72_count($governanceDetails) > 0) {
     $govern_class = '';
     $govern_text = 'Done';
     $govern_icon = '<i class="fas fa-check-circle"></i>';
     $govern_msg = 'text-success';
 }
-if (count($relationDetails) > 0) {
+if (php72_count($relationDetails) > 0) {
     $vilrel_class = '';
     $vilrel_text = 'Done';
     $vilrel_icon = '<i class="fas fa-check-circle"></i>';
     $vilrel_msg = 'text-success';
 }
-if (count($villgro_incubation) > 0) {
+if (php72_count($villgro_incubation) > 0) {
     $increl_class = '';
     $increl_text = 'Done';
     $increl_icon = '<i class="fas fa-check-circle"></i>';
     $increl_msg = 'text-success';
 }
-if (count($capTableDetails) > 0) {
+if (php72_count($capTableDetails) > 0) {
     $cap_class = '';
     $cap_text = 'Done';
     $cap_icon = '<i class="fas fa-check-circle"></i>';
     $cap_msg = 'text-success';
 }
-if (count($otherInterests) > 0) {
+if (php72_count($otherInterests) > 0) {
     $int_class = '';
     $int_text = 'Done';
     $int_icon = '<i class="fas fa-check-circle"></i>';
@@ -321,7 +321,7 @@ if ($plan_pending == 1) {
                         </thead>
                         <tbody>
                             <?php
-                            for ($i = 0; $i < count($managementDetails); $i++) {
+                            for ($i = 0; $i < php72_count($managementDetails); $i++) {
                                 ?>
                                 <tr>
                                     <td><p><?= $managementDetails[$i]['name']; ?></p></td>
@@ -378,7 +378,7 @@ if ($plan_pending == 1) {
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                for ($i = 0; $i < count($governanceDetails); $i++) {
+                                                                for ($i = 0; $i < php72_count($governanceDetails); $i++) {
                                                                     ?>
                                                                     <tr>
                                                                         <td><p><?= $governanceDetails[$i]['name']; ?></p></td>
@@ -492,7 +492,7 @@ if ($plan_pending == 1) {
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    for ($i = 0; $i < count($mentorDetails); $i++) {
+                                                    for ($i = 0; $i < php72_count($mentorDetails); $i++) {
                                                         $start_date = (isset($mentorDetails[$i]['start_date']) && $mentorDetails[$i]['start_date'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($mentorDetails[$i]['start_date'])) : '';
                                                         $end_date = (isset($mentorDetails[$i]['end_date']) && $mentorDetails[$i]['start_date'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($mentorDetails[$i]['end_date'])) : '';
 
@@ -796,7 +796,7 @@ if ($plan_pending == 1) {
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                for ($i = 0; $i < count($capTableDetails); $i++) {
+                                                                for ($i = 0; $i < php72_count($capTableDetails); $i++) {
                                                                     ?>
                                                                     <tr>
                                                                         <td><p><?= $i + 1; ?></p></td>
@@ -864,7 +864,7 @@ if ($plan_pending == 1) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        for ($i = 0; $i < count($otherInterests); $i++) {
+                                        for ($i = 0; $i < php72_count($otherInterests); $i++) {
                                             ?>
                                             <tr>
                                                 <td><p><?= $i + 1; ?></p></td>

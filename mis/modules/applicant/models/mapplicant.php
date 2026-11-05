@@ -166,7 +166,7 @@ class Mapplicant extends CI_Model
     public function assignChecklist($options = array())
     {
         $data = array('innovation' => $options['innovationid'],
-            'checklist' => implode(',', $options['document']));
+            'checklist' => php72_implode(',', $options['document']));
 
         if ($this->checkDuplicateChecklist($options['innovationid'])) {
             $this->db->insert('invester_document', $data);

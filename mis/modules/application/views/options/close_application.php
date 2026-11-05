@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-12 text-right">
                         <ul class="vitals-links">
-                            <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assigned_incharge)) { ?>
+                            <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) { ?>
                                 <li class="edit"><a href="javascript:" class="edt_btnVital summaryEdit"><span><i class="fas fa-pencil-alt"></i></span> Edit</a></li>
                             <?php } ?>
                         </ul>

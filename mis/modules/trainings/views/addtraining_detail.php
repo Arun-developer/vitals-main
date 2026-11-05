@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 </script>
 <?php
-if (count($trainingDetails) > 0) {
+if (php72_count($trainingDetails) > 0) {
 
     $formAction = site_url('training/addtraining_detail/' . $innovationid . '/' . $id);
     $val = @$trainingDetails['list1'][0];
@@ -19,7 +19,7 @@ if (count($trainingDetails) > 0) {
     $document = isset($_REQUEST['document']) ? $_REQUEST['document'] : "";
 
 }
-for ($i = 0; $i < count($val1); $i++) {
+for ($i = 0; $i < php72_count($val1); $i++) {
     if ($i == 0) {
         $facilitator_name = "<select name='facilitator_name'>";
 

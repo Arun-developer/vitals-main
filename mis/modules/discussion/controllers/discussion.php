@@ -39,7 +39,7 @@
 			$data['innovation'] = $innovationInfo = $this->Minnovation->getInnovation($activityDetails['0']['innovation']);
 			
 			$data['commentsList'] = array();
-			if(count($discussionDetails))
+			if(php72_count($discussionDetails))
 			{
 				$options['discussion'] = $discussionDetails['0']['id'];
 				$data['commentsList'] = $this->Mdiscussion->getLimitRecords($options);

@@ -1,7 +1,7 @@
 <?php 
 $nullLink = "javascript:void(0);";
 
-if(count($jobDetails)>0)
+if(php72_count($jobDetails)>0)
 {
 $val=array();
 $val=$jobDetails[0];

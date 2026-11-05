@@ -364,7 +364,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
         <?php
         $get_components = unserialize($row['components']);
         ?>
-        <td><?php echo implode(', ', $get_components); ?></td>
+        <td><?php echo php72_implode(', ', $get_components); ?></td>
     </tr>
     <tr class="odd">
         <?php
@@ -377,7 +377,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
             echo 'Primary beneficiaries';
         }
         ?></td>
-        <td><?php echo implode(', ', $get_beneficiary); ?></td>
+        <td><?php echo php72_implode(', ', $get_beneficiary); ?></td>
     </tr>
 <?php } ?>
 <tr class="even">
@@ -423,7 +423,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
     }
     ?></a>
     <table id="add_info" class="gtable" width="100%">
-        <?php if (count($pitch_member) > 0) { ?>
+        <?php if (php72_count($pitch_member) > 0) { ?>
             <tr>
                 <td colspan="2" style="background-color:#FFF"></td>
             </tr>
@@ -1100,7 +1100,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                                         }
                                                                                     }
 
-                                                                                    $abtVill = implode(', ', $aboutvill);
+                                                                                    $abtVill = php72_implode(', ', $aboutvill);
 
                                                                                     $info_other_mailer_om = '';
                                                                                     $other_org_name = '';
@@ -1319,7 +1319,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
-                                                                    if (count($shortlist_comment) > 0) {
+                                                                    if (php72_count($shortlist_comment) > 0) {
                                                                         foreach ($shortlist_comment as $commentlist) {
 
                                                                             $emp_name = $this->Minnovation->getUsername($commentlist['created_by']);

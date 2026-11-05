@@ -80,7 +80,7 @@
                         <?php  
 		  $i=0;
 		  $j=1;
-	  if(count($activityList))
+	  if(php72_count($activityList))
 	  {
 		 $key1 = 0;  
 		 $na="";

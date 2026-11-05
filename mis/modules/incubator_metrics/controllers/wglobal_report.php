@@ -70,7 +70,7 @@ class Wglobal_report extends CI_Controller
         }
         if ($frequency == '4') {
 
-            for ($i = 0; $i < count($data['yearly']); $i++) {
+            for ($i = 0; $i < php72_count($data['yearly']); $i++) {
                 $data['yearanswer'][$i] = $this->mwglobal_report->getseedfunding_report($innovation, $data['yearly'][$i]);
                 $data['yearboard'][$i] = $this->mwglobal_report->getboard_service($innovation, $data['yearly'][$i]);
                 $data['yearraise'][$i] = $this->mwglobal_report->getraiseinvestment($innovation, $data['yearly'][$i]);
@@ -82,7 +82,7 @@ class Wglobal_report extends CI_Controller
 
         }
         if ($frequency == '3') {
-            for ($i = 0; $i < count($data['quarterly']); $i++) {
+            for ($i = 0; $i < php72_count($data['quarterly']); $i++) {
                 $data['quarteranswer'][$i] = $this->mwglobal_report->getqseedfunding_report($innovation, $data['quarterly'][$i], $yearly);
                 $data['quarterboard'][$i] = $this->mwglobal_report->getqboard_service($innovation, $data['quarterly'][$i], $yearly);
                 $data['quarterraise'][$i] = $this->mwglobal_report->getqraiseinvestment($innovation, $yearly, $data['quarterly'][$i]);
@@ -93,7 +93,7 @@ class Wglobal_report extends CI_Controller
             }
         }
         if ($frequency == '2') {
-            for ($i = 0; $i < count($data['monthly']); $i++) {
+            for ($i = 0; $i < php72_count($data['monthly']); $i++) {
                 $data['monthanswer'][$i] = $this->mwglobal_report->getmseedfunding_report($innovation, $data['monthly'][$i], $yearly);
                 $data['monthboard'][$i] = $this->mwglobal_report->getmboard_service($innovation, $data['monthly'][$i], $yearly);
                 $data['monthraise'][$i] = $this->mwglobal_report->getmraiseinvestment($innovation, $yearly, $data['monthly'][$i]);
@@ -306,7 +306,7 @@ class Wglobal_report extends CI_Controller
         $data['quarterly'] = array('1', '2', '3', '4');
         $data['year'] = $year;
         $data['innovation'] = $id;
-        for ($i = 0; $i < count($data['quarterly']); $i++) {
+        for ($i = 0; $i < php72_count($data['quarterly']); $i++) {
             $data['quartermeeting'][$i] = $this->mwglobal_report->getqmeeting_service($id, $data['quarterly'][$i], $year);
         }
         $data['cpage'] = 'meeting_report';

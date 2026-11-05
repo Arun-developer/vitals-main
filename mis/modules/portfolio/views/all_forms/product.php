@@ -144,7 +144,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($product_qualitative); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($product_qualitative); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

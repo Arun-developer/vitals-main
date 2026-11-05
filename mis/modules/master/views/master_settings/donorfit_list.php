@@ -107,7 +107,7 @@ if (isset($_REQUEST['fit_name']) && $_REQUEST['fit_name'] != '') {
     </thead>
     <tbody>
         <?php
-        if (count($donors)) {
+        if (php72_count($donors)) {
             $r = 1;
             foreach ($donors as $donor) {
                 $this->hris = $this->load->database('hris', TRUE);

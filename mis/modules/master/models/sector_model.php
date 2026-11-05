@@ -72,7 +72,7 @@ public function getSectorDetails($sectorIds =array()) {#echo'<pre>';print_r($sec
         $sqldel = "DELETE FROM $table WHERE sector_id = '" . $data['sector_id'] . "' AND partner_id = '" . $data['partner_id'] . "'";
         $querydel = $this->db->query($sqldel);
 
-        $count = count($data['employee_number']);
+        $count = php72_count($data['employee_number']);
         $date = date('Y-m-d');
         for ($i = 0; $i < $count; $i++) {
             $sql = "INSERT INTO $table (employee_id,created_at,sector_id,partner_id,status) VALUES ('" . $data['employee_number'][$i] . "', '" . $date . "', '" . $data['sector_id'] . "','" . $data['partner_id'] . "', 1)";
@@ -165,7 +165,7 @@ public function getSectorDetails($sectorIds =array()) {#echo'<pre>';print_r($sec
         $sqldel = "DELETE FROM $table_name WHERE sector_id = '" . $data['sector_id'] . "' AND partner_id = '" . $data['partner_id'] . "'";
         $querydel = $this->db->query($sqldel);
 
-        $count = count($data['employee_number']);
+        $count = php72_count($data['employee_number']);
         $date = date('Y-m-d');
         for ($i = 0; $i < $count; $i++) {
             $sql = "INSERT INTO $table_name ($field1,created_date,sector_id,partner_id,status) VALUES ('" . $data['employee_number'][$i] . "', '" . $date . "', '" . $data['sector_id'] . "','" . $data['partner_id'] . "', 1)";
@@ -276,7 +276,7 @@ public function getSectorDetails($sectorIds =array()) {#echo'<pre>';print_r($sec
         $query = $ret->row();
         $output = array();
 
-        if (count($query) > 0) {
+        if (php72_count($query) > 0) {
             $output[] = $query->sector;
             return $output;
         }

@@ -165,7 +165,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        if (count($version_log) > 0) {
+                        if (php72_count($version_log) > 0) {
                             foreach ($version_log as $row) {
                                 $created_date = date('d-m-Y h:i', strtotime($row['created_at']));
                                 ?>

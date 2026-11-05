@@ -2,7 +2,7 @@
 $formAction = site_url('master/reports/form');
 $id = '';
 $val = array();
-if (count($reportsDetails)) {
+if (php72_count($reportsDetails)) {
     $val = $reportsDetails['0'];
     $formAction = site_url('master/reports/form/' . $val['id']);
     $id = $val['id'];
@@ -55,7 +55,7 @@ $reportFields = $this->Mreports->getReportFields($report_type);
 		<dd>
            <select id="report_data" class="multiselect required" multiple="multiple" name="report_data[]" >
              <?php foreach ($reportFields as $key => $value) {?>
-                <option value="<?=$key?>" <?php if (in_array($key, $report_data)) {echo 'selected="selected"';}?>>
+                <option value="<?=$key?>" <?php if (php72_in_array($key, $report_data)) {echo 'selected="selected"';}?>>
                 <?=$value?></option>
              <?php }?>
           </select>

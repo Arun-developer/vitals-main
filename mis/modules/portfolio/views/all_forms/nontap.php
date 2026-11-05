@@ -123,7 +123,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                         </thead>
                                                         <tbody >
                                                             <?php
-                                                            if (count($nontap_config) != 0) {
+                                                            if (php72_count($nontap_config) != 0) {
                                                                 $i = 0;
                                                                 $j = 1;
                                                                 foreach ($nontap_config as $get_data) {
@@ -140,7 +140,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 //                                                                                    echo '<pre>';
 //                                                                                    print_r($get_achieve_data);
                                                                     $need_by = '';
-                                                                    if (count($get_achieve_data) > 0) {
+                                                                    if (php72_count($get_achieve_data) > 0) {
                                                                         $need_by = (isset($get_achieve_data[0]['need_by']) && $get_achieve_data[0]['need_by'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($get_achieve_data[0]['need_by'])) : '';
                                                                     } else {
                                                                                 // $need_by = (isset($get_data['need_by']) && $get_data['need_by'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($get_data['need_by'])) : '';
@@ -248,8 +248,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="qualitCount" value="<?= count($qual_achieve); ?>">
-<input type="hidden" id="enableCount" value="<?= count($nontap_plan); ?>">
+<input type="hidden" id="qualitCount" value="<?= php72_count($qual_achieve); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($nontap_plan); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

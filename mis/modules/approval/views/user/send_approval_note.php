@@ -27,7 +27,7 @@
                                             </div>
                                             <?php
                                             $current_date = date('d-m-Y');
-                                            if (count($reporting_list) == 1) {
+                                            if (php72_count($reporting_list) == 1) {
                                                 $ro_field = 'readonly';
                                                 $ro_class = 'none-pointer';
                                                 $ro_value = 'selected';

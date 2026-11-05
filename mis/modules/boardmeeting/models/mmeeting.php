@@ -117,7 +117,7 @@ class Mmeeting extends CI_Model
     }
     public function updateboardAttendeesItems($id, $options)
     {
-        $documents = implode(',', $options['files'][2]);
+        $documents = php72_implode(',', $options['files'][2]);
         if (isset($options['response'])) {
             foreach ($options['response'] as $key => $value):
                 if (!empty($options['files'][1]) || !empty($options['files'][0]) || !empty($documents)) {
@@ -143,7 +143,7 @@ class Mmeeting extends CI_Model
     }
     public function insertboardAttendeesItems($id, $options)
     {
-        $documents = implode(',', $options['files'][2]);
+        $documents = php72_implode(',', $options['files'][2]);
         if (isset($options['response'])) {
             foreach ($options['response'] as $key => $value):
                 $data = array('meeting_id' => $id,
@@ -263,7 +263,7 @@ class Mmeeting extends CI_Model
         $this->db->where('innovation', $innovation);
         $query = $this->db->get('assign_associate');
         $data = $query->row_array();
-        $empids = array_merge($getheads, $data);
+        $empids = php72_array_merge($getheads, $data);
         $result = $this->getUsers($empids);
         return $result;
     }

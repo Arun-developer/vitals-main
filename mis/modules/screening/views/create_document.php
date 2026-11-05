@@ -13,7 +13,7 @@
 foreach($criteriaList as $cri):
 	//fields
 	$fieldsList = $this->Mscreening->getFiledsAnswerList($innovation,$cri['id']);
-	if(count($fieldsList))
+	if(php72_count($fieldsList))
 	{
 		echo '<h2>'.$cri['master_name'].'</h2>';
 		?>
@@ -33,7 +33,7 @@ foreach($criteriaList as $cri):
 				//assessment fiels
 				$assessList = $this->Mscreening->getFiledsAnswerList($innovation,$cri['id'],$row['id']);
 				
-				if(count($assessList)){
+				if(php72_count($assessList)){
 					?>
         <tr>
             <td colspan="2" bgcolor="#D2DAE8">
@@ -61,7 +61,7 @@ foreach($criteriaList as $cri):
 	
 	#comments
 	$assessComments = $this->Mscreening_comments->getScreeningComments($innovation,$cri['id']);
-	if(count($assessComments))
+	if(php72_count($assessComments))
 	{
 		?><br />
 

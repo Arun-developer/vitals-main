@@ -221,7 +221,7 @@ $field_enable = '0';
                                                                     </tr>
                                                                 </thead>
                                                                 <?php
-                                                                $recordCount = isset($get_nontap[0]) ? count($get_nontap) : 1;
+                                                                $recordCount = isset($get_nontap[0]) ? php72_count($get_nontap) : 1;
                                                                 for ($i = 0; $i < $recordCount; $i++) {
                                                                     $need_date = (isset($get_nontap[$i]['need_by']) && $get_nontap[$i]['need_by'] != '0000-00-00 00:00:00') ? date('d-m-Y', strtotime($get_nontap[$i]['need_by'])) : '';
                                                                     ?>
@@ -273,7 +273,7 @@ $field_enable = '0';
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
-                                                                    <input type="hidden" id="enableCount" value="<?= count($get_nontap); ?>">
+                                                                    <input type="hidden" id="enableCount" value="<?= php72_count($get_nontap); ?>">
                                                                     <input type="hidden" name="id[]" class="tapid" value="<?php echo $get_nontap[$i]['nontap_id']; ?>" />
 <?php } ?>
                                                                 <tbody id='nontap_add'></tbody>

@@ -23,7 +23,7 @@ $(document).ready(function() {
         $('#budgetTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($budgetList) == 0){ ?>
+    <?php if(php72_count($budgetList) == 0){ ?>
     var arow = $('.cloneBudget').clone().removeClass('cloneBudget').addClass('odd');
     $('#budgetTable').append(arow);
     ordering('sNo');

@@ -384,11 +384,11 @@
                                                     
 													<select class="form-control fieldDisable" disabled multiple name="solutions[]" id="solutions" >
                                                       
-															<option value="People at the base of the pyramid" <?php if (in_array('Digital operational intelligence', $inv_alternatives)) echo "selected"; ?>>Digital operational intelligence</option>
-															<option value="Rural poor" <?php if (in_array('Modular wastewater treatment & reuse', $inv_alternatives)) echo "selected"; ?>>Modular wastewater treatment & reuse</option>
-															<option value="Urban poor" <?php if (in_array('Compact solid waste processing', $inv_alternatives)) echo "selected"; ?>>Compact solid waste processing</option>
-															<option value="Rural or urban middle income" <?php if (in_array('Specialized niche waste solutions', $inv_alternatives)) echo "selected"; ?>>Specialized niche waste solutions</option>
-															<option value="Rural or urban high income" <?php if (in_array('Waterway & drain protection', $inv_alternatives)) echo "selected"; ?>>Waterway & drain protection</option>
+															<option value="People at the base of the pyramid" <?php if (php72_in_array('Digital operational intelligence', $inv_alternatives)) echo "selected"; ?>>Digital operational intelligence</option>
+															<option value="Rural poor" <?php if (php72_in_array('Modular wastewater treatment & reuse', $inv_alternatives)) echo "selected"; ?>>Modular wastewater treatment & reuse</option>
+															<option value="Urban poor" <?php if (php72_in_array('Compact solid waste processing', $inv_alternatives)) echo "selected"; ?>>Compact solid waste processing</option>
+															<option value="Rural or urban middle income" <?php if (php72_in_array('Specialized niche waste solutions', $inv_alternatives)) echo "selected"; ?>>Specialized niche waste solutions</option>
+															<option value="Rural or urban high income" <?php if (php72_in_array('Waterway & drain protection', $inv_alternatives)) echo "selected"; ?>>Waterway & drain protection</option>
 													
 														
 													</select>
@@ -401,10 +401,10 @@
                                                     
 													<select class="form-control fieldDisable" disabled multiple name="engagement[]" id="engagement" >
                                                       
-															<option value="Government MoU" <?php if (in_array('Government MoU', $inv_desc)) echo "selected"; ?>>Government MoU</option>
-															<option value="State/municipal utility collaboration" <?php if (in_array('State/municipal utility collaboration', $inv_desc)) echo "selected"; ?>>State/municipal utility collaboration</option>
-															<option value="No formal engagement, but discussions are ongoing" <?php if (in_array('No formal engagement, but discussions are ongoing', $inv_desc)) echo "selected"; ?>>No formal engagement, but discussions are ongoing</option>
-															<option value="No formal engagement yet" <?php if (in_array('No formal engagement yet', $inv_desc)) echo "selected"; ?>>No formal engagement yet</option>
+															<option value="Government MoU" <?php if (php72_in_array('Government MoU', $inv_desc)) echo "selected"; ?>>Government MoU</option>
+															<option value="State/municipal utility collaboration" <?php if (php72_in_array('State/municipal utility collaboration', $inv_desc)) echo "selected"; ?>>State/municipal utility collaboration</option>
+															<option value="No formal engagement, but discussions are ongoing" <?php if (php72_in_array('No formal engagement, but discussions are ongoing', $inv_desc)) echo "selected"; ?>>No formal engagement, but discussions are ongoing</option>
+															<option value="No formal engagement yet" <?php if (php72_in_array('No formal engagement yet', $inv_desc)) echo "selected"; ?>>No formal engagement yet</option>
 													
 														
 													</select>

@@ -1,7 +1,7 @@
 <?php
 $c = $this->uri->segment('5');
 $c = ($c == '') ? 'copy1' : $c;
-if (count($ndaDetails)) {
+if (php72_count($ndaDetails)) {
     $id = $ndaDetails['0']['id'];
     $copy1 = $ndaDetails['0'][$c];
 } else {

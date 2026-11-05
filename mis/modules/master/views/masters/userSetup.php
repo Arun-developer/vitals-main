@@ -40,7 +40,7 @@
 	 <?php foreach($usersList as $row) {
 			
 		 ?>
-		<option value="<?=$row['emp_number']?>" <?php if(in_array($row['emp_number'],$icm)){  echo 'selected'; } ?>><?=$row['emp_name']?></option>
+		<option value="<?=$row['emp_number']?>" <?php if(php72_in_array($row['emp_number'],$icm)){  echo 'selected'; } ?>><?=$row['emp_name']?></option>
 		<?php } ?>
 	
 	 </select>
@@ -56,7 +56,7 @@
 	 <?php foreach($usersList as $row) {
 			
 		 ?>
-		<option value="<?=$row['emp_number']?>" <?php if(in_array($row['emp_number'],$abi)){  echo 'selected'; } ?>><?=$row['emp_name']?></option>
+		<option value="<?=$row['emp_number']?>" <?php if(php72_in_array($row['emp_number'],$abi)){  echo 'selected'; } ?>><?=$row['emp_name']?></option>
 		<?php } ?>
 	
 	 </select>
@@ -72,7 +72,7 @@
 	  <?php foreach($userListFinance as $rowsuser) { 
           
           ?>
-	  <option value="<?=$rowsuser['id']?>" <?php  echo (in_array($rowsuser['id'],$finance))?('selected'):(''); ?>>
+	  <option value="<?=$rowsuser['id']?>" <?php  echo (php72_in_array($rowsuser['id'],$finance))?('selected'):(''); ?>>
 		<?=$rowsuser['user_name']?>
 	  </option>
 	  <?php } ?>

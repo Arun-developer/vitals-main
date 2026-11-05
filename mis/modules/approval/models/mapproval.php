@@ -114,7 +114,7 @@ class Mapproval extends CI_Model {
 		$rows = array();
 		$grand_lists = array(); 
 		if(!empty($ids)){
-			$implodeIds = implode(',',$ids);
+			$implodeIds = php72_implode(',',$ids);
 			$sqlQuery = "SELECT DISTINCT grant_id FROM `balance_amount` WHERE `programme_id` = $program AND `donor_id` = $donor_id AND `grant_id` IN ($implodeIds) ORDER BY `id` DESC";
 			$query = $this->ais->query($sqlQuery);
 			$grand_ids = $query->result_array();
@@ -1061,7 +1061,7 @@ class Mapproval extends CI_Model {
 		
         $supporting_documents = '';
         if ($this->input->post('supporting_documents') != '') {
-            $supporting_documents = implode(', ', $this->input->post('supporting_documents'));
+            $supporting_documents = php72_implode(', ', $this->input->post('supporting_documents'));
         }
         $data = array('approval_no' => $this->approvalNumber(),
             'date_of_request' => date("Y:m:d"),
@@ -1184,7 +1184,7 @@ class Mapproval extends CI_Model {
 		
         $supporting_documents = '';
         if ($this->input->post('supporting_documents') != '') {
-            $supporting_documents = implode(', ', $this->input->post('supporting_documents'));
+            $supporting_documents = php72_implode(', ', $this->input->post('supporting_documents'));
         }
         $data = array('approval_no' => $this->approvalNumber(),
             'date_of_request' => date("Y:m:d"),
@@ -1412,7 +1412,7 @@ class Mapproval extends CI_Model {
 		
         $supporting_documents = '';
         if ($this->input->post('supporting_documents') != '') {
-            $supporting_documents = implode(', ', $this->input->post('supporting_documents'));
+            $supporting_documents = php72_implode(', ', $this->input->post('supporting_documents'));
         }
         $data = array('approval_no' => $this->approvalNumber(),
             'date_of_request' => date("Y:m:d"),
@@ -1626,7 +1626,7 @@ class Mapproval extends CI_Model {
                 $data = unserialize($row['donor']);
             }
         }
-        $data = ($data != '') ? implode(',', $data) : '';
+        $data = ($data != '') ? php72_implode(',', $data) : '';
         return $data;
     }
 
@@ -1849,7 +1849,7 @@ class Mapproval extends CI_Model {
         $editedAN = $this->insertANedithistory($olddetails);
         $supporting_documents = '';
         if ($this->input->post('supporting_documents') != '') {
-            $supporting_documents = implode(', ', $this->input->post('supporting_documents'));
+            $supporting_documents = php72_implode(', ', $this->input->post('supporting_documents'));
         }
         $data = array(
             'date_of_seeking_approval' => date("Y-m-d", strtotime($this->input->post('date_of_seeking_approval'))),
@@ -1954,7 +1954,7 @@ class Mapproval extends CI_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -2001,7 +2001,7 @@ class Mapproval extends CI_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -2155,7 +2155,7 @@ class Mapproval extends CI_Model {
 
     function getEmployeeFromUserId($userId) {
         $data = $this->getUserInfo($userId);
-        if (count($data)) {
+        if (php72_count($data)) {
             return $this->employeeDetails($data['0']['emp_id']);
         } else
         return true;
@@ -2241,9 +2241,9 @@ class Mapproval extends CI_Model {
 			// $employees = $this->getReportingUser($this->session->userdata('emp_number'), 'supUser');
 		
         $roName = $reportingAuth[0]['emp_name'];
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = $reportingAuth['0']['official_email'] != '' ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = $rodetails['0']['official_email'] != '' ? $rodetails['0']['official_email'] : $rodetails['0']['personal_email'];
 			
@@ -2274,7 +2274,7 @@ class Mapproval extends CI_Model {
             break;
         }
 		if($touser =='To'){
-			if (count($reportingAuth) > 1) {
+			if (php72_count($reportingAuth) > 1) {
 				if(!empty($rodetails)){
 					$toName =$rodetails['0']['user_name'];
 				}
@@ -2368,9 +2368,9 @@ class Mapproval extends CI_Model {
         $empEmail = $employeeDetails['0']['official_email'] != '' ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
         $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
         $roName = $reportingAuth[0]['emp_name'];
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = $reportingAuth['0']['official_email'] != '' ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = $rodetails['0']['official_email'] != '' ? $rodetails['0']['official_email'] : $rodetails['0']['personal_email'];
         } else
@@ -2398,7 +2398,7 @@ class Mapproval extends CI_Model {
             break;
         }
 		if($touser =='To'){
-			if (count($reportingAuth) > 1) {
+			if (php72_count($reportingAuth) > 1) {
 				if(!empty($rodetails)){
 					$toName =$rodetails['0']['user_name'];
 				}
@@ -2490,9 +2490,9 @@ class Mapproval extends CI_Model {
         $empEmail = $employeeDetails['0']['official_email'] != '' ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
         $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
         $roName = $reportingAuth[0]['emp_name'];
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = $reportingAuth['0']['official_email'] != '' ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = $rodetails['0']['official_email'] != '' ? $rodetails['0']['official_email'] : $rodetails['0']['personal_email'];
         } else
@@ -2530,7 +2530,7 @@ class Mapproval extends CI_Model {
             break;
         }
 		if($touser =='To'){
-			if (count($reportingAuth) > 1) {
+			if (php72_count($reportingAuth) > 1) {
 				if(!empty($rodetails)){
 					$toName =$rodetails['0']['user_name'];
 				}
@@ -2668,7 +2668,7 @@ class Mapproval extends CI_Model {
 			$mail->Subject = $messageSubject;
 				
 			$mail->MsgHTML($messageBody);
-			 if (count($attach)) {
+			 if (php72_count($attach)) {
 				foreach ($attach as $key => $value):
 					if (file_exists($value)) {
 						$mail->addAttachment($value);
@@ -2913,9 +2913,9 @@ class Mapproval extends CI_Model {
         $empEmail = ($employeeDetails['0']['official_email'] != '') ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
         //reporting authority
         $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
-        if (count($reportingAuth))
+        if (php72_count($reportingAuth))
             $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = ($rodetails['0']['official_email'] != '') ? $rodetails['0']['official_email'] : $rodetails['0']['personal_email'];
         } else
@@ -3045,7 +3045,7 @@ class Mapproval extends CI_Model {
 
     public function getApprovalDashboard($section, $currentTab) {
 
-        $subUsers = implode("','", $this->reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','", $this->reportingUser('subUser', 'userId'));
         $searchArray = array();
         $status = 'status';
         $admin = null;
@@ -3176,7 +3176,7 @@ class Mapproval extends CI_Model {
             foreach ($row1 as $rs) {
                 $req_amount[] = $rs['amt_required'];
             }
-            $tot_req_amount = array_sum($req_amount);
+            $tot_req_amount = php72_array_sum($req_amount);
         }
         $this->ais->select_sum('amount_toapprove', 'int_amount');
         $this->ais->where($conarray);
@@ -3212,7 +3212,7 @@ class Mapproval extends CI_Model {
         foreach ($result->result_array() as $row) {
             $data[] = unserialize($row['an_approve_user']);
         }
-		if(in_array($id,$data[0])){
+		if(php72_in_array($id,$data[0])){
 			$an_approver_user_id = $id;
 		}
 		return $an_approver_user_id;

@@ -1,5 +1,5 @@
 <?php
-	if(count($mailDetails))
+	if(php72_count($mailDetails))
 	{    
 	  foreach($mailDetails as $row)
 		{

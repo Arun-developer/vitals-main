@@ -82,7 +82,7 @@ class Grade extends CI_Controller
 
             $data['cpagetitle'] = "Grading Master - Update Grade";
             $data['gradeDetails'] = $this->Mgrade->getGradeDetails($id);
-            if (count($data['gradeDetails']) == 0) {
+            if (php72_count($data['gradeDetails']) == 0) {
                 redirect('master/grade/form');
             }
 

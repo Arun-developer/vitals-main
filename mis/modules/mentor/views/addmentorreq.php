@@ -8,7 +8,7 @@ $formAction = "";
 $id = '';
 
 $val = array();
-if (count($mentorDetails) > 0) {
+if (php72_count($mentorDetails) > 0) {
     $val = $mentorDetails['0'];
     $formAction = site_url('mentor/form/' . $innovationid . '/' . $val['id']);
     $id = $val['id'];

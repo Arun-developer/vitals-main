@@ -292,7 +292,7 @@
 
                                                     $rowspancount = max($empselectedcount, $sectorselectedcount, $sourceselectedcount);
 
-                                                    for ($yearvalue = 0; $yearvalue < count($yearly); $yearvalue) {
+                                                    for ($yearvalue = 0; $yearvalue < php72_count($yearly); $yearvalue) {
                                                         ?>
                                                         <tr>
                                                             <td rowspan ="2" width="14%" class="table_down"><?= $yearly[$i]; ?>

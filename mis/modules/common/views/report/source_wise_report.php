@@ -21,7 +21,7 @@ $nullLink = "javascript:void(0);";
 	</thead>
 	<tbody>
     <?php
-	if(count($sourceWiseReport)){
+	if(php72_count($sourceWiseReport)){
 		$i='odd';
 		foreach($sourceWiseReport as $row): 
 		$i = ($i=='odd')?'even':'odd';

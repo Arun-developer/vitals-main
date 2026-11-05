@@ -58,13 +58,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -166,7 +166,7 @@
 //                                                                for ($i = 0; $i < count($partner_list); $i++) {
                                                                 $i = 0;
                                                                 $j = 1;
-                                                                if (count($nontap_plan) != 0) {
+                                                                if (php72_count($nontap_plan) != 0) {
                                                                     foreach ($nontap_plan as $get_data) {
                                                                         $service['partner_id'] = $this->session->userdata('partner_id');
                                                                         $service['id'] = $get_data['type'];
@@ -203,7 +203,7 @@
                                                                     $i++;
                                                                     $j++;
                                                                 }
-                                                            } else if (count($nontap_config) != 0) {
+                                                            } else if (php72_count($nontap_config) != 0) {
                                                                 $i = 0;
                                                                 $j = 1;
                                                                 foreach ($nontap_config as $get_data) {
@@ -261,7 +261,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($nontap_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($nontap_plan); ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery.validate.min.js'; ?>"></script>
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/jquery-ui.min.js'; ?>"></script>

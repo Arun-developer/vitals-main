@@ -442,7 +442,7 @@ $get_meet = json_decode($meeting['meeting_plan']);
 
 <?php
 $obj_meet = json_decode($meeting['meeting_plan'], true);
-if (!array_filter($obj_meet)) {
+if (!php72_array_filter($obj_meet)) {
     $enable = 0;
 } else {
     $enable = 1;

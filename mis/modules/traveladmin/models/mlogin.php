@@ -85,7 +85,7 @@ class Mlogin extends My_Model {
 
     function getEmployeeFromUserId($userId) {
         $data = $this->getUserInfo($userId);
-		if (count($data)) {
+		if (php72_count($data)) {
             return $this->employeeDetails($data['0']['emp_id']);
         } else
             return true;
@@ -95,7 +95,7 @@ class Mlogin extends My_Model {
         $data = array();
         $data = $this->getUserNameInfo($userid);
 
-        if (count($data))
+        if (php72_count($data))
             return $data['0']['user_name'];
         else
             return true;
@@ -195,7 +195,7 @@ class Mlogin extends My_Model {
                 $searchArray[] = "hs_hr_leave.employee_id  IN ('" . $empid . "')";
                 break;
             case 'rolist':
-                $subUsers = implode("','", reportingUser('subUser', 'empid'));
+                $subUsers = php72_implode("','", reportingUser('subUser', 'empid'));
                 $searchArray[] = "hs_hr_leave.employee_id  IN ('" . $subUsers . "')";
                 $admin = 'Show all';
                 break;

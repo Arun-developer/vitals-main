@@ -71,7 +71,7 @@ class Activities extends CI_Controller
         $data['activityTypeList'] = $this->Mmaster->getMasterSettings('Activity Type');
         if ($this->input->post('txtSubmit') != '') {
             $msg = $this->upload($_FILES);
-            for ($i = 0; $i < count($_FILES['document']['name']); $i++) {
+            for ($i = 0; $i < php72_count($_FILES['document']['name']); $i++) {
                 $_POST['document'][$i] = $_FILES['document']['name'][$i];
             }
             $this->Mactivities->insert($id, $_POST);
@@ -93,7 +93,7 @@ class Activities extends CI_Controller
         $data['activityTypeList'] = $this->Mmaster->getMasterSettings('Activity Type');
         if ($_POST['txtSubmit'] != '') {
             $msg = $this->upload($_FILES);
-            for ($i = 0; $i < count($_FILES['document']['name']); $i++) {
+            for ($i = 0; $i < php72_count($_FILES['document']['name']); $i++) {
                 $_POST['document'][$i] = $_FILES['document']['name'][$i];
             }
             $date_array = explode("/", $_POST['end_date']); // split the array
@@ -177,7 +177,7 @@ class Activities extends CI_Controller
         $config['allowed_types'] = '*';
         $_POST['document'] = '';
         $this->load->library('upload');
-        for ($i = 0; $i < count($options['document']['name']); $i++) {
+        for ($i = 0; $i < php72_count($options['document']['name']); $i++) {
             if ($options['document']['name'][$i] != '') {
                 $_FILES['ty']['name'] = $options['document']['name'][$i];
             }

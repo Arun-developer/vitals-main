@@ -63,7 +63,7 @@ class Portfolioui extends CI_Controller {
 
     public function quarter1() {
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
         $q1_arr = array();
         foreach ($quart_1 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -75,7 +75,7 @@ class Portfolioui extends CI_Controller {
 
     public function quarter2() {
         $fy_months = $this->month();
-        $quart_2 = array_slice($fy_months, 3, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
         $q2_arr = array();
         foreach ($quart_2 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -87,7 +87,7 @@ class Portfolioui extends CI_Controller {
 
     public function quarter3() {
         $fy_months = $this->month();
-        $quart_3 = array_slice($fy_months, 6, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
         $q3_arr = array();
         foreach ($quart_3 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -99,7 +99,7 @@ class Portfolioui extends CI_Controller {
 
     public function quarter4() {
         $fy_months = $this->month();
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
         $q4_arr = array();
         foreach ($quart_4 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -111,10 +111,10 @@ class Portfolioui extends CI_Controller {
 
     public function allQuarter() {
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
-        $quart_2 = array_slice($fy_months, 3, 3);
-        $quart_3 = array_slice($fy_months, 6, 3);
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
         $q1_arr = $q2_arr = $q3_arr = $q4_arr = array();
         foreach ($quart_1 as $q1) {
             $q1_arr['Q1'] = $q1;
@@ -128,7 +128,7 @@ class Portfolioui extends CI_Controller {
         foreach ($quart_4 as $q4) {
             $q4_arr['Q4'] = $q4;
         }
-        return array_merge($q1_arr, $q2_arr, $q3_arr, $q4_arr);
+        return php72_array_merge($q1_arr, $q2_arr, $q3_arr, $q4_arr);
     }
 
     public function findQuarter($month) {
@@ -169,7 +169,7 @@ class Portfolioui extends CI_Controller {
         $fin_year = $this->input->post('fin_year');
 
         $q4 = $this->quarter4();
-        $q4_key = array_keys($q4);
+        $q4_key = php72_array_keys($q4);
 
         $curMonth = date("m", time());
         $curQuarter = ceil($curMonth / 3);
@@ -203,7 +203,7 @@ class Portfolioui extends CI_Controller {
             $comp_yr = $company['exit_year'];
             $comp_mnt = date('n', strtotime($company['exit_month']));
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
             if (in_array($comp_mnt, $q4_key)) {
                 if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
                     $comp_yr = $company['exit_year'] - 1;
@@ -243,7 +243,7 @@ class Portfolioui extends CI_Controller {
             $listing[] = $lists['innovation'];
         }
         $sector_id = $string = rtrim(implode(',', $sector), ',');
-        $innov_id = rtrim(implode(',', $listing), ',');
+        $innov_id = rtrim(php72_implode(',', $listing), ',');
 
         $data['listing'] = $this->Mportfolio->getJoinDetails('', '', $sector_id, $search_value, $innov_id, $status);
 
@@ -268,21 +268,21 @@ class Portfolioui extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr - 1); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $last_month = date('n') - 1;
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('port_impact', $least_month, $f_year);
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -297,7 +297,7 @@ class Portfolioui extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         $data['impact_plan'] = $this->Mportfolio->getPlanDetails('port_impact', $plan, '', $f_year, $status);
         $data['impact_config'] = $this->Mportfolio->getPlanDetails('plan_impact', $c_option, '', $f_year, $status);
 
@@ -324,11 +324,11 @@ class Portfolioui extends CI_Controller {
                 $j++;
             }
         }
-        $metric_values = array_combine($mName, $mvalues);
+        $metric_values = php72_array_combine($mName, $mvalues);
         $data['metric_unit'] = json_encode($metric_values);
 
         $checkExist = $this->Mportfolio->getDetails('port_impact', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('port_impact', $data, $option);
@@ -423,7 +423,7 @@ class Portfolioui extends CI_Controller {
         if ($milestone == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getApprovalDetails('port_project_milestone', $c_option, $pending);
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/milestone/' . $id . '/' . $get_data[0]['financial_year'] . '/' . $get_data[0]['id']);
                 }
             }
@@ -495,21 +495,21 @@ class Portfolioui extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr - 1); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $last_month = date('n') - 1;
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_board_meetings', $least_month, $f_year);
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -524,7 +524,7 @@ class Portfolioui extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         $data['boardmeet_plan'] = $this->Mportfolio->getPlanDetails('plan_board_meetings', $plan, '', $f_year, $status);
 
         $this->load->vars($data);
@@ -577,7 +577,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $checkExist = $this->Mportfolio->getDetails('plan_board_meetings', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_board_meetings', $data, $option);
@@ -611,21 +611,21 @@ class Portfolioui extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr - 1); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $last_month = date('n') - 1;
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_dp', $least_month, $f_year);
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -640,7 +640,7 @@ class Portfolioui extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         $data['dp_plan'] = $this->Mportfolio->getPlanDetails('plan_dp', $plan, '', $f_year, $status);
 
         $this->load->vars($data);
@@ -662,7 +662,7 @@ class Portfolioui extends CI_Controller {
 
 
         $checkExist = $this->Mportfolio->getDetails('plan_dp', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_dp', $data, $option);
@@ -785,8 +785,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'totalChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['sector_name'] = $sector_name[0]['sector'];
         $this->load->vars($data);
@@ -856,8 +856,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'newChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['sector_name'] = $sector_name[0]['sector'];
         $this->load->vars($data);
@@ -940,8 +940,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'existChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['sector_name'] = $sector_name[0]['sector'];
         $this->load->vars($data);
@@ -970,10 +970,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -1007,25 +1007,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -1042,7 +1042,7 @@ class Portfolioui extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -1056,26 +1056,26 @@ class Portfolioui extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
             $monthly_target = $this->Mportfolio->getTargetSales($month_where);
 
             $monthly_actual = $this->Mportfolio->getActualSales($month_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['value'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1101,9 +1101,9 @@ class Portfolioui extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1152,22 +1152,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -1196,20 +1196,20 @@ class Portfolioui extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualSales($quarter_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['value'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1231,7 +1231,7 @@ class Portfolioui extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -1241,9 +1241,9 @@ class Portfolioui extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1301,7 +1301,7 @@ class Portfolioui extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($sales_target) > 0) {
+            if (php72_count($sales_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     $categories[0] = 'Q1';
                     $categories[1] = 'Q2';
@@ -1314,19 +1314,19 @@ class Portfolioui extends CI_Controller {
                     foreach ($sales_target as $target) {
                         $get_data = json_decode($target['value']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 $hc_target[0] = $q1_val;
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 $hc_target[1] = $q2_val;
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 $hc_target[2] = $q3_val;
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 $hc_target[3] = $q4_val;
                             }
@@ -1401,7 +1401,7 @@ class Portfolioui extends CI_Controller {
 
             $sales_actual = $this->Mportfolio->getActualSales($default_where);
             $actual_month_value = array();
-            if (count($sales_actual) > 0) {
+            if (php72_count($sales_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($sales_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -1443,7 +1443,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -1455,7 +1455,7 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'salesDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $data['current_year'] = $g_year;
@@ -1487,10 +1487,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -1524,25 +1524,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -1559,7 +1559,7 @@ class Portfolioui extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -1573,26 +1573,26 @@ class Portfolioui extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 //            $search_month[] = "t2.sector = '$g_sector'";
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetRevenue($month_where);
             $monthly_actual = $this->Mportfolio->getActualRevenue($month_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1617,9 +1617,9 @@ class Portfolioui extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1670,22 +1670,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -1703,20 +1703,20 @@ class Portfolioui extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualRevenue($quarter_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1739,7 +1739,7 @@ class Portfolioui extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -1749,9 +1749,9 @@ class Portfolioui extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1809,24 +1809,24 @@ class Portfolioui extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($revenue_target) > 0) {
+            if (php72_count($revenue_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($revenue_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 $hc_target[0] = $q1_val;
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 $hc_target[1] = $q2_val;
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 $hc_target[2] = $q3_val;
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 $hc_target[3] = $q4_val;
                             }
@@ -1900,7 +1900,7 @@ class Portfolioui extends CI_Controller {
 
             $revenue_actual = $this->Mportfolio->getActualRevenue($default_where);
             $actual_month_value = array();
-            if (count($revenue_actual) > 0) {
+            if (php72_count($revenue_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($revenue_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -1942,7 +1942,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -1953,7 +1953,7 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'revenueDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -1983,10 +1983,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -2016,25 +2016,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -2051,7 +2051,7 @@ class Portfolioui extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -2066,26 +2066,26 @@ class Portfolioui extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
             $monthly_target = $this->Mportfolio->getTargetProfit($month_where);
 
             $monthly_actual = $this->Mportfolio->getActualProfit($month_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -2110,9 +2110,9 @@ class Portfolioui extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -2163,22 +2163,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -2196,20 +2196,20 @@ class Portfolioui extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualProfit($quarter_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -2232,7 +2232,7 @@ class Portfolioui extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -2242,9 +2242,9 @@ class Portfolioui extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -2302,24 +2302,24 @@ class Portfolioui extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($profit_target) > 0) {
+            if (php72_count($profit_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($profit_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 $hc_target[0] = round($q1_val, 2);
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 $hc_target[1] = round($q2_val, 2);
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 $hc_target[2] = round($q3_val, 2);
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 $hc_target[3] = round($q4_val, 2);
                             }
@@ -2394,7 +2394,7 @@ class Portfolioui extends CI_Controller {
 
             $profit_actual = $this->Mportfolio->getActualProfit($default_where);
             $actual_month_value = array();
-            if (count($profit_actual) > 0) {
+            if (php72_count($profit_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($profit_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -2436,7 +2436,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -2447,7 +2447,7 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'profitDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -2476,10 +2476,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -2518,25 +2518,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -2555,7 +2555,7 @@ class Portfolioui extends CI_Controller {
         }
         $defimpact_where = "t1.field_type = 1";
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -2570,7 +2570,7 @@ class Portfolioui extends CI_Controller {
 //            $search_month[] = "t2.sector = '$g_sector'";
             $search_month[] = "t1.financial_year >= $from_year and t1.financial_year <= $from_year";
             $impact_where = "t1.field_type = 1";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Mportfolio->getTargetEndbeneficiaries($month_where, $impact_where,$g_sector);
@@ -2579,7 +2579,7 @@ class Portfolioui extends CI_Controller {
 			#echo'<pre>';print_r($monthly_target);die;
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     } else {
@@ -2588,7 +2588,7 @@ class Portfolioui extends CI_Controller {
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
 
                     foreach ($monthly_target as $key => $value) {
 
@@ -2596,7 +2596,7 @@ class Portfolioui extends CI_Controller {
                             $yearvalues[0] = strtolower($yearvalues[0]);
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $nums;
                                 } else {
                                     $search_array[$values] = $nums;
@@ -2621,9 +2621,9 @@ class Portfolioui extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -2682,22 +2682,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -2788,7 +2788,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -2801,7 +2801,7 @@ class Portfolioui extends CI_Controller {
         $data['div_id'] = 'impactDiv_' . $id;
         $data['xaxis'] = "No. of End Beneficiaries";
         $data['yaxis'] = "End beneficiaries count";
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -3170,10 +3170,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -3240,7 +3240,7 @@ class Portfolioui extends CI_Controller {
         }
         $defimpact_where = "t1.field_type = 2";
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -3255,7 +3255,7 @@ class Portfolioui extends CI_Controller {
 //            $search_month[] = "t2.sector = '$g_sector'";
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
             $impact_where = "t1.field_type = 2";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetEndbeneficiaries($month_where, $impact_where,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualEndbeneficiaries($month_where,$g_sector);
@@ -3266,7 +3266,7 @@ class Portfolioui extends CI_Controller {
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
 
                     foreach ($monthly_target as $key => $value) {
 
@@ -3274,7 +3274,7 @@ class Portfolioui extends CI_Controller {
                             $yearvalues[0] = strtolower($yearvalues[0]);
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $nums;
                                 } else {
                                     $search_array[$values] = $nums;
@@ -3299,7 +3299,7 @@ class Portfolioui extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                         $prev_split_yr = $split_year - 1;
                         return ($var['financial_year'] == $prev_split_yr);
@@ -3504,7 +3504,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, $hc_target[$m]);
         }
 
@@ -3517,7 +3517,7 @@ class Portfolioui extends CI_Controller {
         $data['div_id'] = 'impactDiv_' . $id;
         $data['xaxis'] = "No. of Direct Jobs Created";
         $data['yaxis'] = "Direct jobs count";
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -3547,10 +3547,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -3589,25 +3589,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3625,7 +3625,7 @@ class Portfolioui extends CI_Controller {
         }
         $defimpact_where = "t1.field_type = 3";
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -3640,20 +3640,20 @@ class Portfolioui extends CI_Controller {
 //            $search_month[] = "t2.sector = '$g_sector'";
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
             $impact_where = "t1.field_type = 3";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetEndbeneficiaries($month_where, $impact_where,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualEndbeneficiaries($month_where,$g_sector);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
 
                     foreach ($monthly_target as $key => $value) {
 
@@ -3661,7 +3661,7 @@ class Portfolioui extends CI_Controller {
                             $yearvalues[0] = strtolower($yearvalues[0]);
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $nums;
                                 } else {
                                     $search_array[$values] = $nums;
@@ -3686,9 +3686,9 @@ class Portfolioui extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -3745,22 +3745,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -3848,7 +3848,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -3861,7 +3861,7 @@ class Portfolioui extends CI_Controller {
         $data['div_id'] = 'impactDiv_' . $id;
         $data['xaxis'] = "No. of Indirect Jobs Created";
         $data['yaxis'] = "Indirect jobs count";
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -3892,10 +3892,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
         $a1_equity = $a2_equity = $a3_equity = $a4_equity = 0;
@@ -3928,25 +3928,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3963,7 +3963,7 @@ class Portfolioui extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -3977,26 +3977,26 @@ class Portfolioui extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetCapital($month_where);
             $monthly_actual = $this->Mportfolio->getActualCapital($month_where);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -4005,28 +4005,28 @@ class Portfolioui extends CI_Controller {
                                 /* for new changes  - datemodified - 12/12/2019 */
                                 $fund_mons = explode('-', $values);
                                 if ($fund_mons[0] == $get_fy_month[2]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qone']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qone']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[5]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qtwo']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qtwo']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[8]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qthree']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qthree']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[11]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qfour']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qfour']);
@@ -4052,9 +4052,9 @@ class Portfolioui extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -4120,22 +4120,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -4153,13 +4153,13 @@ class Portfolioui extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualCapital($quarter_where);
             $mr = 0;
 
-            if (count($monthly_target) > 0) {
+            if (php72_count($monthly_target) > 0) {
 
                 foreach ($monthly_target as $key => $value) {
                     foreach ($date_diff as $keys => $values) {
 
                         $yearvalues = explode('-', $values);
-                        if (in_array($yearvalues[0], $q4)) {
+                        if (php72_in_array($yearvalues[0], $q4)) {
                             if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                                 $yearvalues[1] = $yearvalues[1] - 1;
                             }
@@ -4168,38 +4168,38 @@ class Portfolioui extends CI_Controller {
                         }
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
 
                             } else {
 
-                                if (in_array($yearvalues[0], $q1)) {
+                                if (php72_in_array($yearvalues[0], $q1)) {
                                     $cost = str_replace(',', '', $datavalues['qone']);
                                     if (isset($quarter_qone[$mr])) {
                                         $ss = isset($quarter_qone[$mr]) && $quarter_qone[$mr] != '' ? $quarter_qone[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qone);
+                                        $search_array[$values] = php72_array_sum($quarter_qone);
                                     } else {
                                         $quarter_qone[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qone);
+                                        $search_array[$values] = php72_array_sum($quarter_qone);
                                     }
-                                } else if (in_array($yearvalues[0], $q2)) {
+                                } else if (php72_in_array($yearvalues[0], $q2)) {
                                     $cost = str_replace(',', '', $datavalues['qtwo']);
                                     if (isset($quarter_qtwo[$mr])) {
                                         $ss = isset($quarter_qtwo[$mr]) && $quarter_qtwo[$mr] != '' ? $quarter_qtwo[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qtwo);
+                                        $search_array[$values] = php72_array_sum($quarter_qtwo);
                                     } else {
                                         $quarter_qtwo[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qtwo);
+                                        $search_array[$values] = php72_array_sum($quarter_qtwo);
                                     }
-                                } else if (in_array($yearvalues[0], $q3)) {
+                                } else if (php72_in_array($yearvalues[0], $q3)) {
                                     $cost = str_replace(',', '', $datavalues['qthree']);
                                     if (isset($quarter_qthree[$mr])) {
                                         $ss = isset($quarter_qthree[$mr]) && $quarter_qthree[$mr] != '' ? $quarter_qthree[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qthree);
+                                        $search_array[$values] = php72_array_sum($quarter_qthree);
                                     } else {
                                         $quarter_qthree[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qthree);
+                                        $search_array[$values] = php72_array_sum($quarter_qthree);
                                     }
-                                } else if (in_array($yearvalues[0], $q4)) {
+                                } else if (php72_in_array($yearvalues[0], $q4)) {
                                     $cost = str_replace(',', '', $datavalues['qfour']);
                                     if (isset($quarter_qfour[$mr])) {
                                         $ss = isset($quarter_qfour[$mr]) && $quarter_qfour[$mr] != '' ? $quarter_qfour[$mr] : ($cost != '' ? $cost : 0);
@@ -4228,7 +4228,7 @@ class Portfolioui extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -4238,9 +4238,9 @@ class Portfolioui extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -4310,24 +4310,24 @@ class Portfolioui extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($capital_target) > 0) {
+            if (php72_count($capital_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($capital_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 $hc_target[0] = $q1_val;
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 $hc_target[1] = $q2_val;
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 $hc_target[2] = $q3_val;
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 $hc_target[3] = $q4_val;
                             }
@@ -4402,7 +4402,7 @@ class Portfolioui extends CI_Controller {
 
             $capital_actual = $this->Mportfolio->getActualCapital($default_where);
             $actual_month_value = $actual_month_equity = $actual_month_short = $actual_month_long = array();
-            if (count($capital_actual) > 0) {
+            if (php72_count($capital_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($capital_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -4458,13 +4458,13 @@ class Portfolioui extends CI_Controller {
                         $hc_actual[$k] = $mv_amt;
                         $k++;
                     }
-                    $hc_actual[3] = array_sum($actual_month_value);
+                    $hc_actual[3] = php72_array_sum($actual_month_value);
                 }
             }
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -4475,7 +4475,7 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'capitalDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -4504,10 +4504,10 @@ class Portfolioui extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -4539,32 +4539,32 @@ class Portfolioui extends CI_Controller {
             $g_getFrom_year = $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
                 $g_getTo_year = $nxt_year;
             } else {
                 $g_start_month = reset($q1);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -4583,8 +4583,8 @@ class Portfolioui extends CI_Controller {
             $search_target_where[] = $search_actual_where[] = $search_quarter_target[] = $search_quarter_actual[] = $search_month[] = $search_actual[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_target_where = implode(" and ", $search_target_where);
-        $default_actual_where = implode(" and ", $search_actual_where);
+        $default_target_where = php72_implode(" and ", $search_target_where);
+        $default_actual_where = php72_implode(" and ", $search_actual_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -4599,8 +4599,8 @@ class Portfolioui extends CI_Controller {
 
             $search_month[] = "t1.month >= '$StartDate' and t1.month <= '$StopDate'";
             $search_actual[] = "t1.disburse_date >= '$StartDate 00:00:00' and t1.disburse_date <= '$StopDate 23:59:59'";
-            $month_where = implode(" and ", $search_month);
-            $month_actual = implode(" and ", $search_actual);
+            $month_where = php72_implode(" and ", $search_month);
+            $month_actual = php72_implode(" and ", $search_actual);
 // $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
 
             $monthly_target = $this->Mportfolio->getTargetSeedFund($month_where);
@@ -4608,17 +4608,17 @@ class Portfolioui extends CI_Controller {
 			#echo'<pre>';print_r($monthly_target);die;
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $value) {
                         $q4 = $this->quarter4();
-                        $q4_key = array_keys($q4);
+                        $q4_key = php72_array_keys($q4);
                         if (in_array($value['month'], $q4_key)) {
                             if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
                                 $value['year'] = $value['year'] - 1;
@@ -4630,7 +4630,7 @@ class Portfolioui extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $value['month'], 1));
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -4660,7 +4660,7 @@ class Portfolioui extends CI_Controller {
 //                    $split_year = $split_year;
 //                }
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                         $prev_split_yr = $split_year;
                         return ($var['year'] == $prev_split_yr);
@@ -4709,22 +4709,22 @@ class Portfolioui extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -4738,24 +4738,24 @@ class Portfolioui extends CI_Controller {
             $search_quarter_target[] = "t1.month >= '" . $q_StartDate . "' and t1.month <= '" . $q_StopDate . "'";
             $search_quarter_actual[] = "t1.disburse_date >= '" . $q_StartDate . "' and t1.disburse_date <= '" . $q_StopDate . "'";
 
-            $quarter_target = implode(" and ", $search_quarter_target);
-            $quarter_actual = implode(" and ", $search_quarter_actual);
+            $quarter_target = php72_implode(" and ", $search_quarter_target);
+            $quarter_actual = php72_implode(" and ", $search_quarter_actual);
 
             $monthly_target = $this->Mportfolio->getTargetSeedFund($quarter_target);
             $monthly_actual = $this->Mportfolio->getActualSeedFund($quarter_actual);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         $q4 = $this->quarter4();
-                        $q4_key = array_keys($q4);
+                        $q4_key = php72_array_keys($q4);
                         if (in_array($value['month'], $q4_key)) {
                             if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
                                 $value['year'] = $value['year'] - 1;
@@ -4767,7 +4767,7 @@ class Portfolioui extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $value['month'], 1));
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -4791,7 +4791,7 @@ class Portfolioui extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -4801,7 +4801,7 @@ class Portfolioui extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                         $prev_split_yr = $split_year;
                         return ($var['year'] == $prev_split_yr);
@@ -4859,7 +4859,7 @@ class Portfolioui extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($seed_target) > 0) {
+            if (php72_count($seed_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($seed_target as $target) {
                         $value = $target['amount'];
@@ -4950,7 +4950,7 @@ class Portfolioui extends CI_Controller {
 
             $seed_actual = $this->Mportfolio->getActualSeedFund($default_actual_where);
             $actual_month_value = array();
-            if (count($seed_actual) > 0) {
+            if (php72_count($seed_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($seed_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -5025,7 +5025,7 @@ class Portfolioui extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -5037,7 +5037,7 @@ class Portfolioui extends CI_Controller {
         ksort($categories);
         $id = $this->input->post('id');
         $data['div_id'] = 'fundingDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -5077,25 +5077,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -5115,7 +5115,7 @@ class Portfolioui extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 $q4 = $this->quarter4();
-                $q4_key = array_keys($q4);
+                $q4_key = php72_array_keys($q4);
                 if (in_array($fin_smonth, $q4_key)) {
                     if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
                         $g_year = $g_year - 1;
@@ -5190,7 +5190,7 @@ class Portfolioui extends CI_Controller {
         $fin_quarters['Q4'] = 0;
 
         foreach ($diffmon as $cnts) {
-            $count[] = count($cnts);
+            $count[] = php72_count($cnts);
         }
 
         $categories = $target = $actual = array();
@@ -5246,7 +5246,7 @@ class Portfolioui extends CI_Controller {
                             $ment_actquat[$values] = $ment_actquat[$values];
                         } else {
                             $expmonth = explode('-', $values);
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -5303,7 +5303,7 @@ class Portfolioui extends CI_Controller {
 
                 $actual[$ac] = $ment_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
@@ -5311,16 +5311,16 @@ class Portfolioui extends CI_Controller {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
 
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
-                            if (in_array($tar_mnths[0], $q1)) {
+                            if (php72_in_array($tar_mnths[0], $q1)) {
                                 $target[$ac] = $mas_tar['mentorq1'];
-                            } else if (in_array($tar_mnths[0], $q2)) {
+                            } else if (php72_in_array($tar_mnths[0], $q2)) {
                                 $target[$ac] = $mas_tar['mentorq2'];
-                            } else if (in_array($tar_mnths[0], $q3)) {
+                            } else if (php72_in_array($tar_mnths[0], $q3)) {
                                 $target[$ac] = $mas_tar['mentorq3'];
-                            } else if (in_array($tar_mnths[0], $q4)) {
+                            } else if (php72_in_array($tar_mnths[0], $q4)) {
                                 $target[$ac] = $mas_tar['mentorq4'];
                             }
                         } else {
@@ -5337,8 +5337,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'mentorNumber_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['ftype'] = $ftype;
         $this->load->vars($data);
@@ -5375,25 +5375,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -5404,7 +5404,7 @@ class Portfolioui extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -5501,7 +5501,7 @@ class Portfolioui extends CI_Controller {
         } else {
             $ment_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualMentorHours($where, $startDate, '', '1');
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -5511,7 +5511,7 @@ class Portfolioui extends CI_Controller {
                             $ment_actquat[$values] = $ment_actquat[$values];
                         } else {
                             $expmonth = explode('-', $values);
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -5540,24 +5540,24 @@ class Portfolioui extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $ment_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
 
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
-                            if (in_array($tar_mnths[0], $q1)) {
+                            if (php72_in_array($tar_mnths[0], $q1)) {
                                 $target[$ac] = round(($mas_tar['q1'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q2)) {
+                            } else if (php72_in_array($tar_mnths[0], $q2)) {
                                 $target[$ac] = round(($mas_tar['q2'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q3)) {
+                            } else if (php72_in_array($tar_mnths[0], $q3)) {
                                 $target[$ac] = round(($mas_tar['q3'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q4)) {
+                            } else if (php72_in_array($tar_mnths[0], $q4)) {
                                 $target[$ac] = round(($mas_tar['q4'] / 3), 2);
                             }
                         } else {
@@ -5573,8 +5573,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'mentorHour_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['ftype'] = $ftype;
         $this->load->vars($data);
@@ -5612,25 +5612,25 @@ class Portfolioui extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -5641,7 +5641,7 @@ class Portfolioui extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -5761,7 +5761,7 @@ class Portfolioui extends CI_Controller {
         } else {
             $dps_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualDpMeeting($where, $startDate, '', '1');
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -5773,7 +5773,7 @@ class Portfolioui extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $tot['month'], 1));
                             $finyr = $datavalues . '-' . $tot['financial_year'];
 
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -5800,14 +5800,14 @@ class Portfolioui extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $dp_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
                             $getdata = json_decode($mas_tar['dp_plan']);
@@ -5852,8 +5852,8 @@ class Portfolioui extends CI_Controller {
         }
         $id = $this->input->post('id');
         $data['div_id'] = 'dpMeeting_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allDpMeeting_HC.php');
@@ -5936,7 +5936,7 @@ class Portfolioui extends CI_Controller {
                         $tap_tarquat[$values] = $tap_tarquat[$values];
                     } else {
                         $expmonth = explode('-', $values);
-                        if (in_array($expmonth[0], $q4)) {
+                        if (php72_in_array($expmonth[0], $q4)) {
                             if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                 $expmonth[1] = $expmonth[1] - 1;
                             }
@@ -5962,7 +5962,7 @@ class Portfolioui extends CI_Controller {
                         $tap_actquat[$values] = $tap_actquat[$values];
                     } else {
                         $expmonth = explode('-', $values);
-                        if (in_array($expmonth[0], $q4)) {
+                        if (php72_in_array($expmonth[0], $q4)) {
                             if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                 $expmonth[1] = $expmonth[1] - 1;
                             }
@@ -5981,7 +5981,7 @@ class Portfolioui extends CI_Controller {
                 }
             }
 
-            if (count($targetlist) == 0 && count($actuallist) == 0) {
+            if (php72_count($targetlist) == 0 && php72_count($actuallist) == 0) {
                 $t = 0;
                 foreach ($date_diff as $values) {
                     $categories[$t] = $values;
@@ -6034,8 +6034,8 @@ class Portfolioui extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'tapChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allTap_HC');
@@ -6084,7 +6084,7 @@ class Portfolioui extends CI_Controller {
         if ($year == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'product_approval');
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/product/' . $id . '/' . $get_data[0]['financial_year']);
                 }
             }

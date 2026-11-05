@@ -1,7 +1,7 @@
 <?php 
 $formAction = "";
 $val = array();
-if(count($module)>0)
+if(php72_count($module)>0)
 {  
         $formAction = site_url('mainmaster/useraccess/addmodule/'.$mod_id);
         $action = 'edit';

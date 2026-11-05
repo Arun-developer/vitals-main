@@ -2,7 +2,7 @@
 $formAction = site_url('seedfunding/add_month_report/' . $innovation);
 $id = '';
 $val = array();
-if (count($targetDetails)) {
+if (php72_count($targetDetails)) {
     $val = $targetDetails['0'];
     $formAction = site_url('seedfunding/add_month_report/' . $innovation . '/' . $val['id']);
     $id = $val['id'];

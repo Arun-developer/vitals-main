@@ -15,7 +15,7 @@
 				
 				++$t;
 				endforeach;
-				if(count($masterType)%7 != '0'){ 
+				if(php72_count($masterType)%7 != '0'){ 
 				  echo '</ul>';
 				}
 				?>

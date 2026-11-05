@@ -26,7 +26,7 @@ function vendor_list() {
 		}
 		$financeUserId = unserialize($getFinanceUser[0]->finance);
 		if(!empty($financeUserId)){
-			if(in_array($user_id, $financeUserId)){
+			if(php72_in_array($user_id, $financeUserId)){
 				$data['user_status'] ='2';
 			}
 		}
@@ -76,7 +76,7 @@ function addEdit_vendor() {
 		}
 		$financeUserId = unserialize($getFinanceUser[0]->finance);
 		if(!empty($financeUserId)){
-			if(in_array($user_id, $financeUserId)){
+			if(php72_in_array($user_id, $financeUserId)){
 				$data['user_status'] ='1';
 			}
 		}
@@ -108,7 +108,7 @@ public function DT_vendor() {
 			}
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
 			if(!empty($financeUserId)){
-				if(in_array($user_id, $financeUserId)){
+				if(php72_in_array($user_id, $financeUserId)){
 					$cond = " AND v1.finance_user_id = ".$user_id."";
 				}
 			}
@@ -157,7 +157,7 @@ public function DT_vendor() {
 		$query = $this->vendor_model->getDTVendorDetails($requestData['length'], $requestData['start'], $search_field, $search_value, $current_user, $columns, $requestData,$cond);
 		
 		$totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -196,7 +196,7 @@ public function DT_vendor() {
 	
 	public function deleteVendor() {
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $table = $_POST['table'];
         $query = $this->vendor_model->deleteVendorDetail($table, $condition);
 		$this->vendor_model->deleteVendorBankDetail('vendor_bank_details', $condition);
@@ -224,7 +224,7 @@ public function DT_vendor() {
 		$condition = array('vendor_id' =>  $vendorId );
 		#echo'<pre>';print_r($_POST);die;
         $getBankDetails = $this->vendor_model->get_all_details('vendor_bank_details', $condition, array(), '', '', '');
-        $count = count($getBankDetails);
+        $count = php72_count($getBankDetails);
 
         $start = $this->input->post('start');
         $limit = 10;
@@ -259,7 +259,7 @@ public function DT_vendor() {
 		
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval(count($getVendor_details)),
+            "recordsTotal" => intval(php72_count($getVendor_details)),
             "recordsFiltered" => intval($count),
             "data" => $data
         );
@@ -371,13 +371,13 @@ public function DT_vendor() {
 		
 		$getUserElavarasan = $this->vendor_model->get_all_details('hr_user_profile', array('id'=>521), array('official_email','emp_name'), '', '', '');
 		$getUserLakshmi = $this->vendor_model->get_all_details('hr_user_profile', array('id'=>619), array('official_email','emp_name'), '', '', '');
-		$merged = array_merge($getUserElavarasan, $getUserLakshmi); 
+		$merged = php72_array_merge($getUserElavarasan, $getUserLakshmi); 
 		$emails = array_map(function($item) { 
 			return trim($item->official_email); 
 		}, $merged); 
 		
 		
-		$recipients = array_merge($getUserElavarasan, $getUserLakshmi);
+		$recipients = php72_array_merge($getUserElavarasan, $getUserLakshmi);
 
 		foreach ($recipients as $user) {
 			// Load PHPMailer library fresh for each recipient
@@ -442,13 +442,13 @@ public function sendNewRequestMailAmend($vendorId='',$mail_message='') {
 		
 		$getUserElavarasan = $this->vendor_model->get_all_details('hr_user_profile', array('id'=>521), array('official_email','emp_name'), '', '', '');
 		$getUserLakshmi = $this->vendor_model->get_all_details('hr_user_profile', array('id'=>619), array('official_email','emp_name'), '', '', '');
-		$merged = array_merge($getUserElavarasan, $getUserLakshmi); 
+		$merged = php72_array_merge($getUserElavarasan, $getUserLakshmi); 
 		$emails = array_map(function($item) { 
 			return trim($item->official_email); 
 		}, $merged); 
 		
 		
-		$recipients = array_merge($getUserElavarasan, $getUserLakshmi);
+		$recipients = php72_array_merge($getUserElavarasan, $getUserLakshmi);
 
 		foreach ($recipients as $user) {
 			// Load PHPMailer library fresh for each recipient
@@ -592,7 +592,7 @@ public function insertEditVendorBank() {
 		#echo'<pre>';print_r($insertEditData);die;
 		#echo'<pre>';print_r($insertEditData);die;
         if ($this->input->post('supporting_documents') != '') {
-            $insertEditData['supporting_documents'] =  implode(', ', $this->input->post('supporting_documents'));
+            $insertEditData['supporting_documents'] =  php72_implode(', ', $this->input->post('supporting_documents'));
         }
 		
 		
@@ -671,7 +671,7 @@ public function vendorDelete() {
 }
 	
 public function vendorBankDelete() {
-    $id = array_filter($this->input->post('id'));
+    $id = php72_array_filter($this->input->post('id'));
     $table = $this->input->post('table');
     $returnArr['status'] = '0';
     if (!empty($id) && $table != '') {

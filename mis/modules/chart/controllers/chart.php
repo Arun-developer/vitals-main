@@ -48,8 +48,8 @@ class Chart extends CI_Controller {
                 $data['donor_count'] = $this->Chart_model->getPitchDonor($start_date, $end_date, $sub_start_date, $sub_end_date);
                 foreach ($data['donor_count'] as $key => $value) {
                     $donorIds[$key] = explode(",", $data['donor_count'][$key]['donor_fit']);
-                    for ($i = 0; $i < count($masters); $i++) {
-                        if (in_array($masters[$i]['id'], $donorIds[$key])) {
+                    for ($i = 0; $i < php72_count($masters); $i++) {
+                        if (php72_in_array($masters[$i]['id'], $donorIds[$key])) {
                             $count[$i] = $count[$i] + $data['donor_count'][$key]['count'];
                             $data['donors'][$i]['donor'] = $masters[$i]['id'];
                             $data['donors'][$i]['count'] = $count[$i];
@@ -80,8 +80,8 @@ class Chart extends CI_Controller {
                 $data['donor_count'] = $this->Chart_model->getDonor($start_date, $end_date, $sub_start_date, $sub_end_date);
                 foreach ($data['donor_count'] as $key => $value) {
                     $donorIds[$key] = explode(",", $data['donor_count'][$key]['donor_fit']);
-                    for ($i = 0; $i < count($masters); $i++) {
-                        if (in_array($masters[$i]['id'], $donorIds[$key])) {
+                    for ($i = 0; $i < php72_count($masters); $i++) {
+                        if (php72_in_array($masters[$i]['id'], $donorIds[$key])) {
                             $count[$i] = $count[$i] + $data['donor_count'][$key]['count'];
                             $data['donors'][$i]['donor'] = $masters[$i]['id'];
                             $data['donors'][$i]['count'] = $count[$i];
@@ -111,8 +111,8 @@ class Chart extends CI_Controller {
                 $data['donor_count'] = $this->Chart_model->getPitchDonor($start_date, $end_date, $sub_start_date, $sub_end_date);
                 foreach ($data['donor_count'] as $key => $value) {
                     $donorIds[$key] = explode(",", $data['donor_count'][$key]['donor_fit']);
-                    for ($i = 0; $i < count($masters); $i++) {
-                        if (in_array($masters[$i]['id'], $donorIds[$key])) {
+                    for ($i = 0; $i < php72_count($masters); $i++) {
+                        if (php72_in_array($masters[$i]['id'], $donorIds[$key])) {
                             $count[$i] = $count[$i] + $data['donor_count'][$key]['count'];
                             $data['donors'][$i]['donor'] = $masters[$i]['id'];
                             $data['donors'][$i]['count'] = $count[$i];
@@ -205,77 +205,77 @@ class Chart extends CI_Controller {
 
         foreach ($data['city'] as $key => $value) {
             $city_name = $value['city'];
-            if (array_key_exists($city_name, $data['healthcare'])) {
+            if (php72_array_key_exists($city_name, $data['healthcare'])) {
 
             } else {
                 $data['healthcare'][$city_name]['sector_name'] = 'healthcare';
                 $data['healthcare'][$city_name]['city'] = $city_name;
                 $data['healthcare'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['agri_business'])) {
+            if (php72_array_key_exists($city_name, $data['agri_business'])) {
 
             } else {
                 $data['agri_business'][$city_name]['sector_name'] = 'agri-business';
                 $data['agri_business'][$city_name]['city'] = $city_name;
                 $data['agri_business'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['others'])) {
+            if (php72_array_key_exists($city_name, $data['others'])) {
 
             } else {
                 $data['others'][$city_name]['sector_name'] = 'others';
                 $data['others'][$city_name]['city'] = $city_name;
                 $data['others'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['education'])) {
+            if (php72_array_key_exists($city_name, $data['education'])) {
 
             } else {
                 $data['education'][$city_name]['sector_name'] = 'education';
                 $data['education'][$city_name]['city'] = $city_name;
                 $data['education'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['clean_tech'])) {
+            if (php72_array_key_exists($city_name, $data['clean_tech'])) {
 
             } else {
                 $data['clean_tech'][$city_name]['sector_name'] = 'clean_tech';
                 $data['clean_tech'][$city_name]['city'] = $city_name;
                 $data['clean_tech'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['energy'])) {
+            if (php72_array_key_exists($city_name, $data['energy'])) {
 
             } else {
                 $data['energy'][$city_name]['sector_name'] = 'energy';
                 $data['energy'][$city_name]['city'] = $city_name;
                 $data['energy'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['skill_dev'])) {
+            if (php72_array_key_exists($city_name, $data['skill_dev'])) {
 
             } else {
                 $data['skill_dev'][$city_name]['sector_name'] = 'skill_dev';
                 $data['skill_dev'][$city_name]['city'] = $city_name;
                 $data['skill_dev'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['agriculture_fish'])) {
+            if (php72_array_key_exists($city_name, $data['agriculture_fish'])) {
 
             } else {
                 $data['agriculture_fish'][$city_name]['sector_name'] = 'agriculture_fish';
                 $data['agriculture_fish'][$city_name]['city'] = $city_name;
                 $data['agriculture_fish'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['fishery'])) {
+            if (php72_array_key_exists($city_name, $data['fishery'])) {
 
             } else {
                 $data['fishery'][$city_name]['sector_name'] = 'fishery';
                 $data['fishery'][$city_name]['city'] = $city_name;
                 $data['fishery'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['textile'])) {
+            if (php72_array_key_exists($city_name, $data['textile'])) {
 
             } else {
                 $data['textile'][$city_name]['sector_name'] = 'textile';
                 $data['textile'][$city_name]['city'] = $city_name;
                 $data['textile'][$city_name]['all_count'] = 0;
             }
-            if (array_key_exists($city_name, $data['dairy'])) {
+            if (php72_array_key_exists($city_name, $data['dairy'])) {
 
             } else {
                 $data['dairy'][$city_name]['sector_name'] = 'dairy';
@@ -320,7 +320,7 @@ class Chart extends CI_Controller {
 
         foreach ($data['sector_details'] as $key => $value) {
             $id = $value['id'];
-            if (array_key_exists($id, $data['applicationStage'])) {
+            if (php72_array_key_exists($id, $data['applicationStage'])) {
 
             } else {
                 $data['applicationStage'][$id]['status'] = '';
@@ -330,7 +330,7 @@ class Chart extends CI_Controller {
                 $data['applicationStage'][$id]['Close_count'] = 0;
                 $data['applicationStage'][$id]['stage'] = 'Application';
             }
-            if (array_key_exists($id, $data['PA_RD_stage'])) {
+            if (php72_array_key_exists($id, $data['PA_RD_stage'])) {
 
             } else {
                 $data['PA_RD_stage'][$id]['status'] = '';

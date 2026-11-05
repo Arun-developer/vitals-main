@@ -63,9 +63,9 @@ class Book extends CI_Controller {
 		#echo'<pre>';print_r($_POST);die;
 		
 		$getBookListCount = $this->Common_model->get_all_details('master_books', $condition,array(),'','',$orderby,true, 'ais',$join);
-		$getAll_count = count($getBookListCount);
+		$getAll_count = php72_count($getBookListCount);
 		$getBookList = $this->Common_model->get_all_details('master_books', $condition, array(), $limit, $start, $orderby,true, 'ais',$join);
-		$getLimit_count = count($getBookList);
+		$getLimit_count = php72_count($getBookList);
 		
 		
 		
@@ -189,10 +189,10 @@ class Book extends CI_Controller {
         $join[1]['type'] = "LEFT";
 		
 		$getBookListCount = $this->Common_model->get_all_details('library_booking', $condition,array(),'','',$orderby,true, 'ais',$join);
-		$getAll_count = count($getBookListCount);
+		$getAll_count = php72_count($getBookListCount);
 		
 		$getBookList = $this->Common_model->get_all_details('library_booking', $condition, array(), $limit, $start, $orderby,true, 'ais',$join);
-		$getLimit_count = count($getBookList);
+		$getLimit_count = php72_count($getBookList);
 		
 		$action_status =  '';
 		$date_type = '';
@@ -269,7 +269,7 @@ class Book extends CI_Controller {
 		$this->load->model('Mlibrary');
 		$returnArr ='0';
         $chechDup = $this->Mlibrary->checkRequest($bookId, $this->session->userdata("user"));
-        if (count($chechDup) == 0) {
+        if (php72_count($chechDup) == 0) {
 			/* $returnArr ='1';
             $requestId = $this->Mlibrary->bookRequestForm($bookId, $this->session->userdata("user"));
             $mailContant = $this->Mlibrary->libraryMailContant($requestId);

@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="col-xl-5 col-lg-5 col-md-5 col-12 text-right">
                                                 <ul class="vitals-links ">
-                                                    <?php if (count($job_department) == 0) { ?>
+                                                    <?php if (php72_count($job_department) == 0) { ?>
                                                         <li>
                                                             <a href="<?php echo base_url() . 'index.php/master/copy_job_department'; ?>" class="master_aduser" title="Copy master data from Villgro India"><i class="fas fa-clone"></i> Copy Master</a>
                                                         </li>
@@ -91,7 +91,7 @@
                                                             <li class="brd-left-onboard">
                                                                 <a href="javascript:void(0)" class="edit-btnconfig mar-tp15  opacity5 none-pointer" id="delUser"><i class="fas fa-trash-alt"></i> Delete</a>
                                                             </li>
-                                                            <li class="brd-left-onboard"><a href="javascript:void(0)" class="saveContinue jobdept_submit <?php if (count($job_department) > 0) { ?> opacity5 none-pointer <?php } ?>" onclick="submit_fields();">Save</a></li>
+                                                            <li class="brd-left-onboard"><a href="javascript:void(0)" class="saveContinue jobdept_submit <?php if (php72_count($job_department) > 0) { ?> opacity5 none-pointer <?php } ?>" onclick="submit_fields();">Save</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

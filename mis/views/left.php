@@ -18,7 +18,7 @@
 
                         { 
 
-                                if(count($left_box))
+                                if(php72_count($left_box))
 
                                 {				   
 

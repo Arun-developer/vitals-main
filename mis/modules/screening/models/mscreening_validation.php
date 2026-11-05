@@ -12,7 +12,7 @@ class Mscreening_validation extends CI_Model
             $data = array('criteria' => $form['criteria'],
                 'innovation' => $form['innovation'],
                 'validation' => $value,
-                'done' => (in_array($value, $form['validation'])) ? '1' : '0',
+                'done' => (php72_in_array($value, $form['validation'])) ? '1' : '0',
                 'comments' => $form['comments'][$key]);
 
             if ($this->checkDuplicateValidation($form['innovation'], $form['criteria'], $value)) {

@@ -151,23 +151,23 @@
 				$td .= '<tr>';
 				$td .= '<td>'."Board Meeting".'</td>';
 				if(!empty($exitDetails)) {
-				if(count($exitDetails) == '4') { 
+				if(php72_count($exitDetails) == '4') { 
 					$td .= '<td>'.$exitDetails['0']['exitDate'].'</td>';
 					$td .= '<td style="color:green;font-weight:bold;"><a href="'.site_url('repayment/index/'.$urlcode).'">'.$exitDetails.'</a></td>';
 				} else {
 					$td .= '<td>'.$exitDetails['0']['exitDate'].'</td>';
-					$td .= '<td style="color:red;font-weight:bold;">'. count($exitDetails) .'</td>';
+					$td .= '<td style="color:red;font-weight:bold;">'. php72_count($exitDetails) .'</td>';
 				}
 				}
 				$td .= '</tr>';
 				$td .= '<tr>';
 				$td .= '<td>'."Professional Board".'</td>';
-				if(count($exitboardDetails) >= '1') { 
+				if(php72_count($exitboardDetails) >= '1') { 
 					$td .= '<td>2012</td>';
 					$td .= '<td style="color:green;font-weight:bold;"><a href="'.site_url('repayment/index/'.$urlcode).'">'.$exitboardDetails['0']['count(board_id)'].'(inducted)</a></td>';
 				} else {
 					$td .= '<td>'.$exitboardDetails['0']['exitDate'].'</td>';
-					$td .= '<td style="color:red;font-weight:bold;">'.count($exitboardDetails).'</td>';
+					$td .= '<td style="color:red;font-weight:bold;">'.php72_count($exitboardDetails).'</td>';
 				}
 				$td .= '</tr>';
 				$td .= '<tr>';

@@ -492,7 +492,7 @@ $get_survey_employee = json_decode($team['survey_employee']);
 $obj_new = json_decode($team['new_employee'], true);
 $obj_exit = json_decode($team['exit_employee'], true);
 $obj_survey = json_decode($team['survey_employee'], true);
-if (!array_filter($obj_new) && !array_filter($obj_exit) && !array_filter($obj_survey)) {
+if (!php72_array_filter($obj_new) && !php72_array_filter($obj_exit) && !php72_array_filter($obj_survey)) {
     $enable = 0;
 } else {
     $enable = 1;

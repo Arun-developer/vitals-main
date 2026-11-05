@@ -67,7 +67,7 @@ $experience = isset($_REQUEST["experience"])?$_REQUEST["experience"]:"";
           <tbody id="lineitemTable">
             <?php 
 		
-			 if(count($fellows))
+			 if(php72_count($fellows))
 			{    
 					$rowtype = 'odd';
 					foreach($fellows as $row):

@@ -37,7 +37,7 @@ $td .= '<tr>';
 $td .= '<td style="background-color:#dce7cc;border:1px solid #B9CE98;">'."Board Meeting".'</a></td>';
 $td .= '</tr>';
 if(!empty($exitDetails)) {
-	if(count($exitDetails) == '4') {
+	if(php72_count($exitDetails) == '4') {
 		foreach($exitDetails as $row)
 			$td .= '<tr>';
 		$td .= '<td>'.$row['name_of_enterprise'].'</td>';
@@ -50,7 +50,7 @@ if(!empty($exitDetails)) {
 		$td .= '<td>'.$row['name_of_enterprise'].'</td>';
 		$td .= '<td>'.$row['exitDate'].'</td>';
 		$td .= '<td>'.'4'.'</td>';
-		$td .= '<td style="color:red;font-weight:bold;">'. count($exitDetails) .'</td>';
+		$td .= '<td style="color:red;font-weight:bold;">'. php72_count($exitDetails) .'</td>';
 		$td .= '</tr>';
 	}
 }

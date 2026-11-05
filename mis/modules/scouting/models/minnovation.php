@@ -976,7 +976,7 @@ class Minnovation extends CI_Model {
         if (!empty($email) && $email != 1) {
             $searchArray[] = "(IP.email_id = '" . $email . "' or MEM.mem_email = '" . $email . "')";
         }
-        $whereCond = implode(' and ', $searchArray);
+        $whereCond = php72_implode(' and ', $searchArray);
         $data = array();
 
         $this->db->select("IP.*,SM.source_name,pitch.pitch_id,IM.instance_name,(select master_name from master_settings where id=SM.source_type) as source_type");
@@ -1328,7 +1328,7 @@ class Minnovation extends CI_Model {
                 }
 
                 $names = $this->getDonorFitName($row['donor_fit']);
-                $donor_fit = implode(',', $names);
+                $donor_fit = php72_implode(',', $names);
                 $assign = $row['associate_emp_name'];
                 $email = $row['email_id'];
                 $phone = $row['mobile_no'];
@@ -1701,7 +1701,7 @@ class Minnovation extends CI_Model {
                 }
 
                 $names = $this->getDonorFitName($row['donor_fit']);
-                $donor_fit = implode(',', $names);
+                $donor_fit = php72_implode(',', $names);
                 $assign = $row['associate_emp_name'];
                 $email = $row['email_id'];
                 $phone = $row['mobile_no'];
@@ -1908,7 +1908,7 @@ class Minnovation extends CI_Model {
         $searchArray1 = array();
         $where = null;
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
             $currentTab = 'assigned';
         }
 
@@ -2405,7 +2405,7 @@ public function deleteinnovation($id) {
     $this->db->update('innovation_pool');
 
     $employees = $this->Sector_model->getEmpId($id);
-    $emp_Ids = array_map(function ($emp_Ids) {
+    $emp_Ids = php72_array_map(function ($emp_Ids) {
         return $emp_Ids['associate_employee'];
     }, $employees);
     $employees_id = rtrim(implode(',', $emp_Ids), ',');
@@ -2598,7 +2598,7 @@ public function new_innovation_import_CSV($arr = array()) {
     if (!empty($arr)) {
         $lastId = $this->getLastinsertedId();
         $lastId = $lastId + 1;
-        for ($i = 1; $i < count($arr); $i++) {
+        for ($i = 1; $i < php72_count($arr); $i++) {
             $innovation_id = "INV" . $lastId;
             $source_others = '';
             $source_id = '';
@@ -2999,7 +2999,7 @@ public function getDraftInv_partner() {
         }
 
         sort($emp_name);
-        $assign_to = implode(', ', $emp_name);
+        $assign_to = php72_implode(', ', $emp_name);
         return $assign_to;
     }
 

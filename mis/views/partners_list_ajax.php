@@ -16,7 +16,7 @@
     </thead>
     <tbody>
         <?php
-        if (count($partnersList) > 0) {
+        if (php72_count($partnersList) > 0) {
             $name = isset($pa_entreprise) && $pa_entreprise != '' ? $pa_entreprise : 1;
             $ent_name = isset($pa_entrepreneur) && $pa_entrepreneur != '' ? $pa_entrepreneur : 1;
             $ent_email = isset($pa_email) && $pa_email != '' ? urlencode($pa_email) : 1;

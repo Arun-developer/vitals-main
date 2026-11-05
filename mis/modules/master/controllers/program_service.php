@@ -157,7 +157,7 @@ class Program_service extends CI_Controller
         echo '<option value="">-Select-</option>';
         if ($program_type != '') {
             $programServiceList = $this->Mprogram_service->getProgramServiceCombo($program_type);
-            if (count($programServiceList)) {
+            if (php72_count($programServiceList)) {
                 foreach ($programServiceList as $row):
                 ?>
 					<option value="<?=$row['id']?>" <?=($selected == $row['id']) ? 'selected' : '';?>><?=$row['title']?></option>

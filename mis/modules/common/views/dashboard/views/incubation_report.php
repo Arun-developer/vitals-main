@@ -198,11 +198,11 @@ function submitform()
         <td width="10%" class="table_HEADER" style="color:#fff;"><?=$row['title'];?></td>
         <?php endforeach; ?>
       </tr>
-      <?php for($i=0;$i<count($yearly);$i++)
+      <?php for($i=0;$i<php72_count($yearly);$i++)
       {
         ?>
       <tr >
-	  <?php $count = count($incubationservice);if($count <= 1){?>
+	  <?php $count = php72_count($incubationservice);if($count <= 1){?>
 	  	<td class="table_down"><?=$yearly;?></td>
 	  <?php } else { ?>
 	  	<td class="table_down"><?=$yearly[$i];?></td>

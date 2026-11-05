@@ -33,7 +33,7 @@ Back</A>
 	<tr>
 			<td><?php ++$key;?></td>
 			<td style="width:500px;"><?php echo $row['label'];?></td>
-			<td><input type="checkbox" name="checklist[]" class="case" value="<?=$row['id']?>" <?=(in_array($row['id'],$innovationChecklist))?'checked':'';?> ></td>
+			<td><input type="checkbox" name="checklist[]" class="case" value="<?=$row['id']?>" <?=(php72_in_array($row['id'],$innovationChecklist))?'checked':'';?> ></td>
 			</tr>
     <?php 
 	endforeach;

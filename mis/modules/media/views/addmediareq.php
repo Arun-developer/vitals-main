@@ -29,7 +29,7 @@ function today_date()
 <?php
 $formAction = "";
 $val = array();
-if (count($mediaDetails) > 0) {
+if (php72_count($mediaDetails) > 0) {
     $formAction = site_url('media/form/' . $innovationid . '/' . $id);
     $action = 'edit';
     $val = $mediaDetails[0];

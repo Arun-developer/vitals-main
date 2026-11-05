@@ -36,7 +36,7 @@ $(document).ready(function() {
         </thead>
         <tbody>
             <?php
-	if(count($mediaList))
+	if(php72_count($mediaList))
 	{    
 		$r=1;
 		foreach($mediaList as $row)

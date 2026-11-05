@@ -41,7 +41,7 @@ $if = (!$isincubAuth);
         </thead>
         <tbody>
             <?php
-	if(count($applicantList))
+	if(php72_count($applicantList))
 	{    
 		$r=1;
 		foreach($applicantList as $row)

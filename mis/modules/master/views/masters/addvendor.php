@@ -114,7 +114,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'admin', 'page_title
                                     <tbody>
                                         <?php
                                         $t = 1;
-                                        $cont_len = count($vendorcontacts) > 0 ? count($vendorcontacts) : 1;
+                                        $cont_len = php72_count($vendorcontacts) > 0 ? php72_count($vendorcontacts) : 1;
                                         for ($j = 0; $j < $cont_len; $j++) {
                                             ?>
                                             <tr id="contact_tr_<?= $t; ?>" class="contact_more">

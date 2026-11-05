@@ -9,7 +9,7 @@
 <!-- start id-form -->
 <form name="templateForm" action="<?=site_url('incubator_metrics/wglobal_report/edit/');?>" method="post" id="vendorForm" >
 <?php 
-	if(count($taskDetails)>0)
+	if(php72_count($taskDetails)>0)
 	{
 			 $tskDetails=$taskDetails[0];
 			 $taskName=$tskDetails['task_name'];

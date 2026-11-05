@@ -90,7 +90,7 @@ class MY_Controller extends CI_Controller {
             $getFinanceUsers = $this->funder_model->get_all_details_win('hr_user_login', $conditions, array('emp_id'));
             if (!empty($getFinanceUsers)) {
                 $getFinanceUsers = json_decode(json_encode($getFinanceUsers), true);
-                $emp_number = array_column($getFinanceUsers, 'emp_id');
+                $emp_number = php72_array_column($getFinanceUsers, 'emp_id');
                 if (in_array($user_id, $emp_number)) {
                     $status['finance_user'] = '1';
                 }
@@ -98,7 +98,7 @@ class MY_Controller extends CI_Controller {
         }
         $getDonorTeams = $this->Mmaster->getDonorTeam('user_setup', $this->session->userdata('partner_id'));
         $getDonorUser = unserialize($getDonorTeams[0]['donor_team']);
-        if (in_array($user_id, $getDonorUser)) {
+        if (php72_in_array($user_id, $getDonorUser)) {
             $status['donor_team'] = '1';
         }
         if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {

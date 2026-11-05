@@ -2,7 +2,7 @@
 $formAction = site_url('fellow/add_fundutilization/' . $innovation . '/' . $budgetid);
 $id = '';
 $val = array();
-if (count($fundDetails)) {
+if (php72_count($fundDetails)) {
     $val = $fundDetails['0'];
     $formAction = site_url('fellow/add_fundutilization/' . $innovation . '/' . $budgetid . '/' . $val['id']);
     $id = $val['id'];

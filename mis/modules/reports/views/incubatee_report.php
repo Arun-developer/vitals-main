@@ -69,7 +69,7 @@
 
                     <?php  
 
-    	  if(count($incubatee_report))
+    	  if(php72_count($incubatee_report))
 
           {
 

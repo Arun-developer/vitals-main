@@ -23,7 +23,7 @@ $aisDomain = "http://localhost/ais/index.php/";
 	</thead>
 	<tbody id="activitiesTable">
     	 <?php 
-	if(count($budgetList))
+	if(php72_count($budgetList))
 	{    
 			foreach($budgetList as $row):
 			?>

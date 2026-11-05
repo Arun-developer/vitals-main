@@ -24,7 +24,7 @@ $nullLink = "javascript:void(0);";
     </thead>
 	<tbody>
 	<?php
-	if(count($assessmentList))
+	if(php72_count($assessmentList))
 	{    
 		$r=1;
 		foreach($assessmentList as $row)
@@ -36,7 +36,7 @@ $nullLink = "javascript:void(0);";
 			<td align="left" valign="middle"><?=$row["label"];?></td>
             <td align="left" valign="middle"><?=$row["input_type"];?></td>
             <td align="left" valign="middle"><?=ucfirst($row["required"]);?></td>
-             <td align="left" valign="middle"  width="400"><?=implode(',',$row["value"]);?></td>
+             <td align="left" valign="middle"  width="400"><?=php72_implode(',',$row["value"]);?></td>
               <td align="left" valign="middle">
 			  <a href="<?=$nullLink?>" class="button makeOrderUp" criteria="<?=$row['pid']?>" id="<?=$row["id"]?>"  >Up</a>&nbsp;
               <a href="<?=$nullLink?>" class="button makeOrderDown" criteria="<?=$row['pid']?>" id="<?=$row["id"]?>"  >Down</a>

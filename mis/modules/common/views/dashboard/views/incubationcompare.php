@@ -139,7 +139,7 @@ function submitform()
         <h2 class="msg_head">Sector</h2>
         <div class="msg_body">
         <ul>
-            <?php $sector = array_pop($sector);for($i=0;$i<count($sector);$i++){?>
+            <?php $sector = array_pop($sector);for($i=0;$i<php72_count($sector);$i++){?>
         <li><span><input name="sector[]" type="checkbox" value="<?=trim($sector[$i]);?>"/></span><?=$sector[$i];?></li>
         <?php };?>
         </ul>
@@ -179,9 +179,9 @@ function submitform()
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($serviceselected); for($i=0;$i<count($service);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+        <?php $j=0; $selected = array_pop($serviceselected); for($i=0;$i<php72_count($service);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=@$selected[$k];?></td>
@@ -219,9 +219,9 @@ function submitform()
             <tr>
         <?php $j=0; $selected = array_pop($employeeselected); 
 		$selected = $this->Mdashboard->getemployeename($selected);
-		 for($i=0;$i<count($service);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+		 for($i=0;$i<php72_count($service);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=$selected[$k]['emp_firstname'];?></td>
@@ -259,13 +259,13 @@ function submitform()
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php  $selected = array_pop($sectorselected); for($i=0;$i<count($service);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+        <?php  $selected = array_pop($sectorselected); for($i=0;$i<php72_count($service);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=$selected[$k];?></td>
-        <?php for($j=0;$j<count($service);$j++) { ?>
+        <?php for($j=0;$j<php72_count($service);$j++) { ?>
 
                 <?php if(($sourcecompare[$i]['title_'.$j] == $service[$j]['title']))
                 { ?>
@@ -314,16 +314,16 @@ function submitform()
        </td>
       </tr>
 
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                <tr><td width="14%" class="table_down"><?=$yearly[$i];?></td><td  colspan="8"><table style="width:100%">
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
 
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td>
            <table  style="width:100%">
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))
@@ -372,16 +372,16 @@ function submitform()
        </td>
       </tr>
 
-        <?php $j=0; $selected = array_pop($sectorselected); $sselected = array_pop($serviceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($sectorselected); $sselected = array_pop($serviceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                <tr>  <td width="14%" class="table_down"><?=$yearly[$i];?></td><td  colspan="8"><table style="width:100%">
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
 
        <tr>
        <td class="table_down"><?=$selected[$k];?></td>
        <td>
            <table  style="width:100%">
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['answer'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))
@@ -415,15 +415,15 @@ function submitform()
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan ="3" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td colspan="7">
            <table>
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))
@@ -458,15 +458,15 @@ function submitform()
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($serviceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan ="3" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td colspan="7">
            <table>
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))

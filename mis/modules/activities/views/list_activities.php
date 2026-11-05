@@ -53,7 +53,7 @@
 	<tbody>
     <?php 
     $this->load->model('mactivities');
-	if(count($activitiesList)){
+	if(php72_count($activitiesList)){
 			$i='odd';
 			foreach($activitiesList as $row): 
 			$i = ($i=='odd')?'even':'odd';

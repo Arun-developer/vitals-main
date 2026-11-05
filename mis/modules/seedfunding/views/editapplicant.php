@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 		$innovator_name = $this->session->userdata('user_name');
 		$val = array();
-		if(count($applicantDetails)>0)
+		if(php72_count($applicantDetails)>0)
 		{  
 			$formAction = site_url('fellow/edit/'.$id);
 			$action = 'edit';

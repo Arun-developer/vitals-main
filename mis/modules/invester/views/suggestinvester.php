@@ -68,7 +68,7 @@ $qualification = isset($_REQUEST["qualification"])?$_REQUEST["qualification"]:""
 		<tbody id="lineitemTable">
     <?php 
 	
-	 if(count($searchinvester))
+	 if(php72_count($searchinvester))
 	{    
 			$rowtype = 'odd';
 			foreach($searchinvester as $row):

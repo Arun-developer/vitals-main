@@ -91,7 +91,7 @@ class Incubationprogress extends CI_Controller
             $data['criteria'] = $this->Mincubationprogress->getcriteria($mastername);
             $criteria = $data['criteria'][0]['id'];
             $data['weekreport'] = $this->Mincubationprogress->getweekreport($innovation, $criteria, $data['innovationChecklist'], $type, $frequency, $subcategory);
-            for ($i = 0; $i < count($data['weekly']); $i++) {
+            for ($i = 0; $i < php72_count($data['weekly']); $i++) {
                 $data['weekanswerreport' . $i] = $this->Mincubationprogress->getweekanswerreport($frequency, $data['innovationChecklist'], $innovation, $monthly, $subcategory, $yearly, $type, $mastertype, $criteria);
             }
         }
@@ -101,7 +101,7 @@ class Incubationprogress extends CI_Controller
             $criteria = $data['criteria'][0]['id'];
             $data['monthreport'] = $this->Mincubationprogress->getmonthreport($innovation, $criteria, $data['innovationChecklist'], $type, $frequency, $subcategory);
             
-            for ($i = 0; $i < count($data['monthly']); $i++) {
+            for ($i = 0; $i < php72_count($data['monthly']); $i++) {
                 $data['monthanswerreport' . $i] = $this->Mincubationprogress->getmonthanswerreport($frequency, $data['innovationChecklist'], $innovation, $data['monthly'][$i], $subcategory, $yearly, $type, $mastertype, $criteria);
             }
         }
@@ -111,7 +111,7 @@ class Incubationprogress extends CI_Controller
             $criteria = $data['criteria'][0]['id'];
             $data['quarterlyreport'] = $this->Mincubationprogress->getquarterlyreport($innovation, $criteria, $data['innovationChecklist'], $type, $frequency, $subcategory);
             
-            for ($i = 0; $i < count($data['quarterly']); $i++) {
+            for ($i = 0; $i < php72_count($data['quarterly']); $i++) {
                 $data['quarterreport' . $i] = $this->Mincubationprogress->getquarterreport($frequency, $data['innovationChecklist'], $innovation, $data['quarterly'][$i], $subcategory, $yearly, $type, $mastertype, $criteria);
             }
         } else {
@@ -119,7 +119,7 @@ class Incubationprogress extends CI_Controller
             $data['criteria'] = $this->Mincubationprogress->getcriteria($mastername);
             $criteria = $data['criteria'][0]['id'];
             $data['yearreport'] = $this->Mincubationprogress->getyear_report($innovation, $criteria, $data['innovationChecklist'], $type, $frequency, $subcategory);
-            for ($i = 0; $i < count($data['yearly']); $i++) {
+            for ($i = 0; $i < php72_count($data['yearly']); $i++) {
                 $data['yearanswerreport' . $i] = $this->Mincubationprogress->getyearanswerreport($frequency, $data['innovationChecklist'], $innovation, $data['yearreport'], $subcategory, $data['yearly'][$i], $type, $mastertype, $criteria);
             }
         }
@@ -169,7 +169,7 @@ class Incubationprogress extends CI_Controller
                 $months = date("M", mktime(0, 0, 0, $_POST['months'], 1, 2000));
                 $date = $_POST['year'] . $months;
             } else {
-                $months = date("M", mktime(0, 0, 0, $_POST['months'] + 1, 1, 2000));
+                $months = date("M", mktime(0, 0, 0, php72_num($_POST['months']) + 1, 1, 2000));
                 $date = $_POST['year'] . $months;
             }
             $start_date = date('Y-m-01', strtotime($date));
@@ -241,9 +241,9 @@ class Incubationprogress extends CI_Controller
     }
     public function upload()
     {
-        if (count($_FILES["userfile"]['name']) > 0) { //check if any file uploaded
+        if (php72_count($_FILES["userfile"]['name']) > 0) { //check if any file uploaded
             $GLOBALS['msg'] = ""; //initiate the global message
-            for ($j = 0; $j < count($_FILES["userfile"]['name']); $j++) { //loop the uploaded file array
+            for ($j = 0; $j < php72_count($_FILES["userfile"]['name']); $j++) { //loop the uploaded file array
                 $filen = $_FILES["userfile"]['name']["$j"]; //file name
                 $path = 'uploads/' . $filen; //generate the destination path
                 if (move_uploaded_file($_FILES["userfile"]['tmp_name']["$j"], $path)) { //upload the file

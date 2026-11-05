@@ -51,7 +51,7 @@
                            <div class="col-xl-7 col-lg-7 col-md-12 col-12 ">
                               <ul class="vitals-links">
                                 <li class="pad-lt15px">  
-                                    <?php $total_length = count($get_results)+1; ?>
+                                    <?php $total_length = php72_count($get_results)+1; ?>
                                     <?php if(!empty($programme)){ ?>
                                        <label><?php echo 'Programme'; ?></label>
                                           <div class="form-group has-search-right mar-bt8 wdt_190">
@@ -234,7 +234,7 @@
             var select_count = split_cid[1];
             var search_type = '0';
 
-            var addinfo_length = '<?php echo count($get_results)+1; ?>';
+            var addinfo_length = '<?php echo php72_count($get_results)+1; ?>';
             console.log('addinfo_length' + addinfo_length);
             console.log('current_id'+ current_id);
             var donor_option_txt = budget_option_txt = line_option_txt ='-- Select --';

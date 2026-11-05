@@ -204,7 +204,7 @@
 												<div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">
 														<label>Please select the criteria you fit under<span>*</span></label>
-														<?php $abtVills =  implode(',',unserialize($basic_information[0]['impact_product']));  ?>
+														<?php $abtVills =  php72_implode(',',unserialize($basic_information[0]['impact_product']));  ?>
 														
 														<input type="text" class="form-control" value="<?= $abtVills; ?>" disabled />
 													</div>
@@ -796,16 +796,16 @@
                                                     
 													<select class="form-control fieldDisable" disabled multiple name="txtBeneficiary[]" id="txtBeneficiary" >
                                                         <?php if($basic_information[0]['program'] == 38){ ?>
-															<option value="Rural Population" <?php if (in_array('Rural Population', $benificary_val)) echo "selected"; ?>>Rural Population</option>
-															<option value="Peri-Urban Population" <?php if (in_array('Peri-Urban Population', $benificary_val)) echo "selected"; ?>>Peri-Urban Population</option>
-															<option value="Urban Population" <?php if (in_array('Urban Population', $benificary_val)) echo "selected"; ?>>Urban Population</option>
+															<option value="Rural Population" <?php if (php72_in_array('Rural Population', $benificary_val)) echo "selected"; ?>>Rural Population</option>
+															<option value="Peri-Urban Population" <?php if (php72_in_array('Peri-Urban Population', $benificary_val)) echo "selected"; ?>>Peri-Urban Population</option>
+															<option value="Urban Population" <?php if (php72_in_array('Urban Population', $benificary_val)) echo "selected"; ?>>Urban Population</option>
 															
                                                         <?php }else{ ?>
-															<option value="People at the base of the pyramid" <?php if (in_array('People at the base of the pyramid', $benificary_val)) echo "selected"; ?>>People at the base of the pyramid</option>
-															<option value="Rural poor" <?php if (in_array('Rural poor', $benificary_val)) echo "selected"; ?>>Rural poor</option>
-															<option value="Urban poor" <?php if (in_array('Urban poor', $benificary_val)) echo "selected"; ?>>Urban poor</option>
-															<option value="Rural or urban middle income" <?php if (in_array('Rural or urban middle income', $benificary_val)) echo "selected"; ?>>Rural or urban middle income</option>
-															<option value="Rural or urban high income" <?php if (in_array('Rural or urban high income', $benificary_val)) echo "selected"; ?>>Rural or urban high income</option>
+															<option value="People at the base of the pyramid" <?php if (php72_in_array('People at the base of the pyramid', $benificary_val)) echo "selected"; ?>>People at the base of the pyramid</option>
+															<option value="Rural poor" <?php if (php72_in_array('Rural poor', $benificary_val)) echo "selected"; ?>>Rural poor</option>
+															<option value="Urban poor" <?php if (php72_in_array('Urban poor', $benificary_val)) echo "selected"; ?>>Urban poor</option>
+															<option value="Rural or urban middle income" <?php if (php72_in_array('Rural or urban middle income', $benificary_val)) echo "selected"; ?>>Rural or urban middle income</option>
+															<option value="Rural or urban high income" <?php if (php72_in_array('Rural or urban high income', $benificary_val)) echo "selected"; ?>>Rural or urban high income</option>
 														
                                                         <?php } ?>
 														
@@ -820,10 +820,10 @@
 														<label>How will you define the primary clients of your innovation?<span><?php if($basic_information[0]['program']!='33'){ echo"*"; }else { echo"";} ?> </span></label>
 														
 														<select class="form-control fieldDisable" disabled multiple name="txtclients[]" id="txtclients" >
-															<option value="Households" <?php if (in_array('Households', $impact_of_product)) echo "selected"; ?>>Households</option>
-															<option value="Urban Local Bodies" <?php if (in_array('Urban Local Bodies', $impact_of_product)) echo "selected"; ?>>Urban Local Bodies</option>
-															<option value="Govt Institutions" <?php if (in_array('Govt Institutions', $impact_of_product)) echo "selected"; ?>>Govt Institutions</option>
-															<option value="Private institutions/Corporates" <?php if (in_array('Private institutions/Corporates', $impact_of_product)) echo "selected"; ?>>Private institutions/Corporates</option>
+															<option value="Households" <?php if (php72_in_array('Households', $impact_of_product)) echo "selected"; ?>>Households</option>
+															<option value="Urban Local Bodies" <?php if (php72_in_array('Urban Local Bodies', $impact_of_product)) echo "selected"; ?>>Urban Local Bodies</option>
+															<option value="Govt Institutions" <?php if (php72_in_array('Govt Institutions', $impact_of_product)) echo "selected"; ?>>Govt Institutions</option>
+															<option value="Private institutions/Corporates" <?php if (php72_in_array('Private institutions/Corporates', $impact_of_product)) echo "selected"; ?>>Private institutions/Corporates</option>
 														</select>
 														<div id="beneficiary_err"></div>
 													</div>
@@ -840,7 +840,7 @@
 											<?php }?>
 											
 											
-											<?php if($basic_information[0]['program'] == '29'){ if (in_array('Others', $benificary_val)){  ?>
+											<?php if($basic_information[0]['program'] == '29'){ if (php72_in_array('Others', $benificary_val)){  ?>
 												<div class="form-group" style="margin-left: 14px; ">
 													<label>Please Mention</label>
 													<input type="text" class="form-control" value="<?=  $basic_information[0]['cin_number']; ?>" disabled />
@@ -856,9 +856,9 @@
                                                 <div class="form-group">
                                                     <label>Who will be the beneficiaries of your product/service?<span>*</span></label>
                                                     <select class="form-control fieldDisable" disabled multiple name="product_service[]" id="product_service" >
-                                                        <option value="Livelihood generation and/or improvement" <?php if (in_array('Livelihood generation and/or improvement', $product_service)) echo "selected"; ?>>Livelihood generation and/or improvement</option>
-                                                        <option value="Renewable energy utilisation" <?php if (in_array('Renewable energy utilisation', $product_service)) echo "selected"; ?>>Renewable energy utilisation</option>
-                                                        <option value="Gender inclusion" <?php if (in_array('Gender inclusion', $product_service)) echo "selected"; ?>>Gender inclusion</option>
+                                                        <option value="Livelihood generation and/or improvement" <?php if (php72_in_array('Livelihood generation and/or improvement', $product_service)) echo "selected"; ?>>Livelihood generation and/or improvement</option>
+                                                        <option value="Renewable energy utilisation" <?php if (php72_in_array('Renewable energy utilisation', $product_service)) echo "selected"; ?>>Renewable energy utilisation</option>
+                                                        <option value="Gender inclusion" <?php if (php72_in_array('Gender inclusion', $product_service)) echo "selected"; ?>>Gender inclusion</option>
                                                      </select>
                                                     <div id="beneficiary_err"></div>
                                                 </div>

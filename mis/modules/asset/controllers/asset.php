@@ -83,13 +83,13 @@ class Asset extends CI_Controller {
             $sort_column = $columnArr[$columnIndex];
         }
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
         $assetListCount = $this->Masset->getLimitAssetTransfer($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetTransfer($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
         #echo'<pre>';print_r($assetList);die;
         foreach ($assetList as $lists) {
             $emp_name = '';
@@ -159,7 +159,7 @@ class Asset extends CI_Controller {
         }
 
         #echo'<pre>';print_r($_POST);die;
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
         #echo $where;die;
 
         $columnArr = array('master_asset.asset_no', '', '', '', 'master_vendor.vendor_name', 'asset_payment.payment_type', 'asset_payment.payment_period1', 'asset_payment.bill_date', 'asset_payment.bill_no', 'asset_payment.total_amount', 'asset_payment.ceiling_amount');
@@ -168,10 +168,10 @@ class Asset extends CI_Controller {
         }
 
         $assetListCount = $this->Masset->getLimitAssetPaymentEmployee($where, '', '', $sort_column, $columnSortOrder);
-        $getAll_count = count($assetListCount);
+        $getAll_count = php72_count($assetListCount);
 
         $assetList = $this->Masset->getLimitAssetPaymentEmployee($where, $limit, $start, $sort_column, $columnSortOrder);
-        $getLimit_count = count($assetList);
+        $getLimit_count = php72_count($assetList);
 
         foreach ($assetList as $lists) {
        
@@ -248,7 +248,7 @@ class Asset extends CI_Controller {
         $this->load->model('Mlibrary');
         $returnArr = '0';
         $chechDup = $this->Mlibrary->checkRequest($bookId, $this->session->userdata("user"));
-        if (count($chechDup) == 0) {
+        if (php72_count($chechDup) == 0) {
             $this->session->set_flashdata('successMsg', 'Your request sent!');
         } else {
             $returnArr = '2';

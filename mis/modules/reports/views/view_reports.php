@@ -20,7 +20,7 @@
     	 <?php  
 		  $i=0;
 		  $j=1;
-	  if(count($answerList))
+	  if(php72_count($answerList))
 	  {
 		 $key1 = 0;  
 		 $na="";

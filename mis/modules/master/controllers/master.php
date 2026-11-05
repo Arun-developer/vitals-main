@@ -80,7 +80,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTPartnerCount($search_field, $search_value, $columns, $requestData);
         $query = $this->Mmaster->getDTPartnerDetails($requestData['length'], $requestData['start'], $search_field, $search_value, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -254,7 +254,7 @@ class Master extends CI_Controller {
         }
 
         $checkExist = $this->Mportfolio->getDetails('hr_partner_type', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_partner_type', $data, $option);
         }
@@ -314,7 +314,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "job_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -357,7 +357,7 @@ class Master extends CI_Controller {
             } else {
                 $cond_arr[] = $search_column . " LIKE '%" . $search_field . "%'";
             }
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -365,7 +365,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTJobTypeCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTJobTypeDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -399,14 +399,14 @@ class Master extends CI_Controller {
     }
 
     public function addJobType() {
-        for ($i = 0; $i < count($_POST['job_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['job_name']); $i++) {
             if ($_POST['job_name'][$i] != '') {
                 $option['id'] = $_POST['job_edit_id'][$i];
                 $data['job_name'] = $_POST['job_name'][$i];
                 $data['status'] = isset($_POST['job_status'][$i]) && $_POST['job_status'][$i] != '' ? $_POST['job_status'][$i] : '1';
 
                 $checkExist = $this->Mportfolio->getDetails('hr_job_type', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mleave->updateLeaveDetail('hr_job_type', $option, $data);
                 } else {
@@ -433,7 +433,7 @@ class Master extends CI_Controller {
         if ($filter_search != '') {
             $cond_arr[] = "partner_id = $partner_id";
             $cond_arr[] = "job_department LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = "partner_id = $partner_id";
         }
@@ -485,7 +485,7 @@ class Master extends CI_Controller {
             } else {
                 $cond_arr[] = $search_column . " LIKE '%" . $search_field . "%'";
             }
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -493,7 +493,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTJobDeptCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTJobDeptDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -548,7 +548,7 @@ class Master extends CI_Controller {
     }
 
     public function addJobDept() {
-        for ($i = 0; $i < count($_POST['job_department']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['job_department']); $i++) {
             if ($_POST['job_department'][$i] != '') {
                 $option['id'] = $_POST['dept_edit_id'][$i];
                 $data['partner_id'] = $this->session->userdata['partner_id'];
@@ -556,7 +556,7 @@ class Master extends CI_Controller {
                 $data['status'] = isset($_POST['job_status'][$i]) && $_POST['job_status'][$i] != '' ? $_POST['job_status'][$i] : '1';
 
                 $checkExist = $this->Mportfolio->getDetails('hr_job_department', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mleave->updateLeaveDetail('hr_job_department', $option, $data);
                 } else {
@@ -582,7 +582,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "specification_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -632,7 +632,7 @@ class Master extends CI_Controller {
             } else {
                 $cond_arr[] = $search_column . " LIKE '%" . $search_field . "%'";
             }
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -641,7 +641,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTJobCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTJobDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
 
@@ -680,9 +680,9 @@ class Master extends CI_Controller {
 
     public function addJobspecification() {
         #echo'<pre>';print_r($_POST);die;
-        $cnt = count($_POST['specification_name']);
+        $cnt = php72_count($_POST['specification_name']);
         if ($cnt > 0) {
-            for ($i = 0; $i < count($_POST['specification_name']); $i++) {
+            for ($i = 0; $i < php72_count($_POST['specification_name']); $i++) {
                 $jobspecdata = array();
                 if ($_POST['specification_name'][$i] != '') {
                     $option['id'] = $_POST['jobspec_edit_id'][$i];
@@ -694,7 +694,7 @@ class Master extends CI_Controller {
                     // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
                     $checkExist = $this->Mportfolio->getDetails('hr_job_specification', $option);
-                    if (count($checkExist) > 0) {
+                    if (php72_count($checkExist) > 0) {
                         $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                         $hm_query = $this->Mportfolio->updatePortfolioDetail('hr_job_specification', $jobspecdata, $option);
                     } else {
@@ -723,7 +723,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "grade_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -766,7 +766,7 @@ class Master extends CI_Controller {
             } else {
                 $cond_arr[] = $search_column . " LIKE '%" . $search_field . "%'";
             }
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -775,7 +775,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTGradeCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTGradeDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -813,7 +813,7 @@ class Master extends CI_Controller {
 
     public function addPaygrade() {
 
-        for ($i = 0; $i < count($_POST['grade_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['grade_name']); $i++) {
             if ($_POST['grade_name'][$i] != '') {
                 $option['id'] = $_POST['grade_edit_id'][$i];
                 $jobspecdata['grade_name'] = $_POST['grade_name'][$i];
@@ -822,7 +822,7 @@ class Master extends CI_Controller {
                 // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
                 $checkExist = $this->Mportfolio->getDetails('hr_salary_grade', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query = $this->Mleave->updateLeaveDetail('hr_salary_grade', $option, $jobspecdata);
                 } else {
@@ -861,7 +861,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -877,7 +877,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -893,7 +893,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -909,7 +909,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -925,7 +925,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -941,7 +941,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -957,7 +957,7 @@ class Master extends CI_Controller {
         $data['filter_search'] = $filter_search = isset($_POST['filter_search']) ? $_POST['filter_search'] : '';
         if ($filter_search != '') {
             $cond_arr[] = "master_name LIKE '%" . $filter_search . "%'";
-            $result_cond = implode(' and ', $cond_arr);
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -992,8 +992,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "partner_id ='" . $partner . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1001,7 +1001,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTMasterCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTMasterDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1041,7 +1041,7 @@ class Master extends CI_Controller {
 
         $redirect = $_POST['redirect'];
         $partner_id = $this->session->userdata('partner_id');
-        for ($i = 0; $i < count($_POST['master_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['master_name']); $i++) {
             if ($_POST['master_name'][$i] != '') {
                 $option['master_id'] = $_POST['master_edit_id'][$i];
                 $mas_data['master_name'] = $_POST['master_name'][$i];
@@ -1051,7 +1051,7 @@ class Master extends CI_Controller {
                 // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
                 $checkExist = $this->Mmaster->getMasterAisDetails('master_settings', $option, '', '', '', 'master_id');
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query = $this->Mmaster->updateMasterDetail('master_settings', $option, $mas_data);
                 } else {
@@ -1126,8 +1126,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.partner_id ='" . $partner . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1139,7 +1139,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTBudgetCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTBudgetDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1190,7 +1190,7 @@ class Master extends CI_Controller {
     public function addBudget() {
 
         #error_reporting(-1);
-        for ($i = 0; $i < count($_POST['master_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['master_name']); $i++) {
             if ($_POST['master_name'][$i] != '') {
                 $option['master_id'] = $_POST['master_edit_id'][$i];
                 $mas_data['master_name'] = $_POST['master_name'][$i];
@@ -1203,7 +1203,7 @@ class Master extends CI_Controller {
                 // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
                 $checkExist = $this->Mmaster->getMasterAisDetails('master_settings', $option, '', '', '', 'master_id');
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query = $this->Mmaster->updateMasterDetail('master_settings', $option, $mas_data);
                 } else {
@@ -1274,8 +1274,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "id ='" . $gid . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1302,8 +1302,8 @@ class Master extends CI_Controller {
         $cond_arr[] = "status = 1";
 
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1367,8 +1367,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.pid IN (" . $child_ids . ")";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1384,7 +1384,7 @@ class Master extends CI_Controller {
         echo'<pre>';print_r($query);die; */
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
 
@@ -1448,7 +1448,7 @@ class Master extends CI_Controller {
 
     public function addLineitem() {
 
-        for ($i = 0; $i < count($_POST['master_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['master_name']); $i++) {
             if ($_POST['master_name'][$i] != '') {
                 $option['master_id'] = $_POST['master_edit_id'][$i];
                 $mas_data['master_name'] = $_POST['master_name'][$i];
@@ -1462,7 +1462,7 @@ class Master extends CI_Controller {
                 $checkExist = $this->Mmaster->getMasterAisDetails('master_settings', $option, '', '', '', 'master_id');
 
                 #echo'<pre>';print_r($mas_data);die;
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query = $this->Mmaster->updateMasterDetail('master_settings', $option, $mas_data);
                 } else {
@@ -1547,8 +1547,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.partner_id ='" . $partner_id . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1556,7 +1556,7 @@ class Master extends CI_Controller {
         $totalrows = $this->Mmaster->getDTAdditionalCount($result_cond, $columns, $requestData);
         $query = $this->Mmaster->getDTAdditionalDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1601,7 +1601,7 @@ class Master extends CI_Controller {
 
         $donor_programme = unserialize($prgmlist['0']['donor']);
 
-        $donor_arr = implode(',', $donor_programme);
+        $donor_arr = php72_implode(',', $donor_programme);
         $donorlist = $this->Mmaster->getDonorByProgramme($donor_arr, 'Donor');
 
         $options = '<option value="">--Select--</option>';
@@ -1669,11 +1669,11 @@ class Master extends CI_Controller {
 
 
         $searchArray[] = "partner_id = '" . $this->session->userdata('partner_id') . "'";
-        $where = implode(' and ', $searchArray);
+        $where = php72_implode(' and ', $searchArray);
         $totalrows = $this->Mmaster->getDTFinancialCount('', $columns, $requestData);
         $query = $this->Mmaster->getDTFinancialDetails($requestData['length'], $requestData['start'], $where, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
 
@@ -1721,7 +1721,7 @@ class Master extends CI_Controller {
         $where_inactive = array('partner_id' => $this->session->userdata('partner_id'));
         $this->Mmaster->updateMasterDetail('financial_year', $where_inactive, $mas_data_inactive);
 
-        for ($i = 0; $i < count($_POST['fromdate']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['fromdate']); $i++) {
             if ($_POST['fromdate'][$i] != '') {
                 $option['id'] = $_POST['master_edit_id'][$i];
                 $mas_data['from'] = $_POST['fromdate'][$i];
@@ -1735,7 +1735,7 @@ class Master extends CI_Controller {
                 // $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
                 #echo'<pre>';print_r($mas_data);die;
                 $checkExist = $this->Mmaster->getMasterAisDetails('financial_year', $option, '', '', '', '');
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query = $this->Mmaster->updateMasterDetail('financial_year', $option, $mas_data);
                 } else {
@@ -1823,8 +1823,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.programme_head ='" . $programme_head . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -1838,7 +1838,7 @@ class Master extends CI_Controller {
         $query = $this->Mmaster->getDTProgrammeDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
         
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1873,7 +1873,7 @@ class Master extends CI_Controller {
             $donorr = unserialize($row["donor"]);
             $donors = '';
             foreach (unserialize($row["donor"]) as $key => $value):
-                if (count($donorr != 1))
+                if (php72_count($donorr != 1))
                     $donors .= $this->Mmaster->showMaster($value) . ", ";
                 else
                     $donors .= $this->Mmaster->showMaster($value);
@@ -2099,8 +2099,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t2.partner_id  ='" . $partner . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2110,7 +2110,7 @@ class Master extends CI_Controller {
 
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2277,8 +2277,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "vendor_name LIKE '%" . $vendor_name . "%'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2290,7 +2290,7 @@ class Master extends CI_Controller {
 
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2334,7 +2334,7 @@ class Master extends CI_Controller {
         $vendorid = (isset($_POST['id'])) ? $_POST['id'] : '';
         $vendorcontacts = $this->Mmaster->getVendorscontactList($vendorid);
         $reault = '';
-        if (count($vendorcontacts) > 0) {
+        if (php72_count($vendorcontacts) > 0) {
             foreach ($vendorcontacts as $clist) {
                 $result .= '<tr><td>' . $clist['name'] . '</td><td>' . $clist['contact_no'] . '</td><td>' . $clist['email'] . '</td></tr>';
             }
@@ -2370,7 +2370,7 @@ class Master extends CI_Controller {
         if ($hm_query) {
 
             if ($_POST['contactmore_person'][0] != '') {
-                for ($i = 0; $i < count($_POST['contactmore_person']); $i++) {
+                for ($i = 0; $i < php72_count($_POST['contactmore_person']); $i++) {
                     $leavedata = array();
 
                     $option['contact_id'] = $_POST['contact_edit_id'][$i];
@@ -2382,7 +2382,7 @@ class Master extends CI_Controller {
 // die;
 
                     $checkExist = $this->Mmaster->getAisMasterDetails('master_vendor_contact', $option);
-                    if (count($checkExist) > 0) {
+                    if (php72_count($checkExist) > 0) {
                         $contact_query = $this->Mmaster->updateMasterDetail('master_vendor_contact', $option, $contactdata);
                     } else {
                         $contact_query = $this->Mmaster->insertMasterDetail('master_vendor_contact', $contactdata);
@@ -2451,8 +2451,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t2.partner_id ='" . $partner . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2462,7 +2462,7 @@ class Master extends CI_Controller {
 
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2590,8 +2590,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "YEAR(t1.date) = '" . $year_search . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2602,7 +2602,7 @@ class Master extends CI_Controller {
         $query = $this->Mmaster->getDTVisitorsDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2755,8 +2755,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.status = '" . $master_type . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2768,7 +2768,7 @@ class Master extends CI_Controller {
 
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -2947,8 +2947,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.status = '" . $master_type . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -2959,7 +2959,7 @@ class Master extends CI_Controller {
         $query = $this->Mmaster->getDTOutwardDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
 
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -3095,8 +3095,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t1.amount_date <= '" . $amt_todate . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -3157,8 +3157,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "MP.programme LIKE '%" . $programme_search . "%'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -3174,7 +3174,7 @@ class Master extends CI_Controller {
         $query = $this->Mmaster->getDonorLimitRecords($length, $start, $result_cond, $columns, $requestData);
 		#echo'<pre>';print_r($query);die;
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
 
@@ -3305,7 +3305,7 @@ class Master extends CI_Controller {
             $prgmlist = $this->Mmaster->getProgramme('', $pid);
 
             $donor_programme = unserialize($prgmlist['0']['donor']);
-            $donor_arr = implode(',', $donor_programme);
+            $donor_arr = php72_implode(',', $donor_programme);
             $data['donors'] = $this->Mmaster->getDonorByProgramme($donor_arr, 'Donor');
         } else {
             $data['donors'] = $this->Mmaster->getMasterList($partner, 'Donor');
@@ -3316,8 +3316,8 @@ class Master extends CI_Controller {
 
             $cond_arr[] = "funder_id ='" . $donorid . "'";
 
-            if (count($cond_arr) > 0) {
-                $result_cond = implode(' and ', $cond_arr);
+            if (php72_count($cond_arr) > 0) {
+                $result_cond = php72_implode(' and ', $cond_arr);
             } else {
                 $result_cond = '';
             }
@@ -3378,8 +3378,8 @@ class Master extends CI_Controller {
             $budget_head = $this->Mmaster->getMasterList($partner, 'Budget Head');
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -3392,7 +3392,7 @@ class Master extends CI_Controller {
         $query = $this->Mmaster->getDTEditbalanceDetails($requestData['length'], $requestData['start'], $result_cond, $columns, $requestData);
 		//print_r($query);// die;
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -3472,7 +3472,7 @@ class Master extends CI_Controller {
     public function insertlineitemAmount_old() {
 
 
-        for ($i = 0; $i < count($_POST['budget_head']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['budget_head']); $i++) {
             if ($_POST['budget_head'][$i] != '') {
                 $option['id'] = $_POST['master_edit_id'][$i];
                 $mas_data['budget_id'] = $_POST['budget_head'][$i];
@@ -3500,7 +3500,7 @@ class Master extends CI_Controller {
 
                 $checkExist = $this->Mmaster->getMasterAisDetails('balance_amount', $option);
 
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $history_data['operation'] = 'updation';
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
                     $hm_query1 = $this->Mmaster->updateMasterDetail('balance_amount', $option, $mas_data);
@@ -3556,7 +3556,7 @@ class Master extends CI_Controller {
     public function insertlineitemAmount() {
 
 
-      $master_edit_count = count($_POST['master_edit_id']);
+      $master_edit_count = php72_count($_POST['master_edit_id']);
       $edit_id = isset($_POST['edit_id']) ? $_POST['edit_id'] : '';
 
       $editID_arr = array();
@@ -3567,7 +3567,7 @@ class Master extends CI_Controller {
    }
 
    $edit_count = 1;
-   for ($i = 0; $i < count($_POST['budget_head']); $i++) {
+   for ($i = 0; $i < php72_count($_POST['budget_head']); $i++) {
     if ($_POST['budget_head'][$i] != '') {
         $option['id'] = $_POST['master_edit_id'][$i];
 
@@ -3599,7 +3599,7 @@ class Master extends CI_Controller {
 
         $checkExist = $this->Mmaster->getMasterAisDetails('balance_amount', $option);
         /* echo'<pre>';print_r($_POST);echo'===';echo'<pre>';print_r($checkExist);die; */
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $history_data['operation'] = 'updation';
                     // $jobspecdata['updated_by'] = $this->session->userdata('emp_number');
             $hm_query1 = $this->Mmaster->updateMasterDetail('balance_amount', $option, $mas_data);
@@ -3782,8 +3782,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "t2.amount_date <= '" . $amt_todate . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -3839,8 +3839,8 @@ class Master extends CI_Controller {
         }
 
         $cond_arr[] = "t2.partner_id = '" . $partner . "'";
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -3853,7 +3853,7 @@ class Master extends CI_Controller {
         // print_r($totalrows);
         // die;
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -4009,8 +4009,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "D1A.grant_id = '" . $grant_search . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -4023,7 +4023,7 @@ class Master extends CI_Controller {
         // print_r($totalrows);
         // die;
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -4191,8 +4191,8 @@ class Master extends CI_Controller {
             $cond_arr[] = "D1A.grant_id = '" . $grant_search . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -4313,8 +4313,8 @@ class Master extends CI_Controller {
         }
 
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -4443,8 +4443,8 @@ function vendor_export() {
         $cond_arr[] = "vendor_name LIKE '%" . $vendor_name . "%'";
     }
 
-    if (count($cond_arr) > 0) {
-        $result_cond = implode(' and ', $cond_arr);
+    if (php72_count($cond_arr) > 0) {
+        $result_cond = php72_implode(' and ', $cond_arr);
     } else {
         $result_cond = '';
     }
@@ -4526,8 +4526,8 @@ function books_export() {
     if ($author != '') {
         $cond_arr[] = "author LIKE '%" . $author . "%'";
     }
-    if (count($cond_arr) > 0) {
-        $result_cond = implode(' and ', $cond_arr);
+    if (php72_count($cond_arr) > 0) {
+        $result_cond = php72_implode(' and ', $cond_arr);
     } else {
         $result_cond = '';
     }
@@ -4635,8 +4635,8 @@ function books_export() {
             $cond_arr[] = "YEAR(t1.date) = '" . $year_search . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -4751,8 +4751,8 @@ function books_export() {
             $cond_arr[] = "t1.status = '" . $master_type . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -4870,8 +4870,8 @@ function books_export() {
             $cond_arr[] = "t1.status = '" . $master_type . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -5036,8 +5036,8 @@ function books_export() {
             $cond_arr[] = "D1A.grant_id = '" . $grant_search . "'";
         }
 
-        if (count($cond_arr) > 0) {
-            $result_cond = implode(' and ', $cond_arr);
+        if (php72_count($cond_arr) > 0) {
+            $result_cond = php72_implode(' and ', $cond_arr);
         } else {
             $result_cond = '';
         }
@@ -5125,7 +5125,7 @@ function books_export() {
     public function commonDelete() {
 
         $this->load->model('incubation_master/Common_model');
-        $id = array_filter($this->input->post('id'));
+        $id = php72_array_filter($this->input->post('id'));
         $table = $this->input->post('table');
         $returnArr['status'] = '0';
 

@@ -1,7 +1,7 @@
 <?php
 $formAction = "";
 $val = array();
-if (count($usergroup) > 0) {
+if (php72_count($usergroup) > 0) {
     $formAction = site_url('mainmaster/useraccess/adduser/' . $id);
     $action = 'edit';
     $val = $usergroup['0'];

@@ -35,7 +35,7 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
     </thead>
 	<tbody>
 	<?php
-	if(count($applicantList))
+	if(php72_count($applicantList))
 	{    
 		$r=1;
 		foreach($applicantList as $row)

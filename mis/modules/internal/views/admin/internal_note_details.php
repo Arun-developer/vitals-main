@@ -812,7 +812,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                if (isset($recover_amt) && count($recover_amt) > 0) {
+                                                if (isset($recover_amt) && php72_count($recover_amt) > 0) {
                                                     ?>
                                                     <input type="hidden" name="recovery_id" id="recovery_id" value="<?php echo $recover_amt[0]['recover_id']; ?>" />
                                                     <?php

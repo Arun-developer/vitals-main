@@ -319,7 +319,7 @@ function insertapprovaldraft() {
     $arr_key = '';
 
     foreach ($file_name as $key => $value):
-        $arr_key = array_keys($value)[$key];
+        $arr_key = php72_array_keys($value)[$key];
 
         if ($value[$arr_key] != '') {
             $fName = rand() . "_" . str_replace(" ", "_", $value[$arr_key]);
@@ -347,7 +347,7 @@ function insertapprovaldraft() {
 //        else
 //            $financial_date = date("Y:m:d");
         #$supporting_documents = implode(',', $this->input->post('supporting_documents'));
-    $supporting_documents = implode(',', $this->input->post('meet_desc'));
+    $supporting_documents = php72_implode(',', $this->input->post('meet_desc'));
 
     $data = array(
         'approval_no' => $this->approvalNumber(),
@@ -581,7 +581,7 @@ function getUserNameInfo($userid) {
         $roname_Arr[$val['emp_id']] = $val['emp_name'];
     }
     $ro_name = $roname_Arr[$requestListInfo['0']['ro_id']];
-    if (count($reportingAuth))
+    if (php72_count($reportingAuth))
         # $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['official_email'];
         $reportAuthEmail = $roArr[$requestListInfo[0]['ro_id']];
     else
@@ -888,9 +888,9 @@ function mailContent($requestId, $touser = NULL) {
     $empEmail = $employeeDetails['0']['official_email'] != '' ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
     $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
     $roName = $reportingAuth[0]['emp_name'];
-    if (count($reportingAuth) == 1)
+    if (php72_count($reportingAuth) == 1)
         $reportAuthEmail = $reportingAuth['0']['official_email'] != '' ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
-    else if (count($reportingAuth) > 1) {
+    else if (php72_count($reportingAuth) > 1) {
         $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
         $reportAuthEmail = $rodetails['0']['official_email'] != '' ? $rodetails['0']['official_email'] : $rodetails['0']['personal_email'];
     } else

@@ -13,7 +13,7 @@ class Massign_incubation extends CI_Model
     public function assignChecklist($form = array())
     {
         $data = array('innovation' => $form['innovation'],
-            'checklist' => implode(',', $form['checklist']));
+            'checklist' => php72_implode(',', $form['checklist']));
         if ($this->checkDuplicateChecklist($form['innovation'])) {
             $this->db->insert('checklist_incubation', $data);
         } else {

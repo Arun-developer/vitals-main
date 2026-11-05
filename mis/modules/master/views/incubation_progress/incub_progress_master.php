@@ -100,7 +100,7 @@ class Incub_progress_master extends CI_Controller
         if ($id != '') {
 
             $data['screeningDetails'] = $this->Mprogress_master->getRecords($id);
-            if (count($data['screeningDetails']) == 0) {
+            if (php72_count($data['screeningDetails']) == 0) {
                 redirect('master/incub_progress_master/form');
             }
 
@@ -217,7 +217,7 @@ class Incub_progress_master extends CI_Controller
         $data['subfieldsDetails'] = array();
         if ($id != '') {
             $data['subfieldsDetails'] = $this->Mprogress_master->getProgressInfo($id);
-            if (count($data['subfieldsDetails']) == 0) {
+            if (php72_count($data['subfieldsDetails']) == 0) {
                 redirect('master/incub_progress_master/sub_field/' . $pid);
             }
 

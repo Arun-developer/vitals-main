@@ -222,7 +222,7 @@
 <?php
 $formAction = site_url('scouting/new_innovation');
 $val = array();
-if (count($innovationDetails)) {
+if (php72_count($innovationDetails)) {
     $val = $innovationDetails['0'];
     $formAction = site_url('scouting/new_innovation/' . $val['id']);
     $action = 'edit';

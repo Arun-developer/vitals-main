@@ -198,7 +198,7 @@ class Massessment extends CI_Model {
         $ass_id = $form['ass_id'];
         $score_arr = $form['score'];
         $desc = $form['desc'];
-        for ($j = 0; $j < count($ass_id); $j++) {
+        for ($j = 0; $j < php72_count($ass_id); $j++) {
             if ($ass_id[$j] != '' && $criteria_arr[$j] != 'upfiles') {
                 $data = array('innvation' => $id,
                     'criteria' => $criteria_arr[$j],
@@ -228,7 +228,7 @@ class Massessment extends CI_Model {
         $grd_id = $form['grad_id'];
         $score_arr = $form['score'];
         $desc = $form['desc'];
-        for ($j = 0; $j < count($grd_id); $j++) {
+        for ($j = 0; $j < php72_count($grd_id); $j++) {
             if ($grd_id[$j] != '' && $criteria_arr[$j] != 'upfiles') {
                 $data = array('grading_id' => $id,
                     'grading_master' => $criteria_arr[$j],
@@ -262,7 +262,7 @@ class Massessment extends CI_Model {
         $documentsLink = $form['documentsLink'];
         $documentsText = $form['documentsText'];
 
-        for ($i = 0; $i < count($files); $i++) {
+        for ($i = 0; $i < php72_count($files); $i++) {
             $data = array(
                 'innvation' => $id,
                 'link' => $documentsLink[$i],

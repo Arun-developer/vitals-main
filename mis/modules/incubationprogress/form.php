@@ -172,7 +172,7 @@ table {
 	?>
 	</tr>
 	<?php 
-	for($i=0;$i < count($yearreport); $i++)
+	for($i=0;$i < php72_count($yearreport); $i++)
 	{
 		echo '<tr>';
 		echo '<td>'.$yearreport[$i]['label'].'</td>';
@@ -251,7 +251,7 @@ table {
 	?>
 	</tr>
 	<?php 
-	for($i=0;$i<count($quarterlyreport); $i++)
+	for($i=0;$i<php72_count($quarterlyreport); $i++)
 	{
 		echo '<tr>';
 		echo '<td>'.$quarterlyreport[$i]['label'].'</td>';
@@ -296,7 +296,7 @@ table {
 	?>
 	</tr>
 	<?php
-	for($i=0;$i<count($monthreport); $i++)
+	for($i=0;$i<php72_count($monthreport); $i++)
 	{
 		echo '<tr scope="row">';
 		if($defaulttype == 'metrices')
@@ -382,7 +382,7 @@ table {
 	?>
 	</tr>
 	<?php 
-	for($i=0;$i<count($weekreport); $i++)
+	for($i=0;$i<php72_count($weekreport); $i++)
 	{
 		echo '<tr>';
 		echo '<td>'.$weekreport[$i]['label'].'</td>';

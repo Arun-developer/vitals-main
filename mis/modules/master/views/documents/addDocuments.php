@@ -3,7 +3,7 @@ $formAction = site_url('master/documents/form/' . $activity_id);
 $id = '';
 $val = array();
 $document = '';
-if (count($documentsDetails)) {
+if (php72_count($documentsDetails)) {
     $val = $documentsDetails['0'];
     $formAction = $formAction . '/' . $val['id'];
     $id = $val['id'];

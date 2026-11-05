@@ -89,7 +89,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
                                 <?php echo ($assessDetails[11][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
@@ -148,7 +148,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             cols="60"
                             style="width: 50%; float:left"><?php echo !empty($assessDetails[11][0]['description']) ? strip_tags($assessDetails[11][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="11" />
@@ -165,7 +165,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
                                 <?php echo ($assessDetails[12][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
@@ -221,7 +221,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             cols="60"
                             style="width: 55%;"><?php echo !empty($assessDetails[12][0]['description']) ? strip_tags($assessDetails[12][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="12" />
@@ -238,7 +238,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
                                 <?php echo ($assessDetails[13][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
@@ -293,7 +293,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             cols="60"
                             style="width: 60%;"><?php echo !empty($assessDetails[13][0]['description']) ? strip_tags($assessDetails[13][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="13" />
@@ -310,7 +310,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
                                 <?php echo ($assessDetails[14][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
@@ -365,7 +365,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             cols="60"
                             style="width: 60%;"><?php echo !empty($assessDetails[14][0]['description']) ? strip_tags($assessDetails[14][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="14" />
@@ -382,7 +382,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
                                 <?php echo ($assessDetails[15][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
@@ -437,7 +437,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             cols="60"
                             style="width: 60%;"><?php echo !empty($assessDetails[15][0]['description']) ? strip_tags($assessDetails[15][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="15" />
@@ -454,7 +454,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="score">Score</label>
                         <select name="score[]"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1" <?php echo ($assessDetails[61][0]['grade'] == 1) ? 'selected' : ''?>>1
                             </option>
@@ -503,7 +503,7 @@ function closeScale(criteria) {
                     <p>
                         <label for="desc" style="height:100px;">Description</label>
                         <textarea name="desc[]" rows="5" cols="60"
-                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                            <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                             style="width: 60%;"><?php echo !empty($assessDetails[61][0]['description']) ? strip_tags($assessDetails[61][0]['description']) : '';?></textarea>
                         <input type="hidden" name="criteria[]" value="61" />
                     </p>
@@ -516,9 +516,9 @@ function closeScale(criteria) {
                         <span id="addinputdocLink">
                             <span class="plink">
                                 <input type="text" name="documentsLink[]"
-                                    <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                                    <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                                     value="" placeholder="Please enter you link" />
-                                <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))){?>
+                                <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))){?>
                                 <a href="#" id="addNewdocLink">Add</a>
                                 <?php } ?>
                             </span>
@@ -546,9 +546,9 @@ function closeScale(criteria) {
                             <label for="document">Documents</label>
                             <span class="pfile">
                                 <input style="float:left;" type="file"
-                                    <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
+                                    <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>
                                     name="documents[]" />
-                                <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge))){?>
+                                <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))){?>
                                 <a class="file_up" href="#" id="addNewdocFile">Add</a>
                                 <?php } ?>
                             </span>
@@ -577,7 +577,7 @@ function closeScale(criteria) {
             </form>
         </div>
     </div>
-    <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (in_array($this->session->userdata('emp_number'),$assigned_incharge)))
+    <?php if(in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge)))
 	{?>
     <p style="margin-left:330px;"><input type="submit" id="submit" value="Submit" name="txtSubmit">&nbsp;<input
             type="button" id="reset" value="Reset"></p>

@@ -182,7 +182,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         foreach ($result->result_array() as $row) {
             $data[] = $row;
         }
-        for ($i = 0; $i < count($data); $i++) {
+        for ($i = 0; $i < php72_count($data); $i++) {
             $data[$i]['fund_utilized'] = $this->getqutilizedamounts($innovation, $year, $quarter);
             $data[$i]['approved_amount'] = $this->Mincubation_reports->getapprovedamount($data[$i]['approval_note']);
         }
@@ -257,7 +257,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         foreach ($result->result_array() as $row) {
             $data[] = $row;
         }
-        for ($i = 0; $i < count($data); $i++) {
+        for ($i = 0; $i < php72_count($data); $i++) {
             $data[$i]['fund_utilized'] = $this->getmutilizedamounts($innovation, $year, $month);
             $data[$i]['approved_amount'] = $this->Mincubation_reports->getapprovedamount($data[$i]['approval_note']);
         }
@@ -551,7 +551,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $query = "SELECT PG.field as field,PG.answer as answer,PG.start_date,PG.end_date,PM.label,extract(year FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "')";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "')";
         $result = $this->db->query($query);
         $listvalue = $result->result_array();
         for ($i = 0; $i < count($listvalue); $i++) {
@@ -586,7 +586,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $query = "SELECT PG.field as field,PG.answer as answer,PM.label,extract(year FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "')";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "')";
         $result = $this->db->query($query);
         $listvalue = $result->result_array();
         for ($i = 0; $i < count($listvalue); $i++) {
@@ -605,7 +605,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $build_qry = "SELECT PG.field as field,PG.answer as answer,PM.label,extract(year FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "')";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "')";
         $value = $this->db->query($build_qry);
         $data = $value->result_array();
         return $data;
@@ -850,7 +850,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $data = array(
             'innovation' => $option['urlcode'],
             'configure_type' => $option['title'],
-            'label' => serialize(array_filter($option['label'])),
+            'label' => serialize(php72_array_filter($option['label'])),
             'chart_type' => $option['showtype'],
             'frequency' => $option['tabkey'],
             'created_date' => date("Y-m-d"),
@@ -902,7 +902,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $build_qry = "SELECT PG.field as field,PG.answer as answer,PM.label,extract(month FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "') ";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "') ";
         $value = $this->db->query($build_qry);
         $data = $value->result_array();
 
@@ -1073,7 +1073,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $q .= " left join master_settings D on D.master_id= AN.donor";
         $q .= " left join master_settings BH on BH.master_id= AN.budget_head";
         $q .= " left join master_settings LI on LI.master_id= AN.line_item";
-        $q .= " where AP.approval_id IN (" . implode(',', $approval_note) . ")";
+        $q .= " where AP.approval_id IN (" . php72_implode(',', $approval_note) . ")";
         $q .= " group by AP.approval_id";
         $query = $this->ais->query($q);
         if ($query->num_rows() > 0) {
@@ -1502,7 +1502,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         for ($i = 0; $i < strlen($value); $i++) {
             if (stristr($splitstring, $value[$i]) == true) {
                 'operand = ' . $operand . ', ';
-                if (array_key_exists($operand, $fieldvalues)) {
+                if (php72_array_key_exists($operand, $fieldvalues)) {
                     $toadd = $fieldvalues[$operand];
                 } else {
                     $toadd = $operand;
@@ -1519,7 +1519,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         }
 
         if ($operand != '') {
-            if (array_key_exists($operand, $fieldvalues)) {
+            if (php72_array_key_exists($operand, $fieldvalues)) {
                 $toadd = $fieldvalues[$operand];
             } else {
                 $toadd = $operand;
@@ -1540,7 +1540,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $build_qry = "SELECT PG.field as field,PG.answer as answer,PM.label,extract(year FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "')";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "')";
         $value = $this->db->query($build_qry);
         $data = $value->result_array();
 
@@ -1567,7 +1567,7 @@ JOIN innovation_pool AS IP ON ( IP.id = RM.innovation ) where IP.id ='" . $innov
         $query = "SELECT PG.field as field,PG.answer as answer,PM.label,extract(year FROM PG.start_date) as progress_date
 					FROM progress as PG
 					LEFT JOIN progress_master as PM
-					ON (PG.field = PM.id) WHERE PG.field IN ('" . implode("','", $option) . "')";
+					ON (PG.field = PM.id) WHERE PG.field IN ('" . php72_implode("','", $option) . "')";
         $result = $this->db->query($query);
         $listvalue = $result->result_array();
         for ($i = 0; $i < count($listvalue); $i++) {

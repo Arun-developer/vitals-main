@@ -70,7 +70,7 @@ class Reports extends CI_Controller
         $data['reportsDetails'] = array();
         if ($id != '') {
             $data['reportsDetails'] = $this->Mreports->getReportsInfo($id);
-            if (count($data['reportsDetails']) == 0) {
+            if (php72_count($data['reportsDetails']) == 0) {
                 redirect('master/reports/form');
             }
 

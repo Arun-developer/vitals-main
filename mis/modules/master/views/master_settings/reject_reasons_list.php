@@ -109,7 +109,7 @@ $(document).ready( function() {
 	</thead>
 	<tbody>
    <?php
-	if(count($reject_reasons))
+	if(php72_count($reject_reasons))
 	{   
 		$r=1;
 		foreach($reject_reasons as $reject_reason)

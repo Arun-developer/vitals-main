@@ -1,6 +1,6 @@
 <?php 
 
-if(count($boardmemberdetail)>0)
+if(php72_count($boardmemberdetail)>0)
 {
   $val=$boardmemberdetail[0];
 }

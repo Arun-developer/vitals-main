@@ -60,7 +60,7 @@ foreach ($pitch_user as $row):
                 <tr>
                     <td colspan="2">
                         <table id="add_info" class="gtable" width="100%">
-                            <?php if (count($pitch_member) > 0) { ?>
+                            <?php if (php72_count($pitch_member) > 0) { ?>
                                 <tr>
                                     <td colspan="2" style="background-color:#FFF"></td>
                                 </tr>
@@ -146,10 +146,10 @@ foreach ($pitch_user as $row):
                         $sector = unserialize($pitch_org[0]['sector']);
                         if (!empty($sector)) {
                             if (is_array($sector))
-                                $sec = implode(',', $sector);
+                                $sec = php72_implode(',', $sector);
                             else
                                 $sec = $sector;
-                            if (in_array('others', $sector) || $sector == 'others') {
+                            if (php72_in_array('others', $sector) || $sector == 'others') {
                                 $sec .= ' - ' . $pitch_org[0]['areas_other'];
                             }
                             echo $sec;

@@ -86,7 +86,7 @@
                                                         <div class="sidebar-submenu sidebar_show">
                                                             <ul>
                                                                 <?php
-                                                                if (count($get_allmilestone) > 0) {
+                                                                if (php72_count($get_allmilestone) > 0) {
                                                                     foreach ($get_allmilestone as $miles) {
                                                                         ?>
                                                                         <li class="pending_month_btn <?php
@@ -144,7 +144,7 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     <?php
-                                                    if (count($get_task) > 0) {
+                                                    if (php72_count($get_task) > 0) {
                                                         foreach ($get_task as $task) {
                                                             ?>
                                                             <a class="nav-item nav-link viewTask" id="task<?= $task['id']; ?>" data-toggle="tab" href="#taskone" role="tab" aria-controls="nav-home" aria-selected="true" onclick="GetTaskDetails('<?= $task['id']; ?>')"><?= $task['task_name']; ?></a>
@@ -268,7 +268,7 @@
                                                             <div class="row">
                                                                 <div class="col-12 text-right">
                                                                     <input type="hidden" name="module" id="module" value="plan" />
-                                                                    <input type="hidden" name="task_count" id="task_count" value="<?= count($get_proj); ?>">
+                                                                    <input type="hidden" name="task_count" id="task_count" value="<?= php72_count($get_proj); ?>">
                                                                     <input type="hidden" name="edit_task_id" id="edit_task_id" value="<?= isset($get_task) && $get_task[0]['id'] != '' ? $get_task[0]['id'] : '' ?>" />
                                                                     <input type="hidden" name="edit_proj_id" id="edit_proj_id" value="<?= isset($get_proj) && $get_proj[0]['id'] != '' ? $get_proj[0]['id'] : '' ?>" />
                                                                     <input type='hidden' name='proj_innovation_id' id="proj_innovation_id" value="<?= $innovation_id; ?>">
@@ -467,7 +467,7 @@
         </div>
 
         <input type="hidden" id="planBox" value="<?= $this->session->userdata['plan_lightbox']; ?>">
-        <input type="hidden" id="enableCount" value="<?= count($company_data); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($company_data); ?>">
         <input type="hidden" id="ajax_taskname" value="<?= isset($get_task) && $get_task[0]['id'] != '' ? $get_task[0]['task_name'] : '' ?>">
 
         <div class="modal" id="myModal">

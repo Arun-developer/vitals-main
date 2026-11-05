@@ -26,11 +26,11 @@ class Mlibrary extends My_Model {
 
     function updateLibrarySettings(){
         $data = array('days_for_return' => $this->input->post('days_for_return'),
-            'booking_request_mail' => implode(",", $this->input->post('booking_request_mail')),
-            'booking_confirm_mail' => implode(",", $this->input->post('booking_confirm_mail')),
+            'booking_request_mail' => php72_implode(",", $this->input->post('booking_request_mail')),
+            'booking_confirm_mail' => php72_implode(",", $this->input->post('booking_confirm_mail')),
             'days_before_reminder' => $this->input->post('days_before_reminder'),
             'days_between_reminders' => $this->input->post('days_between_reminders'),
-            'reminder_mail' => implode(",", $this->input->post('reminder_mail')),
+            'reminder_mail' => php72_implode(",", $this->input->post('reminder_mail')),
             'days_valid_for_renewal' => $this->input->post('days_valid_for_renewal'),
             'no_of_renewals' => $this->input->post('no_of_renewals'),
             'book_serial_format' => $this->input->post('book_serial_format'),
@@ -324,7 +324,7 @@ class Mlibrary extends My_Model {
 	
 	function bookStatus($bookId, $employee) {
 		$result = $this->getbookAvailabelStatus($bookId, $employee);
-		if (count($result)) {
+		if (php72_count($result)) {
 			return $result['0']['status'];
 		} else {
 			return 'no';
@@ -384,7 +384,7 @@ class Mlibrary extends My_Model {
 
     function getEmployeeFromUserId($userId) { 
         $data = $this->getUserInfo($userId);
-        if (count($data)) {
+        if (php72_count($data)) {
             return $this->employeeDetails($data['0']['emp_number']);
         } else
             return true;

@@ -19,23 +19,23 @@ class Alldocument extends CI_Controller {
         $isTerms = true;
 
         if (isset($_POST['section'])) {
-            if (!in_array('Innovation', $_POST['section'])) {
+            if (!php72_in_array('Innovation', $_POST['section'])) {
                 $isInnovation = false;
             }
 
-            if (!in_array('Asessment', $_POST['section'])) {
+            if (!php72_in_array('Asessment', $_POST['section'])) {
                 $isAsessment = false;
             }
 
-            if (!in_array('Presentation', $_POST['section'])) {
+            if (!php72_in_array('Presentation', $_POST['section'])) {
                 $isPresentation = false;
             }
 
-            if (!in_array('Screening', $_POST['section'])) {
+            if (!php72_in_array('Screening', $_POST['section'])) {
                 $isScreening = false;
             }
 
-            if (!in_array('Terms', $_POST['section'])) {
+            if (!php72_in_array('Terms', $_POST['section'])) {
                 $isTerms = false;
             }
         }

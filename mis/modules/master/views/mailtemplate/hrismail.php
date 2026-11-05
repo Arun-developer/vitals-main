@@ -26,7 +26,7 @@ echo "<h2>".@$cpagetitle."</h2>";
 		
 		<tbody>
 		<?php
-		if(count($templateList))
+		if(php72_count($templateList))
 		{    
 			$r=1;
 			foreach($templateList as $row)

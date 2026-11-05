@@ -59,7 +59,7 @@ class Minnovation_reports extends CI_Model {
         $searchArray[] = "IP.copy_status != '4'";
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         $copypartner = $options['copy_id'];
@@ -272,7 +272,7 @@ class Minnovation_reports extends CI_Model {
         $searchArray[] = "IP.copy_status != '4'";
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         $copypartner = $options['copy_id'];
@@ -527,7 +527,7 @@ class Minnovation_reports extends CI_Model {
         if (!empty($options['source']) || @$options['source'] == '0') {
             $this->db->where_in('source', $options['source']);
         } elseif (isset($options['source'])) {
-            $options['source'] = (count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
+            $options['source'] = (php72_count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
             $this->db->where('source', $options['source']);
         }
 

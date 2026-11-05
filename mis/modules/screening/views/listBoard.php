@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('#boardTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($boardList) == 0){ ?>
+    <?php if(php72_count($boardList) == 0){ ?>
     var arow = $('.cloneBoard').clone().removeClass('cloneBoard').addClass('odd');
     $('#boardTable').append(arow);
     ordering('sNo');

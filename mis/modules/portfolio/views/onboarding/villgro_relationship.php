@@ -14,8 +14,8 @@ $cap_link = base_url() . 'index.php/portfolio/cap_table/' . $innovation_id;
 $int_link = base_url() . 'index.php/portfolio/interested_parties/' . $innovation_id;
 $dataconfig_link = base_url() . 'index.php/portfolio/product/' . $innovation_id;
 
-$assign_incharge = isset($assign) && count($assign) > 0 ? $assign[0]['associate_employee'] : '';
-$assign_sector = isset($lead) && count($lead) > 0 ? $lead[0]['employee_id'] : '';
+$assign_incharge = isset($assign) && php72_count($assign) > 0 ? $assign[0]['associate_employee'] : '';
+$assign_sector = isset($lead) && php72_count($lead) > 0 ? $lead[0]['employee_id'] : '';
 
 $relation_id = isset($vil_relation) ? $vil_relation['id'] : '';
 $managerName = isset($vil_relation) ? $vil_relation['manager'] : $assign_incharge;
@@ -24,7 +24,7 @@ $memberName = isset($vil_relation) ? $vil_relation['member'] : '';
 $observerName = isset($vil_relation) ? $vil_relation['observer'] : '';
 
 $vil_mentor = $mentorDetails[0];
-$mentorDetails_count = isset($vil_mentor) ? count($mentorDetails) : 1;
+$mentorDetails_count = isset($vil_mentor) ? php72_count($mentorDetails) : 1;
 $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city'];
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Info', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'add_class' => 'mar-tp140'));
 ?>
@@ -300,8 +300,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($relationDetails); ?>">
-<input type="hidden" id="enableMent" value="<?= count($mentorDetails); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($relationDetails); ?>">
+<input type="hidden" id="enableMent" value="<?= php72_count($mentorDetails); ?>">
 
 <div class="modal" id="deletemodal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document">

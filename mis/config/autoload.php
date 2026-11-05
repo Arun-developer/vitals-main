@@ -67,7 +67,7 @@ $autoload['libraries'] = array('database', 'session', 'form_validation', 'pagina
   |	$autoload['helper'] = array('url', 'file');
  */
 
-$autoload['helper'] = array('url', 'form', 'debug_helper', 'common_helper', 'pdfexport_helper');
+$autoload['helper'] = array('php8_compat_helper', 'url', 'form', 'debug_helper', 'common_helper', 'pdfexport_helper');
 
 
 /*

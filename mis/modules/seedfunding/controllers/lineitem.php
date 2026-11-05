@@ -68,7 +68,7 @@ class Lineitem extends CI_Controller
         $data['lineitemDetails'] = array();
         if ($id != '') {
             $data['lineitemDetails'] = $this->Mlineitem->getLineitemDetails($id);
-            if (count($data['lineitemDetails']) == 0) {
+            if (php72_count($data['lineitemDetails']) == 0) {
                 redirect('screening/lineitem/form/' . $innovation);
             }
 

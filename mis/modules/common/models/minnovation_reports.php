@@ -104,7 +104,7 @@ class Minnovation_reports extends CI_Model
         $where = null;
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         if (!empty($options['source_type'])) {
@@ -162,9 +162,9 @@ class Minnovation_reports extends CI_Model
 
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
 
-            $innovation = (count($innovation)) ? $innovation : array();
+            $innovation = (php72_count($innovation)) ? $innovation : array();
 
-            $searchArray[] = "IP.id IN ('" . implode("','", $innovation) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $innovation) . "')";
         }
 
         if (!empty($options['reference'])) {
@@ -263,7 +263,7 @@ class Minnovation_reports extends CI_Model
             $this->db->where_in('source', $options['source']);
         } elseif (isset($options['source'])) {
 
-            $options['source'] = (count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
+            $options['source'] = (php72_count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
             $this->db->where('source', $options['source']);
         }
 

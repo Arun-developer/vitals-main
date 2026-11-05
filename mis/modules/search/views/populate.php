@@ -137,7 +137,7 @@ function is_requested($key) {
 
 function init_search() {
     $tables = load_tables();
-    $len = sizeof($tables);
+    $len = php72_count($tables);
     for ($i = 0; $i < $len; $i += 1) {
         table_fields($i);
     }
@@ -232,7 +232,7 @@ function load_tables() {
             //@abstract  get all table information in row tables
             $tables = fetch_array($sql);
             // process the table..
-            for ($i = 0; $i < sizeof($tables); $i += 1) {
+            for ($i = 0; $i < php72_count($tables); $i += 1) {
                 // removing the empty tables from the list!
                 $sql = 'select count(*) from ' . $tables[$i][0];
                 $number_rows = fetch_array($sql);
@@ -254,7 +254,7 @@ function table_fields($tableno) {
 
     $data = array();
 
-    for ($i = 0; $i < sizeof($collum); $i += 1) {
+    for ($i = 0; $i < php72_count($collum); $i += 1) {
         array_push($data, $collum[$i][0]);
     }
 
@@ -269,7 +269,7 @@ function search_on_table($tableno, $search_text) {
     // build the sql
     $search_sql = 'select * from ' . $tables_to_search[$tableno] . ' where ';
     $fields_on_this_table = table_fields($tableno);
-    $len = sizeof($fields_on_this_table);
+    $len = php72_count($fields_on_this_table);
     for ($i = 0; $i < $len; $i += 1) {
         if ($i != 0) {
             $search_sql .= ' or ';

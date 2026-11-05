@@ -28,7 +28,7 @@ class Mmail extends CI_Model {
     public function bulkmailinsert($options = array()) {
         $partner_id = $this->session->userdata('partner_id');
         $chk_mail = $this->checkMailexist();
-        $count = count($chk_mail);
+        $count = php72_count($chk_mail);
         $mail_recips = explode(',', $options['to']);
         $mail_invs = explode(',', $options['to_inv_id']);
         $data = array(
@@ -375,7 +375,7 @@ class Mmail extends CI_Model {
     public function imgUrl($source) {
         $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i';
         preg_match_all($imgLink, $source, $matches);
-        $matchVal = array_filter($matches);
+        $matchVal = php72_array_filter($matches);
         $count = count($matchVal);
         if ($count != 0) {
             $imageArray = $matchVal['1'];

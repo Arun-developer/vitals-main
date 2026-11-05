@@ -54,7 +54,7 @@
                                                             $rational = unserialize($assesst[0]['rational']);
                                                             $risk = unserialize($assesst[0]['risk']);
                                                         }
-                                                        $count_area = count($area);
+                                                        $count_area = php72_count($area);
                                         // $i=1;
                                                         foreach ($area as $area) {
                                                             $i = isset($i) && $i != '' ? $i : 1;
@@ -95,8 +95,8 @@
                                                                         }
                                                                         $area_subscore = '';
                                                                         foreach ($sub_category1 as $sub) {
-                                                                            if (isset($category_id1) && in_array($sub['id'], $category_id1)) {
-                                                                                $key = array_search($sub['id'], $category_id1);
+                                                                            if (isset($category_id1) && php72_in_array($sub['id'], $category_id1)) {
+                                                                                $key = php72_array_search($sub['id'], $category_id1);
                                                                                 if ($sub_score[$key] == '-1') {
                                                                                     $area_subscore = $sub_score[$key];
                                                                                 }
@@ -105,7 +105,7 @@
 
                                                                         /* customize */
                                                                         $sub_cate = $this->Massessment->getSubCategory($area['id'],$innovation['program']);
-                                                                        $sub_count1 = count($sub_cate);
+                                                                        $sub_count1 = php72_count($sub_cate);
 
                                                                         if (isset($sub_assesst)) {
                                                                             foreach ($sub_assesst as $subs) {
@@ -117,15 +117,15 @@
                                                                         }
 
                                                                         $check_addscore = 0;
-                                                                        if (isset($cate_id) && in_array($sub_cate[0]['id'], $cate_id)) {
-                                                                            $key1 = array_search($sub_cate[0]['id'], $cate_id);
+                                                                        if (isset($cate_id) && php72_in_array($sub_cate[0]['id'], $cate_id)) {
+                                                                            $key1 = php72_array_search($sub_cate[0]['id'], $cate_id);
                                                                             $subscore1 = $sub_score[$key1];
                                                                             $addscore1 = $add_score[$key1];
                                                                         }
 
                                                                         foreach ($add_score as $key => $value) {
                                                                             if ($value != '') {
-                                                                                $check_addscore += count($value);
+                                                                                $check_addscore += php72_count($value);
                                                                             }
                                                                         }
 
@@ -166,7 +166,7 @@
                                                                 </tr>
                                                                 <?php
                                                                 $sub_category = $this->Massessment->getSubCategory($area['id'],$innovation['program']);
-                                                                $sub_count = count($sub_category);
+                                                                $sub_count = php72_count($sub_category);
                                                                 $i = 0;
                                                                 if (isset($sub_assesst)) {
                                                                     foreach ($sub_assesst as $sub) {
@@ -178,8 +178,8 @@
                                                                     }
                                                                 }
                                                                 foreach ($sub_category as $sub) {
-                                                                    if (isset($category_id) && in_array($sub['id'], $category_id)) {
-                                                                        $key = array_search($sub['id'], $category_id);
+                                                                    if (isset($category_id) && php72_in_array($sub['id'], $category_id)) {
+                                                                        $key = php72_array_search($sub['id'], $category_id);
                                                                         $subscore = $sub_score[$key];
                                                                         $addscore = $add_score[$key];
                                                                     }

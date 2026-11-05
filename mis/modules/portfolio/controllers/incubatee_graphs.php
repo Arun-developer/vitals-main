@@ -65,7 +65,7 @@ class Incubatee_graphs extends CI_Controller {
 
     public function quarter1() {
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
         $q1_arr = array();
         foreach ($quart_1 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -77,7 +77,7 @@ class Incubatee_graphs extends CI_Controller {
 
     public function quarter2() {
         $fy_months = $this->month();
-        $quart_2 = array_slice($fy_months, 3, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
         $q2_arr = array();
         foreach ($quart_2 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -89,7 +89,7 @@ class Incubatee_graphs extends CI_Controller {
 
     public function quarter3() {
         $fy_months = $this->month();
-        $quart_3 = array_slice($fy_months, 6, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
         $q3_arr = array();
         foreach ($quart_3 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -101,7 +101,7 @@ class Incubatee_graphs extends CI_Controller {
 
     public function quarter4() {
         $fy_months = $this->month();
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
         $q4_arr = array();
         foreach ($quart_4 as $key => $value) {
             $set_key = date('n', strtotime("$value 1 2020"));
@@ -113,10 +113,10 @@ class Incubatee_graphs extends CI_Controller {
 
     public function allQuarter() {
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
-        $quart_2 = array_slice($fy_months, 3, 3);
-        $quart_3 = array_slice($fy_months, 6, 3);
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
         $q1_arr = $q2_arr = $q3_arr = $q4_arr = array();
         foreach ($quart_1 as $q1) {
             $q1_arr['Q1'] = $q1;
@@ -130,7 +130,7 @@ class Incubatee_graphs extends CI_Controller {
         foreach ($quart_4 as $q4) {
             $q4_arr['Q4'] = $q4;
         }
-        return array_merge($q1_arr, $q2_arr, $q3_arr, $q4_arr);
+        return php72_array_merge($q1_arr, $q2_arr, $q3_arr, $q4_arr);
     }
 
     public function get_months($date1, $date2) {
@@ -168,10 +168,10 @@ class Incubatee_graphs extends CI_Controller {
         $actual_fields = implode(',', $fields);
 
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
-        $quart_2 = array_slice($fy_months, 3, 3);
-        $quart_3 = array_slice($fy_months, 6, 3);
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
         $q1_arr = $q2_arr = $q3_arr = $q4_arr = array();
         $q1_arr_desc = $q2_arr_desc = $q3_arr_desc = $q4_arr_desc = array();
         $q1_arr_month = $q2_arr_month = $q3_arr_month = $q4_arr_month = array();
@@ -186,10 +186,10 @@ class Incubatee_graphs extends CI_Controller {
                     $q1_arr_month_num[] = $set_key;
                 }
                 $setQtr_fields = array('q_one_desc', 'created_at');
-                $qtr_fields = array_merge($setQtr_fields, $q1_arr_desc);
+                $qtr_fields = php72_array_merge($setQtr_fields, $q1_arr_desc);
                 $month = $q1_arr_month_num;
                 $setQtr_loop = array('q_one_desc' => 0);
-                $data['qtr_loop'] = array_merge($setQtr_loop, $q1_arr_month);
+                $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q1_arr_month);
                 $data['month_title'] = $q1_arr;
             } else if ($qtr == 2) {
                 foreach ($quart_2 as $key => $value) {
@@ -200,10 +200,10 @@ class Incubatee_graphs extends CI_Controller {
                     $q2_arr_month_num[] = $set_key;
                 }
                 $setQtr_fields = array('q_two_desc', 'created_at');
-                $qtr_fields = array_merge($setQtr_fields, $q2_arr_desc);
+                $qtr_fields = php72_array_merge($setQtr_fields, $q2_arr_desc);
                 $month = $q2_arr_month_num;
                 $setQtr_loop = array('q_two_desc' => 0);
-                $data['qtr_loop'] = array_merge($setQtr_loop, $q2_arr_month);
+                $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q2_arr_month);
                 $data['month_title'] = $q2_arr;
             } else if ($qtr == 3) {
                 foreach ($quart_3 as $key => $value) {
@@ -214,10 +214,10 @@ class Incubatee_graphs extends CI_Controller {
                     $q3_arr_month_num[] = $set_key;
                 }
                 $setQtr_fields = array('q_three_desc', 'created_at');
-                $qtr_fields = array_merge($setQtr_fields, $q3_arr_desc);
+                $qtr_fields = php72_array_merge($setQtr_fields, $q3_arr_desc);
                 $month = $q3_arr_month_num;
                 $setQtr_loop = array('q_three_desc' => 0);
-                $data['qtr_loop'] = array_merge($setQtr_loop, $q3_arr_month);
+                $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q3_arr_month);
                 $data['month_title'] = $q3_arr;
             } else if ($qtr == 4) {
                 foreach ($quart_4 as $key => $value) {
@@ -236,7 +236,7 @@ class Incubatee_graphs extends CI_Controller {
             }
 
             $plan_qual_fields = implode(',', $qtr_fields);
-            $actual_qual_fields = implode(',', $month);
+            $actual_qual_fields = php72_implode(',', $month);
 
             if ($module_id != '') {
                 $conds = "inv_id = '" . $inv_id . "' and financial_year = '" . $fin_year . "' and module_id = '" . $module_id . "'";
@@ -289,7 +289,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['qtr_loop'] = $quarter_align;
             $data['month_title'] = array(4 => 'Apr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec', 1 => 'Jan', 2 => 'Feb', 3 => 'Mar');
             $plan_qual_fields = implode(',', $qtr_fields);
-            $actual_qual_fields = implode(',', $month);
+            $actual_qual_fields = php72_implode(',', $month);
 
             if ($module_id != '') {
                 $conds = "inv_id = '" . $inv_id . "' and financial_year = '" . $fin_year . "' and module_id = '" . $module_id . "'";
@@ -355,10 +355,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -399,25 +399,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -435,7 +435,7 @@ class Incubatee_graphs extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -449,20 +449,20 @@ class Incubatee_graphs extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
             $monthly_target = $this->Mportfolio->getTargetSales($month_where, $sales_id,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualSales($month_where, $sales_id,$g_sector);
 			 
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             if ($sales_id == '') {
@@ -471,9 +471,9 @@ class Incubatee_graphs extends CI_Controller {
                                 $target_column = $value['volume'];
                             }
                             $datavalues = json_decode($target_column, TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -499,9 +499,9 @@ class Incubatee_graphs extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -555,22 +555,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -601,14 +601,14 @@ class Incubatee_graphs extends CI_Controller {
 
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             if ($sales_id == '') {
@@ -617,9 +617,9 @@ class Incubatee_graphs extends CI_Controller {
                                 $target_column = $value['volume'];
                             }
                             $datavalues = json_decode($target_column, TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -640,7 +640,7 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($search_array as $k => $name) {
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -650,9 +650,9 @@ class Incubatee_graphs extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -717,7 +717,7 @@ class Incubatee_graphs extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($sales_target) > 0) {
+            if (php72_count($sales_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     $categories[0] = 'Q1';
                     $categories[1] = 'Q2';
@@ -735,19 +735,19 @@ class Incubatee_graphs extends CI_Controller {
                         }
                         $get_data = json_decode($target_column);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 $hc_target[0] = $q1_val;
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 $hc_target[1] = $q2_val;
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 $hc_target[2] = $q3_val;
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 $hc_target[3] = $q4_val;
                             }
@@ -827,7 +827,7 @@ class Incubatee_graphs extends CI_Controller {
 
             $sales_actual = $this->Mportfolio->getActualSales($default_where, $sales_id,$g_sector);
             $actual_month_value = array();
-            if (count($sales_actual) > 0) {
+            if (php72_count($sales_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($sales_actual as $actual) {
                         if ($sales_id == '') {
@@ -879,7 +879,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -911,7 +911,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['div_id'] = 'salesDiv_' . $id;
         $data['heading'] = $sales_title;
         $data['yaxis_text'] = $sales_yaxis;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $data['current_year'] = $g_year;
@@ -951,10 +951,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -991,25 +991,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -1026,7 +1026,7 @@ class Incubatee_graphs extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -1042,7 +1042,7 @@ class Incubatee_graphs extends CI_Controller {
 			// $search_month[] = "t2.sector = '$g_sector'";
             
 			$search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetRevenue($month_where,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualRevenue($month_where,$g_sector);
@@ -1052,20 +1052,20 @@ class Incubatee_graphs extends CI_Controller {
 			//echo'<pre>';print_r($monthly_target);die;
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = ($search_array[$values] + $cost)/2;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1090,9 +1090,9 @@ class Incubatee_graphs extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1146,22 +1146,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -1179,20 +1179,20 @@ class Incubatee_graphs extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualRevenue($quarter_where,$g_sector);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1215,7 +1215,7 @@ class Incubatee_graphs extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -1225,9 +1225,9 @@ class Incubatee_graphs extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1287,7 +1287,7 @@ class Incubatee_graphs extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
 			
-            if (count($revenue_target) > 0) {
+            if (php72_count($revenue_target) > 0) {
 			
 					/* echo'<pre>';print_r($g_quarter);
 					echo'<pre>';print_r($revenue_target);die; */
@@ -1297,22 +1297,22 @@ class Incubatee_graphs extends CI_Controller {
                     foreach ($revenue_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) { 
-                            if (in_array($key, $q1)) { 
+                            if (php72_in_array($key, $q1)) { 
                                 $q1_val += str_replace(',', '', $value);
                                 #$hc_target[0] = $q1_val;
 								$hc_target[0] = ($q1_val/2);
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 #$hc_target[1] = $q2_val;
                                 $hc_target[1] = ($q2_val/2);
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 #$hc_target[2] = $q3_val;
                                 $hc_target[2] = ($q3_val/2);
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 #$hc_target[3] = $q4_val;
 								$hc_target[3] =($q4_val/2);
@@ -1393,7 +1393,7 @@ class Incubatee_graphs extends CI_Controller {
 			//echo'<pre>';print_r($revenue_actual);die;
 			
             $actual_month_value = array();
-            if (count($revenue_actual) > 0) {
+            if (php72_count($revenue_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($revenue_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -1440,7 +1440,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -1451,7 +1451,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'revenueDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -1481,10 +1481,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -1521,25 +1521,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -1556,7 +1556,7 @@ class Incubatee_graphs extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -1571,26 +1571,26 @@ class Incubatee_graphs extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
             $monthly_target = $this->Mportfolio->getTargetProfit($month_where,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualProfit($month_where,$g_sector);
 			#ECHO'<pre>';print_r($monthly_actual);die;
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1615,9 +1615,9 @@ class Incubatee_graphs extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1669,22 +1669,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -1702,20 +1702,20 @@ class Incubatee_graphs extends CI_Controller {
             $monthly_actual = $this->Mportfolio->getActualProfit($quarter_where,$g_sector);
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -1738,7 +1738,7 @@ class Incubatee_graphs extends CI_Controller {
 			// $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -1748,9 +1748,9 @@ class Incubatee_graphs extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -1808,27 +1808,27 @@ class Incubatee_graphs extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($profit_target) > 0) {
+            if (php72_count($profit_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($profit_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                 #$hc_target[0] = round($q1_val, 2);
 								$hc_target[0] = round(($q1_val/2), 2);
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 #$hc_target[1] = round($q2_val, 2);
                                 $hc_target[1] = round(($q2_val/2), 2);
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 #$hc_target[2] = round($q3_val, 2);
 								 $hc_target[2] = round(($q3_val/2), 2);
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 #$hc_target[3] = round($q4_val, 2);
                                 $hc_target[3] = round(($q4_val/2), 2);
@@ -1904,7 +1904,7 @@ class Incubatee_graphs extends CI_Controller {
 
             $profit_actual = $this->Mportfolio->getActualProfit($default_where,$g_sector);
             $actual_month_value = array();
-            if (count($profit_actual) > 0) {
+            if (php72_count($profit_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($profit_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -1950,7 +1950,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -1961,7 +1961,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'profitDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -1992,10 +1992,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
         $a1_equity = $a2_equity = $a3_equity = $a4_equity = 0;
@@ -2037,25 +2037,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -2072,7 +2072,7 @@ class Incubatee_graphs extends CI_Controller {
             $search_where[] = $search_month[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -2088,7 +2088,7 @@ class Incubatee_graphs extends CI_Controller {
             $date_diff = $this->get_months($StartDate, $StopDate);
 
             $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Mportfolio->getTargetCapital($month_where,$g_sector);
             $monthly_actual = $this->Mportfolio->getActualCapital_graph($month_where,$g_sector);
@@ -2096,21 +2096,21 @@ class Incubatee_graphs extends CI_Controller {
 			 
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
 					
                     foreach ($monthly_target as $key => $value) {
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -2120,7 +2120,7 @@ class Incubatee_graphs extends CI_Controller {
                                 /* for new changes  - datemodified - 12/12/2019 */
                                 $fund_mons = explode('-', $values);
                                 if ($fund_mons[0] == $get_fy_month[2]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qone']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qone']);
@@ -2129,14 +2129,14 @@ class Incubatee_graphs extends CI_Controller {
 								
                                 }
                                 if ($fund_mons[0] == $get_fy_month[5]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qtwo']);
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qtwo']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[8]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                         #$search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qthree']);
 										$search_array[$values] = ($search_array[$values] + str_replace(',', '', $datavalues['qthree']))/2;
                                     } else {
@@ -2145,7 +2145,7 @@ class Incubatee_graphs extends CI_Controller {
 									
                                 }
                                 if ($fund_mons[0] == $get_fy_month[11]) {
-                                    if (array_key_exists($values, $search_array)) {
+                                    if (php72_array_key_exists($values, $search_array)) {
                                        # $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qfour']);
                                         $search_array[$values] = ($search_array[$values] + str_replace(',', '', $datavalues['qfour']))/2;
 										
@@ -2177,9 +2177,9 @@ class Incubatee_graphs extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -2271,22 +2271,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -2305,13 +2305,13 @@ class Incubatee_graphs extends CI_Controller {
 			$monthly_actual = $this->Mportfolio->getActualCapital_graph($quarter_where,$g_sector);
             $mr = 0;
 
-            if (count($monthly_target) > 0) {
+            if (php72_count($monthly_target) > 0) {
 
                 foreach ($monthly_target as $key => $value) {
                     foreach ($date_diff as $keys => $values) {
 
                         $yearvalues = explode('-', $values);
-                        if (in_array($yearvalues[0], $q4)) {
+                        if (php72_in_array($yearvalues[0], $q4)) {
                             if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                                 $yearvalues[1] = $yearvalues[1] - 1;
                             }
@@ -2320,37 +2320,37 @@ class Incubatee_graphs extends CI_Controller {
                         }
                         if ($yearvalues[1] == $value['financial_year']) {
                             $datavalues = json_decode($value['data'], TRUE);
-                            if (array_key_exists($yearvalues[0], $datavalues)) {
+                            if (php72_array_key_exists($yearvalues[0], $datavalues)) {
 
                             } else {
-                                if (in_array($yearvalues[0], $q1)) {
+                                if (php72_in_array($yearvalues[0], $q1)) {
                                     $cost = str_replace(',', '', $datavalues['qone']);
                                     if (isset($quarter_qone[$mr])) {
                                         $ss = isset($quarter_qone[$mr]) && $quarter_qone[$mr] != '' ? $quarter_qone[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qone);
+                                        $search_array[$values] = php72_array_sum($quarter_qone);
                                     } else {
                                         $quarter_qone[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qone);
+                                        $search_array[$values] = php72_array_sum($quarter_qone);
                                     }
-                                } else if (in_array($yearvalues[0], $q2)) {
+                                } else if (php72_in_array($yearvalues[0], $q2)) {
                                     $cost = str_replace(',', '', $datavalues['qtwo']);
                                     if (isset($quarter_qtwo[$mr])) {
                                         $ss = isset($quarter_qtwo[$mr]) && $quarter_qtwo[$mr] != '' ? $quarter_qtwo[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qtwo);
+                                        $search_array[$values] = php72_array_sum($quarter_qtwo);
                                     } else {
                                         $quarter_qtwo[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qtwo);
+                                        $search_array[$values] = php72_array_sum($quarter_qtwo);
                                     }
-                                } else if (in_array($yearvalues[0], $q3)) {
+                                } else if (php72_in_array($yearvalues[0], $q3)) {
                                     $cost = str_replace(',', '', $datavalues['qthree']);
                                     if (isset($quarter_qthree[$mr])) {
                                         $ss = isset($quarter_qthree[$mr]) && $quarter_qthree[$mr] != '' ? $quarter_qthree[$mr] : ($cost != '' ? $cost : 0);
-                                        $search_array[$values] = array_sum($quarter_qthree);
+                                        $search_array[$values] = php72_array_sum($quarter_qthree);
                                     } else {
                                         $quarter_qthree[$mr] = $cost;
-                                        $search_array[$values] = array_sum($quarter_qthree);
+                                        $search_array[$values] = php72_array_sum($quarter_qthree);
                                     }
-                                } else if (in_array($yearvalues[0], $q4)) {
+                                } else if (php72_in_array($yearvalues[0], $q4)) {
                                     $cost = str_replace(',', '', $datavalues['qfour']);
                                     if (isset($quarter_qfour[$mr])) {
                                         $ss = isset($quarter_qfour[$mr]) && $quarter_qfour[$mr] != '' ? $quarter_qfour[$mr] : ($cost != '' ? $cost : 0);
@@ -2379,7 +2379,7 @@ class Incubatee_graphs extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -2389,9 +2389,9 @@ class Incubatee_graphs extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -2465,27 +2465,27 @@ class Incubatee_graphs extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($capital_target) > 0) {
+            if (php72_count($capital_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($capital_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
-                            if (in_array($key, $q1)) {
+                            if (php72_in_array($key, $q1)) {
                                 $q1_val += str_replace(',', '', $value);
                                # $hc_target[0] = $q1_val;
                                 $hc_target[0] = ($q1_val/2);
                             }
-                            if (in_array($key, $q2)) {
+                            if (php72_in_array($key, $q2)) {
                                 $q2_val += str_replace(',', '', $value);
                                 #$hc_target[1] = $q2_val;
                                 $hc_target[1] = ($q2_val/2);
                             }
-                            if (in_array($key, $q3)) {
+                            if (php72_in_array($key, $q3)) {
                                 $q3_val += str_replace(',', '', $value);
                                 #$hc_target[2] = $q3_val;
                                 $hc_target[2] = ($q3_val/2);
                             }
-                            if (in_array($key, $q4)) {
+                            if (php72_in_array($key, $q4)) {
                                 $q4_val += str_replace(',', '', $value);
                                 #$hc_target[3] = $q4_val;
                                 $hc_target[3] = ($q4_val/2);
@@ -2563,7 +2563,7 @@ class Incubatee_graphs extends CI_Controller {
             $capital_actual = $this->Mportfolio->getActualCapital_graph($default_where,$g_sector);
 			#$capital_actual = $this->Mportfolio->getActualCapital($default_where,$g_sector);
             $actual_month_value = $actual_month_equity = $actual_month_short = $actual_month_long = array();
-            if (count($capital_actual) > 0) {
+            if (php72_count($capital_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($capital_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -2629,13 +2629,13 @@ class Incubatee_graphs extends CI_Controller {
                         $hc_actual[$k] = $mv_amt;
                         $k++;
                     }
-                    $hc_actual[3] = array_sum($actual_month_value);
+                    $hc_actual[3] = php72_array_sum($actual_month_value);
                 }
             }
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -2647,7 +2647,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'capitalDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -2673,10 +2673,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -2699,25 +2699,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -2728,7 +2728,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -2860,7 +2860,7 @@ class Incubatee_graphs extends CI_Controller {
             $recs_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualTeamHiring($where, $startDate, '', '1', '1');
 			#echo'<pre>';print_r($total_list);die;
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -2872,7 +2872,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $tot['month'], 1));
                             $finyr = $datavalues . '-' . $tot['financial_year'];
 
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -2899,14 +2899,14 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $rec_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
                             $getdata = json_decode($mas_tar['new_employee']);
@@ -2951,8 +2951,8 @@ class Incubatee_graphs extends CI_Controller {
         }
         $id = $this->input->post('id');
         $data['div_id'] = 'recruitment_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allRecruitment_HC.php');
@@ -2977,10 +2977,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -3002,25 +3002,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3031,7 +3031,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -3153,7 +3153,7 @@ class Incubatee_graphs extends CI_Controller {
         } else {
             $recs_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualTeamHiring($where, $startDate, '', '1', '2');
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -3165,7 +3165,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $tot['month'], 1));
                             $finyr = $datavalues . '-' . $tot['financial_year'];
 
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -3192,14 +3192,14 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $rec_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
                             $getdata = json_decode($mas_tar['exit_employee']);
@@ -3244,8 +3244,8 @@ class Incubatee_graphs extends CI_Controller {
         }
         $id = $this->input->post('id');
         $data['div_id'] = 'attrition_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allAttrition_HC.php');
@@ -3270,10 +3270,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -3295,25 +3295,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3324,7 +3324,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -3452,7 +3452,7 @@ class Incubatee_graphs extends CI_Controller {
             $board_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualBoardMeeting($where, $startDate, '', '1',$g_sector);
 			
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -3464,7 +3464,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $tot['month'], 1));
                             $finyr = $datavalues . '-' . $tot['financial_year'];
 
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -3491,14 +3491,14 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $board_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
                             $getdata = json_decode($mas_tar['meeting_plan']);
@@ -3543,8 +3543,8 @@ class Incubatee_graphs extends CI_Controller {
         }
         $id = $this->input->post('id');
         $data['div_id'] = 'boardMeeting_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
 		
@@ -3570,10 +3570,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -3595,25 +3595,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3624,7 +3624,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -3732,7 +3732,7 @@ class Incubatee_graphs extends CI_Controller {
         } else {
             $ment_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualMentorHours($where, $startDate, '', '1',$g_sector);
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -3742,7 +3742,7 @@ class Incubatee_graphs extends CI_Controller {
                             $ment_actquat[$values] = $ment_actquat[$values];
                         } else {
                             $expmonth = explode('-', $values);
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -3771,24 +3771,24 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $ment_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
 
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
-                            if (in_array($tar_mnths[0], $q1)) {
+                            if (php72_in_array($tar_mnths[0], $q1)) {
                                 $target[$ac] = round(($mas_tar['q1'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q2)) {
+                            } else if (php72_in_array($tar_mnths[0], $q2)) {
                                 $target[$ac] = round(($mas_tar['q2'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q3)) {
+                            } else if (php72_in_array($tar_mnths[0], $q3)) {
                                 $target[$ac] = round(($mas_tar['q3'] / 3), 2);
-                            } else if (in_array($tar_mnths[0], $q4)) {
+                            } else if (php72_in_array($tar_mnths[0], $q4)) {
                                 $target[$ac] = round(($mas_tar['q4'] / 3), 2);
                             }
                         } else {
@@ -3804,8 +3804,8 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'mentorHour_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['ftype'] = $ftype;
         $this->load->vars($data);
@@ -3830,10 +3830,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -3854,25 +3854,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -3883,7 +3883,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $start_year = explode(', ', $startDate);
@@ -3973,7 +3973,7 @@ class Incubatee_graphs extends CI_Controller {
         $fin_quarters['Q4'] = 0;
 
         foreach ($diffmon as $cnts) {
-            $count[] = count($cnts);
+            $count[] = php72_count($cnts);
         }
 
         $categories = $target = $actual = array();
@@ -4035,7 +4035,7 @@ class Incubatee_graphs extends CI_Controller {
                             $ment_actquat[$values] = $ment_actquat[$values];
                         } else {
                             $expmonth = explode('-', $values);
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -4092,7 +4092,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $actual[$ac] = $ment_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
@@ -4100,16 +4100,16 @@ class Incubatee_graphs extends CI_Controller {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
 
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
-                            if (in_array($tar_mnths[0], $q1)) {
+                            if (php72_in_array($tar_mnths[0], $q1)) {
                                 $target[$ac] = $mas_tar['mentorq1'];
-                            } else if (in_array($tar_mnths[0], $q2)) {
+                            } else if (php72_in_array($tar_mnths[0], $q2)) {
                                 $target[$ac] = $mas_tar['mentorq2'];
-                            } else if (in_array($tar_mnths[0], $q3)) {
+                            } else if (php72_in_array($tar_mnths[0], $q3)) {
                                 $target[$ac] = $mas_tar['mentorq3'];
-                            } else if (in_array($tar_mnths[0], $q4)) {
+                            } else if (php72_in_array($tar_mnths[0], $q4)) {
                                 $target[$ac] = $mas_tar['mentorq4'];
                             }
                         } else {
@@ -4126,8 +4126,8 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'mentorNumber_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $data['ftype'] = $ftype;
         $this->load->vars($data);
@@ -4156,10 +4156,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -4193,25 +4193,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -4230,7 +4230,7 @@ class Incubatee_graphs extends CI_Controller {
         }
         $defimpact_where = "t1.field_type = 1";
 
-        $default_where = implode(" and ", $search_where);
+        $default_where = php72_implode(" and ", $search_where);
 
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -4245,7 +4245,7 @@ class Incubatee_graphs extends CI_Controller {
 //            $search_month[] = "t2.sector = '$g_sector'";
             $search_month[] = "t1.financial_year >= $from_year and t1.financial_year <= $from_year";
             $impact_where = "t1.field_type = 1";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Mportfolio->getTargetEndbeneficiaries($month_where, $impact_where);
@@ -4253,14 +4253,14 @@ class Incubatee_graphs extends CI_Controller {
 
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
 
                     foreach ($monthly_target as $key => $value) {
 
@@ -4268,7 +4268,7 @@ class Incubatee_graphs extends CI_Controller {
                             $yearvalues[0] = strtolower($yearvalues[0]);
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $nums;
                                 } else {
                                     $search_array[$values] = $nums;
@@ -4293,9 +4293,9 @@ class Incubatee_graphs extends CI_Controller {
                 $split = explode('-', $k);
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year - 1;
@@ -4353,22 +4353,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -4456,7 +4456,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -4467,7 +4467,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'impactDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -4494,10 +4494,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $sector = $this->input->post('sector');
         $sector_id = $this->input->post('sector_id');
@@ -4541,7 +4541,7 @@ class Incubatee_graphs extends CI_Controller {
             $searchArray[] = "t1.inv_id = $inv_id";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 		
         $StartDate = date("Y-m-01", strtotime($start_year[1] . '-' . date('m', strtotime($start_year[0]))));
         $StopDate = date("Y-m-t", strtotime($end_year[1] . '-' . date('m', strtotime($end_year[0]))));
@@ -4570,7 +4570,7 @@ class Incubatee_graphs extends CI_Controller {
                 foreach ($date_diff as $values) {
                     $categories[$t] = $values;
                     $expmonth = explode('-', $values);
-                    if (in_array($expmonth[0], $q4)) {
+                    if (php72_in_array($expmonth[0], $q4)) {
                         if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                             $expmonth[1] = $expmonth[1] - 1;
                         }
@@ -4601,7 +4601,7 @@ class Incubatee_graphs extends CI_Controller {
 //                         $tap_actquat[$values] += 1;
 //                     } else {
                         $expmonth = explode('-', $values);
-                        if (in_array($expmonth[0], $q4)) {
+                        if (php72_in_array($expmonth[0], $q4)) {
                             if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                 $expmonth[1] = $expmonth[1] - 1;
                             }
@@ -4622,7 +4622,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
             }
 
-            if (count($targetlist) == 0 && count($actuallist) == 0) {
+            if (php72_count($targetlist) == 0 && php72_count($actuallist) == 0) {
                 $t = 0;
                 foreach ($date_diff as $values) {
                     $categories[$t] = $values;
@@ -4684,8 +4684,8 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'tapChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allTap_HC');
@@ -4775,7 +4775,7 @@ class Incubatee_graphs extends CI_Controller {
                         $expmonth = explode('-', $values);
                         $diff_yr = $expmonth[1];
                         $diff_mont = $expmonth[0];
-                        if (in_array($diff_mont, $q4)) {
+                        if (php72_in_array($diff_mont, $q4)) {
                             if ($diff_mont == 'Jan' || $diff_mont == 'Feb' || $diff_mont == 'Mar') {
                                 $diff_yr = $diff_yr - 1;
                             }
@@ -4803,7 +4803,7 @@ class Incubatee_graphs extends CI_Controller {
                         $tap_actquat[$values] = $tap_actquat[$values];
                     } else {
                         $expmonth = explode('-', $values);
-                        if (in_array($expmonth[0], $q4)) {
+                        if (php72_in_array($expmonth[0], $q4)) {
                             if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                 $expmonth[1] = $expmonth[1] - 1;
                             }
@@ -4822,7 +4822,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
             }
 
-            if (count($targetlist) == 0 && count($actuallist) == 0) {
+            if (php72_count($targetlist) == 0 && php72_count($actuallist) == 0) {
                 $t = 0;
                 foreach ($date_diff as $values) {
                     $categories[$t] = $values;
@@ -4884,8 +4884,8 @@ class Incubatee_graphs extends CI_Controller {
 
         $id = $this->input->post('id');
         $data['div_id'] = 'tapChartDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allPartnerships_HC');
@@ -4910,10 +4910,10 @@ class Incubatee_graphs extends CI_Controller {
         $q3 = $this->quarter3();
         $q4 = $this->quarter4();
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $ftype = $this->input->post('type');
         $g_sector = $this->input->post('sector');
@@ -4935,25 +4935,25 @@ class Incubatee_graphs extends CI_Controller {
             $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -4964,7 +4964,7 @@ class Incubatee_graphs extends CI_Controller {
             $g_date_diff = $this->get_months($g_StartDate, $g_StopDate);
 
             $q4 = $this->quarter4();
-            $q4_key = array_keys($q4);
+            $q4_key = php72_array_keys($q4);
 
             if ($startDate != '' && $endDate != '') {
                 $StartDate = date("Y-m-01", strtotime($start_year[0] . ' ' . $start_year[1]));
@@ -5091,7 +5091,7 @@ class Incubatee_graphs extends CI_Controller {
             $dps_act = array();
             $total_list = $this->Mportfolio->getMonthlyActualDpMeeting($where, $startDate, '', '1');
 			#echo '<pre>';print_r($total_list);die;
-            if (count($total_list) > 0) {
+            if (php72_count($total_list) > 0) {
                 foreach ($total_list as $tot) {
                     $t = 0;
                     foreach ($date_diff as $values) {
@@ -5103,7 +5103,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $tot['month'], 1));
                             $finyr = $datavalues . '-' . $tot['financial_year'];
 
-                            if (in_array($expmonth[0], $q4)) {
+                            if (php72_in_array($expmonth[0], $q4)) {
                                 if ($expmonth[0] == 'Jan' || $expmonth[0] == 'Feb' || $expmonth[0] == 'Mar') {
                                     $expmonth[1] = $expmonth[1] - 1;
                                 }
@@ -5130,14 +5130,14 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($categories as $cate) {
                 $actual[$ac] = $dp_actquat[$cate];
                 $tar_mnths = explode('-', $cate);
-                if (in_array($tar_mnths[0], $q4)) {
+                if (php72_in_array($tar_mnths[0], $q4)) {
                     if ($tar_mnths[0] == 'Jan' || $tar_mnths[0] == 'Feb' || $tar_mnths[0] == 'Mar') {
                         $tar_mnths[1] = $tar_mnths[1] - 1;
                     }
                 } else {
                     $tar_mnths[1] = $tar_mnths[1];
                 }
-                if (count($master_list) > 0) {
+                if (php72_count($master_list) > 0) {
                     foreach ($master_list as $mas_tar) {
                         if ($mas_tar['financial_year'] == $tar_mnths[1]) {
                             $getdata = json_decode($mas_tar['dp_plan']);
@@ -5182,8 +5182,8 @@ class Incubatee_graphs extends CI_Controller {
         }
         $id = $this->input->post('id');
         $data['div_id'] = 'dpMeeting_' . $id;
-        $data['categories_list'] = array_values($categories);
-        $data['target_list'] = array_values($target);
+        $data['categories_list'] = php72_array_values($categories);
+        $data['target_list'] = php72_array_values($target);
         $data['actual_list'] = array_values($actual);
         $this->load->vars($data);
         $this->load->view('portfolio/dashboard_chart/allDpMeeting_HC.php');
@@ -5211,10 +5211,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -5257,32 +5257,32 @@ class Incubatee_graphs extends CI_Controller {
             $g_getFrom_year = $g_getTo_year = $g_year;
             if ($g_quarter == 1) {
                 $g_start_month = reset($q1);
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
             } else if ($g_quarter == 2) {
                 $g_start_month = reset($q2);
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
             } else if ($g_quarter == 3) {
                 $g_start_month = reset($q3);
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
             } else if ($g_quarter == 4) {
                 $g_start_month = reset($q4);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
                 $g_getTo_year = $nxt_year;
             } else {
                 $g_start_month = reset($q1);
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $g_end_month = $q4[$q4_keyVal];
@@ -5302,8 +5302,8 @@ class Incubatee_graphs extends CI_Controller {
             $search_target_where[] = $search_actual_where[] = $search_quarter_target[] = $search_quarter_actual[] = $search_month[] = $search_actual[] = $search_quarter[] = "t1.inv_id = $inv_id";
         }
 
-        $default_target_where = implode(" and ", $search_target_where);
-        $default_actual_where = implode(" and ", $search_actual_where);
+        $default_target_where = php72_implode(" and ", $search_target_where);
+        $default_actual_where = php72_implode(" and ", $search_actual_where);
 		
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
@@ -5318,8 +5318,8 @@ class Incubatee_graphs extends CI_Controller {
 
             $search_month[] = "t1.month >= '$StartDate' and t1.month <= '$StopDate'";
             $search_actual[] = "t1.disburse_date >= '$StartDate 00:00:00' and t1.disburse_date <= '$StopDate 23:59:59'";
-            $month_where = implode(" and ", $search_month);
-            $month_actual = implode(" and ", $search_actual);
+            $month_where = php72_implode(" and ", $search_month);
+            $month_actual = php72_implode(" and ", $search_actual);
 			// $search_month[] = "t1.financial_year >= $start_year[1] and t1.financial_year <= $end_year[1]";
 
             $monthly_target = $this->Mportfolio->getTargetSeedFund($month_where);
@@ -5328,7 +5328,7 @@ class Incubatee_graphs extends CI_Controller {
 
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
@@ -5336,7 +5336,7 @@ class Incubatee_graphs extends CI_Controller {
                     $yearvalues[1] = $yearvalues[1];
                 }
 
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $value) {
                         if (in_array($value['month'], $q4_key)) {
                             if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
@@ -5350,7 +5350,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $value['month'], 1));
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -5379,9 +5379,9 @@ class Incubatee_graphs extends CI_Controller {
 //                    $split_year = $split_year;
 //                }
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     $q4 = $this->quarter4();
-                    $q4_key = array_keys($q4);
+                    $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year;
@@ -5432,22 +5432,22 @@ class Incubatee_graphs extends CI_Controller {
 
             $getTo_year = $to_year;
             if ($to_quarter == 1) {
-                $q1_arr = array_slice($q1, 2, 2, true);
+                $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
             } else if ($to_quarter == 2) {
-                $q2_arr = array_slice($q2, 2, 2, true);
+                $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
             } else if ($to_quarter == 3) {
-                $q3_arr = array_slice($q3, 2, 2, true);
+                $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
             } else if ($to_quarter == 4) {
-                $q4_arr = array_slice($q4, 2, 2, true);
+                $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
                 $end_month = $q4[$q4_keyVal];
@@ -5461,24 +5461,24 @@ class Incubatee_graphs extends CI_Controller {
             $search_quarter_target[] = "t1.month >= '" . $q_StartDate . "' and t1.month <= '" . $q_StopDate . "'";
             $search_quarter_actual[] = "t1.disburse_date >= '" . $q_StartDate . "' and t1.disburse_date <= '" . $q_StopDate . "'";
 
-            $quarter_target = implode(" and ", $search_quarter_target);
-            $quarter_actual = implode(" and ", $search_quarter_actual);
+            $quarter_target = php72_implode(" and ", $search_quarter_target);
+            $quarter_actual = php72_implode(" and ", $search_quarter_actual);
 
             $monthly_target = $this->Mportfolio->getTargetSeedFund($quarter_target);
             $monthly_actual = $this->Mportfolio->getActualSeedFund($quarter_actual);
 			
             foreach ($date_diff as $keys => $values) {
                 $yearvalues = explode('-', $values);
-                if (in_array($yearvalues[0], $q4)) {
+                if (php72_in_array($yearvalues[0], $q4)) {
                     if ($yearvalues[0] == 'Jan' || $yearvalues[0] == 'Feb' || $yearvalues[0] == 'Mar') {
                         $yearvalues[1] = $yearvalues[1] - 1;
                     }
                 } else {
                     $yearvalues[1] = $yearvalues[1];
                 }
-                if (count($monthly_target) > 0) {
+                if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
-                        if (in_array($value['month'], $q4)) {
+                        if (php72_in_array($value['month'], $q4)) {
                             if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
                                 $value['year'] = $value['year'] - 1;
                             }
@@ -5489,7 +5489,7 @@ class Incubatee_graphs extends CI_Controller {
                             $datavalues = date("M", mktime(0, 0, 0, $value['month'], 1));
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
-                                if (array_key_exists($values, $search_array)) {
+                                if (php72_array_key_exists($values, $search_array)) {
                                     $search_array[$values] = $search_array[$values] + $cost;
                                 } else {
                                     $search_array[$values] = $cost;
@@ -5512,7 +5512,7 @@ class Incubatee_graphs extends CI_Controller {
 // $fetch_target[$m]['name'] = $k;
                 $split = explode('-', $k);
                 $split_year = $split[1];
-                $axis_name = array_search($split[0], $findQuarter);
+                $axis_name = php72_array_search($split[0], $findQuarter);
                 if ($axis_name == 'Q4') {
                     $q_year = $split_year - 1;
                 } else {
@@ -5522,8 +5522,8 @@ class Incubatee_graphs extends CI_Controller {
                 $fetch_target[$m]['target'] = $name;
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
-                $new_fy = array_filter($monthly_actual, function ($var) use ($split_year) {
-                    if (in_array($var['month'], $q4)) {
+                $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
+                    if (php72_in_array($var['month'], $q4)) {
                         if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
                             $prev_split_yr = $split_year;
                             return ($var['year'] == $prev_split_yr);
@@ -5581,7 +5581,7 @@ class Incubatee_graphs extends CI_Controller {
             $categories[4] = 'Annual';
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
-            if (count($seed_target) > 0) {
+            if (php72_count($seed_target) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($seed_target as $target) {
                         $value = $target['amount'];
@@ -5672,7 +5672,7 @@ class Incubatee_graphs extends CI_Controller {
 
             $seed_actual = $this->Mportfolio->getActualSeedFund($default_actual_where);
             $actual_month_value = array();
-            if (count($seed_actual) > 0) {
+            if (php72_count($seed_actual) > 0) {
                 if ($g_quarter == '' || $g_quarter == 5) {
                     foreach ($seed_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
@@ -5747,7 +5747,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -5759,7 +5759,7 @@ class Incubatee_graphs extends CI_Controller {
         ksort($categories);
         $id = $this->input->post('id');
         $data['div_id'] = 'fundingDiv_' . $id;
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -5883,10 +5883,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -5925,7 +5925,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Sectorplan->getTargetDiscovery($month_where);
@@ -5972,7 +5972,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Sectorplan->getTargetDiscovery($month_where);
@@ -6039,7 +6039,7 @@ class Incubatee_graphs extends CI_Controller {
 
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -6051,7 +6051,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['div_id'] = 'discoveryDiv_' . $id;
         $data['text'] = 'Total no. of Applications';
         $data['yaxis'] = "Total no. of Applications";
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -6077,10 +6077,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -6118,7 +6118,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Sectorplan->getTargetDiligence($month_where);
@@ -6160,7 +6160,7 @@ class Incubatee_graphs extends CI_Controller {
                     }
 
                     $pard_allcount = $this->Sectorplan->pard_allCount($g_sector, $from_year, $keys);
-                    if (count($pard_allcount) != 0) {
+                    if (php72_count($pard_allcount) != 0) {
                         foreach ($pard_allcount as $pards) {
                             if (!isset($pard_count[$pards['id']])) {
                                 $pard_count[$pards['id']] = 1;
@@ -6200,7 +6200,7 @@ class Incubatee_graphs extends CI_Controller {
 
                     $IIC_allCount = $this->Sectorplan->IIC_allCount($g_sector, $from_year, $keys);
 
-                    if (count($IIC_allCount) != 0) {
+                    if (php72_count($IIC_allCount) != 0) {
                         foreach ($IIC_allCount as $iics) {
                             if (!isset($iic_count[$iics['id']])) {
                                 $iic_count[$iics['id']] = 1;
@@ -6239,7 +6239,7 @@ class Incubatee_graphs extends CI_Controller {
                     }
 
                     $EIC_allcount = $this->Sectorplan->EIC_allcount($g_sector, $from_year, $keys);
-                    if (count($EIC_allcount) != 0) {
+                    if (php72_count($EIC_allcount) != 0) {
                         foreach ($EIC_allcount as $eics) {
                             if (!isset($eic_count[$eics['id']])) {
                                 $eic_count[$eics['id']] = 1;
@@ -6261,7 +6261,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Sectorplan->getTargetDiligence($month_where);
@@ -6308,7 +6308,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 if ($module == 1) {
                     $pard_allcount = $this->Sectorplan->pard_allCount($g_sector, $from_year, $keys);
-                    if (count($pard_allcount) != 0) {
+                    if (php72_count($pard_allcount) != 0) {
                         foreach ($pard_allcount as $pards) {
                             if (!isset($pard_count[$pards['id']])) {
                                 $pard_count[$pards['id']] = 1;
@@ -6323,7 +6323,7 @@ class Incubatee_graphs extends CI_Controller {
                 } else if ($module == 2) {
                     $IIC_allCount = $this->Sectorplan->IIC_allCount($g_sector, $from_year, $keys);
 
-                    if (count($IIC_allCount) != 0) {
+                    if (php72_count($IIC_allCount) != 0) {
                         foreach ($IIC_allCount as $iics) {
                             if (!isset($iic_count[$iics['id']])) {
                                 $iic_count[$iics['id']] = 1;
@@ -6337,7 +6337,7 @@ class Incubatee_graphs extends CI_Controller {
                     }
                 } else if ($module == 3) {
                     $EIC_allcount = $this->Sectorplan->EIC_allcount($g_sector, $from_year, $keys);
-                    if (count($EIC_allcount) != 0) {
+                    if (php72_count($EIC_allcount) != 0) {
                         foreach ($EIC_allcount as $eics) {
                             if (!isset($eic_count[$eics['id']])) {
                                 $eic_count[$eics['id']] = 1;
@@ -6375,7 +6375,7 @@ class Incubatee_graphs extends CI_Controller {
         }
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -6396,7 +6396,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['yaxis'] = "No. of Deals brought to EIC";
             $data['text'] = 'No. of Deals brought to EIC';
         }
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -6422,10 +6422,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -6464,7 +6464,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             $monthly_target = $this->Sectorplan->getTargetSelection($month_where);
@@ -6564,7 +6564,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $monthly_target = $this->Sectorplan->getTargetSelection($month_where);
             $impt_act = array();
@@ -6641,7 +6641,7 @@ class Incubatee_graphs extends CI_Controller {
                                 $final_qt = 3;
                             }
                         }
-                        if ($new_companies != '' && count($new_companies) > 0) {
+                        if ($new_companies != '' && php72_count($new_companies) > 0) {
                             foreach ($new_companies as $list) {
                                 // if(!isset($compan[$d][$list['inv_id']])){
                                 $compan[$d][$list['inv_id']] = 1;
@@ -6737,7 +6737,7 @@ class Incubatee_graphs extends CI_Controller {
 
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -6755,7 +6755,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['yaxis'] = "Total no. of companies in portfolio";
             $data['text'] = 'Total no. of companies in portfolio';
         }
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -6781,10 +6781,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -6822,7 +6822,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $year_qry = $from_year;
 
@@ -6870,7 +6870,7 @@ class Incubatee_graphs extends CI_Controller {
 
                     $graduates_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 2);
                     if ($graduates_companies != '') {
-                        $hc_actual[$m] = count($graduates_companies);
+                        $hc_actual[$m] = php72_count($graduates_companies);
                     } else {
                         $hc_actual[$m] = 0;
                     }
@@ -6905,7 +6905,7 @@ class Incubatee_graphs extends CI_Controller {
 
                     $exited_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 3);
                     if ($exited_companies != '') {
-                        $hc_actual[$m] = count($exited_companies);
+                        $hc_actual[$m] = php72_count($exited_companies);
                     } else {
                         $hc_actual[$m] = 0;
                     }
@@ -6919,7 +6919,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             $year_qry = $from_year;
             if ($module == 1) {
@@ -6968,7 +6968,7 @@ class Incubatee_graphs extends CI_Controller {
                 if ($module == 1) {
                     $graduates_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 2);
                     if ($graduates_companies != '') {
-                        $grad_actquat[$d] += count($graduates_companies);
+                        $grad_actquat[$d] += php72_count($graduates_companies);
                     } else {
                         $grad_actquat[$d] += 0;
                     }
@@ -6976,7 +6976,7 @@ class Incubatee_graphs extends CI_Controller {
                 } else if ($module == 2) {
                     $exited_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 3);
                     if ($exited_companies != '') {
-                        $grad_actquat[$d] += count($exited_companies);
+                        $grad_actquat[$d] += php72_count($exited_companies);
                     } else {
                         $grad_actquat[$d] += 0;
                     }
@@ -7007,7 +7007,7 @@ class Incubatee_graphs extends CI_Controller {
 
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -7025,7 +7025,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['yaxis'] = "Exits (With Equity)";
             $data['text'] = 'Exits (With Equity)';
         }
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -7051,10 +7051,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -7092,7 +7092,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             if ($module == 1) {
                 $monthly_target = $this->Sectorplan->getTargetRenewalagreement($month_where);
@@ -7200,7 +7200,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             if ($module == 1) {
@@ -7307,7 +7307,7 @@ class Incubatee_graphs extends CI_Controller {
 
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -7328,7 +7328,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['yaxis'] = "New Agreements";
             $data['text'] = 'New Agreements';
         }
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);
@@ -7354,10 +7354,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $q1_val = $q2_val = $q3_val = $q4_val = 0;
 
-        $q1_key = array_keys($q1);
-        $q2_key = array_keys($q2);
-        $q3_key = array_keys($q3);
-        $q4_key = array_keys($q4);
+        $q1_key = php72_array_keys($q1);
+        $q2_key = php72_array_keys($q2);
+        $q3_key = php72_array_keys($q3);
+        $q4_key = php72_array_keys($q4);
 
         $a1_val = $a2_val = $a3_val = $a4_val = 0;
 
@@ -7395,7 +7395,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
             if ($module == 1) {
                 $monthly_target = $this->Sectorplan->getTargetEquity($month_where);
@@ -7483,7 +7483,7 @@ class Incubatee_graphs extends CI_Controller {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
-            $month_where = implode(" and ", $search_month);
+            $month_where = php72_implode(" and ", $search_month);
 
 
             if ($module == 1) {
@@ -7570,7 +7570,7 @@ class Incubatee_graphs extends CI_Controller {
 
 
         $derive_target = array();
-        for ($m = 0; $m < count($hc_target); $m++) {
+        for ($m = 0; $m < php72_count($hc_target); $m++) {
             array_push($derive_target, round($hc_target[$m], 2));
         }
 
@@ -7588,7 +7588,7 @@ class Incubatee_graphs extends CI_Controller {
             $data['yaxis'] = "Service Agreements";
             $data['text'] = 'Service Agreements';
         }
-        $data['categories_list'] = array_values($categories);
+        $data['categories_list'] = php72_array_values($categories);
         $data['target_list'] = array_values($derive_target);
         $data['actual_list'] = array_values($derive_actual);
         $this->load->vars($data);

@@ -88,7 +88,7 @@
                 </thead>
             </tr>
             <tbody>
-                <?php for($i=0,$count = count($folder['contents']);$i<$count;$i++) {  
+                <?php for($i=0,$count = php72_count($folder['contents']);$i<$count;$i++) {  
                    
                     $content = $folder['contents'][$i]; 
 					

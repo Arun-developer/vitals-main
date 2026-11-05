@@ -46,7 +46,7 @@ class Exitdetails extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		
 		$data['detailsByLastID'] =$this->mexitdetails->checkDuplicate($innovationID);
-		$count= count($data['detailsByLastID']);
+		$count= php72_count($data['detailsByLastID']);
 				
 			if($count > 0 )  {
 				$insertID = $data['detailsByLastID'][0]['id'];

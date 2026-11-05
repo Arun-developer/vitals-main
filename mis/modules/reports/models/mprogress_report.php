@@ -218,7 +218,7 @@ class Mprogress_report extends CI_Model
         $query = $this->db->query($bdquery);
         if ($query->num_rows() > 0) {
             foreach (array_unique($query->result_array()) as $row) {
-                $data[] = array_unique($row);
+                $data[] = php72_array_unique($row);
                 $data[] = $row;
             }
         }
@@ -273,7 +273,7 @@ class Mprogress_report extends CI_Model
         for ($i = 0; $i < strlen($value); $i++) {
             if (stristr($splitstring, $value[$i]) == true) {
                 'operand = ' . $operand . ', ';
-                if (array_key_exists($operand, $fieldvalues)) {
+                if (php72_array_key_exists($operand, $fieldvalues)) {
                     $toadd = $fieldvalues[$operand];
                 } else {
                     $toadd = $operand;
@@ -290,7 +290,7 @@ class Mprogress_report extends CI_Model
         }
 
         if ($operand != '') {
-            if (array_key_exists($operand, $fieldvalues)) {
+            if (php72_array_key_exists($operand, $fieldvalues)) {
                 $toadd = $fieldvalues[$operand];
             } else {
                 $toadd = $operand;
@@ -352,7 +352,7 @@ class Mprogress_report extends CI_Model
     public function addkra_details($options)
     {
         $curdate = date('Y-m-d');
-        for ($i = 0; $i < count($options['kra_id']); $i++) {
+        for ($i = 0; $i < php72_count($options['kra_id']); $i++) {
             $data = array('kra_master_id' => $options['kra_id'][$i],
                 'month' => $options['date'],
                 'target' => $options['target'][$i],

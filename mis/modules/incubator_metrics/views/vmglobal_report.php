@@ -97,7 +97,7 @@
 				{
 				$td .= '<tr>';
 				$td .= '<td >'.$key.'</td>';
-				for($i=0;$i<count($headerArray);$i++)
+				for($i=0;$i<php72_count($headerArray);$i++)
 				{
 					if(isset($value[$headerArray[$i]]))
 					 {	
@@ -140,14 +140,14 @@
 				$td .= '<tr>';
 				$td .= '<td style="background-color:#dce7cc;font-weight:bold;border:1px solid #B9CE98;" ><a  href="'.site_url('boardmeeting/view/'.$urlcode.'/4/view').'">'."Board Meeting".'</a></td>';
 				if(!empty($exitDetails)) {
-				if(count($exitDetails) == '4') { 
+				if(php72_count($exitDetails) == '4') { 
 					$td .= '<td>'.$exitDetails['0']['exitDate'].'</td>';
 					$td .= '<td>'.'4'.'</td>';
 					$td .= '<td style="color:green;font-weight:bold;"><a href="'.site_url('repayment/index/'.$urlcode).'">'.$exitDetails.'</a></td>';
 				} else {
 					$td .= '<td>'.$exitDetails['0']['exitDate'].'</td>';
 					$td .= '<td>'.'4'.'</td>';
-					$td .= '<td style="color:red;font-weight:bold;"><a style="color:red;font-weight:bold;" href="'.site_url('boardmeeting/view/'.$urlcode.'/4/view').'">'. count($exitDetails) .'</a></td>';
+					$td .= '<td style="color:red;font-weight:bold;"><a style="color:red;font-weight:bold;" href="'.site_url('boardmeeting/view/'.$urlcode.'/4/view').'">'. php72_count($exitDetails) .'</a></td>';
 				}
 				}
 				$td .= '</tr>';
@@ -174,14 +174,14 @@
 				$td .='</tr>';
 				$td .= '<tr>';
 				$td .= '<td style="background-color:#dce7cc;font-weight:bold;"><a  href="'.site_url('boardmember/view_list/'.$urlcode).'">'."Professional Board".'</a></td>';
-				if(count($exitboardDetails) >= '1') { 
+				if(php72_count($exitboardDetails) >= '1') { 
 					$td .= '<td>'.date('Y').'</td>';
 					$td .= '<td>'.'More than 1'.'</td>';
-					$td .= '<td style="color:green;font-weight:bold;"><a href="'.site_url('repayment/index/'.$urlcode).'">'.count($exitboardDetails).'(inducted)</a></td>';
+					$td .= '<td style="color:green;font-weight:bold;"><a href="'.site_url('repayment/index/'.$urlcode).'">'.php72_count($exitboardDetails).'(inducted)</a></td>';
 				} else {
 					$td .= '<td>'.$exitboardDetails['0']['exitDate'].'</td>';
 					$td .= '<td>'.'More than 1'.'</td>';
-					$td .= '<td style="color:red;font-weight:bold;">'.count($exitboardDetails).'</td>';
+					$td .= '<td style="color:red;font-weight:bold;">'.php72_count($exitboardDetails).'</td>';
 				}
 				$td .= '</tr>';
 				$td .= '<tr>';
@@ -373,7 +373,7 @@
 						</thead>
 						<tbody>
 						<?php
-						if(count($mentordetails!=0)){
+						if(php72_count($mentordetails!=0)){
 						foreach($mentordetails as $row):
 						?>
 						<tr>

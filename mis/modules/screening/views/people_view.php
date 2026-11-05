@@ -225,7 +225,7 @@ if ($subTabValue != "") {
             </thead>
             <tbody>
                 <?php
-                if (count($peopleDetails)) {
+                if (php72_count($peopleDetails)) {
                     $r = 1;
                     foreach ($peopleDetails as $row) {
                         $row_type = ($r % 2 == 0) ? ('even') : ('odd');

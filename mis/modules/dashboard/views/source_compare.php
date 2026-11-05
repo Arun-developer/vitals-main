@@ -159,7 +159,7 @@ $("#exportID").click(function() {
         <h2 class="msg_head">Sector</h2>
         <div class="msg_body">
         <ul>
-            <?php $sector = array_pop($sector);for($i=0;$i<count($sector);$i++){?>
+            <?php $sector = array_pop($sector);for($i=0;$i<php72_count($sector);$i++){?>
         <li><span><input name="sector[]" type="checkbox" value="<?=trim($sector[$i]);?>"/></span><?=$sector[$i];?></li>
         <?php };?>
         </ul>
@@ -231,9 +231,9 @@ $("#exportID").click(function() {
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($sourceselected); for($i=0;$i<count($stage);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+        <?php $j=0; $selected = array_pop($sourceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=@$selected[$k];?></td>
@@ -271,9 +271,9 @@ $("#exportID").click(function() {
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<count($stage);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+        <?php $j=0; $selected = array_pop($employeeselected); for($i=0;$i<php72_count($stage);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
@@ -315,9 +315,9 @@ $("#exportID").click(function() {
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($sectorselected); for($i=0;$i<count($stage);$i++){    ?>
-                <td rowspan ="<?=count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+        <?php $j=0; $selected = array_pop($sectorselected); for($i=0;$i<php72_count($stage);$i++){    ?>
+                <td rowspan ="<?=php72_count($selected)+1?>" width="14%" class="table_down"><?=$yearly[$i];?></td>
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
         <td  width="13%" class="table_down"><?=$selected[$k];?></td>
@@ -375,16 +375,16 @@ if((!empty($sourceselected)) AND (!empty($employeeselected)) AND (empty($sectors
        </td>
       </tr>
 
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                <tr>  <td width="14%" class="table_down"><?=$yearly[$i];?></td><td  colspan="8"><table style="width:100%">
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
 
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td>
            <table  style="width:100%">
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))
@@ -437,16 +437,16 @@ if((!empty($sourceselected)) AND (!empty($employeeselected)) AND (empty($sectors
        </td>
       </tr>
 
-        <?php $j=0; $selected = array_pop($sectorselected); $sselected = array_pop($sourceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($sectorselected); $sselected = array_pop($sourceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                <tr>  <td width="14%" class="table_down"><?=$yearly[$i];?></td><td  colspan="8"><table style="width:100%">
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
 
        <tr>
        <td class="table_down"><?=$selected[$k];?></td>
        <td>
            <table  style="width:100%">
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]== $value) && ($sourcecompare[$i]['year'] == 2011))
@@ -485,15 +485,15 @@ if((!empty($sourceselected)) AND (!empty($employeeselected)) AND (empty($sectors
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan ="3" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td colspan="7">
            <table>
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))
@@ -533,15 +533,15 @@ if((!empty($sourceselected)) AND (!empty($employeeselected)) AND (empty($sectors
         <?php endforeach;?>
       </tr>
             <tr>
-        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<count($stage);$i++){    ?>
+        <?php $j=0; $selected = array_pop($employeeselected); $sselected = array_pop($sourceselected); for($i=0;$i<php72_count($stage);$i++){    ?>
                 <td rowspan ="3" width="14%" class="table_down"><?=$yearly[$i];?></td>
-              <?php  for($k=0;$k<count($selected);$k++){
+              <?php  for($k=0;$k<php72_count($selected);$k++){
                 ?>
        <tr>
        <td class="table_down"><?=$sourcecompare[$k]['emp_firstname'];?></td>
        <td colspan="7">
            <table>
-       <?php for($l=0;$l<count($sselected);$l++) { ?>
+       <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
        <?php if(($stage[$sourcecompare[$i]['stage']]==$value) && ($sourcecompare[$i]['emp_number'] == @$selected[$k]) && ($sourcecompare[$i]['master_name'] == @$sselected[$k]))

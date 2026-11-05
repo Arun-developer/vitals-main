@@ -195,7 +195,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                             <h6>Upcoming Milestones</h6>
                                                             <ul class="update-milelist">
                                                                 <?php
-                                                                if (count($milestone) > 0) {
+                                                                if (php72_count($milestone) > 0) {
                                                                     foreach ($milestone as $mile) {
                                                                         ?>
                                                                         <li><?= $mile['name']; ?></li>
@@ -260,7 +260,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($updates); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($updates); ?>">
 
 <style type="text/css">
     .width-85{ width:85% !important; }

@@ -21,7 +21,7 @@
 				array_push($headerArray,$reportFields[$value]);
 			}
 
-			for($i=0;$i<count($rowExport);$i++){
+			for($i=0;$i<php72_count($rowExport);$i++){
 				$dataArray[$i] = array();
 				array_push($dataArray[$i],($i+1));	
 					foreach($report_data as $key => $value){
@@ -66,7 +66,7 @@
 			endforeach;
 
 			$sum_value['0'] = 'Total';
-			$lent = count($dataArray);
+			$lent = php72_count($dataArray);
 			$dataArray[$lent] = array();
 			foreach($sum_value as $key => $value):
 			   array_push($dataArray[$lent], $value);

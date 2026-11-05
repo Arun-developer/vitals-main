@@ -60,7 +60,7 @@ $form_name = 'program_stage_list';
         </thead>
         <tbody>
             <?php
-            if (count($programStageList)) {
+            if (php72_count($programStageList)) {
                 $r = 1;
                 foreach ($programStageList as $row) {
                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

@@ -253,7 +253,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 
 													<select style="height:100px!important" disabled id="location_select" name="locations[]" multiple class="form-control fieldDisable">
 														<?php foreach ($locations as $loc): ?>
-															<option value="<?= $loc ?>" <?= in_array($loc, $selected_locations) ? 'selected' : '' ?>>
+															<option value="<?= $loc ?>" <?= php72_in_array($loc, $selected_locations) ? 'selected' : '' ?>>
 																<?= $loc ?>
 															</option>
 														<?php endforeach; ?>
@@ -310,7 +310,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 														?>
 														<select multiple style="height:100px!important"  name="org_short_desc[]" class="form-control fieldDisable" disabled>
 															<?php foreach ($solutions as $solution): ?>
-																<option value="<?= htmlspecialchars($solution) ?>" <?= in_array($solution, $project_solutions) ? 'selected' : '' ?>>
+																<option value="<?= htmlspecialchars($solution) ?>" <?= php72_in_array($solution, $project_solutions) ? 'selected' : '' ?>>
 																	<?= htmlspecialchars($solution) ?>
 																</option>
 															<?php endforeach; ?>
@@ -403,7 +403,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 													?>
 													<select disabled multiple style="height:100px!important" name="social_media[]" class="form-control fieldDisable" disabled>
 														<?php foreach ($options as $option): ?>
-															<option value="<?= htmlspecialchars($option) ?>" <?= in_array($option, $social_media) ? 'selected' : '' ?>>
+															<option value="<?= htmlspecialchars($option) ?>" <?= php72_in_array($option, $social_media) ? 'selected' : '' ?>>
 																<?= htmlspecialchars($option) ?>
 															</option>
 														<?php endforeach; ?>

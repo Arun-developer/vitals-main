@@ -142,7 +142,7 @@ $(document).ready( function() {
                         {
                             $td .= '<tr>';
                             $td .= '<td>'.$key.'</td>';
-                                for($i=0;$i<count($headerArray);$i++)
+                                for($i=0;$i<php72_count($headerArray);$i++)
                                 {
                                           if(isset($value[$headerArray[$i]]))
                                          {

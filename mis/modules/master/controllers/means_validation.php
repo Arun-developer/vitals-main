@@ -57,7 +57,7 @@ class Means_validation extends CI_Controller
         $data['validationDetails'] = array();
         if ($id != '') {
             $data['validationDetails'] = $this->Mmeans_validation->getValidationInfo($id);
-            if (count($data['validationDetails']) == 0) {
+            if (php72_count($data['validationDetails']) == 0) {
                 redirect('master/means_validation/form');
             }
 

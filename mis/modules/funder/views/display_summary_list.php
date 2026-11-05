@@ -159,7 +159,7 @@ $currency = $this->session->userdata['currency'];
                                                                             <?php } ?>
                                                                         </li>
                                                                         <li>
-                                                                            <?php if (count($list) != 0) { ?><a class="getFunderRow tlf_row<?php echo $i + 1; ?>" id="<?php echo $i + 1; ?>" href="javascript:"><i class="fas fa-caret-down" style="<?php
+                                                                            <?php if (php72_count($list) != 0) { ?><a class="getFunderRow tlf_row<?php echo $i + 1; ?>" id="<?php echo $i + 1; ?>" href="javascript:"><i class="fas fa-caret-down" style="<?php
                                                                                 if ($list[0]['gl_id']) {
                                                                                     echo "display: block;";
                                                                                 } else {
@@ -172,8 +172,8 @@ $currency = $this->session->userdata['currency'];
                                                                 <td>
                                                                     <input class="get_count" type="hidden" value="<?php
                                                                     if ($list[0]['gl_id']) {
-                                                                        if (count($list) > 0) {
-                                                                            echo count($list) + 1;
+                                                                        if (php72_count($list) > 0) {
+                                                                            echo php72_count($list) + 1;
                                                                         }
                                                                     } else {
                                                                         echo "1";
@@ -185,8 +185,8 @@ $currency = $this->session->userdata['currency'];
                                                                         echo $out = strlen($data) > 8 ? substr($data, 0, 8) . "..." : $data;
                                                                         ?>(<?php
                                                                         if ($list[0]['gl_id']) {
-                                                                            $arr_cnts[] = count($list) + 1;
-                                                                            echo count($list);
+                                                                            $arr_cnts[] = php72_count($list) + 1;
+                                                                            echo php72_count($list);
                                                                         } else {
                                                                             $arr_cnts[] = 1;
                                                                             echo "0";

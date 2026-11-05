@@ -1,7 +1,7 @@
 <?php
 $val = array();
 $scaling_factor = array();
-if (count($gradeDetails)) {
+if (php72_count($gradeDetails)) {
     $val = (isset($_POST['id'])) ? $_POST : $gradeDetails['0'];
     $scaling_factor = @unserialize($val['scaling_factor']);
 }

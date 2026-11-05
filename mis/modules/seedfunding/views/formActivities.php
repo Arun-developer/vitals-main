@@ -69,7 +69,7 @@ if (installment) {
 		$id = '';
 		$val = array();
 		$installment = array();
-		if(count($activitiesDetails))
+		if(php72_count($activitiesDetails))
 		{
 			$val = $activitiesDetails['0'];
 			$formAction = site_url('seedfunding/activities/form/'.$innovation.'/'.$val['id']);

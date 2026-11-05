@@ -24,7 +24,7 @@ Status:
     </thead>
     <tbody>
         <?php
-		if(count($inviteInfo))
+		if(php72_count($inviteInfo))
 		{   
 			$row_type = 'even';
 			foreach($inviteInfo as $row1)
@@ -54,7 +54,7 @@ Status:
 		} ?>
     </tbody>
 </table>
-<?php if(count($inviteInfo) == 0){ ?>
+<?php if(php72_count($inviteInfo) == 0){ ?>
 <form name="invitePrescreen" enctype="multipart/form-data"
     action="<?=site_url('screening/invite_prescreen/'.$innovation['id']);?>" method="post" id="invitePrescreen"
     class="uniform">

@@ -15,7 +15,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
 } elseif ($isGrade) {
     $currentStage = $this->Mprogram_stage->getCurrentStage('3');
     $activity = $this->Mactivities->getActivityForGrading($innovation['id'], $currentStage);
-    if (count($activity)) {?>
+    if (php72_count($activity)) {?>
     <li><a href="<?=site_url('grading/view/' . $activity['0']['id']);?>" class="button">View Grading &amp; Feedback</a>
     </li>
     <?php }

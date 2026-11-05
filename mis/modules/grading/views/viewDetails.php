@@ -1,6 +1,6 @@
 <h1><?=$cpagetitle?> - <?=$activityDetails['0']['name_of_enterprise']?></h1>
 <?php
-if(count($gradingDetails))
+if(php72_count($gradingDetails))
 {
 	foreach($gradingDetails as $row):
 		$grading_id = $row['id'];
@@ -51,7 +51,7 @@ $(document).ready(function(){
 	$rowType = ($rowType=='odd')?'even':'odd';
 	$grade_result = '';
 	$commentsRow ='';
-	if(count($gradesList))
+	if(php72_count($gradesList))
 	{
 		foreach($gradesList as $grd):
 			if($grd['grading_master'] == $row['category'])

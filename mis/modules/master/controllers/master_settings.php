@@ -153,7 +153,7 @@ class Master_settings extends CI_Controller {
             }
             if ($result) {
                 $this->session->set_flashdata('successMsg', 'Record inserted.!');
-                redirect('master/master_settings/portfolio_list/' . array_search($this->input->post('master_type'), $masterType));
+                redirect('master/master_settings/portfolio_list/' . php72_array_search($this->input->post('master_type'), $masterType));
             }
         }
 
@@ -175,7 +175,7 @@ class Master_settings extends CI_Controller {
             $result = $this->Mmaster_settings->portfolioUpdate();
             if ($result) {
                 $this->session->set_flashdata('successMsg', 'Record Updated !');
-                redirect('master/master_settings/portfolio_list/' . array_search($this->input->post('master_type'), $masterType));
+                redirect('master/master_settings/portfolio_list/' . php72_array_search($this->input->post('master_type'), $masterType));
             }
         }
 
@@ -256,7 +256,7 @@ class Master_settings extends CI_Controller {
         $data['sector_details'] = $this->Sector_model->getPitchSectors();
 
         $data['branch'] = $this->Mmaster->getBranch();
-        $data['masterPage'] = array_search($master, $masterType);
+        $data['masterPage'] = php72_array_search($master, $masterType);
         $data['cpagetitle'] = "Edit Portfolio Master";
         $data['cpage'] = "master_settings/add_portfolio_master";
         $data['left_box'] = array('master');
@@ -292,7 +292,7 @@ class Master_settings extends CI_Controller {
                 $result = $this->Mmaster_settings->insert($_POST);
                 if ($result) {
                     $this->session->set_flashdata('successMsg', 'Record inserted !');
-                    redirect('master/master_settings/view_list/' . array_search($this->input->post('master_type'), $masterType));
+                    redirect('master/master_settings/view_list/' . php72_array_search($this->input->post('master_type'), $masterType));
                 }
             } else {
                 $data['errormsg'] = "Validation error found, check it again!";
@@ -312,7 +312,7 @@ class Master_settings extends CI_Controller {
                 $result = $this->Mmaster_settings->update($_POST);
                 if ($result) {
                     $this->session->set_flashdata('successMsg', 'Record Updated !');
-                    redirect('master/master_settings/view_list/' . array_search($this->input->post('master_type'), $masterType));
+                    redirect('master/master_settings/view_list/' . php72_array_search($this->input->post('master_type'), $masterType));
                 }
             } else {
                 $data['errormsg'] = "Validation error found, check it again!";
@@ -324,7 +324,7 @@ class Master_settings extends CI_Controller {
 
         $master = $data['masterDetails'][0]['master_type'];
 
-        $data['masterPage'] = array_search($master, $masterType);
+        $data['masterPage'] = php72_array_search($master, $masterType);
         $data['cpagetitle'] = "Edit Master";
         $data['cpage'] = "master_settings/editMaster";
         $data['left_box'] = array('master');
@@ -401,7 +401,7 @@ class Master_settings extends CI_Controller {
         $this->load->library('pagination');
         #Pagination Scripts Starts
         $config['base_url'] = site_url('master/master_settings/donor_fit_list/' . $search);
-        $config['total_rows'] = count($this->Mmaster_settings->fetchDonorFit($where));
+        $config['total_rows'] = php72_count($this->Mmaster_settings->fetchDonorFit($where));
         $config['per_page'] = 10;
         $config['num_links'] = 5;
         $config['uri_segment'] = $offset;
@@ -543,7 +543,7 @@ class Master_settings extends CI_Controller {
         $this->load->library('pagination');
         #Pagination Scripts Starts
         $config['base_url'] = site_url('master/master_settings/preliminary_reason/' . $search);
-        $config['total_rows'] = count($this->Mmaster_settings->fetchPreliminaryReasons($where));
+        $config['total_rows'] = php72_count($this->Mmaster_settings->fetchPreliminaryReasons($where));
         $config['per_page'] = 10;
         $config['num_links'] = 5;
         $config['uri_segment'] = $offset;
@@ -588,7 +588,7 @@ class Master_settings extends CI_Controller {
         $data['usersList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
 
         $data['employee_lists'] = $this->Sector_model->getEmployeePartner($branch_id);
-        $count = count($data['employee_lists']);
+        $count = php72_count($data['employee_lists']);
         $response = array();
         foreach ($data['sector_details'] as $key => $value) {
 
@@ -640,7 +640,7 @@ class Master_settings extends CI_Controller {
         $data['usersList'] = $this->Muser->getUsersList($userSetup1['abi'], $branch_id);
 
         $data['employee_lists'] = $this->Sector_model->getEmployeePartner($branch_id, 'assign_sector_lead');
-        $count = count($data['employee_lists']);
+        $count = php72_count($data['employee_lists']);
         $response = array();
 
         foreach ($data['sector_details'] as $key => $value) {

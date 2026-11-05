@@ -3,7 +3,7 @@
 $formAction = site_url('master/means_validation/form');
 $id = '';
 $val = array();
-if (count($validationDetails)) {
+if (php72_count($validationDetails)) {
     $val = $validationDetails['0'];
     $formAction = site_url('master/means_validation/form/' . $val['id']);
     $id = $val['id'];

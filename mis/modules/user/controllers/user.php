@@ -72,7 +72,7 @@ class User extends CI_Controller {
 		////////////////////
 		
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -125,7 +125,7 @@ class User extends CI_Controller {
 
     public function deleteDetail() {
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $table = $_POST['table'];
         $query = $this->Empuser->deleteEmployeeDetail($table, $condition);
 
@@ -236,7 +236,7 @@ class User extends CI_Controller {
         $data['hobbies'] = $_POST['txt_hobbies'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_user_profile', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_profile', $data, $option);
             $emp_id = $_POST['txt_empid'];
@@ -252,7 +252,7 @@ class User extends CI_Controller {
             $emp_list = $this->Mleave->getEmployeedetail($emp_id);
             foreach ($emp_list as $elist) {
                 $check_leave_quota = $this->Mleave->getLeaveQuota($elist['employee_id'], date('Y'));
-                if (count($check_leave_quota) == 0) {
+                if (php72_count($check_leave_quota) == 0) {
                     foreach ($leavetypes as $leaves) {
                         $leavedetails['year'] = date('Y');
                         $leavedetails['leave_type_id'] = $leaves['leave_type_id'];
@@ -306,7 +306,7 @@ class User extends CI_Controller {
 //        $option['partner_id'] = $_POST['partner'];
         $option['status'] = 1;
         $checkExist = $this->Empuser->getUserName($option, $emp_id);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             echo '1';
         } else {
             echo '0';
@@ -326,28 +326,28 @@ class User extends CI_Controller {
         $data['status'] = $_POST['user_status'];
 
         if (isset($_POST['user_partner_access'])) {
-            $partner_access = implode(',', $_POST['user_partner_access']);
+            $partner_access = php72_implode(',', $_POST['user_partner_access']);
             $data['partner_access'] = $partner_access;
         }
 
         if (isset($_POST['tab_access'])) {
-            $tab_access = implode(',', $_POST['tab_access']);
+            $tab_access = php72_implode(',', $_POST['tab_access']);
             $data['tab_access'] = $tab_access;
         }
 
         if ($_POST['user_role'] == 4) {
             if (isset($_POST['user_module_access'])) {
-                $tab_access = implode(',', $_POST['user_module_access']);
+                $tab_access = php72_implode(',', $_POST['user_module_access']);
                 $data['menu_access'] = $tab_access;
             }
 
             if (isset($_POST['user_sector_access'])) {
-                $tab_access = implode(',', $_POST['user_sector_access']);
+                $tab_access = php72_implode(',', $_POST['user_sector_access']);
                 $data['sector_access'] = $tab_access;
             }
 
             if (isset($_POST['user_program_access'])) {
-                $tab_access = implode(',', $_POST['user_program_access']);
+                $tab_access = php72_implode(',', $_POST['user_program_access']);
                 $data['program_access'] = $tab_access;
             }
 
@@ -372,7 +372,7 @@ class User extends CI_Controller {
             $data['enc_user_key'] = $enc_user_key;
         }
 
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_login', $data, $emp_option);
         } else {
@@ -425,7 +425,7 @@ class User extends CI_Controller {
         $data['status'] = '1';
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_salary', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_salary', $data, $option);
         } else {
@@ -451,7 +451,7 @@ class User extends CI_Controller {
         $data['payment_hours'] = $_POST['payment_hours'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_salary', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_salary', $data, $option);
         } else {
@@ -477,7 +477,7 @@ class User extends CI_Controller {
         $data['last_working_date'] = (isset($_POST['resign_last_working']) && $_POST['resign_last_working'] != '') ? date('Y-m-d', strtotime($_POST['resign_last_working'])) : '';
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_salary', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_salary', $data, $option);
         } else {
@@ -520,7 +520,7 @@ class User extends CI_Controller {
         $data['status'] = '1';
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_salary', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_salary', $data, $option);
         } else {
@@ -561,7 +561,7 @@ class User extends CI_Controller {
         $data['payment_hours'] = $_POST['payment_hours'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_salary', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_salary', $data, $option);
         } else {
@@ -596,7 +596,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTDesignationCount($employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTDesignationDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -639,7 +639,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTSalaryCount($employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTSalaryDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -667,7 +667,7 @@ class User extends CI_Controller {
 
     public function deleteUserData() {
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $table = $_POST['table'];
         $query = $this->Empuser->deleteCommonDetail($table, $condition);
 
@@ -734,7 +734,7 @@ class User extends CI_Controller {
         $data['zipcode'] = $_POST['user_zipcode'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_user_profile', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_profile', $data, $option);
         } else {
@@ -785,7 +785,7 @@ class User extends CI_Controller {
             $emergency['home_mobile'] = $_POST['emer_home'];
 
             $checkExist = $this->Mportfolio->getDetails('hr_user_emergency_contact', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $emergency['updated_by'] = $this->session->userdata('emp_number');
                 $query = $this->Mportfolio->updatePortfolioDetail('hr_user_emergency_contact', $emergency, $option);
             }
@@ -817,7 +817,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTCommonCount($table, $employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTCommonDetails($table, $requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -858,7 +858,7 @@ class User extends CI_Controller {
     }
 
     public function add_bank() {
-        for ($i = 0; $i < count($_POST['bank_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['bank_name']); $i++) {
             if ($_POST['bank_name'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['account_id'][$i];
@@ -869,7 +869,7 @@ class User extends CI_Controller {
                 $data['ifsc_code'] = $_POST['ifsc_code'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_bank', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_bank', $data, $option);
                 } else {
@@ -904,7 +904,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTCommonCount($table, $employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTCommonDetails($table, $requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1004,7 +1004,7 @@ class User extends CI_Controller {
         $data['city'] = $_POST['edu_city'];
         $data['state'] = $_POST['edu_state'];
         $checkExist = $this->Mportfolio->getDetails('hr_user_education', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_education', $data, $option);
         }
@@ -1035,7 +1035,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTEducationCount($employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTEducationDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1088,7 +1088,7 @@ class User extends CI_Controller {
 
     public function add_dependents() {
 
-        for ($i = 0; $i < count($_POST['dependent_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['dependent_name']); $i++) {
             if ($_POST['dependent_name'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['dept_id'][$i];
@@ -1098,7 +1098,7 @@ class User extends CI_Controller {
                 $data['birth_date'] = (isset($_POST['dependent_birth'][$i]) && $_POST['dependent_birth'][$i] != '') ? date('Y-m-d', strtotime($_POST['dependent_birth'][$i])) : '';
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_dependents', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_dependents', $data, $option);
                 } else {
@@ -1132,7 +1132,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTCommonCount($table, $employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTCommonDetails($table, $requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1232,7 +1232,7 @@ class User extends CI_Controller {
         $data['visa_expiry_date'] = (isset($_POST['visa_expiry']) && $_POST['visa_expiry'] != '') ? date('Y-m-d', strtotime($_POST['visa_expiry'])) : '';
         $data['img_comments'] = $_POST['img_comments'];
         $checkExist = $this->Mportfolio->getDetails('hr_user_immigration', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_immigration', $data, $option);
         }
@@ -1266,7 +1266,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTImmigrationCount($employee_id, $columns, $requestData);
         $query = $this->Empuser->getDTImmigrationDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1336,7 +1336,7 @@ class User extends CI_Controller {
     }
 
     public function add_supervisor() {
-        for ($i = 0; $i < count($_POST['supervisor_employee']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['supervisor_employee']); $i++) {
             if ($_POST['supervisor_employee'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['report_sup'][$i];
@@ -1345,7 +1345,7 @@ class User extends CI_Controller {
                 $data['report_method'] = $_POST['supervisor_method'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_reporting', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_reporting', $data, $option);
                 } else {
@@ -1365,7 +1365,7 @@ class User extends CI_Controller {
     }
 
     public function add_subordinate() {
-        for ($i = 0; $i < count($_POST['subordinate_employee']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['subordinate_employee']); $i++) {
             if ($_POST['subordinate_employee'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['report_subor'][$i];
@@ -1374,7 +1374,7 @@ class User extends CI_Controller {
                 $data['report_method'] = $_POST['subordinate_method'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_reporting', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_reporting', $data, $option);
                 } else {
@@ -1408,7 +1408,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTReportingCount($employee_id, $columns, $requestData, 'report_supervisor', 'report_subordinate');
         $query = $this->Empuser->getDTReportingDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData, 'report_supervisor', 'report_subordinate');
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1450,7 +1450,7 @@ class User extends CI_Controller {
         $totalrows = $this->Empuser->getDTReportingCount($employee_id, $columns, $requestData, 'report_subordinate', 'report_supervisor');
         $query = $this->Empuser->getDTReportingDetails($requestData['length'], $requestData['start'], $employee_id, $columns, $requestData, 'report_subordinate', 'report_supervisor');
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -1595,15 +1595,15 @@ class User extends CI_Controller {
             $this->load->library('upload', $config);
             $doc_id = '';
             $countErr = 0;
-            for ($i = 0; $i < count($description); $i++) {
+            for ($i = 0; $i < php72_count($description); $i++) {
 
-                $Check_fname = array_values($_FILES['file_upload']['name'][$i])[0];
-                $Check_description_val = array_values($description[$i])[0];
+                $Check_fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
+                $Check_description_val = php72_array_values($description[$i])[0];
                 $countErr++;
                 if (!empty($_FILES['file_upload'])) {
-                    if (count($_FILES['file_upload']['name']) > 0) {
-                        $fname = array_values($_FILES['file_upload']['name'][$i])[0];
-                        $description_val = array_values($description[$i])[0];
+                    if (php72_count($_FILES['file_upload']['name']) > 0) {
+                        $fname = php72_array_values($_FILES['file_upload']['name'][$i])[0];
+                        $description_val = php72_array_values($description[$i])[0];
 
                         $file_dataArr = array();
                         if (isset($fname) && $fname != '') {
@@ -1614,12 +1614,12 @@ class User extends CI_Controller {
 							$file_name = date('Ymdhis') . '_' . $new_name;
 
                             $_FILES['images[]']['name'] = $file_name;
-                            $_FILES['images[]']['type'] = $file_type = array_values($_FILES['file_upload']['type'][$i])[0];
-                            $_FILES['images[]']['tmp_name'] = array_values($_FILES['file_upload']['tmp_name'][$i])[0];
-                            $_FILES['images[]']['error'] = array_values($_FILES['file_upload']['error'][$i])[0];
-                            $_FILES['images[]']['size'] = array_values($_FILES['file_upload']['size'][$i])[0];
+                            $_FILES['images[]']['type'] = $file_type = php72_array_values($_FILES['file_upload']['type'][$i])[0];
+                            $_FILES['images[]']['tmp_name'] = php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0];
+                            $_FILES['images[]']['error'] = php72_array_values($_FILES['file_upload']['error'][$i])[0];
+                            $_FILES['images[]']['size'] = php72_array_values($_FILES['file_upload']['size'][$i])[0];
 
-                            @copy(array_values($_FILES['file_upload']['tmp_name'][$i])[0], "uploads/profile_document/" . $file_name);
+                            @copy(php72_array_values($_FILES['file_upload']['tmp_name'][$i])[0], "uploads/profile_document/" . $file_name);
                             $fileName = $file_name;
                             $images[] = $file_name;
                             $filenameArr[] = $file_name;
@@ -1689,7 +1689,7 @@ class User extends CI_Controller {
         $common_id = $this->input->post('common_id');
         $formType = $this->input->post('formType');
         $grant_id = $this->input->post('grant_id');
-        $common_id = array_values(array_filter($common_id));
+        $common_id = array_values(php72_array_filter($common_id));
         if (!empty($common_id) && $formType != '') {
 
             $condition = array('id' => $common_id);
@@ -1740,7 +1740,7 @@ class User extends CI_Controller {
         $insertData = [];
         if(!empty($_POST)){        
 
-            for($i=0;$i<count($_POST['description']);$i++){
+            for($i=0;$i<php72_count($_POST['description']);$i++){
              /* Checking file for upload*/
 
              if(!empty($_FILES['file_upload']['name'][$i])){

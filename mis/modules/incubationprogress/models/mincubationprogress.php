@@ -96,7 +96,7 @@ class Mincubationprogress extends CI_Model
     {
         $data = array();
         $this->db->select("PM.id,PM.label,PM.info,PM.criteria,(select master_name from master_settings where id=PM.criteria) as master_name");
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('PM.id', $checklist);
         $this->db->where('PM.type', $type);
         $this->db->where('period', '4');
@@ -117,7 +117,7 @@ class Mincubationprogress extends CI_Model
 
         $data = array();
         $this->db->select("PM.id,PM.label,PM.info,PM.criteria,(select master_name from master_settings where id=PM.criteria) as master_name");
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('PM.id', $checklist);
         $this->db->where('PM.type', $type);
         $this->db->where('period', '3');
@@ -181,7 +181,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $this->db->select("PM.id,PM.label,PM.info,PM.criteria,(select master_name from master_settings where id=PM.criteria) as master_name");
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('PM.id', $checklist);
         $this->db->where('PM.type', $type);
         $this->db->where('period', $frequency);
@@ -200,7 +200,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $this->db->select("PM.id,PM.label,PM.info,PM.criteria,(select master_name from master_settings where id=PM.criteria) as master_name");
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('PM.id', $checklist);
         $this->db->where('PM.type', $type);
         $this->db->where('period', $frequency);
@@ -218,7 +218,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $fieldvalues = array();
-        $checklist = (count($checklist) == 0) ? array('NULL') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('NULL') : $checklist;
         $field_name = 'answer';
         if ($type == 'activity') {
             if ($this->session->userdata('user_type') != 'incubatee') {
@@ -234,7 +234,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		(extract(Month FROM P2.start_date) = " . $month . " )
 		GROUP BY P1.label, P2.Field,
 		extract(Quarter from P2.start_date)) as PG ON (PM.id = PG.field) WHERE PM.period = 3 and PM.type='activity'
-		and PM.criteria = '" . $criteria . "' and  PM.id IN(" . implode(', ', $checklist) . ")";
+		and PM.criteria = '" . $criteria . "' and  PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             foreach ($result->result_array() as $row) {
                 $data[] = $row;
@@ -245,7 +245,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
                         ON (PG.field = PM.id) WHERE
 						PG.date_type = 3 AND (extract(Year FROM PG.start_date) in (0,  " . $year . ")) AND
 						(PG.innovation in (0,'" . $innovation . "')) AND (extract(month FROM PG.start_date) in (0, " . $month . "))
-						AND PM.type = 'metrices' AND PM.id IN(" . implode(', ', $checklist) . ")";
+						AND PM.type = 'metrices' AND PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $value = $this->db->query($buildqry);
             foreach ($value->result_array() as $rows) {
                 $temp = $rows['label'];
@@ -263,7 +263,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		as month from progress_master as P1 JOIN progress as P2 ON (P1.id = P2.field) WHERE P2.date_type= 1 AND
 		(extract(Year FROM P2.start_date) = " . $year . ") AND  P2.innovation ='" . $innovation . "' AND
 		(extract(Month FROM P2.start_date) = " . $month . " )GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG
-		ON (PM.id = PG.field) WHERE PM.period = 1 and  PM.subcategory = '" . $subcategory . "' and PM.id IN(" . implode(', ', $checklist) . ")";
+		ON (PM.id = PG.field) WHERE PM.period = 1 and  PM.subcategory = '" . $subcategory . "' and PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             $listvalue = $result->result_array();
             for ($i = 0; $i < count($listvalue); $i++) {
@@ -281,7 +281,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $fieldvalues = array();
-        $checklist = (count($checklist) == 0) ? array('NULL') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('NULL') : $checklist;
         $field_name = 'answer';
         if ($type == 'activity') {
             if ($this->session->userdata('user_type') != 'incubatee') {
@@ -290,7 +290,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
             if ($this->session->userdata('user_type') == 'abi') {
                 $field_name = 'manager_answer';
             }
-            $query = "SELECT PM.label,PM.id,PM.period,PM.criteria,PG.answer,PG.document from progress_master as PM LEFT JOIN (SELECT P1.label, P2." . $field_name . " as answer,P2.document as document,P2.Field, extract(month from P2.start_date) as month from progress_master as P1 JOIN progress as P2 ON (P1.id = P2.field) WHERE P2.date_type= 2 AND (extract(Year FROM P2.start_date) = " . $year . ") AND  (P2.innovation in (0,'" . $innovation . "')) AND (extract(month FROM P2.start_date) = " . $month . " )GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG ON (PM.id = PG.field) WHERE PM.period = 2 and PM.type='activity' and PM.criteria = '" . $criteria . "' and  PM.id IN(" . implode(', ', $checklist) . ")";
+            $query = "SELECT PM.label,PM.id,PM.period,PM.criteria,PG.answer,PG.document from progress_master as PM LEFT JOIN (SELECT P1.label, P2." . $field_name . " as answer,P2.document as document,P2.Field, extract(month from P2.start_date) as month from progress_master as P1 JOIN progress as P2 ON (P1.id = P2.field) WHERE P2.date_type= 2 AND (extract(Year FROM P2.start_date) = " . $year . ") AND  (P2.innovation in (0,'" . $innovation . "')) AND (extract(month FROM P2.start_date) = " . $month . " )GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG ON (PM.id = PG.field) WHERE PM.period = 2 and PM.type='activity' and PM.criteria = '" . $criteria . "' and  PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             foreach ($result->result_array() as $row) {
                 $data[] = $row;
@@ -345,7 +345,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $fieldvalues = array();
-        $checklist = (count($checklist) == 0) ? array('NULL') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('NULL') : $checklist;
         $field_name = 'answer';
         if ($type == 'activity') {
             if ($this->session->userdata('user_type') != 'incubatee') {
@@ -361,7 +361,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		(extract(Quarter FROM P2.start_date) = '" . $month . "')
 		GROUP BY P1.label, P2.Field,
 		extract(Quarter from P2.start_date)) as PG ON (PM.id = PG.field) WHERE PM.period = 3 and PM.type='activity'
-		and PM.criteria = '" . $criteria . "' and  PM.id IN(" . implode(', ', $checklist) . ")";
+		and PM.criteria = '" . $criteria . "' and  PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
 
             foreach ($result->result_array() as $row) {
@@ -374,7 +374,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
                         ON (PG.field = PM.id) WHERE
 						PG.date_type = 3 AND (extract(Year FROM PG.start_date) in (0,  " . $year . ")) AND
 						(PG.innovation in (0,'" . $innovation . "')) AND (extract(month FROM PG.start_date) in (0, " . $month . "))
-						AND PM.type = 'metrices' AND PM.id IN(" . implode(', ', $checklist) . ")";
+						AND PM.type = 'metrices' AND PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $value = $this->db->query($buildqry);
             foreach ($value->result_array() as $rows) {
                 $temp = $rows['label'];
@@ -392,7 +392,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		as month from progress_master as P1 JOIN progress as P2 ON (P1.id = P2.field) WHERE P2.date_type= 3 AND
 		(extract(Year FROM P2.start_date) = " . $year . ") AND  P2.innovation ='" . $innovation . "' AND
 		(extract(Quarter FROM P2.start_date) = " . $month . " )GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG
-		ON (PM.id = PG.field) WHERE PM.period = 3 and  PM.subcategory = '" . $subcategory . "' and PM.id IN(" . implode(', ', $checklist) . ")";
+		ON (PM.id = PG.field) WHERE PM.period = 3 and  PM.subcategory = '" . $subcategory . "' and PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             $listvalue = $result->result_array();
             for ($i = 0; $i < count($listvalue); $i++) {
@@ -412,7 +412,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $fieldvalues = array();
-        $checklist = (count($checklist) == 0) ? array('NULL') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('NULL') : $checklist;
         $field_name = 'answer';
         if ($type == 'activity') {
             if ($this->session->userdata('user_type') != 'incubatee') {
@@ -427,7 +427,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		WHERE P2.date_type= 4 AND (extract(Year FROM P2.start_date) = " . $year . ") AND
 		(P2.innovation in (0,'" . $innovation . "')) GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG
 		ON (PM.id = PG.field) WHERE PM.period = 4 and PM.type='activity' and PM.criteria = '" . $criteria . "' and
-		PM.id IN(" . implode(', ', $checklist) . ")";
+		PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             foreach ($result->result_array() as $row) {
                 $data[] = $row;
@@ -438,7 +438,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
                         ON (PG.field = PM.id) WHERE
 						PG.date_type = 4 AND (extract(Year FROM PG.start_date) in (0,  " . $year . "))
 						AND  (PG.innovation in (0,'" . $innovation . "'))
-						AND PM.type = 'metrices' AND PM.id IN(" . implode(', ', $checklist) . ")";
+						AND PM.type = 'metrices' AND PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $value = $this->db->query($buildqry);
             foreach ($value->result_array() as $rows) {
                 $temp = $rows['label'];
@@ -455,7 +455,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
 		LEFT JOIN (SELECT P1.label, P2.answer as answer, P2.Field, extract(month from P2.start_date) as month from progress_master as P1
 		JOIN progress as P2 ON (P1.id = P2.field) WHERE P2.date_type= 4 AND (extract(Year FROM P2.start_date) = " . $year . ") AND
 		P2.innovation ='" . $innovation . "' GROUP BY P1.label, P2.Field, extract(Quarter from P2.start_date)) as PG ON (PM.id = PG.field) WHERE PM.period = 4 and  PM.subcategory = '" . $subcategory . "'
-		and PM.id IN(" . implode(', ', $checklist) . ")";
+		and PM.id IN(" . php72_implode(', ', $checklist) . ")";
             $result = $this->db->query($query);
             $listvalue = $result->result_array();
             for ($i = 0; $i < count($listvalue); $i++) {
@@ -479,7 +479,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
         for ($i = 0; $i < strlen($value); $i++) {
             if (stristr($splitstring, $value[$i]) == true) {
                 'operand = ' . $operand . ', ';
-                if (array_key_exists($operand, $fieldvalues)) {
+                if (php72_array_key_exists($operand, $fieldvalues)) {
                     $toadd = $fieldvalues[$operand];
                 } else {
                     $toadd = $operand;
@@ -496,7 +496,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
         }
 
         if ($operand != '') {
-            if (array_key_exists($operand, $fieldvalues)) {
+            if (php72_array_key_exists($operand, $fieldvalues)) {
                 $toadd = $fieldvalues[$operand];
             } else {
                 $toadd = $operand;
@@ -600,7 +600,7 @@ WHERE t1.type = '" . $type . "' AND t1.period = '" . $frequency . "' AND t1.crit
     {
         $data = array();
         $this->db->select("PM.id,PM.label,PM.criteria,(select master_name from master_settings where id=PM.criteria) as master_name");
-        $checklist = (count($checklist) == 0) ? array('') : $checklist;
+        $checklist = (php72_count($checklist) == 0) ? array('') : $checklist;
         $this->db->where_in('PM.id', $checklist);
         $this->db->where('PM.type', 'metrices');
         $this->db->where('criteria', '102');

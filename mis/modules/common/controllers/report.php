@@ -23,7 +23,7 @@ class report extends CI_Controller
             $innovation = array();
             $this->load->model('scouting/Mincharge');
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-            $options['associate'] = (count($innovation)) ? $innovation : array();
+            $options['associate'] = (php72_count($innovation)) ? $innovation : array();
         }
 
         $options['num'] = '15';
@@ -56,7 +56,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -275,12 +275,12 @@ class report extends CI_Controller
         $total_deals = $this->Minnovation_reports->getLimitReportRecords($optiontotal);
 
         #pagination Ends
-        $data['direct_Application'] = count($innovationList);
-        $data['identified_by'] = count($identified_by);
-        $data['followups'] = count($followups);
-        $data['decision_pending'] = count($decision_pending);
-        $data['entry_closed'] = count($entry_closed);
-        $data['total_deals'] = count($total_deals);
+        $data['direct_Application'] = php72_count($innovationList);
+        $data['identified_by'] = php72_count($identified_by);
+        $data['followups'] = php72_count($followups);
+        $data['decision_pending'] = php72_count($decision_pending);
+        $data['entry_closed'] = php72_count($entry_closed);
+        $data['total_deals'] = php72_count($total_deals);
         $data['sourceTypeList'] = $this->Mmaster_settings->getMasterSetting('Source Type');
         $data['reportsList'] = $this->Mreports->getReportsByType('innovation_report');
         $this->load->model('login/Muser');
@@ -360,7 +360,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -440,7 +440,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -521,7 +521,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -600,7 +600,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -680,7 +680,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];
@@ -760,7 +760,7 @@ class report extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Minnovation_reports->getLimitReportRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 foreach ($reportData as $r):
                     $r['stage'] = $data['stage'][$r['stage']];
                     $r['status'] = $data['status'][$r['status']];

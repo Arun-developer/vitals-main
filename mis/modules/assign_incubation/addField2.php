@@ -17,7 +17,7 @@
 		});
 		});
 
-		<?php if (count($screeningDetails) == 0) {?>
+		<?php if (php72_count($screeningDetails) == 0) {?>
 			var arow = $('.cloneBudget').clone().removeClass('cloneBudget').addClass('odd');
 			$('#milestoneTable').append(arow);
 			ordering('sNo');
@@ -76,7 +76,7 @@ $formAction = site_url('assign_incubation/form2');
 $id = '';
 $val = array();
 
-if (count($screeningDetails)) {
+if (php72_count($screeningDetails)) {
     $val = $screeningDetails['0'];
     $formAction = site_url('assign_incubation/form2/' . $val['id']);
     $id = $val['id'];
@@ -146,7 +146,7 @@ $inputArray = array('Text', 'Textarea', 'Listbox', 'Radio', 'Checkbox', 'File', 
 	 <input type="hidden" name="innovation[]" value="<?=$innovation?>"/>
 		<select name="mastertype[]"  id="sel_mastertype" onchange="change(this);">
 				<option value="">Select</option>
-				    <?php $countCriteria = count($mastertype);
+				    <?php $countCriteria = php72_count($mastertype);
 foreach ($mastertype as $mymastertype) {
     ?>
 				<option value="<?=$mymastertype['master_type'];?>" <?=($mymastertype['master_type'] == $mymastertype['master_type']) ? 'selected' : '';?> ><?php echo $mymastertype['master_type']; ?></option>

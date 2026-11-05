@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_array($result)) {
 
     $query1 = mysqli_query($sql1);
     $query2 = mysqli_query($sql2);
-    $sql_merge = array_merge($query1, $query2);
+    $sql_merge = php72_array_merge($query1, $query2);
     print_r($sql_merge);
     die;
 

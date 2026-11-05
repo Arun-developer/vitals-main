@@ -52,7 +52,7 @@ class Msfactivities extends CI_Model
     public function inserAmount( $options = array())
     {
 
-        for ($i = 0; $i < count($options['installment_id']); $i++) {
+        for ($i = 0; $i < php72_count($options['installment_id']); $i++) {
             if ($this->checkDuplicateAmount( $options['milestone'], $options['installment_id'])) {
                 $data = array(
                     'goal' => $options['goal'],

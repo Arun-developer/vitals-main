@@ -65,7 +65,7 @@ class Source extends CI_Controller
             $options['num'] = '';
             $options['offset'] = '';
             $reportData = $this->Msource->getLimitRecords($options);
-            if (count($reportData)) {
+            if (php72_count($reportData)) {
                 $this->Mexport->export($reportData, $options['export']);
             } else {
                 $data['errorMsg'] = "No Matched records found!";
@@ -119,7 +119,7 @@ class Source extends CI_Controller
         $data['sourceDetails'] = array();
         if ($id != '') {
             $data['sourceDetails'] = $this->Msource->getSourceDetails($id);
-            if (count($data['sourceDetails']) == 0) {
+            if (php72_count($data['sourceDetails']) == 0) {
                 redirect('master/source/sourceform');
             }
 
@@ -222,7 +222,7 @@ class Source extends CI_Controller
         echo '<option value="">-Select-</option>';
         if ($sourceType != '') {
             $sourceList = $this->Msource->getSourceCombo($sourceType);
-            if (count($sourceList)) {
+            if (php72_count($sourceList)) {
                 foreach ($sourceList as $row):
                 ?>
 					<option value="<?=$row['id']?>" <?=($sourceSelect == $row['id']) ? 'selected' : '';?>><?=$row['source_name']?></option>

@@ -32,7 +32,7 @@ $this->jquery->fancybox();
     </thead>
 	<tbody>
 	<?php
-	if(count($investerList))
+	if(php72_count($investerList))
 	{    
 		$r=1;
 		foreach($investerList as $row)

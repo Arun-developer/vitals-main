@@ -250,7 +250,7 @@ class Mprogress_master extends CI_Model
             'class' => $options['class'],
             'subcategory' => $options['subcategory'],
             'type' => 'metrices',
-            'value' => serialize(array_filter($options['value'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'order' => $this->getOrderCount($options['criteria'], 'main') + 1);
 		#echo'<pre>';print_r($data);die;
         $result = $this->db->insert('progress_master', $data);
@@ -287,7 +287,7 @@ class Mprogress_master extends CI_Model
             'info' => $options['info'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
         $this->db->where('id', $options['id']);
         $result = $this->db->update('progress_master', $data);
         return $result;
@@ -301,7 +301,7 @@ class Mprogress_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])),
+            'value' => serialize(php72_array_filter($options['value'])),
             'order' => $this->getOrderCount($options['pid'], 'sub') + 1);
         $result = $this->db->insert('progress_master', $data);
         return $result;
@@ -314,7 +314,7 @@ class Mprogress_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
         $this->db->where('id', $options['id']);
         $result = $this->db->update('progress_master', $data);
         return $result;
@@ -335,7 +335,7 @@ class Mprogress_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 			#echo'<pre>';print_r($data);die;
         $result = $this->db->insert('progress_master', $data);
 
@@ -350,7 +350,7 @@ class Mprogress_master extends CI_Model
             'input_type' => $options['input_type'],
             'required' => $options['required'],
             'class' => $options['class'],
-            'value' => serialize(array_filter($options['value'])));
+            'value' => serialize(php72_array_filter($options['value'])));
 			
         $this->db->where('id', $options['id']);
         $result = $this->db->update('progress_master', $data);

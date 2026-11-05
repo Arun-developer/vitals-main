@@ -51,7 +51,7 @@ class Job extends CI_Controller {
         $totalrows = $this->Mjob->getDTJobCount($search_field, $search_value, $columns, $requestData);
         $query = $this->Mjob->getDTJobDetails($requestData['length'], $requestData['start'], $search_field, $search_value, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -106,7 +106,7 @@ class Job extends CI_Controller {
 
     public function deleteDetail() {
         $id = $this->input->post('id');
-        $condition = "'" . implode("', '", $id) . "'";
+        $condition = "'" . php72_implode("', '", $id) . "'";
         $table = $_POST['table'];
         $query = $this->Mjob->deleteJobDetail($table, $condition);
 
@@ -169,7 +169,7 @@ class Job extends CI_Controller {
         $data['specification_id'] = $_POST['specific_id'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_designation', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_designation', $data, $option);
         }
@@ -210,7 +210,7 @@ class Job extends CI_Controller {
         $totalrows = $this->Mjob->getDTJobLocationCount($search_field, $search_value, $columns, $requestData);
         $query = $this->Mjob->getDTJobLocationDetails($requestData['length'], $requestData['start'], $search_field, $search_value, $columns, $requestData);
         $totalFiltered = $totalrows;
-        $totalData = count($query);
+        $totalData = php72_count($query);
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
@@ -292,7 +292,7 @@ class Job extends CI_Controller {
         $data['comments'] = $_POST['loc_comments'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_job_location', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_job_location', $data, $option);
         }

@@ -114,7 +114,7 @@
                                             </div>
                                         </div>
                                         <?php
-                                        if (count($login) > 0) {
+                                        if (php72_count($login) > 0) {
                                             $pwrd = '******';
                                         } else {
                                             $pwrd = '';
@@ -526,7 +526,7 @@
 </div>
 </div>
 
-<input type="hidden" id="login_data" value="<?= count($login); ?>">
+<input type="hidden" id="login_data" value="<?= php72_count($login); ?>">
 <?php $this->load->view('vitals_footer.php', array('multi_select' => 'multiselect')); ?>
 
 <script type="text/javascript">

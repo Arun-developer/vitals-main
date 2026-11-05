@@ -28,7 +28,7 @@ if($this->session->userdata('user_type') != 'incubatee')
     </thead>
     <tbody id="activitiesTable">
         <?php 
-	if(count($approvalnoteList))
+	if(php72_count($approvalnoteList))
 	{    
 			foreach($approvalnoteList as $row) {
 			?>
@@ -107,7 +107,7 @@ if($this->session->userdata('user_type') != 'incubatee')
     </thead>
     <tbody id="activitiesTable">
         <?php 
-	if(count($approvalnoteList))
+	if(php72_count($approvalnoteList))
 	{    
 			foreach($approvalnoteList as $row):
 					if($row["internal_note"] == 'sent') //finance_status
@@ -160,7 +160,7 @@ if($this->session->userdata('user_type') != 'incubatee')
     </thead>
     <tbody id="activitiesTable">
         <?php 
-	if(count($fundUtilizationList))
+	if(php72_count($fundUtilizationList))
 	{    
 			foreach($fundUtilizationList as $fu){
 			?>

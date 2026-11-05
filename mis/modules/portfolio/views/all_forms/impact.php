@@ -316,7 +316,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 <tbody>
                                                                     <?php
 																	
-                                                                    if (count($metric_plan) > 0) {
+                                                                    if (php72_count($metric_plan) > 0) {
                                                                         $j = 1;
                                                                         foreach ($metric_plan as $metric) {
 																			
@@ -433,8 +433,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 </div>
 
-<input type="hidden" id="enableCount" value="<?= count($impact_plan); ?>">
-<input type="hidden" id="metEnableCount" value="<?= count($metric_count); ?>" />
+<input type="hidden" id="enableCount" value="<?= php72_count($impact_plan); ?>">
+<input type="hidden" id="metEnableCount" value="<?= php72_count($metric_count); ?>" />
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

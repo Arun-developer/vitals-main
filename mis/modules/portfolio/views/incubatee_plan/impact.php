@@ -1043,8 +1043,8 @@ $field_enable = '0';
 														
                                                         <tbody id="metric_add">
                                                             <?php //echo'<pre>';print_r($metric_value);die;
-                                                            if (count($metric_value) > 0) {
-                                                                $metric_count = count($metric_value);
+                                                            if (php72_count($metric_value) > 0) {
+                                                                $metric_count = php72_count($metric_value);
                                                             } else {
                                                                 $metric_count = 1;
                                                             }
@@ -1132,7 +1132,7 @@ $field_enable = '0';
                                                                     </td>
                                                                     <td>
                                                                         <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
-                                                                            <?php if (count($metric_value) > 0) { ?>
+                                                                            <?php if (php72_count($metric_value) > 0) { ?>
                                                                                 <a class="deleteMetric" title="Delete Metric" onclick="deleteMetric(<?= $metric_value[$i]['id']; ?>);" href="javascript:void(0)"><i class="fas fa-trash"></i></a>
                                                                                 <?php
                                                                             }
@@ -1181,13 +1181,13 @@ $field_enable = '0';
                                                     </div>
 
                                                     <?php
-                                                    if (count($end_male) > 0) {
+                                                    if (php72_count($end_male) > 0) {
                                                         $imp_enable = 1;
                                                     } else {
                                                         $imp_enable = 0;
                                                     }
 
-                                                    if (count($metric_value) > 0) {
+                                                    if (php72_count($metric_value) > 0) {
                                                         $met_enable = 1;
                                                     } else {
                                                         $met_enable = 0;

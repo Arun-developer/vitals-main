@@ -38,7 +38,7 @@
                                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                                         <?php
                                                         $quota_list = array();
-                                                        if (count($leave_quotas) > 0) {
+                                                        if (php72_count($leave_quotas) > 0) {
 
                                                             foreach ($leave_quotas as $quotas) {
                                                                 if ($quotas['no_restrictions'] == 1) {
@@ -64,7 +64,7 @@
                                                                         <option value="<?= $qlist; ?>"><?= $qval; ?></option>
                                                                         <?php
                                                                     }
-                                                                     if(count($leave_quotaswfh)>0){
+                                                                     if(php72_count($leave_quotaswfh)>0){
                                                                         ?>
                                                                          <option value="<?= $leave_quotaswfh[0]['leave_type_id']; ?>"><?= $leave_quotaswfh[0]['leave_type_name']; ?></option>
 
@@ -73,7 +73,7 @@
                                                                      }
                                                                   } else {
 
-                                                                         if(count($leave_quotaswfh)>0){
+                                                                         if(php72_count($leave_quotaswfh)>0){
                                                                         ?>
                                                                          <option value="<?= $leave_quotaswfh[0]['leave_type_id']; ?>"><?= $leave_quotaswfh[0]['leave_type_name']; ?></option>
 
@@ -139,7 +139,7 @@
                                                             <?php
 
 
-                                                            if (count($optional_leave_quotas) > 0) {
+                                                            if (php72_count($optional_leave_quotas) > 0) {
 
                                                             foreach ($optional_leave_quotas as $quotas) {
                                                             $dateconversion=$quotas['date'];

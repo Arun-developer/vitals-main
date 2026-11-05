@@ -125,9 +125,9 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 <tbody>
 
                                                                     <?php
-                                                                    if (count($tap_config) != 0) {
+                                                                    if (php72_count($tap_config) != 0) {
                                                                         $config = $tap_config[0];
-                                                                        $config_count = isset($config) ? count($tap_config) : 1;
+                                                                        $config_count = isset($config) ? php72_count($tap_config) : 1;
                                                                         $j = 1;
                                                                         for ($i = 0; $i < $config_count; $i++) {
                                                                             $get_achieve['port_tap_id'] = $tap_config[$i]['id'];
@@ -351,8 +351,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     <input type="hidden" id="deleteID" value="">
 </div>
 
-<input type="hidden" id="qualitCount" value="<?= count($qual_achieve); ?>">
-<input type="hidden" id="enableCount" value="<?= count($tap_plan); ?>">
+<input type="hidden" id="qualitCount" value="<?= php72_count($qual_achieve); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($tap_plan); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

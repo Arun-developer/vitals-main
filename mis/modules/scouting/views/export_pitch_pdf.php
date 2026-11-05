@@ -73,7 +73,7 @@
                 <?php
                 if ($pitch_user[0]['components'] != '') {
                 $get_components = unserialize($pitch_user[0]['components']);
-                $components = implode(', ', $get_components);
+                $components = php72_implode(', ', $get_components);
             } else {
             $components = '';
         }
@@ -85,7 +85,7 @@
         <?php
         if ($pitch_user[0]['beneficiary'] != '') {
         $get_beneficiary = unserialize($pitch_user[0]['beneficiary']);
-        $beneficiary = implode(', ', $get_beneficiary);
+        $beneficiary = php72_implode(', ', $get_beneficiary);
     } else {
     $beneficiary = '';
 }

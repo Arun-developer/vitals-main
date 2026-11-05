@@ -154,7 +154,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
                                     </tr>
                                 </thead>
                                 <tbody>
-									<?php if (count($get_travel_personal_details) > 0) {
+									<?php if (php72_count($get_travel_personal_details) > 0) {
 											foreach ($get_travel_personal_details as $dataList) {
 										?>
 										 <tr role="row" class="odd row_cls_0">
@@ -448,7 +448,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
 											</tr>
 										</thead>
 										<tbody>
-											<?php if (count($get_travel_flight_details) > 0) {
+											<?php if (php72_count($get_travel_flight_details) > 0) {
 										    foreach($get_travel_flight_details as $dataList){ ?>
 												<tr role="row" class="odd row_cls_0">
 												<td class="sorting_1" tabindex="0">
@@ -556,7 +556,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
                                     </tr>
                                 </thead>
                                 <tbody>
-								<?php if (count($get_travel_train_details) > 0) {
+								<?php if (php72_count($get_travel_train_details) > 0) {
 										foreach($get_travel_train_details as $dataList){ ?>
 										
 										<tr role="row" class="odd row_cls_0">
@@ -639,7 +639,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
 								<?php } ?>
 						<div id="bus_details_div">
 						
-						<?php if (count($get_travel_bus_details) > 0) { ?>
+						<?php if (php72_count($get_travel_bus_details) > 0) { ?>
 						
 						
 						<div class="table_configcontentnew pad-bt0">
@@ -665,7 +665,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
 							
 						<?php } ?>
 						
-						<?php if (count($get_travel_bus_details) > 0) { ?>
+						<?php if (php72_count($get_travel_bus_details) > 0) { ?>
 						<div class=" table_configcontentnew quatermetric_forma" id="quatermetric_forma">
                             <table id="travel_request_bus_form" class="table table-hover dt-responsive">
                                 <thead>
@@ -680,7 +680,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
                                     </tr>
                                 </thead>
                                 <tbody>
-								<?php if (count($get_travel_bus_details) > 0) {
+								<?php if (php72_count($get_travel_bus_details) > 0) {
 										foreach($get_travel_bus_details as $dataList){ ?>
 										
 										<tr role="row" class="odd row_cls_0">

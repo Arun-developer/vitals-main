@@ -52,7 +52,7 @@ class Traveladmin extends CI_Controller {
 		#error_reporting(-1);
 		$requestListInfo = $this->Mtravel->getTravelRequestDetails($requestId);
         $data['requestListInfo'] = $requestListInfo;
-		if((in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId')) && $requestListInfo['0']['status'] == 'pending' ) || $this->session->userdata('isAdmin') == "Yes" || $this->session->userdata('user') == $requestListInfo['0']['employee_id']){
+		if((php72_in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId')) && $requestListInfo['0']['status'] == 'pending' ) || $this->session->userdata('isAdmin') == "Yes" || $this->session->userdata('user') == $requestListInfo['0']['employee_id']){
 			$data['costCentreList'] = $this->mcommon->getMasterSetting('Cost Centre');
             $data['donorList'] = $this->mcommon->getMasterSetting('Donor');
             $data['budgetHeadList'] = $this->mcommon->getMasterSetting('Budget Head');
@@ -136,10 +136,10 @@ class Traveladmin extends CI_Controller {
         $where = implode(" and ", $searchArray);
 		
 		$approvalNotesList = $this->Mtravel->getarchiveTravelrequest($from, $to, $limit, $start, $where, 'Show All');
-		$getLimit_count = count($approvalNotesList); 
+		$getLimit_count = php72_count($approvalNotesList); 
 		
 		$All_approvalNotesList = $this->Mtravel->getarchiveTravelrequest($from, $to, $limit, $start, $where, 'Show All');
-		$getAll_count = count($All_approvalNotesList);
+		$getAll_count = php72_count($All_approvalNotesList);
 		
         foreach ($approvalNotesList as $lists) {
             #echo'<pre>';print_r($lists['programme_name']);die;
@@ -213,7 +213,7 @@ class Traveladmin extends CI_Controller {
         $columnArr = array('travel_booking.travel_request_id', 'travel_booking.master_name', '', '', '', 'travel_booking.journey_type', 'travel_booking.reporting_approval', 'travel_booking.status');
 		
 		$data['form_name'] = "master_search";
-        $subUsers = implode("','",  $this->Mtravel->reportingUser('subUser', 'userId'));
+        $subUsers = php72_implode("','",  $this->Mtravel->reportingUser('subUser', 'userId'));
         $searchArray = array();
         $searchArray[] = "travel_booking.employee_id IN ('" . $subUsers . "')";
         switch ($currentTab) {
@@ -249,10 +249,10 @@ class Traveladmin extends CI_Controller {
         $where = implode(" and ", $searchArray);
 
         $travel_requestLists = $this->Mmasters->getLimitTravelRequest($where, $limit, $start, $sort_column, $columnSortOrder,  'show all');
-        $getLimit_count = count($travel_requestLists);
+        $getLimit_count = php72_count($travel_requestLists);
 		
 		$AllrequestLists = $this->Mmasters->getLimitTravelRequest($where,'','', $sort_column, $columnSortOrder,  'show all');
-		$getAll_count = count($AllrequestLists);
+		$getAll_count = php72_count($AllrequestLists);
 		
         #echo'<pre>';print_r($_POST);die;
         foreach ($travel_requestLists as $lists){
@@ -345,13 +345,13 @@ class Traveladmin extends CI_Controller {
             $searchArray[] = "partner_id ='" . $partner . "'";
         }
 
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 
         $travel_requestLists = $this->Mmasters->getLimitTravelRequest($where, $limit, $start, $sort_column, $columnSortOrder,'Show All', null);
-        $getLimit_count = count($travel_requestLists);
+        $getLimit_count = php72_count($travel_requestLists);
 
 		$travel_requestListsAll = $this->Mmasters->getLimitTravelRequest($where, null, null, $sort_column, $columnSortOrder,'Show All', null);
-        $getAll_count = count($travel_requestListsAll);
+        $getAll_count = php72_count($travel_requestListsAll);
 		#echo'<pre>';print_r($travel_requestLists);die;
 		$employee_name ='';
 		$donor_str = $budget_head_str = $cost_centre_str=  '';
@@ -456,10 +456,10 @@ class Traveladmin extends CI_Controller {
         if ($columnArr[$columnIndex] != '') {
             $sort_column = $columnArr[$columnIndex];
         }
-        $where = implode(" and ", $searchArray);
+        $where = php72_implode(" and ", $searchArray);
 		 $where =null;
         $travel_requestLists = $this->Mmasters->getLimitTravelReport($where, $limit, $start, $sort_column, $columnSortOrder, null, null);
-        $getLimit_count = count($travel_requestLists);
+        $getLimit_count = php72_count($travel_requestLists);
 
         #echo'<pre>';print_r($_POST);die;
 
@@ -582,7 +582,7 @@ class Traveladmin extends CI_Controller {
         $where = implode(" and ", $searchArray);
 		
 		$travel_reportLists = $this->Mtravel->getLimitTravelReport($where, $limit, $start, $sort_column, $columnSortOrder, 'Show All');
-		$getLimit_count = count($travel_reportLists);
+		$getLimit_count = php72_count($travel_reportLists);
 		
 		#echo $where;die;
 		//TB.status = 'confirmed' and TB.reporting_approval = 'confirmed' and MONTH(TJ.date_of_travel) ='03' and YEAR(TJ.date_of_travel) ='2021'
@@ -592,7 +592,7 @@ class Traveladmin extends CI_Controller {
 		#$where = "TB.status = 'confirmed' and TB.reporting_approval = 'confirmed' and MONTH(TJ.date_of_travel) >='1' and YEAR(TJ.date_of_travel) >='2020'";
 		#echo '<pre>';print_r($travel_reportLists);die;
 		$travel_reportLists_count = $this->Mtravel->getLimitTravelReport_count($where, NULL, NULL, $sort_column, $columnSortOrder, 'Show All');
-		$getAll_count = count($travel_reportLists_count);
+		$getAll_count = php72_count($travel_reportLists_count);
 		
 		
 		#error_reporting(-1);
@@ -735,7 +735,7 @@ class Traveladmin extends CI_Controller {
 				
             }
         } $attach = array();
-        foreach (array_filter($mailContant['ticket']) as $key => $value) {
+        foreach (php72_array_filter($mailContant['ticket']) as $key => $value) {
             $attach[] = "uploads/tickets/" . $value;
         }
         $toEmail[] = $mailContant['reportAuthEmail'];
@@ -783,7 +783,7 @@ class Traveladmin extends CI_Controller {
         $getApproval_Details = $this->Common_model->get_all_details('approval_note', array(), array(), $limit, $start, $orderby, true, 'ais');
         $text = "APN/";
 
-        if (count($getApproval_Details))
+        if (php72_count($getApproval_Details))
             $id = str_pad((int) $getApproval_Details[0]->approval_id + 1, 4, "0", STR_PAD_LEFT);
         else
             $id = '0001';
@@ -858,7 +858,7 @@ class Traveladmin extends CI_Controller {
 
         $option = '<option value="">--Select--</option>';
         foreach ($donor_lists as $rows) {
-            if (in_array($rows['master_id'], $donors)) {
+            if (php72_in_array($rows['master_id'], $donors)) {
                 $option .= '<option value="' . $rows['master_id'] . '" name="a">' . $rows['master_name'] . '</option>';
             }
         }
@@ -1010,7 +1010,7 @@ class Traveladmin extends CI_Controller {
         $this->load->model('Mlibrary');
         $returnArr = '0';
         $chechDup = $this->Mlibrary->checkRequest($bookId, $this->session->userdata("user"));
-        if (count($chechDup) == 0) {
+        if (php72_count($chechDup) == 0) {
             /* $returnArr ='1';
               $requestId = $this->Mlibrary->bookRequestForm($bookId, $this->session->userdata("user"));
               $mailContant = $this->Mlibrary->libraryMailContant($requestId);
@@ -1062,7 +1062,7 @@ class Traveladmin extends CI_Controller {
         #error_reporting(-1);
         #echo '<pre>';print_r($	);die;
         if (!empty($_REQUEST)) {
-            $count = count($_REQUEST["donor"]);
+            $count = php72_count($_REQUEST["donor"]);
             $return = array();
             for ($i = 0; $i < $count; $i++) {
                 if ($_REQUEST["donor"][$i] != "" && $_REQUEST["budgethead"][$i] != "" && $_REQUEST["lineitem"][$i] != "") {
@@ -1120,7 +1120,7 @@ class Traveladmin extends CI_Controller {
 
     function PreCheckExist($data) {
         $r = array();
-        $c = count($data["donor"]);
+        $c = php72_count($data["donor"]);
         $id = $data['id']; //echo $id;exit;
         for ($i = 0; $i < $c; $i++) {
             $r[$i]["donor"] = $data["donor"][$i];
@@ -1142,7 +1142,7 @@ class Traveladmin extends CI_Controller {
     }
 
     function CheckExist($data, $d, $b, $l) {
-        $c = count($data);
+        $c = php72_count($data);
         $return = 0;
         if ($c > 0) {
             for ($i = 0; $i < $c; $i++) {
@@ -1282,7 +1282,7 @@ class Traveladmin extends CI_Controller {
 	
 	function auth_cancel($requestId, $currentTab) {
         $requestListInfo = $this->Mtravel->getTravelRequestDetails($requestId);
-        if (in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId'))) {
+        if (php72_in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId'))) {
             $result = $this->Mtravel->reportingAuthorityAction($requestId, 'cancelled');
             #$this->travelCancelMailReport($requestId);
             $this->session->set_flashdata('successMsg', 'Employee Request Cancelled!');
@@ -1294,7 +1294,7 @@ class Traveladmin extends CI_Controller {
     }
 	function roaction($requestId, $option) {
         $requestListInfo = $this->Mtravel->getTravelRequestDetails($requestId);
-        if (in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId')) && $requestListInfo['0']['status'] == 'pending') {
+        if (php72_in_array($requestListInfo['0']['employee_id'], $this->Mtravel->reportingUser('subUser', 'userId')) && $requestListInfo['0']['status'] == 'pending') {
             $result = $this->Mtravel->deferedAction($requestId, $option);
             $this->Mtravel->insertdeferedcomments($requestId, $_POST['comments_RO'], $_POST['from_employee']);
             redirect('traveladmin/requestlistreport');
@@ -1749,7 +1749,7 @@ class Traveladmin extends CI_Controller {
 			}
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
 			if(!empty($financeUserId)){
-				if(in_array($user_id, $financeUserId)){
+				if(php72_in_array($user_id, $financeUserId)){
 					$data['user_status'] ='2';
 				}
 			}
@@ -1777,8 +1777,8 @@ class Traveladmin extends CI_Controller {
 		$query = $this->Mtravel->getTravelRequestData($user_id,$date_from,$date_to,$requestData['length'], $requestData['start']);
 		
 		//$this->db->limit($num, $offset);
-		$totalData = count($query);
-		$totalFiltered =  count($getTotalCont);// Add this to avoid "undefined variable" notice
+		$totalData = php72_count($query);
+		$totalFiltered =  php72_count($getTotalCont);// Add this to avoid "undefined variable" notice
 
 		$requestData = $_POST;
 		$data = []; // Initialize $data
@@ -2628,7 +2628,7 @@ class Traveladmin extends CI_Controller {
         $messageSubject = $mailTemplate['0']['messagesubject'];
         #$messageBody = $mailTemplate['0']['messagebody'];
 		$messageBody = str_replace($org, $replace, $mailTemplate['0']['messagebody']);
-		$toEmail = array_values($to);
+		$toEmail = php72_array_values($to);
 		
 		#echo'<pre>';print_r($toEmail);die;
 		

@@ -12,7 +12,7 @@
                         <h4><?= $innovation['name_of_enterprise']; ?></h4>
                     </div>
                 </div>
-                <?php if (in_array($this->session->userdata('emp_number'), $assigned_incharge)) { ?>
+                <?php if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge)) { ?>
                     <div class="display-hide" id="navLoad">
                         <div class="newCLickTabs">
                             <div>
@@ -30,7 +30,7 @@
                             <div class="col-12 col-lg-12 col-md-12 vitalMasterDataTbl">
                                 <?php
 								$innovationID = $innovation['id'];
-                                if (in_array($this->session->userdata('emp_number'), $active_incharge) && $inno_status != '3' && $inno_status != '9' && $inno_status != '7') {
+                                if (php72_in_array($this->session->userdata('emp_number'), $active_incharge) && $inno_status != '3' && $inno_status != '9' && $inno_status != '7') {
                                     $readonly1 = '';
                                     $disabled1 = '';
                                     $display1 = '';
@@ -90,10 +90,10 @@
                                                 $check_pard_user = $this->Massessment->getInactivePARDuser($innovationID, $assigned_incharge);
                                                 foreach ($check_pard_user as $active_user) {
                                                     array_push($final_assigned_incharge, $active_user['associate_employee']);
-                                                    unset($temp_assigned_incharge[array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
+                                                    unset($temp_assigned_incharge[php72_array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
                                                 }
 
-                                                if (count($temp_assigned_incharge) > 0) {
+                                                if (php72_count($temp_assigned_incharge) > 0) {
                                                     foreach ($temp_assigned_incharge as $active_user_id) {
                                                         $inactive_user_score = $this->Massessment->getInactiveUserScore($innovationID, $active_user_id);
                                                         array_push($final_assigned_incharge, $inactive_user_score[0]['assesst_by']);
@@ -200,9 +200,9 @@
                                                         $check_pard_user = $this->Massessment->getInactivePARDuser($innovationID, $assigned_incharge);
                                                         foreach ($check_pard_user as $active_user) {
                                                             array_push($final_assigned_incharge, $active_user['associate_employee']);
-                                                            unset($temp_assigned_incharge[array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
+                                                            unset($temp_assigned_incharge[php72_array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
                                                         }
-                                                        if (count($temp_assigned_incharge) > 0) {
+                                                        if (php72_count($temp_assigned_incharge) > 0) {
                                                             foreach ($temp_assigned_incharge as $active_user_id) {
                                                                 $inactive_user_score = $this->Massessment->getInactiveUserScore($innovationID, $active_user_id);
                                                                 array_push($final_assigned_incharge, $inactive_user_score[0]['assesst_by']);
@@ -233,7 +233,7 @@
                                                                 <?php
                                                             }
                                                         }
-                                                        $comment_count = count($comment);
+                                                        $comment_count = php72_count($comment);
                                                         $assigned_comment = '';
 
                                                         for ($l = 0; $l < $comment_count; $l++) {
@@ -363,9 +363,9 @@
                                                     $check_pard_user = $this->Massessment->getInactivePARDuser($innovationID, $assigned_incharge);
                                                     foreach ($check_pard_user as $active_user) {
                                                         array_push($final_assigned_incharge, $active_user['associate_employee']);
-                                                        unset($temp_assigned_incharge[array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
+                                                        unset($temp_assigned_incharge[php72_array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
                                                     }
-                                                    if (count($temp_assigned_incharge) > 0) {
+                                                    if (php72_count($temp_assigned_incharge) > 0) {
                                                         foreach ($temp_assigned_inchare as $active_user_id) {
                                                             $inactive_user_score = $this->Massessment->getInactiveUserScore($innovationID, $active_user_id);
                                                             array_push($final_assigned_incharge, $inactive_user_score[0]['assesst_by']);
@@ -430,9 +430,9 @@
                                                                 $check_pard_user = $this->Massessment->getInactivePARDuser($innovationID, $assigned_incharge);
                                                                 foreach ($check_pard_user as $active_user) {
                                                                     array_push($final_assigned_incharge, $active_user['associate_employee']);
-                                                                    unset($temp_assigned_incharge[array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
+                                                                    unset($temp_assigned_incharge[php72_array_search($active_user['associate_employee'], $temp_assigned_incharge)]);
                                                                 }
-                                                                if (count($temp_assigned_incharge) > 0) {
+                                                                if (php72_count($temp_assigned_incharge) > 0) {
                                                                     foreach ($temp_assigned_incharge as $active_user_id) {
                                                                         $inactive_user_score = $this->Massessment->getInactiveUserScore($innovationID, $active_user_id);
                                                                         array_push($final_assigned_incharge, $inactive_user_score[0]['assesst_by']);
@@ -564,8 +564,8 @@
                                                                         ?>
                                                                         <?php
                                                                         foreach ($donor_fit as $donor) {                                                                            
-                                                                            if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status != '3' && $inno_status != '9') {
-                                                                                $readonly_donor = (isset($feed_back[0]['donor_fit']) && in_array($donor['id'], $donors)) ? '' : $readonly_donor = 'readonly="readonly"';
+                                                                            if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status != '3' && $inno_status != '9') {
+                                                                                $readonly_donor = (isset($feed_back[0]['donor_fit']) && php72_in_array($donor['id'], $donors)) ? '' : $readonly_donor = 'readonly="readonly"';
                                                                             } else {
 																				if($innovationID!='285455'){
 																					$readonly_donor = 'readonly="readonly"';
@@ -574,7 +574,7 @@
                                                                             ?>
                                                                             <tr>
                                                                                 <td class="sorting_1">
-                                                                                    <input <?php echo $disabled1; ?> type="checkbox" id='donor_fit' name="donor_fit[]" value="<?php echo $donor['id']; ?>" class="form-control donor_fit" <?php echo (isset($feed_back[0]['donor_fit']) && in_array($donor['id'], $donors)) ? 'checked="checked"' : ''; ?>>
+                                                                                    <input <?php echo $disabled1; ?> type="checkbox" id='donor_fit' name="donor_fit[]" value="<?php echo $donor['id']; ?>" class="form-control donor_fit" <?php echo (isset($feed_back[0]['donor_fit']) && php72_in_array($donor['id'], $donors)) ? 'checked="checked"' : ''; ?>>
                                                                                 </td>
                                                                                 <td>
                                                                                     <?php echo $donor['name']; ?>
@@ -748,7 +748,7 @@
                                             ?>" />
                                             <?php
                                             $enable_iic = 0;
-                                            if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && $feed_back[0]['result'] == 'Accept') {
+                                            if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $feed_back[0]['result'] == 'Accept') {
                                                $enable_iic = 1;
                                                ?>
                                                <tr class="in-child">
@@ -804,14 +804,14 @@
 
                                        <?php
                                        $ext_style = "none";
-                                       if (in_array($this->session->userdata('emp_number'), $assigned_incharge) && $feed_back[0]['result'] == 'Accept' && $feed_back[0]['internal_status'] == 'Accept') {
+                                       if (php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $feed_back[0]['result'] == 'Accept' && $feed_back[0]['internal_status'] == 'Accept') {
                                         $ext_style = "row";
                                     }
                                     ?>
 
 
                                     <?php
-                                } else if ((!in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || $feed_back[0]['internal_status'] != '') {
+                                } else if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || $feed_back[0]['internal_status'] != '') {
                                     ?>
                                     <tr class="in-child">
                                         <td><strong>Internal IC Recommendation</strong></td>
@@ -838,7 +838,7 @@
                 </form>
                 <br>
                 <?php
-                if ((!in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
+                if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
 					if($innovationID!='285455'){
 						$display_none = 'style = "display:none"';
 					}

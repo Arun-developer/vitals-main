@@ -13,7 +13,7 @@ class Mdocuments extends CI_Model
 
     public function insert($options = array())
     {
-        for ($i = 0; $i < count($options['document']); $i++) {
+        for ($i = 0; $i < php72_count($options['document']); $i++) {
             $data = array('table' => $this->session->userdata('user_name'),
                 'field' => $options['field'],
                 'document' => $options['document'][$i],

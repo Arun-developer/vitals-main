@@ -13,7 +13,7 @@ $formAction = site_url('login/deals_mail');
 $id = '';
 $val = array();
 $action = 'Send';
-if (count($mailDetails)) {
+if (php72_count($mailDetails)) {
     $val = $mailDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;
@@ -32,7 +32,7 @@ if (isset($_POST['mail_type'])) {
     $partner_id = $this->session->userdata('partner_id');
     $mailContent = $this->Mmail->getMailContent($innovation['id'], $_POST['mail_type'], $partner_id);
 
-    if (count($mailContent)) {
+    if (php72_count($mailContent)) {
         $subject = $mailContent['subject'];
         $body = $mailContent['body'];
         $from = $mailContent['from'];
@@ -241,7 +241,7 @@ if (isset($_POST['mail_type'])) {
                                                             ?>
                                                             <option value="<?= $key; ?>"
                                                                 <?php
-                                                                if (in_array($key, $status_array_post)) {
+                                                                if (php72_in_array($key, $status_array_post)) {
                                                                     echo 'selected';
                                                                 }
                                                                 ?>><?= $value; ?>

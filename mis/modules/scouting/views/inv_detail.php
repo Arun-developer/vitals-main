@@ -505,7 +505,7 @@ foreach ($inv_user as $row) {
                     <td>Who will be the beneficiaries of your product / service?</td>
                     <td><?php
                         $benificary = unserialize($row['benificiary']);
-                        echo implode(', ', $benificary);
+                        echo php72_implode(', ', $benificary);
                         ?></td>
                 </tr>
 
@@ -519,7 +519,7 @@ foreach ($inv_user as $row) {
                     <td colspan="2"><a href="#bottom" id="inv_info" style="color:#719e41;">** Additional Information</a>
                         <?php if ($row['ent_sector'] != "MCH" && $row['ent_sector'] != "Maternal & child health") { ?>
                             <table id="inv_add_info" class="gtable " width="100%">
-                                <?php if (count($inv_team) > 0) { ?>
+                                <?php if (php72_count($inv_team) > 0) { ?>
                                     <tr class="even">
                                         <td colspan="2" style="background-color:#FFF"></td>
                                     </tr>
@@ -601,7 +601,7 @@ foreach ($inv_user as $row) {
                         </tr>
                         <?php
                         $hear_abt = explode(",", $add_info[0]['hear_abt']);
-                        if (in_array('Referral', $hear_abt) || in_array('Past incubatee', $hear_abt) || in_array('Villgro staff', $hear_abt)) {
+                        if (php72_in_array('Referral', $hear_abt) || php72_in_array('Past incubatee', $hear_abt) || php72_in_array('Villgro staff', $hear_abt)) {
                             ?>
                             <tr class="odd">
                                 <td>Name</td>
@@ -795,7 +795,7 @@ foreach ($inv_user as $row) {
                         </tr>
                         <?php
                         $hear_abt = explode(",", $add_info[0]['hear_abt']);
-                        if (in_array('Referral', $hear_abt) || in_array('Past incubatee', $hear_abt) || in_array('Villgro staff', $hear_abt)) {
+                        if (php72_in_array('Referral', $hear_abt) || php72_in_array('Past incubatee', $hear_abt) || php72_in_array('Villgro staff', $hear_abt)) {
                             ?>
                             <tr class="even">
                                 <td>Name</td>

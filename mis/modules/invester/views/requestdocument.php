@@ -18,7 +18,7 @@ $nullLink = "javascript:void(0);";
 			</thead>
 			<tbody>
 			<?php
-			if(count($document))
+			if(php72_count($document))
 			{    
 				$r=1;
 				foreach($document as $row)

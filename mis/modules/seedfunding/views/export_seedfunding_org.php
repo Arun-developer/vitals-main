@@ -31,7 +31,7 @@
         <tbody id="activitiesTable">
             <?php 
 		 ini_set('memory_limit', '-1');
-	if(count($activitiesList))
+	if(php72_count($activitiesList))
 	{    
 	$rowtype = $j & 1 ? '' : 'style="background-color:#C3FDB8;"';
 			foreach($activitiesList as $row):

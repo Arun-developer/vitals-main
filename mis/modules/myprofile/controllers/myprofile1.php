@@ -85,7 +85,7 @@ class Myprofile extends CI_Controller
     }
 
         public function add_supervisor() {
-        for ($i = 0; $i < count($_POST['supervisor_employee']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['supervisor_employee']); $i++) {
             if ($_POST['supervisor_employee'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['report_sup'][$i];
@@ -94,7 +94,7 @@ class Myprofile extends CI_Controller
                 $data['report_method'] = $_POST['supervisor_method'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_reporting', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_reporting', $data, $option);
                 } else {
@@ -114,7 +114,7 @@ class Myprofile extends CI_Controller
     }
 
     public function add_subordinate() {
-        for ($i = 0; $i < count($_POST['subordinate_employee']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['subordinate_employee']); $i++) {
             if ($_POST['subordinate_employee'][$i] != '') {
                 $data = array();
                 $option['id'] = $_POST['report_subor'][$i];
@@ -123,7 +123,7 @@ class Myprofile extends CI_Controller
                 $data['report_method'] = $_POST['subordinate_method'][$i];
 
                 $checkExist = $this->Mportfolio->getDetails('hr_user_reporting', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('hr_user_reporting', $data, $option);
                 } else {
@@ -237,7 +237,7 @@ class Myprofile extends CI_Controller
         $data['hobbies'] = $_POST['txt_hobbies'];
 
         $checkExist = $this->Mportfolio->getDetails('hr_user_profile', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $query = $this->Mportfolio->updatePortfolioDetail('hr_user_profile', $data, $option);
             $emp_id = $_POST['txt_empid'];
@@ -253,7 +253,7 @@ class Myprofile extends CI_Controller
             $emp_list = $this->Mleave->getEmployeedetail($emp_id);
             foreach ($emp_list as $elist) {
                 $check_leave_quota = $this->Mleave->getLeaveQuota($elist['employee_id'], date('Y'));
-                if (count($check_leave_quota) == 0) {
+                if (php72_count($check_leave_quota) == 0) {
                     foreach ($leavetypes as $leaves) {
                         $leavedetails['year'] = date('Y');
                         $leavedetails['leave_type_id'] = $leaves['leave_type_id'];

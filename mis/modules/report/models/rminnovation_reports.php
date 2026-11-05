@@ -100,7 +100,7 @@ public function _searchReport_All($options = array()) {
     $searchArray1 = array();
     $where = null;
     if (is_array($options['associate'])) {
-        $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+        $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
     }
 
     if (!empty($options['sector'])) {
@@ -357,7 +357,7 @@ public function _searchReport($options = array()) {
     $searchArray1 = array();
     $where = null;
     if (is_array($options['associate'])) {
-        $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+        $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
     }
 
     if (!empty($options['sector'])) {
@@ -657,7 +657,7 @@ public function getCountOnly($options = array()) {
     if (!empty($options['source']) || @$options['source'] == '0') {
         $this->db->where_in('source', $options['source']);
     } elseif (isset($options['source'])) {
-        $options['source'] = (count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
+        $options['source'] = (php72_count($options['source'])) ? $options['source'] : '4564065348593407589345734534587346584365783457';
         $this->db->where('source', $options['source']);
     }
 

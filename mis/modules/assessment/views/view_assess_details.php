@@ -26,10 +26,10 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
     $assessDetails = array();
     $this->load->model('Massessment');
 
-    if (count($criteria)) {
+    if (php72_count($criteria)) {
         foreach ($criteria as $cri):
             $assessDetails = $this->Massessment->getAssessDetails($innovation['id'], $cri['id']);
-            if (count($assessDetails) || count($criteria) == '1') {
+            if (php72_count($assessDetails) || php72_count($criteria) == '1') {
                 ?>
                 <h2><?php echo $innovation['name_of_enterprise'] . " - " . $cri['master_name']; ?></h2>
                 <ul class="comments">
@@ -45,7 +45,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     $source = $row['description'];
                                     $imgLink = '/S*src\s*=\s*[\""\']?([^\""\']*)/i';
                                     preg_match_all($imgLink, $source, $matches);
-                                    $matchVal = array_filter($matches);
+                                    $matchVal = php72_array_filter($matches);
                                     $count = count($matchVal);
                                     if ($count != 0) {
                                         $imageArray = $matchVal['1'];
@@ -85,7 +85,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                             </div>
                             <?php
                             $assessComments = $this->Massessment->getAssessComments($row['id']);
-                            if (count($assessComments)) {
+                            if (php72_count($assessComments)) {
                                 ?>
                                 <br />
                                 <div class="boxed menu" style="padding:0 10px 10px 10px; border-radius:0; background:#fff; box-shadow:2px 2px 0 #fff;">
@@ -118,7 +118,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                 </div>
                                 <?php
                             }
-                            $optionCount = (count($criteria) != 1) ? "/all" : '';
+                            $optionCount = (php72_count($criteria) != 1) ? "/all" : '';
                             ?>
                             <script type="text/javascript">
                                 $(document).ready(function () {
@@ -162,7 +162,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
     ?>
 
     <?php
-    if (!count($assessDetails) && count($criteria) == '1') {
+    if (!php72_count($assessDetails) && php72_count($criteria) == '1') {
         echo ' <p class="t-center">No Details</p>';
     }
     ?>

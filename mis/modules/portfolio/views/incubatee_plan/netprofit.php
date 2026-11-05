@@ -519,7 +519,7 @@ $field_enable = '0';
 <?php
 $data = $profit['data'];
 $obj = json_decode($data, true);
-if (!array_filter($obj)) {
+if (!php72_array_filter($obj)) {
     $enable = 0;
 } else {
     $enable = 1;

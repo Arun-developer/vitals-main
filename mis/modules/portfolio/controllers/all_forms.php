@@ -57,7 +57,7 @@ class All_forms extends CI_Controller {
 					$sectorArray = explode(',',$getMultisectorid);
 					$sector_ct = $this->Mportfolio->getSectorIn($sectorArray);
 					if(!empty($sector_ct)){
-						$getSectorArr = array_column($sector_ct,'sector');
+						$getSectorArr = php72_array_column($sector_ct,'sector');
 						if(!empty($getSectorArr)){
 							$data['sector_name'] =  implode(', ',$getSectorArr);
 						}
@@ -140,21 +140,21 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_updates', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_updates', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -171,11 +171,11 @@ class All_forms extends CI_Controller {
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         $data['milestone'] = $this->Mportfolio->getPlanDetails('port_project_milestone', $inv_id, '', '', '1', $limit);
 
         if ($month == '1' || $month == '2' || $month == '3') {
@@ -221,7 +221,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -241,7 +241,7 @@ class All_forms extends CI_Controller {
 
         $checkExist = $this->Mportfolio->getDetails('plan_updates', $option);
 		#echo'<pre>';print_r($option);die;
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_updates', $data, $option);
@@ -300,21 +300,21 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_qualitative_data', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -329,12 +329,12 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
 
         $plan['module_id'] = $qual_option['module_id'] = 1;
         $data['product_qualitative'] = $this->Mportfolio->getPlanDetails('plan_qualitative_data', $plan, '', $f_year, '3');
@@ -350,7 +350,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -361,7 +361,7 @@ class All_forms extends CI_Controller {
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
 
         $checkExist = $this->Mportfolio->getDetails('plan_qualitative_data', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_qualitative_data', $data, $option);
@@ -398,21 +398,21 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_sales', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_sales', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -427,12 +427,12 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
 
         $data['sales_plan'] = $this->Mportfolio->getPlanDetails('plan_sales', $plan, '', $f_year, '3');
         $data['approved_sales'] = $this->Mportfolio->getSalesMaster('port_sales_data', $c_option, $f_year, '1');
@@ -470,7 +470,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $qual_option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $qual_option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -485,7 +485,7 @@ class All_forms extends CI_Controller {
         $i = $j = 0;
         $qual_data = $data;
 
-        if (count($_POST["product_id"]) > 0) {
+        if (php72_count($_POST["product_id"]) > 0) {
             foreach ($_POST["product_id"] as $key) {
                 $data['volume'] = $_POST['volume'][$i];
                 $data['value'] = $_POST['value'][$i];
@@ -493,7 +493,7 @@ class All_forms extends CI_Controller {
                 $i++;
 
                 $checkExist = $this->Mportfolio->getDetails('plan_sales', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_sales', $data, $option);
@@ -509,7 +509,7 @@ class All_forms extends CI_Controller {
             $query = $this->Mportfolio->updatePortfolioDetail('plan_sales', $qual_data, $qual_option);
         } else {
             $checkExist = $this->Mportfolio->getDetails('plan_sales', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $data['updated_by'] = $this->session->userdata('emp_number');
                 $data['status'] = 0;
                 $query = $this->Mportfolio->updatePortfolioDetail('plan_sales', $data, $option);
@@ -547,22 +547,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_channel', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_channel', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -577,9 +577,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -617,7 +617,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -635,7 +635,7 @@ class All_forms extends CI_Controller {
             $i++;
 
             $checkExist = $this->Mportfolio->getDetails('plan_channel', $option);
-            if (count($checkExist) > 0) {
+            if (php72_count($checkExist) > 0) {
                 $data['updated_by'] = $this->session->userdata('emp_number');
                 $data['status'] = 0;
                 $query = $this->Mportfolio->updatePortfolioDetail('plan_channel', $data, $option);
@@ -673,21 +673,21 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_pipeline', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_pipeline', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -702,9 +702,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -749,7 +749,7 @@ class All_forms extends CI_Controller {
 
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -765,7 +765,7 @@ class All_forms extends CI_Controller {
         $data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
 
         $checkExist = $this->Mportfolio->getDetails('plan_pipeline', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_pipeline', $data, $option);
@@ -823,22 +823,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_finance', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_finance', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -853,9 +853,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -899,7 +899,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -922,7 +922,7 @@ class All_forms extends CI_Controller {
         $data['profit_achievement'] = $_POST['prof_achieveContent'];
 
         $checkExist = $this->Mportfolio->getDetails('plan_finance', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_finance', $data, $option);
@@ -959,22 +959,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_loans', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_loans', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -989,9 +989,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1025,7 +1025,7 @@ class All_forms extends CI_Controller {
         $data['runway'] = $_POST['runWay'];
 
         $checkExist = $this->Mportfolio->getDetails('plan_loans', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_loans', $data, $option);
@@ -1085,22 +1085,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_loans', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1115,9 +1115,9 @@ class All_forms extends CI_Controller {
 //        $plan['month'] = $month;
         $data['current_month'] = $equity_cond['month'] = $qual_cond['month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1145,7 +1145,7 @@ class All_forms extends CI_Controller {
         $data['inv_id'] = $equity_data['inv_id'] = $_POST['innovation_id'];
         $data['financial_year'] = $equity_data['financial_year'] = $_POST['current_year'];
         $equity_data['month'] = $_POST['current_month'];
-        for ($i = 0; $i < count($_POST['donor_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['donor_name']); $i++) {
             if ($_POST['donor_name'][$i] != '') {
                 $data = array();
                 $data['inv_id'] = $_POST['innovation_id'];
@@ -1164,7 +1164,7 @@ class All_forms extends CI_Controller {
                 $data['disburse_date'] = (isset($_POST['txtDate'][$i]) && $_POST['txtDate'][$i] != '') ? date('Y-m-d', strtotime($_POST['txtDate'][$i])) : '';
 
                 $checkExist = $this->Mportfolio->getDetails('plan_vif_funding', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_vif_funding', $data, $option);
@@ -1176,7 +1176,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['equity_date']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['equity_date']); $i++) {
             if ($_POST['equity_date'][$i] != '') {
                 $option['id'] = $_POST['equity_id'][$i];
                 $equity_data['inv_id'] = $_POST['innovation_id'];
@@ -1221,7 +1221,7 @@ class All_forms extends CI_Controller {
                 }
 
                 $checkExist = $this->Mportfolio->getDetails('plan_vif_equity', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $equity_data['updated_by'] = $this->session->userdata('emp_number');
                     $equity_data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_vif_equity', $equity_data, $option);
@@ -1262,20 +1262,20 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_loans', $id, $least_month, $f_year);
         $get_plan_pending = $this->Mportfolio->getPlanMonths('plan_fundraise', $id, '', $f_year);
         $get_qualitative = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1296,9 +1296,9 @@ class All_forms extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1313,9 +1313,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1341,7 +1341,7 @@ class All_forms extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
 
-        for ($i = 0; $i < count($_POST['equity_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['equity_name']); $i++) {
             if ($_POST['equity_name'][$i] != '') {
                 $option['id'] = $_POST['equity_id'][$i];
                 $data['fund_type'] = 1;
@@ -1353,7 +1353,7 @@ class All_forms extends CI_Controller {
                 $data['long_total'] = $_POST['long_total'];
 
                 $checkExist = $this->Mportfolio->getDetails('plan_fundraise', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_fundraise', $data, $option);
@@ -1365,7 +1365,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['grand_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['grand_name']); $i++) {
             if ($_POST['grand_name'][$i] != '') {
                 $option['id'] = $_POST['grand_id'][$i];
                 $data['fund_type'] = 4;
@@ -1377,7 +1377,7 @@ class All_forms extends CI_Controller {
                 $data['long_total'] = $_POST['long_total'];
 
                 $checkExist = $this->Mportfolio->getDetails('plan_fundraise', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_fundraise', $data, $option);
@@ -1389,7 +1389,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['short_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['short_name']); $i++) {
             if ($_POST['short_name'][$i] != '') {
                 $option['id'] = $_POST['short_id'][$i];
                 $data['fund_type'] = 2;
@@ -1401,7 +1401,7 @@ class All_forms extends CI_Controller {
                 $data['long_total'] = $_POST['long_total'];
 
                 $checkExist = $this->Mportfolio->getDetails('plan_fundraise', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_fundraise', $data, $option);
@@ -1413,7 +1413,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['long_name']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['long_name']); $i++) {
             if ($_POST['long_name'][$i] != '') {
                 $option['id'] = $_POST['long_id'][$i];
                 $data['fund_type'] = 3;
@@ -1425,7 +1425,7 @@ class All_forms extends CI_Controller {
                 $data['long_total'] = $_POST['long_total'];
 
                 $checkExist = $this->Mportfolio->getDetails('plan_fundraise', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     //$query = $this->Mportfolio->updatePortfolioDetail('plan_fundraise', $data, $option);
@@ -1487,22 +1487,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_impact', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_impact', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1517,9 +1517,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = $pend = array_reverse($monthName);
+        $data['pending_month'] = $pend = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1577,7 +1577,7 @@ class All_forms extends CI_Controller {
         $data['achievement_desc'] = $_POST['achieveContent'];
 
         $checkExist = $this->Mportfolio->getDetails('plan_impact', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_impact', $data, $option);
@@ -1607,7 +1607,7 @@ class All_forms extends CI_Controller {
 
 				$metri_checkExist = $this->Mportfolio->getDetails('plan_impact_metric', $metric_option);
 				//ECHO'<pre>';print_r($metric_data);
-				if (count($metri_checkExist) > 0) {
+				if (php72_count($metri_checkExist) > 0) {
 					$metric_data['updated_by'] = $this->session->userdata('emp_number');
 					$metric_data['status'] = 0;
 					#$query = $this->Mportfolio->updatePortfolioDetail('plan_impact_metric', $metric_data, $metric_option);
@@ -1636,7 +1636,7 @@ class All_forms extends CI_Controller {
 		
 
             $metri_checkExist = $this->Mportfolio->getDetails('plan_impact_metric', $metric_option);
-            if (count($metri_checkExist) > 0) {
+            if (php72_count($metri_checkExist) > 0) {
                 $metric_data['updated_by'] = $this->session->userdata('emp_number');
                 $metric_data['status'] = 0;
                 $query = $this->Mportfolio->updatePortfolioDetail('plan_impact_metric', $metric_data, $metric_option);
@@ -1700,20 +1700,20 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_team_hiring', $id, $least_month, $f_year);
         $get_plan_pending = $this->Mportfolio->getPlanMonths('plan_team_hiring', $id, '', $f_year);
         $get_qualitative = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -1734,9 +1734,9 @@ class All_forms extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -1751,9 +1751,9 @@ class All_forms extends CI_Controller {
         $c_option['month'] = $plan['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -1782,14 +1782,14 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $hire_data['inv_id'] = $exit_data['inv_id'] = $survey_data['inv_id'] = $_POST['innovation_id'];
         $option['month'] = $hire_data['month'] = $exit_data['month'] = $survey_data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
         $option['financial_year'] = $hire_data['financial_year'] = $exit_data['financial_year'] = $survey_data['financial_year'] = $_POST['current_year'];
         $hire_data['fy_date'] = $exit_data['fy_date'] = $survey_data['fy_date'] = $fyear . '-' . $_POST['current_month'] . '-01 00:00:00';
 
-        for ($i = 0; $i < count($_POST['hire_position']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['hire_position']); $i++) {
             if ($_POST['hire_position'][$i] != '') {
                 $option['id'] = $_POST['hire_id'][$i];
                 $option['field_type'] = $hire_data['field_type'] = 1;
@@ -1800,7 +1800,7 @@ class All_forms extends CI_Controller {
                 $hire_data['comments'] = $this->db->escape_str($_POST['hire_comment'][$i]);
 
                 $checkExist = $this->Mportfolio->getDetails('plan_team', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $hire_data['updated_by'] = $this->session->userdata('emp_number');
                     $hire_data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_team', $hire_data, $option);
@@ -1812,7 +1812,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['exit_position']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['exit_position']); $i++) {
             if ($_POST['exit_position'][$i] != '') {
                 $option['id'] = $_POST['exit_id'][$i];
                 $option['field_type'] = $exit_data['field_type'] = 2;
@@ -1823,7 +1823,7 @@ class All_forms extends CI_Controller {
                 $exit_data['comments'] = $this->db->escape_str($_POST['exit_comment'][$i]);
 
                 $checkExist = $this->Mportfolio->getDetails('plan_team', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $exit_data['updated_by'] = $this->session->userdata('emp_number');
                     $exit_data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_team', $exit_data, $option);
@@ -1835,7 +1835,7 @@ class All_forms extends CI_Controller {
             }
         }
 
-        for ($i = 0; $i < count($_POST['survey_date']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['survey_date']); $i++) {
             if ($_POST['survey_date'][$i] != '') {
                 $option['id'] = $_POST['survey_id'][$i];
                 $option['field_type'] = $survey_data['field_type'] = 3;
@@ -1878,7 +1878,7 @@ class All_forms extends CI_Controller {
                 }
 
                 $checkExist = $this->Mportfolio->getDetails('plan_team', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $survey_data['updated_by'] = $this->session->userdata('emp_number');
                     $survey_data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_team', $survey_data, $option);
@@ -1923,7 +1923,7 @@ class All_forms extends CI_Controller {
     public function deleteHiringAchieve() {
         $this->db->set('status', 3);
         $id = $this->input->post('id');
-        $option = "'" . implode("', '", $id) . "'";
+        $option = "'" . php72_implode("', '", $id) . "'";
         $cond['inv_id'] = $this->input->post('inv_id');
         $cond['field_type'] = $this->input->post('field');
         $cond['month'] = $this->input->post('cur_month');
@@ -1939,7 +1939,7 @@ class All_forms extends CI_Controller {
     public function deleteSeedingEquity() {
         $this->db->set('status', 3);
         $id = $this->input->post('id');
-        $option = "'" . implode("', '", $id) . "'";
+        $option = "'" . php72_implode("', '", $id) . "'";
         $cond['inv_id'] = $this->input->post('inv_id');
         $cond['month'] = $this->input->post('cur_month');
         $cond['financial_year'] = $this->input->post('fin_year');
@@ -1972,20 +1972,20 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_tap', $id, $least_month, $f_year);
         $get_plan_pending = $this->Mportfolio->getPlanMonths('plan_tap', $id, '', $f_year);
         $get_qualitative = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2006,9 +2006,9 @@ class All_forms extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2024,9 +2024,9 @@ class All_forms extends CI_Controller {
         $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2056,7 +2056,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
-        for ($i = 0; $i < count($_POST['requirement']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['requirement']); $i++) {
             if ($_POST['requirement'][$i] != '') {
                 $option['id'] = $_POST['tap_id'][$i];
                 $option['port_tap_id'] = $data['port_tap_id'] = $_POST['port_tap_id'][$i];
@@ -2140,7 +2140,7 @@ class All_forms extends CI_Controller {
                 }
 
                 $checkExist = $this->Mportfolio->getDetails('plan_tap', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_tap', $data, $option);
@@ -2203,20 +2203,20 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_mentor', $id, $least_month, $f_year);
         $get_plan_pending = $this->Mportfolio->getPlanMonths('plan_mentor', $id, '', $f_year);
         $get_qualitative = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2237,9 +2237,9 @@ class All_forms extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2254,9 +2254,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2283,7 +2283,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
-        for ($i = 0; $i < count($_POST['config_id']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['config_id']); $i++) {
             if ($_POST['name'][$i] != '') {
                 $option['id'] = $_POST['mentor_id'][$i];
                 $data['assigned_to'] = $_POST['name'][$i];
@@ -2330,7 +2330,7 @@ class All_forms extends CI_Controller {
 				
 
                 $checkExist = $this->Mportfolio->getDetails('plan_mentor', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_mentor', $data, $option);
@@ -2371,20 +2371,20 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_partnerships', $id, $least_month, $f_year);
         $get_plan_pending = $this->Mportfolio->getPlanMonths('plan_partnerships', $id, '', $f_year);
         $get_qualitative = $this->Mportfolio->getPlanMonths('plan_qualitative_data', $id, '', $f_year, $qual_module);
-        $month_merge = array_merge($get_plan_pending, $get_qualitative);
+        $month_merge = php72_array_merge($get_plan_pending, $get_qualitative);
         $final_month_menus = $group_months = $push_months = array();
         foreach ($month_merge as $k) {
             if (empty($group_months['months'])) {
@@ -2405,9 +2405,9 @@ class All_forms extends CI_Controller {
         $data['get_yearMonth'] = $push_months;
 
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2422,9 +2422,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $qual_cond['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2432,7 +2432,7 @@ class All_forms extends CI_Controller {
         $data['nontap_config'] = $this->Mportfolio->getPlanDetails('port_ttm_partnership', $c_option, '', $f_year, '1');
 
         $plan = $nontap_plan[0];
-        $data['plan_count'] = $plan_count = isset($plan) ? count($nontap_plan) : 0;
+        $data['plan_count'] = $plan_count = isset($plan) ? php72_count($nontap_plan) : 0;
         if ($plan_count == 0) {
             $service1['inv_id'] = $id;
             $service1['financial_year'] = $f_year;
@@ -2459,7 +2459,7 @@ class All_forms extends CI_Controller {
         $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
-        for ($i = 0; $i < count($_POST['type_id']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['type_id']); $i++) {
             if ($_POST['type_id'][$i] != '') {
                 $option['type'] = $data['type'] = $_POST['type_id'][$i];
                 $option['port_nontap_id'] = $data['port_nontap_id'] = $_POST['port_nontap_id'][$i];
@@ -2473,7 +2473,7 @@ class All_forms extends CI_Controller {
 				$data['revenue_amount'] = str_replace(",", "",$_POST['revenue_amount'][$i]); $_POST['revenue_amount'][$i];
 				
                 $checkExist = $this->Mportfolio->getDetails('plan_partnerships', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_partnerships', $data, $option);
@@ -2534,7 +2534,7 @@ class All_forms extends CI_Controller {
     }
 
     public function addNotesPlan() {
-        for ($i = 0; $i < count($_POST['start_date']); $i++) {
+        for ($i = 0; $i < php72_count($_POST['start_date']); $i++) {
             if ($_POST['start_date'][$i] != '') {
                 $data = array();
                 $option['inv_id'] = $data['inv_id'] = $_POST['innovation_id'];
@@ -2580,7 +2580,7 @@ class All_forms extends CI_Controller {
                 }
 
                 $checkExist = $this->Mportfolio->getDetails('plan_meeting_notes', $option);
-                if (count($checkExist) > 0) {
+                if (php72_count($checkExist) > 0) {
                     $data['updated_by'] = $this->session->userdata('emp_number');
                     $data['status'] = 0;
                     $query = $this->Mportfolio->updatePortfolioDetail('plan_meeting_notes', $data, $option);
@@ -2670,7 +2670,7 @@ class All_forms extends CI_Controller {
         if ($milestone == '') {
             if ($this->session->userdata['sector_lead'] == 1) {
                 $get_data = $this->Mportfolio->getApprovalDetails('port_project_milestone', $c_option, $pending);
-                if (count($get_data) > 0) {
+                if (php72_count($get_data) > 0) {
                     redirect('portfolio/milestone/' . $id . '/' . $get_data[0]['financial_year'] . '/' . $get_data[0]['id']);
                 }
             }
@@ -2746,22 +2746,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_board_meetings', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_board_meetings', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2776,9 +2776,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2798,7 +2798,7 @@ class All_forms extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -2850,7 +2850,7 @@ class All_forms extends CI_Controller {
         }
 
         $checkExist = $this->Mportfolio->getDetails('plan_board_meetings', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_board_meetings', $data, $option);
@@ -2909,22 +2909,22 @@ class All_forms extends CI_Controller {
         $cur_month = date('M');
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
-        $arr = array_search($cur_month, $getmonth);
+        $arr = php72_array_search($cur_month, $getmonth);
 
         for ($i = ($arr); $i >= 0; $i--) {
-            $derivemonth[] = array_search($getmonth[$i], $actualMonth);
+            $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
         }
 
         $last_month = date('n');
-        $least_month = implode(', ', $derivemonth);
+        $least_month = php72_implode(', ', $derivemonth);
         $get_monthCount = $this->Mportfolio->getUpdatesCount('plan_dp', $id, $least_month, $f_year);
         $data['get_yearMonth'] = $this->Mportfolio->getPlanMonths('plan_dp', $id, '', $f_year);
         foreach ($get_monthCount as $val) {
-            if (in_array($val['month'], $derivemonth)) {
+            if (php72_in_array($val['month'], $derivemonth)) {
                 if ($last_month != $val['month']) {
-                    $key = array_search($val['month'], $derivemonth);
+                    $key = php72_array_search($val['month'], $derivemonth);
                     unset($derivemonth[$key]);
                     unset($monthName[$key]);
                 }
@@ -2939,9 +2939,9 @@ class All_forms extends CI_Controller {
         $plan['month'] = $month;
         $data['current_month'] = $month;
         $data['current_financial'] = $f_year;
-        $data['pending_month'] = array_reverse($monthName);
+        $data['pending_month'] = php72_array_reverse($monthName);
         if ($f_year == date('Y')) {
-            $data['monthlist'] = array_reverse($monthlist);
+            $data['monthlist'] = php72_array_reverse($monthlist);
         } else {
             $data['monthlist'] = $this->month();
         }
@@ -2961,7 +2961,7 @@ class All_forms extends CI_Controller {
         $option['financial_year'] = $data['financial_year'] = $_POST['current_year'];
         $option['month'] = $data['month'] = $_POST['current_month'];
         if ($_POST['current_month'] == '1' || $_POST['current_month'] == '2' || $_POST['current_month'] == '3') {
-            $fyear = $_POST['current_year'] + 1;
+            $fyear = php72_num($_POST['current_year']) + 1;
         } else {
             $fyear = $_POST['current_year'];
         }
@@ -2977,7 +2977,7 @@ class All_forms extends CI_Controller {
         $data['achievement_desc'] = $_POST['achieveContent'];
 
         $checkExist = $this->Mportfolio->getDetails('plan_dp', $option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $data['updated_by'] = $this->session->userdata('emp_number');
             $data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_dp', $data, $option);
@@ -3041,7 +3041,7 @@ class All_forms extends CI_Controller {
         $qual_data['fy_date'] = $fyear . '-' . $post['current_month'] . '-01 00:00:00';
 
         $checkExist = $this->Mportfolio->getDetails('plan_qualitative_data', $qual_option);
-        if (count($checkExist) > 0) {
+        if (php72_count($checkExist) > 0) {
             $qual_data['updated_by'] = $this->session->userdata('emp_number');
             $qual_data['status'] = 0;
             $query = $this->Mportfolio->updatePortfolioDetail('plan_qualitative_data', $qual_data, $qual_option);

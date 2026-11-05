@@ -35,7 +35,7 @@ $nullLink = "javascript:void(0);";
     </thead>
 	<tbody>
 	<?php
-	if(count($inductionlist))
+	if(php72_count($inductionlist))
 	{    
 		$r=1;
 		foreach($inductionlist as $row)

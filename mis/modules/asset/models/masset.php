@@ -390,7 +390,7 @@ class Masset extends My_Model {
             $empEmail = ($employeeDetails['0']['emp_work_email'] != '') ? $employeeDetails['0']['emp_work_email'] : $employeeDetails['0']['emp_oth_email'];
             $to = $employeeDetails['0']['emp_firstname'];
             $reportingAuth = reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
-            if (count($reportingAuth))
+            if (php72_count($reportingAuth))
                 $reportAuthEmail = ($reportingAuth['0']['emp_work_email'] != '') ? $reportingAuth['0']['emp_work_email'] : $reportingAuth['0']['emp_oth_email'];
             else
                 $reportAuthEmail = '';
@@ -444,7 +444,7 @@ class Masset extends My_Model {
             $adminEmail = $this->session->userdata('adminEmail');
 
             $reportingAuth = reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
-            if (count($reportingAuth))
+            if (php72_count($reportingAuth))
                 $reportAuthEmail = ($reportingAuth['0']['emp_work_email'] != '') ? $reportingAuth['0']['emp_work_email'] : $reportingAuth['0']['emp_oth_email'];
             else
                 $reportAuthEmail = '';

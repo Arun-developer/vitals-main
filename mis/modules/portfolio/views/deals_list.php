@@ -52,9 +52,9 @@ if (isset($_POST['txtSubmit']) && $_POST['txtSubmit']) {
 //    }
 //
     $url_post = '';
-    $post = implode(':', array_map(function ($key, $val) {
+    $post = implode(':', php72_array_map(function ($key, $val) {
         return $key . '-' . $val;
-    }, array_keys($_POST), $_POST)
+    }, php72_array_keys($_POST), $_POST)
 );
     $url_post .= '"' . $post . '"';
 }
@@ -70,7 +70,7 @@ if ($branch_name == '10') {
 }
 
 if (isset($_REQUEST['status']) && $_REQUEST['status'] != '') {
-    $status_post = implode(',', $_REQUEST['status']);
+    $status_post = php72_implode(',', $_REQUEST['status']);
 } else {
     $status_post = "";
 }
@@ -473,52 +473,52 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                             $count_program = count($split_program);
                                                             if (in_array('0', $split_program)) {
                                                                 ?>
-                                                                <option value="0" <?= ($program == '0' || (count($custom_program) == 1 && $split_program[0] == '0')) ? 'selected' : ''; ?>>Incubation</option>
+                                                                <option value="0" <?= ($program == '0' || (php72_count($custom_program) == 1 && $split_program[0] == '0')) ? 'selected' : ''; ?>>Incubation</option>
                                                             <?php } if (in_array('3', $split_program)) { ?>
-                                                                <option value="3" <?= ($program == '3' || (count($custom_program) == 1 && $split_program[0] == '3')) ? 'selected' : ''; ?>>Unc Pitch</option>
+                                                                <option value="3" <?= ($program == '3' || (php72_count($custom_program) == 1 && $split_program[0] == '3')) ? 'selected' : ''; ?>>Unc Pitch</option>
                                                             <?php } if (in_array('5', $split_program)) {
                                                                 ?>
-                                                                <option value="5" <?= ($program == '5' || (count($custom_program) == 1 && $split_program[0] == '5')) ? 'selected' : ''; ?>>FPAI IC</option>
+                                                                <option value="5" <?= ($program == '5' || (php72_count($custom_program) == 1 && $split_program[0] == '5')) ? 'selected' : ''; ?>>FPAI IC</option>
                                                                 <?php
                                                             } if (in_array('6', $split_program)) {
                                                                 ?>
-                                                                <option value="6" <?= ($program == '6' || (count($custom_program) == 1 && $split_program[0] == '6')) ? 'selected' : ''; ?>>UBS Challenge</option>
+                                                                <option value="6" <?= ($program == '6' || (php72_count($custom_program) == 1 && $split_program[0] == '6')) ? 'selected' : ''; ?>>UBS Challenge</option>
                                                                 <?php
                                                             } if (in_array('7', $split_program)) {
                                                                 ?>
-                                                                <option value="7" <?= ($program == '7' || (count($custom_program) == 1 && $split_program[0] == '7')) ? 'selected' : ''; ?>>YSVF</option>
+                                                                <option value="7" <?= ($program == '7' || (php72_count($custom_program) == 1 && $split_program[0] == '7')) ? 'selected' : ''; ?>>YSVF</option>
                                                                 <?php
                                                             } if (in_array('8', $split_program)) {
                                                                 ?>
-                                                                <option value="8" <?= ($program == '8' || (count($custom_program) == 1 && $split_program[0] == '8')) ? 'selected' : ''; ?>>AWS</option>
+                                                                <option value="8" <?= ($program == '8' || (php72_count($custom_program) == 1 && $split_program[0] == '8')) ? 'selected' : ''; ?>>AWS</option>
                                                                 <?php
                                                             } if (in_array('9', $split_program)) {
                                                                 ?>
-                                                                <option value="9" <?= ($program == '9' || (count($custom_program) == 1 && $split_program[0] == '9')) ? 'selected' : ''; ?>>Swachhata Challenge</option>
+                                                                <option value="9" <?= ($program == '9' || (php72_count($custom_program) == 1 && $split_program[0] == '9')) ? 'selected' : ''; ?>>Swachhata Challenge</option>
                                                                 <?php
                                                             } if (in_array('10', $split_program)) {
                                                                 ?>
-                                                                <option value="10" <?= ($program == '10' || (count($custom_program) == 1 && $split_program[0] == '10')) ? 'selected' : ''; ?>>TANSEED</option>
+                                                                <option value="10" <?= ($program == '10' || (php72_count($custom_program) == 1 && $split_program[0] == '10')) ? 'selected' : ''; ?>>TANSEED</option>
                                                                 <?php
                                                             } if (in_array('11', $split_program)) {
                                                                 ?>
-                                                                <option value="11" <?= ($program == '11' || (count($custom_program) == 1 && $split_program[0] == '11')) ? 'selected' : ''; ?>>SISFS</option>
+                                                                <option value="11" <?= ($program == '11' || (php72_count($custom_program) == 1 && $split_program[0] == '11')) ? 'selected' : ''; ?>>SISFS</option>
                                                                 <?php
                                                             } if (in_array('12', $split_program)) {
                                                                 ?>
-                                                                <option value="12" <?= ($program == '12' || (count($custom_program) == 1 && $split_program[0] == '12')) ? 'selected' : ''; ?>>YASH Entrepreneurs</option>
+                                                                <option value="12" <?= ($program == '12' || (php72_count($custom_program) == 1 && $split_program[0] == '12')) ? 'selected' : ''; ?>>YASH Entrepreneurs</option>
                                                                 <?php
                                                             } if (in_array('13', $split_program)) {
                                                                 ?>
-                                                                <option value="13" <?= ($program == '13' || (count($custom_program) == 1 && $split_program[0] == '13')) ? 'selected' : ''; ?>>Nidhi</option>
+                                                                <option value="13" <?= ($program == '13' || (php72_count($custom_program) == 1 && $split_program[0] == '13')) ? 'selected' : ''; ?>>Nidhi</option>
                                                                 <?php
                                                             }if (in_array('14', $split_program)) {
                                                                 ?>
-                                                                <option value="14" <?= ($program == '14' || (count($custom_program) == 1 && $split_program[0] == '14')) ? 'selected' : ''; ?>>TVARAN</option>
+                                                                <option value="14" <?= ($program == '14' || (php72_count($custom_program) == 1 && $split_program[0] == '14')) ? 'selected' : ''; ?>>TVARAN</option>
                                                                 <?php
                                                             }if (in_array('30', $split_program)) {
                                                                 ?>
-                                                                <option value="30" <?= ($program == '30' || (count($custom_program) == 1 && $split_program[0] == '30')) ? 'selected' : ''; ?>>Tvaran 2.0</option>
+                                                                <option value="30" <?= ($program == '30' || (php72_count($custom_program) == 1 && $split_program[0] == '30')) ? 'selected' : ''; ?>>Tvaran 2.0</option>
                                                                 <?php
                                                             }
                                                         } else {
@@ -602,7 +602,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                                 ?>
                                                                 <option value="<?= $key ?>"
                                                                     <?php
-                                                                    if (in_array($key, $status_array_post)) {
+                                                                    if (php72_in_array($key, $status_array_post)) {
                                                                         echo 'selected';
                                                                     }
                                                                     ?>><?= $value ?>

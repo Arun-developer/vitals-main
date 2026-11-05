@@ -62,10 +62,10 @@ class Mportfolio extends CI_Model {
 
     public function monthByQuarters() {
         $fy_months = $this->month();
-        $quart_1 = array_slice($fy_months, 0, 3);
-        $quart_2 = array_slice($fy_months, 3, 3);
-        $quart_3 = array_slice($fy_months, 6, 3);
-        $quart_4 = array_slice($fy_months, 9, 3);
+        $quart_1 = php72_array_slice($fy_months, 0, 3);
+        $quart_2 = php72_array_slice($fy_months, 3, 3);
+        $quart_3 = php72_array_slice($fy_months, 6, 3);
+        $quart_4 = php72_array_slice($fy_months, 9, 3);
 
         $quarter_arr = array();
         foreach ($quart_1 as $key => $value) {
@@ -611,7 +611,7 @@ class Mportfolio extends CI_Model {
     }
 
     public function getPortUpcomingMilestones($asslist, $limit = '') {
-        if ($asslist != '' && count($asslist) > 0) {
+        if ($asslist != '' && php72_count($asslist) > 0) {
             $cond = "C.inv_id IN ($asslist)";
             $this->db->where($cond);
         }
@@ -2341,7 +2341,7 @@ return $rows;  */
         }
 
         sort($emp_name);
-        $assign_to = implode(', ', $emp_name);
+        $assign_to = php72_implode(', ', $emp_name);
         return $assign_to;
     }
 
@@ -2649,7 +2649,7 @@ return $rows;  */
         $searchArray[] = "IP.copy_status != '4'";
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         $copypartner = $options['copy_id'];
@@ -2819,7 +2819,7 @@ return $rows;  */
             }
         }
 
-        if ((count($searchArray) == $check_count && $this->session->userdata('role_id') != '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
+        if ((php72_count($searchArray) == $check_count && $this->session->userdata('role_id') != '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
             if ($options['deals_tab'] == 'alldeals') {
                 $def_subTo = $current_date = date('Y-m-d');
                 $last_date = strtotime("$current_date -1 year");
@@ -2856,8 +2856,8 @@ return $rows;  */
             $searchArray[] = "(INV.ent_type LIKE '%" . $options['enterprise_stage'] . "%' OR PS1.ent_type LIKE '%" . $options['enterprise_stage'] . "%')";
         }
 
-        if (count($searchArray) > 0) {
-            $whereQuery = implode(' and ', $searchArray);
+        if (php72_count($searchArray) > 0) {
+            $whereQuery = php72_implode(' and ', $searchArray);
             $query = $this->db->get_where('innovation_pool IP', $whereQuery);
         } else {
             $query = $this->db->get('innovation_pool IP');
@@ -2901,7 +2901,7 @@ return $rows;  */
         $searchArray[] = "IP.copy_status != '4'";
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         $copypartner = $options['copy_id'];
@@ -3078,7 +3078,7 @@ return $rows;  */
             }
         }
 
-        if ((count($searchArray) == $check_count && $this->session->userdata('role_id') != '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
+        if ((php72_count($searchArray) == $check_count && $this->session->userdata('role_id') != '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
             if ($options['deals_tab'] == 'alldeals') {
 				
                 $def_subTo = $current_date = date('Y-m-d');
@@ -3119,8 +3119,8 @@ return $rows;  */
         if($num != '-1')
             $this->db->limit($num, $offset);
 
-        if (count($searchArray) > 0) {
-            $whereQuery = implode(' and ', $searchArray);
+        if (php72_count($searchArray) > 0) {
+            $whereQuery = php72_implode(' and ', $searchArray);
             $query = $this->db->get_where('innovation_pool IP', $whereQuery);
         } else {
             $query = $this->db->get('innovation_pool IP');
@@ -3165,7 +3165,7 @@ return $rows;  */
         $searchArray[] = "IP.copy_status != '4'";
 
         if (is_array($options['associate'])) {
-            $searchArray[] = "IP.id IN ('" . implode("','", $options['associate']) . "')";
+            $searchArray[] = "IP.id IN ('" . php72_implode("','", $options['associate']) . "')";
         }
 
         $copypartner = $options['copy_id'];
@@ -3328,7 +3328,7 @@ return $rows;  */
                 $check_count = 3;
         }
 
-        if ((count($searchArray) == $check_count || $this->session->userdata('role_id') == '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
+        if ((php72_count($searchArray) == $check_count || $this->session->userdata('role_id') == '4') && empty($options['created_date']) && empty($options['created_date']) && empty($options['submitted_date']) && empty($options['submitted_date_to'])) {
             if ($options['deals_tab'] == 'alldeals') {
                 $def_subTo = $current_date = date('Y-m-d');
                 $last_date = strtotime("$current_date -1 year");
@@ -3361,8 +3361,8 @@ return $rows;  */
             $searchArray[] = "(INV.ent_type LIKE '%" . $options['enterprise_stage'] . "%' OR PS1.ent_type LIKE '%" . $options['enterprise_stage'] . "%')";
         }
 
-        if (count($searchArray) > 0) {
-            $whereQuery = implode(' and ', $searchArray);
+        if (php72_count($searchArray) > 0) {
+            $whereQuery = php72_implode(' and ', $searchArray);
             $query = $this->db->get_where('innovation_pool IP', $whereQuery);
         } else {
             $query = $this->db->get('innovation_pool IP');
@@ -3876,7 +3876,7 @@ return $rows;  */
             $whereArray[] = $where;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $query_cond = " and " . $whereCond;
         }
@@ -3944,7 +3944,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -3979,7 +3979,7 @@ return $rows;  */
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -4020,7 +4020,7 @@ return $rows;  */
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -4051,7 +4051,7 @@ return $rows;  */
         if ($cond != null && $cond != '') {
             $whereArray[] = $cond;
 
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
             if ($whereCond != '') {
                 $this->db->where($whereCond);
             }
@@ -4532,7 +4532,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4569,7 +4569,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4596,7 +4596,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4625,7 +4625,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4665,7 +4665,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4702,7 +4702,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4731,7 +4731,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4770,7 +4770,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4808,7 +4808,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4853,7 +4853,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4901,7 +4901,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 		#echo $cond;die;
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
 		
         if ($whereCond != '') {
             $this->db->where($whereCond);
@@ -4937,7 +4937,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -4957,7 +4957,7 @@ return $rows;  */
         if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5013,7 +5013,7 @@ return $rows;  */
         if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5067,7 +5067,7 @@ return $rows;  */
         if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5104,7 +5104,7 @@ return $rows;  */
         if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5142,7 +5142,7 @@ return $rows;  */
 		if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5194,7 +5194,7 @@ return $rows;  */
 		if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5246,7 +5246,7 @@ return $rows;  */
         if ($cond != 'null') {
             $whereArray[] = $cond;
         }
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5289,7 +5289,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5322,7 +5322,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5351,7 +5351,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5381,7 +5381,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5423,7 +5423,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5468,7 +5468,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5503,7 +5503,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5548,7 +5548,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5597,7 +5597,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5630,7 +5630,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5666,7 +5666,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5704,7 +5704,7 @@ return $rows;  */
             $whereArray[] = $cond;
         }
 
-        $whereCond = implode(' and ', $whereArray);
+        $whereCond = php72_implode(' and ', $whereArray);
         if ($whereCond != '') {
             $this->db->where($whereCond);
         }
@@ -5906,7 +5906,7 @@ return $rows;  */
         }
 
         if (!empty($join)) {
-            for ($i = 0; $i < count($join); $i++) {
+            for ($i = 0; $i < php72_count($join); $i++) {
                 $db_var->select($join[$i]['select']);
                 $db_var->join($join[$i]['table'], $join [$i]['condition'], $join [$i] ['type']);
             }
@@ -5928,7 +5928,7 @@ return $rows;  */
 //        }
 
         if (!empty($order_by)) {
-            $db_var->order_by(array_keys($order_by)[0], array_values($order_by)[0]);
+            $db_var->order_by(php72_array_keys($order_by)[0], php72_array_values($order_by)[0]);
         }
 
         if ($limit != '') {

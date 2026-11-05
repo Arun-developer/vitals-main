@@ -900,7 +900,7 @@ class Mintapproval extends CI_Model {
             'purpose' => $this->input->post('purpose'),
             'programme' => $this->input->post('programme'),
             'UCID' => $this->input->post('UCID'),
-            'supporting_documents' => implode(',', $this->input->post('supporting_documents')),
+            'supporting_documents' => php72_implode(',', $this->input->post('supporting_documents')),
             'above_50000' => $above,
             'status' => 'draft',
             'comments_RO' => '',
@@ -956,7 +956,7 @@ class Mintapproval extends CI_Model {
             'comments_PH' => '',
             'programme' => $this->input->post('programme'),
             'UCID' => $this->input->post('UCID'),
-            'supporting_documents' => implode(',', $this->input->post('supporting_documents')),
+            'supporting_documents' => php72_implode(',', $this->input->post('supporting_documents')),
             'estimated_in_workplan' => $yes,
             'partner_id' => $this->session->userdata('partner_id'),
             'above_50000' => $above,
@@ -1051,7 +1051,7 @@ class Mintapproval extends CI_Model {
                 $data = unserialize($row['donor']);
             }
         }
-        $data = ($data != '') ? implode(',', $data) : '';
+        $data = ($data != '') ? php72_implode(',', $data) : '';
         return $data;
     }
 
@@ -1258,7 +1258,7 @@ class Mintapproval extends CI_Model {
         $editedAN = $this->insertANedithistory($olddetails);
         $supporting_documents = 'supporting_documents';
         if ($this->input->post('supporting_documents') != '') {
-            $supporting_documents = implode(',', $this->input->post('supporting_documents'));
+            $supporting_documents = php72_implode(',', $this->input->post('supporting_documents'));
         }
         $data = array(
             'date_of_seeking_approval' => date("Y-m-d", strtotime($this->input->post('date_of_seeking_approval'))),
@@ -1361,7 +1361,7 @@ class Mintapproval extends CI_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -1407,7 +1407,7 @@ class Mintapproval extends CI_Model {
 
         if ($where != NULL) {
             $whereArray[] = $where;
-            $whereCond = implode(' and ', $whereArray);
+            $whereCond = php72_implode(' and ', $whereArray);
         } else {
             $whereCond = "1=1";
         }
@@ -1551,7 +1551,7 @@ class Mintapproval extends CI_Model {
 
     function getEmployeeFromUserId($userId) {
         $data = $this->getUserInfo($userId);
-        if (count($data)) {
+        if (php72_count($data)) {
             return $this->employeeDetails($data['0']['emp_id']);
         } else
             return true;
@@ -1632,9 +1632,9 @@ class Mintapproval extends CI_Model {
         $empEmail = $employeeDetails['0']['emp_work_email'] != '' ? $employeeDetails['0']['emp_work_email'] : $employeeDetails['0']['emp_oth_email'];
         $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
         $roName = $reportingAuth[0]['user_name'];
-        if (count($reportingAuth) == 1)
+        if (php72_count($reportingAuth) == 1)
             $reportAuthEmail = $reportingAuth['0']['emp_work_email'] != '' ? $reportingAuth['0']['emp_work_email'] : $reportingAuth['0']['emp_oth_email'];
-        else if (count($reportingAuth) > 1) {
+        else if (php72_count($reportingAuth) > 1) {
             $rodetails = $this->getUserNameInfo($approvalDetails['0']['to_RO']);
             $reportAuthEmail = $rodetails['0']['emp_work_email'] != '' ? $rodetails['0']['emp_work_email'] : $rodetails['0']['emp_oth_email'];
         } else

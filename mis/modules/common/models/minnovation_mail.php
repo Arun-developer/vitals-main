@@ -254,7 +254,7 @@ class Minnovation_mail extends CI_Model {
             '#from#' => $from['name'],
         );
 
-        for ($i = 0; $i < count($email); $i++) {
+        for ($i = 0; $i < php72_count($email); $i++) {
             $toEmail = $email[$i];
 
             $da['innovationDetails'] = $innovationDetails = $this->Minnovation->getInnovationDetails($invID);
@@ -299,7 +299,7 @@ class Minnovation_mail extends CI_Model {
 
         $from = $this->getSender();
 
-        for ($i = 0; $i < count($email); $i++) {
+        for ($i = 0; $i < php72_count($email); $i++) {
             $toEmail = $email[$i];
 
             $da['innovationDetails'] = $innovationDetails = $this->Minnovation->getInnovationDetails($invID);

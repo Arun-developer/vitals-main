@@ -14,7 +14,7 @@ $nullLink = '';
     </thead>
 	<tbody>
 		<?php
-		if(count($mails))
+		if(php72_count($mails))
 		{    
 			$row_type = 'even';
 			foreach($mails as $row)

@@ -312,7 +312,7 @@
                                                 <tbody>
                                                     <?php
                                                     $i = 1;
-                                                    if (count(unserialize($approvalNoteDetails[0]['attachment']))) {
+                                                    if (php72_count(unserialize($approvalNoteDetails[0]['attachment']))) {
                                                         foreach (unserialize($internalNoteDetails[0]['attachment']) as $key => $value) {
                                                             //if (file_exists('uploads/support_docs/' . $value)){<tr id="document_tr_1" class="document_more remove_more"><td width="20%">
                                                             ?>

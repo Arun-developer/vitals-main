@@ -11,7 +11,7 @@
     <table class="gtable sorttable">
         <tbody id="activitiesTable">
             <?php 
-	if(count($showagreement))
+	if(php72_count($showagreement))
 	{       
 			$rowtype = 'odd';
 			foreach($showagreement as $row):

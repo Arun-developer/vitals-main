@@ -187,7 +187,7 @@ function submitform()
  <?php
  }
 
- if(count($employeeselected) != 0){
+ if(php72_count($employeeselected) != 0){
 
      ?>
 <div class="table_section ">
@@ -211,7 +211,7 @@ function submitform()
 		$i = ($i=='odd')?'even':'odd';
 		?>
 			<tr class="<?=$i?>">
-            	<td class="table_down" rowspan="<?=count($row['report'])+1?>"><?=$row['created_emp']?></td>
+            	<td class="table_down" rowspan="<?=php72_count($row['report'])+1?>"><?=$row['created_emp']?></td>
 				</tr>
                 <?php foreach($row['report'] as $value): ?>
                 <tr class="<?=$i?>">
@@ -239,7 +239,7 @@ function submitform()
               </div>
           </div>
 
-        <?php } else  if(count($sectorselected) != 0){
+        <?php } else  if(php72_count($sectorselected) != 0){
      ?>
 <div class="table_section ">
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -261,7 +261,7 @@ function submitform()
       </tr>
      <?php  foreach($sectorWiseReport as $row):
 		$i = ($i=='odd')?'even':'odd';
-		$totalInnovation = count($sectorWiseReport);
+		$totalInnovation = php72_count($sectorWiseReport);
 		@$row['convertion_new_entry'] = round(($row['total_entry'] / $row['total_new']) * 100, 2);
         @$row['convertion_entry_lead'] = round(($row['total_lead'] / $row['total_entry'] ) * 100, 2);
         @$row['innovation_percent'] = round(($row['total_new'] / $totalInnovation) * 100, 2);

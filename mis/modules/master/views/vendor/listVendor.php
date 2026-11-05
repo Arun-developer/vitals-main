@@ -48,7 +48,7 @@ $form_name = 'vendor_list';
             <th><a href="<?= $nullLink ?>">Options</a></th>
         </tr>
         <?php
-        if (count($vendorList)):
+        if (php72_count($vendorList)):
             $i = 0;
             foreach ($vendorList as $row):
                 $row_type = ($i % 2 == 0) ? 'even' : 'odd';

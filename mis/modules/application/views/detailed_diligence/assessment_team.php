@@ -56,7 +56,7 @@
                                         <div class="col-12 col-sm-6 col-md-6">
                                             <div class="text-left">
                                                 <ul class="vitals-links saveLinkView">
-                                                    <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
+                                                    <?php if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')) || php72_in_array($this->session->userdata('emp_number'), $assign_incharge_id)) { ?>
                                                         <li><input type="submit" value="Save" id="saveForm" class="vital_yellow_btn wdt_100"></li>
                                                         <li><input type="submit" value="Save as new version" id="saveVersion" class="vital_yellow_btn"></li>
                                                         <li><a href="<?php echo base_url() . 'index.php/application/assessment_team/' . $application_id; ?>" class="wdt_100 vital_bordered_btn">Cancel</a></li>

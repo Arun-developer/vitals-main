@@ -129,7 +129,7 @@
                                                         foreach ($donorAN1 as $rows):
                                                             $tamt_required[] = $rows['amt_required'];
                                                         endforeach;
-                                                        $amt_required = array_sum($tamt_required);
+                                                        $amt_required = php72_array_sum($tamt_required);
                                                         $sumof_int_amt = $this->Mapproval->int_amt_sumof($dataList["approval_id"]);
                                                         $remain_amt = $amt_required - $sumof_int_amt;
 

@@ -1,6 +1,6 @@
 <?php 
 
-if(count($mentortotaldetail)>0)
+if(php72_count($mentortotaldetail)>0)
 {
  $val=$mentortotaldetail[0];
 }

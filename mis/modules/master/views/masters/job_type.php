@@ -77,7 +77,7 @@
                                                             <li class="brd-left-onboard">
                                                                 <a href="javascript:void(0)" class="edit-btnconfig mar-tp15  opacity5 none-pointer" id="delUser"><i class="fas fa-trash-alt"></i> Delete</a>
                                                             </li>
-                                                            <li class="brd-left-onboard"><a href="javascript:void(0)" class="saveContinue jobtype_submit <?php if (count($job_type) > 0) { ?> opacity5 none-pointer <?php } ?>" onclick="submit_fields();">Save</a></li>
+                                                            <li class="brd-left-onboard"><a href="javascript:void(0)" class="saveContinue jobtype_submit <?php if (php72_count($job_type) > 0) { ?> opacity5 none-pointer <?php } ?>" onclick="submit_fields();">Save</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

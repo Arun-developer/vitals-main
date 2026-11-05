@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('#boardTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($boardList) == 0){ ?>
+    <?php if(php72_count($boardList) == 0){ ?>
     var arow = $('.cloneBoard').clone().removeClass('cloneBoard').addClass('odd');
     $('#boardTable').append(arow);
     ordering('sNo');
@@ -62,7 +62,7 @@ $(document).ready(function() {
         $('#investmentTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($investmentList) == 0){ ?>
+    <?php if(php72_count($investmentList) == 0){ ?>
     var arow = $('.cloneInvestment').clone().removeClass('cloneInvestment').addClass('odd');
     $('#investmentTable').append(arow);
     ordering('sNo');
@@ -120,7 +120,7 @@ $(document).ready(function() {
         $('#financialTable').append(arow);
         ordering('sNo');
     });
-    <?php if(count($financialList) == 0){ ?>
+    <?php if(php72_count($financialList) == 0){ ?>
     var arow = $('.cloneFinancial').clone().removeClass('cloneFinancial').addClass('odd');
     $('#financialTable').append(arow);
     ordering('sNo');

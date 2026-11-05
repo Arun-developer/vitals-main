@@ -1,5 +1,5 @@
  <?php
-	if(count($sourceDetails))
+	if(php72_count($sourceDetails))
 	{    
 		foreach($sourceDetails as $row)
 		{

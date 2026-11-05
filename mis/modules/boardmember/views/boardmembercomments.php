@@ -1,7 +1,7 @@
 
 <?php
 	$val = array();
-	if(count($selectComments)) 
+	if(php72_count($selectComments)) 
 	{ 
 	  $val=$selectComments[0];
 	} 

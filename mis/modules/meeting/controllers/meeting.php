@@ -36,7 +36,7 @@ class Meeting extends CI_Controller
         $data['innovation'] = $activityDetails['0']['innovation'];
         $data['innovationInfo'] = $innovationInfo = $this->Minnovation->getInnovation($data['innovation']);
         $data['meetingDetails'] = $this->Mmeeting->getMeetingDetails($activity);
-        if (count($data['meetingDetails'])) {
+        if (php72_count($data['meetingDetails'])) {
             $meeting_id = $data['meetingDetails']['0']['id'];
         } else {
             $meeting_id = '';

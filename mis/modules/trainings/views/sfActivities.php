@@ -22,7 +22,7 @@ $this->jquery->fancybox();
     </thead>
     <tbody id="activitiesTable">
         <?php 
-	if(count($budgetList))
+	if(php72_count($budgetList))
 	{    
 			foreach($budgetList as $row):
 			?>

@@ -99,7 +99,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'admin', 'page_title
                                                     $donorr = unserialize($programme_details[0]["donor"]);
                                                     $dselected = '';
                                                     if (isset($editid) && $editid != '') {
-                                                        if (in_array($dlist['master_id'], $donorr)) {
+                                                        if (php72_in_array($dlist['master_id'], $donorr)) {
                                                             $dselected = 'selected';
                                                         } else {
                                                             $dselected = '';

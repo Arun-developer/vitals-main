@@ -15,7 +15,7 @@
                     </td>
                     <td align="left" valign="middle"><?=$row['activity_description']?></td>
                      <td align="left" valign="middle"> 
-                    <input type="checkbox" name="use[]" value="<?=$row['id']?>" <?=(in_array($row['id'],$usedActivity))?'checked':'';?>  />
+                    <input type="checkbox" name="use[]" value="<?=$row['id']?>" <?=(php72_in_array($row['id'],$usedActivity))?'checked':'';?>  />
                     </td>
                     </tr>
             <?php 

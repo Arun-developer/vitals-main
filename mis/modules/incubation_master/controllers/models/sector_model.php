@@ -37,7 +37,7 @@ class Sector_model extends CI_Model {
         $sqldel = "DELETE FROM $table_name WHERE sector_id = '" . $data['sector_id'] . "' AND partner_id = '" . $data['partner_id'] . "'";
         $querydel = $this->db->query($sqldel);
 
-        $count = count($data['employee_number']);
+        $count = php72_count($data['employee_number']);
         $date = date('Y-m-d');
         for ($i = 0; $i < $count; $i++) {
             $sql = "INSERT INTO $table_name ($field1,created_date,sector_id,partner_id,status) VALUES ('" . $data['employee_number'][$i] . "', '" . $date . "', '" . $data['sector_id'] . "','" . $data['partner_id'] . "', 1)";

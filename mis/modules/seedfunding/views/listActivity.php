@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
 
-    <?php if(count($activityList) == 0){ ?>
+    <?php if(php72_count($activityList) == 0){ ?>
     var arow = $('.cloneBudget').clone().removeClass('cloneBudget').addClass('odd');
     $('#milestoneTable').append(arow);
     ordering('sNo');

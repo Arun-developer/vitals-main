@@ -24,7 +24,7 @@ class Instance extends CI_Controller
     public function view_list($source = null)
     {
         $data['sourceDetails'] = $this->Msource->getSourceDetails($source);
-        if (count($data['sourceDetails']) == 0 || empty($source)) {
+        if (php72_count($data['sourceDetails']) == 0 || empty($source)) {
             redirect('master/source/view_list');
         }
 
@@ -63,7 +63,7 @@ class Instance extends CI_Controller
     {
         //getting source
         $data['sourceDetails'] = $this->Msource->getSourceDetails($source);
-        if (count($data['sourceDetails']) == 0 || empty($source)) {
+        if (php72_count($data['sourceDetails']) == 0 || empty($source)) {
             redirect('master/source/view_list');
         }
 
@@ -108,7 +108,7 @@ class Instance extends CI_Controller
 
         if ($instance != '') {
             $data['instanceDetails'] = $this->Minstance->getInstanceDetails($instance);
-            if (count($data['instanceDetails']) == 0) {
+            if (php72_count($data['instanceDetails']) == 0) {
                 redirect('master/instance/instanceform/' . $source);
             }
 
@@ -199,7 +199,7 @@ class Instance extends CI_Controller
         echo '<option value="">-Select-</option>';
         if ($source != '') {
             $instanceList = $this->Minstance->getInstanceCombo($source);
-            if (count($instanceList)) {
+            if (php72_count($instanceList)) {
                 foreach ($instanceList as $row):
                 ?>
 					<option value="<?=$row['id']?>" <?=($instance_select == $row['id']) ? 'selected' : '';?> ><?=$row['instance_name']?></option>

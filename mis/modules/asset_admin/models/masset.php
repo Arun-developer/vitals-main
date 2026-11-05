@@ -468,7 +468,7 @@ function transferAsset() {
             $empEmail = ($employeeDetails['0']['official_email'] != '') ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
             $to = $employeeDetails['0']['emp_name'];
             $reportingAuth = $this->reportingUser('supUser', 'All', $employeeDetails['0']['emp_number']);
-            if (count($reportingAuth))
+            if (php72_count($reportingAuth))
                 $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['emp_oth_email'];
             else
                 $reportAuthEmail = '';
@@ -545,7 +545,7 @@ function transferAsset() {
             $empEmail = ($employeeDetails['0']['official_email'] != '') ? $employeeDetails['0']['official_email'] : $employeeDetails['0']['personal_email'];
             $adminEmail = $this->session->userdata('admin_mail');
             $reportingAuth = $this->getROlist($employeeDetails['0']['id']);
-            if (count($reportingAuth))
+            if (php72_count($reportingAuth))
                 $reportAuthEmail = ($reportingAuth['0']['official_email'] != '') ? $reportingAuth['0']['official_email'] : $reportingAuth['0']['personal_email'];
             else
                 $reportAuthEmail = '';

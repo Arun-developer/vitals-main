@@ -70,13 +70,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if (count($pending_month) > 0) { ?>
+                                <?php if (php72_count($pending_month) > 0) { ?>
                                     <div>
                                         <div class="tab-slider--nav">
                                             <label class="float-left">Pending</label>
                                             <ul class="tab-slider--tabs">
                                                 <?php
-                                                for ($i = 0; $i < count($pending_month); $i++) {
+                                                for ($i = 0; $i < php72_count($pending_month); $i++) {
                                                     $activeMonth = date("M", mktime(0, 0, 0, $current_month, 1));
                                                     $monthNumber = date("n", strtotime($pending_month[$i]));
                                                     if ($pending_month[$i] == $activeMonth) {
@@ -151,7 +151,7 @@
                                             <hr class="cofig-spliter">
                                             <?php
                                             $tot_open = $tot_under = $tot_close = $tot_reject = $annual = 0;
-                                            if (count($pipe_config) > 0) {
+                                            if (php72_count($pipe_config) > 0) {
                                                 foreach ($pipe_config as $pipe) {
                                                     $get_open = json_decode($pipe['open_pipeline'], true);
                                                     $get_under = json_decode($pipe['under_discussion'], true);
@@ -205,7 +205,7 @@
 
                                                                     <?php
                                                                     $i = 1;
-                                                                    if (count($pipe_plan) > 0) {
+                                                                    if (php72_count($pipe_plan) > 0) {
                                                                         $get_open_value = $pipe_plan[0]['open'];
                                                                         $get_under_value = $pipe_plan[0]['under_discussion'];
                                                                         $get_close_value = $pipe_plan[0]['rejected'];
@@ -357,7 +357,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="enableCount" value="<?= count($pipe_plan); ?>">
+        <input type="hidden" id="enableCount" value="<?= php72_count($pipe_plan); ?>">
         <input type="hidden" id="current_ytd" value="<?= $total_ytdVal; ?>">
 
         <script src="<?php echo base_url() . 'source/portfolio_assets/js/bootstrap.min.js'; ?>"></script>

@@ -12,7 +12,7 @@ $formAction = "";
 $id = '';
 
 $val = array();
-if (count($memberDetails) > 0) {
+if (php72_count($memberDetails) > 0) {
     $val = $memberDetails['0'];
     $formAction = site_url('boardmember/form/' . $innovationid . '/' . $val['id']);
     $id = $val['id'];

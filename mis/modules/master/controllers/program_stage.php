@@ -161,7 +161,7 @@ class Program_stage extends CI_Controller
         echo '<option value="">-Select-</option>';
         if ($program_service != '') {
             $programStageList = $this->Mprogram_stage->getProgramStageCombo($program_service);
-            if (count($programStageList)) {
+            if (php72_count($programStageList)) {
                 foreach ($programStageList as $row):
                 ?>
 					<option value="<?=$row['id']?>" <?=($selected == $row['id']) ? 'selected' : '';?>><?=$row['title']?></option>

@@ -98,12 +98,12 @@ if ($class_name == '4') {
                             }
                             $flip_mnths = array_flip($mnths);
                             foreach ($chnk_month[0] as $months) {
-                                $url = array_search($months, $actual_month);
+                                $url = php72_array_search($months, $actual_month);
                                 $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                 $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                 $pend = (array_diff_key($actual_month, $flip_mnths));
 
-                                $pend_keys = array_keys($quater_month);
+                                $pend_keys = php72_array_keys($quater_month);
                                 $curdate = date('n');
                                 if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                     unset($pend_keys[$ky]);
@@ -129,7 +129,7 @@ if ($class_name == '4') {
                         </ul>
                     </div>
                 </li>
-<?php if (count($chnk_month[1]) > 0) { ?>
+<?php if (php72_count($chnk_month[1]) > 0) { ?>
                     <li class="sidebar-dropdown <?= $july_active; ?> <?= $august_active; ?> <?= $september_active; ?>">
                         <a href="javascript:void(0)">
                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/project.png'; ?>" >
@@ -148,11 +148,11 @@ if ($class_name == '4') {
                                 }
                                 $flip_mnths = array_flip($mnths);
                                 foreach ($chnk_month[1] as $months) {
-                                    $url = array_search($months, $actual_month);
+                                    $url = php72_array_search($months, $actual_month);
                                     $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                     $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                     $pend = (array_diff_key($actual_month, $flip_mnths));
-                                    $pend_keys = array_keys($quater_month);
+                                    $pend_keys = php72_array_keys($quater_month);
                                     $curdate = date('n');
                                     if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                         unset($pend_keys[$ky]);
@@ -180,7 +180,7 @@ if ($class_name == '4') {
                     </li>
                     <?php
                 }
-                if (count($chnk_month[2]) > 0) {
+                if (php72_count($chnk_month[2]) > 0) {
                     ?>
                     <li class="sidebar-dropdown <?= $october_active; ?> <?= $november_active; ?> <?= $december_active; ?>">
                         <a href="javascript:void(0)">
@@ -200,11 +200,11 @@ if ($class_name == '4') {
                                 }
                                 $flip_mnths = array_flip($mnths);
                                 foreach ($chnk_month[2] as $months) {
-                                    $url = array_search($months, $actual_month);
+                                    $url = php72_array_search($months, $actual_month);
                                     $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                     $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                     $pend = (array_diff_key($actual_month, $flip_mnths));
-                                    $pend_keys = array_keys($quater_month);
+                                    $pend_keys = php72_array_keys($quater_month);
                                     $curdate = date('n');
                                     if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                         unset($pend_keys[$ky]);
@@ -232,7 +232,7 @@ if ($class_name == '4') {
                     </li>
                     <?php
                 }
-                if (count($chnk_month[3]) > 0) {
+                if (php72_count($chnk_month[3]) > 0) {
                     ?>
                     <li class="sidebar-dropdown <?= $january_active; ?> <?= $february_active; ?> <?= $march_active; ?>">
                         <a href="javascript:void(0)">
@@ -252,11 +252,11 @@ if ($class_name == '4') {
                                 }
                                 $flip_mnths = array_flip($mnths);
                                 foreach ($chnk_month[3] as $months) {
-                                    $url = array_search($months, $actual_month);
+                                    $url = php72_array_search($months, $actual_month);
                                     $fullmName = date("F", mktime(0, 0, 0, $url, 1));
                                     $shortmName = date("M", mktime(0, 0, 0, $url, 1));
                                     $pend = (array_diff_key($actual_month, $flip_mnths));
-                                    $pend_keys = array_keys($quater_month);
+                                    $pend_keys = php72_array_keys($quater_month);
                                     $curdate = date('n');
                                     if (($ky = array_search($curdate, $pend_keys)) !== false) {
                                         unset($pend_keys[$ky]);

@@ -65,7 +65,7 @@ $form_name = 'screening_master';
                         </thead>
                         <tbody>
                             <?php
-                            if (count($screeningList)) {
+                            if (php72_count($screeningList)) {
                                 $r = 1;
                                 foreach ($screeningList as $row) {
                                     $row_type = ($r % 2 == 0) ? ('even') : ('odd');

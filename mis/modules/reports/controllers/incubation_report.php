@@ -161,7 +161,7 @@ class Incubation_report extends CI_Controller
         }
         if ($frequency == '1') {
             $data['weekreport'] = $this->Mincubationprogress->getweekreport($innovation, $frequency, $subcategory, $mastername);
-            for ($i = 0; $i < count($data['weekly']); $i++) {
+            for ($i = 0; $i < php72_count($data['weekly']); $i++) {
                 $data['weekanswerreport' . $i] = $this->Mincubationprogress->getweekanswerreport($frequency, $data['weekly'][$i], $subcategory, $type, $mastername, $yearly, $monthly);
             }
         }
@@ -172,18 +172,18 @@ class Incubation_report extends CI_Controller
 
             $data['monthreport'] = $this->Mincubationprogress->getmonthreport($innovation, $criteria, $data['innovationChecklist'], $type, $frequency, $subcategory);
 
-            for ($i = 0; $i < count($data['monthly']); $i++) {
+            for ($i = 0; $i < php72_count($data['monthly']); $i++) {
                 $data['monthanswerreport' . $i] = $this->Mincubationprogress->getmonthanswerreport($frequency, $data['innovationChecklist'], $innovation, $data['monthly'][$i], $subcategory, $yearly, $type, $mastertype, $criteria);
             }
         }
         if ($frequency == '3') {
             $data['quarterlyreport'] = $this->Mincubationprogress->getquarterlyreport($innovation, $frequency, $subcategory);
-            for ($i = 0; $i < count($data['quarterly']); $i++) {
+            for ($i = 0; $i < php72_count($data['quarterly']); $i++) {
                 $data['quarterreport' . $i] = $this->Mincubationprogress->getquarterreport($frequency, $data['quarterly'][$i], $subcategory, $yearly, $type);
             }
         } else {
             $data['yearreport'] = $this->Mincubationprogress->getyear_report($innovation, $subcategory, $frequency, $type);
-            for ($i = 0; $i < count($data['yearly']); $i++) {
+            for ($i = 0; $i < php72_count($data['yearly']); $i++) {
                 $data['yearanswerreport' . $i] = $this->Mincubationprogress->getyearanswerreport($frequency, $data['yearly'][$i], $subcategory, $type);
             }
         }
@@ -246,7 +246,7 @@ class Incubation_report extends CI_Controller
         $data['defaultyear'] = $year;
         if (isset($_POST['txtSubmit'])) {
             $this->upload($_FILES);
-            for ($i = 0; $i < count($_FILES['document']['name']); $i++) {
+            for ($i = 0; $i < php72_count($_FILES['document']['name']); $i++) {
                 $_POST['document'][$i] = $_FILES['document']['name'][$i];
             }
             $this->load->model('mprogress');
@@ -266,7 +266,7 @@ class Incubation_report extends CI_Controller
         $config['allowed_types'] = '*';
         $_POST['document'] = '';
         $this->load->library('upload');
-        for ($i = 0; $i < count($options['document']['name']); $i++) {
+        for ($i = 0; $i < php72_count($options['document']['name']); $i++) {
             if ($options['document']['name'][$i] != '') {
                 $_FILES['ty']['name'] = $options['document']['name'][$i];
             }

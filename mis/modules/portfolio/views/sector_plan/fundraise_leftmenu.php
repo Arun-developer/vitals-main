@@ -64,12 +64,12 @@ if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['
                     <div class="sidebar-submenu">
                         <ul>
                             <li class="<?= $sale_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/donorengagement/' . $sector_id . '/' . $fin_year; ?>">Current Donor Engagement Plan
-                                    <?php if ($config_data != '' && count($config_data['donorengagementCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['donorengagementCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>
                             <li class="<?= $channel_active; ?>"><a href="<?= base_url() . 'index.php/portfolio/sector_plan/donorconnect/' . $sector_id . '/' . $fin_year; ?>">New Donors to Connect with
-                                    <?php if ($config_data != '' && count($config_data['donorconnectCount']) > 0) { ?>
+                                    <?php if ($config_data != '' && php72_count($config_data['donorconnectCount']) > 0) { ?>
                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                     <?php } ?>
                                 </a></li>

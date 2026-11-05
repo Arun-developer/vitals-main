@@ -37,7 +37,7 @@
 						}
 
 						//check if any event stored for the date
-						if(array_key_exists($day,$events))
+						if(php72_array_key_exists($day,$events))
 						{
 
                             //adding the date_has_event class to the <td> and close it

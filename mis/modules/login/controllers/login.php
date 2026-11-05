@@ -27,7 +27,7 @@ class Login extends CI_Controller {
     public function send_bulk() {
         echo 'Emails sending...</br>';
         $searchArray[] = 'status IN (0,2)';
-        $whereQuery = implode(' and ', $searchArray);
+        $whereQuery = php72_implode(' and ', $searchArray);
 
         /* parent mail table */
         $bulkmail = $this->Mmail->getBulkMails($whereQuery);
@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 
             /* chil mail table having details of mail to etc */
             $mail = $this->Mmail->MailDetails($whereM);
-            $mail_count = count($mail);
+            $mail_count = php72_count($mail);
 
             /* used to replace the from & to hash value in mail contents */
 
@@ -275,7 +275,7 @@ class Login extends CI_Controller {
             $responce = $this->Muser->loginUser($_POST['username'], $_POST['password']);
             $get_ais_val = $this->Muser->get_aisPrivilege($responce[0]['partner_id']);
             $get_branch_name = $this->Muser->getPartneremail($responce[0]['partner_id']);
-            if (count($responce) > 0) {
+            if (php72_count($responce) > 0) {
                 foreach ($responce as $result) {
                     if ($result['mip_id'] != '0' and $result['mip_id'] != '1' and $result['emp_number'] != '0') {
                         $userType = "mipuser";
@@ -363,7 +363,7 @@ class Login extends CI_Controller {
                 $get_ais_val = $this->Muser->get_aisPrivilege($responce[0]['partner_id']);
                 $get_branch_name = $this->Muser->getPartneremail($responce[0]['partner_id']);
                 $partner_currency = mb_strtoupper($get_ais_val[0]['currency']);
-                if (count($responce) > 0) {
+                if (php72_count($responce) > 0) {
                     $emp_log['employee_id'] = $responce[0]['emp_id'];
                     $emp_log['last_login'] = date("Y-m-d H:i:s");
                     $login_log = $this->Muser->create_emp_log('user_login_history', $emp_log);
@@ -468,7 +468,7 @@ class Login extends CI_Controller {
             $responce = $this->Muser->loginUser($_POST['username'], $_POST['password']);
             $get_ais_val = $this->Muser->get_aisPrivilege($responce[0]['partner_id']);
             $get_branch_name = $this->Muser->getPartneremail($responce[0]['partner_id']);
-            if (count($responce) > 0) {
+            if (php72_count($responce) > 0) {
                 foreach ($responce as $result) {
                     if ($result['mip_id'] != '0' and $result['mip_id'] != '1' and $result['emp_number'] != '0') {
                         $userType = "mipuser";
@@ -561,7 +561,7 @@ class Login extends CI_Controller {
                     $get_ais_val = $this->Muser->get_aisPrivilege($responce[0]['partner_id']);
                     $get_branch_name = $this->Muser->getPartneremail($responce[0]['partner_id']);
                     $partner_currency = mb_strtoupper($get_ais_val[0]['currency']);
-                    if (count($responce) > 0) {
+                    if (php72_count($responce) > 0) {
                         $emp_log['employee_id'] = $responce[0]['emp_id'];
                         $emp_log['last_login'] = date("Y-m-d H:i:s");
                         $login_log = $this->Muser->create_emp_log('user_login_history', $emp_log);
@@ -860,7 +860,7 @@ class Login extends CI_Controller {
             if (in_array($this->session->userdata('user_id'), $ceoteam)) {
                 $apn_count += $this->Mapproval->getApprovalDashboard('ceolist', 'pending');
             }
-            if (in_array($this->session->userdata('user_id'), $financeteam)) {
+            if (php72_in_array($this->session->userdata('user_id'), $financeteam)) {
                 $int_count += $this->Mapproval->getInternalDashboard('finance', 'pending');
             }
         } else {
@@ -1057,7 +1057,7 @@ class Login extends CI_Controller {
             case 'assigned':
             $this->load->model('Mincharge');
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-            $innovation = (count($innovation)) ? $innovation : array();
+            $innovation = (php72_count($innovation)) ? $innovation : array();
             $options['associate'] = $innovation;
             if (!isset($_POST['stage'])) {
                 $options['sstage'] = '!5';
@@ -1071,7 +1071,7 @@ class Login extends CI_Controller {
             case 'assigned_incubation':
             $this->load->model('Mincharge');
             $innovation = $this->Mincharge->getAssociateInnovation($this->session->userdata('emp_number'));
-            $innovation = (count($innovation)) ? $innovation : array();
+            $innovation = (php72_count($innovation)) ? $innovation : array();
             $options['associate'] = $innovation;
             $options['istage'] = '5';
             $options['istatus'] = '8';
@@ -1121,7 +1121,7 @@ class Login extends CI_Controller {
 
     public function reports() {
         $finance = unserialize($this->Mapproval->getApprovalSetting('finance'));
-        if (in_array($this->session->userdata('user_id'), $finance)) {
+        if (php72_in_array($this->session->userdata('user_id'), $finance)) {
             $data['isFinance'] = 'Yes';
         } else {
             $data['isFinance'] = 'No';
@@ -1172,7 +1172,7 @@ class Login extends CI_Controller {
         $data['partner_data'] = $query->result_array();
 
         if ($this->input->post('partnerSubmit') != '') {
-            for ($i = 0; $i < count($data['partner_data']); $i++) {
+            for ($i = 0; $i < php72_count($data['partner_data']); $i++) {
                 $this->hris->set('ais_privilege', $this->input->post($data['partner_data'][$i]['partner_id']));
                 $this->hris->where('partner_id', $data['partner_data'][$i]['partner_id']);
                 $this->hris->update('hs_hr_branch');
@@ -1380,7 +1380,7 @@ class Login extends CI_Controller {
         $partner_id = $this->session->userdata('partner_id');
 
         $mailContent = $this->Mmail->getBulkMailContent($_POST['mailtype'], $partner_id);
-        if (count($mailContent)) {
+        if (php72_count($mailContent)) {
             $data['subject'] = $mailContent[0]['subject'];
             $data['body'] = $mailContent[0]['body'];
             $data['from'] = $mailContent[0]['from'];
@@ -1408,7 +1408,7 @@ class Login extends CI_Controller {
         $id = $_POST['id'];
         $stat_id = $_POST['stat_id'];
         $bulkarr[] = "id = " . $id;
-        $bulkwhr = implode(' and ', $bulkarr);
+        $bulkwhr = php72_implode(' and ', $bulkarr);
         $data['bulkmail'] = $bulkmail = $this->Mmail->getBulkMails($bulkwhr);
 
         $sender = $this->Muser->getUsersList($bulkmail[0]['sender_id']);
@@ -1417,11 +1417,11 @@ class Login extends CI_Controller {
         if ($stat_id != '') {
             $mailsarr[] = "status = " . $stat_id;
         }
-        $whereM = implode(' and ', $mailsarr);
+        $whereM = php72_implode(' and ', $mailsarr);
         $mail = $this->Mmail->MailDetails($whereM);
 
         $tabledata = '';
-        if (count($mail) > 0) {
+        if (php72_count($mail) > 0) {
             foreach ($mail as $row) {
 
                 if ($row['status'] == 0) {
@@ -1464,7 +1464,7 @@ class Login extends CI_Controller {
         $data['sector'] = (isset($_POST['sector'])) ? $_POST['sector'] : '';
         $data['program'] = (isset($_POST['program'])) ? $_POST['program'] : '';
         $data['stage'] = (isset($_POST['stage'])) ? $_POST['stage'] : '';
-        $data['status'] = (isset($_POST['status'])) ? implode(',', $_POST['status']) : '';
+        $data['status'] = (isset($_POST['status'])) ? php72_implode(',', $_POST['status']) : '';
         $data['submitted_date'] = (isset($_POST['submitted_date'])) ? $_POST['submitted_date'] : '';
         $data['submitted_date_to'] = (isset($_POST['submitted_date_to'])) ? $_POST['submitted_date_to'] : '';
         $data['assigned_incharge'] = (isset($_POST['assigned_incharge'])) ? $_POST['assigned_incharge'] : '';
@@ -1473,7 +1473,7 @@ class Login extends CI_Controller {
         $indep_user = 0;
         if ($user_id != '') {
             $check_user = $this->Muser->getIndepUsersList($branch_id, $user_id);
-            $data['independent_shortlister'] = $indep_user = count($check_user);
+            $data['independent_shortlister'] = $indep_user = php72_count($check_user);
         }
 
         $query = $this->Mportfolio->getSearchDeals($data);
@@ -1491,7 +1491,7 @@ class Login extends CI_Controller {
         </thead>
         <tbody id='search_tbody' class=' scrolltblBodyDeal'>";
 
-        $totalData = count($query);
+        $totalData = php72_count($query);
 
         if ($totalData > 0) {
             $data = $mail_to = $mail_to_id = $orgmail_to_id = array();
@@ -1558,10 +1558,10 @@ class Login extends CI_Controller {
 
         $recipient_table .= "</tbody>
         </table>";
-        if (count($mail_to_id) > 0) {
-            $mail_ids = implode(',', array_filter($mail_to_id));
-            $mail_invs = implode(',', array_filter($mail_to));
-            $count_receips = count(array_filter($mail_to_id));
+        if (php72_count($mail_to_id) > 0) {
+            $mail_ids = implode(',', php72_array_filter($mail_to_id));
+            $mail_invs = implode(',', php72_array_filter($mail_to));
+            $count_receips = count(php72_array_filter($mail_to_id));
             $recipient_table .= "<form id='recipient_form' name='recipient_form' action='" . base_url() . "index.php/login/deals_mail' method='post'><input type='hidden' name='to_recipients' id='to_recipients' value='" . $mail_ids . "' /><input type='hidden' name='count_recipients' id='count_recipients' value='" . $count_receips . "' />";
             $recipient_table .= "<input type='hidden' class='to_inv_id' name='to_inv_id' id='to_inv_id' value='" . $mail_invs . "' /><input type='hidden' name='to_body' id='to_body' value='' /><input type='hidden' name='to_subject' id='to_subject' value='' /></form>";
         }

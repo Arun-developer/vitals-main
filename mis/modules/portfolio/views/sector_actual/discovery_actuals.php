@@ -1,6 +1,6 @@
 <?php
 $emp_id = $this->session->userdata['emp_number'];
-if (count($discovery_actual) > 0) {
+if (php72_count($discovery_actual) > 0) {
     $enable = 1;
 } else {
     $enable = 0;
@@ -39,7 +39,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                     <ul class="milestone-links">
-                                        <?php if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue">Save &amp; Continue</a></li>
                                         <?php } ?>
                                         <li>
@@ -65,7 +65,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         ?>
                                         <h4>Pipeline Achievement > <span><?= $last_month . ' ' . $next_financial; ?></span></h4>
                                     </div>
-                                    <?php if (in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                    <?php if (php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                         <div class="col-xl-2 col-lg-2 col-md-2 col-12 text-right">
                                             <a href="javascript:void(0)" class="edit-btnconfig editBtn" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a></li>
                                         </div>
@@ -174,15 +174,15 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                 <tbody class="add_tranche">
                                                                     <?php
                                                                     $j = 1;
-                                                                    if (count($subsector_discovery) <= 0) {
+                                                                    if (php72_count($subsector_discovery) <= 0) {
                                                                         $subsec_count = 1;
                                                                     } else {
-                                                                        $subsec_count = count($subsector_discovery);
+                                                                        $subsec_count = php72_count($subsector_discovery);
                                                                     }
                                                                     for ($i = 0; $i < $subsec_count; $i++) {
 
                                                                         $subid = $subsector_discovery[$i]['subsector_id'];
-                                                                        if ($total_subapp != '' && count($total_subapp) > 0) {
+                                                                        if ($total_subapp != '' && php72_count($total_subapp) > 0) {
                                                                             $sub_app = $total_subapp[$subid][0]['inc_app'] + $total_subapp[$subid][0]['eir_app'] + $total_subapp[$subid][0]['seed_app'] + $total_subapp[$subid][0]['pitch_app'] + $total_subapp[$subid][0]['liveli_app'];
                                                                         } else {
                                                                             $sub_app = '';
@@ -256,8 +256,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 </div>
 
 
-<input type="hidden" id="qualitCount" value="<?= count($qualitative_actual); ?>">
-<input type="hidden" id="enableCount" value="<?= count($discovery_actual); ?>">
+<input type="hidden" id="qualitCount" value="<?= php72_count($qualitative_actual); ?>">
+<input type="hidden" id="enableCount" value="<?= php72_count($discovery_actual); ?>">
 
 <?php $this->load->view('vitals_footer.php', array('page_load' => 'portfolio', 'quantitative' => 'tiny')); ?>
 

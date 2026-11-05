@@ -3,7 +3,7 @@ $formAction = site_url('master/mailtemplate/form');
 $id = '';
 $val = array();
 $action = 'add';
-if (count($templateDetails)) {
+if (php72_count($templateDetails)) {
     $val = $templateDetails['0'];
     $id = $val['id'];
     $formAction = $formAction . "/" . $id;

@@ -1,5 +1,5 @@
 <?php
-if (count($investerDetails) > 0) {
+if (php72_count($investerDetails) > 0) {
     $val = $investerDetails[0];
     $sector = $val['sector'];
     $experience = $val['experience'];

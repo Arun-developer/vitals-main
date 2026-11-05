@@ -90,7 +90,7 @@ $(document).ready( function() {
 	</thead>
 	<tbody>
    <?php
-	if(count($reasons))
+	if(php72_count($reasons))
 	{    
 		$r=1;
 		foreach($reasons as $reason)
