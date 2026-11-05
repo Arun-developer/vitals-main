@@ -136,7 +136,7 @@
                                                                 if (isset($dataList['approval_donor_id']) && $dataList['approval_donor_id'] != '') {
                                                                     echo $dataList['approval_donor_id'];
                                                                 }
-                                                                ?>" type="checkbox" <?= $opt_disable; ?> <?= ($get_grantName[0]->status_type == 'open') ? 'checked' : ($apn_donor_id[0]['approval_donor_id'] == $an['approval_donor_id']) ? 'checked' : ''; ?> class="form-control" name="select_donor" >
+                                                                ?>" type="checkbox" <?= $opt_disable; ?> <?= (($get_grantName[0]->status_type == 'open') ? 'checked' : ($apn_donor_id[0]['approval_donor_id'] == $an['approval_donor_id'])) ? 'checked' : ''; ?> class="form-control" name="select_donor" >
                                                             </td>
                                                             <td>
                                                                 <input value="<?php

@@ -1118,7 +1118,7 @@ class Scouting extends CI_Controller {
             }
             $data['currentTab'] = $currentTab;
             $options = $this->make_filter($currentTab, $_POST);
-            $this->session->branchdetails['admin_branch'] = !empty($this->session->branchdetails['admin_branch']) ? $this->session->branchdetails['admin_branch'] : $options['branch_name'] != '' ? $options['branch_name'] : $_POST['branch'];
+            $this->session->branchdetails['admin_branch'] = (!empty($this->session->branchdetails['admin_branch']) ? $this->session->branchdetails['admin_branch'] : $options['branch_name'] != '') ? $options['branch_name'] : $_POST['branch'];
 
             if ($currentTab == 'similar') {
                 $offset = 5;
@@ -1195,7 +1195,7 @@ class Scouting extends CI_Controller {
         }
         $data['currentTab'] = $currentTab;
         $options = $this->make_filter($currentTab, $_POST);
-        $this->session->branchdetails['admin_branch'] = !empty($this->session->branchdetails['admin_branch']) ? $this->session->branchdetails['admin_branch'] : $options['branch_name'] != '' ? $options['branch_name'] : $_POST['branch'];
+        $this->session->branchdetails['admin_branch'] = (!empty($this->session->branchdetails['admin_branch']) ? $this->session->branchdetails['admin_branch'] : $options['branch_name'] != '') ? $options['branch_name'] : $_POST['branch'];
 
         if ($currentTab == 'similar') {
             $offset = 5;

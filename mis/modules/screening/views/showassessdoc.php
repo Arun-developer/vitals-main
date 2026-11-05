@@ -14,7 +14,7 @@
 <?php foreach($assessmentdocument as $row)
 {?>
 <tr>	
-<td><?=($row['master_type'] == 'm1') ? 'Assessment' : $row['master_type'] == 'm2' ? 'Document Validation' : 'External Validation';?></td>
+<td><?=(($row['master_type'] == 'm1') ? 'Assessment' : $row['master_type'] == 'm2') ? 'Document Validation' : 'External Validation';?></td>
 <td><?=$row['master_name'];?></td>
 <td><?=$row['label'];?></td>
 <td><?=$row['answer'];?></td>

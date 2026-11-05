@@ -804,7 +804,7 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 endforeach;
                 $row['associate_emp_name'] = implode(', ', $asArray);
 
-                $source = ($row['source_type'] == '0' && $row['source_others'] == '') ? 'Direct Application' : empty($row['source_name']) ? $row['source_others'] : $row['source_name'];
+                $source = (($row['source_type'] == '0' && $row['source_others'] == '') ? 'Direct Application' : empty($row['source_name'])) ? $row['source_others'] : $row['source_name'];
                 $sector = ($row['sector'] != 'others') ? $row['sector'] : $row['secotr_others'];
                 if ($row['program'] == '1') {
                     $program = 'EIR';

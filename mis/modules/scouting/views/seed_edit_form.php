@@ -431,7 +431,7 @@ echo form_open_multipart("scouting/seed_app_edit_save/" . $this->uri->segment('3
 
                 <input type="checkbox" id="operate8" size="40" name="operate[]" placeholder="" value="other"
                        onchange="show_div('other_operate')"
-<?php echo ( isset($store_sector) ? ((in_array('other', $store_sector)) ? 'checked="checked"' : (isset($other_value)) ? 'checked="checked"' : '') : ''); ?> />Other
+<?php echo ( isset($store_sector) ? (((in_array('other', $store_sector)) ? 'checked="checked"' : (isset($other_value))) ? 'checked="checked"' : '') : ''); ?> />Other
                 <br />
 
                 <div id="other_operate"

@@ -97,7 +97,7 @@
                                 <td><?= $row['name_of_enterprise'] ?></td>
                                 <td><?= $row['name_of_entrepreneur'] ?></td>
                                 <td><?= ($row['source_type'] == '0') ? 'Direct Application' : $row['source_type'] ?></td>
-                                <td><?= ($row['source_type'] == '0') ? 'Direct Application' : empty($row['source_name']) ? $row['source_others'] : $row['source_name'] ?>
+                                <td><?= (($row['source_type'] == '0') ? 'Direct Application' : empty($row['source_name'])) ? $row['source_others'] : $row['source_name'] ?>
                                 </td>
                                 <td><?php $sector = ($row['sector'] != '0' && $row['sector'] != '') ? (($row['sector'] == 'MCH') ? 'Maternal & child health' : $row['sector']) : (($row['sector_others'] != '0' && $row['sector_others'] != '') ? $row['sector_others'] : '');
         echo $sector; ?>
