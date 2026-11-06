@@ -234,7 +234,7 @@ $j++;
             </dd>
         </dl>
         <?php
-if($row['sub_field']>0)
+if(php72_cmp($row['sub_field'])>0)
 {
 	$this->Mprogress->ajaxForm($innovation,$criteria,$row['id'],$cfValue);
 }

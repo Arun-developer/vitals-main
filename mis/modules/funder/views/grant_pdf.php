@@ -103,7 +103,7 @@ $currency = $this->session->userdata['currency'];
                                 </tr>
                                 <?php
                                 $gl_amount += $list->amount;
-                                if ($gl_amount == 0) {
+                                if (php72_cmp($gl_amount) == 0) {
                                     $gl_amount = '0.00';
                                 }
                             }
@@ -142,9 +142,9 @@ $currency = $this->session->userdata['currency'];
                                                             ?>
                                                             <tr>
                                                                 <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->milestone) && $list->milestone != '') echo $list->milestone; ?></td>
-                                                                <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->date_of_disbursement) && $list->date_of_disbursement != '' && $list->date_of_disbursement > 0) echo date('d-m-Y', strtotime($list->date_of_disbursement)); ?></td>
+                                                                <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->date_of_disbursement) && $list->date_of_disbursement != '' && php72_cmp($list->date_of_disbursement) > 0) echo date('d-m-Y', strtotime($list->date_of_disbursement)); ?></td>
                                                                 <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->amount) && $list->amount != '') echo $list->amount; ?></td>
-                                                                <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->date_of_deposite) && $list->date_of_deposite != '' && $list->date_of_deposite > 0) echo date('d-m-Y', strtotime($list->date_of_deposite)); ?></td>
+                                                                <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->date_of_deposite) && $list->date_of_deposite != '' && php72_cmp($list->date_of_deposite) > 0) echo date('d-m-Y', strtotime($list->date_of_deposite)); ?></td>
                                                                 <td style="padding:8px ;border-bottom:1px solid #ccc"><?php if (isset($list->amount_deposite) && $list->amount_deposite != '') echo $list->amount_deposite; ?></td>
                                                                 <td style="padding:8px ;border-bottom:1px solid #ccc;white-space:pre-line;word-break: break-all;word-wrap: break-word;overflow-wrap: break-word; "><?php if (isset($list->comments) && $list->comments != '') echo $list->comments; ?></td>
                                                             </tr>
@@ -152,10 +152,10 @@ $currency = $this->session->userdata['currency'];
                                                             $disb_amt += $list->amount;
                                                             $disb_amt_dop += $list->amount_deposite;
 
-                                                            if ($disb_amt == 0) {
+                                                            if (php72_cmp($disb_amt) == 0) {
                                                                 $disb_amt = '0.00';
                                                             }
-                                                            if ($disb_amt_dop == 0) {
+                                                            if (php72_cmp($disb_amt_dop) == 0) {
                                                                 $disb_amt_dop = '0.00';
                                                             }
                                                         }
@@ -192,8 +192,8 @@ $currency = $this->session->userdata['currency'];
                                                         foreach ($grant_reports as $list) {
                                                             ?>
                                                             <tr>
-                                                                <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->date_of_report) && $list->date_of_report != '' && $list->date_of_report > 0) echo date('d-m-Y', strtotime($list->date_of_report)); ?></td>
-                                                                <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->submit_date) && $list->submit_date != '' && $list->submit_date > 0) echo date('d-m-Y', strtotime($list->submit_date)); ?></td>
+                                                                <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->date_of_report) && $list->date_of_report != '' && php72_cmp($list->date_of_report) > 0) echo date('d-m-Y', strtotime($list->date_of_report)); ?></td>
+                                                                <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->submit_date) && $list->submit_date != '' && php72_cmp($list->submit_date) > 0) echo date('d-m-Y', strtotime($list->submit_date)); ?></td>
                                                                 <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->responsibility) && $list->responsibility != '') echo $responsibility[$list->responsibility]; ?></td>
                                                                 <td style="padding:8px ; border-bottom:1px solid #ccc;white-space:pre-line;word-wrap: break-word;word-break: break-all;overflow-wrap: break-word; "><?php if (isset($list->comments) && $list->comments != '') echo $list->comments; ?></td>
                                                                 <td style="padding:8px ; border-bottom:1px solid #ccc"><?php if (isset($list->file_name) && $list->file_name != '') echo substr($list->file_name, -35); ?></td>

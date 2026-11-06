@@ -32,7 +32,7 @@ word-break: break-all;
 			<th>Line Item</th>
 			<th>Cost Item</th>
 			<th>Additional Info</th>
-			<?php if($print_amt == 1){?>
+			<?php if(php72_cmp($print_amt) == 1){?>
 				<th>Assigned Amount INR</th>
 				<th>Approval Notes INR</th>
 				<th>Internal Notes INR</th>
@@ -84,7 +84,7 @@ word-break: break-all;
             <td><?= $row['budget_head']; ?></td>
             <td><?= $row['line_item']; ?></td>
             <td><?= $additional_info; ?></td>
-			<?php if($print_amt == 1){?>
+			<?php if(php72_cmp($print_amt) == 1){?>
 				<td><?= $assign_amt; ?></td>
 				<td><?= $approval_amt; ?></td>
 				<td><?= $internal_amt; ?></td>

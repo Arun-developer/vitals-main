@@ -205,12 +205,12 @@ function fetch_array($sql) {
 // @abstract taking the mySQL $resource id and fetch and return the result array
 // @param   SQL
 // @return  array
-    $res = mysqli_query($sql);
+    $res = php72_mysqli_query($sql);
     $data = array();
-    while ($row = mysqli_fetch_row($res)) {
+    while ($row = php72_mysqli_fetch_row($res)) {
         array_push($data, $row);
     }
-    mysqli_free_result($res);
+    php72_mysqli_free_result($res);
     return $data;
 }
 
@@ -236,7 +236,7 @@ function load_tables() {
                 // removing the empty tables from the list!
                 $sql = 'select count(*) from ' . $tables[$i][0];
                 $number_rows = fetch_array($sql);
-                if ($number_rows[0][0] > 0) {
+                if (php72_cmp($number_rows[0][0]) > 0) {
                     array_push($tables_to_search, $tables[$i][0]);
                 }
             }
@@ -308,7 +308,7 @@ function db_connect($server, $dbuser, $pass, $dbname) {
         return FALSE;
     }
 
-    if (!mysqli_select_db($dbname, $link)) {
+    if (!php72_mysqli_select_db($dbname, $link)) {
         $conf_data['db_error'] += 'No Database found in the name of "' . $dbname . '" <br/>';
         return false;
     };

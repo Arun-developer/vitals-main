@@ -125,7 +125,7 @@ $(document).ready( function() {
                         $td .= '<th class="tablehead">Metrices</th>';
     					$tmp = array ();
 						
-	                    if($weekDetails > 0 ) {
+	                    if(php72_cmp($weekDetails) > 0 ) {
                         foreach($weekDetails as $key=> $row)
                         {  
 							$row['progress_date'] = $row['start_date']."  ".$row['end_date'];

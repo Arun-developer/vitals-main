@@ -68,17 +68,17 @@
                                     <?php
                                     if ($this->session->userdata('user_type') == 'superadmin') {
                                         echo "Super Admin";
-                                    } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+                                    } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                         echo $this->session->userdata('emp_name');
                                         ?>
 
                                         <?php
-                                    } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+                                    } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                         echo $this->session->userdata('emp_name');
                                         ?>
 
                                         <?php
-                                    } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+                                    } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
                                         echo $this->session->userdata('emp_name');
                                         ?>
 
@@ -96,9 +96,9 @@
                                 </a>
                                 <?php
                                 $switch_type = '';
-                                if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+                                if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
                                     $switch_type = 'Switch to user';
-                                } else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+                                } else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
                                     $switch_type = 'Switch to admin';
                                 }
                                 ?>

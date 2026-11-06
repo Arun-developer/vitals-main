@@ -29,7 +29,7 @@ class Incubatee extends CI_Controller
                         );
                     }
                     $this->session->set_userdata($userDetails);
-                    if ($this->session->userdata['partner_id'] == 1) {
+                    if (php72_cmp($this->session->userdata['partner_id']) == 1) {
                         $innovation = $responce[0]['innovation'];
                         $this->session->set_flashdata('successMsg', 'You are Logged In!');
                         redirect('seedfunding/view/' . $innovation);

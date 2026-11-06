@@ -66,7 +66,7 @@ if (php72_count($otherInterests) > 0) {
     $int_icon = '<i class="fas fa-check-circle"></i>';
     $int_msg = 'text-success';
 }
-if ($plan_pending == 1) {
+if (php72_cmp($plan_pending) == 1) {
     $plan_class = '';
     $plan_text = 'Done';
     $plan_icon = '<i class="fas fa-check-circle"></i>';
@@ -126,7 +126,7 @@ if ($plan_pending == 1) {
                                         <h6>Company Master Data</h6>
                                     </div>
                                     <?php
-                                    if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                    if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
                                         $view_title = "<i class='fas fa-pencil-alt'></i>View & Edit";
                                     } else {
                                         $view_title = "";
@@ -187,11 +187,11 @@ if ($plan_pending == 1) {
                                                         <?php
                                                         $company_status = isset($master_data) ? $master_data['company_status'] : '';
                                                         $status_name = '';
-                                                        if ($company_status == 1) {
+                                                        if (php72_cmp($company_status) == 1) {
                                                             $status_name = 'Open';
-                                                        } else if ($company_status == 2) {
+                                                        } else if (php72_cmp($company_status) == 2) {
                                                             $status_name = 'Company Graduated';
-                                                        } else if ($company_status == 3) {
+                                                        } else if (php72_cmp($company_status) == 3) {
                                                             $status_name = 'Exited';
                                                         }
                                                         ?>
@@ -806,7 +806,7 @@ if ($plan_pending == 1) {
                                                                         <td>
                                                                             <p>
                                                                                 <?php
-                                                                                if ($capTableDetails[$i]['vesting'] == 1) {
+                                                                                if (php72_cmp($capTableDetails[$i]['vesting']) == 1) {
                                                                                     echo "Yes";
                                                                                 } else {
                                                                                     echo "No";

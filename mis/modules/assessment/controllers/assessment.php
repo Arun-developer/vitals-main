@@ -43,12 +43,12 @@ class Assessment extends CI_Controller {
 
             if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio'))) {
                 $data['exist'] = $this->Massessment->checkassessexist($id, $this->session->userdata('emp_number'));
-                if ($data['exist'] == 0 || $data['exist'] == '') {
+                if (php72_cmp($data['exist']) == 0 || $data['exist'] == '') {
                     $no_assigned = php72_count($assigned_incharge);
                     if ($no_assigned > 1) {
                         foreach ($assigned_incharge as $incharge) {
                             $assign_exist = $this->Massessment->checkassessexist($id, $incharge);
-                            if ($assign_exist != 0) {
+                            if (php72_cmp($assign_exist) != 0) {
                                 $assigned_incharge[0] = $incharge;
                                 break;
                             }
@@ -97,7 +97,7 @@ class Assessment extends CI_Controller {
         $assessor_emp = array();
         $i = 0;
         foreach ($status as $stat) {
-            if ($stat == 1) {
+            if (php72_cmp($stat) == 1) {
                 if (!empty($employee)) {
                     $assessor_emp[] = $employee[$i];
                 }
@@ -617,7 +617,7 @@ class Assessment extends CI_Controller {
         $risk = serialize($risk_string);
         $table = "assest_detail";
 
-        if ($_POST['total_score'] != '' || $check_main > 0 || $check_individual > 0) {
+        if ($_POST['total_score'] != '' || php72_cmp($check_main) > 0 || $check_individual > 0) {
             $score_enter = '1';
         } else {
             $score_enter = '0';
@@ -1030,9 +1030,9 @@ class Assessment extends CI_Controller {
                 $invID = 'INV' . $ids;
                 $innv_pool = $this->Mdiligence->get_data('innovation_pool', $invID);
                 $mem_data = array();
-                if ($innv_pool[0]['program'] == 0) {
+                if (php72_cmp($innv_pool[0]['program']) == 0) {
                     $mem_data = $this->Mdiligence->getManageIncub($invID);
-                } else if ($innv_pool[0]['program'] == 3 || $innv_pool[0]['program'] == 4) {
+                } else if (php72_cmp($innv_pool[0]['program']) == 3 || php72_cmp($innv_pool[0]['program']) == 4) {
                     $mem_data = $this->Mdiligence->getManagePitch($invID);
                 }
 
@@ -1128,7 +1128,7 @@ class Assessment extends CI_Controller {
                     $org = array('#name_of_entrepreneur#', '#applied_date#');
                     $replace = array($details[0]['name_of_entrepreneur'], $strip);
                     $messageBody = str_replace($org, $replace, $mail_template);
-                    if ($partner_id == 1) {
+                    if (php72_cmp($partner_id) == 1) {
                         $body = $this->imgUrl($messageBody);
                     } else {
                         $body = $messageBody;

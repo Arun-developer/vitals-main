@@ -1,15 +1,15 @@
 <?php
-if (isset($file) && $file == 1) {
+if (isset($file) && php72_cmp($file) == 1) {
     $doc = $pitch_details[0]['file1'];
 } else {
     $doc = $pitch_details[0]['file2'];
 }
 
-if ($program[0]['program'] == 5) {
+if (php72_cmp($program[0]['program']) == 5) {
     $doc_path = host_url() . 'fpai/mis_download.php?file_name=' . $doc;
-} else if ($program[0]['program'] == 6) {
+} else if (php72_cmp($program[0]['program']) == 6) {
     $doc_path = 'https://www.villgro.org/ubsapply/mis_download.php?file_name=' . $doc;
-} else if ($program[0]['program'] == 7) {
+} else if (php72_cmp($program[0]['program']) == 7) {
     $doc_path = host_url() . 'ysvf/mis_download.php?file_name=' . $doc;
 } else {
     $doc_path = host_url() . 'pitchform/mis_download.php?file_name=' . $doc;

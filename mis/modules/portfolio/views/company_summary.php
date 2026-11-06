@@ -788,9 +788,9 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                     <?php
                                     $s = 1;
                                     foreach ($upcoming_meeting as $miles) {
-                                        if ($miles['type'] == 1) {
+                                        if (php72_cmp($miles['type']) == 1) {
                                             $type = 'Diagnostic Panel';
-                                        } else if ($miles['type'] == 2) {
+                                        } else if (php72_cmp($miles['type']) == 2) {
                                             $type = 'Board Meeting';
                                         } else {
                                             $type = '-';
@@ -873,7 +873,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                     $exited_inv = array();
                     $i = 0;
                     foreach ($company_list as $company) {
-                        if ($company['company_status'] == 3) {
+                        if (php72_cmp($company['company_status']) == 3) {
                             $exited_inv[$i]['id'] = $company['id'];
                             $exited_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
                             $exited_inv[$i]['company_status'] = $company['company_status'];

@@ -83,7 +83,7 @@ class Book extends CI_Controller {
 			}else{
 				$status = "Pending";
 			}
-			if($lists->available==1){
+			if(php72_cmp($lists->available)==1){
 				$available_status = 'Available';
 			}
 			$nestedData = array();

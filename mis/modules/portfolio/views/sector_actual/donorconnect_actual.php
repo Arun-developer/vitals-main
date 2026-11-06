@@ -162,14 +162,14 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         <td>
                                                                             <?php
                                                                             if (php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
-                                                                                if ($delete_row == 0) {
+                                                                                if (php72_cmp($delete_row) == 0) {
                                                                                     ?>
                                                                                     <input type="checkbox" class="check_box"
                                                                                            aria-label="Checkbox for following text input"
                                                                                            name="check_delete" id="check_delete_<?php echo $j; ?>"
                                                                                            value="<?php echo $donorconnect_actual[$i]['id']; ?>">
                                                                                            <?php
-                                                                                       } else if ($delete_row == 1) {
+                                                                                       } else if (php72_cmp($delete_row) == 1) {
                                                                                            ?>
                                                                                     <span class="cursor" title="Remove" onclick="hideRow(<?= $j; ?>);"><i class="fas fa-minus-circle"></i></span>
                                                                                     <?php

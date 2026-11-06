@@ -175,7 +175,7 @@ class Asset extends CI_Controller {
 
         foreach ($assetList as $lists) {
        
-            if ($lists['donor'] == 0) {
+            if (php72_cmp($lists['donor']) == 0) {
                 $donor_type = $lists["other_donor"];
             } else {
                 $donor_type = $this->showMaster($lists["donor"]);
@@ -186,12 +186,12 @@ class Asset extends CI_Controller {
                 $emp_name = $employe_name[0]->emp_first_name . ' ' . $employe_name[0]->emp_last_name;
             }
            
-            if ($lists['budget_head'] == 0) {
+            if (php72_cmp($lists['budget_head']) == 0) {
                 $budget_type = $lists["other_budget_head"];
             } else {
                 $budget_type = $this->showMaster($lists["budget_head"]);
             }
-            if ($lists['line_item'] == 0) {
+            if (php72_cmp($lists['line_item']) == 0) {
                 $line_item_type = $lists["other_line_item"];
             } else {
                 $line_item_type = $this->showMaster($lists["line_item"]);
@@ -296,7 +296,7 @@ class Asset extends CI_Controller {
         $RES = explode('.', $num);
         $num = $RES[0];
         $digit = '';
-        if ($RES[1] > 0) {
+        if (php72_cmp($RES[1]) > 0) {
             $digit = '.' . $RES[1];
         }
         if ($type == 'view') {

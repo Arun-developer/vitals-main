@@ -23,16 +23,16 @@ foreach($innovationAgreement as $row):
 <?php  echo $row['agreement']; ?>
 <p>
 <?php
-if($row['status'] == 0 && !$isAuth){ ?>
+if(php72_cmp($row['status']) == 0 && !$isAuth){ ?>
 <a href="<?=site_url('screening/accept_agreement/'.$code);?>" class="button">Accept Agreement</a>
 <?php }
 else
 {
 	?>
-    <h2>Agreement Accept Status : <?=($row['status'] == 0)?'Pending':'Accepted';?> </h2>
+    <h2>Agreement Accept Status : <?=(php72_cmp($row['status']) == 0)?'Pending':'Accepted';?> </h2>
     <?php 
 }
-if($row['status'] == 1 ){
+if(php72_cmp($row['status']) == 1 ){
 ?>
 
 <!--Signed Copy Uploaded by Innovator-->

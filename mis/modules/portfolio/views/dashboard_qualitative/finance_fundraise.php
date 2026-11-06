@@ -6,7 +6,7 @@ foreach ($qtr_loop as $loopkey => $loopval) {
         $get_end_year = $this->Mportfolio->getFYtoYear($this->session->userdata('partner_id'), $fin_year);
         $fin_year = $get_end_year[0]['fin_to_year'];
     }
-    if ($loopval == 0) {
+    if (php72_cmp($loopval) == 0) {
         if ($loopkey == 'q_one_desc') {
             $month_tl = $get_month_list[0] . '-' . $get_month_list[2];
             $q_title = 'Q1';

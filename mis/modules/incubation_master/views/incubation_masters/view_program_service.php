@@ -162,8 +162,8 @@
                                                                     <label>Status<span>*</span></label>
                                                                     <select name="status" id="status"  disabled class="form-control edit_cls">
                                                                         <option value="">--Select--</option>
-                                                                        <option <?php if ($mail_details[0]->status == 1) echo"selected"; ?> value="1" >Approved</option>
-                                                                        <option <?php if ($mail_details[0]->status == 0) echo"selected"; ?> value="0">Disapproved </option>
+                                                                        <option <?php if (php72_cmp($mail_details[0]->status) == 1) echo"selected"; ?> value="1" >Approved</option>
+                                                                        <option <?php if (php72_cmp($mail_details[0]->status) == 0) echo"selected"; ?> value="0">Disapproved </option>
                                                                     </select>
                                                                 </div>
 

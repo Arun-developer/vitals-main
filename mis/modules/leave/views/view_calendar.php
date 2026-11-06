@@ -69,25 +69,25 @@ $dates = array();
           // display: 'background',
           // color: '#ff9f89'
           foreach($weekdays as $wk){
-            if($wk['monday'] == 3){
+            if(php72_cmp($wk['monday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Monday');
             }
-                        if($wk['tuesday'] == 3){
+                        if(php72_cmp($wk['tuesday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Tuesday');
             }
-                        if($wk['wednesday'] == 3){
+                        if(php72_cmp($wk['wednesday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Wednesday');
             }
-                        if($wk['thursday'] == 3){
+                        if(php72_cmp($wk['thursday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Thursday');
             }
-                        if($wk['friday'] == 3){
+                        if(php72_cmp($wk['friday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Friday');
             }
-                        if($wk['saturday'] == 3){
+                        if(php72_cmp($wk['saturday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Saturday');
             }
-                        if($wk['sunday'] == 3){
+                        if(php72_cmp($wk['sunday']) == 3){
                 $dates[] = getDates('2020', 'Y-m-d', 'Asia/Kolkata', 'Sunday');
             }
           }

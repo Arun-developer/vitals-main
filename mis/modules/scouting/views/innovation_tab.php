@@ -75,21 +75,21 @@ $result_Assessment = $this->Mscreening->getAssessmentStatusByInnovation($id);
 
             </li>
 
-            <?php if(($stage>=1) && ($this->session->userdata('user_type') != 'incubatee')){?>
+            <?php if((php72_cmp($stage)>=1) && ($this->session->userdata('user_type') != 'incubatee')){?>
 
             <li class="<?=($currentTab == 'assessment')?'selected':'';?>"><a
                     href="<?=site_url('assessment/view_list/'.$id);?>">Preliminary Assessment</a></li>
 
             <?php } ?>
 
-            <?php if($stage>2){?>
+            <?php if(php72_cmp($stage)>2){?>
 
             <li class="<?=($currentTab == 'presentation')?'selected':'';?>"><a
                     href="<?=site_url('presentation/view/'.$id);?>">Innovator Presentation</a></li>
 
             <?php } ?>
 
-            <?php if($stage>=4){?>
+            <?php if(php72_cmp($stage)>=4){?>
 
             <li class="<?=($currentTab == 'screening')?'selected':'';?>"><a
                     href="<?=site_url('screening/form/'.$id);?>">Detailed Diligence</a>
@@ -144,7 +144,7 @@ $result_Assessment = $this->Mscreening->getAssessmentStatusByInnovation($id);
 
             <?php } ?>
 
-            <?php if($stage>=5){?>
+            <?php if(php72_cmp($stage)>=5){?>
 
             <li class="<?=($currentTab == 'incubation')?'selected':'';?>"><a
                     href="<?=site_url('seedfunding/view/'.$id);?>">Incubation</a></li>

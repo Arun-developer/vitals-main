@@ -35,8 +35,63 @@ if (!function_exists('php72_count')) {
 }
 
 /**
+ * Operand for a loose comparison with a number, as in PHP 7.2.
+ * PHP 7.2 compared a number with a string by converting the string to a
+ * number ("" and "abc" -> 0, "12abc" -> 12). PHP 8 instead compares a number
+ * with a non-numeric string as strings, so '' == 0 became false.
+ * Strings are converted exactly as PHP 7.2 did; every other type is
+ * returned unchanged.
+ */
+if (!function_exists('php72_cmp')) {
+
+    function php72_cmp($value) {
+        if (!is_string($value)) {
+            return $value;
+        }
+        if (is_numeric($value)) {
+            return $value + 0;
+        }
+        if (preg_match('/^\s*[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?/', $value, $m)) {
+            return $m[0] + 0;
+        }
+        return 0;
+    }
+
+}
+
+/**
+ * Loose equality (==) exactly as in PHP 7.2. Differs from PHP 8 only for
+ * number vs non-numeric string, and for two strings where one has trailing
+ * whitespace ("1" == "1 " was false in PHP 7.2, true in PHP 8).
+ */
+if (!function_exists('php72_loose_eq')) {
+
+    function php72_loose_eq($a, $b) {
+        $aNum = is_int($a) || is_float($a);
+        $bNum = is_int($b) || is_float($b);
+        if ($aNum && is_string($b)) {
+            return $a == php72_cmp($b);
+        }
+        if ($bNum && is_string($a)) {
+            return php72_cmp($a) == $b;
+        }
+        if (is_string($a) && is_string($b)) {
+            $aN = is_numeric($a) && !preg_match('/\s$/', $a);
+            $bN = is_numeric($b) && !preg_match('/\s$/', $b);
+            if ($aN && $bN) {
+                return ($a + 0) == ($b + 0);
+            }
+            return $a === $b;
+        }
+        return $a == $b;
+    }
+
+}
+
+/**
  * in_array() as in PHP 7.2: when the haystack is not an array, PHP 7.2
- * returned NULL (falsy) instead of throwing.
+ * returned NULL (falsy) instead of throwing. Non-strict searches use
+ * PHP 7.2 loose comparison.
  */
 if (!function_exists('php72_in_array')) {
 
@@ -44,7 +99,15 @@ if (!function_exists('php72_in_array')) {
         if (!is_array($haystack)) {
             return null;
         }
-        return in_array($needle, $haystack, $strict);
+        if ($strict) {
+            return in_array($needle, $haystack, true);
+        }
+        foreach ($haystack as $item) {
+            if (php72_loose_eq($item, $needle)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
@@ -91,10 +154,25 @@ if (!function_exists('php72_array_call')) {
 
 }
 
+/**
+ * array_search() as in PHP 7.2: non-array haystack returned NULL; non-strict
+ * searches use PHP 7.2 loose comparison.
+ */
 if (!function_exists('php72_array_search')) {
 
-    function php72_array_search() {
-        return php72_array_call('array_search', func_get_args(), array(1));
+    function php72_array_search($needle, $haystack, $strict = false) {
+        if (!is_array($haystack)) {
+            return null;
+        }
+        if ($strict) {
+            return array_search($needle, $haystack, true);
+        }
+        foreach ($haystack as $key => $item) {
+            if (php72_loose_eq($item, $needle)) {
+                return $key;
+            }
+        }
+        return false;
     }
 
 }
@@ -134,10 +212,27 @@ if (!function_exists('php72_array_column')) {
 
 }
 
+/**
+ * array_keys() as in PHP 7.2: non-array input returned NULL; with a search
+ * value (non-strict), PHP 7.2 loose comparison is used.
+ */
 if (!function_exists('php72_array_keys')) {
 
     function php72_array_keys() {
-        return php72_array_call('array_keys', func_get_args(), array(0));
+        $args = func_get_args();
+        if (!array_key_exists(0, $args) || !is_array($args[0])) {
+            return null;
+        }
+        if (count($args) < 2 || (isset($args[2]) && $args[2])) {
+            return call_user_func_array('array_keys', $args);
+        }
+        $keys = array();
+        foreach ($args[0] as $key => $item) {
+            if (php72_loose_eq($item, $args[1])) {
+                $keys[] = $key;
+            }
+        }
+        return $keys;
     }
 
 }
@@ -260,6 +355,101 @@ if (!function_exists('php72_num')) {
             return 0;
         }
         return $value;
+    }
+
+}
+
+/*
+ * MySQL error reporting as in PHP 7.
+ * Since PHP 8.1 mysqli throws a mysqli_sql_exception on any SQL error. PHP 7 returned FALSE instead,
+ * which CodeIgniter (db_debug = FALSE) and the application code rely on. This helper is autoloaded
+ * before the database library, so this applies to every query.
+ */
+if (function_exists('mysqli_report')) {
+    mysqli_report(MYSQLI_REPORT_OFF);
+}
+
+/*
+ * mysqli_*() calls written in the old mysql_*() style (no connection argument, or arguments in the
+ * old order). PHP 7 printed a warning and returned NULL, so these queries never ran; PHP 8 throws an
+ * ArgumentCountError/TypeError instead. Each helper returns NULL in exactly those cases, and calls
+ * the real function when it is given valid arguments.
+ */
+if (!function_exists('php72_mysqli_query')) {
+
+    function php72_mysqli_query() {
+        $args = func_get_args();
+        if (count($args) < 2 || !($args[0] instanceof mysqli)) {
+            return null;
+        }
+        return call_user_func_array('mysqli_query', $args);
+    }
+
+}
+
+if (!function_exists('php72_mysqli_select_db')) {
+
+    function php72_mysqli_select_db() {
+        $args = func_get_args();
+        if (count($args) < 2 || !($args[0] instanceof mysqli)) {
+            return null;
+        }
+        return call_user_func_array('mysqli_select_db', $args);
+    }
+
+}
+
+if (!function_exists('php72_mysqli_error')) {
+
+    function php72_mysqli_error() {
+        $args = func_get_args();
+        if (count($args) < 1 || !($args[0] instanceof mysqli)) {
+            return null;
+        }
+        return mysqli_error($args[0]);
+    }
+
+}
+
+if (!function_exists('php72_mysqli_result_call')) {
+
+    function php72_mysqli_result_call($function, array $args) {
+        if (count($args) < 1 || !($args[0] instanceof mysqli_result)) {
+            return null;
+        }
+        return call_user_func_array($function, $args);
+    }
+
+}
+
+if (!function_exists('php72_mysqli_fetch_array')) {
+
+    function php72_mysqli_fetch_array() {
+        return php72_mysqli_result_call('mysqli_fetch_array', func_get_args());
+    }
+
+}
+
+if (!function_exists('php72_mysqli_fetch_row')) {
+
+    function php72_mysqli_fetch_row() {
+        return php72_mysqli_result_call('mysqli_fetch_row', func_get_args());
+    }
+
+}
+
+if (!function_exists('php72_mysqli_num_rows')) {
+
+    function php72_mysqli_num_rows() {
+        return php72_mysqli_result_call('mysqli_num_rows', func_get_args());
+    }
+
+}
+
+if (!function_exists('php72_mysqli_free_result')) {
+
+    function php72_mysqli_free_result() {
+        return php72_mysqli_result_call('mysqli_free_result', func_get_args());
     }
 
 }

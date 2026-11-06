@@ -163,11 +163,11 @@ $this->load->view('vitals_header.php', array('main_menu' => 'admin', 'page_title
                                     <div class="form-group">
                                         <label>AMC </label><br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" onchange="amc_available(this.value);" name="inlineRadioOptions" id="inlineRadio1" value="option1" <?= $disabled; ?> name="amc" id="amc" value="1" <?php isset($editid) && $editid != '' && $assetlist[0]['amc'] == 1 ? 'checked' : ''; ?> >
+                                            <input class="form-check-input" type="radio" onchange="amc_available(this.value);" name="inlineRadioOptions" id="inlineRadio1" value="option1" <?= $disabled; ?> name="amc" id="amc" value="1" <?php isset($editid) && $editid != '' && php72_cmp($assetlist[0]['amc']) == 1 ? 'checked' : ''; ?> >
                                             <label class="form-check-label" for="inlineRadio1">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" onchange="amc_available(this.value);" name="inlineRadioOptions" id="inlineRadio2" value="option2" <?= $disabled; ?> name="amc" id="amc2" value="2" <?php isset($editid) && $editid != '' && $assetlist[0]['amc'] == 2 ? 'checked' : ''; ?> >
+                                            <input class="form-check-input" type="radio" onchange="amc_available(this.value);" name="inlineRadioOptions" id="inlineRadio2" value="option2" <?= $disabled; ?> name="amc" id="amc2" value="2" <?php isset($editid) && $editid != '' && php72_cmp($assetlist[0]['amc']) == 2 ? 'checked' : ''; ?> >
                                             <label class="form-check-label" for="inlineRadio2">No</label>
                                         </div>
                                     </div>

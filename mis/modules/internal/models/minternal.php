@@ -316,7 +316,7 @@ class Minternal extends CI_Model {
 //        else {
 //            $where .= "AND EXTRACT(YEAR_MONTH FROM INTER.date) >= '$from' and EXTRACT(YEAR_MONTH FROM INTER.date) <= '$to'";
 //        }
-        if ($type == 1)
+        if (php72_cmp($type) == 1)
             $where .= "AND EXTRACT(YEAR_MONTH FROM INTER.date) >= '$from' and EXTRACT(YEAR_MONTH FROM INTER.date) <= '$to'";
 
         $where .= " AND INTER.partner_id = $partner_id";
@@ -396,9 +396,9 @@ class Minternal extends CI_Model {
         $from = $this->convertMonthYearFroms($financialArray[0]['from']);
         $to = $this->convertMonthYearTos($financialArray[0]['to']);
 // echo $type;/
-        if ($type == 1 && $whereCond != '') {
+        if (php72_cmp($type) == 1 && $whereCond != '') {
             $q .= " where EXTRACT(YEAR_MONTH FROM INTER.date) >= '$from' and EXTRACT(YEAR_MONTH FROM INTER.date) <= '$to' and " . $whereCond;
-        } else if ($type == 2 && $whereCond != '') {
+        } else if (php72_cmp($type) == 2 && $whereCond != '') {
             $q .= " where " . $whereCond;
         } else {
             #$q .= " where EXTRACT(YEAR_MONTH FROM INTER.date) >= '$from' and EXTRACT(YEAR_MONTH FROM INTER.date) <= '$to'";
@@ -1354,7 +1354,7 @@ class Minternal extends CI_Model {
         $this->ais->where('status !=', 'cancelled');
         $query = $this->ais->get('internal_note');
         $row = $query->result_array();
-        $remaining_amount = (($row[0]['int_amount'] != '')) ? ((($tot_req_amount != '') ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
+        $remaining_amount = (($row[0]['int_amount'] != '')) ? (((!php72_loose_eq($tot_req_amount, '')) ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
         return $remaining_amount;
     }
 

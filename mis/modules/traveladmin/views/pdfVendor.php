@@ -89,15 +89,15 @@ table{width:100%}
 	<?php } ?>
 		<tr>
 		  <td><strong>Donor</strong></td>
-		  <td><?=($row["donor"]==0)?$row["other_donor"]:$this->Mtravel->showMaster($row["donor"]);?></td>
+		  <td><?=(php72_cmp($row["donor"])==0)?$row["other_donor"]:$this->Mtravel->showMaster($row["donor"]);?></td>
 		</tr>
 		<tr>
 		  <td><strong>Budget Head</strong></td>
-		  <td><?=($row["budget_head"]==0)?$row["other_budget_head"]:$this->Mtravel->showMaster($row["budget_head"]);?></td>
+		  <td><?=(php72_cmp($row["budget_head"])==0)?$row["other_budget_head"]:$this->Mtravel->showMaster($row["budget_head"]);?></td>
 		</tr>
 		<tr>
 		  <td><strong>Sub-line Item</strong></td>
-		  <td><?=($row["cost_centre"]==0)?$row["other_cost_centre"]:$this->Mtravel->showMaster($row["cost_centre"]);?></td>
+		  <td><?=(php72_cmp($row["cost_centre"])==0)?$row["other_cost_centre"]:$this->Mtravel->showMaster($row["cost_centre"]);?></td>
 		</tr>
 		<tr>
 		  <td><strong>Programme</strong></td>

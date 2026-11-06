@@ -8,7 +8,7 @@ $get_month = json_decode($profit['data']);
 $reg_city = isset($master_data) ? $master_data['reg_city'] : $innovation['city'];
 $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_title' => $company_name . ' - Plan', 'company_name' => $company_name, 'port_action' => 'plan', 'reg_city' => $reg_city, 'sector_name' => $sector_name, 'inv_id' => $innovation_id, 'fin_year' => $current_financial, 'add_class' => 'mar-tp140'));
 
-if ((isset($this->session->userdata['sector_lead']) && $this->session->userdata['sector_lead'] == 1) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+if ((isset($this->session->userdata['sector_lead']) && php72_cmp($this->session->userdata['sector_lead']) == 1) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
     $notify_icon = isset($dataConfig) ? $dataConfig : '';
 } else {
     $notify_icon = '';
@@ -50,18 +50,18 @@ $field_enable = '0';
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                     <ul class="milestone-links">
-                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && ($approvals[0]['product_approval'] == 2 || $approvals[0]['sales_approval'] == 2 || $approvals[0]['channel_approval'] == 2 || $approvals[0]['pipeline_approval'] == 2 || $approvals[0]['revenue_approval'] == 2 || $approvals[0]['netprofit_approval'] == 2 || $approvals[0]['vif_approval'] == 2 || $approvals[0]['fundraise_approval'] == 2 || $approvals[0]['mentor_approval'] == 2 || $approvals[0]['tap_approval'] == 2 || $approvals[0]['nontap_approval'] == 2 || $approvaless[0]['dp_approval'] == 2 || $approvaless[0]['board_approval'] == 2 || $approvaless[0]['team_approval'] == 2 || $approvals[0]['impact_approval'] == 2 || $approvals[0]['project_approval'] == 2)) { ?>
+                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && (php72_cmp($approvals[0]['product_approval']) == 2 || php72_cmp($approvals[0]['sales_approval']) == 2 || php72_cmp($approvals[0]['channel_approval']) == 2 || php72_cmp($approvals[0]['pipeline_approval']) == 2 || php72_cmp($approvals[0]['revenue_approval']) == 2 || php72_cmp($approvals[0]['netprofit_approval']) == 2 || php72_cmp($approvals[0]['vif_approval']) == 2 || php72_cmp($approvals[0]['fundraise_approval']) == 2 || php72_cmp($approvals[0]['mentor_approval']) == 2 || php72_cmp($approvals[0]['tap_approval']) == 2 || php72_cmp($approvals[0]['nontap_approval']) == 2 || php72_cmp($approvaless[0]['dp_approval']) == 2 || php72_cmp($approvaless[0]['board_approval']) == 2 || php72_cmp($approvaless[0]['team_approval']) == 2 || php72_cmp($approvals[0]['impact_approval']) == 2 || php72_cmp($approvals[0]['project_approval']) == 2)) { ?>
                                             <li><a class="approveall" href="javascript:void(0);">Approve All</a></li>
                                         <?php } ?>
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue" href="javascript:void(0);">Save</a></li>
                                             <?php
                                             $field_enable = '1';
                                         }
                                         ?>
-                                        <?php if ($this->session->userdata['sector_lead'] == 1 && $isAssociate == 1 && $approvals[0]['config_approval'] == 1) { ?>
+                                        <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_cmp($isAssociate) == 1 && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                             <li><a class="sendApprovalBtn" id="lead_approveall" href="javascript:void(0);">Send for Approval</a></li>
-                                        <?php } else if (($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['config_approval'] == 1) { ?>
+                                        <?php } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                             <li><a class="sendApproval sendApprovalBtn" id="sendApproval" href="javascript:void(0);">Send for Approval</a></li>
                                         <?php } ?>
                                         <li>
@@ -105,17 +105,17 @@ $field_enable = '0';
                                     <div class="tab-slider--navform">
                                         <ul class="tab-slider--tabsform">
                                             <li class="tab-slider--triggerform "><a href="<?= base_url() . 'index.php/portfolio/revenue/' . $innovation_id . '/' . $current_financial; ?>">Revenue&nbsp;
-                                                    <?php if ($notify_icon != '' && $approvals[0]['revenue_approval'] == 2) { ?>
+                                                    <?php if ($notify_icon != '' && php72_cmp($approvals[0]['revenue_approval']) == 2) { ?>
                                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                                     <?php } ?>
                                                 </a></li>
                                             <li class="tab-slider--triggerform active"><a href="javascript:void(0)">Profit&nbsp;
-                                                    <?php if ($notify_icon != '' && $approvals[0]['netprofit_approval'] == 2) { ?>
+                                                    <?php if ($notify_icon != '' && php72_cmp($approvals[0]['netprofit_approval']) == 2) { ?>
                                                         <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                     <?php } ?>
                                                 </a></li>
                                             <li class="tab-slider--triggerform "><a href="<?= base_url() . 'index.php/portfolio/fundraise/' . $innovation_id . '/' . $current_financial; ?>">Fundraise&nbsp;
-                                                    <?php if ($notify_icon != '' && $approvals[0]['fundraise_approval'] == 2) { ?>
+                                                    <?php if ($notify_icon != '' && php72_cmp($approvals[0]['fundraise_approval']) == 2) { ?>
                                                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i></span>
                                                     <?php } ?>
                                                 </a></li>
@@ -171,14 +171,14 @@ $field_enable = '0';
 													
 													<div class="row">
 														<div class="col-xl-12 col-lg-6 col-md-6 col-12" style="display:flex;">
-															<?php if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['netprofit_approval'] == 2) { ?>
+															<?php if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['netprofit_approval']) == 2) { ?>
 																<h6>Profit Targets <span class="text-danger"><small>(Awaiting approval)</small></span></h6>
-															<?php } else if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['netprofit_approval'] == 3) { ?>
+															<?php } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['netprofit_approval']) == 3) { ?>
 																<h5>Profit Targets <span class="text-success"><small>(Approved)</small></span></h5>
 															<?php } else { ?>
 																<h5>Profit Targets</h5>
 															<?php } ?>
-															<?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['netprofit_approval'] == 2) { ?>
+															<?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['netprofit_approval']) == 2) { ?>
 															<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right"> -->
 																<div class="approved-btn text-right">
 																	<button type="button"  style="margin-left: 5px;margin-top: -14px;" class="btn btn-success capitilize">Approve</button>
@@ -205,7 +205,7 @@ $field_enable = '0';
                                                                 }
                                                                 ?>
                                                             <th colspan="10">Plan&nbsp;<span class="rupee-value">(<?= $currency_text; ?>)</span></th>
-                                                            <th class="text-right" colspan="2" id="editSec"><?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?><a href="javascript:void(0)" class="edit-btnconfig" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a><?php } ?></th>
+                                                            <th class="text-right" colspan="2" id="editSec"><?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?><a href="javascript:void(0)" class="edit-btnconfig" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a><?php } ?></th>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
@@ -300,7 +300,7 @@ $field_enable = '0';
                                                                 <?php }  */?>
 																<h4>Profit Plan</h4>
                                                             </div>
-                                                            <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['netprofit_approval'] == 2) { ?>
+                                                            <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['netprofit_approval']) == 2) { ?>
                                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                                                     <div class="approved-btn text-right">
                                                                         <button type="button" class="btn btn-success capitilize">Approve</button>

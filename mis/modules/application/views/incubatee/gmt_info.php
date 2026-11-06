@@ -69,7 +69,7 @@
 								?>
 								</a></li>
 								<?php } ?>
-								<?php  if ($additional_information[0]['program'] == 25 || $additional_information[0]['program'] == 34 || $additional_information[0]['program'] == 40) {  ?>
+								<?php  if (php72_cmp($additional_information[0]['program']) == 25 || php72_cmp($additional_information[0]['program']) == 34 || php72_cmp($additional_information[0]['program']) == 40) {  ?>
 								<li role="presentation"  class=" active"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								<li role="presentation" ><a href="<?php echo base_url() . 'index.php/application/additional_info/' . $application_id; ?>">Additional Information</a></li>
@@ -201,7 +201,7 @@
 													 <textarea class="form-control fieldDisable" cols="30" rows="3" disabled><?= $additional_information[0]['geographic']; ?></textarea>
                                                 </div>
                                             </div>
-											<?php  if ($additional_information[0]['program'] != 34) {  ?>
+											<?php  if (php72_cmp($additional_information[0]['program']) != 34) {  ?>
 								
 											<div class="col-12 col-lg-6 col-md-6">
                                                 <div class="form-group">
@@ -224,7 +224,7 @@
 													  <input class="form-control fieldDisable" cols="30" rows="3" disabled value="<?= $additional_information[0]['target_beneficiary']; ?>"></input>
                                                 </div>
                                             </div>
-											<?php  if ($additional_information[0]['program'] != 34) {  ?>
+											<?php  if (php72_cmp($additional_information[0]['program']) != 34) {  ?>
 								
 											<div class="col-12 col-lg-6 col-md-6">
                                                 <div class="form-group">

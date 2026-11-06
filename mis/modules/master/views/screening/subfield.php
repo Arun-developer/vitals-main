@@ -85,11 +85,11 @@ if (php72_count($value)) {
     foreach ($value as $in => $val):
     ?>
     <dl class="inline valueField">
-	    <dt><label for="values"> <?php if ($in == 0) {?>Values <font class="req_field">*</font> <?php }?>&nbsp;</label></dt>
+	    <dt><label for="values"> <?php if (php72_cmp($in) == 0) {?>Values <font class="req_field">*</font> <?php }?>&nbsp;</label></dt>
 		<dd>
          <input type="text" value="<?=$val?>" class="input-text" size="30" name="value[]" />
 
-         <?php if ($in == 0) {?>
+         <?php if (php72_cmp($in) == 0) {?>
          &nbsp;&nbsp;(<a href="javascript:void(0);" class="addValueRow" style="color:green; text-decoration:none; font-weight:bold" >Add Values</a>)
          <?php } else {?>
          &nbsp;&nbsp;(<a href="javascript:void(0);" class="removeValueRow" style="color:red; text-decoration:none; font-weight:bold" >Remove</a>)

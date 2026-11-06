@@ -11,7 +11,7 @@ $partner_id = $this->session->userdata('partner_id');
 
 $finance_user_count = financeuser_count($sess_empid);
 $fin_user = 0;
-if ($finance_user_count == 1) {
+if (php72_cmp($finance_user_count) == 1) {
     $fin_user = 1;
 }
 
@@ -52,7 +52,7 @@ if ($left_menu == 'approve') {
 
         $finance_user_count = financeuser_count($sess_empid);
         $fincount = 0;
-        if ($finance_user_count == 1) {
+        if (php72_cmp($finance_user_count) == 1) {
             $fincount += totalin_finpending_count();
         }
         $in_approval_count = $in_rocount + $in_appcount + $fincount;
@@ -484,21 +484,21 @@ $split_menu = explode(',', $this->session->userdata['menuAccess']);
     }
     ?>
     <?php
-    if (isset($an_approval_count) && $an_approval_count != 0) {
+    if (isset($an_approval_count) && php72_cmp($an_approval_count) != 0) {
         $approve_notify = '&nbsp;&nbsp;<span class="clr_redbtn"><i class="fas fa-exclamation-circle"></i></span>';
         $approve_subnotify = '(' . $an_approval_count . ')';
     } else {
         $approve_notify = "";
         $approve_subnotify = "";
     }
-    if (isset($in_approval_count) && $in_approval_count != 0) {
+    if (isset($in_approval_count) && php72_cmp($in_approval_count) != 0) {
         $internal_notify = '&nbsp;&nbsp;<span class="clr_redbtn"><i class="fas fa-exclamation-circle"></i></span>';
         $internal_subnotify = '(' . $in_approval_count . ')';
     } else {
         $internal_notify = "";
         $internal_subnotify = "";
     }
-    if (isset($approval_count) && $approval_count != 0) { 
+    if (isset($approval_count) && php72_cmp($approval_count) != 0) { 
         $leave_notify = '&nbsp;&nbsp;<span class="clr_redbtn"><i class="fas fa-exclamation-circle"></i></span>';
         $leave_subnotify = '(' . $approval_count . ')';
     } else {
@@ -506,7 +506,7 @@ $split_menu = explode(',', $this->session->userdata['menuAccess']);
         $leave_subnotify = "";
     }
     if (($this->session->userdata('user_type') == 'admin' || $this->session->userdata('user_type') == 'superadmin')) {
-        if ($travel_count != 0) {
+        if (php72_cmp($travel_count) != 0) {
             $travel_notify = '(' . $travel_count . ')';
         } else {
             $travel_notify = "";
@@ -651,7 +651,7 @@ $split_menu = explode(',', $this->session->userdata['menuAccess']);
                 </li>
                 <?php
                 $Book_notify="";
-                if($pending_books > 0){
+                if(php72_cmp($pending_books) > 0){
                     $Book_notify = '&nbsp;&nbsp;<span class="clr_redbtn"><i class="fas fa-exclamation-circle"></i></span>';
                 }
                 ?>
@@ -673,7 +673,7 @@ $split_menu = explode(',', $this->session->userdata['menuAccess']);
 											$library_count = "";
 											$this->load->model('login/Mlogapproval');
 											$library_count_data = $this->Mlogapproval->librarycount(); 
-											if (isset($library_count_data) && $library_count_data != 0) {
+											if (isset($library_count_data) && php72_cmp($library_count_data) != 0) {
 												$library_count = '(' . $library_count_data . ')';
 											}
 											echo $library_count;

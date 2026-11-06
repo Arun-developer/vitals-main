@@ -103,7 +103,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
                                         <?php
                                         $branch_id = $this->session->userdata('partner_id');
-                                        if ($branch_id == 10) {
+                                        if (php72_cmp($branch_id) == 10) {
                                             ?>
                                             <h6 class="pad-lt15px">Sector<span class="text-danger">*</span></h6>
                                         <?php } else { ?>
@@ -133,7 +133,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                            
                                             </select>
                                         </div>
-										 <?php if ($branch_id != 10) {  ?>
+										 <?php if (php72_cmp($branch_id) != 10) {  ?>
 											<div class="form-group">
                                                 <select id="loadSubSector" class="form-control form-control-sm" name="sub_sector">
                                                     <option value="">-Select-</option>
@@ -145,7 +145,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
 									
 								
                                     <?php
-                                    if ($branch_id != 10) {
+                                    if (php72_cmp($branch_id) != 10) {
                                         /* ?>
                                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
                                             <div class="form-group">

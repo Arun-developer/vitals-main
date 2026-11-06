@@ -126,9 +126,9 @@
 
                         <?php
                         $switch_type = '';
-                        if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+                        if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
                             $switch_type = 'Switch to user';
-                        } else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+                        } else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
                             $switch_type = 'Switch to admin';
                         }
                         ?>
@@ -141,11 +141,11 @@
                                        <?php
                                        if ($this->session->userdata('user_type') == 'superadmin') {
                                            echo "Super Admin";
-                                       } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+                                       } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                            echo ucfirst($this->session->userdata('emp_name'));
-                                       } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+                                       } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                            echo ucfirst($this->session->userdata('emp_name'));
-                                       } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+                                       } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
                                            echo ucfirst($this->session->userdata('emp_name'));
                                        } else if ($this->session->userdata('user_type') != 'admin' and $this->session->userdata('user_type') != 'mipuser') {
                                            echo ucfirst($this->session->userdata('emp_name'));
@@ -257,7 +257,7 @@
                         <div class="col-xl-4 col-md-4 col-sm-4 col-12 text-right">
                             <?php
                             $g_label = $this->session->userdata['graph_label'];
-                            if ($g_label == 1) {
+                            if (php72_cmp($g_label) == 1) {
                                 $swt_check = 'Checked';
                                 $swt_title = 'Data labels - on';
                             } else {
@@ -491,9 +491,9 @@
                                                     <?php
                                                     $s = 1;
                                                     foreach ($upcoming_milestone as $miles) {
-                                                        if ($miles['type'] == 1) {
+                                                        if (php72_cmp($miles['type']) == 1) {
                                                             $type = 'Diagnostic Panel';
-                                                        } else if ($miles['type'] == 2) {
+                                                        } else if (php72_cmp($miles['type']) == 2) {
                                                             $type = 'Board Meeting';
                                                         } else {
                                                             $type = '-';
@@ -533,7 +533,7 @@
                             $exited_inv = array();
                             $i = 0;
                             foreach ($company_list as $company) {
-                                if ($company['company_status'] == 3) {
+                                if (php72_cmp($company['company_status']) == 3) {
                                     $exited_inv[$i]['id'] = $company['id'];
                                     $exited_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
                                     $exited_inv[$i]['company_status'] = $company['company_status'];
@@ -558,7 +558,7 @@
                             $company_merge = array_merge($companies, $exited_inv);
                             foreach ($company_merge as $company) {
                                 $exit_class = '';
-                                if ($company['company_status'] == 3) {
+                                if (php72_cmp($company['company_status']) == 3) {
                                     $exit_class = 'addedExit';
                                 }
                                 ?>

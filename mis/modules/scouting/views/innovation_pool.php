@@ -98,8 +98,8 @@
     } else if (($this->session->userdata('user_type') == 'employee' || $this->session->userdata('user_type') == 'ceo' || $this->session->userdata('user_type') == 'cio' || $this->session->userdata('user_type') == 'abi' || $this->session->userdata('user_type') == 'icm') && $this->session->userdata('accessTo') != '') {
         $sql = "SELECT id,branch_name FROM hs_hr_branch where (id IN (" . $this->session->userdata['accessTo'] . ") OR id =" . $this->session->userdata['partner_id'] . ") and status = 'active' ";
         $values = array();
-        $result = mysqli_query($sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = php72_mysqli_query($sql);
+        while ($row = php72_mysqli_fetch_array($result)) {
             $values[] = array('branch_name' => $row['branch_name'],
                 'id' => $row['id']);
         }
@@ -117,8 +117,8 @@
     } else if ($this->session->userdata('user_type') == 'admin' && $this->session->userdata('accessTo') != '') {
         $sql = "SELECT id,branch_name FROM hs_hr_branch where (id IN (" . $this->session->userdata['accessTo'] . ") OR id =" . $this->session->userdata['partner_id'] . ") and status = 'active' ";
         $values = array();
-        $result = mysqli_query($sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = php72_mysqli_query($sql);
+        while ($row = php72_mysqli_fetch_array($result)) {
             $values[] = array('branch_name' => $row['branch_name'],
                 'id' => $row['id']);
         }
@@ -906,7 +906,7 @@ if (isset($_REQUEST['ordertype'])) {
                     <option value="">-Select-</option>
                     <?php
                     foreach ($status as $key => $value):
-                        if ($key != 21 && $key != 22) {
+                        if (php72_cmp($key) != 21 && php72_cmp($key) != 22) {
                             ?><option value="<?= $key ?>" <?= ((string) $key == $status_post) ? 'selected' : ''; ?>><?= $value ?></option>
                             <?php
                         }
@@ -1364,8 +1364,8 @@ if (isset($_REQUEST['ordertype'])) {
                     } else if (($this->session->userdata('user_type') == 'employee' || $this->session->userdata('user_type') == 'ceo' || $this->session->userdata('user_type') == 'cio' || $this->session->userdata('user_type') == 'abi' || $this->session->userdata('user_type') == 'icm')) {
                         $sql = "SELECT id,branch_name FROM hs_hr_branch where  status='active'";
                         $values = array();
-                        $result = mysqli_query($sql);
-                        while ($row = mysqli_fetch_array($result)) {
+                        $result = php72_mysqli_query($sql);
+                        while ($row = php72_mysqli_fetch_array($result)) {
                             $values[] = array('branch_name' => $row['branch_name'],
                                 'id' => $row['id']);
                         }
@@ -1384,8 +1384,8 @@ if (isset($_REQUEST['ordertype'])) {
                     } else if ($this->session->userdata('user_type') == 'admin') {
                         $sql = "SELECT id,branch_name FROM hs_hr_branch where  status='active'";
                         $values = array();
-                        $result = mysqli_query($sql);
-                        while ($row = mysqli_fetch_array($result)) {
+                        $result = php72_mysqli_query($sql);
+                        while ($row = php72_mysqli_fetch_array($result)) {
                             $values[] = array('branch_name' => $row['branch_name'],
                                 'id' => $row['id']);
                         }

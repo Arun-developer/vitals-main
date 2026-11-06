@@ -12,20 +12,20 @@ class Mformbuilder extends CI_Model {
         $query = ("SHOW COLUMNS " .
                 "FROM mis.formbuilder " .
                 "LIKE '%" . $options . "%'");
-        $result = mysqli_query($query)
+        $result = php72_mysqli_query($query)
                 or die("select table tableNameToAddColumnTo " .
                         "in addColumnIfItDoesNotExist() not successful: " .
-                        mysqli_error());
-        $rarray = mysqli_fetch_array($result);
+                        php72_mysqli_error());
+        $rarray = php72_mysqli_fetch_array($result);
         if (null == $rarray[0]) {
             //  here are the specifics for your new column,
             //  both the datatype and the position in the table
             $query = ("ALTER TABLE tableNameToAddColumnTo " .
                     "ADD COLUMN newColumnName VARCHAR(100) " .
                     "AFTER columnBeforeNewColumn;");
-            $result = mysqli_query($query)
+            $result = php72_mysqli_query($query)
                     or die("altering table tableNameToAddColumnTo not successful: " .
-                            mysqli_error());
+                            php72_mysqli_error());
         }
         return;
     }
@@ -35,13 +35,13 @@ class Mformbuilder extends CI_Model {
         foreach ($options as $key => $value) {
             $query = ("SHOW COLUMNS " . "FROM formdata " . "LIKE '%" . $key . "%'");
             $result = $this->db->query($query) or die("select table formdata" . "in formdatainsert() not successful: " .
-                            mysqli_error());
+                            php72_mysqli_error());
 
             $rarray = $result->result_array();
 
             if (null == @$rarray[0]) {
                 $query = ("ALTER TABLE `formdata` ADD " . $key . " VARCHAR( 100 ) NOT NULL AFTER `id`");
-                $result = $this->db->query($query) or die("altering table formdata not successful:" . mysqli_error());
+                $result = $this->db->query($query) or die("altering table formdata not successful:" . php72_mysqli_error());
             }
         }
 
@@ -478,7 +478,7 @@ class Mformbuilder extends CI_Model {
             $val = $pre['order'] + 1;
         }
 
-        if ($val > 0) {
+        if (php72_cmp($val) > 0) {
 
             if ($type = 'main') {
 

@@ -27,7 +27,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-12 text-right">
                                                         <ul class="milestone-links">
-                                                            <?php if (php72_count($leave_types) == 0 && $partner_id != 1) { ?>
+                                                            <?php if (php72_count($leave_types) == 0 && php72_cmp($partner_id) != 1) { ?>
                                                                 <li  class="brd-left-onboard">
                                                                     <a href="<?php echo base_url() . 'index.php/leave/copy_leavetype'; ?>" class="master_aduser" title="Copy master data from Villgro India"><i class="fas fa-clone"></i> Copy Master</a>
                                                                 </li>

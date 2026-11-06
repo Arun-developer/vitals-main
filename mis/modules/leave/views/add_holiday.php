@@ -130,10 +130,10 @@
                                                                 <div class="form-group">
                                                                     <label>Repeats Annually </label>
                                                                     <select class="form-control" name="holiday_repeat" id="holiday_repeat" <?= $pointer_evnt; ?>  <?= $disable; ?> >
-                                                                        <option value="1" <?php if (isset($holiday_detail) && $holiday_detail[0]['repeat_annually'] == 1) {
+                                                                        <option value="1" <?php if (isset($holiday_detail) && php72_cmp($holiday_detail[0]['repeat_annually']) == 1) {
     echo 'selected';
 } ?>>Yes</option>
-                                                                        <option value="2" <?php if (isset($holiday_detail) && $holiday_detail[0]['repeat_annually'] == 2) {
+                                                                        <option value="2" <?php if (isset($holiday_detail) && php72_cmp($holiday_detail[0]['repeat_annually']) == 2) {
     echo 'selected';
 } ?> >No</option>
                                                                     </select>
@@ -141,10 +141,10 @@
                                                                 <div class="form-group">
                                                                     <label>Full Day/ Half Day </label>
                                                                     <select class="form-control" name="holiday_type" id="holiday_type" <?= $pointer_evnt; ?>  <?= $disable; ?> >
-                                                                        <option value="1" <?php if (isset($holiday_detail) && $holiday_detail[0]['length'] == 1) {
+                                                                        <option value="1" <?php if (isset($holiday_detail) && php72_cmp($holiday_detail[0]['length']) == 1) {
     echo 'selected';
 } ?>>Full Day</option>
-                                                                        <option value="2" <?php if (isset($holiday_detail) && $holiday_detail[0]['length'] == 2) {
+                                                                        <option value="2" <?php if (isset($holiday_detail) && php72_cmp($holiday_detail[0]['length']) == 2) {
     echo 'selected';
 } ?>>Half Day</option>
                                                                     </select>

@@ -401,7 +401,7 @@ class Travel_admin extends CI_Controller {
             } else {
                 $status = "Pending";
             }
-            if ($lists->available == 1) {
+            if (php72_cmp($lists->available) == 1) {
                 $available_status = 'Available';
             }
             $nestedData = array();
@@ -658,14 +658,14 @@ class Travel_admin extends CI_Controller {
                         $return[$i]["amtavailable"] = $gran_wise_amount = $this->getaval_amount($_REQUEST["donor"][$i], $_REQUEST["budgethead"][$i], $_REQUEST["lineitem"][$i], $_REQUEST["progid"], $check, $pre, $_REQUEST["grant_id"][$i]);
                         #echo'<pew>';print_r($gran_wise_amount);die;
                         $return[$i]["amtreq"] = $_REQUEST["amtreq"][$i];
-                        if ($inam != 0 && !empty($inam)) {
+                        if (php72_cmp($inam) != 0 && !empty($inam)) {
                             if ($return[$i]['amtreq'] < $inam[$i]['amount_toapprove']) {
                                 $return[$i]['amtreq'] = 0;
                             }
                         }
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
-                        }if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        }if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                     } else { #error_reporting(-1);
@@ -678,7 +678,7 @@ class Travel_admin extends CI_Controller {
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
                         }
-                        if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                         #echo'<pre>';print_r($return);die;

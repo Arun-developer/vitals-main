@@ -30,7 +30,7 @@ $this->jquery->fancybox();
 			?>
                  <tr class="<?=$rowtype = ($rowtype == 'odd')?'even':'odd';?>">
 						<td align="left" valign="middle"> <?= $row['subject']?></td>
-						<td align="left" valign="middle"><?php if($row['status']==1)
+						<td align="left" valign="middle"><?php if(php72_cmp($row['status'])==1)
 						{?>
 						  <img src="<?=base_url()?>source/template/images/icons/tick.png"  />
 				  <?php } else

@@ -29,7 +29,7 @@ $req_internal_url = '';
 $req_approval_url = '';
 
 
-if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') { 
+if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') { 
     $switch_type = 'Switch to user';
     $internal_url = base_url() . 'index.php/login/approvals';
     #$approval_url = base_url() . 'index.php/login/approvals';
@@ -37,7 +37,7 @@ if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_t
 
     $req_internal_url = '';
     $req_approval_url = '';
-} else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') { 
+} else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') { 
     $switch_type = 'Switch to admin';
     $internal_url = base_url() . 'index.php/login/approvals';
     $approval_url = base_url() . 'index.php/login/approvals';
@@ -94,7 +94,7 @@ if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_t
                 </ul>
             </li>
             <li class="nav-item <?= $leave_active; ?> <?= $approve_leave_active; ?>">
-                <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse" data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false"><i class="fas fa-user-friends"></i> Leave <?php echo isset($approval_count) && $approval_count != 0 ? '(' . $approval_count . ')' : ''; ?></a>
+                <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse" data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false"><i class="fas fa-user-friends"></i> Leave <?php echo isset($approval_count) && php72_cmp($approval_count) != 0 ? '(' . $approval_count . ')' : ''; ?></a>
                 <ul class="nav-second-level collapse <?= $leave_menu; ?> <?= $approve_leave_menu; ?>" id="collapseSubItems4" data-parent="#navAccordion">
                     <?php
                     if ($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin') {
@@ -110,7 +110,7 @@ if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_t
                         ?>
                         <li class="nav-item <?= $approve_leave_active; ?>">
                             <a class="nav-link" href="<?php echo base_url() . 'index.php/leave/approve_leave_list'; ?>">
-                                <span class="nav-link-text">Approve <?php echo isset($approval_count) && $approval_count != 0 ? '(' . $approval_count . ')' : ''; ?></span>
+                                <span class="nav-link-text">Approve <?php echo isset($approval_count) && php72_cmp($approval_count) != 0 ? '(' . $approval_count . ')' : ''; ?></span>
                             </a>
                         </li>
                     <?php } ?>

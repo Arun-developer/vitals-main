@@ -60,7 +60,7 @@
                                 <li>
                                     <?php
                                     $g_label = $this->session->userdata['graph_label'];
-                                    if ($g_label == 1) {
+                                    if (php72_cmp($g_label) == 1) {
                                         $swt_check = 'Checked';
                                         $swt_title = 'Data labels - on';
                                     } else {
@@ -92,7 +92,7 @@
 							<?php
 							if (php72_count($fin_year) > 0) {
 								foreach ($fin_year as $year) {
-									if($year['fin_year'] > 2018){
+									if(php72_cmp($year['fin_year']) > 2018){
 									$nxt_fyear = $year['fin_year'] + 1;
 									?>
 									<option value="<?= $year['fin_year']; ?>" <?php if (isset($current_fy) && $current_fy == $year['fin_year']) { ?>  <?php } ?>><?= $year['fin_year'] . ' - ' . $nxt_fyear; ?></option>
@@ -209,7 +209,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="finance_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="finance_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -298,7 +298,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="product_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="product_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -387,7 +387,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="team_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="team_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -478,7 +478,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="impact_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="impact_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -569,7 +569,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="mentor_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="mentor_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -654,7 +654,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="diagnostic_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="diagnostic_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -739,7 +739,7 @@
                                         <div class="vil_chatpart marlt_14">
                                             <div class="newChatPortfolio-model">
                                                 <h3 class="wdt-100">Comments</h3>
-                                                <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <form id="seed_chartSubmit" method="POST" autocomplete="off">
                                                         <div class="input-group">
                                                             <input type="text" name="txt_description" id="seed_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -792,9 +792,9 @@
                                         <?php
                                         $s = 1;
                                         foreach ($upcoming_milestone as $miles) {
-                                            if ($miles['type'] == 1) {
+                                            if (php72_cmp($miles['type']) == 1) {
                                                 $type = 'Diagnostic Panel';
-                                            } else if ($miles['type'] == 2) {
+                                            } else if (php72_cmp($miles['type']) == 2) {
                                                 $type = 'Board Meeting';
                                             } else {
                                                 $type = '-';
@@ -915,7 +915,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="discovery_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="discovery_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1039,7 +1039,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="diligence_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="diligence_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1163,7 +1163,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="selection_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="selection_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1287,7 +1287,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="graduates_exits_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="graduates_exits_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1410,7 +1410,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="sectorfundraise_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="sectorfundraise_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1534,7 +1534,7 @@
                                             <div class="vil_chatpart marlt_14">
                                                 <div class="newChatPortfolio-model">
                                                     <h3 class="wdt-100">Comments</h3>
-                                                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                         <form id="financialstability_chartSubmit" method="POST" autocomplete="off">
                                                             <div class="input-group">
                                                                 <input type="text" name="txt_description" id="financialstability_text_description" class="form-control enterSubmit" placeholder="Enter your comments">
@@ -1577,12 +1577,12 @@
                         $exited_inv = $graduated_inv = array();
                         $i = 0;
                         foreach ($company_list as $company) {
-                            if ($company['company_status'] == 3) {
+                            if (php72_cmp($company['company_status']) == 3) {
                                 $exited_inv[$i]['id'] = $company['id'];
                                 $exited_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
                                 $exited_inv[$i]['company_status'] = $company['company_status'];
                                 $exited_inv[$i]['emp_id'] = $company['emp_id'];
-                            } elseif ($company['company_status'] == 2) {
+                            } elseif (php72_cmp($company['company_status']) == 2) {
                                 $graduated_inv[$i]['id'] = $company['id'];
                                 $graduated_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
                                 $graduated_inv[$i]['company_status'] = $company['company_status'];
@@ -1608,7 +1608,7 @@
                         $company_merge = php72_array_merge($graduted, $exited_inv);
                         foreach ($company_merge as $company) {
                             $exit_class = '';
-                            if ($company['company_status'] == 3 || $company['company_status'] == 2) {
+                            if (php72_cmp($company['company_status']) == 3 || php72_cmp($company['company_status']) == 2) {
                                 $exit_class = 'addedExit';
                             }
                             ?>

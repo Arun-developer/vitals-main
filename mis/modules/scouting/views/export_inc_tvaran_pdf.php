@@ -23,7 +23,7 @@
     <div class="logo">
         <img src="https://mis.villgroapps.org/mis_master/source/template/images/logo.gif" alt="Villgro Logo" height="110" width="259"/>
     </div> 
-    <?php if ($inv_user[0]['application_type'] == 30 ) {  ?>
+    <?php if (php72_cmp($inv_user[0]['application_type']) == 30 ) {  ?>
         <div>
              <p class="title_text">Tvaran 2.0</p>
 			 

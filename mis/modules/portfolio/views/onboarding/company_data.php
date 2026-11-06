@@ -222,27 +222,27 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                 <select class="form-control form-control-sm" name="company_status"
                                                         id="company_status" onchange="companyStatus(this.value);">
                                                     <option value="1" <?php
-                                                    if ($company_status == 1) {
+                                                    if (php72_cmp($company_status) == 1) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Open</option>
                                                     <option value="2" <?php
-                                                    if ($company_status == 2) {
+                                                    if (php72_cmp($company_status) == 2) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Graduated (Non-Financial)</option>
                                                     <option value="3" <?php
-                                                    if ($company_status == 3) {
+                                                    if (php72_cmp($company_status) == 3) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Exited (With Equity)</option>
 													<option value="4" <?php
-                                                    if ($company_status == 4) {
+                                                    if (php72_cmp($company_status) == 4) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Contract terminated</option>
 													<option value="5" <?php
-                                                    if ($company_status == 5) {
+                                                    if (php72_cmp($company_status) == 5) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Company Shutdown</option>

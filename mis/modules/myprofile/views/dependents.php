@@ -91,7 +91,7 @@
                                       <?php
                                       $j = 1;
                                       $dependent_count = isset($dependent_list[0]['id']) ? php72_count($dependent_list) : 0;
-                                      if ($dependent_count > 0) {
+                                      if (php72_cmp($dependent_count) > 0) {
                                         for ($i = 0; $i < $dependent_count; $i++) {
                                           $birth_date = isset($dependent_list[$i]['birth_date']) && $dependent_list[$i]['birth_date'] != '0000-00-00 00:00:00' ? date('d-m-Y', strtotime($dependent_list[$i]['birth_date'])) : '';
                                           ?>
@@ -103,22 +103,22 @@
                                               <select class="form-control employeeInput" readonly name="dependent_relation[]" id="dependent_relation_<?= $j; ?>">
                                                 <option value="">-- Select --</option>
                                                 <option value="1" <?php
-                                                if ($dependent_list[$i]['relationship'] == 1) {
+                                                if (php72_cmp($dependent_list[$i]['relationship']) == 1) {
                                                   echo 'selected';
                                                 }
                                                 ?>>Father</option>
                                                 <option value="2" <?php
-                                                if ($dependent_list[$i]['relationship'] == 2) {
+                                                if (php72_cmp($dependent_list[$i]['relationship']) == 2) {
                                                   echo 'selected';
                                                 }
                                                 ?>>Mother</option>
                                                 <option value="3" <?php
-                                                if ($dependent_list[$i]['relationship'] == 3) {
+                                                if (php72_cmp($dependent_list[$i]['relationship']) == 3) {
                                                   echo 'selected';
                                                 }
                                                 ?>>Spouse</option>
                                                 <option value="4" <?php
-                                                if ($dependent_list[$i]['relationship'] == 4) {
+                                                if (php72_cmp($dependent_list[$i]['relationship']) == 4) {
                                                   echo 'selected';
                                                 }
                                                 ?>>Child</option>

@@ -24,7 +24,7 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
     <th><a href="<?=$nullLink?>" field="label">Innovator Name</a></th>
 	<th><a href="<?=$nullLink?>" field="label">Description</a></th>
 	<th><a href="<?=$nullLink?>" field="label">Request Date</a></th>
-        <?php if($permission == 1)
+        <?php if(php72_cmp($permission) == 1)
         {?>
     <th><a href="<?=$nullLink?>" field="value">Status</a></th>
            <?php } ?> 
@@ -50,11 +50,11 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
 			<td align="left" valign="middle"><?=$row["innovator_name"];?></td>
 			<td align="left" valign="middle"><?=$row["job_description"];?></td>
             <td align="left" valign="middle"><?=$row["request_date"];?></td>
-                <?php if($permission == 1)
+                <?php if(php72_cmp($permission) == 1)
                 {?>
 			<td align="left" valign="middle">
 				  
-				 <?php if(($row['status'])==1)
+				 <?php if(php72_cmp(($row['status']))==1)
 						      {
 							    echo "Accepted";
 							  }
@@ -62,7 +62,7 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
 							  
 						       <a class="button fancybox"  height="200" href="<?=site_url('fellow/liststatus/approve/'.$innovationid.'/'.$row['id']);?>">Approve</a> 
 						<?php } }?>
-						 <?php if(($row['status'])==2)
+						 <?php if(php72_cmp(($row['status']))==2)
 						   {
 						     echo "Rejected";
 						   }
@@ -70,7 +70,7 @@ $permission = array_pop($this->museraccess->approvepermission($this->session->us
 						   { if(!$isincubAuth) {?>	 
 							 <a class="button fancybox" height="200" href="<?=site_url('fellow/liststatus/reject/'.$innovationid.'/'.$row['id']);?>">Reject</a> 
 				   <?php } } ?>
-					  <?php if(($row['status'])==0)
+					  <?php if(php72_cmp(($row['status']))==0)
 					      {
 					         echo "Pending";
 			   		      } ?>

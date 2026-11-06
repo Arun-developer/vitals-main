@@ -40,7 +40,7 @@ $userName = strstr($this->session->userdata['emp_name'] . ' ', ' ', true);
 
 
 if ($this->session->userdata('user_type')) {
-    if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) {
+    if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) {
 		
 		if ($this->session->userdata('isAdmin') != 'Yes' && ($this->session->userdata('user_type') != 'superadmin')) {
 			#AN assign user
@@ -71,7 +71,7 @@ if (isset($last_logtime) && $last_logtime != '') {
 }
 ?>
 
-<?php if ($this->session->userdata['last_log_view'] == 1) { ?>
+<?php if (php72_cmp($this->session->userdata['last_log_view']) == 1) { ?>
     <div class="msg success"><strong>Welcome <span><?php echo $userName; ?>,</span></strong>
         <p><?= $welcome_msg; ?></p>
     </div>
@@ -100,10 +100,10 @@ if (isset($last_logtime) && $last_logtime != '') {
                             </a>
                         </div>
                     </div>
-                    <?php if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                         <div class="row">
                             <?php
-                            if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata('user_type') == 'admin') {
+                            if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata('user_type') == 'admin') {
                                 $url = base_url() . 'index.php/portfolio/plan_approvals';
                                 ?>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col">
@@ -116,8 +116,8 @@ if (isset($last_logtime) && $last_logtime != '') {
                                 </div>
                                 <?php
                             }
-                            if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
-                                if ($sectorplan_count != '' || $sectorplan_count > 0) {
+                            if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                if ($sectorplan_count != '' || php72_cmp($sectorplan_count) > 0) {
                                     $url = base_url() . 'index.php/portfolio/sectorplan_approvals';
                                 } else {
                                     $url = 'javascript:void(0)';
@@ -134,7 +134,7 @@ if (isset($last_logtime) && $last_logtime != '') {
                             <?php } ?>
                         </div>
                         <div class="row">
-                            <?php if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) { 
+                            <?php if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) { 
                                 if($this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
                                     $req_url ='approval/approvaladmin/approval_notes/pending';
                                 } else {
@@ -154,7 +154,7 @@ if (isset($last_logtime) && $last_logtime != '') {
                     <?php } else { ?>
                         <div class="row">
                             <?php
-                            if ($this->session->userdata['sector_lead'] == 1 || $this->session->userdata('user_type') == 'admin') {
+                            if (php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata('user_type') == 'admin') {
                                 $url = base_url() . 'index.php/portfolio/plan_approvals';
                                 ?>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col">
@@ -167,7 +167,7 @@ if (isset($last_logtime) && $last_logtime != '') {
                                 </div>
                                 <?php
                             }
-                            if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) {
+                            if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) {
 
                              $req_url = 'approval/approval_note/all_pending';
 
@@ -203,11 +203,11 @@ if (isset($last_logtime) && $last_logtime != '') {
                               if($getAll_count > 0){
                                $req_url = 'approval/approval_note/all_pending/ceolist';
                            }
-                           if($getAll_Phcount > 0){
+                           if(php72_cmp($getAll_Phcount) > 0){
                                $req_url = 'approval/approval_note/pending/phlist';
                            }
                        }else if($ph_Usercount=='1' &&  $ceo_Usercount=='0'){ $type=2;
-                          if($getAll_Phcount > 0){
+                          if(php72_cmp($getAll_Phcount) > 0){
                            $req_url = 'approval/approval_note/pending/phlist';
                        }
 

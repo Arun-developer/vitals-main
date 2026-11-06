@@ -57,7 +57,7 @@
 								?>
 								</a></li>
 								<?php } ?>
-								<?php  if ($innovation_information[0]['program'] != 21 && $innovation_information[0]['program'] != 22) {  ?>
+								<?php  if (php72_cmp($innovation_information[0]['program']) != 21 && php72_cmp($innovation_information[0]['program']) != 22) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/additional_info/' . $application_id; ?>">Additional Information</a></li>

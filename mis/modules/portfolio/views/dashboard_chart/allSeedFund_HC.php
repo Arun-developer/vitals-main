@@ -55,7 +55,7 @@
                     shared: true,
                     useHTML: true
             },
-<?php if ($this->session->userdata['graph_label'] == 1) { ?>
+<?php if (php72_cmp($this->session->userdata['graph_label']) == 1) { ?>
         plotOptions: {
         series: {
         allowPointSelect: true,

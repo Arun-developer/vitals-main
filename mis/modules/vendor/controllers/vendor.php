@@ -21,7 +21,7 @@ function vendor_list() {
 	$getFinanceUser = $this->vendor_model->get_all_details('approval_setting', $conditionFinance, array('finance'), '', '', '', true, 'ais');
 	$data['user_status'] ='';
 	if(!empty($getFinanceUser)){
-		if(in_array($role_id, array(1,2,3))){
+		if(php72_in_array($role_id, array(1,2,3))){
 			$data['user_status'] ='1';
 		}
 		$financeUserId = unserialize($getFinanceUser[0]->finance);
@@ -71,7 +71,7 @@ function addEdit_vendor() {
 	$role_id = $this->session->userdata('role_id');
 	$data['user_status'] ='';
 	if(!empty($getFinanceUser)){
-		if(in_array($role_id, array(1,2,3))){
+		if(php72_in_array($role_id, array(1,2,3))){
 			$data['user_status'] ='1';
 		}
 		$financeUserId = unserialize($getFinanceUser[0]->finance);
@@ -81,7 +81,7 @@ function addEdit_vendor() {
 			}
 		}
 	}
-	if($this->session->userdata('emp_number')==575){
+	if(php72_cmp($this->session->userdata('emp_number'))==575){
 		$data['user_status'] ='2';
 	}
 	
@@ -103,7 +103,7 @@ public function DT_vendor() {
 		$cond ='';
 		
 		if(!empty($getFinanceUser)){
-			if(in_array($role_id, array(1,2,3))){
+			if(php72_in_array($role_id, array(1,2,3))){
 				$cond = " AND v1.created_user_id = ".$user_id."";
 			}
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
@@ -115,15 +115,15 @@ public function DT_vendor() {
 		}
 		
 		if(isset($user_id) && $user_id!=''){
-			if($user_id==575){
+			if(php72_cmp($user_id)==575){
 				$cond = " AND v1.finance_user_id = ".$user_id."";
 			}else{
-				if(in_array($role_id, array(1,2,3))){
+				if(php72_in_array($role_id, array(1,2,3))){
 					$cond = " AND v1.created_user_id = ".$user_id."";
 				}
 			}
 		}
-		if($this->session->userdata('role_id') == 2){
+		if(php72_cmp($this->session->userdata('role_id')) == 2){
 			$cond = "";
 		}
 		
@@ -137,7 +137,7 @@ public function DT_vendor() {
 				5 => 'msme_registered',
 				6 => 'status',
 			);
-			if($this->session->userdata('emp_number')==575){
+			if(php72_cmp($this->session->userdata('emp_number'))==575){
 				$columns = array(
 					0 => 'id',
 					1 => 'name',
@@ -164,7 +164,7 @@ public function DT_vendor() {
             $nestedData = $report_to = array();
             $nestedData[] = '<input type="checkbox" class="chk_box" id="emp_chk_box" name="employee_id[]" value="' . $row['id'] . '"/>';
             $nestedData[] = $row['name'];
-			if($this->session->userdata('emp_number')==575){
+			if(php72_cmp($this->session->userdata('emp_number'))==575){
 				$getUserData = $this->vendor_model->get_all_details('hr_user_profile', array('id'=>$row['created_user_id']), array('official_email','emp_name'), '', '', '');
 				$nestedData[] =  $getUserData[0]->emp_name;
 			}
@@ -173,11 +173,11 @@ public function DT_vendor() {
 			$nestedData[] =  $row['gst_number'];
 			$nestedData[] =  $row['msme_registered'];
 			$status = '';
-			if($row['status']==1){
+			if(php72_cmp($row['status'])==1){
 				$status = 'Pending';
-			}else if($row['status']==2){
+			}else if(php72_cmp($row['status'])==2){
 				$status = 'Approved';
-			}else if($row['status']==3){
+			}else if(php72_cmp($row['status'])==3){
 				$status = 'Amend';
 			}
 			
@@ -237,9 +237,9 @@ public function DT_vendor() {
 			
 			$selected = '';
 			$selected2 = '';
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);

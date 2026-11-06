@@ -431,7 +431,7 @@ class Mmaster_settings extends CI_Model {
     public function deleteDonorFit($id) {
         $result = $this->db->query('SELECT count(*) as total FROM grading_feedback WHERE FIND_IN_SET( ' . $id . ', donor_fit )');
         $row = $result->result_array();
-        if ($row[0]['total'] > 0) {
+        if (php72_cmp($row[0]['total']) > 0) {
             return 'Exist'; // 5 just a number
         } else {
             $this->db->where('id', $id);
@@ -461,7 +461,7 @@ class Mmaster_settings extends CI_Model {
         $exp = '.*;s:[0-9]+:"' . $id . '".*';
         $result = $this->db->query("SELECT count(*) as total FROM assesst_sub_cat_detail WHERE add_score REGEXP '" . $exp . "'");
         $row = $result->result_array();
-        if ($row[0]['total'] > 0) {
+        if (php72_cmp($row[0]['total']) > 0) {
             return 'Exist'; // 5 just a number
         } else {
             $this->db->where('id', $id);

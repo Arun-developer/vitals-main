@@ -298,7 +298,7 @@ class Mmail extends CI_Model {
     }
 
     public function getMailContent($id, $mailType, $partner_id = 1, $model = '') {
-        if ($model == 1)
+        if (php72_cmp($model) == 1)
             $this->load->model('common/Minnovation_mail');
         else
             $this->load->model('Minnovation_mail');
@@ -337,15 +337,15 @@ class Mmail extends CI_Model {
         } else {
             $template['from'] = $from['email'];
         }
-        if ($partner_id == 2) {
+        if (php72_cmp($partner_id) == 2) {
             $template['from'] = 'admin@villgrokenya.or.ke';
-        } else if ($partner_id == 4) {
+        } else if (php72_cmp($partner_id) == 4) {
             $template['from'] = 'invent@startupoasis.in';
-        } else if ($partner_id == 5) {
+        } else if (php72_cmp($partner_id) == 5) {
             $template['from'] = 'invent@iimcip.org';
-        } else if ($partner_id == 6) {
+        } else if (php72_cmp($partner_id) == 6) {
             $template['from'] = 'invent@kiitincubator.in';
-        } else if ($partner_id == 7) {
+        } else if (php72_cmp($partner_id) == 7) {
             $template['from'] = 'incubator@iitk.ac.in';
         }
         return $template;
@@ -358,15 +358,15 @@ class Mmail extends CI_Model {
         $templateContent = $this->Mmailtemplate->getMailTemplate($mailType, $partner_id);
         // $template = $this->Memail->parseContent($content, $templateContent);
 
-        if ($partner_id == 2) {
+        if (php72_cmp($partner_id) == 2) {
             $templateContent['from'] = 'admin@villgrokenya.or.ke';
-        } else if ($partner_id == 4) {
+        } else if (php72_cmp($partner_id) == 4) {
             $templateContent['from'] = 'invent@startupoasis.in';
-        } else if ($partner_id == 5) {
+        } else if (php72_cmp($partner_id) == 5) {
             $templateContent['from'] = 'invent@iimcip.org';
-        } else if ($partner_id == 6) {
+        } else if (php72_cmp($partner_id) == 6) {
             $templateContent['from'] = 'invent@kiitincubator.in';
-        } else if ($partner_id == 7) {
+        } else if (php72_cmp($partner_id) == 7) {
             $templateContent['from'] = 'incubator@iitk.ac.in';
         }
         return $templateContent;

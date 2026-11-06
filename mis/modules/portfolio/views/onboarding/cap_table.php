@@ -156,11 +156,11 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                     <div class="input-group">
                                                                         <input type="radio" class="check_box vesting vestingy" id="vestingY_<?= $i; ?>"
                                                                                name="vesting[<?php echo $i; ?>]" value="1" onclick="enable_schedule(<?= $i; ?>)"
-                                                                               <?php if ($capTableDetails[$i]['vesting'] == 1) { ?> checked="checked" <?php } ?>>
+                                                                               <?php if (php72_cmp($capTableDetails[$i]['vesting']) == 1) { ?> checked="checked" <?php } ?>>
                                                                         <label for="vestingY_<?= $i; ?>">Yes</label>
                                                                         <input type="radio" class="check_box vesting vestingn" id="vestingN_<?= $i; ?>"
                                                                                name="vesting[<?php echo $i; ?>]" value="0" onclick="disable_schedule(<?= $i; ?>)"
-                                                                               <?php if ($capTableDetails[$i]['vesting'] == 0) { ?> checked="checked" <?php } ?>>
+                                                                               <?php if (php72_cmp($capTableDetails[$i]['vesting']) == 0) { ?> checked="checked" <?php } ?>>
                                                                         <label for="vestingN_<?= $i; ?>">No</label>
                                                                     </div>
                                                                 </div>

@@ -105,7 +105,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -118,7 +118,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -274,7 +274,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -287,7 +287,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -452,7 +452,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -465,7 +465,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -596,7 +596,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -609,7 +609,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -712,7 +712,7 @@ class Sector_actual extends CI_Controller {
         $data['qualitative_actual'] = $this->Mportfolio->getFundraiseDetails('sector_actual_qualitative_data', $qual_cond, $f_year, $status);
         $data['qualitative_plan'] = $this->Mportfolio->getPlanDetails('sectorplan_qualitative_data', $qual_option, '', $f_year, $status);
 
-        if($month == 1 || $month == 2 || $month == 3){
+        if(php72_cmp($month) == 1 || php72_cmp($month) == 2 || php72_cmp($month) == 3){
             $year_qry = $year + 1;
         } else {
             $year_qry = $year;
@@ -735,7 +735,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -748,7 +748,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -851,7 +851,7 @@ class Sector_actual extends CI_Controller {
         $data['qualitative_actual'] = $this->Mportfolio->getFundraiseDetails('sector_actual_qualitative_data', $qual_cond, $f_year, $status);
         $data['qualitative_plan'] = $this->Mportfolio->getPlanDetails('sectorplan_qualitative_data', $qual_option, '', $f_year, $status);
 
-        if($month == 1 || $month == 2 || $month == 3){
+        if(php72_cmp($month) == 1 || php72_cmp($month) == 2 || php72_cmp($month) == 3){
             $year_qry = $year + 1;
         } else {
             $year_qry = $year;
@@ -884,7 +884,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -897,7 +897,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1058,7 +1058,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1071,7 +1071,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1233,7 +1233,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1246,7 +1246,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1407,7 +1407,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1420,7 +1420,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1581,7 +1581,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1594,7 +1594,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1713,7 +1713,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1726,7 +1726,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1843,7 +1843,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1856,7 +1856,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1974,7 +1974,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1987,7 +1987,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2146,7 +2146,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2159,7 +2159,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2320,7 +2320,7 @@ class Sector_actual extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2333,7 +2333,7 @@ class Sector_actual extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];

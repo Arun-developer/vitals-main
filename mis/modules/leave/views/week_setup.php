@@ -25,17 +25,17 @@
                                             <label>Monday</label>
                                             <select class="form-control" name="monday_values" id="monday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['monday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['monday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['monday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['monday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['monday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['monday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -47,17 +47,17 @@
                                             <label>Tuesday</label>
                                             <select class="form-control" name="tuesday_values" id="tuesday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['tuesday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['tuesday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['tuesday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['tuesday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['tuesday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['tuesday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -69,17 +69,17 @@
                                             <label>Wednesday</label>
                                             <select class="form-control" name="wednesday_values" id="wednesday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['wednesday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['wednesday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['wednesday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['wednesday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['wednesday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['wednesday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -93,17 +93,17 @@
                                             <label>Thursday</label>
                                             <select class="form-control" name="thursday_values" id="thursday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['thursday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['thursday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['thursday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['thursday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['thursday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['thursday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -115,17 +115,17 @@
                                             <label>Friday</label>
                                             <select class="form-control" name="friday_values" id="friday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['friday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['friday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['friday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['friday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['friday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['friday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -137,17 +137,17 @@
                                             <label>Saturday</label>
                                             <select class="form-control" name="saturday_values" id="saturday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['saturday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['saturday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['saturday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['saturday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['saturday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['saturday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>
@@ -161,17 +161,17 @@
                                             <label>Sunday</label>
                                             <select class="form-control" name="sunday_values" id="sunday_values" required>
                                                 <option value="1" <?php
-                                                if ($weekdays[0]['sunday'] == 1) {
+                                                if (php72_cmp($weekdays[0]['sunday']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Full Day</option>
                                                 <option value="2" <?php
-                                                if ($weekdays[0]['sunday'] == 2) {
+                                                if (php72_cmp($weekdays[0]['sunday']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Half Day</option>
                                                 <option value="3" <?php
-                                                if ($weekdays[0]['sunday'] == 3) {
+                                                if (php72_cmp($weekdays[0]['sunday']) == 3) {
                                                     echo 'selected';
                                                 }
                                                 ?> >Weekend</option>

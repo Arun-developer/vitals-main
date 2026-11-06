@@ -300,12 +300,12 @@
                                                             
                                                                 <?php
                                                                 for ($k = 0; $k < $rowspancount; $k++) {
-                                                                    if ($empselectedcount > 0) {
+                                                                    if (php72_cmp($empselectedcount) > 0) {
                                                                         ?>
                                                                         <td ><?= $employeeselected[$k]; ?></td>
-                                                                    <?php } if ($sectorselectedcount > 0) { ?>
+                                                                    <?php } if (php72_cmp($sectorselectedcount) > 0) { ?>
                                                                         <td><?= $sectorselected[$k]; ?></td>
-                                                                    <?php } if ($sourceselectedcount > 0) { ?>
+                                                                    <?php } if (php72_cmp($sourceselectedcount) > 0) { ?>
                                                                         <td><?= $sourceselected[$k]; ?></td>
                                                                     <?php
                                                                     }

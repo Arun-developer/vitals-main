@@ -26,8 +26,8 @@ $(document).ready(function() {
                 <?php $query_status = isset($_REQUEST["query_status"]) ? $_REQUEST["query_status"] : $quy['query_status'];?>
                 <select name="query_status" class="required">
                     <option value="">Select</option>
-                    <option value="1" <?=($query_status == 1) ? 'selected' : '';?>>Open</option>
-                    <option value="0" <?=($query_status == 0) ? 'selected' : '';?>>Closed</option>
+                    <option value="1" <?=(php72_cmp($query_status) == 1) ? 'selected' : '';?>>Open</option>
+                    <option value="0" <?=(php72_cmp($query_status) == 0) ? 'selected' : '';?>>Closed</option>
                 </select>
             </dd>
 

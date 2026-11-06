@@ -312,7 +312,7 @@
                                             <div class="text-left">
                                                 <ul class="vitals-links saveLinkView">
 													<?php if($user_status =='1'){ ?>
-														<?php if($vendorDetails->status=='' || $vendorDetails->status== 3 ) { ?>
+														<?php if($vendorDetails->status=='' || php72_cmp($vendorDetails->status)== 3 ) { ?>
 															<li><input type="submit" id="submit_btn" onclick="submitMultiple();" value="Send Approval" class="wdt_100 vital_yellow_btn submitMultiple"></li>
 															<li><a href="" class="wdt_100 vital_bordered_btn">Cancel</a></li>
 														<?php } ?>

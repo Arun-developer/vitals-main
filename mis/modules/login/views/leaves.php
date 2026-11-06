@@ -98,7 +98,7 @@
                                 <img src="<?= base_url(); ?>source/images/Time-Sheet.png" alt="innovation" /></div>
                             <div class="icon-btn"><a href="#" class="submitLeavelist">Leave List
                                     <?php
-                                    if ($emp_leave_count != 0)
+                                    if (php72_cmp($emp_leave_count) != 0)
                                         echo '(' . $emp_leave_count . ')';
                                     ?>
                                 </a></div>
@@ -109,7 +109,7 @@
                                 <img src="<?= base_url(); ?>source/images/requests.png" alt="innovation" /></div>
                             <div class="icon-btn"><a href="#" class="submitLeaveapprove2">Approve Leave
                                     <?php
-                                    if ($sub_leave_count != 0)
+                                    if (php72_cmp($sub_leave_count) != 0)
                                         echo '(' . $sub_leave_count . ')';
                                     ?></a></div>
                         </div>
@@ -140,7 +140,7 @@ else if ($this->session->userdata('user_type') == 'admin') {
                                 <img src="<?= base_url(); ?>source/images/requests.png" alt="innovation" /></div>
                             <div class="icon-btn"><a href="#" class="submitLeaveapprove">Approve Leave
                         <?php
-                        if ($sub_leave_count != 0)
+                        if (php72_cmp($sub_leave_count) != 0)
                             echo '(' . $sub_leave_count . ')';
                         ?></a></div>
                         </div>

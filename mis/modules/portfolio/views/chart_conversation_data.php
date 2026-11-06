@@ -23,7 +23,7 @@ if (php72_count($conversation) > 0) {
         <?php
     }
 } else {
-    if ($this->session->userdata['sector_lead'] != 1 && $this->session->userdata['user_type'] != 'admin' && $this->session->userdata['user_type'] != 'superadmin') {
+    if (php72_cmp($this->session->userdata['sector_lead']) != 1 && $this->session->userdata['user_type'] != 'admin' && $this->session->userdata['user_type'] != 'superadmin') {
         ?>
         <p>No comments added by sector lead</p>
     <?php

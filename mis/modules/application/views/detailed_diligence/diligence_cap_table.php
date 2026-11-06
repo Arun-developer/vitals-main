@@ -60,7 +60,7 @@
                                                 <input type="hidden" name="shareId[<?= $i; ?>]" id="shareId_<?= $j; ?>" value="<?php echo $shareData[$i]['id']; ?>"/>
                                                 <tr id="mgmt_tr_<?php echo $j; ?>" class="mgmt_more">
                                                     <td class="align-middle">
-                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                             <div class="input-group">
                                                                 <input type="checkbox" class="check_box" aria-label="Checkbox for following text input"
                                                                        name="check_delete" id="check_delete_<?php echo $j; ?>" value="<?php echo $shareData[$i]['id']; ?>">

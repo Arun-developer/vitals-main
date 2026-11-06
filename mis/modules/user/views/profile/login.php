@@ -179,17 +179,17 @@
                                             <select class="form-control employeeInput" disabled name="user_role" id="user_role" onchange="loadCustomFields(this.value);">
                                                 <option value="">--Select--</option>
                                                 <option value="4" <?php
-                                                if ($login[0]['user_role'] == 4) {
+                                                if (php72_cmp($login[0]['user_role']) == 4) {
                                                     echo 'selected';
                                                 }
                                                 ?>>Custom User</option>
                                                 <option value="2" <?php
-                                                if ($login[0]['user_role'] == 2) {
+                                                if (php72_cmp($login[0]['user_role']) == 2) {
                                                     echo 'selected';
                                                 }
                                                 ?>>Partner Admin</option>
                                                 <option value="1" <?php
-                                                if ($login[0]['user_role'] == 1) {
+                                                if (php72_cmp($login[0]['user_role']) == 1) {
                                                     echo 'selected';
                                                 }
                                                 ?>>User</option>
@@ -219,12 +219,12 @@
                                         <select class="form-control employeeInput" disabled name="user_status">
                                             <option value="">--Select--</option>
                                             <option value="1" <?php
-                                            if ($login[0]['status'] != 2) {
+                                            if (php72_cmp($login[0]['status']) != 2) {
                                                 echo 'selected';
                                             }
                                             ?>>Enabled</option>
                                             <option value="2" <?php
-                                            if ($login[0]['status'] == 2) {
+                                            if (php72_cmp($login[0]['status']) == 2) {
                                                 echo 'selected';
                                             }
                                             ?>>Disabled</option>

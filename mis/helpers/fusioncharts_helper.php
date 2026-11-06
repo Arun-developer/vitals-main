@@ -432,7 +432,7 @@ function FC_SetConfigurations( $objConfig )
  * @return	1/0. true returns 1. false returns 0.
  */
 function boolToNum($bVal) {
-    return (($bVal==true || $bVal==1 ||  $bVal=="true" ) ? 1 : 0);
+    return (($bVal==true || php72_cmp($bVal)==1 ||  $bVal=="true" ) ? 1 : 0);
 }
 
 /**
@@ -450,7 +450,7 @@ function encodedataUrl($strdataUrl, $addNoCacheStr=false) {
         // We add ?FCCurrTime=xxyyzz
         // If the dataUrl already contains a ?, we add &FCCurrTime=xxyyzz
         // We replace : with _, as FusionCharts cannot handle : in URLs
-		if (strpos($strdataUrl,"?")<>0)
+		if (php72_cmp(strpos($strdataUrl,"?"))<>0)
 			$strdataUrl .= "&FCCurrTime=" . Date("H_i_s");
 		else
 			$strdataUrl .= "?FCCurrTime=" . Date("H_i_s");
@@ -668,9 +668,9 @@ function __FC_INITSTATIC__()
 function FC_DetectSSL(){
 	if(@$_SERVER["https"] == "on"){
 		return true;
-	} elseif (@$_SERVER["https"] == 1){
+	} elseif (@php72_cmp($_SERVER["https"]) == 1){
 		return true;
-	} elseif (@$_SERVER['SERVER_PORT'] == 443) {
+	} elseif (@php72_cmp($_SERVER['SERVER_PORT']) == 443) {
 		return true;
 	} else {
 		return true;

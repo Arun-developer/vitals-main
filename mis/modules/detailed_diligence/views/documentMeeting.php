@@ -56,7 +56,7 @@
 
         $current_tab = $this->session->userdata['document_active'];
         $document_tab = $meeting_tab = '';
-        if ($current_tab == 2) {
+        if (php72_cmp($current_tab) == 2) {
             $meeting_tab = 'defaultOpen';
         } else {
             $document_tab = 'defaultOpen';

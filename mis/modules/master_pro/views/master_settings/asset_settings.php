@@ -204,8 +204,8 @@
                                        </td>
                                        <td>
                                           <select name="status[]" class="form-control" disabled>
-                                             <option <?php if(isset($type_lists->status) && $type_lists->status!=''){ if($type_lists->status == 1)echo"selected";}  ?> value ="1">Active</option>
-                                             <option <?php if(isset($type_lists->status) && $type_lists->status!=''){ if($type_lists->status == 0)echo"selected";}  ?> value ="0">Inactive</option>
+                                             <option <?php if(isset($type_lists->status) && $type_lists->status!=''){ if(php72_cmp($type_lists->status) == 1)echo"selected";}  ?> value ="1">Active</option>
+                                             <option <?php if(isset($type_lists->status) && $type_lists->status!=''){ if(php72_cmp($type_lists->status) == 0)echo"selected";}  ?> value ="0">Inactive</option>
                                           </select>
                                        </td>
                                     </tr>

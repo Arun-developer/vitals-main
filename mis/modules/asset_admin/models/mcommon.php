@@ -781,7 +781,7 @@ class Mcommon extends My_Model {
             }
         }
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 
@@ -874,7 +874,7 @@ class Mcommon extends My_Model {
             }
         }
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 
@@ -950,9 +950,9 @@ class Mcommon extends My_Model {
         $data = array();
 		$grantName = '';
         foreach ($result as $key => $value) {
-            if (($value['amt_required'] >= 20000) && ($value['an_status'] == 'confirmed')) {
+            if ((php72_cmp($value['amt_required']) >= 20000) && ($value['an_status'] == 'confirmed')) {
                 $value['an_confirmed_date'] = $value['CEO_date'];
-            } else if (($value['amt_required'] < 20000) && ($value['an_status'] == 'confirmed')) {
+            } else if ((php72_cmp($value['amt_required']) < 20000) && ($value['an_status'] == 'confirmed')) {
                 $value['an_confirmed_date'] = $value['PH_date'];
             } else if ($value['an_status'] == 'closed') {
                 if ($value['CEO_date'] != '') {
@@ -983,7 +983,7 @@ class Mcommon extends My_Model {
             }
         }
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 

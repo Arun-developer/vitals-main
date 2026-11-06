@@ -635,9 +635,9 @@ public function DTsector() {
         #echo'<pre>';print_r($getReject_details);die;
         foreach ($getReject_details as $lists) {
             $selected = $selected2 = '';
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 0) {
+            } else if (php72_cmp($lists->status) == 0) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -811,9 +811,9 @@ public function DTsector() {
         $selected = $selected2 = '';
         foreach ($getReject_details as $lists) {
 
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -882,9 +882,9 @@ public function DTsector() {
         #echo'<pre>';print_r($getReject_details);die;
         foreach ($getDocument_details as $lists) {
             $selected = $selected2 = '';
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -937,9 +937,9 @@ public function DTsector() {
         #echo'<pre>';print_r($getReject_details);die;
         foreach ($getDocument_details as $lists) {
             $selected = $selected2 = '';
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -1005,9 +1005,9 @@ public function DTsector() {
         $selected = $selected2 = '';
         foreach ($getReject_details as $lists) {
 
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 0) {
+            } else if (php72_cmp($lists->status) == 0) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -1072,9 +1072,9 @@ public function DTsector() {
         $selected = $selected2 = '';
         foreach ($get_details as $lists) {
 
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'selected';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected2 = 'selected';
             }
             $condition = array('id' => $lists->partner_id);
@@ -1166,9 +1166,9 @@ public function DTsector() {
             $nestedData[] = $lists->new_annual;
             $nestedData[] = $lists->ext_annual;
 
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'Active';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1243,9 +1243,9 @@ public function DTsector() {
             $nestedData[] = $lists['label'];
             $nestedData[] = $lists['input_type'];
             $nestedData[] = ucfirst($lists['required']);
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1313,9 +1313,9 @@ public function DTsector() {
             $nestedData[] = $lists['input_type'];
             $nestedData[] = ucfirst($lists['required']);
             $nestedData[] = $values;
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1400,9 +1400,9 @@ public function DTsector() {
             $nestedData[] = $lists['input_type'];
             $nestedData[] = ucfirst($lists['required']);
             $nestedData[] = $values;
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1487,9 +1487,9 @@ public function DTsector() {
             $nestedData[] = $lists['input_type'];
             $nestedData[] = ucfirst($lists['required']);
             $nestedData[] = $values;
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1560,7 +1560,7 @@ public function DTsector() {
             $columnArr = array('master_name', 'source_name', 'emp_name', 'contact_person', 'designation');
         }
 
-        if ($source == 1) {
+        if (php72_cmp($source) == 1) {
             unset($optionsCount['employee']);
             unset($options['employee']);
         }
@@ -1624,9 +1624,9 @@ public function DTsector() {
             $nestedData[] = $lists['contact_person'];
             $nestedData[] = $lists['designation'];
             if ($isAuth) {
-                if ($lists['status'] == 1) {
+                if (php72_cmp($lists['status']) == 1) {
                     $selected = 'Active';
-                } else if ($lists['status'] == 2) {
+                } else if (php72_cmp($lists['status']) == 2) {
                     $selected = 'Inactive';
                 }
                 $nestedData[] = "$selected";
@@ -1712,9 +1712,9 @@ public function DTsector() {
                 $nestedData[] = '<a href="' . base_url() . 'uploads/instance/' . $lists->document . '" title="View Document" target="_blank"><i class="fas fa-file-download"></i></a>';
             }
 
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'Active';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1789,9 +1789,9 @@ public function DTsector() {
             $nestedData[] = $lists['label'];
             $nestedData[] = $lists['input_type'];
             $nestedData[] = ucfirst($lists['required']);
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1852,9 +1852,9 @@ public function DTsector() {
 
             $nestedData[] = $lists->criteria_title;
             $nestedData[] = $lists->validation;
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'Active';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1928,9 +1928,9 @@ public function DTsector() {
 
             $nestedData[] = $lists['master_name'];
             $nestedData[] = $lists['document_description'];
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -1963,7 +1963,7 @@ public function DTsector() {
         $orderby = '';
 
         $columnArr = array('', 'master_name', 'title', 'status');
-        if ($source == 1) {
+        if (php72_cmp($source) == 1) {
             unset($optionsCount['employee']);
             unset($options['employee']);
         }
@@ -1992,9 +1992,9 @@ public function DTsector() {
 
             $nestedData[] = $lists->master_name;
             $nestedData[] = $lists->title;
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'Active';
-            } else if ($lists->status == 2) {
+            } else if (php72_cmp($lists->status) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -2065,9 +2065,9 @@ public function DTsector() {
             $nestedData[] = $lists['master_name'];
             $nestedData[] = $lists['program_service_title'];
             $nestedData[] = $lists['title'];
-            if ($lists['status'] == 1) {
+            if (php72_cmp($lists['status']) == 1) {
                 $selected = 'Active';
-            } else if ($lists['status'] == 2) {
+            } else if (php72_cmp($lists['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -2217,9 +2217,9 @@ public function DTsector() {
             $nestedData[] = "<a href=''> $lists->messagetype </a>";
             $nestedData[] = $lists->messagesubject;
             $selected = '';
-            if ($lists->status == 1) {
+            if (php72_cmp($lists->status) == 1) {
                 $selected = 'Active';
-            } else if ($lists->status == 0) {
+            } else if (php72_cmp($lists->status) == 0) {
                 $selected = 'Inactive';
             }
             $nestedData[] = "$selected";
@@ -2286,11 +2286,11 @@ public function DTsector() {
 
         $id = $this->input->post('id');
         $inchargeId = array();
-        if ($sector_type == 0) {
+        if (php72_cmp($sector_type) == 0) {
             $this->load->model('scouting/Mincharge');
             $data['inchargeList'] = $this->Mincharge->getSectors($id);
             $inchargeId = php72_array_column($data['inchargeList'], 'associate_employee');
-        } else if ($sector_type == 1) {
+        } else if (php72_cmp($sector_type) == 1) {
             $this->load->model('scouting/Mincharge');
             $data['inchargeList'] = $this->Mincharge->getSectorLeads($id);
             $inchargeId = php72_array_column($data['inchargeList'], 'employee_id');
@@ -2432,7 +2432,7 @@ public function DTsector() {
                             $this->Common_model->update_data('donor_fit_master', $condition, $updateData);
                         } else {
                             $status_data = $status_val[$id];
-                            if ($status_data == '' || $status_data == 0) {
+                            if ($status_data == '' || php72_cmp($status_data) == 0) {
                                 $status_data = 2;
                             }
                             $InsetData = array('name' => $reason[$id], 'partner_id' => $partner_id, 'status' => $status_data, 'created_date' => date('Y-m-d H:i:s'));
@@ -2627,7 +2627,7 @@ public function DTsector() {
             $condition = array('id' => $id);
             $updateData = array('messagesubject' => $messagesubject, 'messagebody' => $messagebody, 'status' => $status);
             $table = 'master_mailtemplate';
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $this->Common_model->update_data('mailtemplate', $condition, $updateData, true, 'ais');
             } else {
                 $this->Common_model->update_data('master_mailtemplate', $condition, $updateData);
@@ -2863,7 +2863,7 @@ public function DTsector() {
         $id = $this->uri->segment(3);
         $moudle = $this->uri->segment(4);
         if ($id != '' && $moudle != '') {
-            if ($moudle == 1) {
+            if (php72_cmp($moudle) == 1) {
                 $data['mail_details'] = $get_details = $this->Common_model->get_all_details('mailtemplate', array('id' => $id), array(), '', '', '', true, 'ais');
             } else {
                 $data['mail_details'] = $get_mailData = $this->Common_model->get_all_details('master_mailtemplate', array('id' => $id), array());
@@ -3278,7 +3278,7 @@ public function DTsector() {
             $columnArr = array('master_name', 'source_name', 'emp_name', 'contact_person', 'designation');
         }
 
-        if ($source == 1) {
+        if (php72_cmp($source) == 1) {
             unset($optionsCount['employee']);
             unset($options['employee']);
         }

@@ -1365,7 +1365,7 @@ class Mapproval extends CI_Model {
 			#$RO_status =   'confirmed';
 			$RO_status =  'pending';
 			#AN Assign User
-			if($this->session->userdata('user_id')==533){
+			if(php72_cmp($this->session->userdata('user_id'))==533){
 				#echo'<pre>';print_r($getMasterProgram);die;
 			}
 		
@@ -1685,7 +1685,7 @@ class Mapproval extends CI_Model {
     }
 
     function getCurrentInAmt($programme = '', $donor = '', $budgethead = '', $lineitem = '', $details, $approval_id = '') {
-        if ($details == NULL || $details == '') {
+        if ($details == NULL || php72_loose_eq($details, '')) {
             $details = 0;
         }
         $this->ais->select('sum(amount_toapprove) as amount_toapprove');
@@ -1757,9 +1757,9 @@ class Mapproval extends CI_Model {
             $amount += $value;
         }
 
-        if ($this->session->userdata('currency') == 'INR' && $amount > 50000) {
+        if ($this->session->userdata('currency') == 'INR' && php72_cmp($amount) > 50000) {
             $above = 'yes';
-        } else if ($this->session->userdata('currency') != 'INR' && $amount > 1500) {
+        } else if ($this->session->userdata('currency') != 'INR' && php72_cmp($amount) > 1500) {
             $above = 'yes';
         } else {
             $above = 'no';
@@ -3183,7 +3183,7 @@ class Mapproval extends CI_Model {
         $this->ais->where('status !=', 'cancelled');
         $query = $this->ais->get('internal_note');
         $row = $query->result_array();
-        $remaining_amount = (($row[0]['int_amount'] != '')) ? ((($tot_req_amount != '') ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
+        $remaining_amount = (($row[0]['int_amount'] != '')) ? (((!php72_loose_eq($tot_req_amount, '')) ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
         return $remaining_amount;
     }
 

@@ -43,16 +43,16 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                     <ul class="milestone-links">
-                                        <?php if ((php72_in_array($emp_id, $app_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && ($approvals[0]['discovery_approval'] == 2 || $approvals[0]['diligence_approval'] == 2 || $approvals[0]['selection_approval'] == 2 || $approvals[0]['graduates_approval'] == 2 || $approvals[0]['exits_approval'] == 2 || $approvals[0]['donorengagement_approval'] == 2 || $approvals[0]['donorconnect_approval'] == 2 || $approvals[0]['conferences_approval'] == 2 || $approvals[0]['blog_post_approval'] == 2 || $approvals[0]['publish_article_approval'] == 2 || $approvals[0]['speakingengagement_approval'] == 2 || $approvals[0]['jury_panels_approval'] == 2 || $approvals[0]['case_study_approval'] == 2 || $approvals[0]['equity_investment_approval'] == 2 || $approvals[0]['portfolio_return_approval'] == 2)) { ?>
+                                        <?php if ((php72_in_array($emp_id, $app_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && (php72_cmp($approvals[0]['discovery_approval']) == 2 || php72_cmp($approvals[0]['diligence_approval']) == 2 || php72_cmp($approvals[0]['selection_approval']) == 2 || php72_cmp($approvals[0]['graduates_approval']) == 2 || php72_cmp($approvals[0]['exits_approval']) == 2 || php72_cmp($approvals[0]['donorengagement_approval']) == 2 || php72_cmp($approvals[0]['donorconnect_approval']) == 2 || php72_cmp($approvals[0]['conferences_approval']) == 2 || php72_cmp($approvals[0]['blog_post_approval']) == 2 || php72_cmp($approvals[0]['publish_article_approval']) == 2 || php72_cmp($approvals[0]['speakingengagement_approval']) == 2 || php72_cmp($approvals[0]['jury_panels_approval']) == 2 || php72_cmp($approvals[0]['case_study_approval']) == 2 || php72_cmp($approvals[0]['equity_investment_approval']) == 2 || php72_cmp($approvals[0]['portfolio_return_approval']) == 2)) { ?>
                                             <li><a class="approveall" href="javascript:void(0);" onclick="ApproveAll();">Approve All</a></li>
                                         <?php } ?>
                                         <?php if (php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue" href="javascript:void(0)">Save</a></li>
                                         <?php } ?>
-                                        <?php if ($this->session->userdata['sector_lead'] == 1 && $approvals[0]['config_approval'] == 1) { ?>
+                                        <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                             <li><a class="sectorApproval sendApprovalBtn" id="sectorApproval" href="javascript:void(0);" onclick="ApproveAll();">Send for Approval</a></li>
                                         <?php } else { ?>
-                                            <?php if ((php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['config_approval'] == 1) { ?>
+                                            <?php if ((php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                                 <li><a class="sendApproval sendApprovalBtn" id="sendApproval" href="javascript:void(0);">Send for Approval</a></li>
                                                 <?php
                                             }
@@ -77,7 +77,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                             <h4>Graduates & Exits Plan</h4>
                                         </div>
                                     </div>
-                                    <?php if ((php72_in_array($emp_id, $app_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['exits_approval'] == 2) { ?>
+                                    <?php if ((php72_in_array($emp_id, $app_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['exits_approval']) == 2) { ?>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="approved-btn text-right">
@@ -93,9 +93,9 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                             <!-- Quantity new design -->
                                             <div class="quaterlyNewplanstru">
                                                 <?php if ((php72_in_array($emp_id, $assign_sectorlead) || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin')) { ?>
-                                                    <?php if ($approvals[0]['exits_approval'] == 2) { ?>
+                                                    <?php if (php72_cmp($approvals[0]['exits_approval']) == 2) { ?>
                                                         <h4>Exits (With Equity) Plan : <span class="text-danger"><small>(Awaiting approval)</small></span></h4>
-                                                    <?php } else if ($approvals[0]['exits_approval'] == 3) { ?>
+                                                    <?php } else if (php72_cmp($approvals[0]['exits_approval']) == 3) { ?>
                                                         <h4>Exits (With Equity) Plan : <span class="text-success"><small>(Approved)</small></span></h4>
                                                     <?php } else { ?>
                                                         <h4>Exits (With Equity) Plan</h4>

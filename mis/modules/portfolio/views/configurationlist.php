@@ -79,9 +79,9 @@ $gtag_user = $first_name . '_' . $partner_str . '_' . $this->session->userdata['
 
                         <?php
                         $switch_type = '';
-                        if ($this->session->userdata('role_id') == 2 && $this->session->userdata['user_type'] == 'admin') {
+                        if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata['user_type'] == 'admin') {
                             $switch_type = 'Switch to user';
-                        } else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+                        } else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
                             $switch_type = 'Switch to admin';
                         }
                         ?>
@@ -94,11 +94,11 @@ $gtag_user = $first_name . '_' . $partner_str . '_' . $this->session->userdata['
                                        <?php
                                        if ($this->session->userdata('user_type') == 'superadmin') {
                                            echo "Super Admin";
-                                       } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+                                       } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                            echo ucfirst($this->session->userdata('emp_name'));
-                                       } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+                                       } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
                                            echo ucfirst($this->session->userdata('emp_name'));
-                                       } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+                                       } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
                                            echo ucfirst($this->session->userdata('emp_name'));
                                        } else if ($this->session->userdata('user_type') != 'admin' and $this->session->userdata('user_type') != 'mipuser') {
                                            echo ucfirst($this->session->userdata('emp_name'));

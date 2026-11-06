@@ -29,7 +29,7 @@
 	$id = isset($val["id"])?$val["id"]:"";
 	$grade = isset($val_grade['grade'])?$val_grade['grade']:"";
 	
-switch($criteria)
+switch(php72_cmp($criteria))
 {
     case 11:
         $cpagetitl = 'Innovation';

@@ -60,7 +60,7 @@ if ($page == 'leave') {
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse" data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false"><i class="fas fa-user-friends"></i> Leave <?php echo isset($approval_count) && $approval_count != 0 ? '('.$approval_count.')' : ''; ?></a>
+                <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse" data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false"><i class="fas fa-user-friends"></i> Leave <?php echo isset($approval_count) && php72_cmp($approval_count) != 0 ? '('.$approval_count.')' : ''; ?></a>
                 <ul class="nav-second-level collapse <?= $leave_menu; ?> <?= $approve_leave_menu; ?>" id="collapseSubItems4" data-parent="#navAccordion">
                     <?php
                     if($this->session->userdata('user_type') != 'admin' && $this->session->userdata('user_type') != 'superadmin'){
@@ -76,7 +76,7 @@ if ($page == 'leave') {
                         ?>
                     <li class="nav-item" >
                         <a class="nav-link" href="<?php echo base_url() . 'index.php/leave/approve_leave_list'; ?>">
-                            <span class="nav-link-text">Approve <?php echo isset($approval_count) && $approval_count != 0 ? '('.$approval_count.')' : ''; ?></span>
+                            <span class="nav-link-text">Approve <?php echo isset($approval_count) && php72_cmp($approval_count) != 0 ? '('.$approval_count.')' : ''; ?></span>
                         </a>
                     </li>  
                     <?php } ?>                 

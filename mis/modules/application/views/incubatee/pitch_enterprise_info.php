@@ -23,7 +23,7 @@
                 <div class="tab-slider--container">
                     <div id="tab1" class="tab-slider--body pad-none tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme">
                         <main class="page-content">
-                            <?php if ($enterprise_information[0]['program'] == 5) { ?>
+                            <?php if (php72_cmp($enterprise_information[0]['program']) == 5) { ?>
                                 <div class="inputplan-structureall plan-structure-new">
                                     <div class="row">
                                         <div class="col-12 col-lg-4 col-md-4">
@@ -144,7 +144,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } else if ($enterprise_information[0]['program'] == 7) { ?>
+                            <?php } else if (php72_cmp($enterprise_information[0]['program']) == 7) { ?>
                                 <div class="inputplan-structureall plan-structure-new">
                                     <div class="row">
                                         <div class="col-12 col-lg-4 col-md-4">

@@ -49,7 +49,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                     <ul class="milestone-links">
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue">Save &amp; Continue</a></li>
                                         <?php } ?>
                                         <li>
@@ -77,7 +77,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         ?>
                                         <h4>Team - Hiring &amp; Current Strength ><span> <?= $last_month . ' ' . $next_financial; ?></span></h4>
                                     </div>
-                                    <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                    <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-12 text-right">
                                             <!--<a href="javascript:void(0)" class="edit-btnconfig editBtn" id="addTeam"><i class="fas fa-plus-circle"></i> Add New</a>-->
                                             <a href="javascript:void(0)" class="edit-btnconfig editBtn" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a></li>
@@ -267,10 +267,10 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                                 <div class="form-group display-flex">
                                                                                     <select style="width: 137px;" class="form-control form-control-sm" name="hire_gender[]" id="hire_gender_<?php echo $j; ?>">
                                                                                         <option value="">--Select--</option>
-                                                                                        <option value="1" <?php if ($hire_list[$i]['gender'] == 1) echo 'selected'; ?>>Male</option>
-                                                                                        <option value="2" <?php if ($hire_list[$i]['gender'] == 2) echo 'selected'; ?>>Female</option>
-                                                                                        <option value="3" <?php if ($hire_list[$i]['gender'] == 3) echo 'selected'; ?>>Unknown</option>
-                                                                                        <option value="4" <?php if ($hire_list[$i]['gender'] == 4) echo 'selected'; ?>>Other</option>
+                                                                                        <option value="1" <?php if (php72_cmp($hire_list[$i]['gender']) == 1) echo 'selected'; ?>>Male</option>
+                                                                                        <option value="2" <?php if (php72_cmp($hire_list[$i]['gender']) == 2) echo 'selected'; ?>>Female</option>
+                                                                                        <option value="3" <?php if (php72_cmp($hire_list[$i]['gender']) == 3) echo 'selected'; ?>>Unknown</option>
+                                                                                        <option value="4" <?php if (php72_cmp($hire_list[$i]['gender']) == 4) echo 'selected'; ?>>Other</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <label class="error" id="hire_gender<?= $i . '_error'; ?>"></label>
@@ -353,10 +353,10 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                                 <div class="form-group display-flex">
                                                                                     <select style="width: 137px;"class="form-control form-control-sm" name="exit_gender[]" id="exit_gender_<?php echo $k; ?>">
                                                                                         <option value="">--Select--</option>
-                                                                                        <option value="1" <?php if ($exit_list[$i]['gender'] == 1) echo 'selected'; ?>>Male</option>
-                                                                                        <option value="2" <?php if ($exit_list[$i]['gender'] == 2) echo 'selected'; ?>>Female</option>
-                                                                                        <option value="3" <?php if ($exit_list[$i]['gender'] == 3) echo 'selected'; ?>>Unknown</option>
-                                                                                        <option value="4" <?php if ($exit_list[$i]['gender'] == 4) echo 'selected'; ?>>Other</option>
+                                                                                        <option value="1" <?php if (php72_cmp($exit_list[$i]['gender']) == 1) echo 'selected'; ?>>Male</option>
+                                                                                        <option value="2" <?php if (php72_cmp($exit_list[$i]['gender']) == 2) echo 'selected'; ?>>Female</option>
+                                                                                        <option value="3" <?php if (php72_cmp($exit_list[$i]['gender']) == 3) echo 'selected'; ?>>Unknown</option>
+                                                                                        <option value="4" <?php if (php72_cmp($exit_list[$i]['gender']) == 4) echo 'selected'; ?>>Other</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <label class="error" id="exit_gender<?= $i . '_error'; ?>"></label>
@@ -365,8 +365,8 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                                 <div class="form-group display-flex">
                                                                                     <select style="width: 120px;"class="form-control form-control-sm" name="exit_type[]" id="exit_type_<?php echo $k; ?>">
                                                                                         <option value="">--Select--</option>
-                                                                                        <option value="1" <?php if ($exit_list[$i]['exit_type'] == 1) echo 'selected'; ?>>Voluntary</option>
-                                                                                        <option value="2" <?php if ($exit_list[$i]['exit_type'] == 2) echo 'selected'; ?>>Terminated</option>
+                                                                                        <option value="1" <?php if (php72_cmp($exit_list[$i]['exit_type']) == 1) echo 'selected'; ?>>Voluntary</option>
+                                                                                        <option value="2" <?php if (php72_cmp($exit_list[$i]['exit_type']) == 2) echo 'selected'; ?>>Terminated</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <label class="error" id="exit_type<?= $i . '_error'; ?>"></label>

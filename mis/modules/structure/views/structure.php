@@ -46,7 +46,7 @@
         $thisref['parent_id'] = $data['parnt'];
         $thisref['title'] = $data['title']."-".$data['emp_name'];
 
-        if ($data['parnt']== 0) {
+        if (php72_cmp($data['parnt'])== 0) {
             $list[ $data['id'] ] = &$thisref;
         } else {
             $refs[ $data['parnt'] ]['children'][ $data['id'] ] = &$thisref;

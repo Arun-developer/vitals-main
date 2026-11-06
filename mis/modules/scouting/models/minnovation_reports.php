@@ -98,7 +98,7 @@ class Minnovation_reports extends CI_Model {
         }
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 if ($this->session->userdata['role_id'] == '4') {
                     $searchArray[] = "IP.program = 0";
                 } else {
@@ -121,7 +121,7 @@ class Minnovation_reports extends CI_Model {
         if (isset($options['status']) && $options['status'] != "") {
             $split_status = explode(',', $options['status']);
             $merge_status = "'" . implode("','", $split_status) . "'";
-            if ($this->session->userdata['role_id'] == '4' && $this->session->userdata('independent_shortlist') == 1) {
+            if ($this->session->userdata['role_id'] == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
                 $searchArray[] = "(ISC.current_app_status IN(" . $options['status'] . ") AND ISC.created_by = " . $this->session->userdata('emp_number') . ")";
             } else {
                 $searchArray[] = "IP.status IN(" . $options['status'] . ")";
@@ -311,7 +311,7 @@ class Minnovation_reports extends CI_Model {
         }
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 if ($this->session->userdata['role_id'] == '4') {
                     $searchArray[] = "IP.program = 0";
                 } else {
@@ -334,7 +334,7 @@ class Minnovation_reports extends CI_Model {
         if (isset($options['status']) && $options['status'] != "") {
             $split_status = explode(',', $options['status']);
             $merge_status = "'" . implode("','", $split_status) . "'";
-            if ($this->session->userdata['role_id'] == '4' && $this->session->userdata('independent_shortlist') == 1) {
+            if ($this->session->userdata['role_id'] == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
                 $searchArray[] = "(ISC.current_app_status IN(" . $options['status'] . ") AND ISC.created_by = " . $this->session->userdata('emp_number') . ")";
             } else {
                 $searchArray[] = "IP.status IN(" . $options['status'] . ")";

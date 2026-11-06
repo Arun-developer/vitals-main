@@ -48,18 +48,18 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                     <ul class="milestone-links">
-                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && ($approvals[0]['product_approval'] == 2 || $approvals[0]['sales_approval'] == 2 || $approvals[0]['channel_approval'] == 2 || $approvals[0]['pipeline_approval'] == 2 || $approvals[0]['revenue_approval'] == 2 || $approvals[0]['netprofit_approval'] == 2 || $approvals[0]['vif_approval'] == 2 || $approvals[0]['fundraise_approval'] == 2 || $approvals[0]['mentor_approval'] == 2 || $approvals[0]['tap_approval'] == 2 || $approvals[0]['nontap_approval'] == 2 || $approvaless[0]['dp_approval'] == 2 || $approvaless[0]['board_approval'] == 2 || $approvaless[0]['team_approval'] == 2 || $approvals[0]['impact_approval'] == 2 || $approvals[0]['project_approval'] == 2)) { ?>
+                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && (php72_cmp($approvals[0]['product_approval']) == 2 || php72_cmp($approvals[0]['sales_approval']) == 2 || php72_cmp($approvals[0]['channel_approval']) == 2 || php72_cmp($approvals[0]['pipeline_approval']) == 2 || php72_cmp($approvals[0]['revenue_approval']) == 2 || php72_cmp($approvals[0]['netprofit_approval']) == 2 || php72_cmp($approvals[0]['vif_approval']) == 2 || php72_cmp($approvals[0]['fundraise_approval']) == 2 || php72_cmp($approvals[0]['mentor_approval']) == 2 || php72_cmp($approvals[0]['tap_approval']) == 2 || php72_cmp($approvals[0]['nontap_approval']) == 2 || php72_cmp($approvaless[0]['dp_approval']) == 2 || php72_cmp($approvaless[0]['board_approval']) == 2 || php72_cmp($approvaless[0]['team_approval']) == 2 || php72_cmp($approvals[0]['impact_approval']) == 2 || php72_cmp($approvals[0]['project_approval']) == 2)) { ?>
                                             <li><a class="approveall" href="javascript:void(0);">Approve All</a></li>
                                         <?php } ?>
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue" href="javascript:void(0);">Save</a></li>
                                             <?php
                                             $field_enable = '1';
                                         }
                                         ?>
-                                        <?php if ($this->session->userdata['sector_lead'] == 1 && $isAssociate == 1 && $approvals[0]['config_approval'] == 1) { ?>
+                                        <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_cmp($isAssociate) == 1 && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                             <li><a class="sendApprovalBtn" id="lead_approveall" href="javascript:void(0);">Send for Approval</a></li>
-                                        <?php } else if (($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['config_approval'] == 1) { ?>
+                                        <?php } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                             <li><a class="sendApproval sendApprovalBtn" id="sendApproval" href="javascript:void(0);">Send for Approval</a></li>
 <?php } ?>
                                         <li>
@@ -154,9 +154,9 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
 															<div class="quaterlyNewplanstru">
 															  <div class="row" >
                                                             <div class="col-xl-12 col-lg-6 col-md-6 col-12" style="display: flex;">
-                                                                 <?php if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['vif_approval'] == 2) { ?>
+                                                                 <?php if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['vif_approval']) == 2) { ?>
                                                                     <h4>Seed Funding Targets <span class="text-danger"><small>(Awaiting approval)</small></span></h4>
-                                                                <?php } else if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['vif_approval'] == 3) { ?>
+                                                                <?php } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['vif_approval']) == 3) { ?>
                                                                     <h4>Seed Funding Targets <span class="text-success"><small>(Approved)</small></span></h4>
                                                                 <?php } else { ?>
                                                                     <h4>Seed Funding Targets </h4>
@@ -179,7 +179,7 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
 																
 																
                                                             </div>
-<?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['vif_approval'] == 2) { ?>
+<?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['vif_approval']) == 2) { ?>
                                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                                                     <div class="approved-btn text-right">
                                                                         <button type="button" class="btn btn-success capitilize">Approve</button>
@@ -248,11 +248,11 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
                                                                     <tr id="vif_add_tr_<?= $j; ?>" class="vif_more">
                                                                         <td>
                                                                             <?php
-                                                                            if (php72_in_array($emp_id, $assign_sectorlead) || $isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
-                                                                                if ($delete_row == 0) {
+                                                                            if (php72_in_array($emp_id, $assign_sectorlead) || php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+                                                                                if (php72_cmp($delete_row) == 0) {
                                                                                     ?>
                                                                                     <input type="checkbox" class="check_box" aria-label="Checkbox for following text input" name="check_delete" id="check_delete_<?php echo $j; ?>" value="<?php echo $vif_data[$i]['id']; ?>">
-                                                                                <?php } else if ($delete_row == 1) { ?>
+                                                                                <?php } else if (php72_cmp($delete_row) == 1) { ?>
                                                                                     <span class="cursor" title="Remove" onclick="hideRow(<?= $j; ?>);"><i class="fas fa-minus-circle"></i></span>
                                                                                     <?php
                                                                                 }
@@ -315,7 +315,7 @@ $month_list = array("04" => 'Apr', "05" => 'May', "06" => 'Jun', "07" => 'Jul', 
 																				
 																				
                                                                                 foreach ($month_list as $key => $value) {
-                                                                                    if ($key < 4) {
+                                                                                    if (php72_cmp($key) < 4) {
                                                                                         $next_fy = $current_financial + 1;
                                                                                     } else {
                                                                                         $next_fy = $current_financial;
@@ -830,7 +830,7 @@ if ($current_month == '1' || $current_month == '2' || $current_month == '3') {
         datas += '<td><input type="text" name="milestone[]" id="milestone_' + i + '" value="" class="form-control form-control-sm milestone" placeholder="Milestone" maxlength="50"><label class="error error_msg"></label></td>';
         datas += '<td><select class="form-control form-control-sm month" name="month[]" id="month_' + i + '"><option value="">-Select-</option> <?php
 foreach ($month_list as $key => $value) {
-    if ($key < 4) {
+    if (php72_cmp($key) < 4) {
         $next_fy = $current_financial + 1;
     } else {
         $next_fy = $current_financial;

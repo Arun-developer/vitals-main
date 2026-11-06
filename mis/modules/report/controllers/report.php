@@ -325,7 +325,7 @@ class Report extends CI_Controller {
 		
 		
         $export_type = $this->input->post('export_type');
-        if ($export_type == 0) {
+        if (php72_cmp($export_type) == 0) {
 
             $data = array();
             $i = $requestData['start'] + 1;
@@ -428,7 +428,7 @@ class Report extends CI_Controller {
             }
             fclose($handle);
             exit;
-        } else if ($export_type == 1) {
+        } else if (php72_cmp($export_type) == 1) {
 			
 			
             $data = array();
@@ -552,7 +552,7 @@ class Report extends CI_Controller {
 
             fclose($handle);
             exit;
-        } else if ($export_type == 2) {
+        } else if (php72_cmp($export_type) == 2) {
 
             $data = array();
             $i = $requestData['start'] + 1;

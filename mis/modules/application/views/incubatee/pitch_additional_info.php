@@ -62,11 +62,11 @@
                                     </div>
                                 </div>
                                 <?php
-                                if ($additional_information[0]['program'] == 6) {
+                                if (php72_cmp($additional_information[0]['program']) == 6) {
                                     $doc_link = 'https://www.villgro.org/ubsapply/document/';
-                                } else if ($additional_information[0]['program'] == 5) {
+                                } else if (php72_cmp($additional_information[0]['program']) == 5) {
                                     $doc_link = host_url() . "fpai/document/";
-                                } else if ($additional_information[0]['program'] == 7) {
+                                } else if (php72_cmp($additional_information[0]['program']) == 7) {
                                     $doc_link = host_url() . "ysvf/document/";
                                 } else {
                                     $doc_link = host_url() . "pitchform/document/";
@@ -90,7 +90,7 @@
                                            <?php } ?>
                                     </div>
                                 </div>
-                                <?php if ($additional_information[0]['program'] == 3) { ?>
+                                <?php if (php72_cmp($additional_information[0]['program']) == 3) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-3 col-md-3">
                                             <div class="form-group">

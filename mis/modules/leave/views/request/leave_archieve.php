@@ -56,19 +56,19 @@
                                                 <tbody>
                                                     <?php
                                                     foreach ($leaves_list as $list) {
-                                                        if ($list['leave_status'] == 0) {
+                                                        if (php72_cmp($list['leave_status']) == 0) {
                                                             $status = 'Pending Approval';
-                                                        } else if ($list['leave_status'] == 1) {
+                                                        } else if (php72_cmp($list['leave_status']) == 1) {
                                                             $status = 'Approved';
-                                                        } else if ($list['leave_status'] == 2) {
+                                                        } else if (php72_cmp($list['leave_status']) == 2) {
                                                             $status = 'Taken';
-                                                        } else if ($list['leave_status'] == 3) {
+                                                        } else if (php72_cmp($list['leave_status']) == 3) {
                                                             $status = 'Rejected';
-                                                        } else if ($list['leave_status'] == 4) {
+                                                        } else if (php72_cmp($list['leave_status']) == 4) {
                                                             $status = 'Cancelled';
                                                         }
 
-                                                        if ($list['leave_approval_date'] != 0 && $list['leave_approval_date'] != '') {
+                                                        if (php72_cmp($list['leave_approval_date']) != 0 && $list['leave_approval_date'] != '') {
                                                             $approval_date = date('d-M-Y', strtotime($list['leave_approval_date']));
                                                         } else {
                                                             $approval_date = '--';

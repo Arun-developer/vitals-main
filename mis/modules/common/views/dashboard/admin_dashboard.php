@@ -89,7 +89,7 @@
                 </thead>
                 <tbody>
 <?php
-if (php72_count($mentordetails != 0)) {
+if (php72_count(php72_cmp($mentordetails) != 0)) {
     foreach ($mentordetails as $row):
         ?>
                             <tr>

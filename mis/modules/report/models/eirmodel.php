@@ -34,7 +34,7 @@ class Eirmodel extends CI_Model
         $this->db->where($data);
         $this->db->select('id');
         $query = $this->db->get($table);
-        if ($query->num_rows > 0) {
+        if (php72_cmp($query->num_rows) > 0) {
             return $query->result_array();
         } else {
             return 0;

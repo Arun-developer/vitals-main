@@ -497,7 +497,7 @@ if ($inno_status != '3' && $inno_status != '9' && $inno_status != '7' && php72_i
                             <td><?php echo Massessment::getEmployeeName($employee[$i]); ?></td>
                             <td>
                                 <?php
-                                echo ($status[$i] == 1) ? 'Active' : 'InActive';
+                                echo (php72_cmp($status[$i]) == 1) ? 'Active' : 'InActive';
                                 ?></td>
                         </tr><?php } ?>
                     <?php

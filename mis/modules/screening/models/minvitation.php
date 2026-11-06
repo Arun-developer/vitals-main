@@ -95,7 +95,7 @@ class Minvitation extends CI_Model
     public function changeInvitationStatus($id, $status)
     {
         $idexist = $this->checkinvitation($id);
-        if ($idexist != 0) {
+        if (php72_cmp($idexist) != 0) {
             $this->db->set('status', $status);
             $this->db->where('innovation', $id);
             $this->db->update('invite_prescreen');

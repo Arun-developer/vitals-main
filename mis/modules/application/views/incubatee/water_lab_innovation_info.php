@@ -65,11 +65,11 @@
 								<?php } ?>
 								
 								
-								<?php  if ($innovation_information[0]['program'] != 37 && $innovation_information[0]['program'] != 0 && $innovation_information[0]['program'] != 33 && $innovation_information[0]['program'] != 21 && $innovation_information[0]['program'] != 22 && $innovation_information[0]['program'] != 23 && $innovation_information[0]['program'] != 26 && $innovation_information[0]['program'] != 24 && $innovation_information[0]['program'] != 27 && $innovation_information[0]['program'] != 25  && $innovation_information[0]['program'] != 35 && $innovation_information[0]['program'] != 29) {  ?>
+								<?php  if (php72_cmp($innovation_information[0]['program']) != 37 && php72_cmp($innovation_information[0]['program']) != 0 && php72_cmp($innovation_information[0]['program']) != 33 && php72_cmp($innovation_information[0]['program']) != 21 && php72_cmp($innovation_information[0]['program']) != 22 && php72_cmp($innovation_information[0]['program']) != 23 && php72_cmp($innovation_information[0]['program']) != 26 && php72_cmp($innovation_information[0]['program']) != 24 && php72_cmp($innovation_information[0]['program']) != 27 && php72_cmp($innovation_information[0]['program']) != 25  && php72_cmp($innovation_information[0]['program']) != 35 && php72_cmp($innovation_information[0]['program']) != 29) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
 								
-								<?php  if ($innovation_information[0]['program'] == 25 || $innovation_information[0]['program'] == 35) {  ?>
+								<?php  if (php72_cmp($innovation_information[0]['program']) == 25 || php72_cmp($innovation_information[0]['program']) == 35) {  ?>
 									<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								

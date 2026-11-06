@@ -237,7 +237,7 @@ if (isset($_POST['mail_type'])) {
                                                 <select class="form-control form-control-sm" name="status[]" id="status" multiple>
                                                     <?php
                                                     foreach ($status as $key => $value):
-                                                        if ($key != 21 && $key != 22) {
+                                                        if (php72_cmp($key) != 21 && php72_cmp($key) != 22) {
                                                             ?>
                                                             <option value="<?= $key; ?>"
                                                                 <?php

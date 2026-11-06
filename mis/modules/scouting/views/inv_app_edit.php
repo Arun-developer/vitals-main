@@ -643,7 +643,7 @@
             <dd class="fund2" id="sub_sector_cat">
                 <select id="sub_sector" name="sub_sector">
                     <option value="">-Select-</option>
-                    <?php if ($inv_user[0]['sub_sector'] != 0 || $inv_user[0]['sub_sector'] != '') { ?>
+                    <?php if (php72_cmp($inv_user[0]['sub_sector']) != 0 || $inv_user[0]['sub_sector'] != '') { ?>
                         <option value="<?php echo $subSectorName[0]['id']; ?>" selected><?php echo $subSectorName[0]['sector']; ?></option>
                     <?php } ?>
                 </select>
@@ -979,15 +979,15 @@
 
                 <dt>
                     <?php
-                    if ($this->session->userdata['partner_id'] == 6) {
+                    if (php72_cmp($this->session->userdata['partner_id']) == 6) {
                         $status = 'KIIT';
-                    } else if ($this->session->userdata['partner_id'] == 4) {
+                    } else if (php72_cmp($this->session->userdata['partner_id']) == 4) {
                         $status = 'Oasis';
-                    } else if ($this->session->userdata['partner_id'] == 5) {
+                    } else if (php72_cmp($this->session->userdata['partner_id']) == 5) {
                         $status = 'IIMC';
-                    } else if ($this->session->userdata['partner_id'] == 7) {
+                    } else if (php72_cmp($this->session->userdata['partner_id']) == 7) {
                         $status = 'SIIC';
-                    } else if ($this->session->userdata['partner_id'] == 1) {
+                    } else if (php72_cmp($this->session->userdata['partner_id']) == 1) {
                         $status = 'Villgro';
                     }
                     ?>
@@ -1023,15 +1023,15 @@
                     </dd>
                 </div>
                 <?php
-                if ($this->session->userdata['partner_id'] == 6) {
+                if (php72_cmp($this->session->userdata['partner_id']) == 6) {
                     $status = 'KIIT';
-                } else if ($this->session->userdata['partner_id'] == 4) {
+                } else if (php72_cmp($this->session->userdata['partner_id']) == 4) {
                     $status = 'Oasis';
-                } else if ($this->session->userdata['partner_id'] == 5) {
+                } else if (php72_cmp($this->session->userdata['partner_id']) == 5) {
                     $status = 'IIMC';
-                } else if ($this->session->userdata['partner_id'] == 7) {
+                } else if (php72_cmp($this->session->userdata['partner_id']) == 7) {
                     $status = 'SIIC';
-                } else if ($this->session->userdata['partner_id'] == 1) {
+                } else if (php72_cmp($this->session->userdata['partner_id']) == 1) {
                     $status = 'Villgro';
                 }
                 ?>

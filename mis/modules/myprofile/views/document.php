@@ -88,7 +88,7 @@
                             <?php
                             $j = 1;
                             $document_count = isset($document[0]['id']) ? php72_count($document) : 0;
-                            if ($document_count > 0) {
+                            if (php72_cmp($document_count) > 0) {
                               for ($i = 0; $i < $document_count; $i++) {
                                 $uploaded_date = isset($document[$i]['created_at']) && $document[$i]['created_at'] != '0000-00-00 00:00:00' ? date('d-m-Y', strtotime($document[$i]['created_at'])) : '';
                                 ?>

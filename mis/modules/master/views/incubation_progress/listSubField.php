@@ -6,7 +6,7 @@ $nullLink = "javascript:void(0);";
 <div style=" float:right; text-align:right;width:100%;">
 <?php echo anchor('master/incub_progress_master/sub_field/'.$pid,'Add Sub Field','class="button fancybox"'); ?>&nbsp;&nbsp;
 <?php 
-if($screeningDetails['0']['pid'] != 0)
+if(php72_cmp($screeningDetails['0']['pid']) != 0)
 	echo anchor('master/incub_progress_master/sub_fieldlist/'.$screeningDetails['0']['pid'],'Back','class="button"');
 else
 	echo anchor('master/incub_progress_master/view_list/','Back','class="button"');?>

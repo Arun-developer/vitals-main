@@ -329,7 +329,7 @@ class Approvaladmin extends CI_Controller {
         $donor_amt = $this->input->post('new_donor');
         $programmeid = $this->input->post('programmeid');
         if ($currentTab == 'confirmed') {
-            if ($donor_amt != 0) {
+            if (php72_cmp($donor_amt) != 0) {
                 $financialArray = $this->Mapproval->findCurrentFinancialYears();
                 $from = $this->Mlogapproval->convertMonthYearFrom($financialArray[0]['from']);
                 $to = $this->Mlogapproval->convertMonthYearTo($financialArray[0]['to']);
@@ -340,14 +340,14 @@ class Approvaladmin extends CI_Controller {
                     for ($j = 0; $j < $int_count2; $j++) {
                         $flag[$j] = 0;
                         $progID[$i]['cost_centre'] = ($progID[$i]['cost_centre'] == '') ? 0 : $progID[$i]['cost_centre'];
-                        if ($flag[$j] == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
+                        if (php72_cmp($flag[$j]) == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
                             $flag[$j] = 1;
                             $internal_amount += $internalID[$j]['amount_toapprove'];
                         }
                     }
                     if ($internal_amount <= $progID[$i]['amt_required'])
                         $internal_amount = $internal_amount;
-                    else if ($progID[$i]['amt_required'] < 0 && $internal_amount == 0)
+                    else if (php72_cmp($progID[$i]['amt_required']) < 0 && php72_cmp($internal_amount) == 0)
                         $internal_amount = $internal_amount;
                     else
                         $internal_amount = $progID[$i]['amt_required'];
@@ -368,14 +368,14 @@ class Approvaladmin extends CI_Controller {
                     for ($j = 0; $j < $int_count2; $j++) {
                         $flag[$j] = 0;
                         $progID[$i]['cost_centre'] = ($progID[$i]['cost_centre'] == '') ? 0 : $progID[$i]['cost_centre'];
-                        if ($flag[$j] == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
+                        if (php72_cmp($flag[$j]) == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
                             $flag[$j] = 1;
                             $internal_amount += $internalID[$j]['amount_toapprove'];
                         }
                     }
                     if ($internal_amount <= $progID[$i]['amt_required'])
                         $internal_amount = $internal_amount;
-                    else if ($progID[$i]['amt_required'] < 0 && $internal_amount == 0)
+                    else if (php72_cmp($progID[$i]['amt_required']) < 0 && php72_cmp($internal_amount) == 0)
                         $internal_amount = $internal_amount;
                     else
                         $internal_amount = $progID[$i]['amt_required'];
@@ -422,7 +422,7 @@ class Approvaladmin extends CI_Controller {
 
     function edit_approval_note($id = NULL, $section = 'mylist') {
         $partnerNote = $this->Mapproval->getPartner($id);
-        if ($partnerNote < 1 && is_numeric($id)) {
+        if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
             redirect('approval/approval_note/pending');
         }
         $data['section'] = $section;
@@ -512,12 +512,12 @@ class Approvaladmin extends CI_Controller {
                 $amount_req = $amt_required[$dondetails];
                 $curr_apn_amt = $this->Mapproval->getCurrentAmt($prog, $don, $bh, $li, $id);
                 $in_amt_an = $this->Mapproval->getCurrentInAmt($prog, $don, $bh, $li, $abc, $id);
-                if ($curr_apn_amt != 0) {
+                if (php72_cmp($curr_apn_amt) != 0) {
                     $avail_amt = ($amt_avail + $curr_apn_amt);
                 } else
                 $avail_amt = $amt_avail;
                 if ($avail_amt >= $amount_req) {
-                    if ($in_amt_an != 0) {
+                    if (php72_cmp($in_amt_an) != 0) {
                         if ($amount_req < $in_amt_an) {
                             $error = 4;
                         }
@@ -793,7 +793,7 @@ class Approvaladmin extends CI_Controller {
         $approval_lists = $this->Mapproval->getLimitApprovalNotes($where, $limit, $start, $sort_column, $columnSortOrder, 'show All');
         $getLimit_count = php72_count($approval_lists);
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             $title = array(
                 'Approval Number', 'Date of Request', 'Date of Seeking Approval', 'From: (employee)', 'Date on which payment is required',
                 'To:(RO)', 'To:(PH)', 'Purpose', 'Programme', 'Donor - Grant', 'Budget Head', 'Line Item', 'Cost Centre', 'Detail', 'Amount Available', 'Amount Required', 'Payment in favor of',
@@ -845,7 +845,7 @@ class Approvaladmin extends CI_Controller {
 				 $approval_userName = $phName[0]['user_name'];
 			}
 			
-			if ($lists['assigned_user']==0) {
+			if (php72_cmp($lists['assigned_user'])==0) {
 				 $approval_userName =$RoName[0]['user_name'];
 			}
 			if($lists['RO_status'] =='pending'){
@@ -1145,7 +1145,7 @@ class Approvaladmin extends CI_Controller {
 
     function approval_note_details($id = '', $section = 'mylist') {
         $partnerNote = $this->Mapproval->getPartner($id);
-        if ($partnerNote < 1 && is_numeric($id)) {
+        if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
             redirect('approval/approval_note/pending');
         }
         $data['section'] = $section;
@@ -1218,7 +1218,7 @@ class Approvaladmin extends CI_Controller {
 			
 		if($approvalNoteDetails[0]["assigned_user"]=='0'){ 
 			$data['phhead'] = '';
-		}else if($approvalNoteDetails[0]["assigned_user"]>0){
+		}else if(php72_cmp($approvalNoteDetails[0]["assigned_user"])>0){
 			 $data['ph_name'] = $ph_name_arr[0]['user_name'];
 		}else{
 			if(trim($approvalNoteDetails[0]['above_50000'])=='yes'){ 
@@ -1230,7 +1230,7 @@ class Approvaladmin extends CI_Controller {
 			
 		}
 		
-		if($this->session->userdata('emp_number') == 135){
+		if(php72_cmp($this->session->userdata('emp_number')) == 135){
 		/* 	if($approvalNoteDetails[0]["assigned_user"]=='0'){  echo'1';die;
 			$data['phhead'] = '';
 		}else if($approvalNoteDetails[0]["assigned_user"]>0){   echo'2';die;
@@ -1288,7 +1288,7 @@ class Approvaladmin extends CI_Controller {
             foreach ($donor as $key => $value):
                 if ($donor[$key] == '' || $grant_list[$key] == '' || $budget_head[$key] == '' || $line_item[$key] == '' || $amt_available[$key] == '' || $amt_required[$key] == '' || ($cost_avail[$key] == '1' && $subline_item[$key] == '') || ($additional_avail[$key] == '1' && $additional_info[$key] == ''))
                     $error = 1;
-                if (($donor[$key] == 0 && $other_donor[$key] == '') || ($budget_head[$key] == 0 && $other_budget_head[$key] == '') || ($line_item[$key] == 0 && $other_line_item[$key] == ''))
+                if ((php72_cmp($donor[$key]) == 0 && $other_donor[$key] == '') || (php72_cmp($budget_head[$key]) == 0 && $other_budget_head[$key] == '') || (php72_cmp($line_item[$key]) == 0 && $other_line_item[$key] == ''))
                     $error = 1;
             endforeach;
             /* added for server side validation by amala */
@@ -1341,7 +1341,7 @@ class Approvaladmin extends CI_Controller {
             foreach ($donor as $key => $value):
                 if ($donor[$key] == '' || $grant_list[$key] == '' || $budget_head[$key] == '' || $line_item[$key] == '' || $amt_available[$key] == '' || $amt_required[$key] == '' || ($cost_avail[$key] == '1' && $subline_item[$key] == '') || ($additional_avail[$key] == '1' && $additional_info[$key] == ''))
                     $error = 1;
-                if (($donor[$key] == 0 && $other_donor[$key] == '') || $grant_list[$key] == '' || ($budget_head[$key] == 0 && $other_budget_head[$key] == '') || ($line_item[$key] == 0 && $other_line_item[$key] == ''))
+                if ((php72_cmp($donor[$key]) == 0 && $other_donor[$key] == '') || $grant_list[$key] == '' || (php72_cmp($budget_head[$key]) == 0 && $other_budget_head[$key] == '') || (php72_cmp($line_item[$key]) == 0 && $other_line_item[$key] == ''))
                     $error = 1;
             endforeach;
             /* server side validation */
@@ -1565,14 +1565,14 @@ class Approvaladmin extends CI_Controller {
                         $return[$i]["lineitem"] = $_REQUEST["lineitem"][$i];
                         $return[$i]["amtavailable"] = $gran_wise_amount = $this->getaval_amount($_REQUEST["donor"][$i], $_REQUEST["budgethead"][$i], $_REQUEST["lineitem"][$i], $_REQUEST["progid"], $check, $pre, $_REQUEST["grant_list"][$i]);
                         $return[$i]["amtreq"] = $_REQUEST["amtreq"][$i];
-                        if ($inam != 0 && !empty($inam)) {
+                        if (php72_cmp($inam) != 0 && !empty($inam)) {
                             if ($return[$i]['amtreq'] < $inam[$i]['amount_toapprove']) {
                                 $return[$i]['amtreq'] = 0;
                             }
                         }
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
-                        }if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        }if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                     } else {
@@ -1585,7 +1585,7 @@ class Approvaladmin extends CI_Controller {
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
                         }
-                        if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                     }

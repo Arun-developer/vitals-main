@@ -41,7 +41,7 @@ if ($this->session->flashdata('message')){
 				{
 					$day++;					
 					
-					if($day>0 && $day<=$total_days_of_current_month)
+					if(php72_cmp($day)>0 && $day<=$total_days_of_current_month)
 					{
 						//YYYY-MM-DD date format
 						$date_form = "$current_year/$current_month/$day";

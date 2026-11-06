@@ -23,10 +23,10 @@ class Detailed_diligence extends CI_Controller {
     public function company_team($id) {
         $invID = 'INV' . $id;
         $innv_pool = $this->Mdiligence->get_data('innovation_pool', $invID);
-        if ($innv_pool[0]['program'] == 0) {
+        if (php72_cmp($innv_pool[0]['program']) == 0) {
             $data['main_data'] = $this->Mdiligence->getMainIncub($invID);
             $data['mem_data'] = $this->Mdiligence->getManageIncub($invID);
-        } else if ($innv_pool[0]['program'] == 3 || $innv_pool[0]['program'] == 4) {
+        } else if (php72_cmp($innv_pool[0]['program']) == 3 || php72_cmp($innv_pool[0]['program']) == 4) {
             $data['main_data'] = $this->Mdiligence->getMainPitch($invID);
             $data['mem_data'] = $this->Mdiligence->getManagePitch($invID);
         }

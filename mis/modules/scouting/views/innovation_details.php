@@ -122,11 +122,11 @@ foreach ($innovationDetails as $row):
                 <tr>
                     <td>Any other supporting document you would like to share pertaining to the product/service?</td>
                     <td>
-                        <?php if ($row['innovation_document'] == 0) { ?>No documents shared&nbsp;&nbsp;
+                        <?php if (php72_cmp($row['innovation_document']) == 0) { ?>No documents shared&nbsp;&nbsp;
                         <?php } ?>
                         <a href="<?= site_url('scouting/innovation_document/' . $row['id']); ?>"
                            class="fancyboxIframe button">
-                            <?= ($row['innovation_document'] == 0) ? 'Add' : 'View'; ?> Documents</a>
+                            <?= (php72_cmp($row['innovation_document']) == 0) ? 'Add' : 'View'; ?> Documents</a>
                     </td>
                 </tr>
                 <tr>

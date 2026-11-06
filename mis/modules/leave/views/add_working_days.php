@@ -120,10 +120,10 @@
                                                         <div class="form-group">
                                                             <label>Full Day/ Half Day </label>
                                                             <select class="form-control" name="working_day_type" <?= $pointer_evnt; ?>  <?= $disable; ?> id="working_day_type" required="">
-                                                                <option value="1" <?php if (isset($working_days[0]['length']) && $working_days[0]['length'] == 1) {
+                                                                <option value="1" <?php if (isset($working_days[0]['length']) && php72_cmp($working_days[0]['length']) == 1) {
     echo 'selected';
 } ?>>Full Day</option>
-                                                                <option value="2" <?php if (isset($working_days[0]['length']) && $working_days[0]['length'] == 2) {
+                                                                <option value="2" <?php if (isset($working_days[0]['length']) && php72_cmp($working_days[0]['length']) == 2) {
     echo 'selected';
 } ?>>Half Day</option>
                                                             </select>

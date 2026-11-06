@@ -12,9 +12,9 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-12 pad-none display-flex">
                         <span><a href="<?php echo base_url() . 'index.php/myprofile/education/' . $emp_id; ?>"><i class="fas fa-angle-left"></i> Back </a></span>
                         <?php
-                        if ($education[0]['qualification'] == 1) {
+                        if (php72_cmp($education[0]['qualification']) == 1) {
                             $graduate = 'UG';
-                        } else if ($education[0]['qualification'] == 2) {
+                        } else if (php72_cmp($education[0]['qualification']) == 2) {
                             $graduate = 'PG';
                         }
                         $qualify = $graduate . ' (' . $education[0]['qualification_name'] . ')';
@@ -68,12 +68,12 @@
                                                         <select class="form-control employeeInput" disabled name="edu_graduate" onchange="getDegree(this.value)">
                                                             <option value="">--Select--</option>
                                                             <option value="1" <?php
-                                                            if ($education[0]['qualification'] == 1) {
+                                                            if (php72_cmp($education[0]['qualification']) == 1) {
                                                                 echo "selected";
                                                             }
                                                             ?>>Under Graduate</option>
                                                             <option value="2" <?php
-                                                            if ($education[0]['qualification'] == 2) {
+                                                            if (php72_cmp($education[0]['qualification']) == 2) {
                                                                 echo "selected";
                                                             }
                                                             ?>>Post Graduate</option>

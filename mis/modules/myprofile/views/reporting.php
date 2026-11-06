@@ -144,7 +144,7 @@
                                                       <?php
                                                       $j = 1;
                                                       $supervisor_count = isset($supervisor_list[0]['id']) ? php72_count($supervisor_list) : 0;
-                                                      if ($supervisor_count > 0) {
+                                                      if (php72_cmp($supervisor_count) > 0) {
                                                         for ($i = 0; $i < $supervisor_count; $i++) {
                                                           ?>
                                                           <tr id="supervisor_tr_<?php echo $j; ?>" class="supervisor_more">
@@ -167,12 +167,12 @@
                                                               <select class="form-control employeeInput" readonly name="supervisor_method[]" id="supervisor_method_<?= $j; ?>" disabled>
                                                                 <option value="">--Select--</option>
                                                                 <option value="1" <?php
-                                                                if ($supervisor_list[$i]['report_method'] == 1) {
+                                                                if (php72_cmp($supervisor_list[$i]['report_method']) == 1) {
                                                                   echo "selected";
                                                                 }
                                                                 ?>>Direct</option>
                                                                 <option value="2" <?php
-                                                                if ($supervisor_list[$i]['report_method'] == 2) {
+                                                                if (php72_cmp($supervisor_list[$i]['report_method']) == 2) {
                                                                   echo "selected";
                                                                 }
                                                                 ?>>Indirect</option>
@@ -204,7 +204,7 @@
                                                       <?php
                                                       $j = 1;
                                                       $subordinate_count = isset($subordinate_list[0]['id']) ? php72_count($subordinate_list) : 0;
-                                                      if ($subordinate_count > 0) {
+                                                      if (php72_cmp($subordinate_count) > 0) {
 
                                                         ?>
                                                         <div class="col-xl-6 col-lg-6 col-md-6 col-12">
@@ -240,7 +240,7 @@
                                                       <?php
                                                       $j = 1;
                                                       $subordinate_count = isset($subordinate_list[0]['id']) ? php72_count($subordinate_list) : 0;
-                                                      if ($subordinate_count > 0) {
+                                                      if (php72_cmp($subordinate_count) > 0) {
                                                         for ($i = 0; $i < $subordinate_count; $i++) {
                                                           ?>
                                                           <tr id="subordinate_tr_<?php echo $j; ?>" class="subordinate_more" disabled>
@@ -263,12 +263,12 @@
                                                               <select class="form-control employeeInput" readonly name="subordinate_method[]" id="subordinate_method_<?= $j; ?>" disabled>
                                                                 <option value="">--Select--</option>
                                                                 <option value="1" <?php
-                                                                if ($subordinate_list[$i]['report_method'] == 1) {
+                                                                if (php72_cmp($subordinate_list[$i]['report_method']) == 1) {
                                                                   echo "selected";
                                                                 }
                                                                 ?>>Direct</option>
                                                                 <option value="2" <?php
-                                                                if ($subordinate_list[$i]['report_method'] == 2) {
+                                                                if (php72_cmp($subordinate_list[$i]['report_method']) == 2) {
                                                                   echo "selected";
                                                                 }
                                                                 ?>>Indirect</option>

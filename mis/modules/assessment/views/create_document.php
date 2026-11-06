@@ -59,7 +59,7 @@
 		<p>
 		<strong>Added Date :</strong><?=mysql2date($com['created_date'])?>,
 		<strong>Added By :</strong> <?=$com['created_emp']?>,
-		<?php if($com['modified_by']!= 0){ ?>
+		<?php if(php72_cmp($com['modified_by'])!= 0){ ?>
 		<strong>Last Modified :</strong><?=mysql2date($com['modified_date'])?>,
 		<strong>Modified By :</strong><?=$com['modified_emp']?>
 		<?php } ?>

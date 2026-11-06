@@ -80,7 +80,7 @@ class Login extends CI_Controller {
                 $mailsend = $this->Memail->sendbulk('mis@villgro.org', $mail_invs['mail_to'], $mail_subject, $mail_body, $partner_id);
 
 
-                if ($mailsend == 1) {
+                if (php72_cmp($mailsend) == 1) {
 
                     $org_mail = array();
                     $options['from'] = $from_mail;
@@ -175,16 +175,16 @@ class Login extends CI_Controller {
                     $email = 'apply@villgro.org';
                     $it = 'it@villgro.org';
                 }
-                if ($days == 11) {
+                if (php72_cmp($days) == 11) {
                     $msg = "<p>You have not submitted your application form for the " . $name . " Incubation program in the last 10 days. Applications will need to be submitted within 3 weeks of registering. To access your application form login on " . $url . ". Please complete and submit your application at the earliest.</p>
                     <p>Please contact us at " . $email . " if you have any questions regarding the Incubation program. Or email us at " . $it . " for technical queries. </p>";
                     $sub = $name . 'Incubation Application form - Submission Reminder';
-                } else if ($days == 21) {
+                } else if (php72_cmp($days) == 21) {
                     $msg = "<p>You have not submitted your application form for the " . $name . " Incubation program in the last 3 weeks. Your application will be purged from the system within the next 24 hours. Following this you will need to re-register if you are still interested in applying to the incubation program.</p>
                     <p>Please contact us at " . $email . " if you have any questions regarding the Incubation program. Or email us at " . $it . " for technical queries. </p>
                     <p>You can access your application at " . $url . "</p>";
                     $sub = $name . 'Incubation Application form - Final Rem`inder';
-                } else if ($days == 22) {
+                } else if (php72_cmp($days) == 22) {
                     $result = $this->inv_status_update($inv['inv_no'], $inv['id']);
                 }
             }
@@ -553,7 +553,7 @@ class Login extends CI_Controller {
             $this->form_validation->set_rules('password', 'Password', 'required');
             if ($this->form_validation->run() != false) {
                 $responce = $this->Muser->loginUser($this->input->post('username'), $this->input->post('password'));
-                if($responce[0]['partner_id'] == 2) {
+                if(php72_cmp($responce[0]['partner_id']) == 2) {
                     $data['kenya_user'] = 1;
                     $this->load->vars($data);
                     $this->load->view('mis_login');
@@ -1424,9 +1424,9 @@ class Login extends CI_Controller {
         if (php72_count($mail) > 0) {
             foreach ($mail as $row) {
 
-                if ($row['status'] == 0) {
+                if (php72_cmp($row['status']) == 0) {
                     $status = 'Pending';
-                } else if ($row['status'] == 1) {
+                } else if (php72_cmp($row['status']) == 1) {
                     $status = 'Sent';
                 } else {
                     $status = 'Failed';
@@ -1506,9 +1506,9 @@ class Login extends CI_Controller {
 
                 if ($row['sector'] == 'MCH') {
                     $sector_name = 'Maternal & child health';
-                } else if ($row['sector'] > 0) {
+                } else if (php72_cmp($row['sector']) > 0) {
                     $sector_name = $this->Minnovation->getNewSectorDetails($row['sector']);
-                } else if ($row['program'] > 0) {
+                } else if (php72_cmp($row['program']) > 0) {
                     $sector_name = $this->Minnovation->getSectorName($row['pitch_id']);
                 } else {
                     $sector_name = $row['sector'];

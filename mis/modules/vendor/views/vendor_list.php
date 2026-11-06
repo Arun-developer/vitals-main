@@ -67,7 +67,7 @@
                                     <tr>
                                         <th width="6%"><input type='checkbox' class='form-control data_checkAll' onchange="select_checkAll();" ></th>
                                         <th>Name</th>
-										<?php if($this->session->userdata('emp_number') == 575){ ?>
+										<?php if(php72_cmp($this->session->userdata('emp_number')) == 575){ ?>
 											<th>Created User</th>
 										<?php } ?>
                                         <th>Address</th>

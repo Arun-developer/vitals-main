@@ -165,7 +165,7 @@ class Scouting extends CI_Controller {
 
             $data_file1 = array();
             $this->load->library('upload');
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; php72_cmp($i) < 3; $i++) {
                 if ($_FILES["resume"]["name"][$i] != "") {
                     $config['upload_path'] = $upload_path;
                     $config['allowed_types'] = 'doc|docx|pdf';
@@ -196,7 +196,7 @@ class Scouting extends CI_Controller {
             $resume = implode("|", $data_file1);
 
 //applicant
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; php72_cmp($i) < 3; $i++) {
                 if ($_POST['name'][$i] != "" && $_POST['org'][$i] != "" && $_POST['title'][$i] != "" && $_POST['email'][$i] != "" && $_POST['mobile'][$i] != "") {
                     $data4 = array(
                         'app_id' => $app_id,
@@ -211,7 +211,7 @@ class Scouting extends CI_Controller {
             }
 
             $data_file2 = array();
-            for ($i = 0; $i < 2; $i++) {
+            for ($i = 0; php72_cmp($i) < 2; $i++) {
                 if ($_FILES["additional"]["name"][$i] != "") {
                     $config['upload_path'] = $upload_path;
                     $config['allowed_types'] = 'doc|docx|pdf|txt';
@@ -313,7 +313,7 @@ class Scouting extends CI_Controller {
 //////////////// seed form insert process ends /////////////////////////
 //////////////// seed form member insert process ///////////////////////
             $this->load->library('upload');
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 1; php72_cmp($i) <= 5; $i++) {
                 $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/seedForm/memberuploads/';
 
                 $resume_path[$i] = '';
@@ -774,14 +774,14 @@ class Scouting extends CI_Controller {
             $business_file = '';
             if ($_FILES['busi_plan']['name'] != '') {
                 $business_file = $this->pitch_file_upload('IncubationForm', 'uploads', 'busi_plan', 'pdf|doc|docx|ppt|pptx');
-                if ($business_file == 0) {
+                if (php72_cmp($business_file) == 0) {
                     $data['error'] = "File related to business plan not uploaded. Please upload a valid file";
                 }
             }
             $additional_file = '';
             if ($_FILES['add_info_file']['name'] != '') {
                 $additional_file = $this->pitch_file_upload('IncubationForm', 'uploads', 'add_info_file', 'pdf|doc|docx|ppt|pptx');
-                if ($additional_file == 0) {
+                if (php72_cmp($additional_file) == 0) {
                     $data['error'] = "File related to additonal information not uploaded. Please upload a valid file";
                 }
             }
@@ -1295,7 +1295,7 @@ class Scouting extends CI_Controller {
         else
             $this->db->order_by('Submitted_Date', 'desc');
 
-        if ($options['program'] == 0) {
+        if (php72_cmp($options['program']) == 0) {
             $program_type = 'Incubation';
             $this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
                 IP.email_id as Email,IP.mobile_no as Mobile_number,IP.country as Country,IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -1357,7 +1357,7 @@ class Scouting extends CI_Controller {
                 $query = $this->db->get_where('innovation_pool IP', $whereQuery);
             else
                 $query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 3) {
+        } else if (php72_cmp($options['program']) == 3) {
             $program_type = 'Unc Pitch';
             $this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_entrepreneur as Name_of_Entrepreneur,IP.name_of_enterprise as Name_of_Enterprise,
                 pitch_user.gst_number as GST_Number,IP.email_id as Email,IP.mobile_no as Mobile_number,pitch_user.altmobileno as Alternate_mobile,
@@ -1676,7 +1676,7 @@ class Scouting extends CI_Controller {
         #error_reporting(-1);
         #header('Content-type: text/html; charset=UTF-8');
         $data['innovation'] = $this->Minnovation->getInnovation($id);
-        if ($this->session->userdata('independent_shortlist') == 1 && $this->session->userdata('role_id') == 4) {
+        if (php72_cmp($this->session->userdata('independent_shortlist')) == 1 && php72_cmp($this->session->userdata('role_id')) == 4) {
             $emp_comment = $this->session->userdata['emp_number'];
         } else {
             $emp_comment = '';
@@ -2551,7 +2551,7 @@ class Scouting extends CI_Controller {
         $id = $this->input->post('sector_id');
 		
 		//set climate action subsector to waste to value
-		if($id==195){
+		if(php72_cmp($id)==195){
 			$id = 4;	
 		}
         $this->load->model('Mincharge');
@@ -2816,7 +2816,7 @@ class Scouting extends CI_Controller {
 //////////////// seed form insert process ends /////////////////////////
 //////////////// seed form member insert process ///////////////////////
         $this->load->library('upload');
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; php72_cmp($i) <= 5; $i++) {
             $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/seedForm/memberuploads';
 
             $resume_path[$i] = '';
@@ -3281,7 +3281,7 @@ class Scouting extends CI_Controller {
 
 //////////////////////////// Innovation table update ends /////////////////////////////////////
 
-            if ($result1 == 1 && $result2 == 1 && $result3 == 1 && $result4 == 1 && $result5 == 1) {
+            if (php72_cmp($result1) == 1 && php72_cmp($result2) == 1 && php72_cmp($result3) == 1 && php72_cmp($result4) == 1 && php72_cmp($result5) == 1) {
                 $this->session->set_flashdata('successMsg', 'Pitch Information updated Successfully!');
                 redirect('scouting/innovation_details/' . substr($in, 3));
             } else {
@@ -3544,7 +3544,7 @@ class Scouting extends CI_Controller {
                 $business_file = $this->input->post('hidden_busi_plan');
                 if ($_FILES['busi_plan']['name'] != '') {
                     $business_file = $this->pitch_file_upload('IncubationForm', 'uploads', 'busi_plan', 'pdf|doc|docx|ppt|pptx', $this->input->post('hidden_busi_plan'));
-                    if ($business_file == 0) {
+                    if (php72_cmp($business_file) == 0) {
                         $data['error'] = "File related to business plan not uploaded. Please upload a valid file";
                         $this->inv_app_edit($in, $id, $data['error']);
                     }
@@ -3552,7 +3552,7 @@ class Scouting extends CI_Controller {
                 $additional_file = $this->input->post('hidden_add_info_file');
                 if ($_FILES['add_info_file']['name'] != '') {
                     $additional_file = $this->pitch_file_upload('IncubationForm', 'uploads', 'add_info_file', 'pdf|doc|docx|ppt|pptx', $this->input->post('hidden_add_info_file'));
-                    if ($additional_file == 0) {
+                    if (php72_cmp($additional_file) == 0) {
                         $data['error'] = "File related to additonal information not uploaded. Please upload a valid file";
                         $this->inv_app_edit($in, $id, $data['error']);
                     }
@@ -3601,7 +3601,7 @@ class Scouting extends CI_Controller {
 
 //////////////////////////// Innovation table update ends /////////////////////////////////////
             if ($sector != 'Maternal & child health') {
-                if ($result1 == 1 && $result2 == 1 && $result3 == 1 && $result4 == 1 && $result5 == 1 && $result6 == 1) {
+                if (php72_cmp($result1) == 1 && php72_cmp($result2) == 1 && php72_cmp($result3) == 1 && php72_cmp($result4) == 1 && php72_cmp($result5) == 1 && php72_cmp($result6) == 1) {
                     $this->session->set_flashdata('successMsg', 'Innovation Information updated Successfully!');
                     redirect('scouting/innovation_details/' . $in);
                 } else {
@@ -3610,7 +3610,7 @@ class Scouting extends CI_Controller {
                 }
             } // not mch
             else {
-                if ($resulttt == 1 && $result1 == 1 && $result6 == 1) {
+                if (php72_cmp($resulttt) == 1 && php72_cmp($result1) == 1 && php72_cmp($result6) == 1) {
                     $this->session->set_flashdata('successMsg', 'Innovation Information updated Successfully!');
                     redirect('scouting/innovation_details/' . $in);
                 } else {
@@ -4419,7 +4419,7 @@ class Scouting extends CI_Controller {
                 $row++;
             }
 
-            if ($innovationDetails[0]['reasons'] > 0) {
+            if (php72_cmp($innovationDetails[0]['reasons']) > 0) {
                 $get_reasons = $this->Minnovation->getSourceName($innovationDetails[0]['reasons']);
                 $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('0', $row)->applyFromArray($stylebody);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('0', $row, 'Closed Comments');
@@ -4705,7 +4705,7 @@ class Scouting extends CI_Controller {
                     $row++;
                 }
 
-                if ($innovationDetails[0]['reasons'] > 0) {
+                if (php72_cmp($innovationDetails[0]['reasons']) > 0) {
                     $get_reasons = $this->Minnovation->getSourceName($innovationDetails[0]['reasons']);
                     $objPHPExcel->getActiveSheet()->getStyleByColumnAndRow('0', $row)->applyFromArray($stylebody);
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow('0', $row, 'Closed Comments');
@@ -5208,10 +5208,10 @@ class Scouting extends CI_Controller {
                 $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
 
 //header will/should be in row 1 only.
-                if ($row == 1) {
+                if (php72_cmp($row) == 1) {
                     $header[$row][$column] = $data_value;
                 } else {
-                    if ($row >= 2) {
+                    if (php72_cmp($row) >= 2) {
                         $arr_data[$row][$column] = $data_value;
                     }
                 }

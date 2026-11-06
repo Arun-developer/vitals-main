@@ -473,10 +473,10 @@ foreach ($eir_user as $row):
                             for-profit entity?<span style="color:red"> *</span></td>
                         <td width="60%">
                             <input type="radio" name="profit" value="1"
-                                   <?php echo $checked = (isset($eir_app[0]['for_profit']) && ($eir_app[0]['for_profit'] == 1)) ? 'checked=checked' : ''; ?> />
+                                   <?php echo $checked = (isset($eir_app[0]['for_profit']) && (php72_cmp($eir_app[0]['for_profit']) == 1)) ? 'checked=checked' : ''; ?> />
                             Yes&nbsp;
                             <input type="radio" name="profit" value="0"
-                                   <?php echo $checked = (isset($eir_app[0]['for_profit']) && ($eir_app[0]['for_profit'] == 0)) ? 'checked=checked' : ''; ?> />
+                                   <?php echo $checked = (isset($eir_app[0]['for_profit']) && (php72_cmp($eir_app[0]['for_profit']) == 0)) ? 'checked=checked' : ''; ?> />
                             No
                         </td>
                     </tr>
@@ -486,10 +486,10 @@ foreach ($eir_user as $row):
                             establishing your business?<span style="color:red"> *</span></td>
                         <td width="60%">
                             <input type="radio" name="program_time" value="1"
-                                   <?php echo (isset($eir_app[0]['program_time']) && ($eir_app[0]['program_time'] == 1)) ? 'checked=checked' : ''; ?> />
+                                   <?php echo (isset($eir_app[0]['program_time']) && (php72_cmp($eir_app[0]['program_time']) == 1)) ? 'checked=checked' : ''; ?> />
                             Yes&nbsp;
                             <input type="radio" name="program_time" value="0"
-                                   <?php echo (isset($eir_app[0]['program_time']) && ($eir_app[0]['program_time'] == 0)) ? 'checked=checked' : ''; ?> />
+                                   <?php echo (isset($eir_app[0]['program_time']) && (php72_cmp($eir_app[0]['program_time']) == 0)) ? 'checked=checked' : ''; ?> />
                             No
                         </td>
                     </tr>

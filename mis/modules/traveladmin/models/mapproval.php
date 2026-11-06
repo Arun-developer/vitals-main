@@ -32,7 +32,7 @@ class Mapproval extends CI_Model {
     }
 
     function isPartnerCheck() {
-        if ($this->session->userdata('ais_privilege') == 1) {
+        if (php72_cmp($this->session->userdata('ais_privilege')) == 1) {
             $this->session->set_flashdata('warningMsg', 'You are not Authorized to view this page');
             redirect('login/logout');
         }
@@ -431,9 +431,9 @@ class Mapproval extends CI_Model {
         foreach ($this->input->post('amt_required') as $key => $value):
             $amount += $value;
         endforeach;
-        if ($this->session->userdata('currency') == 'INR' && $amount > 50000) {
+        if ($this->session->userdata('currency') == 'INR' && php72_cmp($amount) > 50000) {
             $above = 'yes';
-        } else if ($this->session->userdata('currency') != 'INR' && $amount > 1500) {
+        } else if ($this->session->userdata('currency') != 'INR' && php72_cmp($amount) > 1500) {
             $above = 'yes';
         } else {
             $above = 'no';
@@ -807,7 +807,7 @@ class Mapproval extends CI_Model {
         $this->db->where('status !=', 'cancelled');
         $query = $this->db->get('internal_note');
         $row = $query->result_array();
-        $remaining_amount = (($row[0]['int_amount'] != '')) ? ((($tot_req_amount != '') ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
+        $remaining_amount = (($row[0]['int_amount'] != '')) ? (((!php72_loose_eq($tot_req_amount, '')) ? $tot_req_amount : $donor_detail[0]['amt_required']) - $row[0]['int_amount']) : $donor_detail[0]['amt_required'];
         return $remaining_amount;
     }
 

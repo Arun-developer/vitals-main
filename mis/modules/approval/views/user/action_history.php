@@ -42,10 +42,10 @@ $this->load->view('vitals_header.php', array('main_menu' => 'request', 'page_tit
                         <div>
                             <div class="tab-slider--navform">
                                 <ul class="tab-slider--tabsform">
-                                    <li class="tab-slider--triggerform"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_pending'; ?>">My Pending Notes <?php echo isset($an_rocount) && $an_rocount != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>
+                                    <li class="tab-slider--triggerform"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_pending'; ?>">My Pending Notes <?php echo isset($an_rocount) && php72_cmp($an_rocount) != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>
                                     <li class="tab-slider--triggerform active"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_approval/confirmed'; ?>">All My Approval Notes</a></li>
                                     <?php if ($ph_Usercount == '1') { ?>
-                                        <li class="tab-slider--triggerform"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/phlist'; ?>">Approve As PH <?php echo isset($an_phcount) && $an_phcount != 0 ? '(' . $an_phcount . ')' : ''; ?></a></li>
+                                        <li class="tab-slider--triggerform"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/phlist'; ?>">Approve As PH <?php echo isset($an_phcount) && php72_cmp($an_phcount) != 0 ? '(' . $an_phcount . ')' : ''; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </div>

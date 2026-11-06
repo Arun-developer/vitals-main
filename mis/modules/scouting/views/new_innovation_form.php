@@ -429,7 +429,7 @@
 
 <form name="new_innovation_form" action="" enctype="multipart/form-data" method="post" id="new_innovation_form"
       class="uniform"
-      <?php echo ($this->session->userdata("user_type") == "superadmin" ? "style= 'display:block'" : ($this->session->userdata("partner_id") == 2 ? "style= 'display:none'" : "style= 'display:block'" )); ?>>
+      <?php echo ($this->session->userdata("user_type") == "superadmin" ? "style= 'display:block'" : (php72_cmp($this->session->userdata("partner_id")) == 2 ? "style= 'display:none'" : "style= 'display:block'" )); ?>>
 
     <dl class="inline">
         <?php if ($this->session->userdata('user_type') == 'superadmin') { ?>
@@ -1011,7 +1011,7 @@
     </div>
 </form>
 <form name="kenya_form" action="" enctype="multipart/form-data" method="post" id="kenya_form" class="uniform"
-      <?php echo ($this->session->userdata("user_type") == "superadmin" ? "style= 'display:none'" : ($this->session->userdata("partner_id") != 2 ? "style= 'display:none'" : "style= 'display:block'" )); ?>>
+      <?php echo ($this->session->userdata("user_type") == "superadmin" ? "style= 'display:none'" : (php72_cmp($this->session->userdata("partner_id")) != 2 ? "style= 'display:none'" : "style= 'display:block'" )); ?>>
 
     <dl class="inline">
 

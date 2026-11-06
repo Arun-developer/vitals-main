@@ -423,7 +423,7 @@ class Mentor extends CI_Controller
 
         $mentorhours = $noDays[0]['totalhour'];
 
-        if ($mentorhours != '' || $mentorhours != 0) {
+        if ($mentorhours != '' || php72_cmp($mentorhours) != 0) {
 
             return $mentorhours;
 

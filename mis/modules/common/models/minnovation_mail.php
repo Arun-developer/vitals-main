@@ -200,19 +200,19 @@ class Minnovation_mail extends CI_Model {
             '#innovation_details#' => $this->load->view('application/incubatee/inv_app_detail', $data, true),
             '#from#' => $from['name'],
         );
-        if ($partner_id == 1) {
+        if (php72_cmp($partner_id) == 1) {
             $toEmail = $email;
-        } else if ($partner_id == 2) {
+        } else if (php72_cmp($partner_id) == 2) {
             $toEmail = $email;
-        } else if ($partner_id == 3) {
+        } else if (php72_cmp($partner_id) == 3) {
             $toEmail = $email;
-        } else if ($partner_id == 4) {
+        } else if (php72_cmp($partner_id) == 4) {
             $toEmail = $email;
-        } else if ($partner_id == 5) {
+        } else if (php72_cmp($partner_id) == 5) {
             $toEmail = $email;
-        } else if ($partner_id == 6) {
+        } else if (php72_cmp($partner_id) == 6) {
             $toEmail = $email;
-        } else if ($partner_id == 7) {
+        } else if (php72_cmp($partner_id) == 7) {
             $toEmail = $email;
         }
         // #sending mail
@@ -434,7 +434,7 @@ class Minnovation_mail extends CI_Model {
     # CHANGE STATUS #
 
     public function change_stage($id, $stage) {
-        if ($stage == 2) {
+        if (php72_cmp($stage) == 2) {
             $this->assessment_approval($id);
         }
     }

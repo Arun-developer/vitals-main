@@ -52,7 +52,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                     <ul class="milestone-links">
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue">Save &amp; Continue</a></li>
                                         <?php } ?>
                                         <li>
@@ -80,7 +80,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                         ?>
                                         <h4>Fundraise > <span><?= $last_month . ' ' . $next_financial; ?></span></h4>
                                     </div>
-                                    <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                    <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-12 text-right">
                                             <a href="javascript:void(0)" class="edit-btnconfig editBtn" id="qualitEdit"><i class="fas fa-pencil-alt"></i> Edit</a></li>
                                         </div>
@@ -124,7 +124,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                             <h4>Equity Amount</h4>
                                                                         </div>
-                                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right">
                                                                                 <ul class="milestone-links">
                                                                                     <li>
@@ -209,7 +209,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                             <h4>Grant Funding</h4>
                                                                         </div>
-                                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right">
                                                                                 <ul class="milestone-links">
                                                                                     <li>
@@ -294,7 +294,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                             <h4>Debt</h4>
                                                                         </div>
-                                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right">
                                                                                 <ul class="milestone-links">
                                                                                     <li>
@@ -378,7 +378,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                             <h4>Long Term</h4>
                                                                         </div>
-                                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right">
                                                                                 <ul class="milestone-links">
                                                                                     <li>

@@ -82,7 +82,7 @@ if ($page == 'leave') {
                         <li class="nav-item <?= $my_approval_note_active_sm; ?>">
                             <?php /* user/user_ui/approve_RO  */ ?>
                             <a class="nav-link" href="<?php echo base_url() . 'index.php/approval/approval_note/pending/rolist'; ?>">
-                                <span class="nav-link-text">Approve <?php echo isset($an_approval_count) && $an_approval_count != 0 ? '(' . $an_approval_count . ')' : ''; ?></span>
+                                <span class="nav-link-text">Approve <?php echo isset($an_approval_count) && php72_cmp($an_approval_count) != 0 ? '(' . $an_approval_count . ')' : ''; ?></span>
                             </a>
                         </li>
                     </ul>

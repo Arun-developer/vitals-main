@@ -40,7 +40,7 @@
                                     <form id="filter_job" action=""  method="POST" autocomplete="off">
                                         <div class="col-12" >
                                             <ul class="vitals-links spec-label">
-                                                <?php if ($admin_type == 0) { ?>
+                                                <?php if (php72_cmp($admin_type) == 0) { ?>
                                                     <li class="mob_fulfill">
                                                         <label class="form-group" >Partner</label>
                                                         <div class="form-group mar-bt8  wdt_180">

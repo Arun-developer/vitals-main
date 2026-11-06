@@ -76,19 +76,19 @@
                                                     <?php
                                                     foreach ($leaves_list as $list) {
                                                         $pending_select = $approve_select = $taken_select = $reject_select = $cancel_select = '';
-                                                        if ($list['leave_status'] == 0) {
+                                                        if (php72_cmp($list['leave_status']) == 0) {
                                                             $status = 'Pending approval';
                                                             $pending_select = 'selected';
-                                                        } else if ($list['leave_status'] == 1) {
+                                                        } else if (php72_cmp($list['leave_status']) == 1) {
                                                             $status = 'Approved';
                                                             $approve_select = 'selected';
-                                                        } else if ($list['leave_status'] == 2) {
+                                                        } else if (php72_cmp($list['leave_status']) == 2) {
                                                             $status = 'Taken';
                                                             $taken_select = 'selected';
-                                                        } else if ($list['leave_status'] == 3) {
+                                                        } else if (php72_cmp($list['leave_status']) == 3) {
                                                             $status = 'Rejected';
                                                             $reject_select = 'selected';
-                                                        } else if ($list['leave_status'] == 4) {
+                                                        } else if (php72_cmp($list['leave_status']) == 4) {
                                                             $status = 'Cancelled';
                                                             $cancel_select = 'selected';
                                                         }

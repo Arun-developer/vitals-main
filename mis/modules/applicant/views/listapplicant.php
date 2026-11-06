@@ -47,7 +47,7 @@ $this->jquery->fancybox();
 			<td align="left" valign="middle"><?=$row["education"];?></td>
             <td align="left" valign="middle"><?=$row["sector"];?></td>
 			<td align="left" valign="middle">
-				<?php if(($row['status'])==1)
+				<?php if(php72_cmp(($row['status']))==1)
 					{
 						echo "Accepted";
 					}
@@ -55,7 +55,7 @@ $this->jquery->fancybox();
 					{ ?> 
 						<a class="button fancybox"  height="200" href="<?=site_url('applicant/liststatus/approve/'.$innovationid.'/'.$row['id']);?>">Approve</a> 
 					<?php }?>
-					<?php if(($row['status'])==0)
+					<?php if(php72_cmp(($row['status']))==0)
 						{
 							echo "Rejected";
 						}
@@ -64,7 +64,7 @@ $this->jquery->fancybox();
 							<a class="button fancybox" height="200" href="<?=site_url('applicant/liststatus/reject/'.$innovationid.'/'.$row['id']);?>">Reject</a> 
 					<?php }  ?>
 					
-					<?php if(($row['status'])==2)
+					<?php if(php72_cmp(($row['status']))==2)
 					{
 						echo "Pending";
 					} ?>

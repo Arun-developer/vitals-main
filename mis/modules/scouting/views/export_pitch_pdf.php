@@ -24,7 +24,7 @@
         <img src="https://mis.villgroapps.org/mis_master/source/template/images/logo.png" alt="Villgro Logo" height="110" width="259"/>
     </div>
     <div>
-        <?php if ($pitch_user[0]['application_type'] == 5) { ?>
+        <?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
         <p class="title_text">YSVF Application</p>
         <?php } else { ?>
         <p class="title_text">iPitch Application</p>
@@ -43,13 +43,13 @@
                 <td class="bold-text" style="width:30%;">Designation of the Applicant</td>
                 <td style="width:70%;"><?php echo $pitch_user[0]['designation']; ?></td>
             </tr>
-            <?php if ($pitch_user[0]['application_type'] != 5) { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) != 5) { ?>
             <tr>
                 <td class="bold-text" style="width:30%;">Gender</td>
                 <td style="width:70%;"><?php echo ucfirst($pitch_user[0]['gender']); ?></td>
             </tr>
             <?php } ?>
-            <?php if ($pitch_user[0]['application_type'] == 2) { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) == 2) { ?>
             <tr>
                 <td class="bold-text" style="width:30%;">Your enterprise registered as</td>
                 <td style="width:70%;"><?php echo $pitch_user[0]['enterprise_registered_under']; ?></td>
@@ -67,7 +67,7 @@
                 <td class="bold-text" style="width:30%;">Alternate Mobile</td>
                 <td style="width:70%;"><?php echo $pitch_user[0]['altmobileno']; ?></td>
             </tr>
-            <?php if ($pitch_user[0]['application_type'] == 2) { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) == 2) { ?>
             <tr>
                 <td class="bold-text" style="width:30%;">Components of Your product / solution</td>
                 <?php
@@ -126,7 +126,7 @@
                 <td class="bold-text" style="width:30%;">Mobile</td>
                 <td style="width:70%;"><?php echo $member['phone']; ?></td>
             </tr>
-            <?php if ($pitch_user[0]['application_type'] == 5) { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
             <tr>
                 <td class="bold-text" style="width:30%;" valign='middle'>Designation</td>
                 <td style="width:70%;"><?php echo ucfirst($member['cur_org']); ?></td>
@@ -141,7 +141,7 @@
                 <td class="bold-text" style="width:30%;" valign='middle'>Age</td>
                 <td style="width:70%;"><?php echo $member['age']; ?></td>
             </tr>
-            <?php if ($pitch_user[0]['application_type'] != 5) { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) != 5) { ?>
             <tr>
                 <td class="bold-text" style="width:30%;" valign='middle'>Qualification</td>
                 <td style="width:70%;"><?php echo $member['education_qualify']; ?></td>
@@ -151,7 +151,7 @@
                 <td class="bold-text" style="width:30%;">LinkedIn</td>
                 <td style="width:70%;"><?php echo $member['linkedin']; ?></td>
             </tr>
-            <?php if ($pitch_user[0]['application_type'] == 5 && $m != 4 && $pitch_info[0]['applicant_type'] == 'Individual') { ?>
+            <?php if (php72_cmp($pitch_user[0]['application_type']) == 5 && $m != 4 && $pitch_info[0]['applicant_type'] == 'Individual') { ?>
             <tr>
                 <td class="bold-text" style="width:30%;">Institution</td>
                 <td style="width:70%;"><?php echo $member['institute']; ?></td>
@@ -180,14 +180,14 @@ $m++;
         <td class="bold-text" style="width:30%;">Is there any team member who is between the age group 15 - 25 years?</td>
         <td style="width:70%;"><?php echo $pitch_info[0]['young_team']; ?></td>
     </tr>
-    <?php if ($pitch_user[0]['application_type'] == 5) { ?>
+    <?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
     <tr>
         <td class="bold-text" style="width:30%;">Applicant Type</td>
         <td style="width:70%;"><?php echo $pitch_info[0]['applicant_type']; ?></td>
     </tr>
     <?php } ?>
     <?php
-    if ($pitch_user[0]['application_type'] != 2) {
+    if (php72_cmp($pitch_user[0]['application_type']) != 2) {
     if ($pitch_info[0]['ent_type'] == 'profit') {
     $ent_org = 'Profit Organization';
 } else if ($pitch_info[0]['ent_type'] == 'nonprofit') {
@@ -205,7 +205,7 @@ $ent_org = 'Applying as an individual';
     <td class="bold-text" style="width:30%;">Website</td>
     <td style="width:70%;"><?php echo $pitch_org[0]['website']; ?></td>
 </tr>
-<?php if ($pitch_user[0]['application_type'] == 5) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
 <tr>
     <td class="bold-text" style="width:30%;">Is your company registered as a legal entity?</td>
     <td style="width:70%;"><?php echo ucfirst($pitch_info[0]['company_register']); ?></td>
@@ -244,7 +244,7 @@ $ent_org = 'Applying as an individual';
 </tr>
 <?php } ?>
 <?php } ?>
-<?php if ($pitch_user[0]['application_type'] != 3 && $pitch_user[0]['application_type'] != 5) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) != 3 && php72_cmp($pitch_user[0]['application_type']) != 5) { ?>
 <tr>
     <td class="bold-text" style="width:30%;">Year of incorporation</td>
     <td style="width:70%;"><?php echo $pitch_org[0]['incorporation_year']; ?></td>
@@ -278,7 +278,7 @@ $ent_org = 'Applying as an individual';
 <?php } ?>
 
 <?php
-if ($pitch_user[0]['application_type'] == 3) {
+if (php72_cmp($pitch_user[0]['application_type']) == 3) {
 if ($pitch_org[0]['applying_stage'] == '1') {
 $applying_stage = 'Affordable, easy to use solutions for early diagnosis of pregnancy';
 } else if ($pitch_org[0]['applying_stage'] == '2') {
@@ -298,7 +298,7 @@ $applying_stage = 'Other';
     <td style="width:70%;"><?php echo $applying_stage; ?></td>
 </tr>
 <?php } ?>
-<?php if ($pitch_user[0]['application_type'] == 5) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
 <tr>
     <td class="bold-text" style="width:30%;">Under which problem statement are you applying?</td>
     <td style="width:70%;"><?php echo $pitch_org[0]['areas_other']; ?></td>
@@ -308,13 +308,13 @@ $applying_stage = 'Other';
     <td class="bold-text" style="width:30%;">Stage of Operation</td>
     <td style="width:70%;"><?php echo $pitch_org[0]['operation_stage']; ?></td>
 </tr>
-<?php if ($pitch_user[0]['application_type'] != 5) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) != 5) { ?>
 <?php $sector = unserialize(((isset($pitch_org[0]['sector'])) ? $pitch_org[0]['sector'] : "")); ?>
 <tr>
     <td class="bold-text" style="width:30%;">Sector</td>
     <td style="width:70%;"><?php echo $sector[0]; ?></td>
 </tr>
-<?php if ($pitch_user[0]['application_type'] == 2) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) == 2) { ?>
 <tr>
     <td class="bold-text" style="width:30%;">If you have tested your products with prospective users or have made sales, please mention details.</td>
     <td style="width:70%;"><?php echo $pitch_org[0]['product_test_details']; ?></td>
@@ -325,14 +325,14 @@ $applying_stage = 'Other';
 </tr>
 <?php
 }
-if ($pitch_user[0]['application_type'] != 2) {
+if (php72_cmp($pitch_user[0]['application_type']) != 2) {
 ?>
 <tr>
     <td class="bold-text" style="width:30%;">Sub Sector</td>
     <td style="width:70%;"><?php echo $subsector[0]['sector']; ?></td>
 </tr>
 <?php } ?>
-<?php if ($pitch_user[0]['application_type'] != 3) { ?>
+<?php if (php72_cmp($pitch_user[0]['application_type']) != 3) { ?>
 <tr>
     <td class="bold-text" style="width:30%;">SDGs that the innovation aligns with</td>
     <td style="width:70%;"><?php echo $sdg_align[0]['name']; ?></td>
@@ -357,7 +357,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                                 <td class="bold-text" style="width:30%;">Revenue of company: 2016-17</td>
                                 <td style="width:70%;"><?php echo $pitch_org[0]['fy_16_17']; ?></td>
                             </tr> -->
-                            <?php if ($pitch_user[0]['application_type'] == 2) { ?>
+                            <?php if (php72_cmp($pitch_user[0]['application_type']) == 2) { ?>
                             <tr>
                                 <td class="bold-text" style="width:30%;">Revenue of company: 2015-16</td>
                                 <td style="width:70%;"><?php echo $pitch_org[0]['fy_15_16']; ?></td>
@@ -368,7 +368,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                             </tr>
                             <?php } ?>
                             <?php
-                            if ($pitch_user[0]['application_type'] != 2) {
+                            if (php72_cmp($pitch_user[0]['application_type']) != 2) {
                             if ($pitch_org[0]['patents'] == '1') {
                             $patents = "Yes";
                         } else {
@@ -402,7 +402,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                     <?php } ?>
                     <?php } ?>
                     <?php
-                    if ($pitch_user[0]['application_type'] != 2) {
+                    if (php72_cmp($pitch_user[0]['application_type']) != 2) {
                     ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">Have you won a prize, recognition or award for your solution</td>
@@ -415,7 +415,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                     </tr>
                     <?php } ?>
                     <?php } ?>
-                    <?php if ($pitch_user[0]['application_type'] != 3) { ?>
+                    <?php if (php72_cmp($pitch_user[0]['application_type']) != 3) { ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">What kind of funding instruments are you looking for?</td>
                         <td style="width:70%;"><?php echo $pitch_add[0]['funding_instrument']; ?></td>
@@ -437,7 +437,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                         <td class="bold-text" style="width:30%;">Describe your idea, product or service and how it addresses the problem.</td>
                         <td style="width:70%;"><?php echo $pitch_org[0]['quest_1']; ?></td>
                     </tr>
-                    <?php if ($pitch_user[0]['application_type'] == 3) { ?>
+                    <?php if (php72_cmp($pitch_user[0]['application_type']) == 3) { ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">Do you have a prototype?</td>
                         <td style="width:70%;"><?php echo ucfirst($pitch_org[0]['prototype_solution']); ?></td>
@@ -462,15 +462,15 @@ if ($pitch_user[0]['application_type'] != 2) {
                         <td style="width:70%;"><?php echo $pitch_org[0]['other_team_info']; ?></td>
                     </tr>
                     <?php } ?>
-                    <?php if ($pitch_user[0]['application_type'] == 2) { ?>
+                    <?php if (php72_cmp($pitch_user[0]['application_type']) == 2) { ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">Describe your organization's inclusion strategies be it in the case of gender, marginalised communities, or other deprived sections of the society.</td>
                         <td style="width:70%;"><?php echo $pitch_org[0]['inclusion_strategy']; ?></td>
                     </tr>
                     <?php } ?>
                     <?php
-                    if ($pitch_user[0]['application_type'] != 3) {
-                    if ($pitch_user[0]['application_type'] != 2) {
+                    if (php72_cmp($pitch_user[0]['application_type']) != 3) {
+                    if (php72_cmp($pitch_user[0]['application_type']) != 2) {
                     ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">How is your solution for creating environmental, economic, or social impact through its operations</td>
@@ -517,7 +517,7 @@ if ($pitch_user[0]['application_type'] != 2) {
                     </tr>
                     <?php } ?>
                     <?php } ?>
-                    <?php if ($pitch_user[0]['application_type'] == 5) { ?>
+                    <?php if (php72_cmp($pitch_user[0]['application_type']) == 5) { ?>
                     <tr>
                         <td class="bold-text" style="width:30%;">What would best describe your solution?</td>
                         <td style="width:70%;"><?php echo ucfirst($pitch_org[0]['describe_solution']); ?></td>
@@ -592,7 +592,7 @@ $other_org_name = '(' . trim($pitch_org[0]['other_org_name']) . ')';
                     <td class="bold-text" style="width:30%;">Document 2</td>
                     <td style="width:70%;"><?php echo $pitch_doc[0]['doc2']; ?></td>
                 </tr> -->
-                <?php if ($pitch_user[0]['application_type'] == 1) { ?>
+                <?php if (php72_cmp($pitch_user[0]['application_type']) == 1) { ?>
                 <tr>
                     <td class="bold-text" style="width:30%;">I am aware and give permission for my company profile to be automatically created on the Artha Platform</td>
                     <td style="width:70%;"><?php echo $pitch_org[0]['artha_platform']; ?></td>

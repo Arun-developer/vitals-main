@@ -761,7 +761,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
                 </div>
 				<div id="submit_btn_cls">
 					<ul class="vitals-links">
-						<?php if($show_approve=='Yes' && $get_travel_request[0]['ro_status']==1){    ?>
+						<?php if($show_approve=='Yes' && php72_cmp($get_travel_request[0]['ro_status'])==1){    ?>
 							<li><?php //echo $show_approve; echo "=="; echo $get_travel_request[0]['ro_status']; ?><a href="javascript:void(0)" id="approve_request" class="vital_yellow_btn wdt_100">Approve</a></li>
 						<?php } ?>
 							<?php /*  if($show_approve=='Yes' && $get_travel_request[0]['status']==1  && $get_travel_request[0]['ro_status']==1){ ?>

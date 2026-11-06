@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                             <ul class="milestone-links">
-                                                <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                     <li><a class="saveContinue">Save &amp; Continue</a></li>
                                                 <?php } ?>
                                                 <li>
@@ -99,7 +99,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/hiring_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/sales.png'; ?>" >
                                                             <span>Team - Hiring &amp; Current <br> Strength</span>
-                                                            <?php if ($pending_plans['plan_team_hiring_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_team_hiring_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -108,7 +108,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/tap_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/fundraise.png'; ?>" >
                                                             <span>TAP</span>
-                                                            <?php if ($pending_plans['plan_tap_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_tap_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -117,7 +117,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/mentor_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/Tap.png'; ?>" >
                                                             <span>Mentor Hours</span>
-                                                            <?php if ($pending_plans['plan_mentor_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_mentor_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -126,7 +126,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/nontap_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/meeting.png'; ?>" >
                                                             <span>Partnership (Non-TAP)</span>
-                                                            <?php if ($pending_plans['plan_partnerships_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_partnerships_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -147,7 +147,7 @@
                                                 ?>
                                                 <h4>Team - Hiring &amp; Current Strength > <span><?= $last_month . ' ' . $next_financial; ?></span></h4>
                                             </div>
-                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                 <div class="col-xl-4 col-lg-4 col-md-4 col-12 text-right">
                                                     <ul class="milestone-links">
                                                         <li>

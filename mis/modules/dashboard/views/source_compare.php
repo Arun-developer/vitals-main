@@ -449,7 +449,7 @@ if((!empty($sourceselected)) AND (!empty($employeeselected)) AND (empty($sectors
        <?php for($l=0;$l<php72_count($sselected);$l++) { ?>
        <tr><td><?=@$sselected[$l];?></td>
        <?php foreach($stage as $key=>$value){?>
-       <?php if(($stage[$sourcecompare[$i]['stage']]== $value) && ($sourcecompare[$i]['year'] == 2011))
+       <?php if(($stage[$sourcecompare[$i]['stage']]== $value) && (php72_cmp($sourcecompare[$i]['year']) == 2011))
        {  ?>
        <td style="width:12%" class="table_down"><?=$sourcecompare[$i]['VALUE'];?></td>
         <?php  } else{?>

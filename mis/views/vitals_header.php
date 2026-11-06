@@ -68,7 +68,7 @@ if ($main_menu == 'home') {
 }
 
 if ($this->session->userdata('user_type')) {
-  if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) {
+  if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) {
     $count = total_pending_count();
   }
 }
@@ -76,7 +76,7 @@ if ($this->session->userdata('user_type')) {
 $sess_empid = $this->session->userdata('emp_number');
 $finance_user_count = financeuser_count($sess_empid);
 $fin_user = 0;
-if ($finance_user_count == 1) {
+if (php72_cmp($finance_user_count) == 1) {
   $fin_user = 1;
 }
 
@@ -333,9 +333,9 @@ if ($this->session->userdata('emp_number')!='645' &&  $this->session->userdata['
 
 <?php
 $switch_type = '';
-if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
   $switch_type = 'Switch to user';
-} else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+} else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
   $switch_type = 'Switch to admin';
 }
 
@@ -376,12 +376,12 @@ if ($this->session->userdata['user_type'] == 'admin' || $this->session->userdata
     if ($getAll_count > 0) {
       $notify_url = site_url('approval/approval_note/all_pending/ceolist');
     }
-    if ($getAll_Phcount > 0) {
+    if (php72_cmp($getAll_Phcount) > 0) {
       $notify_url = site_url('approval/approval_note/pending/phlist');
     }
   } else if ($ph_Usercount == '1' && $ceo_Usercount == '0') {
     $type = 2;
-    if ($getAll_Phcount > 0) {
+    if (php72_cmp($getAll_Phcount) > 0) {
       $notify_url = site_url('approval/approval_note/pending/phlist');
     }
   } else if ($ph_Usercount == '0' && $ceo_Usercount == '1') {
@@ -429,11 +429,11 @@ if ($this->session->userdata['role_id'] != '4' || ($this->session->userdata['rol
           <?php
           if ($this->session->userdata('user_type') == 'superadmin') {
             echo "Super Admin";
-          } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+          } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
             echo ucfirst($this->session->userdata('emp_name'));
-          } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+          } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
             echo ucfirst($this->session->userdata('emp_name'));
-          } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+          } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
             echo ucfirst($this->session->userdata('emp_name'));
           } else if ($this->session->userdata('user_type') != 'admin' and $this->session->userdata('user_type') != 'mipuser') {
             echo ucfirst($this->session->userdata('emp_name'));

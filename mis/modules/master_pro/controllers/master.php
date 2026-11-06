@@ -787,7 +787,7 @@ class Master extends MY_Controller {
                 }
             }
             $status_sum = array_sum($status);
-            if($status_sum >0){
+            if(php72_cmp($status_sum) >0){
                 $returnArr['status'] = 1; 
             }
             $returnArr['response'] = $data; 
@@ -855,7 +855,7 @@ class Master extends MY_Controller {
            }
         } 
         $status_sum = array_sum($status);
-        if($status_sum >0){
+        if(php72_cmp($status_sum) >0){
             $returnArr['status'] = 1; 
         }
         $returnArr['response'] = $data; 
@@ -950,7 +950,7 @@ class Master extends MY_Controller {
         $set_active ='';
         $set_inactive ='';
         if(isset($lists->status) && $lists->status!=''){
-            if($lists->status == 1){
+            if(php72_cmp($lists->status) == 1){
                 $set_active ='selected';       
             }else{
                 $set_inactive ='selected';

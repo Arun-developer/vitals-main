@@ -23,7 +23,7 @@
     <div class="logo">
         <img src="https://mis.villgroapps.org/mis_master/source/template/images/logo.gif" alt="Villgro Logo" height="110" width="259"/>
     </div> 
-    <?php if ($inv_user[0]['application_type'] == 32 ) {  ?>
+    <?php if (php72_cmp($inv_user[0]['application_type']) == 32 ) {  ?>
         <div>
              <p class="title_text">Villgro Debt Access Program</p>
 			 

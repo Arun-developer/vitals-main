@@ -274,7 +274,7 @@ class Leave extends CI_Controller {
         $data = array();
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
-            if ($row['req_status'] == 0 || ($row['employee_id'] == $row['approved_by'])) {
+            if (php72_cmp($row['req_status']) == 0 || ($row['employee_id'] == $row['approved_by'])) {
                 $sup_name = $this->Mleave->getSupervisor('', $row['employee_id']);
             } else {
                 $superadmin_chk = $this->Mleave->getchecksuperadmin($row['approved_by']);
@@ -317,18 +317,18 @@ class Leave extends CI_Controller {
             $nestedData[] = $row['leave_type_name'];
 
             $pending_select = $approve_select = $taken_select = $reject_select = $cancel_select = '';
-            if ($row['leave_status'] == 0) {
+            if (php72_cmp($row['leave_status']) == 0) {
                 $status = 'Pending approval';
                 $pending_select = 'selected';
-            } else if ($row['leave_status'] == 1 || $row['leave_status'] == 2) {
+            } else if (php72_cmp($row['leave_status']) == 1 || php72_cmp($row['leave_status']) == 2) {
                 $status = 'Approved';
                 $approve_select = 'selected';
-            } else if ($row['leave_status'] == 4 || $row['leave_status'] == 3) {
+            } else if (php72_cmp($row['leave_status']) == 4 || php72_cmp($row['leave_status']) == 3) {
                 $status = 'Cancelled';
                 $cancel_select = 'selected';
             }
 
-            if ($row['leave_status'] == 1 || $row['leave_status'] == 2 || $row['leave_status'] == 3 || $row['leave_status'] == 4) {
+            if (php72_cmp($row['leave_status']) == 1 || php72_cmp($row['leave_status']) == 2 || php72_cmp($row['leave_status']) == 3 || php72_cmp($row['leave_status']) == 4) {
                 $nestedData[] = $status;
                 $nestedData[] = $row['leave_comments'];
             } else if ($empid == $row['employee_id']) {
@@ -483,13 +483,13 @@ class Leave extends CI_Controller {
             $nestedData[] = $row['leave_type_name'];
 
             $pending_select = $approve_select = $taken_select = $reject_select = $cancel_select = '';
-            if ($row['leave_status'] == 0) {
+            if (php72_cmp($row['leave_status']) == 0) {
                 $status = 'Pending approval';
                 $pending_select = 'selected';
-            } else if ($row['leave_status'] == 1 || $row['leave_status'] == 2) {
+            } else if (php72_cmp($row['leave_status']) == 1 || php72_cmp($row['leave_status']) == 2) {
                 $status = 'Approved';
                 $approve_select = 'selected';
-            } else if ($row['leave_status'] == 4 || $row['leave_status'] == 3) {
+            } else if (php72_cmp($row['leave_status']) == 4 || php72_cmp($row['leave_status']) == 3) {
                 $status = 'Cancelled';
                 $cancel_select = 'selected';
             }
@@ -498,7 +498,7 @@ class Leave extends CI_Controller {
                 $nestedData[] = $status;
                 $nestedData[] = $row['leave_comments'];
             } else if (isset($_POST['page']) && $_POST['page'] == 'approval') {
-                if ($row['leave_status'] == 2 || $row['leave_status'] == 4 || $row['leave_status'] == 3) {
+                if (php72_cmp($row['leave_status']) == 2 || php72_cmp($row['leave_status']) == 4 || php72_cmp($row['leave_status']) == 3) {
 
 
 
@@ -515,7 +515,7 @@ class Leave extends CI_Controller {
                 $nestedData[] = $row['leave_comments'];
 
             } else {
-                if ($row['leave_status'] == 0) {
+                if (php72_cmp($row['leave_status']) == 0) {
                     $nestedData[] = '<select  style="width: 140px;" class="form-control" name="approve_status_' . $row['id'] . '" id="approve_status_' . $row['id'] . '" onchange="save_approval(' . $row['id'] . ')">' .
                     '<option value="0"' . $pending_select . '>Pending Approval</option>' .
                     '<option value="1"' . $approve_select . '>Approve</option>' .
@@ -688,7 +688,7 @@ public function addApplyleave() {
 					$daysWithValue3 = [];
 					$daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 					foreach ($daysOfWeek as $day) {
-						if ($getWeekEndResult[0][$day] == 3) {
+						if (php72_cmp($getWeekEndResult[0][$day]) == 3) {
 							$daysWithValue3[] = $day;
 						}
 					}
@@ -708,7 +708,7 @@ public function addApplyleave() {
 				}
 				if($totalDayCount >3){
 					$clCount = $totalDayCount -  $dayCount;
-					if($clCount > 3){
+					if(php72_cmp($clCount) > 3){
 						if($checkPreviousLeave==0){
 							$casualLeaveStatus=1;
 							$casualLeaveContiousStatus=1;
@@ -845,7 +845,7 @@ public function addApplyleave() {
         }
 //echo "<pre>";  print_r($chk_workingdays);die;
 
-        if ($length == 1) {
+        if (php72_cmp($length) == 1) {
             if (php72_count($chk_holidays) > 0) {
                 $leavedetails['leave_length_days'] = $length = 0;
                 $leavedetails['leave_status'] = 4;
@@ -862,7 +862,7 @@ public function addApplyleave() {
 
 
                     // $leavedetails['leave_length_days'] = $length = count($leave_len_days);
-        if ($leave_length == 1 || $leavetypec=='LTY014') {
+        if (php72_cmp($leave_length) == 1 || $leavetypec=='LTY014') {
             $leavedetails['leave_length_hours'] = 24.0 * $length;
         } else {
             $leavedetails['leave_length_days'] = $length = $leavedetails['leave_length_days'] / 2;
@@ -908,7 +908,7 @@ public function addApplyleave() {
             }
 
             $posted_leavetype = $this->Mleave->getLeaveTypes($_POST['leave_type']);
-            if ($posted_leavetype[0]['no_restrictions'] == 1 && ($time != '' && $time > 8.30)) {
+            if (php72_cmp($posted_leavetype[0]['no_restrictions']) == 1 && ($time != '' && php72_cmp($time) > 8.30)) {
                 $this->session->set_flashdata('errorMsg', "You can't apply " . strtotime($posted_leavetype[0]['leave_type_name']) . " for today");
                 redirect('leave/apply_leave');
             } else {
@@ -940,7 +940,7 @@ public function addApplyleave() {
                         $leavedetails['leave_status'] = 0;
                     }
 
-                    if ($length == 1) {
+                    if (php72_cmp($length) == 1) {
                         if (php72_count($chk_holidays) > 0) {
                             $leavedetails['leave_length_days'] = $length = 0;
                             $leavedetails['leave_status'] = 4;
@@ -957,7 +957,7 @@ public function addApplyleave() {
 
 
                     // $leavedetails['leave_length_days'] = $length = count($leave_len_days);
-                    if ($leave_length == 1 || $leavetypec=='LTY014') {
+                    if (php72_cmp($leave_length) == 1 || $leavetypec=='LTY014') {
                         $leavedetails['leave_length_hours'] = 24.0 * $length;
                     }else {
                         $leavedetails['leave_length_days'] = $length = $leavedetails['leave_length_days'] / 2;
@@ -999,7 +999,7 @@ public function addApplyleave() {
                     $this->email->set_newline("\r\n");
                     $this->email->from($mail_config['smtp_user'], $mail_config['smtp_subject']);
 
-                    if ($posted_leavetype[0]['no_restrictions'] == 1) {
+                    if (php72_cmp($posted_leavetype[0]['no_restrictions']) == 1) {
                         $mail_subject = ucfirst($mail_type) . " request from Employee";
                     } else {
                         $mail_subject = ucfirst($mail_type) . " Leave from Employee";
@@ -1214,8 +1214,8 @@ public function leavereq_approve() {
             $this->email->from($mail_config['smtp_user'], $mail_config['smtp_subject']);
 
 
-            if ($pre_post_status == 1) {
-                if ($posted_employee[0]['no_restrictions'] == 1) {
+            if (php72_cmp($pre_post_status) == 1) {
+                if (php72_cmp($posted_employee[0]['no_restrictions']) == 1) {
                     $mail_subject = ucfirst($mail_type) . " request approved by RO";
                 } else {
                     $mail_subject = ucfirst($mail_type) . " Leave approved by RO";
@@ -1248,16 +1248,16 @@ public function leavereq_approve() {
                 }
 
                 /* updating leave taken details ends */
-            } else if ($_POST['status'] == 3) {
-                if ($posted_employee[0]['leave_type_name'] == 1) {
+            } else if (php72_cmp($_POST['status']) == 3) {
+                if (php72_cmp($posted_employee[0]['leave_type_name']) == 1) {
                     $mail_subject = ucfirst($mail_type) . " request cancelled by RO";
                 } else {
                     $mail_subject = ucfirst($mail_type) . " Leave cancelled by RO";
                 }
                 $following = "Following request has been cancelled";
-            } else if($_POST['status'] == 4){
+            } else if(php72_cmp($_POST['status']) == 4){
 
-                if ($posted_employee[0]['leave_type_name'] == 1) {
+                if (php72_cmp($posted_employee[0]['leave_type_name']) == 1) {
                     $mail_subject = ucfirst($mail_type) . " request cancelled by RO";
                 } else {
                     $mail_subject = ucfirst($mail_type) . " Leave cancelled by RO";
@@ -1356,7 +1356,7 @@ public function leave_summary($formresult = '') {
     if ($filter_year == '') {
         if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $data['current_fy'] = $fy['fin_year'];
                 }
             }
@@ -1366,7 +1366,7 @@ public function leave_summary($formresult = '') {
     } else {
         $data['current_fy'] = $filter_year;
     }
-	if($this->session->userdata('user') == 135){
+	if(php72_cmp($this->session->userdata('user')) == 135){
 		#echo'<pre>';print_r($data['fin_year']);die;
 	}
 	
@@ -1508,7 +1508,7 @@ public function DTleavesummary() {
                 $nestedData[] = $get_existQuota[0]['leave_taken'];
                 $nestedData[] = '<input class="form-control leave_decimal" name="leave_brought_forward" id="leave_brought_forward_' . $get_existQuota[0]['id'] . '" type="text" value="' . $get_existQuota[0]['leave_brought_forward'] . '" onclick="save_summary(' . $get_existQuota[0]['id'] . ')" disabled>';
                 $nestedData[] = '<input class="form-control leave_decimal" name="leave_encashed" id="leave_encashed_' . $get_existQuota[0]['id'] . '" type="text" value="' . $get_existQuota[0]['leave_encashed'] . '"  onclick="save_summary(' . $get_existQuota[0]['id'] . ')" disabled>';
-                if ($get_existQuota[0]['no_restrictions'] == 1) {
+                if (php72_cmp($get_existQuota[0]['no_restrictions']) == 1) {
                     $nestedData[] = '0';
                 } else {
                     $nestedData[] = $leave_remaining;
@@ -1721,18 +1721,18 @@ public function DTholiday() {
     foreach ($query as $row) {
         $nestedData = array();
         $len_selected = $len_selected2 = $len_selected3 = $rep_selected = $rep_selected2 = '';
-        if ($row['length'] == 1) {
+        if (php72_cmp($row['length']) == 1) {
             $len_selected = 'selected';
-        } else if ($row['length'] == 2) {
+        } else if (php72_cmp($row['length']) == 2) {
             $len_selected2 = 'selected';
         }
-        else if ($row['length'] == 3) {
+        else if (php72_cmp($row['length']) == 3) {
             $len_selected3 = 'selected';
         }
 
-        if ($row['repeat_annually'] == 1) {
+        if (php72_cmp($row['repeat_annually']) == 1) {
             $rep_selected = 'selected';
-        } else if ($row['repeat_annually'] == 2) {
+        } else if (php72_cmp($row['repeat_annually']) == 2) {
             $rep_selected2 = 'selected';
         }
 
@@ -1792,15 +1792,15 @@ public function DTholidayarchieve() {
     foreach ($query as $row) {
         $nestedData = array();
         $len_selected = $len_selected2 = $rep_selected = $rep_selected2 = '';
-        if ($row['length'] == 1) {
+        if (php72_cmp($row['length']) == 1) {
             $length_day = 'Full Day';
-        } else if ($row['length'] == 2) {
+        } else if (php72_cmp($row['length']) == 2) {
             $length_day = 'Half Day';
         }
 
-        if ($row['repeat_annually'] == 1) {
+        if (php72_cmp($row['repeat_annually']) == 1) {
             $rep_annual = 'Yes';
-        } else if ($row['repeat_annually'] == 2) {
+        } else if (php72_cmp($row['repeat_annually']) == 2) {
             $rep_annual = 'No';
         }
 
@@ -1852,7 +1852,7 @@ public function archive_holiday_calendar() {
     if ($filter_year == '') {
         if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $data['current_fy'] = $fy['fin_year'];
                 }
             }
@@ -1922,9 +1922,9 @@ public function DTworkingday() {
     foreach ($query as $row) {
         $nestedData = array();
         $len_selected = $len_selected2 = $rep_selected = $rep_selected2 = '';
-        if ($row['length'] == 1) {
+        if (php72_cmp($row['length']) == 1) {
             $len_selected = 'selected';
-        } else if ($row['length'] == 2) {
+        } else if (php72_cmp($row['length']) == 2) {
             $len_selected2 = 'selected';
         }
 
@@ -2092,7 +2092,7 @@ public function DTLeavetype() {
     $data = array();
     $i = $requestData['start'] + 1;
     foreach ($query as $row) {
-        if ($row['no_restrictions'] == 1) {
+        if (php72_cmp($row['no_restrictions']) == 1) {
             $checked_type = 'checked';
         } else {
             $checked_type = '';
@@ -2154,7 +2154,7 @@ public function addLeavetype() {
                 $hm_query = $this->Mleave->insertLeaveDetail('hr_leave_type', $leavedata);
                 $ltype_id = $this->db->insert_id();
                 $emp_data = "partner_id = " . $partner_id;
-                if ($ltype_id != '') {
+                if (!php72_loose_eq($ltype_id, '')) {
                     $emps_list = $this->Mleave->getEmployeedetail('', $emp_data);
                     foreach ($emps_list as $emps) {
                         $leavequota = array();
@@ -2227,7 +2227,7 @@ public function copy_leavetype() {
         $query = $this->Mportfolio->insertPortfolioDetail('hr_leave_type', $data);
 
         $ltype_id = $this->db->insert_id();
-        if ($ltype_id != '') {
+        if (!php72_loose_eq($ltype_id, '')) {
             $emps_list = $this->Mleave->getEmployeedetail('', $emp_data);
             foreach ($emps_list as $emps) {
                 $leavequota = array();
@@ -2267,7 +2267,7 @@ function leave_export($fromdate, $todate, $multifilter, $page = '') {
     $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     $f_year = date('Y');
     foreach ($data['fin_year'] as $fy) {
-        if ($fy['status'] == 1) {
+        if (php72_cmp($fy['status']) == 1) {
             $f_year = $fy['fin_year'];
         }
     }
@@ -2319,7 +2319,7 @@ function leave_export($fromdate, $todate, $multifilter, $page = '') {
     $filter_status = isset($multifilter) ? $multifilter : '';
 
     $multi_status = explode('_', $filter_status);
-    if (in_array(1, $multi_status)) {
+    if (php72_in_array(1, $multi_status)) {
         array_push($multi_status, 2);
     }
     $l_status = implode(',', $multi_status);
@@ -2361,17 +2361,17 @@ function leave_export($fromdate, $todate, $multifilter, $page = '') {
 
     $i = 2;
     foreach ($query as $list) {
-        $leave_startdate = $list['leave_startdate'] != 0 ? date('d-M-y', strtotime($list['leave_startdate'])) : '--';
-        $leave_enddate = $list['leave_enddate'] != 0 ? date('d-M-y', strtotime($list['leave_enddate'])) : '--';
-        $leave_applieddate = $list['date_applied'] != 0 ? date('d-M-y', strtotime($list['date_applied'])) : '--';
-        $leave_approvaldate = $list['date_approval'] != 0 ? date('d-M-y', strtotime($list['date_approval'])) : '--';
+        $leave_startdate = php72_cmp($list['leave_startdate']) != 0 ? date('d-M-y', strtotime($list['leave_startdate'])) : '--';
+        $leave_enddate = php72_cmp($list['leave_enddate']) != 0 ? date('d-M-y', strtotime($list['leave_enddate'])) : '--';
+        $leave_applieddate = php72_cmp($list['date_applied']) != 0 ? date('d-M-y', strtotime($list['date_applied'])) : '--';
+        $leave_approvaldate = php72_cmp($list['date_approval']) != 0 ? date('d-M-y', strtotime($list['date_approval'])) : '--';
         $emp_name = $list['emp_firstname'] . ' ' . $list['emp_lastname'];
 
-        if ($list['leave_status'] == 0) {
+        if (php72_cmp($list['leave_status']) == 0) {
             $leave_status = 'Pending Approval';
-        } else if ($list['leave_status'] == 1 || $list['leave_status'] == 2) {
+        } else if (php72_cmp($list['leave_status']) == 1 || php72_cmp($list['leave_status']) == 2) {
             $leave_status = 'Approved';
-        } else if ($list['leave_status'] == 4 || $list['leave_status'] == 3) {
+        } else if (php72_cmp($list['leave_status']) == 4 || php72_cmp($list['leave_status']) == 3) {
             $leave_status = 'Cancelled';
         }
 
@@ -2428,7 +2428,7 @@ function leavesummary_export($filter_year = '', $filter_leavetype = '', $filter_
     $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     $f_year = date('Y');
     foreach ($data['fin_year'] as $fy) {
-        if ($fy['status'] == 1) {
+        if (php72_cmp($fy['status']) == 1) {
             $f_year = $fy['fin_year'];
         }
     }
@@ -2539,7 +2539,7 @@ function leavesummary_export($filter_year = '', $filter_leavetype = '', $filter_
         $brought_forward_days = $row['leave_brought_forward'];
         $encashed_days = $row['leave_encashed'];
             // if($row['leave_type_name'] == 'Work From Home'){
-        if ($row['no_restrictions'] == 1) {
+        if (php72_cmp($row['no_restrictions']) == 1) {
             $remaining_days = '0';
         } else {
             $remaining_days = $leave_remaining;
@@ -2593,7 +2593,7 @@ public function getCasualLeaveAjax() {
 		$daysWithValue3 = [];
 		$daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 		foreach ($daysOfWeek as $day) {
-			if ($getWeekEndResult[0][$day] == 3) {
+			if (php72_cmp($getWeekEndResult[0][$day]) == 3) {
 				$daysWithValue3[] = $day;
 			}
 		}
@@ -2615,7 +2615,7 @@ public function getCasualLeaveAjax() {
 	}
 	if($totalDayCount >3){
 		$clCount = $totalDayCount -  $dayCount;
-		if($clCount > 3){
+		if(php72_cmp($clCount) > 3){
 			$result['status']='0';
 		}
 	}

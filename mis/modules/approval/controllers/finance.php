@@ -456,7 +456,7 @@ class Finance extends CI_Controller {
 	function approval_note_details($id = '', $section = 'mylist') {
 
 		$partnerNote = $this->Mapproval->getPartner($id);
-		if ($partnerNote < 1 && is_numeric($id)) {
+		if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
 			redirect('approval/approval_note/pending');
 		}
 		$data['section'] = $section;

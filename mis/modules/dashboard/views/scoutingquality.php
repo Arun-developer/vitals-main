@@ -124,7 +124,7 @@ function submitform()
         <h2 class="msg_head">Sector</h2>
         <div class="msg_body">
         <ul>
-            <?php for($i=0;$i<4;$i++){?>
+            <?php for($i=0;php72_cmp($i)<4;$i++){?>
         <li><span><input name="sector[]" type="checkbox" value="<?=$sector[0][$i];?>" /></span><?=$sector[0][$i];?></li>
         <?php };?>
         </ul>
@@ -173,7 +173,7 @@ function submitform()
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><select name="select2" id="select2" style="width:130px;">
-            <?php for($i=0;$i<4;$i++){ ?>
+            <?php for($i=0;php72_cmp($i)<4;$i++){ ?>
             <option value="<?=$sector[0][$i]?>"><?=$sector[0][$i];?></option>
             <?php } ?>
     </select></td>

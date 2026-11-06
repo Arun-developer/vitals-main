@@ -45,7 +45,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'request', 'page_tit
                 $sess_empid = $this->session->userdata('emp_number');
                 $finance_user_count = financeuser_count($sess_empid);
                 $fin_user = 0;
-                if ($finance_user_count == 1) {
+                if (php72_cmp($finance_user_count) == 1) {
                   $fin_user = 1;
               }
               
@@ -65,13 +65,13 @@ $this->load->view('vitals_header.php', array('main_menu' => 'request', 'page_tit
                     <div>
                         <div class="tab-slider--navform">
                             <ul class="tab-slider--tabsform">
-                                <!--<li class="tab-slider--triggerform <?php if ($section == 'rolist' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/rolist'; ?>">Approve as RO <?php echo isset($an_rocount) && $an_rocount != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>-->
-                                <li class="tab-slider--triggerform <?php if ($master_menu == 'all_pending' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_pending'; ?>">My Pending Notes <?php echo isset($an_rocount) && $an_rocount != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>
+                                <!--<li class="tab-slider--triggerform <?php if ($section == 'rolist' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/rolist'; ?>">Approve as RO <?php echo isset($an_rocount) && php72_cmp($an_rocount) != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>-->
+                                <li class="tab-slider--triggerform <?php if ($master_menu == 'all_pending' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_pending'; ?>">My Pending Notes <?php echo isset($an_rocount) && php72_cmp($an_rocount) != 0 ? '(' . $an_rocount . ')' : ''; ?></a></li>
                                 <li class="tab-slider--triggerform <?php if ($master_menu == 'all_approval' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/all_approval/confirmed'; ?>">All My Approval Notes</a></li>
                                 <?php if ($ph_Usercount == '1') { ?>
-                                    <li class="tab-slider--triggerform <?php if ($section == 'phlist' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/phlist'; ?>">Approve as PH<?php echo isset($an_phcount) && $an_phcount != 0 ? '(' . $an_phcount . ')' : ''; ?></a></li>
+                                    <li class="tab-slider--triggerform <?php if ($section == 'phlist' && $page_list != 'ceolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/phlist'; ?>">Approve as PH<?php echo isset($an_phcount) && php72_cmp($an_phcount) != 0 ? '(' . $an_phcount . ')' : ''; ?></a></li>
                                 <?php } ?>
-								<li class="tab-slider--triggerform <?php if ($section == 'rolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/rolist'; ?>">RO Approve <?php echo isset($rocount) && $rocount != 0 ? '(' . $rocount . ')' : ''; ?></a></li>
+								<li class="tab-slider--triggerform <?php if ($section == 'rolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/pending/rolist'; ?>">RO Approve <?php echo isset($rocount) && php72_cmp($rocount) != 0 ? '(' . $rocount . ')' : ''; ?></a></li>
                                 <li class="tab-slider--triggerform <?php if ($master_menu == 'approved') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/approval/approval_note/approved/approvedList'; ?>">Approved List <?php //echo isset($rocount) && $rocount != 0 ? '(' . $rocount . ')' : ''; ?></a></li>
                                 
 								<?php /* if ($ceo_status != '') { ?>

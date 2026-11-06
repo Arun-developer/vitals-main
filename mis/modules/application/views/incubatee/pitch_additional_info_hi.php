@@ -118,7 +118,7 @@ require_once ("./language/lang_hi.php");
                                     </div>
                                 </div>
                                 <?php
-                                if ($innovationDetails[0]['program'] == 6) {
+                                if (php72_cmp($innovationDetails[0]['program']) == 6) {
                                     $doc_link = 'https://www.villgro.org/ubsapply/document/';
                                 } else {
                                     $doc_link = host_url() . "pitchform/document/";

@@ -165,9 +165,9 @@
                           <select class="form-control" id="gender" name="txt_gender" disabled>
 
 
-                            <option value="1" <?php if($employee[0]['emp_gender'] ==1){ echo 'selected';} ?>>Male</option>
-                            <option value="2" <?php if($employee[0]['emp_gender'] ==2){ echo 'selected';} ?>>Female</option>
-                            <option value="3" <?php if($employee[0]['emp_gender'] ==3){ echo 'selected';} ?>>Others</option>
+                            <option value="1" <?php if(php72_cmp($employee[0]['emp_gender']) ==1){ echo 'selected';} ?>>Male</option>
+                            <option value="2" <?php if(php72_cmp($employee[0]['emp_gender']) ==2){ echo 'selected';} ?>>Female</option>
+                            <option value="3" <?php if(php72_cmp($employee[0]['emp_gender']) ==3){ echo 'selected';} ?>>Others</option>
 
                           </select>
                         </div>
@@ -184,10 +184,10 @@
                         <div class="form-group">
                           <label>Marital Status</label>
                           <select class="form-control" id="marital_status" name="txt_marital" disabled>
-                            <option value="1" <?php if($employee[0]['marital_status'] ==1){ echo 'selected';} ?>>Married</option>
-                            <option value="2" <?php if($employee[0]['marital_status'] ==2){ echo 'selected';} ?>>Unmarried</option>
-                            <option value="3" <?php if($employee[0]['marital_status'] ==3){ echo 'selected';} ?>>Divorced</option>
-                            <option value="4" <?php if($employee[0]['marital_status'] ==4){ echo 'selected';} ?>>Others</option>
+                            <option value="1" <?php if(php72_cmp($employee[0]['marital_status']) ==1){ echo 'selected';} ?>>Married</option>
+                            <option value="2" <?php if(php72_cmp($employee[0]['marital_status']) ==2){ echo 'selected';} ?>>Unmarried</option>
+                            <option value="3" <?php if(php72_cmp($employee[0]['marital_status']) ==3){ echo 'selected';} ?>>Divorced</option>
+                            <option value="4" <?php if(php72_cmp($employee[0]['marital_status']) ==4){ echo 'selected';} ?>>Others</option>
 
                           </select>
                         </div>

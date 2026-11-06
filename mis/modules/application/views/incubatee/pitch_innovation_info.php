@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-                                <?php if ($innovation_information[0]['program'] != 5 && $innovation_information[0]['program'] != 7) { ?>
+                                <?php if (php72_cmp($innovation_information[0]['program']) != 5 && php72_cmp($innovation_information[0]['program']) != 7) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -123,7 +123,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if ($innovation_information[0]['program'] == 5) { ?>
+                                <?php if (php72_cmp($innovation_information[0]['program']) == 5) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -147,7 +147,7 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-                                <?php } else if ($innovation_information[0]['program'] != 7) { ?>
+                                <?php } else if (php72_cmp($innovation_information[0]['program']) != 7) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -163,7 +163,7 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-                                <?php if ($innovation_information[0]['program'] == 5) { ?>
+                                <?php if (php72_cmp($innovation_information[0]['program']) == 5) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -178,7 +178,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php } else if ($innovation_information[0]['program'] != 7) { ?>
+                                <?php } else if (php72_cmp($innovation_information[0]['program']) != 7) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -188,7 +188,7 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-                                <?php if ($innovation_information[0]['program'] == 7) { ?>
+                                <?php if (php72_cmp($innovation_information[0]['program']) == 7) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-6 col-md-6">
                                             <div class="form-group">

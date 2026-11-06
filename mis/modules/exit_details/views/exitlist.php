@@ -31,29 +31,29 @@ $this->load->model('exit_details/mexitdetails');
 			 <td align="left" valign="middle"><?=$row["exit_description"];?></td>
              <td align="left" valign="middle"><?=$row['exit_reason'];?></td>
 			<td align="left" valign="middle">
-				 <?php if(($row['ceo_status'])==1)
+				 <?php if(php72_cmp(($row['ceo_status']))==1)
 						      {
 							    echo "Accepted";
 							  }
-							  else if($row['ceo_status'] == 0)
+							  else if(php72_cmp($row['ceo_status']) == 0)
 							  { if($this->session->userdata('user_type')!= 'incubatee' ) {?> 
 						       <a class="button fancybox "  height="200" href="<?=site_url('exit_details/exitdetails/liststatus/approve/'.$row['innovation'].'/'.$row['id']);?>">Approve</a> 
 						 <?php } }?>
-						 <?php if(($row['ceo_status'])==2)
+						 <?php if(php72_cmp(($row['ceo_status']))==2)
 						   {
 						     echo "Rejected";
 						   }
-						   else if($row['ceo_status'] == 0)
+						   else if(php72_cmp($row['ceo_status']) == 0)
 						   { if($this->session->userdata('user_type')!= 'incubatee') {?>	 
 							 <a class="button  fancybox" height="200" href="<?=site_url('exit_details/exitdetails/liststatus/reject/'.$row['innovation'].'/'.$row['id']);?>">Reject</a> 
 				      <?php } } ?>
 					  
-					  <?php if(($row['ceo_status'])==0)
+					  <?php if(php72_cmp(($row['ceo_status']))==0)
 					      {
 					         echo "Pending";
 			   		      } ?>
 			</td>
-			<?php if($row['exitstatus'] == 1)
+			<?php if(php72_cmp($row['exitstatus']) == 1)
 			{?>
 				<td align="left" valign="middle">Successfull</td>	
 			<?php } else {?>

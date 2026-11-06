@@ -13,16 +13,16 @@
     <?php endforeach; ?>
  </ul>
  <br/> <?php
-			  if($url==113)
+			  if(php72_cmp($url)==113)
 			  {
 				 $tabid=$url;
 				 $this->load->view('businessDocument');	
 			  }
-			  elseif($url==114)  
+			  elseif(php72_cmp($url)==114)  
 			  {
 				  $this->load->view('boardResolution');
 			  }
-			  elseif($url==115)
+			  elseif(php72_cmp($url)==115)
 			  {
 				   $this->load->view('pitchDocument');
 			  }

@@ -498,14 +498,14 @@ echo form_open_multipart("scouting/seed_app_edit_save/" . $this->uri->segment('3
                 <dd>
 
                     <input type="checkbox" id="ftm<?php echo $i; ?>" name="ftm[<?php echo $i; ?>]" size="40" placeholder=""
-    <?= ($mem['s2_check'] == 1) ? "checked='checked'" : "" ?> value="" />Member of Founding Team
+    <?= (php72_cmp($mem['s2_check']) == 1) ? "checked='checked'" : "" ?> value="" />Member of Founding Team
 
                 </dd>
                 <?php
                 $i = $i + 1;
             }
-            if ($i < 6) {
-                for ($j = $i; $j <= 5; $j++) {
+            if (php72_cmp($i) < 6) {
+                for ($j = $i; php72_cmp($j) <= 5; $j++) {
                     ?>
                     <dt>
                         <h3 style="color:green">Member <?php echo $j; ?></h3>

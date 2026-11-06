@@ -127,7 +127,7 @@
                                             <input type="hidden" name="edited_leaves[]" id="edited_leaves" />
                                         </div>
                                     </div>
-                                    <?php if ($this->session->userdata('user_type') == 'superadmin' || $approval_count > 0) { ?>
+                                    <?php if ($this->session->userdata('user_type') == 'superadmin' || php72_cmp($approval_count) > 0) { ?>
                                         <div style="height:20px"></div>
                                         <div class="row justify-content-end">
                                             <div class="col-12 col-sm-12  col-md-12">

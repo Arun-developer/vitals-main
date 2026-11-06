@@ -1,9 +1,9 @@
 <?php
-if (isset($file) && $file == 1) {
+if (isset($file) && php72_cmp($file) == 1) {
     $doc = $incub_details[0]['file1'];
-} else if (isset($file) && $file == 2) {
+} else if (isset($file) && php72_cmp($file) == 2) {
     $doc = $incub_details[0]['file2'];
-} else if (isset($file) && $file == 3) {
+} else if (isset($file) && php72_cmp($file) == 3) {
     $doc = $incub_details[0]['file3'];
 }
 ?>

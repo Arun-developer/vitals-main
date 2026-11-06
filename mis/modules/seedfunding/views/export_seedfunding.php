@@ -314,7 +314,7 @@
 
                                     foreach($vfundeds as $key => $value){
 
-                                    if($innovation['pre_ic_status'] == 1)	{?>
+                                    if(php72_cmp($innovation['pre_ic_status']) == 1)	{?>
 
                                     <td align="left" valign="middle"><strong>
 

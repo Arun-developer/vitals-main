@@ -161,13 +161,13 @@ class Asset_admin extends CI_Controller {
                 
             }
             $amc_type = 'No';
-            if ($lists["AMC"] == 1) {
+            if (php72_cmp($lists["AMC"]) == 1) {
                 $amc_type = 'YES';
             }
-            if ($lists["available_status"] == 1) {
+            if (php72_cmp($lists["available_status"]) == 1) {
                 $available_status = 'Available';
             }
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             } else {
                 $transfer_status = "<a  href='javascript:void(0);' class='action_cls transfer_cls' value=" . $lists['asset_id'] . " data-attr-an=" . $lists['asset_no'] . "  data-attr-ac=" . $lists['asset_code'] . " data-attr-aid=" . $lists['asset_id'] . " data-attr-amount=" . $ceiling_amount . ">" . 'Transfer' . "</a>";
@@ -309,7 +309,7 @@ class Asset_admin extends CI_Controller {
 
         foreach ($AN_report as $AN) {
             $transfer_status = 'Available';
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             }
             $bill_date = '';
@@ -663,7 +663,7 @@ class Asset_admin extends CI_Controller {
 
         foreach ($assetListCount as $lists) {
             $transfer_status = 'Available';
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             }
             $purchase_date = '';
@@ -868,7 +868,7 @@ class Asset_admin extends CI_Controller {
 
         foreach ($assetListCount as $lists) {
             $transfer_status = 'Available';
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             }
             fputcsv($handle, array(
@@ -1000,10 +1000,10 @@ class Asset_admin extends CI_Controller {
 
         if ($this->input->post('asset_id') != "") {
             $this->form_validation->set_rules('budget_head', 'budget_head', 'required');
-            if ($this->input->post('budget_head') == 0)
+            if (php72_cmp($this->input->post('budget_head')) == 0)
                 $this->form_validation->set_rules('other_budget_head', 'Budget Head', 'required');
             $this->form_validation->set_rules('donor', 'Donor', 'required');
-            if ($this->input->post('donor') == 0)
+            if (php72_cmp($this->input->post('donor')) == 0)
                 $this->form_validation->set_rules('other_donor', 'Budget Head', 'required');
 
             $this->form_validation->set_rules('vendor', 'vendor', 'required');
@@ -1261,20 +1261,20 @@ class Asset_admin extends CI_Controller {
             }
 
             $transfer_status = 'Available';
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             }
-            if ($lists['donor'] == 0) {
+            if (php72_cmp($lists['donor']) == 0) {
                 $donor_type = $lists["other_donor"];
             } else {
                 $donor_type = $this->showMaster($lists["donor"]);
             }
-            if ($lists['budget_head'] == 0) {
+            if (php72_cmp($lists['budget_head']) == 0) {
                 $budget_type = $lists["other_budget_head"];
             } else {
                 $budget_type = $this->showMaster($lists["budget_head"]);
             }
-            if ($lists['line_item'] == 0) {
+            if (php72_cmp($lists['line_item']) == 0) {
                 $line_item_type = $lists["other_line_item"];
             } else {
                 $line_item_type = $this->showMaster($lists["line_item"]);
@@ -1394,17 +1394,17 @@ class Asset_admin extends CI_Controller {
 
             $sumpayment=$lists['total_amount'];
              $sum+= $sumpayment;
-            if ($lists['donor'] == 0) {
+            if (php72_cmp($lists['donor']) == 0) {
                 $donor_type = $lists["other_donor"];
             } else {
                 $donor_type = $this->showMaster($lists["donor"]);
             }
-            if ($lists['budget_head'] == 0) {
+            if (php72_cmp($lists['budget_head']) == 0) {
                 $budget_type = $lists["other_budget_head"];
             } else {
                 $budget_type = $this->showMaster($lists["budget_head"]);
             }
-            if ($lists['line_item'] == 0) {
+            if (php72_cmp($lists['line_item']) == 0) {
                 $line_item_type = $lists["other_line_item"];
             } else {
                 $line_item_type = $this->showMaster($lists["line_item"]);
@@ -1575,20 +1575,20 @@ class Asset_admin extends CI_Controller {
             }
 
             $transfer_status = 'Available';
-            if ($lists["available_status"] != 1) {
+            if (php72_cmp($lists["available_status"]) != 1) {
                 $transfer_status = 'In Use';
             }
-            if ($lists['donor'] == 0) {
+            if (php72_cmp($lists['donor']) == 0) {
                 $donor_type = $lists["other_donor"];
             } else {
                 $donor_type = $this->showMaster($lists["donor"]);
             }
-            if ($lists['budget_head'] == 0) {
+            if (php72_cmp($lists['budget_head']) == 0) {
                 $budget_type = $lists["other_budget_head"];
             } else {
                 $budget_type = $this->showMaster($lists["budget_head"]);
             }
-            if ($lists['line_item'] == 0) {
+            if (php72_cmp($lists['line_item']) == 0) {
                 $line_item_type = $lists["other_line_item"];
             } else {
                 $line_item_type = $this->showMaster($lists["line_item"]);
@@ -1708,17 +1708,17 @@ class Asset_admin extends CI_Controller {
         #echo'<pre>';print_r($assetList);die;
         $totamountsum=$ceiling_amountsum=$deduction_amountsum=0;
         foreach ($assetList as $lists) {
-            if ($lists['donor'] == 0) {
+            if (php72_cmp($lists['donor']) == 0) {
                 $donor_type = $lists["other_donor"];
             } else {
                 $donor_type = $this->showMaster($lists["donor"]);
             }
-            if ($lists['budget_head'] == 0) {
+            if (php72_cmp($lists['budget_head']) == 0) {
                 $budget_type = $lists["other_budget_head"];
             } else {
                 $budget_type = $this->showMaster($lists["budget_head"]);
             }
-            if ($lists['line_item'] == 0) {
+            if (php72_cmp($lists['line_item']) == 0) {
                 $line_item_type = $lists["other_line_item"];
             } else {
                 $line_item_type = $this->showMaster($lists["line_item"]);
@@ -1736,7 +1736,7 @@ class Asset_admin extends CI_Controller {
                 $emp_name = $employe_name[0]->emp_first_name . ' ' . $employe_name[0]->emp_last_name;
             }
 
-            if (($lists['ceiling_amount'] == 0 ) || ($lists['total_amount'] < $lists['ceiling_amount'])) {
+            if ((php72_cmp($lists['ceiling_amount']) == 0 ) || ($lists['total_amount'] < $lists['ceiling_amount'])) {
                 $deduction_amount = 0;
             } else {
                 $deduction_amount = $lists['total_amount'] - $lists['ceiling_amount'];
@@ -1797,7 +1797,7 @@ class Asset_admin extends CI_Controller {
         $RES = explode('.', $num);
         $num = $RES[0];
         $digit = '';
-        if ($RES[1] > 0) {
+        if (php72_cmp($RES[1]) > 0) {
             $digit = '.' . $RES[1];
         }
         if ($type == 'view') {

@@ -37,13 +37,13 @@
                 </tr>
 				 <tr bgcolor="#f9f9f9">
                     <td class="bold-text">RO Status </td>
-                    <td style="width:70%;"><?php      if ($get_travel_request[0]['ro_status'] == 1) {
+                    <td style="width:70%;"><?php      if (php72_cmp($get_travel_request[0]['ro_status']) == 1) {
 															$status = 'Pending';
-														} else if ($get_travel_request[0]['ro_status'] == 2) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) == 2) {
 															$status = 'Cancel';
-														} else if ($get_travel_request[0]['ro_status'] ==3) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) ==3) {
 															$status = 'Confirm';
-														} else if ($get_travel_request[0]['ro_status'] == 4) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) == 4) {
 															$status = 'Reject';
 														}
 

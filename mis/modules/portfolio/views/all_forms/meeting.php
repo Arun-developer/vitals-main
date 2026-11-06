@@ -49,7 +49,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                     <ul class="milestone-links">
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                             <li><a class="saveContinue">Save &amp; Continue</a></li>
                                         <?php } ?>
                                         <li>
@@ -124,22 +124,22 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                                                         <select class="form-control form-control-sm" name="type_meet" id="type_meet">
                                                                                             <option value="">select</option>
                                                                                             <option value="1" <?php
-                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && $boardmeet_plan[0]['meeting_type'] == 1) {
+                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && php72_cmp($boardmeet_plan[0]['meeting_type']) == 1) {
                                                                                                 echo 'selected';
                                                                                             }
                                                                                             ?>>Regular board meeting</option>
                                                                                             <option value="2" <?php
-                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && $boardmeet_plan[0]['meeting_type'] == 2) {
+                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && php72_cmp($boardmeet_plan[0]['meeting_type']) == 2) {
                                                                                                 echo 'selected';
                                                                                             }
                                                                                             ?>>Special board meeting</option>
                                                                                             <option value="3" <?php
-                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && $boardmeet_plan[0]['meeting_type'] == 3) {
+                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && php72_cmp($boardmeet_plan[0]['meeting_type']) == 3) {
                                                                                                 echo 'selected';
                                                                                             }
                                                                                             ?>>AGM</option>
                                                                                             <option value="4" <?php
-                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && $boardmeet_plan[0]['meeting_type'] == 4) {
+                                                                                            if (isset($boardmeet_plan[0]['meeting_type']) && php72_cmp($boardmeet_plan[0]['meeting_type']) == 4) {
                                                                                                 echo 'selected';
                                                                                             }
                                                                                             ?>>EGM</option>

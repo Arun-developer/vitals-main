@@ -10,7 +10,7 @@ class Mbudget extends CI_Model
     {
         $data = array();
         $query = $this->db->get('fbudget');
-        if ($query->num_rows > 0) {
+        if (php72_cmp($query->num_rows) > 0) {
             foreach ($query->result_array() as $row) {
                 $data[] = $row;
             }

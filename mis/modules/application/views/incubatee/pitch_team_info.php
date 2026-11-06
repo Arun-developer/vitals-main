@@ -24,7 +24,7 @@
                     <div id="tab1" class="tab-slider--body pad-none tab-pane active tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme" role="tabpanel">
                         <main class="page-content">
                             <div class="inputplan-structureall plan-structure-new">
-                                <?php if ($team_information[0]['program'] == 3) { ?>
+                                <?php if (php72_cmp($team_information[0]['program']) == 3) { ?>
                                     <h5>Management Team Details</h5>
                                     <div class="row">
                                         <div class="col-12 col-lg-4 col-md-4">
@@ -56,7 +56,7 @@
                                     </div>
                                     <?php
                                 }
-                                if ($team_information[0]['program'] != 7) {
+                                if (php72_cmp($team_information[0]['program']) != 7) {
                                     $i = 0;
                                     foreach ($team_information as $team) {
                                         $j = $i + 1;
@@ -125,12 +125,12 @@
                                         <?php
                                         $i++;
                                     }
-                                } else if ($team_information[0]['program'] == 7) {
+                                } else if (php72_cmp($team_information[0]['program']) == 7) {
                                     $i = 0;
                                     foreach ($team_information as $team) {
                                         $j = $i + 1;
 
-                                        if ($j == 4) {
+                                        if (php72_cmp($j) == 4) {
                                             ?>
                                             <div class="row">
                                                 <div class="col-12 col-lg-4 col-md-4">
@@ -142,7 +142,7 @@
                                             </div>
                                             <?php
                                         }
-                                        if ($j != 4 || ($j == 4 && $team['young_team'] == 'Yes')) {
+                                        if (php72_cmp($j) != 4 || (php72_cmp($j) == 4 && $team['young_team'] == 'Yes')) {
                                             ?>
                                             <h5>Team Member <?= $j; ?></h5>
                                             <div class="row">
@@ -185,7 +185,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php if ($j != 4 && $team['applicant_type'] == 'Individual') { ?>
+                                            <?php if (php72_cmp($j) != 4 && $team['applicant_type'] == 'Individual') { ?>
                                                 <div class="row">
                                                     <div class="col-12 col-lg-4 col-md-4">
                                                         <div class="form-group">

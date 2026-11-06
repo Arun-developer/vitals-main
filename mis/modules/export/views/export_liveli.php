@@ -1,5 +1,5 @@
 <?php
-if (isset($file) && $file == 1) {
+if (isset($file) && php72_cmp($file) == 1) {
     $doc = $pitch_details[0]['file1'];
 } else {
     $doc = $pitch_details[0]['file2'];

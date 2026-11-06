@@ -92,7 +92,7 @@
                                       <?php
                                       $j = 1;
                                       $bank_count = isset($bank_list[0]['id']) ? php72_count($bank_list) : 0;
-                                      if ($bank_count > 0) {
+                                      if (php72_cmp($bank_count) > 0) {
                                         for ($i = 0; $i < $bank_count; $i++) {
                                           ?>
                                           <tr id="bank_tr_<?php echo $j; ?>" class="bank_more">

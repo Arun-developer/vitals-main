@@ -321,7 +321,7 @@ class Funder extends MY_Controller {
             }
             $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->created_date));
             if (isset($getFunderDoc[0]->updated_date) && $getFunderDoc[0]->updated_date != '') {
-                if ($getFunderDoc[0]->updated_date > 0) {
+                if (php72_cmp($getFunderDoc[0]->updated_date) > 0) {
                     $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->updated_date));
                 }
             }
@@ -1084,7 +1084,7 @@ function editFunder_Documents() {
                 $sum += str_replace(',', '', $sumval);
             }
         }
-        if ($sum != '' && $sum > 0) {
+        if ($sum != '' && php72_cmp($sum) > 0) {
             if ($grant_id != '') {
                 $get_disb_amount = $this->funder_model->get_all_details('disbursement_schedule', array('funder_id' => $donor, 'grant_id' => $grant_id), array('SUM(amount_deposite) as amount_deposite'));
                 $total_depositeAmt = $get_disb_amount[0]->amount_deposite;
@@ -1321,7 +1321,7 @@ function editFunder_Documents() {
         #echo'<pre>';print_r($data);die;
 
     $status_sum = array_sum($status);
-    if ($status_sum > 0) {
+    if (php72_cmp($status_sum) > 0) {
         $returnArr['status'] = 1;
     }
     $returnArr['response'] = $data;
@@ -2006,7 +2006,7 @@ function print_grant_pdf() {
         $RES = explode('.', $num);
         $num = $RES[0];
         $digit = '';
-        if ($RES[1] > 0) {
+        if (php72_cmp($RES[1]) > 0) {
             $digit = '.' . $RES[1];
         }
 

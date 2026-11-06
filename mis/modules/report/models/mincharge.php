@@ -43,7 +43,7 @@ class Mincharge extends CI_Model {
     public function assignmulincharge($id, $employee, $partner_id, $pa_rd) {
         foreach ($employee as $key => $value) {
             $cnt = $this->checkalreadyassgined($id, $value);
-            if ($cnt < 1) {
+            if (php72_cmp($cnt) < 1) {
 
                 $data = array('innovation' => $id,
                     'associate_employee' => $value,

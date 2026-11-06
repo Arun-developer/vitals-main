@@ -23,7 +23,7 @@
     <div class="logo">
         <img src="https://mis.villgroapps.org/mis_master/source/template/images/logo.gif" alt="Villgro Logo" height="110" width="259"/>
     </div>
-    <?php if ($inv_user[0]['application_type'] == 1 || $inv_user[0]['application_type'] == 5) { ?>
+    <?php if (php72_cmp($inv_user[0]['application_type']) == 1 || php72_cmp($inv_user[0]['application_type']) == 5) { ?>
         <div>
             <?php if($innovationDetails[0]['program'] == '11') { ?>
                 <p class="title_text">SISFS Application</p>
@@ -295,7 +295,7 @@
                     </tr>
                 </table>
             </div>
-        <?php } else if ($inv_user[0]['application_type'] == 2) { ?>
+        <?php } else if (php72_cmp($inv_user[0]['application_type']) == 2) { ?>
             <div>
                 <p class="title_text">Swachhata Startup Challenge</p>
                 <h1>Account Information</h1>
@@ -575,7 +575,7 @@
                     </tr>
                 </table>
             </div>
-        <?php } else if ($inv_user[0]['application_type'] == 3) { ?>
+        <?php } else if (php72_cmp($inv_user[0]['application_type']) == 3) { ?>
             <div>
                 <p class="title_text">TANSIM’s Tamil Nadu Startup Seed Grant Fund Program</p>
                 <h1>Account Information</h1>
@@ -901,7 +901,7 @@
                     </tr>
                 </table>
             </div>
-        <?php } else if ($inv_user[0]['application_type'] == 4) { ?>
+        <?php } else if (php72_cmp($inv_user[0]['application_type']) == 4) { ?>
             <div>
                 <p class="title_text">YASH Application</p>
                 <h1>Account Information</h1>

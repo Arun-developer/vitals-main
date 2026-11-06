@@ -44,41 +44,41 @@ class Sector_plan extends CI_Controller {
     }
 
     public function sectorplan_tablefields($module_id) {
-        if ($module_id == 1) {
+        if (php72_cmp($module_id) == 1) {
             return array('total_applications_q1', 'total_applications_q2', 'total_applications_q3', 'total_applications_q4');
-        } else if ($module_id == 2) {
+        } else if (php72_cmp($module_id) == 2) {
             return array('q1_pard', 'q2_pard', 'q3_pard', 'q4_pard', 'q1_iic', 'q2_iic', 'q3_iic', 'q4_iic', 'q1_eic', 'q2_eic', 'q3_eic', 'q4_eic');
-        } else if ($module_id == 3) {
+        } else if (php72_cmp($module_id) == 3) {
             return array('q1_new_companies', 'q2_new_companies', 'q3_new_companies', 'q4_new_companies', 'q1_application_submitted', 'q2_application_submitted', 'q3_application_submitted', 'q4_application_submitted', 'q1_companies_in_portfolio', 'q2_companies_in_portfolio', 'q3_companies_in_portfolio', 'q4_companies_in_portfolio');
-        } else if ($module_id == 4) {
+        } else if (php72_cmp($module_id) == 4) {
             return array('q1_graduates', 'q2_graduates', 'q3_graduates', 'q4_graduates');
-        } else if ($module_id == 5) {
+        } else if (php72_cmp($module_id) == 5) {
             return array('q1_exits', 'q2_exits', 'q3_exits', 'q4_exits');
-        } else if ($module_id == 6) {
+        } else if (php72_cmp($module_id) == 6) {
             return array('q1_renewal_agreements', 'q2_renewal_agreements', 'q3_renewal_agreements', 'q4_renewal_agreements');
-        } else if ($module_id == 7) {
+        } else if (php72_cmp($module_id) == 7) {
             return array('q1_new_agreements', 'q2_new_agreements', 'q3_new_agreements', 'q4_new_agreements');
-        } else if ($module_id == 8) {
+        } else if (php72_cmp($module_id) == 8) {
             return array('q1_conferences', 'q2_conferences', 'q3_conferences', 'q4_conferences');
-        } else if ($module_id == 9) {
+        } else if (php72_cmp($module_id) == 9) {
             return array('q1_blogpost', 'q2_blogpost', 'q3_blogpost', 'q4_blogpost');
-        } else if ($module_id == 10) {
+        } else if (php72_cmp($module_id) == 10) {
             return array('q1_publisharticle', 'q2_publisharticle', 'q3_publisharticle', 'q4_publisharticle');
-        } else if ($module_id == 11) {
+        } else if (php72_cmp($module_id) == 11) {
             return array('q1_speakingengagement', 'q2_speakingengagement', 'q3_speakingengagement', 'q4_speakingengagement');
-        } else if ($module_id == 12) {
+        } else if (php72_cmp($module_id) == 12) {
             return array('q1_jurypanels', 'q2_jurypanels', 'q3_jurypanels', 'q4_jurypanels');
-        } else if ($module_id == 13) {
+        } else if (php72_cmp($module_id) == 13) {
             return array('q1_casestudy', 'q2_casestudy', 'q3_casestudy', 'q4_casestudy');
-        } else if ($module_id == 14) {
+        } else if (php72_cmp($module_id) == 14) {
             return array('q1_equity', 'q2_equity', 'q3_equity', 'q4_equity');
-        } else if ($module_id == 15) {
+        } else if (php72_cmp($module_id) == 15) {
             return array('q1_portfolioreturns', 'q2_portfolioreturns', 'q3_portfolioreturns', 'q4_portfolioreturns');
         }
     }
 
     public function sectorplan_subtablefields($module_id) {
-        if ($module_id == 1) {
+        if (php72_cmp($module_id) == 1) {
             return array('subsector_id', 'subsector_applications_q1', 'subsector_applications_q2', 'subsector_applications_q3', 'subsector_applications_q4');
         }
     }
@@ -204,49 +204,49 @@ class Sector_plan extends CI_Controller {
         foreach ($getApprovalStatus as $appFields) {
             $fields = array();
             $option['id'] = $appFields['id'];
-            if ($appFields['discovery_approval'] == 1) {
+            if (php72_cmp($appFields['discovery_approval']) == 1) {
                 $fields['discovery_approval'] = 2;
             }
-            if ($appFields['diligence_approval'] == 1) {
+            if (php72_cmp($appFields['diligence_approval']) == 1) {
                 $fields['diligence_approval'] = 2;
             }
-            if ($appFields['selection_approval'] == 1) {
+            if (php72_cmp($appFields['selection_approval']) == 1) {
                 $fields['selection_approval'] = 2;
             }
-            if ($appFields['graduates_approval'] == 1) {
+            if (php72_cmp($appFields['graduates_approval']) == 1) {
                 $fields['graduates_approval'] = 2;
             }
-            if ($appFields['exits_approval'] == 1) {
+            if (php72_cmp($appFields['exits_approval']) == 1) {
                 $fields['exits_approval'] = 2;
             }
-            if ($appFields['donorengagement_approval'] == 1) {
+            if (php72_cmp($appFields['donorengagement_approval']) == 1) {
                 $fields['donorengagement_approval'] = 2;
             }
-            if ($appFields['donorconnect_approval'] == 1) {
+            if (php72_cmp($appFields['donorconnect_approval']) == 1) {
                 $fields['donorconnect_approval'] = 2;
             }
-            if ($appFields['conferences_approval'] == 1) {
+            if (php72_cmp($appFields['conferences_approval']) == 1) {
                 $fields['conferences_approval'] = 2;
             }
-            if ($appFields['blog_post_approval'] == 1) {
+            if (php72_cmp($appFields['blog_post_approval']) == 1) {
                 $fields['blog_post_approval'] = 2;
             }
-            if ($appFields['publish_article_approval'] == 1) {
+            if (php72_cmp($appFields['publish_article_approval']) == 1) {
                 $fields['publish_article_approval'] = 2;
             }
-            if ($appFields['speakingengagement_approval'] == 1) {
+            if (php72_cmp($appFields['speakingengagement_approval']) == 1) {
                 $fields['speakingengagement_approval'] = 2;
             }
-            if ($appFields['jury_panels_approval'] == 1) {
+            if (php72_cmp($appFields['jury_panels_approval']) == 1) {
                 $fields['jury_panels_approval'] = 2;
             }
-            if ($appFields['case_study_approval'] == 1) {
+            if (php72_cmp($appFields['case_study_approval']) == 1) {
                 $fields['case_study_approval'] = 2;
             }
-            if ($appFields['equity_investment_approval'] == 1) {
+            if (php72_cmp($appFields['equity_investment_approval']) == 1) {
                 $fields['equity_investment_approval'] = 2;
             }
-            if ($appFields['portfolio_return_approval'] == 1) {
+            if (php72_cmp($appFields['portfolio_return_approval']) == 1) {
                 $fields['portfolio_return_approval'] = 2;
             }
             if (isset($fields) && count($fields) > 0) {
@@ -441,7 +441,7 @@ class Sector_plan extends CI_Controller {
             $set_app[$app_field] = 3;
             $chk_approval = $this->Mportfolio->getDetails('sector_plan_approval', $option);
 
-            if ($chk_approval[0][$app_field] != 0) {
+            if (php72_cmp($chk_approval[0][$app_field]) != 0) {
 
                 $qualitative = $this->qualitative_approve($sector_id, $fin_yr, $module_id);
 
@@ -479,10 +479,10 @@ class Sector_plan extends CI_Controller {
 
 
 
-                if ($this->session->userdata['sector_lead'] == 1) {
+                if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                     $update_approval = $this->Mportfolio->approvalCompany('sector_plan_approval', $option, $set_app);
                 } else {
-                    if ($chk_approval[0][$app_field] == 2) {
+                    if (php72_cmp($chk_approval[0][$app_field]) == 2) {
                         $update_approval = $this->Mportfolio->approvalCompany('sector_plan_approval', $option, $set_app);
                     }
                 }
@@ -655,7 +655,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -707,7 +707,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('discovery_approval', $approvals[0]['discovery_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'discovery_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/discovery/' . $id . '/' . $get_data[0]['financial_year']);
@@ -761,7 +761,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -800,12 +800,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_discovery', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discovery', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_discovery', $data1, $option);
             $discovery_id = $_POST["discovery_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discovery', $edited, $option);
@@ -839,11 +839,11 @@ class Sector_plan extends CI_Controller {
                 $m_option['status'] = 0;
 
                 $checkExist3 = $this->Mportfolio->getDetails('sector_plan_discoverysubsector', $c_option);
-                if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 0) {
+                if (php72_count($checkExist3) > 0 && php72_cmp($checkExist3[0]['status']) == 0) {
                     $m_option['updated_by'] = $this->session->userdata('emp_number');
                     $mc_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discoverysubsector', $m_option, $c_option);
                     $tc_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_discoverysubsector', $m_option, $c_option);
-                } else if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 1) {
+                } else if (php72_count($checkExist3) > 0 && php72_cmp($checkExist3[0]['status']) == 1) {
                     $m_option['updated_by'] = $this->session->userdata('emp_number');
                     $edited['edited_status'] = 1;
                     $mc_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_discoverysubsector', $edited, $c_option);
@@ -909,7 +909,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -964,7 +964,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('diligence_approval', $approvals[0]['diligence_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'diligence_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/diligence/' . $id . '/' . $get_data[0]['financial_year']);
@@ -1016,7 +1016,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -1063,12 +1063,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_diligence', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_diligence', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_diligence', $data1, $option);
             $diligence_id = $_POST["diligence_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_diligence', $edited, $option);
@@ -1133,7 +1133,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1188,7 +1188,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('selection_approval', $approvals[0]['selection_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'selection_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/selection/' . $id . '/' . $get_data[0]['financial_year']);
@@ -1240,7 +1240,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -1287,12 +1287,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_selection', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_selection', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_selection', $data1, $option);
             $selection_id = $_POST["selection_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_selection', $edited, $option);
@@ -1357,7 +1357,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1412,7 +1412,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('graduates_approval', $approvals[0]['graduates_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'graduates_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/graduates/' . $id . '/' . $get_data[0]['financial_year']);
@@ -1464,7 +1464,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -1503,12 +1503,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_graduates', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_graduates', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_graduates', $data1, $option);
             $graduates_id = $_POST["graduates_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_graduates', $edited, $option);
@@ -1572,7 +1572,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1627,7 +1627,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('exits_approval', $approvals[0]['exits_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'exits_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/exits/' . $id . '/' . $get_data[0]['financial_year']);
@@ -1679,7 +1679,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -1718,12 +1718,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_exits', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_exits', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_exits', $data1, $option);
             $exits_id = $_POST["exits_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_exits', $edited, $option);
@@ -1787,7 +1787,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1837,7 +1837,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('donorengagement_approval', $approvals[0]['donorengagement_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'donorengagement_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/donorengagement/' . $id . '/' . $get_data[0]['financial_year']);
@@ -1889,7 +1889,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -1928,12 +1928,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_donorengagement', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorengagement', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_donorengagement', $data1, $option);
             $donorengage_id = $_POST["donorengage_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorengagement', $edited, $option);
@@ -1998,7 +1998,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2048,7 +2048,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('donorconnect_approval', $approvals[0]['donorconnect_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'donorconnect_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/donorconnect/' . $id . '/' . $get_data[0]['financial_year']);
@@ -2100,7 +2100,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -2139,12 +2139,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_donorconnect', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorconnect', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_donorconnect', $data1, $option);
             $donorconnect_id = $_POST["donorconnect_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_donorconnect', $edited, $option);
@@ -2215,7 +2215,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2264,7 +2264,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('conferences_approval', $approvals[0]['conferences_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'conferences_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/conferences/' . $id . '/' . $get_data[0]['financial_year']);
@@ -2316,7 +2316,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -2355,12 +2355,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_conferences', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_conferences', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_conferences', $data1, $option);
             $conferences_id = $_POST["conferences_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_conferences', $edited, $option);
@@ -2431,7 +2431,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2482,7 +2482,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('blog_post_approval', $approvals[0]['blog_post_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'blog_post_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/blogpost/' . $id . '/' . $get_data[0]['financial_year']);
@@ -2534,7 +2534,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -2573,12 +2573,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_blogpost', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_blogpost', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_blogpost', $data1, $option);
             $blogpost_id = $_POST["blogpost_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_blogpost', $edited, $option);
@@ -2648,7 +2648,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2698,7 +2698,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('publish_article_approval', $approvals[0]['publish_article_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'publish_article_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/article/' . $id . '/' . $get_data[0]['financial_year']);
@@ -2750,7 +2750,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -2789,12 +2789,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_publisharticle', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_publisharticle', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_publisharticle', $data1, $option);
             $article_id = $_POST["article_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_publisharticle', $edited, $option);
@@ -2864,7 +2864,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2915,7 +2915,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('speakingengagement_approval', $approvals[0]['speakingengagement_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'speakingengagement_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/speaking_engagement/' . $id . '/' . $get_data[0]['financial_year']);
@@ -2967,7 +2967,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -3006,12 +3006,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_speakingengagement', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_speakingengagement', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_speakingengagement', $data1, $option);
             $speaking_engagement_id = $_POST["speaking_engagement_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_speakingengagement', $edited, $option);
@@ -3079,7 +3079,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -3129,7 +3129,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('jury_panels_approval', $approvals[0]['jury_panels_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'jury_panels_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/jury_panel/' . $id . '/' . $get_data[0]['financial_year']);
@@ -3181,7 +3181,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -3220,12 +3220,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_jurypanels', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_jurypanels', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_jurypanels', $data1, $option);
             $jury_panel_id = $_POST["jury_panel_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_jurypanels', $edited, $option);
@@ -3294,7 +3294,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -3344,7 +3344,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('case_study_approval', $approvals[0]['case_study_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'case_study_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/case_study/' . $id . '/' . $get_data[0]['financial_year']);
@@ -3396,7 +3396,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -3435,12 +3435,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_casestudy', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_casestudy', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_casestudy', $data1, $option);
             $case_study_id = $_POST["case_study_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_casestudy', $edited, $option);
@@ -3510,7 +3510,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -3560,7 +3560,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('equity_investment_approval', $approvals[0]['equity_investment_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'equity_investment_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/equity_investments/' . $id . '/' . $get_data[0]['financial_year']);
@@ -3612,7 +3612,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -3651,12 +3651,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_equity', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_equity', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_equity', $data1, $option);
             $equity_id = $_POST["equity_investment_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_equity', $edited, $option);
@@ -3727,7 +3727,7 @@ class Sector_plan extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -3777,7 +3777,7 @@ class Sector_plan extends CI_Controller {
         $this->session->set_userdata('portfolio_return_approval', $approvals[0]['portfolio_return_approval']);
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('sector_plan_approval', $c_option, 'portfolio_return_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/sector_plan/consulting_engagements/' . $id . '/' . $get_data[0]['financial_year']);
@@ -3829,7 +3829,7 @@ class Sector_plan extends CI_Controller {
         $check_qualit_exist = $this->Mportfolio->getDetails('sectorplan_qualitative_data', $qual_cond);
         if (php72_count($check_qualit_exist) > 0) {
             $qual_option['id'] = $qual_temp_option['sector_plan_id'] = $check_qualit_exist[0]['id'];
-            if ($check_qualit_exist[0]['status'] == 1) {
+            if (php72_cmp($check_qualit_exist[0]['status']) == 1) {
                 $qual_edited['edited_status'] = 1;
                 $qm_query = $this->Mportfolio->updatePortfolioDetail('sectorplan_qualitative_data', $qual_edited, $qual_option);
                 $qt_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_qualitative_data', $qual_data, $qual_temp_option);
@@ -3868,12 +3868,12 @@ class Sector_plan extends CI_Controller {
         $approval['config_approval'] = 1;
 
         $checkExist = $this->Mportfolio->getDetails('sector_plan_portfolioreturns', $option);
-        if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_portfolioreturns', $data1, $option);
             $t_query = $this->Mportfolio->updatePortfolioDetail('temp_sectorplan_portfolioreturns', $data1, $option);
             $portfolio_returns_id = $_POST["portfolio_returns_id"];
-        } else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        } else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
             $data1['updated_by'] = $this->session->userdata('emp_number');
             $edited['edited_status'] = 1;
             $m_query = $this->Mportfolio->updatePortfolioDetail('sector_plan_portfolioreturns', $edited, $option);
@@ -3932,7 +3932,7 @@ class Sector_plan extends CI_Controller {
         if ($year == '') {
             if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
                 foreach ($data['fin_year'] as $fy) {
-                    if ($fy['status'] == 1) {
+                    if (php72_cmp($fy['status']) == 1) {
                         $data['current_fy'] = $fy['fin_year'];
                     }
                 }

@@ -263,7 +263,7 @@ function total_pending_count_dashboard($type = "") {
 		$travel_count = $ci->Mlogapproval->travelcount();
 	}
 		#echo $library_count;die;
-    if ($ci->session->userdata('partner_id') != 1) {
+    if (php72_cmp($ci->session->userdata('partner_id')) != 1) {
         $total_count = $apn_count + $int_count;
     } else {
         $total_count = $apn_count + $int_count + $leave_count + $library_count + $travel_count;
@@ -308,7 +308,7 @@ function total_pending_count_test($type = "") {
     $leave_count = approve_leave_list();
     $library_count = $ci->Mlogapproval->librarycount();
     $travel_count = $ci->Mlogapproval->travelcount();
-    if ($ci->session->userdata('partner_id') != 1) {
+    if (php72_cmp($ci->session->userdata('partner_id')) != 1) {
         $total_count = $apn_count + $int_count;
     } else {
         $total_count = $apn_count + $int_count + $leave_count + $library_count + $travel_count;
@@ -350,7 +350,7 @@ function total_pending_count_test_dash($type = "") {
     $leave_count = approve_leave_list();
     $library_count = $ci->Mlogapproval->librarycount();
     $travel_count = $ci->Mlogapproval->travelcount();
-    if ($ci->session->userdata('partner_id') != 1) {
+    if (php72_cmp($ci->session->userdata('partner_id')) != 1) {
         $total_count = $apn_count + $int_count;
     } else {
         $total_count = $apn_count + $int_count + $leave_count + $library_count + $travel_count;
@@ -394,7 +394,7 @@ function total_pending_count($type = "") {
     $library_count = $ci->Mlogapproval->librarycount();
 	
     $travel_count = $ci->Mlogapproval->travelcount();
-    if ($ci->session->userdata('partner_id') != 1) {
+    if (php72_cmp($ci->session->userdata('partner_id')) != 1) {
         $total_count = $apn_count + $int_count;
     } else {
         $total_count = $apn_count + $int_count + $leave_count + $library_count + $travel_count;
@@ -595,9 +595,9 @@ function configStatus($inv_id) {
     $data['approvals'] = $approvals = $ci->Mportfolio->getDetails('port_config_approval', $appoption);
     $cnt = php72_count($approvals);
     for ($i = 0; $i < $cnt; $i++) {
-        if (($approvals[$i]['sales_approvals'] || $approvals[$i]['channel_approval'] || $approvals[0]['pipeline_approval'] || $approvals[0]['revenue_approval'] || $approvals[0]['netprofit_approval'] || $approvals[0]['vif_approval'] || $approvals[0]['fundraise_approval'] || $approvals[0]['mentor_approval'] || $approvals[0]['tap_approval'] || $approvals[0]['nontap_approval'] || $approvals[0]['board_approval'] || $approvals[0]['impact_approval'] || $approvals[0]['project_approval']) == 1) {
+        if (php72_cmp(($approvals[$i]['sales_approvals'] || $approvals[$i]['channel_approval'] || $approvals[0]['pipeline_approval'] || $approvals[0]['revenue_approval'] || $approvals[0]['netprofit_approval'] || $approvals[0]['vif_approval'] || $approvals[0]['fundraise_approval'] || $approvals[0]['mentor_approval'] || $approvals[0]['tap_approval'] || $approvals[0]['nontap_approval'] || $approvals[0]['board_approval'] || $approvals[0]['impact_approval'] || $approvals[0]['project_approval'])) == 1) {
 
-        } else if (($approvals[0]['sales_approvals'] || $approvals[0]['channel_approval'] || $approvals[0]['pipeline_approval'] || $approvals[0]['revenue_approval'] || $approvals[0]['netprofit_approval'] || $approvals[0]['vif_approval'] || $approvals[0]['fundraise_approval'] || $approvals[0]['mentor_approval'] || $approvals[0]['tap_approval'] || $approvals[0]['nontap_approval'] || $approvals[0]['board_approval'] || $approvals[0]['impact_approval'] || $approvals[0]['project_approval']) == 2) {
+        } else if (php72_cmp(($approvals[0]['sales_approvals'] || $approvals[0]['channel_approval'] || $approvals[0]['pipeline_approval'] || $approvals[0]['revenue_approval'] || $approvals[0]['netprofit_approval'] || $approvals[0]['vif_approval'] || $approvals[0]['fundraise_approval'] || $approvals[0]['mentor_approval'] || $approvals[0]['tap_approval'] || $approvals[0]['nontap_approval'] || $approvals[0]['board_approval'] || $approvals[0]['impact_approval'] || $approvals[0]['project_approval'])) == 2) {
 
         }
     }

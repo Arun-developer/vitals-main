@@ -13,7 +13,7 @@
         $last_month = date("F", mktime(0, 0, 0, $current_month, 1));
 
         $current_ytdVal = isset($current_ytd) && $current_ytd != '' ? $current_ytd : 0;
-        $total_ytdVal = isset($ytd_value) && $ytd_value != 0 ? $ytd_value : 0;
+        $total_ytdVal = isset($ytd_value) && php72_cmp($ytd_value) != 0 ? $ytd_value : 0;
 
         $successMsg = ($this->session->flashdata('successMsg')) ? $this->session->flashdata('successMsg') : '';
         $errorMsg = ($this->session->flashdata('errorMsg')) ? $this->session->flashdata('errorMsg') : '';
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                             <ul class="milestone-links">
-                                                <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                     <li><a class="saveContinue">Save &amp; Continue</a></li>
                                                 <?php } ?>
                                                 <li>
@@ -101,7 +101,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/finance_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/sales.png'; ?>" >
                                                             <span>Finances</span>
-                                                            <?php if ($pending_plans['plan_finance_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_finance_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -110,7 +110,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/loan_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/fundraise.png'; ?>" >
                                                             <span>Loans &amp; Working Capital</span>
-                                                            <?php if ($pending_plans['plan_loans_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_loans_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -119,7 +119,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/vif_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/tap.png'; ?>" >
                                                             <span>VIF Funding</span>
-                                                            <?php if ($pending_plans['plan_vif_funding_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_vif_funding_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -128,7 +128,7 @@
                                                         <a href="<?= base_url() . 'index.php/portfolio/pending_inputs/fundraise_plan/' . $innovation_id . '/' . $current_month; ?>">
                                                             <img src="<?php echo base_url() . 'source/portfolio_assets/img/meeting.png'; ?>" >
                                                             <span>Fundraise</span>
-                                                            <?php if ($pending_plans['plan_fundraise_exclam'] == 1) { ?>
+                                                            <?php if (php72_cmp($pending_plans['plan_fundraise_exclam']) == 1) { ?>
                                                                 <span class="alert-updation"><i class="fas fa-exclamation-circle"></i></span>
                                                             <?php } ?>
                                                         </a>
@@ -149,7 +149,7 @@
                                                 ?>
                                                 <h4>Finances > <span><?= $last_month . ' ' . $next_financial; ?></span></h4>
                                             </div>
-                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-12 text-right">
                                                     <a href="javascript:void(0)" class="edit-btnconfig editBtn" id="editBtn"><i class="fas fa-pencil-alt"></i> Edit</a></li>
                                                 </div>

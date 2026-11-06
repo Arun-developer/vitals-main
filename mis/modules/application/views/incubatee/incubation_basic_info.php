@@ -71,10 +71,10 @@
 								<?php } ?>
 								</a></li>
 								<?php } ?>
-								<?php  if ($basic_information[0]['program'] != 33 &&$basic_information[0]['program'] != 0 && $basic_information[0]['program'] != 21 && $basic_information[0]['program'] != '28' && $basic_information[0]['program'] != 22 && $basic_information[0]['program'] !=34 && $basic_information[0]['program'] != 23 && $basic_information[0]['program'] != 31  && $basic_information[0]['program'] != 24 && $basic_information[0]['program'] != 26 && $basic_information[0]['program'] != 27 && $basic_information[0]['program'] != 29) {  ?>
+								<?php  if (php72_cmp($basic_information[0]['program']) != 33 &&php72_cmp($basic_information[0]['program']) != 0 && php72_cmp($basic_information[0]['program']) != 21 && $basic_information[0]['program'] != '28' && php72_cmp($basic_information[0]['program']) != 22 && php72_cmp($basic_information[0]['program']) !=34 && php72_cmp($basic_information[0]['program']) != 23 && php72_cmp($basic_information[0]['program']) != 31  && php72_cmp($basic_information[0]['program']) != 24 && php72_cmp($basic_information[0]['program']) != 26 && php72_cmp($basic_information[0]['program']) != 27 && php72_cmp($basic_information[0]['program']) != 29) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
-								<?php  if ($basic_information[0]['program'] == 25 || $basic_information[0]['program'] == 34) {  ?>
+								<?php  if (php72_cmp($basic_information[0]['program']) == 25 || php72_cmp($basic_information[0]['program']) == 34) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/additional_info/' . $application_id; ?>">Additional Information</a></li>
@@ -106,7 +106,7 @@
                                         <div class="col-12 col-lg-4 col-md-4">
                                             <div class="form-group">
                                                 <label><?php 
-														if ($basic_information[0]['program'] == 14) {
+														if (php72_cmp($basic_information[0]['program']) == 14) {
 															echo "Name of the organisation";
 														}else{
 															echo "Name of Enterprise";
@@ -118,7 +118,7 @@
                                         <div class="col-12 col-lg-4 col-md-4">
                                             <div class="form-group">
                                                 <label><?php 
-														if ($basic_information[0]['program'] == 14) {
+														if (php72_cmp($basic_information[0]['program']) == 14) {
 															echo "Name of the woman founder/ co-founder";
 														}else{
 															echo "Name of Entrepreneur";
@@ -154,7 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
-									 <?php if ($basic_information[0]['program'] == 0 || $basic_information[0]['program'] == 14 || $basic_information[0]['program'] == 21) { ?>
+									 <?php if (php72_cmp($basic_information[0]['program']) == 0 || php72_cmp($basic_information[0]['program']) == 14 || php72_cmp($basic_information[0]['program']) == 21) { ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-									<?php if ( $basic_information[0]['program'] == 14 || $basic_information[0]['program'] == 21) { ?>
+									<?php if ( php72_cmp($basic_information[0]['program']) == 14 || php72_cmp($basic_information[0]['program']) == 21) { ?>
 								  
 										<div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
@@ -194,7 +194,7 @@
                                                     <input type="text" class="form-control fieldDisable" disabled name="txtEntrepreneur" value="<?= $basic_information[0]['website']; ?>"/>
                                                 </div>
                                             </div>
-											<?php if($basic_information[0]['program'] == 21 && $basic_information[0]['impact_of_product'] == 1) { ?>
+											<?php if(php72_cmp($basic_information[0]['program']) == 21 && php72_cmp($basic_information[0]['impact_of_product']) == 1) { ?>
 												<div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">
 														<label>City<span>*</span></label>
@@ -214,7 +214,7 @@
                                            
                                         </div>
 								   <?php } ?>
-								   <?php if($basic_information[0]['program'] == 21 && $basic_information[0]['impact_of_product'] == 1  ) { ?>
+								   <?php if(php72_cmp($basic_information[0]['program']) == 21 && php72_cmp($basic_information[0]['impact_of_product']) == 1  ) { ?>
 								   <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">
@@ -222,7 +222,7 @@
 														 <input type="text" class="form-control fieldDisable" disabled name="txtEntrepreneur" value="<?= $basic_information[0]['benificiary']; ?>"/>
 													</div>
 												</div>
-											<?php if($basic_information[0]['program'] == 21 && $basic_information[0]['impact_of_product'] == 1) { ?>
+											<?php if(php72_cmp($basic_information[0]['program']) == 21 && php72_cmp($basic_information[0]['impact_of_product']) == 1) { ?>
 												<div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">
 														<label>Gender of the participant<span>*</span></label>
@@ -246,7 +246,7 @@
 								   
 								   
 								   
-                                    <?php if ($basic_information[0]['program'] == 0 || $basic_information[0]['program'] == 11 || $basic_information[0]['program'] == 13) { ?>
+                                    <?php if (php72_cmp($basic_information[0]['program']) == 0 || php72_cmp($basic_information[0]['program']) == 11 || php72_cmp($basic_information[0]['program']) == 13) { ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -316,13 +316,13 @@
                                         <?php } ?>
                                     </div>
 									
-									 <?php if ($basic_information[0]['program'] == 30 ||$basic_information[0]['program'] == 38 ) { ?>
+									 <?php if (php72_cmp($basic_information[0]['program']) == 30 ||php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 									   <div class="row">
 											<div class="col-12 col-lg-4 col-md-4">
 										
 												<div class="form-group">
-												<label><?php if($basic_information[0]['program'] == 38){ echo "Type of Entity"; }else { echo "Type of registration"; } ?> </label>
-													<?php if($basic_information[0]['program'] == 38){ ?>
+												<label><?php if(php72_cmp($basic_information[0]['program']) == 38){ echo "Type of Entity"; }else { echo "Type of registration"; } ?> </label>
+													<?php if(php72_cmp($basic_information[0]['program']) == 38){ ?>
 													<div class="form-check form-check-inline">
 														<input class="form-check-input fieldDisable" disabled type="radio" name="txtProfitEntity" id="txtProfit11" value="Private Limited" <?php if ($basic_information[0]['india_based'] == 'Private Limited') echo "checked=checked"; ?>>
 														<label class="form-check-label" for="txtProfit1">Private Limited</label>
@@ -352,7 +352,7 @@
 													<?php } ?>
 												</div>
 											</div>
-											<?php if ($basic_information[0]['program'] == 38 ) { ?>
+											<?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 											<div class="col-12 col-lg-4 col-md-4">
 												<div class="form-group">
 													<label>Website Url<span>*</span></label>
@@ -383,7 +383,7 @@
 											<div class="col-12 col-lg-4 col-md-4">
 												<div class="form-group">
 													<label>City<span>*</span></label>
-													<?php if ($basic_information[0]['program'] == 38 ) { ?>
+													<?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 														<input type="text" class="form-control fieldDisable" disabled name="txtEntrepreneur" value="<?= $basic_information[0]['impact_product']; ?>"/>
 													<?php }else{ ?>
 														<input type="text" class="form-control fieldDisable" disabled name="txtEntrepreneur" value="<?= $inv_ent_info[0]['city']; ?>"/>
@@ -417,7 +417,7 @@
 											<div class="col-12 col-lg-4 col-md-4">
 												<div class="form-group">
 													<label>CIN number</label>
-													<?php if ($basic_information[0]['program'] == 38 ) { ?>
+													<?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 														<input type="text" class="form-control" value="<?=  $basic_information[0]['cin_number']; ?>" disabled />
 													<?php }else{ ?>
 														<input type="text" class="form-control" value="<?=  $inv_ent_info[0]['cin']; ?>" disabled />
@@ -427,7 +427,7 @@
 											 <div class="col-12 col-lg-4 col-md-4">
 												<div class="form-group">
 													<label>DPIIT Number</label>
-													 <?php if ($basic_information[0]['program'] == 38 ) { ?>
+													 <?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 														<input type="text" class="form-control" value="<?=  $basic_information[0]['product_service']; ?>" disabled />
 													<?php }else{ ?>
 														<input type="text" class="form-control" value="<?=  $inv_ent_info[0]['primary_point']; ?>" disabled />
@@ -435,7 +435,7 @@
 												</div>
 											</div>
 											
-											<?php if ($basic_information[0]['program'] == 38 ) { ?>
+											<?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 
 											
 												  <div class="col-12 col-lg-4 col-md-4">
@@ -461,7 +461,7 @@
 									
 									
 									
-                                    <?php if ($basic_information[0]['program'] == 9) { ?>
+                                    <?php if (php72_cmp($basic_information[0]['program']) == 9) { ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -479,7 +479,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php } else if ($basic_information[0]['program'] == 10) { ?>
+                                    <?php } else if (php72_cmp($basic_information[0]['program']) == 10) { ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -515,7 +515,7 @@
                                                 </div>
                                             </div> 
                                         </div>                                           
-                                    <?php } else if ($basic_information[0]['program'] == 12) { ?> 
+                                    <?php } else if (php72_cmp($basic_information[0]['program']) == 12) { ?> 
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -588,7 +588,7 @@
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label><?php 
-													if ($basic_information[0]['program'] == 23) {  
+													if (php72_cmp($basic_information[0]['program']) == 23) {  
 														echo "Type of Organization";
 													}else{
 														echo "Is Your Enterprise a";
@@ -640,7 +640,7 @@
 											
 										<?php } ?>
 										
-										<?php if ($basic_information[0]['program'] == 23 || $basic_information[0]['program'] == 31) {  ?>
+										<?php if (php72_cmp($basic_information[0]['program']) == 23 || php72_cmp($basic_information[0]['program']) == 31) {  ?>
 										<div class="row">
 										 <div class="col-12 col-lg-4 col-md-4">
                                             <div class="form-group">
@@ -676,7 +676,7 @@
 												<div class="form-group">
 													<label>
 													<?php 
-															if($basic_information[0]['program'] == 31){
+															if(php72_cmp($basic_information[0]['program']) == 31){
 																echo "Designation of the applicant in the compan";
 															}else{
 																echo "Qualification of the Entrepreneur";
@@ -755,9 +755,9 @@
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label><?php 
-													if ($basic_information[0]['program'] == 14) { 
+													if (php72_cmp($basic_information[0]['program']) == 14) { 
 														echo "Is your social enterprise headquartered in India";
-													}else if ($basic_information[0]['program'] == 21 || $basic_information[0]['program'] == 27) { 
+													}else if (php72_cmp($basic_information[0]['program']) == 21 || php72_cmp($basic_information[0]['program']) == 27) { 
 														echo "Is your enterprise headquartered in India";
 													}else{
 														echo "Will your social enterprise be based in India";
@@ -788,14 +788,14 @@
                                             ?>
 											
 											<?php  
-											if (($basic_information[0]['program'] != 31 && $basic_information[0]['program'] != 21 && $basic_information[0]['program'] != 22) && $basic_information[0]['program'] != 27 && $basic_information[0]['program'] != '30') {  ?>
+											if ((php72_cmp($basic_information[0]['program']) != 31 && php72_cmp($basic_information[0]['program']) != 21 && php72_cmp($basic_information[0]['program']) != 22) && php72_cmp($basic_information[0]['program']) != 27 && $basic_information[0]['program'] != '30') {  ?>
 											
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>Who will be the beneficiaries of your product/services?<span><?php if($basic_information[0]['program']!='33'){ echo"*"; }else { echo"";} ?> </span></label>
                                                     
 													<select class="form-control fieldDisable" disabled multiple name="txtBeneficiary[]" id="txtBeneficiary" >
-                                                        <?php if($basic_information[0]['program'] == 38){ ?>
+                                                        <?php if(php72_cmp($basic_information[0]['program']) == 38){ ?>
 															<option value="Rural Population" <?php if (php72_in_array('Rural Population', $benificary_val)) echo "selected"; ?>>Rural Population</option>
 															<option value="Peri-Urban Population" <?php if (php72_in_array('Peri-Urban Population', $benificary_val)) echo "selected"; ?>>Peri-Urban Population</option>
 															<option value="Urban Population" <?php if (php72_in_array('Urban Population', $benificary_val)) echo "selected"; ?>>Urban Population</option>
@@ -814,7 +814,7 @@
                                                 </div>
                                             </div>
 											
-											<?php  if($basic_information[0]['program'] == 38){ ?>
+											<?php  if(php72_cmp($basic_information[0]['program']) == 38){ ?>
 												<div class="col-12 col-lg-4 col-md-4">
 													 <div class="form-group">
 														<label>How will you define the primary clients of your innovation?<span><?php if($basic_information[0]['program']!='33'){ echo"*"; }else { echo"";} ?> </span></label>
@@ -830,7 +830,7 @@
 												</div>
 											<?php  } ?>
 											
-											<?php if ($basic_information[0]['program'] == 38 ) { ?>
+											<?php if (php72_cmp($basic_information[0]['program']) == 38 ) { ?>
 											<div class="col-12 col-lg-4 col-md-4">
 												<div class="form-group">
 													<label>Website<span>*</span></label>
@@ -847,7 +847,7 @@
 												</div>
 											<?php } } ?>
 											
-											<?php if($basic_information[0]['program'] == '26' || $basic_information[0]['program'] != 27 && $basic_information[0]['program'] != 25  && $basic_information[0]['program'] != 38  && $basic_information[0]['program'] != 34 && $basic_information[0]['program'] != '30' && $basic_information[0]['program'] != '31' && $basic_information[0]['program'] != '33'){ 
+											<?php if($basic_information[0]['program'] == '26' || php72_cmp($basic_information[0]['program']) != 27 && php72_cmp($basic_information[0]['program']) != 25  && php72_cmp($basic_information[0]['program']) != 38  && php72_cmp($basic_information[0]['program']) != 34 && $basic_information[0]['program'] != '30' && $basic_information[0]['program'] != '31' && $basic_information[0]['program'] != '33'){ 
 											
 											$product_service = unserialize($basic_information[0]['product_service']);
 											
@@ -870,7 +870,7 @@
 												<div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">
 														<label><?php 
-														if ($basic_information[0]['program'] == 14) { 
+														if (php72_cmp($basic_information[0]['program']) == 14) { 
 															echo "What type of impact will your product / service have on low-income populations";
 														}else{
 															echo "What type of impact will your Product / service have on the BoP / poor?";
@@ -891,7 +891,7 @@
 											<?php } ?>
 											
 											<?php } ?>
-											<?php  if ($basic_information[0]['program'] == 27) { ?>
+											<?php  if (php72_cmp($basic_information[0]['program']) == 27) { ?>
 											  <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>Is your enterprise women led - owned and controlled by a woman or a group of women having a minimum financial interest of 50% of capital in the startup?<span>*</span></label>
@@ -909,7 +909,7 @@
 											
                                         </div>
 										<?php } ?>
-										<?php  if ($basic_information[0]['program'] == 27) { ?>
+										<?php  if (php72_cmp($basic_information[0]['program']) == 27) { ?>
 										
 											<div class="row">
 													<div class="form-group clearfix">
@@ -942,7 +942,7 @@
 										
 										<?php } ?>
 										
-										<?php  if ($basic_information[0]['program'] == 14) { ?>
+										<?php  if (php72_cmp($basic_information[0]['program']) == 14) { ?>
 											<div class="row">
 												<div class="col-12 col-lg-4 col-md-4">
 													<div class="form-group">

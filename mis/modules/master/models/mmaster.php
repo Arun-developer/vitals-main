@@ -1828,7 +1828,7 @@ public function getDonorhistory($search_field = '') {
 
 public function getDTDonoramtCount($search_field, $columns, $requestData, $bydonor) {
     $offset = (!is_numeric($offset)) ? '0' : $offset;
-    if ($bydonor == 1) {
+    if (php72_cmp($bydonor) == 1) {
         $this->ais->select('t2.*,t1.master_name');
     } else {
         $this->ais->select('t2.*,t1.master_name,sum(t2.amount) as amount');
@@ -1839,7 +1839,7 @@ public function getDTDonoramtCount($search_field, $columns, $requestData, $bydon
     if ($search_field != '') {
         $this->ais->where($search_field);
     }
-    if ($bydonor != 1) {
+    if (php72_cmp($bydonor) != 1) {
         $this->ais->group_by('t2.donor_id');
     }
     $query = $this->ais->get('donors_amount t2');
@@ -1849,7 +1849,7 @@ public function getDTDonoramtCount($search_field, $columns, $requestData, $bydon
 
 public function getDTDonoramtDetails($num, $offset, $search_field, $columns, $requestData, $bydonor) {
     $offset = (!is_numeric($offset)) ? '0' : $offset;
-    if ($bydonor == 1) {
+    if (php72_cmp($bydonor) == 1) {
         $this->ais->select('t2.*,t1.master_name');
     } else {
         $this->ais->select('t2.*,t1.master_name,sum(t2.amount) as amount');
@@ -1860,7 +1860,7 @@ public function getDTDonoramtDetails($num, $offset, $search_field, $columns, $re
     if ($search_field != '') {
         $this->ais->where($search_field);
     }
-    if ($bydonor != 1) {
+    if (php72_cmp($bydonor) != 1) {
         $this->ais->group_by('t2.donor_id');
     }
     $this->ais->limit($num, $offset);

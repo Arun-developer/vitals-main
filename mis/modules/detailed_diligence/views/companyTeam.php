@@ -144,9 +144,9 @@
 
         <?php
         $tab = $this->session->userdata('company_tab');
-        if ($tab == 2) {
+        if (php72_cmp($tab) == 2) {
             $management = 'defaultOpen';
-        } elseif ($tab == 3) {
+        } elseif (php72_cmp($tab) == 3) {
             $cap = 'defaultOpen';
         } else {
             $master = 'defaultOpen';
@@ -296,7 +296,7 @@
                                             ?>
                                 </select>
                             </div>
-                            <?php if ($innv_pool[0]['partner_id'] != 10) { ?>
+                            <?php if (php72_cmp($innv_pool[0]['partner_id']) != 10) { ?>
                                 <div class="column wdt-50">
                                     <label>Sub Sector</label>
                                     <select id="sub_sector" name="sub_sector" style="width:200px;">

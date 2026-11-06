@@ -65,7 +65,7 @@
 								<?php  if ($additional_information[0]['program'] != '32'  && $additional_information[0]['program'] != '0'  && $additional_information[0]['program'] != '28' && $additional_information[0]['program'] != '31' && $additional_information[0]['program'] != '21' && $additional_information[0]['program'] != '22' && $additional_information[0]['program'] != '23' && $additional_information[0]['program'] != '24' && $additional_information[0]['program'] != '25' && $additional_information[0]['program'] != '27') {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
-								<?php  if ($additional_information[0]['program'] == 25) {  ?>
+								<?php  if (php72_cmp($additional_information[0]['program']) == 25) {  ?>
 									<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								

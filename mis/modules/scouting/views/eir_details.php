@@ -327,7 +327,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     <td width="30%"><?php
                                         $j = 0;
                                         foreach ($resume as $row) {
-                                            if ($j != 0) {
+                                            if (php72_cmp($j) != 0) {
                                                 echo ",";
                                             }
                                             $filename = pathinfo($row, PATHINFO_FILENAME);
@@ -343,7 +343,7 @@ if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio')
                                     <td style="width:50%;"><?php
                                         $j = 0;
                                         foreach ($docs as $row1) {
-                                            if ($j != 0) {
+                                            if (php72_cmp($j) != 0) {
                                                 echo ",";
                                             }
                                             $filename1 = pathinfo($row1, PATHINFO_FILENAME);

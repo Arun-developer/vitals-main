@@ -64,18 +64,18 @@ $field_enable = '0';
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                 <ul class="milestone-links">
-                                    <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && ($approvals[0]['product_approval'] == 2 || $approvals[0]['sales_approval'] == 2 || $approvals[0]['channel_approval'] == 2 || $approvals[0]['pipeline_approval'] == 2 || $approvals[0]['revenue_approval'] == 2 || $approvals[0]['netprofit_approval'] == 2 || $approvals[0]['vif_approval'] == 2 || $approvals[0]['fundraise_approval'] == 2 || $approvals[0]['mentor_approval'] == 2 || $approvals[0]['tap_approval'] == 2 || $approvals[0]['nontap_approval'] == 2 || $approvaless[0]['dp_approval'] == 2 || $approvaless[0]['board_approval'] == 2 || $approvaless[0]['team_approval'] == 2 || $approvals[0]['impact_approval'] == 2 || $approvals[0]['project_approval'] == 2)) { ?>
+                                    <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && (php72_cmp($approvals[0]['product_approval']) == 2 || php72_cmp($approvals[0]['sales_approval']) == 2 || php72_cmp($approvals[0]['channel_approval']) == 2 || php72_cmp($approvals[0]['pipeline_approval']) == 2 || php72_cmp($approvals[0]['revenue_approval']) == 2 || php72_cmp($approvals[0]['netprofit_approval']) == 2 || php72_cmp($approvals[0]['vif_approval']) == 2 || php72_cmp($approvals[0]['fundraise_approval']) == 2 || php72_cmp($approvals[0]['mentor_approval']) == 2 || php72_cmp($approvals[0]['tap_approval']) == 2 || php72_cmp($approvals[0]['nontap_approval']) == 2 || php72_cmp($approvaless[0]['dp_approval']) == 2 || php72_cmp($approvaless[0]['board_approval']) == 2 || php72_cmp($approvaless[0]['team_approval']) == 2 || php72_cmp($approvals[0]['impact_approval']) == 2 || php72_cmp($approvals[0]['project_approval']) == 2)) { ?>
                                         <li><a class="approveall" href="javascript:void(0);">Approve All</a></li>
                                     <?php } ?>
-                                    <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                    <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                         <li><a class="saveContinue" href="javascript:void(0);">Save</a></li>
                                         <?php
                                         $field_enable = '1';
                                     }
                                     ?>
-                                    <?php if ($this->session->userdata['sector_lead'] == 1 && $isAssociate == 1 && $approvals[0]['config_approval'] == 1) { ?>
+                                    <?php if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_cmp($isAssociate) == 1 && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                         <li><a class="sendApprovalBtn" id="lead_approveall" href="javascript:void(0);">Send for Approval</a></li>
-                                    <?php } else if (($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['config_approval'] == 1) { ?>
+                                    <?php } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                         <li><a class="sendApproval sendApprovalBtn" id="sendApproval" href="javascript:void(0);">Send for Approval</a></li>
                                     <?php } ?>
                                     <li>
@@ -182,14 +182,14 @@ $field_enable = '0';
 													} */ ?>
 													
 													<div class="col-xl-12 col-lg-6 col-md-6 col-12 quaterlyNewplanstru" style="display:flex;">
-														<?php if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['impact_approval'] == 2) { ?>
+														<?php if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['impact_approval']) == 2) { ?>
 															<h4>Impact Targets <span class="text-danger"><small>(Awaiting approval)</small></span></h4>
-														<?php  } else if (($isAssociate == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['impact_approval'] == 3) { ?>
+														<?php  } else if ((php72_cmp($isAssociate) == 1 || $this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['impact_approval']) == 3) { ?>
 															<h4>Impact Targets <span class="text-success"><small>(Approved)</small></span></h4>
 														<?php } else { ?>
 															<h4>Impact Targets</h4>
 														<?php } ?>
-														 <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && $approvals[0]['impact_approval'] == 2) { ?>
+														 <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') && php72_cmp($approvals[0]['impact_approval']) == 2) { ?>
 															<!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right"> -->
 																<div class="approved-btn text-right">
 																	<button style="margin-left: 5px;margin-top: -14px;" type="button" class="btn btn-success capitilize">Approve</button>
@@ -199,7 +199,7 @@ $field_enable = '0';
 															 <!-- </div> -->
 														<?php } ?>
 														 <div class="text-right" id='editImpactSec' style="margin-left: auto; ">
-															<?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+															<?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
 																<a href="javascript:void(0)" id="editImpact" class="edit-btnconfig mar-bt15 display-block mar-rt5"><i class="fas fa-pencil-alt"></i> Edit</a>
 															<?php } ?>
 														</div>
@@ -1003,7 +1003,7 @@ $field_enable = '0';
                                                             </div>
                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
                                                                 <ul class="milestone-links">
-                                                                    <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                    <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                         <li>
                                                                             <a href="javascript:void(0)" id="addMetric" class="edit-btnconfig mar-bt15 mar-tp15"><i class="fas fa-plus-circle"></i>&nbsp;Add New</a>
                                                                         </li>
@@ -1077,7 +1077,7 @@ $field_enable = '0';
                                                                         </select> 
                                                                     </td> */?>
                                                                     <?php
-                                                                    if ($reset_metric == 1) {
+                                                                    if (php72_cmp($reset_metric) == 1) {
                                                                         unset($metric_value[$i]['jan'], $metric_value[$i]['feb'], $metric_value[$i]['mar'], $metric_value[$i]['apr'], $metric_value[$i]['may'], $metric_value[$i]['jun'], $metric_value[$i]['jul'], $metric_value[$i]['aug'], $metric_value[$i]['sep'], $metric_value[$i]['oct'], $metric_value[$i]['nov'], $metric_value[$i]['dec']);
                                                                     }
                                                                     ?>
@@ -1131,7 +1131,7 @@ $field_enable = '0';
                                                                         <label class="error error_msg"></label>
                                                                     </td>
                                                                     <td>
-                                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                                             <?php if (php72_count($metric_value) > 0) { ?>
                                                                                 <a class="deleteMetric" title="Delete Metric" onclick="deleteMetric(<?= $metric_value[$i]['id']; ?>);" href="javascript:void(0)"><i class="fas fa-trash"></i></a>
                                                                                 <?php

@@ -314,7 +314,7 @@ $ci =& get_instance();
                                         $gl_total_amt_res =  explode(".",$sum);
                                         $final_res = $ci->numberToCurrency($gl_total_amt_res[0],'');
                                         $final_res = $final_res.'.'.$gl_total_amt_res[1]; 
-                                        if($gl_total_amt_res[1]==0){
+                                        if(php72_cmp($gl_total_amt_res[1])==0){
                                           $final_res = $ci->numberToCurrency($gl_total_amt_res[0],'').'.00';
                                       }
                                       echo $final_res;
@@ -407,9 +407,9 @@ $ci =& get_instance();
                                         }
                                         ?> class="form-control disb_checkbox" value="<?php echo $lists->id; ?>" type="checkbox"></td>
                                         <td class="valign-center"><textarea disabled  placeholder="Milestone" name="disbursement_mile[][<?php echo $lists->id; ?>]" class="form-control"><?php if (isset($lists->milestone) && $lists->milestone != '') echo $lists->milestone; ?></textarea></td>
-                                        <td><div class="position-relative"><input disabled class="datepicker form-control" name="date_disbursement[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->date_of_disbursement) && $lists->date_of_disbursement != '' && $lists->date_of_disbursement != 0) echo date('d-m-Y', strtotime($lists->date_of_disbursement)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
+                                        <td><div class="position-relative"><input disabled class="datepicker form-control" name="date_disbursement[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->date_of_disbursement) && $lists->date_of_disbursement != '' && php72_cmp($lists->date_of_disbursement) != 0) echo date('d-m-Y', strtotime($lists->date_of_disbursement)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
                                         <td><input disabled class="form-control currencyField mobile_number disb_amt" name="disbursement_amount[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->amount) && $lists->amount != '') echo  $ci->numberToCurrency($lists->amount,'view'); ?>" type="text" placeholder="Enter amount"></td>
-                                        <td><div class="position-relative"><input disabled class="datepicker form-control" name="date_deposite[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->date_of_deposite) && $lists->date_of_deposite != '' && $lists->date_of_deposite != 0) echo date('d-m-Y', strtotime($lists->date_of_deposite)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
+                                        <td><div class="position-relative"><input disabled class="datepicker form-control" name="date_deposite[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->date_of_deposite) && $lists->date_of_deposite != '' && php72_cmp($lists->date_of_deposite) != 0) echo date('d-m-Y', strtotime($lists->date_of_deposite)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
                                         <td><input disabled class="form-control currencyField mobile_number amt_dep" name="amount_deposite[][<?php echo $lists->id; ?>]"  value="<?php if (isset($lists->amount_deposite) && $lists->amount_deposite != '') echo  $ci->numberToCurrency($lists->amount_deposite,'view'); ?>" type="text" placeholder="Enter amount"></td>
                                         <td><input disabled class="form-control wdt_120" name="disbursement_cmd[][<?php echo $lists->id; ?>]" value="<?php if (isset($lists->comments) && $lists->comments != '') echo $lists->comments; ?>" type="text" placeholder="Enter comments"></td>
                                         
@@ -434,7 +434,7 @@ $ci =& get_instance();
                                     $da_total_amt_res =  explode(".",$sum_ammount);
                                     $da_final_res = $ci->numberToCurrency($da_total_amt_res[0],'');
                                     $da_final_res = $da_final_res.'.'.$da_total_amt_res[1]; 
-                                    if($da_total_amt_res[1]==0){
+                                    if(php72_cmp($da_total_amt_res[1])==0){
                                       $da_final_res = $ci->numberToCurrency($da_total_amt_res[0],'').'.00';
                                   } echo $da_final_res; ?>" ></td>
                                   <td></td>
@@ -442,7 +442,7 @@ $ci =& get_instance();
                                   $dar_total_amt_res =  explode(".",$sum_am_deposite);
                                   $dar_final_res = $ci->numberToCurrency($dar_total_amt_res[0],'');
                                   $dar_final_res = $dar_final_res.'.'.$dar_total_amt_res[1]; 
-                                  if($dar_total_amt_res[1]==0){
+                                  if(php72_cmp($dar_total_amt_res[1])==0){
                                       $dar_final_res = $ci->numberToCurrency($dar_total_amt_res[0],'').'.00';
                                       } echo $dar_final_res; 
                                       ?>" ></td>
@@ -526,8 +526,8 @@ $ci =& get_instance();
                                                 echo"disabled";
                                             }
                                             ?> class="form-control gr_checkbox" type="checkbox" value="<?php echo $lists->id; ?>"></td>
-                                            <td><div class="position-relative"><input disabled class="datepicker form-control" name="grantreport_dop[][<?php echo $lists->id; ?>]" value="<?php if (isset($lists->date_of_report) && $lists->date_of_report != '' && $lists->date_of_report != 0) echo date('d-m-Y', strtotime($lists->date_of_report)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
-                                            <td><div class="position-relative"><input disabled class="datepicker form-control" name="submit_date[][<?php echo $lists->id; ?>]" value="<?php if (isset($lists->submit_date) && $lists->submit_date != '' && $lists->submit_date != 0) echo date('d-m-Y', strtotime($lists->submit_date)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
+                                            <td><div class="position-relative"><input disabled class="datepicker form-control" name="grantreport_dop[][<?php echo $lists->id; ?>]" value="<?php if (isset($lists->date_of_report) && $lists->date_of_report != '' && php72_cmp($lists->date_of_report) != 0) echo date('d-m-Y', strtotime($lists->date_of_report)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
+                                            <td><div class="position-relative"><input disabled class="datepicker form-control" name="submit_date[][<?php echo $lists->id; ?>]" value="<?php if (isset($lists->submit_date) && $lists->submit_date != '' && php72_cmp($lists->submit_date) != 0) echo date('d-m-Y', strtotime($lists->submit_date)); ?>" type="text" placeholder="dd-mm-yyyy"><span class="calendar-position"><i class="far fa-calendar-alt"></i></span></div></td>
                                             <td>
                                                 <select disabled name="grantreport_resp[][<?php echo $i; ?>]"  id="grantreport_resp_<?php echo $i; ?>" class="form-control">
                                                     <option value="">--Select--</option>

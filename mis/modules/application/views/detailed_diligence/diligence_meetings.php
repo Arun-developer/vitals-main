@@ -60,7 +60,7 @@
                                                 <input type="hidden" name='meeting_id[<?= $i; ?>]' id="meeting_id_<?= $j; ?>" value="<?php echo $meeting_list[$i]['meeting_id']; ?>" />
                                                 <tr id="document_tr_<?php echo $j; ?>" class="document_more">
                                                     <td class="align-middle">
-                                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                             <div class="input-group">
                                                                 <input type="checkbox" class="check_box" aria-label="Checkbox for following text input"
                                                                        name="check_delete" id="check_delete_<?php echo $j; ?>" value="<?php echo $meeting_list[$i]['meeting_id']; ?>">

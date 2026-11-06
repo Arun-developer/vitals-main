@@ -397,7 +397,7 @@ class Chart extends CI_Controller {
             $closeIIC += $r['Close_IIC'];
             $overallTotal += $total;
 
-            if ($r['emp_name'] != '' && $total > 0) {
+            if ($r['emp_name'] != '' && php72_cmp($total) > 0) {
                 $records[] = array(
                     $r['emp_name'],
                     $r['Open_count'],

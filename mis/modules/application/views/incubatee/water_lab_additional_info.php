@@ -54,7 +54,7 @@
 								?>
 								</a></li>
 								<?php } ?>
-								<?php  if ($additional_information[0]['program'] == 25 || $additional_information[0]['program'] == 35) {  ?>
+								<?php  if (php72_cmp($additional_information[0]['program']) == 25 || php72_cmp($additional_information[0]['program']) == 35) {  ?>
 								<li role="presentation"  ><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								<li role="presentation" class=" active"><a href="<?php echo base_url() . 'index.php/application/additional_info/' . $application_id; ?>">
@@ -475,15 +475,15 @@
                                                 <div class="form-group clearfix">
                                                     <label>
 													
-													<?php if($additional_information[0]['program']!=35){ ?>
+													<?php if(php72_cmp($additional_information[0]['program'])!=35){ ?>
 														Business plan (if available)
-													<?php }else if($additional_information[0]['program']==35){ ?>
+													<?php }else if(php72_cmp($additional_information[0]['program'])==35){ ?>
 													Upload GTM plan
 													<?php } ?>
 													
 													
 													 
-													<?php if($additional_information[0]['program']==25 || $additional_information[0]['program']==27 ){ echo '<span>*<span>'; }?> 
+													<?php if(php72_cmp($additional_information[0]['program'])==25 || php72_cmp($additional_information[0]['program'])==27 ){ echo '<span>*<span>'; }?> 
 													
 													
 													<?php if($additional_information[0]['program'] == '30'){   ?>
@@ -1002,7 +1002,7 @@
 									  <div class="row">
 										<div class="col-12 col-lg-6 col-md-6">
 											<div class="form-group">
-												<label>Selected enterprises will undergo due diligence in the form of physical site visits and requests on relevant information on the enterprise. Do you give your consent for the same <?php if($additional_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+												<label>Selected enterprises will undergo due diligence in the form of physical site visits and requests on relevant information on the enterprise. Do you give your consent for the same <?php if(php72_cmp($additional_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 												<input type="text" class="form-control" value="<?= $additional_information[0]['product_stage']; ?>" disabled />
 											</div>
 										</div>

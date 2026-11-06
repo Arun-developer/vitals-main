@@ -176,8 +176,8 @@ class Incubatee_graphs extends CI_Controller {
         $q1_arr_desc = $q2_arr_desc = $q3_arr_desc = $q4_arr_desc = array();
         $q1_arr_month = $q2_arr_month = $q3_arr_month = $q4_arr_month = array();
 
-        if ($qtr != 5) {
-            if ($qtr == 1) {
+        if (php72_cmp($qtr) != 5) {
+            if (php72_cmp($qtr) == 1) {
                 foreach ($quart_1 as $key => $value) {
                     $set_key = date('n', strtotime("$value 1 2020"));
                     $q1_arr[$set_key] = $value;
@@ -191,7 +191,7 @@ class Incubatee_graphs extends CI_Controller {
                 $setQtr_loop = array('q_one_desc' => 0);
                 $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q1_arr_month);
                 $data['month_title'] = $q1_arr;
-            } else if ($qtr == 2) {
+            } else if (php72_cmp($qtr) == 2) {
                 foreach ($quart_2 as $key => $value) {
                     $set_key = date('n', strtotime("$value 1 2020"));
                     $q2_arr[$set_key] = $value;
@@ -205,7 +205,7 @@ class Incubatee_graphs extends CI_Controller {
                 $setQtr_loop = array('q_two_desc' => 0);
                 $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q2_arr_month);
                 $data['month_title'] = $q2_arr;
-            } else if ($qtr == 3) {
+            } else if (php72_cmp($qtr) == 3) {
                 foreach ($quart_3 as $key => $value) {
                     $set_key = date('n', strtotime("$value 1 2020"));
                     $q3_arr[$set_key] = $value;
@@ -219,7 +219,7 @@ class Incubatee_graphs extends CI_Controller {
                 $setQtr_loop = array('q_three_desc' => 0);
                 $data['qtr_loop'] = php72_array_merge($setQtr_loop, $q3_arr_month);
                 $data['month_title'] = $q3_arr;
-            } else if ($qtr == 4) {
+            } else if (php72_cmp($qtr) == 4) {
                 foreach ($quart_4 as $key => $value) {
                     $set_key = date('n', strtotime("$value 1 2020"));
                     $q4_arr[$set_key] = $value;
@@ -316,19 +316,19 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['get_month_list'] = $this->month();
         $this->load->vars($data);
-        if ($module_id == '' || $module_id == 1 || $module_id == 2) {
+        if ($module_id == '' || php72_cmp($module_id) == 1 || php72_cmp($module_id) == 2) {
             $this->load->view('portfolio/dashboard_qualitative/product_qualitative');
-        } else if ($module_id == 5 || $module_id == 6 || $module_id == 8) {
+        } else if (php72_cmp($module_id) == 5 || php72_cmp($module_id) == 6 || php72_cmp($module_id) == 8) {
             $this->load->view('portfolio/dashboard_qualitative/finance_fundraise');
-        } else if ($module_id == 14) {
+        } else if (php72_cmp($module_id) == 14) {
             $this->load->view('portfolio/dashboard_qualitative/impact_qualitative');
-        } else if ($module_id == 15 || $module_id == 13) {
+        } else if (php72_cmp($module_id) == 15 || php72_cmp($module_id) == 13) {
             $this->load->view('portfolio/dashboard_qualitative/team_qualitative');
-        } else if ($module_id == 9 || $module_id == 10 || $module_id == 11) {
+        } else if (php72_cmp($module_id) == 9 || php72_cmp($module_id) == 10 || php72_cmp($module_id) == 11) {
             $this->load->view('portfolio/dashboard_qualitative/mentor_qualitative');
-        } else if ($module_id == 12) {
+        } else if (php72_cmp($module_id) == 12) {
             $this->load->view('portfolio/dashboard_qualitative/diagnostic_qualitative');
-        } else if ($module_id == 7) {
+        } else if (php72_cmp($module_id) == 7) {
             $this->load->view('portfolio/dashboard_qualitative/seed_qualitative');
         }
     }
@@ -342,7 +342,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -397,25 +397,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -440,7 +440,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -503,7 +503,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -542,7 +542,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 20) {
+        } else if (php72_cmp($type) == 20) {
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
             } else if ($from_quarter == 2) {
@@ -654,7 +654,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -718,7 +718,7 @@ class Incubatee_graphs extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($sales_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     $categories[0] = 'Q1';
                     $categories[1] = 'Q2';
                     $categories[2] = 'Q3';
@@ -758,16 +758,16 @@ class Incubatee_graphs extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -798,17 +798,17 @@ class Incubatee_graphs extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -828,7 +828,7 @@ class Incubatee_graphs extends CI_Controller {
             $sales_actual = $this->Mportfolio->getActualSales($default_where, $sales_id,$g_sector);
             $actual_month_value = array();
             if (php72_count($sales_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($sales_actual as $actual) {
                         if ($sales_id == '') {
                             $actual_column = $actual['value'];
@@ -938,7 +938,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -989,25 +989,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -1031,7 +1031,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 	   
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -1094,7 +1094,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1131,7 +1131,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 20) {
+        } else if (php72_cmp($type) == 20) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -1229,7 +1229,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1291,7 +1291,7 @@ class Incubatee_graphs extends CI_Controller {
 			
 					/* echo'<pre>';print_r($g_quarter);
 					echo'<pre>';print_r($revenue_target);die; */
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
 						
 				
                     foreach ($revenue_target as $target) {
@@ -1327,16 +1327,16 @@ class Incubatee_graphs extends CI_Controller {
                 } else {
 					
             
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1362,17 +1362,17 @@ class Incubatee_graphs extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1394,7 +1394,7 @@ class Incubatee_graphs extends CI_Controller {
 			
             $actual_month_value = array();
             if (php72_count($revenue_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($revenue_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['revenue']);
@@ -1468,7 +1468,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1519,25 +1519,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -1561,7 +1561,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
 
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
@@ -1619,7 +1619,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1654,7 +1654,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 20) {
+        } else if (php72_cmp($type) == 20) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -1752,7 +1752,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1809,7 +1809,7 @@ class Incubatee_graphs extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($profit_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($profit_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
@@ -1840,16 +1840,16 @@ class Incubatee_graphs extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1875,17 +1875,17 @@ class Incubatee_graphs extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1905,7 +1905,7 @@ class Incubatee_graphs extends CI_Controller {
             $profit_actual = $this->Mportfolio->getActualProfit($default_where,$g_sector);
             $actual_month_value = array();
             if (php72_count($profit_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($profit_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['net_profit']);
@@ -1979,7 +1979,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -2035,25 +2035,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -2079,7 +2079,7 @@ class Incubatee_graphs extends CI_Controller {
 	
 			
 			
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -2181,7 +2181,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -2196,7 +2196,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $result = '';
 				
-				if($this->session->userdata('user_id') ==135){
+				if(php72_cmp($this->session->userdata('user_id')) ==135){
 					#echo'<pre>';print_r($new_m);
 					/*  foreach ($new_m as $key => $value) {
 						  if (is_array($value)) {
@@ -2254,7 +2254,7 @@ class Incubatee_graphs extends CI_Controller {
 			/* if($this->session->userdata('user_id') ==135){
 				# echo'<pre>';print_r($hc_actual);die;
 			} */
-        } else if ($type == 20) {
+        } else if (php72_cmp($type) == 20) {
             $quarter_qone = $quarter_qtwo = $quarter_qthree = $quarter_qfour = array();
 
             $getFrom_year = $from_year;
@@ -2393,7 +2393,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -2466,7 +2466,7 @@ class Incubatee_graphs extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($capital_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($capital_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
@@ -2498,16 +2498,16 @@ class Incubatee_graphs extends CI_Controller {
                     #$hc_target[4] = $annual_target;
                     $hc_target[4] = ($annual_target/2);
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -2533,17 +2533,17 @@ class Incubatee_graphs extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -2564,7 +2564,7 @@ class Incubatee_graphs extends CI_Controller {
 			#$capital_actual = $this->Mportfolio->getActualCapital($default_where,$g_sector);
             $actual_month_value = $actual_month_equity = $actual_month_short = $actual_month_long = array();
             if (php72_count($capital_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($capital_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_equity += str_replace(',', '', $actual['equity_total']);
@@ -2663,7 +2663,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -2697,25 +2697,25 @@ class Incubatee_graphs extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -2737,13 +2737,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -2758,13 +2758,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -2812,7 +2812,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 		
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualTeamHiring($where, $startDate, '', '1', '1');
 			#echo'<pre>';print_r($total_list);die;
             $categories[0] = 'Q1';
@@ -2967,7 +2967,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3000,25 +3000,25 @@ class Incubatee_graphs extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3040,13 +3040,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -3060,13 +3060,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -3107,7 +3107,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 		#echo'<pre>';print_r($master_list);die;
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualTeamHiring($where, $startDate, '', '1', '2');
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
@@ -3260,7 +3260,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3293,25 +3293,25 @@ class Incubatee_graphs extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3333,13 +3333,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -3353,13 +3353,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -3402,7 +3402,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 		
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualBoardMeeting($where, $startDate, '', '1',$g_sector);
 			/* echo'<pre>';print_r($where);
 			echo'<pre>';print_r($total_list);die; */
@@ -3560,7 +3560,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3593,25 +3593,25 @@ class Incubatee_graphs extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3634,13 +3634,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -3654,13 +3654,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -3710,7 +3710,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualMentorHours($where, $startDate, '', '1',$g_sector);
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
@@ -3821,7 +3821,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3852,25 +3852,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3895,13 +3895,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -3915,13 +3915,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -3989,7 +3989,7 @@ class Incubatee_graphs extends CI_Controller {
 
         foreach ($total_list as $tot) {
             if (!isset($ment_act[$tot['inv_id']][$tot['month']][$tot['assigned_to']])) {
-                if ($ftype != 1) {
+                if (php72_cmp($ftype) != 1) {
                     if (in_array($tot['month'], $q1_key)) {
                         if (isset($ment_act['q1'][$tot['assigned_to']])) {
                             $ment_actquat['q1'] = $ment_actquat['q1'];
@@ -4061,7 +4061,7 @@ class Incubatee_graphs extends CI_Controller {
 //        $target[3] = $fin_quarters['Q4'];
 //        $target[4] = $fin_quarters['Q1'] + $fin_quarters['Q2'] + $fin_quarters['Q3'] + $fin_quarters['Q4'];
 
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
             $categories[2] = 'Q3';
@@ -4143,7 +4143,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -4191,25 +4191,25 @@ class Incubatee_graphs extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -4235,7 +4235,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -4297,7 +4297,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -4337,7 +4337,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
 
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
@@ -4484,7 +4484,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -4560,7 +4560,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_month = "t1.need_by >= '$StartDate 00:00:00' and t1.need_by <= '$StopDate 23:59:59'";
         $search_actual = "t1.month_engaged >= '$StartDate 00:00:00' and t1.month_engaged <= '$StopDate 23:59:59'";
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $targetlist = $this->Mportfolio->getTargetTap($where, '', $search_month,$sector_id);
             $actuallist = $this->Mportfolio->getActualTap($where, $g_year, $search_actual,$sector_id);
 			
@@ -4655,7 +4655,7 @@ class Incubatee_graphs extends CI_Controller {
             }
         }
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $ac = 0;
             foreach ($categories as $cate) {
                 $target[$ac] = $tap_tarquat[$cate];
@@ -4700,7 +4700,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -4757,7 +4757,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_month = "t1.need_by >= '$StartDate 00:00:00' and t1.need_by <= '$StopDate 23:59:59' AND t1.financial_year=$g_year";
         $search_actual = "t1.need_by >= '$StartDate 00:00:00' and t1.need_by <= '$StopDate 23:59:59' AND t1.financial_year=$g_year";
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
 			#CR CHANGE
             $targetlist = $this->Mportfolio->getTargetPartnerships($where, '', $search_month,$g_year);
             $actuallist = $this->Mportfolio->getActualPartnerships($where, $g_year, $search_actual);
@@ -4855,7 +4855,7 @@ class Incubatee_graphs extends CI_Controller {
             }
         }
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $ac = 0;
             foreach ($categories as $cate) {
                 $target[$ac] = $tap_tarquat[$cate];
@@ -4900,7 +4900,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -4933,25 +4933,25 @@ class Incubatee_graphs extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -4973,13 +4973,13 @@ class Incubatee_graphs extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -4993,13 +4993,13 @@ class Incubatee_graphs extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -5041,7 +5041,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 		#echo '<pre>';print_r($master_list);die;
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualDpMeeting($where, $startDate, '', '1');
 			#echo '<pre>';print_r($where);
 			#echo '<pre>';print_r($total_list);die;
@@ -5198,7 +5198,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5255,25 +5255,25 @@ class Incubatee_graphs extends CI_Controller {
         }
         if ($g_year != '' || $g_quarter != '') {
             $g_getFrom_year = $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -5308,7 +5308,7 @@ class Incubatee_graphs extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
  
@@ -5339,7 +5339,7 @@ class Incubatee_graphs extends CI_Controller {
                 if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $value) {
                         if (in_array($value['month'], $q4_key)) {
-                            if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
+                            if (php72_cmp($value['month']) == 1 || php72_cmp($value['month']) == 2 || php72_cmp($value['month']) == 3) {
                                 $value['year'] = $value['year'] - 1;
                             }
                         } else {
@@ -5383,7 +5383,7 @@ class Incubatee_graphs extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year;
                             return ($var['year'] == $prev_split_yr);
                         }
@@ -5417,7 +5417,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 20) {
+        } else if (php72_cmp($type) == 20) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -5479,7 +5479,7 @@ class Incubatee_graphs extends CI_Controller {
                 if (php72_count($monthly_target) > 0) {
                     foreach ($monthly_target as $key => $value) {
                         if (php72_in_array($value['month'], $q4)) {
-                            if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
+                            if (php72_cmp($value['month']) == 1 || php72_cmp($value['month']) == 2 || php72_cmp($value['month']) == 3) {
                                 $value['year'] = $value['year'] - 1;
                             }
                         } else {
@@ -5524,7 +5524,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
                     if (php72_in_array($var['month'], $q4)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year;
                             return ($var['year'] == $prev_split_yr);
                         }
@@ -5582,7 +5582,7 @@ class Incubatee_graphs extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($seed_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($seed_target as $target) {
                         $value = $target['amount'];
                         if (in_array($target['month'], $q1_key)) {
@@ -5607,16 +5607,16 @@ class Incubatee_graphs extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -5643,17 +5643,17 @@ class Incubatee_graphs extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -5673,7 +5673,7 @@ class Incubatee_graphs extends CI_Controller {
             $seed_actual = $this->Mportfolio->getActualSeedFund($default_actual_where);
             $actual_month_value = array();
             if (php72_count($seed_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($seed_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['disburse_amount']);
@@ -5696,16 +5696,16 @@ class Incubatee_graphs extends CI_Controller {
                     $annual_acheive = $a1_val + $a2_val + $a3_val + $a4_val;
                     $hc_actual[4] = $annual_acheive;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -5784,23 +5784,23 @@ class Incubatee_graphs extends CI_Controller {
         array_push($fields, $column_name . ' as description');
         $actual_fields = implode(',', $fields);
 
-        if ($qtr != 5) {
-            if ($qtr == 1) {
+        if (php72_cmp($qtr) != 5) {
+            if (php72_cmp($qtr) == 1) {
                 $qtr_fields = array('q_one_desc', 'apr_desc', 'may_desc', 'jun_desc', 'created_at');
                 $month = array('4', '5', '6');
                 $data['qtr_loop'] = array('q_one_desc' => 0, 'apr_desc' => 4, 'may_desc' => 5, 'jun_desc' => 6);
                 $data['month_title'] = array(4 => 'Apr', 5 => 'May', 6 => 'Jun');
-            } else if ($qtr == 2) {
+            } else if (php72_cmp($qtr) == 2) {
                 $qtr_fields = array('q_two_desc', 'jul_desc', 'aug_desc', 'sep_desc', 'created_at');
                 $month = array('7', '8', '9');
                 $data['qtr_loop'] = array('q_two_desc' => 0, 'jul_desc' => 7, 'aug_desc' => 8, 'sep_desc' => 9);
                 $data['month_title'] = array(7 => 'Jul', 8 => 'Aug', 9 => 'Sep');
-            } else if ($qtr == 3) {
+            } else if (php72_cmp($qtr) == 3) {
                 $qtr_fields = array('q_three_desc', 'oct_desc', 'nov_desc', 'dec_desc', 'created_at');
                 $month = array('10', '11', '12');
                 $data['qtr_loop'] = array('q_three_desc' => 0, 'oct_desc' => 10, 'nov_desc' => 11, 'dec_desc' => 12);
                 $data['month_title'] = array(10 => 'Oct', 11 => 'Nov', 12 => 'Dec');
-            } else if ($qtr == 4) {
+            } else if (php72_cmp($qtr) == 4) {
                 $qtr_fields = array('q_four_desc', 'jan_desc', 'feb_desc', 'mar_desc', 'created_at');
                 $month = array('1', '2', '3');
                 $data['qtr_loop'] = array('q_four_desc' => 0, 'jan_desc' => 1, 'feb_desc' => 2, 'mar_desc' => 3);
@@ -5876,7 +5876,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5920,7 +5920,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -5934,25 +5934,25 @@ class Incubatee_graphs extends CI_Controller {
                 $monthly_actual = '';
                 $categories[$m] = $values;
                 $hc_target[$m] = 0;
-                if ($keys == 6) {
+                if (php72_cmp($keys) == 6) {
                     foreach ($monthly_target as $q1) {
                         $q1_tot += $q1['total_applications_q1'];
                     }
                     $hc_target[$m] = $q1_tot;
                 }
-                if ($keys == 9) {
+                if (php72_cmp($keys) == 9) {
                     foreach ($monthly_target as $q2) {
                         $q2_tot += $q2['total_applications_q2'];
                     }
                     $hc_target[$m] = $q2_tot;
                 }
-                if ($keys == 12) {
+                if (php72_cmp($keys) == 12) {
                     foreach ($monthly_target as $q3) {
                         $q3_tot += $q3['total_applications_q3'];
                     }
                     $hc_target[$m] = $q3_tot;
                 }
-                if ($keys == 3) {
+                if (php72_cmp($keys) == 3) {
                     foreach ($monthly_target as $q4) {
                         $q4_tot += $q4['total_applications_q4'];
                     }
@@ -5967,7 +5967,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6001,13 +6001,13 @@ class Incubatee_graphs extends CI_Controller {
 
                 $monthly_actual = $this->Sectorplan->companyApplicationCount($g_sector, '', $from_year, $keys);
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                 }
                 if ($monthly_actual != '') {
@@ -6070,7 +6070,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -6113,7 +6113,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6132,27 +6132,27 @@ class Incubatee_graphs extends CI_Controller {
                 $hc_target[$m] = 0;
                 $hc_actual[$m] = 0;
 
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
 
-                    if ($keys == 6) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_pard'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_pard'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_pard'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_pard'];
                         }
@@ -6172,26 +6172,26 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 2) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 2) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_iic'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_iic'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_iic'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_iic'];
                         }
@@ -6212,26 +6212,26 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 3) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 3) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_eic'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_eic'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_eic'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_eic'];
                         }
@@ -6256,7 +6256,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6277,11 +6277,11 @@ class Incubatee_graphs extends CI_Controller {
             $dilig_actquat['q4'] = 0;
 
             foreach ($monthly_target as $targs) {
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $nm = 'pard';
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $nm = 'iic';
-                } else if ($module == 3) {
+                } else if (php72_cmp($module) == 3) {
                     $nm = 'eic';
                 }
                 $dilig_tarqaut['q1'] += $targs['q1_' . $nm];
@@ -6297,16 +6297,16 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($month_arr as $keys => $values) {
                 $monthly_actual = '';
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                 }
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $pard_allcount = $this->Sectorplan->pard_allCount($g_sector, $from_year, $keys);
                     if (php72_count($pard_allcount) != 0) {
                         foreach ($pard_allcount as $pards) {
@@ -6320,7 +6320,7 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $dilig_actquat[$d] = $dilig_actquat[$d];
                     }
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $IIC_allCount = $this->Sectorplan->IIC_allCount($g_sector, $from_year, $keys);
 
                     if (php72_count($IIC_allCount) != 0) {
@@ -6335,7 +6335,7 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $dilig_actquat[$d] = $dilig_actquat[$d];
                     }
-                } else if ($module == 3) {
+                } else if (php72_cmp($module) == 3) {
                     $EIC_allcount = $this->Sectorplan->EIC_allcount($g_sector, $from_year, $keys);
                     if (php72_count($EIC_allcount) != 0) {
                         foreach ($EIC_allcount as $eics) {
@@ -6386,10 +6386,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['div_id'] = 'diligenceDiv_' . $id;
 
-        if ($module == 1) {
+        if (php72_cmp($module) == 1) {
             $data['yaxis'] = "No. of Deals at PA/RD";
             $data['text'] = 'No. of Deals at PA/RD';
-        } else if ($module == 2) {
+        } else if (php72_cmp($module) == 2) {
             $data['yaxis'] = "No. of Deals brought to IIC";
             $data['text'] = 'No. of Deals brought to IIC';
         } else {
@@ -6415,7 +6415,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -6459,7 +6459,7 @@ class Incubatee_graphs extends CI_Controller {
         $categories = $hc_target = $hc_actual = array();
 		
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6480,26 +6480,26 @@ class Incubatee_graphs extends CI_Controller {
                     $total_condition = "BN.sector IN($g_sector)";
                 }
 
-                if ($module == 1) {
-                    if ($keys == 6) {
+                if (php72_cmp($module) == 1) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_new_companies'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_new_companies'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_new_companies'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_new_companies'];
                         }
@@ -6517,26 +6517,26 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 2) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 2) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_companies_in_portfolio'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_companies_in_portfolio'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_companies_in_portfolio'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_companies_in_portfolio'];
                         }
@@ -6559,7 +6559,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6578,9 +6578,9 @@ class Incubatee_graphs extends CI_Controller {
             $selec_actquat['q4'] = 0;
 
             foreach ($monthly_target as $targs) {
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $nm = 'new_companies';
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $nm = 'companies_in_portfolio';
                 }
                 $selec_tarqaut['q1'] += $targs['q1_' . $nm];
@@ -6612,16 +6612,16 @@ class Incubatee_graphs extends CI_Controller {
 					#CR CHANGE
                 }
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                 }
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $cur_date = date('Y-m');
                     $filter_date = date('Y-m', strtotime($yr[1] . '-' . $keys));
                     if ($filter_date <= $cur_date) {
@@ -6631,13 +6631,13 @@ class Incubatee_graphs extends CI_Controller {
 						
                         if ($filter_date == $cur_date) {
                             $final_mn = $keys;
-                            if ($keys == 4 || $keys == 5 || $keys == 6) {
+                            if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                                 $final_qt = 0;
-                            } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                            } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                                 $final_qt = 1;
-                            } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                            } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                                 $final_qt = 2;
-                            } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                            } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                                 $final_qt = 3;
                             }
                         }
@@ -6657,20 +6657,20 @@ class Incubatee_graphs extends CI_Controller {
                         $selec_actquat1[$keys] = 0;
                         $selec_actquat1[$d] = $selec_actquat1[$d];
                     }
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $cur_date = date('Y-m');
                     $filter_date = date('Y-m', strtotime($yr[1] . '-' . $keys));
                     if ($filter_date <= $cur_date) {
                         $total_companies = $this->Sectorplan->getQuarterwiseTotalCompany($total_condition, $from_year, $keys);
                         if ($filter_date == $cur_date) {
                             $final_mn = $keys;
-                            if ($keys == 4 || $keys == 5 || $keys == 6) {
+                            if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                                 $final_qt = 0;
-                            } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                            } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                                 $final_qt = 1;
-                            } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                            } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                                 $final_qt = 2;
-                            } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                            } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                                 $final_qt = 3;
                             }
                         }
@@ -6713,7 +6713,7 @@ class Incubatee_graphs extends CI_Controller {
             // $hc_target[4] = $selec_tarqaut['q1'] + $selec_tarqaut['q2'] + $selec_tarqaut['q3'] + $selec_tarqaut['q4'];
 // print_r($selec_actquat1[q2]);
 // die;
-            if ($module == 2) {
+            if (php72_cmp($module) == 2) {
                 $hc_actual[0] = $selec_actquat1[6];
                 $hc_actual[1] = $selec_actquat1[9];
                 $hc_actual[2] = $selec_actquat1[12];
@@ -6748,10 +6748,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['div_id'] = 'selectionDiv_' . $id;
 
-        if ($module == 1) {
+        if (php72_cmp($module) == 1) {
             $data['yaxis'] = "No. of new companies";
             $data['text'] = 'No. of new companies';
-        } else if ($module == 2) {
+        } else if (php72_cmp($module) == 2) {
             $data['yaxis'] = "Total no. of companies in portfolio";
             $data['text'] = 'Total no. of companies in portfolio';
         }
@@ -6774,7 +6774,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -6817,7 +6817,7 @@ class Incubatee_graphs extends CI_Controller {
 
         $categories = $hc_target = $hc_actual = array();
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6826,9 +6826,9 @@ class Incubatee_graphs extends CI_Controller {
 
             $year_qry = $from_year;
 
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetGraduates($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetExits($month_where);
             }
             $m = 0;
@@ -6839,32 +6839,32 @@ class Incubatee_graphs extends CI_Controller {
                 $categories[$m] = $values;
                 $hc_target[$m] = 0;
 
-                if ($module == 1) {
-                    if ($keys == 6) {
+                if (php72_cmp($module) == 1) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_graduates'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_graduates'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_graduates'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_graduates'];
                         }
                         $hc_target[$m] = $q4_tot;
                     }
-                    if ($keys == 1 || $keys == 2 || $keys == 3) {
+                    if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                         $year_qry = $nxt_year;
                     }
 
@@ -6874,32 +6874,32 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 2) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 2) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_exits'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_exits'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_exits'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_exits'];
                         }
                         $hc_target[$m] = $q4_tot;
                     }
-                    if ($keys == 1 || $keys == 2 || $keys == 3) {
+                    if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                         $year_qry = $nxt_year;
                     }
 
@@ -6914,7 +6914,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -6922,9 +6922,9 @@ class Incubatee_graphs extends CI_Controller {
             $month_where = php72_implode(" and ", $search_month);
 
             $year_qry = $from_year;
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetGraduates($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetExits($month_where);
             }
 
@@ -6939,9 +6939,9 @@ class Incubatee_graphs extends CI_Controller {
             $grad_actquat['q4'] = 0;
 
             foreach ($monthly_target as $targs) {
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $nm = 'graduates';
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $nm = 'exits';
                 }
                 $grad_tarqaut['q1'] += $targs['q1_' . $nm];
@@ -6955,17 +6955,17 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($month_arr as $keys => $values) {
                 $monthly_actual = '';
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                     $year_qry = $nxt_year;
                 }
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $graduates_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 2);
                     if ($graduates_companies != '') {
                         $grad_actquat[$d] += php72_count($graduates_companies);
@@ -6973,7 +6973,7 @@ class Incubatee_graphs extends CI_Controller {
                         $grad_actquat[$d] += 0;
                     }
 					#echo'<pre>';print_r($graduates_companies);die;
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $exited_companies = $this->Sectorplan->getCompanies($g_sector, $year_qry, $keys, 3);
                     if ($exited_companies != '') {
                         $grad_actquat[$d] += php72_count($exited_companies);
@@ -7018,10 +7018,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['div_id'] = 'graduates_exitsDiv_' . $id;
 
-        if ($module == 1) {
+        if (php72_cmp($module) == 1) {
             $data['yaxis'] = "Graduates (Non-Financial)";
             $data['text'] = 'Graduates (Non-Financial)';
-        } else if ($module == 2) {
+        } else if (php72_cmp($module) == 2) {
             $data['yaxis'] = "Exits (With Equity)";
             $data['text'] = 'Exits (With Equity)';
         }
@@ -7044,7 +7044,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -7087,16 +7087,16 @@ class Incubatee_graphs extends CI_Controller {
 
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
             $month_where = php72_implode(" and ", $search_month);
 
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetRenewalagreement($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetNewagreement($month_where);
             }
             $m = 0;
@@ -7105,26 +7105,26 @@ class Incubatee_graphs extends CI_Controller {
                 $categories[$m] = $values;
                 $hc_target[$m] = 0;
 
-                if ($module == 1) {
-                    if ($keys == 6) {
+                if (php72_cmp($module) == 1) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_renewal_agreements'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_renewal_agreements'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_renewal_agreements'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_renewal_agreements'];
                         }
@@ -7135,7 +7135,7 @@ class Incubatee_graphs extends CI_Controller {
                     if ($renewalsum != '') {
 
                         foreach ($renewalsum as $renewdata) {
-                            if ($renewdata['renewalmonth'] == 1 || $renewdata['renewalmonth'] == 2 || $renewdata['renewalmonth'] == 3) {
+                            if (php72_cmp($renewdata['renewalmonth']) == 1 || php72_cmp($renewdata['renewalmonth']) == 2 || php72_cmp($renewdata['renewalmonth']) == 3) {
                                 $renewyear = $renewdata['renewalyear'] - 1;
                             } else {
                                 $renewyear = $renewdata['renewalyear'];
@@ -7149,26 +7149,26 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 2) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 2) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_new_agreements'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_new_agreements'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_new_agreements'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_new_agreements'];
                         }
@@ -7178,7 +7178,7 @@ class Incubatee_graphs extends CI_Controller {
                     $newsum = $this->Sectorplan->getSumnewagreement($g_sector);
                     if ($newsum != '') {
                         foreach ($newsum as $newdata) {
-                            if ($newdata['newagreemonth'] == 1 || $newdata['newagreemonth'] == 2 || $newdata['newagreemonth'] == 3) {
+                            if (php72_cmp($newdata['newagreemonth']) == 1 || php72_cmp($newdata['newagreemonth']) == 2 || php72_cmp($newdata['newagreemonth']) == 3) {
                                 $newagreeyear = $newdata['newagreeyear'] - 1;
                             } else {
                                 $newagreeyear = $newdata['newagreeyear'];
@@ -7195,7 +7195,7 @@ class Incubatee_graphs extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -7203,9 +7203,9 @@ class Incubatee_graphs extends CI_Controller {
             $month_where = php72_implode(" and ", $search_month);
 
 
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetRenewalagreement($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetNewagreement($month_where);
             }
 
@@ -7220,9 +7220,9 @@ class Incubatee_graphs extends CI_Controller {
             $fund_actquat['q4'] = 0;
 
             foreach ($monthly_target as $targs) {
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $nm = 'renewal_agreements';
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $nm = 'new_agreements';
                 }
                 $fund_tarqaut['q1'] += $targs['q1_' . $nm];
@@ -7236,21 +7236,21 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($month_arr as $keys => $values) {
                 $monthly_actual = '';
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                 }
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $renewalsum = $this->Sectorplan->getSumrenewalagreement($g_sector);
                     if ($renewalsum != '') {
 
                         foreach ($renewalsum as $renewdata) {
-                            if ($renewdata['renewalmonth'] == 1 || $renewdata['renewalmonth'] == 2 || $renewdata['renewalmonth'] == 3) {
+                            if (php72_cmp($renewdata['renewalmonth']) == 1 || php72_cmp($renewdata['renewalmonth']) == 2 || php72_cmp($renewdata['renewalmonth']) == 3) {
                                 $renewyear = $renewdata['renewalyear'] - 1;
                             } else {
                                 $renewyear = $renewdata['renewalyear'];
@@ -7264,11 +7264,11 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $fund_actquat[$d] = 0;
                     }
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $newsum = $this->Sectorplan->getSumnewagreement($g_sector);
                     if ($newsum != '') {
                         foreach ($newsum as $newdata) {
-                            if ($newdata['newagreemonth'] == 1 || $newdata['newagreemonth'] == 2 || $newdata['newagreemonth'] == 3) {
+                            if (php72_cmp($newdata['newagreemonth']) == 1 || php72_cmp($newdata['newagreemonth']) == 2 || php72_cmp($newdata['newagreemonth']) == 3) {
                                 $newagreeyear = $newdata['newagreeyear'] - 1;
                             } else {
                                 $newagreeyear = $newdata['newagreeyear'];
@@ -7321,10 +7321,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['div_id'] = 'fundraiseDiv_' . $id;
 
-        if ($module == 1) {
+        if (php72_cmp($module) == 1) {
             $data['yaxis'] = "Renewal Agreements";
             $data['text'] = 'Renewal Agreements';
-        } else if ($module == 2) {
+        } else if (php72_cmp($module) == 2) {
             $data['yaxis'] = "New Agreements";
             $data['text'] = 'New Agreements';
         }
@@ -7347,7 +7347,7 @@ class Incubatee_graphs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -7390,16 +7390,16 @@ class Incubatee_graphs extends CI_Controller {
 
         $categories = $hc_target = $hc_actual = array();
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
             $search_month[] = "t1.financial_year = $from_year";
             $month_where = php72_implode(" and ", $search_month);
 
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetEquity($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetConsultingengagement($month_where);
             }
             $m = 0;
@@ -7409,26 +7409,26 @@ class Incubatee_graphs extends CI_Controller {
                 $categories[$m] = $values;
                 $hc_target[$m] = 0;
 
-                if ($module == 1) {
-                    if ($keys == 6) {
+                if (php72_cmp($module) == 1) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_equity'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_equity'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_equity'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_equity'];
                         }
@@ -7441,26 +7441,26 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $hc_actual[$m] = 0;
                     }
-                } else if ($module == 2) {
-                    if ($keys == 6) {
+                } else if (php72_cmp($module) == 2) {
+                    if (php72_cmp($keys) == 6) {
                         foreach ($monthly_target as $q1) {
                             $q1_tot += $q1['q1_portfolioreturns'];
                         }
                         $hc_target[$m] = $q1_tot;
                     }
-                    if ($keys == 9) {
+                    if (php72_cmp($keys) == 9) {
                         foreach ($monthly_target as $q2) {
                             $q2_tot += $q2['q2_portfolioreturns'];
                         }
                         $hc_target[$m] = $q2_tot;
                     }
-                    if ($keys == 12) {
+                    if (php72_cmp($keys) == 12) {
                         foreach ($monthly_target as $q3) {
                             $q3_tot += $q3['q3_portfolioreturns'];
                         }
                         $hc_target[$m] = $q3_tot;
                     }
-                    if ($keys == 3) {
+                    if (php72_cmp($keys) == 3) {
                         foreach ($monthly_target as $q4) {
                             $q4_tot += $q4['q4_portfolioreturns'];
                         }
@@ -7478,7 +7478,7 @@ class Incubatee_graphs extends CI_Controller {
 
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($g_sector != '') {
                 $search_month[] = "t1.sector_id = '$g_sector'";
             }
@@ -7486,9 +7486,9 @@ class Incubatee_graphs extends CI_Controller {
             $month_where = php72_implode(" and ", $search_month);
 
 
-            if ($module == 1) {
+            if (php72_cmp($module) == 1) {
                 $monthly_target = $this->Sectorplan->getTargetEquity($month_where);
-            } else if ($module == 2) {
+            } else if (php72_cmp($module) == 2) {
                 $monthly_target = $this->Sectorplan->getTargetConsultingengagement($month_where);
             }
 
@@ -7503,9 +7503,9 @@ class Incubatee_graphs extends CI_Controller {
             $finan_actquat['q4'] = 0;
 
             foreach ($monthly_target as $targs) {
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $nm = 'equity';
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $nm = 'portfolioreturns';
                 }
                 $finan_tarqaut['q1'] += $targs['q1_' . $nm];
@@ -7519,16 +7519,16 @@ class Incubatee_graphs extends CI_Controller {
             foreach ($month_arr as $keys => $values) {
                 $monthly_actual = '';
 
-                if ($keys == 4 || $keys == 5 || $keys == 6) {
+                if (php72_cmp($keys) == 4 || php72_cmp($keys) == 5 || php72_cmp($keys) == 6) {
                     $d = 'q1';
-                } else if ($keys == 7 || $keys == 8 || $keys == 9) {
+                } else if (php72_cmp($keys) == 7 || php72_cmp($keys) == 8 || php72_cmp($keys) == 9) {
                     $d = 'q2';
-                } else if ($keys == 10 || $keys == 11 || $keys == 12) {
+                } else if (php72_cmp($keys) == 10 || php72_cmp($keys) == 11 || php72_cmp($keys) == 12) {
                     $d = 'q3';
-                } else if ($keys == 1 || $keys == 2 || $keys == 3) {
+                } else if (php72_cmp($keys) == 1 || php72_cmp($keys) == 2 || php72_cmp($keys) == 3) {
                     $d = 'q4';
                 }
-                if ($module == 1) {
+                if (php72_cmp($module) == 1) {
                     $equity_companies = $this->Sectorplan->getActualEquityCompanies($g_sector, $keys, $from_year);
 					#echo'<pre>';print_r($equity_companies);die;
                     if ($equity_companies != '') {
@@ -7536,7 +7536,7 @@ class Incubatee_graphs extends CI_Controller {
                     } else {
                         $finan_actquat[$d] += 0;
                     }
-                } else if ($module == 2) {
+                } else if (php72_cmp($module) == 2) {
                     $consulting_data = $this->Sectorplan->getActualConsultingengagement($g_sector, $keys, $from_year);
                     if ($consulting_data != '') {
                         $finan_actquat[$d] += $consulting_data[0]['consultingcount'];
@@ -7581,10 +7581,10 @@ class Incubatee_graphs extends CI_Controller {
 
         $data['div_id'] = 'financialDiv_' . $id;
 
-        if ($module == 1) {
+        if (php72_cmp($module) == 1) {
             $data['yaxis'] = "Equity Investments";
             $data['text'] = 'Equity Investments';
-        } else if ($module == 2) {
+        } else if (php72_cmp($module) == 2) {
             $data['yaxis'] = "Service Agreements";
             $data['text'] = 'Service Agreements';
         }

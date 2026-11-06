@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                             <ul class="milestone-links">
-                                                <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                     <li><a class="savemilestone" onclick="saveProj()">Save</a></li>
                                                 <?php } ?>
                                                 <li>
@@ -116,15 +116,15 @@
                                     <main class="page-content" id="pageContent">
                                         <div class="row dataconfig">
                                             <div class="col-xl-4 col-lg-4 col-md-4 col-12">
-                                                <?php if ($approvals[0]['project_approval'] == 2) { ?>
+                                                <?php if (php72_cmp($approvals[0]['project_approval']) == 2) { ?>
                                                     <h4 class="popup_milestone"><?= isset($get_milestone[0]['name']) ? $get_milestone[0]['name'] : 'Milestone 1'; ?></h4>
-                                                <?php } else if ($approvals[0]['project_approval'] == 3) { ?>
+                                                <?php } else if (php72_cmp($approvals[0]['project_approval']) == 3) { ?>
                                                     <h4 class="popup_milestone"><?= isset($get_milestone[0]['name']) ? $get_milestone[0]['name'] : 'Milestone 1'; ?></h4>
                                                 <?php } else { ?>
                                                     <h4 class="popup_milestone"><?= isset($get_milestone[0]['name']) ? $get_milestone[0]['name'] : 'Milestone 1'; ?></h4>
                                                 <?php } ?>
                                             </div>
-                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12 text-right">
                                                     <ul class="milestone-links">
                                                         <li> <a href="javascript:void(0)" class="edit-btnconfig" id="edit_milestone"><i class="fas fa-pencil-alt"></i> Edit Title</a></li>
@@ -154,7 +154,7 @@
                                                         ?>
                                                         <a class="nav-item nav-link active" id="task1" data-toggle="tab" href="#taskone" role="tab" aria-controls="nav-home" aria-selected="true" >Task 1</a>
                                                     <?php } ?>
-                                                    <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                    <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                         <a class="nav-item nav-link" href="javascript:void(0)" class="edit-btnconfig" id="addTask"><i class="fas fa-plus-circle"></i> Add New Task</a>
                                                     <?php } ?>
                                                 </div>
@@ -183,7 +183,7 @@
                                                                     <input class="form-control form-control-sm" maxlength="50" type="text" name="project_assigned" id="project_assigned" value="<?= isset($get_proj) && $get_proj[0]['assigned_to'] != '' ? $get_proj[0]['assigned_to'] : '' ?>">
                                                                 </div>
                                                             </div>
-                                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 text-right">
                                                                     <ul class="milestone-links">
                                                                         <li id="editProj">
@@ -282,7 +282,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <?php if ($this->session->userdata['sector_lead'] == '1' && $approvals[0]['project_approval'] == 2) { ?>
+                                        <?php if ($this->session->userdata['sector_lead'] == '1' && php72_cmp($approvals[0]['project_approval']) == 2) { ?>
                                             <!--                                            <div class="row">
                                                                                             <div class="col-12">
                                                                                                 <div class="approved-btn text-right">

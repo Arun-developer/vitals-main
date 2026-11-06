@@ -132,7 +132,7 @@
                                                 $s = 0;
 
                                                 foreach ($status as $stat) {
-                                                    if ($stat == 1) {
+                                                    if (php72_cmp($stat) == 1) {
                                                         $emp[$s] = $empl[$e];
                                                         $s++;
                                                     }
@@ -724,7 +724,7 @@
                                                $cio_display = '';
                                                $cio_show = '';
 
-                                               if ($inno_status == 3 || $inno_status == 9 || $inno_status == 7 || $inno_status != 6 || (isset($feed_back[0]['cio_status']) && $feed_back[0]['cio_status'] != '')) {
+                                               if (php72_cmp($inno_status) == 3 || php72_cmp($inno_status) == 9 || php72_cmp($inno_status) == 7 || php72_cmp($inno_status) != 6 || (isset($feed_back[0]['cio_status']) && $feed_back[0]['cio_status'] != '')) {
                                                 $cio_readonly = 'readonly="readonly"';
                                                 $cio_display = 'disabled="disabled"';
                                                 $cio_show = 'style="display:none"';
@@ -778,7 +778,7 @@
                                             <td><strong>Internal IC Comments</strong></td>
                                             <td>
                                                 <textarea rows="3" name="internal_comment" id="internal_comment" class="form-control" <?php
-                                                if ($inno_status == 7 || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
+                                                if (php72_cmp($inno_status) == 7 || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
                                                     echo 'readonly="readonly"';
                                                 }
                                                 ?>><?php echo (isset($feed_back[0]['internal_comment'])) ? $feed_back[0]['internal_comment'] : ''; ?></textarea>
@@ -811,7 +811,7 @@
 
 
                                     <?php
-                                } else if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || $feed_back[0]['internal_status'] != '') {
+                                } else if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && php72_cmp($inno_status) == 7) || $feed_back[0]['internal_status'] != '') {
                                     ?>
                                     <tr class="in-child">
                                         <td><strong>Internal IC Recommendation</strong></td>
@@ -838,7 +838,7 @@
                 </form>
                 <br>
                 <?php
-                if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && $inno_status == 7) || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
+                if ((!php72_in_array($this->session->userdata('emp_number'), $assigned_incharge) && php72_cmp($inno_status) == 7) || ($feed_back[0]['internal_status'] != '' && $inno_status != '12') || ($feed_back[0]['internal_status'] != '' && $innovation['stage'] == '12' && $inno_status == '12')) {
 					if($innovationID!='285455'){
 						$display_none = 'style = "display:none"';
 					}

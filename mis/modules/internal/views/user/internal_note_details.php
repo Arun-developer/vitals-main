@@ -45,7 +45,7 @@
                                             <?php } ?>
 
                                             <?php
-                                            if ($fin_Usercount == 1 && $internalNoteDetails[0]['RO_status'] == 'confirmed') {
+                                            if (php72_cmp($fin_Usercount) == 1 && $internalNoteDetails[0]['RO_status'] == 'confirmed') {
                                                 if ($internalNoteDetails[0]['finance_status'] != 'confirmed') {
                                                     ?>
                                                     <li class="edit"><a href="javascript:" data-toggle="modal" data-target="#fin_approveModel" class="master_aduser summaryEdit" id="approve_cls"><span>
@@ -68,7 +68,7 @@
     <?php } ?>
 
     <?php
-    if ($fin_Usercount == 1 && $internalNoteDetails[0]['finance_status'] == 'confirmed') {
+    if (php72_cmp($fin_Usercount) == 1 && $internalNoteDetails[0]['finance_status'] == 'confirmed') {
         ?>
         <li class="edit"><a href="javascript:" data-toggle="modal" data-target="#fin_amountModel" class="master_aduser summaryEdit"><span>
             <i class="far fa-check-circle"></i></span> Amount recovered</a></li>

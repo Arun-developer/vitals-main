@@ -204,17 +204,17 @@
                                                 <select class="form-control employeeInput" name="txt_gender" disabled>
                                                     <option value="">--Select--</option>
                                                     <option value="1" <?php
-                                                    if ($employee[0]['emp_gender'] == 1) {
+                                                    if (php72_cmp($employee[0]['emp_gender']) == 1) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Male</option>
                                                     <option value="2" <?php
-                                                    if ($employee[0]['emp_gender'] == 2) {
+                                                    if (php72_cmp($employee[0]['emp_gender']) == 2) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Female</option>
                                                     <option value="3" <?php
-                                                    if ($employee[0]['emp_gender'] == 3) {
+                                                    if (php72_cmp($employee[0]['emp_gender']) == 3) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Others</option>
@@ -236,22 +236,22 @@
                                                 <select class="form-control employeeInput" name="txt_marital" disabled>
                                                     <option value="">--Select--</option>
                                                     <option value="1" <?php
-                                                    if ($employee[0]['marital_status'] == 1) {
+                                                    if (php72_cmp($employee[0]['marital_status']) == 1) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Married</option>
                                                     <option value="2" <?php
-                                                    if ($employee[0]['marital_status'] == 2) {
+                                                    if (php72_cmp($employee[0]['marital_status']) == 2) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Unmarried</option>
                                                     <option value="3" <?php
-                                                    if ($employee[0]['marital_status'] == 3) {
+                                                    if (php72_cmp($employee[0]['marital_status']) == 3) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Divorced</option>
                                                     <option value="4" <?php
-                                                    if ($employee[0]['marital_status'] == 4) {
+                                                    if (php72_cmp($employee[0]['marital_status']) == 4) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Others</option>
@@ -297,27 +297,27 @@
                                                 <select class="form-control employeeInput" name="txt_hiring" disabled>
                                                     <option value="">--Select--</option>
                                                     <option value="1" <?php
-                                                    if ($employee[0]['hiring_source'] == 1) {
+                                                    if (php72_cmp($employee[0]['hiring_source']) == 1) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Facebook</option>
                                                     <option value="2" <?php
-                                                    if ($employee[0]['hiring_source'] == 2) {
+                                                    if (php72_cmp($employee[0]['hiring_source']) == 2) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Google</option>
                                                     <option value="3" <?php
-                                                    if ($employee[0]['hiring_source'] == 3) {
+                                                    if (php72_cmp($employee[0]['hiring_source']) == 3) {
                                                         echo 'selected';
                                                     }
                                                     ?>>LinkedIn</option>
                                                     <option value="4" <?php
-                                                    if ($employee[0]['hiring_source'] == 5) {
+                                                    if (php72_cmp($employee[0]['hiring_source']) == 5) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Referral</option>
                                                     <option value="5" <?php
-                                                    if ($employee[0]['hiring_source'] == 6) {
+                                                    if (php72_cmp($employee[0]['hiring_source']) == 6) {
                                                         echo 'selected';
                                                     }
                                                     ?>>Others</option>

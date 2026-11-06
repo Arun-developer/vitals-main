@@ -97,7 +97,7 @@ class Document_system extends CI_Controller
     public function chkkeyword($key, $userid, $counter, $loop = 0)
     {
         $docdetails = $this->Mdms->getKEYWordList($key, $userid, $counter);
-        if (empty($docdetails) && $loop != 6) {
+        if (empty($docdetails) && php72_cmp($loop) != 6) {
             sleep(2);
             ++$loop;
             $this->chkkeyword($key, $userid, $counter, $loop);

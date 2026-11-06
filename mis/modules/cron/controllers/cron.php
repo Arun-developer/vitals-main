@@ -107,7 +107,7 @@ class Cron extends CI_Controller {
 				$from = '';
 				$to = !empty($userData['official_email']) ? $userData['official_email'] : $userData['personal_email'];
 
-				if ($yearInterval == 1) {
+				if (php72_cmp($yearInterval) == 1) {
 					// 1-Year Milestone
 					$messageType = 'Eligible for Earned Leave Year';
 					$placeholders = ['#username#', '#content#', '#month#', '#completionData#', '#year#'];
@@ -120,7 +120,7 @@ class Cron extends CI_Controller {
 					];
 					$this->sendTravelRequestMail($from, $to, $messageType, $placeholders, $replacements);
 
-				} elseif ($yearInterval == 3) {
+				} elseif (php72_cmp($yearInterval) == 3) {
 					// 3-Year Milestone
 					$messageType = 'Eligible for Earned Leave Year';
 					$placeholders = ['#username#', '#content#', '#month#', '#completionData#', '#year#'];
@@ -133,7 +133,7 @@ class Cron extends CI_Controller {
 					];
 					$this->sendTravelRequestMail($from, $to, $messageType, $placeholders, $replacements);
 
-				} elseif ($yearInterval == 5) { 
+				} elseif (php72_cmp($yearInterval) == 5) { 
 					// 5-Year Milestone
 					$messageType = 'Eligible for Earned Leave Year';
 					$placeholders = ['#username#', '#content#', '#month#', '#completionData#', '#year#'];

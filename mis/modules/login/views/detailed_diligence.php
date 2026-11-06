@@ -78,7 +78,7 @@
  <?php 
  $this->load->model('muser');
  $status = $this->Muser->geticstatus($id);
- if($status[0]['ic_status'] == 1){ ?> 
+ if(php72_cmp($status[0]['ic_status']) == 1){ ?> 
  <div class="icon-box">
      <div class="icon">
        <img src="<?=base_url();?>source/images/detailed-assessment.png" alt="innovation" /></div>

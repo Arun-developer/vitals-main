@@ -698,7 +698,7 @@ $requestId = $this->uri->segment(4);
                                                     <label>Donor</label>
 
                                                     <p><?php
-                                                        if ($row["donor"] == 0) {
+                                                        if (php72_cmp($row["donor"]) == 0) {
                                                             echo $row["other_donor"];
                                                         } else {
                                                             $condition = array('master_id' => $row["donor"]);
@@ -712,7 +712,7 @@ $requestId = $this->uri->segment(4);
                                                 <div class="display-flex">
                                                     <label>Budget Head</label>
                                                     <p><?php
-                                                        if ($row["budget_head"] == 0) {
+                                                        if (php72_cmp($row["budget_head"]) == 0) {
                                                             echo $row["other_budget_head"];
                                                         } else {
                                                             $condition = array('master_id' => $row["budget_head"]);
@@ -730,7 +730,7 @@ $requestId = $this->uri->segment(4);
                                                     <label>Line Item</label>
 
                                                     <p><?php
-                                                        if ($row["line_item"] == 0) {
+                                                        if (php72_cmp($row["line_item"]) == 0) {
                                                             echo $row["other_line_item"];
                                                         } else {
                                                             $condition = array('master_id' => $row["line_item"]);
@@ -744,7 +744,7 @@ $requestId = $this->uri->segment(4);
                                                 <div class="display-flex">
                                                     <label>Sub-line Item</label>
                                                     <p><?php
-                                                        if ($row["cost_centre"] == 0) {
+                                                        if (php72_cmp($row["cost_centre"]) == 0) {
                                                             echo $row["other_cost_centre"];
                                                         } else {
                                                             $condition = array('master_id' => $row["cost_centre"]);

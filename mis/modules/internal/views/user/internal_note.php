@@ -44,13 +44,13 @@ if ($type == 'confirmed' || $type == 'cancelled' || $type == 'defered') {
                 <div>
                     <div class="tab-slider--navform">
                         <ul class="tab-slider--tabsform">
-                            <li class="tab-slider--triggerform <?php if ($type == 'pending' && $section != 'rolist' && $section != 'finlist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/internal_notes/pending'; ?>">My Pending Notes <?php echo isset($in_appcount) && $in_appcount != 0 ? '(' . $in_appcount . ')' : ''; ?></a></li>
+                            <li class="tab-slider--triggerform <?php if ($type == 'pending' && $section != 'rolist' && $section != 'finlist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/internal_notes/pending'; ?>">My Pending Notes <?php echo isset($in_appcount) && php72_cmp($in_appcount) != 0 ? '(' . $in_appcount . ')' : ''; ?></a></li>
                             <li class="tab-slider--triggerform <?php if ($main_menu == true) echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/internal_notes/confirmed'; ?>">All My Internal Notes</a></li>
                             <?php if ($ro_Usercount == '1') { ?>
-                                <li class="tab-slider--triggerform <?php if ($section == 'rolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/internal_notes/pending/rolist'; ?>">Approve As RO <?php echo isset($in_rocount) && $in_rocount != 0 ? '(' . $in_rocount . ')' : ''; ?></a></li>
+                                <li class="tab-slider--triggerform <?php if ($section == 'rolist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/internal_notes/pending/rolist'; ?>">Approve As RO <?php echo isset($in_rocount) && php72_cmp($in_rocount) != 0 ? '(' . $in_rocount . ')' : ''; ?></a></li>
                             <?php } ?>
                             <?php if ($fin_Usercount == '1') { ?>
-                                <li class="tab-slider--triggerform <?php if ($section == 'finlist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/finance_list'; ?>">Approve As Finance <?php echo isset($fin_count) && $fin_count != 0 ? '(' . $fin_count . ')' : ''; ?></a></li>
+                                <li class="tab-slider--triggerform <?php if ($section == 'finlist') echo "active"; ?>"><a  href="<?php echo base_url() . 'index.php/internal/finance_list'; ?>">Approve As Finance <?php echo isset($fin_count) && php72_cmp($fin_count) != 0 ? '(' . $fin_count . ')' : ''; ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>

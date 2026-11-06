@@ -168,7 +168,7 @@ for($i=0;$i<php72_count($yearmeeting);$i++)
 {
 	$tmdata['count'] .= '<td>'.$yearmeeting[$i][0]['id'].'</td>';
 }
-if($tmdata['count'] >= 4)
+if(php72_cmp($tmdata['count']) >= 4)
 {
 echo '<tr><td colspan="8"><h2 align="left"  style="color:green !important">Board Meeting Report</h2></td></tr>';
 echo '<tr>';
@@ -197,7 +197,7 @@ for($i=0;$i<php72_count($yearfellow);$i++)
 	$tfdata['accept'] .= '<td>'.$yearfellow[$i][0]['accept'].'</td>';
 	$tfdata['reject'] .= '<td>'.$yearfellow[$i][0]['reject'].'</td>';
 }
-if($tfdata['accept'] >= 1 )
+if(php72_cmp($tfdata['accept']) >= 1 )
 {
 echo '<tr><td colspan="8"><h2 align="left" style="color:green" title="Successfully Completed">FellowShip Report</h2></td></tr>';
 echo '<tr>';
@@ -230,7 +230,7 @@ for($i=0;$i<php72_count($yearmedia);$i++)
 	$tmdata['hours'] .= '<td>'.$yearmedia[$i][0]['mentorhours'].'</td>';
 	$tmdata['money'] .= '<td>'.$yearmedia[$i][0]['mentormoney'].'</td>';
 }
-if($tmdata['mentormoney'] > 0)
+if(php72_cmp($tmdata['mentormoney']) > 0)
 {
 echo '<tr><td colspan="8"><h2 align="left" title="successfully completed" style="color:green !important">Mentor Report</h2></td></tr>';
 echo '<tr>';

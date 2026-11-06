@@ -50,18 +50,18 @@ class Cron extends CI_Controller {
                     $email = 'apply@villgro.org';
                     $it = 'it@villgro.org';
                 }
-                if ($days == 11) {
+                if (php72_cmp($days) == 11) {
                     $msg = "<p>You have not submitted your application form for the " . $name . " Incubation program in the last 10 days. Applications will need to be submitted within 3 weeks of registering. To access your application form login on <a href=" . $url . ">" . $url . "</a> Please complete and submit your application at the earliest.</p>
                     <p>Please contact us at " . $email . " if you have any questions regarding the Incubation program. Or email us at " . $it . " for technical queries. </p>";
                     $sub = $name . " " . "Incubation Application form - Submission Reminder";
                     $this->mail($inv['applicant_name'], $inv['email'], $inv['inv_no'], $msg, $sub, $partner);
-                } else if ($days == 21) {
+                } else if (php72_cmp($days) == 21) {
                     $msg = "<p>You have not submitted your application form for the " . $name . " Incubation program in the last 3 weeks. Your application will be purged from the system within the next 24 hours. Following this you will need to re-register if you are still interested in applying to the incubation program.</p>
                     <p>Please contact us at " . $email . " if you have any questions regarding the Incubation program. Or email us at " . $it . " for technical queries. </p>
                     <p>You can access your application at <a href=" . $url . ">" . $url . "</a></p>";
                     $sub = $name . " " . "Incubation Application form - Final Reminder";
                     $this->mail($inv['applicant_name'], $inv['email'], $inv['inv_no'], $msg, $sub, $partner);
-                } else if ($days == 22) {
+                } else if (php72_cmp($days) == 22) {
                     $result = $this->inv_status_update($inv['inv_no'], $inv['id']);
                 }
             }

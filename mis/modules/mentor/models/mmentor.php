@@ -198,11 +198,11 @@ class Mmentor extends CI_Model
     public function calculateCostperhour($salary, $days, $mentorhour)
     {
 
-        if ($salary != 0) {
+        if (php72_cmp($salary) != 0) {
 
             $perdaysalary = ($salary) / ($days);
 
-            if ($perdaysalary != 0) {
+            if (php72_cmp($perdaysalary) != 0) {
 
                 $perhoursalary = $perdaysalary / 8;
 

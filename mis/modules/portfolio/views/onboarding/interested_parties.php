@@ -165,7 +165,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
     </div>
 </div>
 
-<?php if ($this->session->userdata('interest') == 1 && $app_plan[0]['innovation'] == 0) { ?>
+<?php if (php72_cmp($this->session->userdata('interest')) == 1 && php72_cmp($app_plan[0]['innovation']) == 0) { ?>
     <div class="modal" id="exampleModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content data_congifpopup">

@@ -296,7 +296,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                                                                                                         ?></td>
                                                                                                                                                         <td><?= $lang[$row['gender']]; ?></td>
                                                                                                                                                     </tr>
-                                                                                                                                                    <?php if ($row['application_type'] == 2) { ?>
+                                                                                                                                                    <?php if (php72_cmp($row['application_type']) == 2) { ?>
                                                                                                                                                         <tr class="odd">
                                                                                                                                                             <td><?php
                                                                                                                                                             if (isset($lang['what_is_your_enterprise_registered_as']) && $lang['what_is_your_enterprise_registered_as'] != '') {
@@ -352,7 +352,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 </td>
 </tr>
 
-<?php if ($row['application_type'] == 2) { ?>
+<?php if (php72_cmp($row['application_type']) == 2) { ?>
     <tr class="even">
         <td><?php
         if (isset($lang['components']) && $lang['components'] != '') {
@@ -615,7 +615,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                 $subsectorName = Mincharge::getSubsectorName($pitch_org[0]['sub_sector']);
                                 ?>
                                 <?php
-                                if ($row['application_type'] != 2) {
+                                if (php72_cmp($row['application_type']) != 2) {
                                     if (@$pitch_info[0]['ent_type'] == 'profit') {
                                         $ent_type = 'For-profit Organization';
                                     } else {
@@ -761,7 +761,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                     ?></td>
                                 </tr>
 
-                                <?php if ($row['application_type'] != 2) { ?>
+                                <?php if (php72_cmp($row['application_type']) != 2) { ?>
                                     <tr class="even">
                                         <td width="30%" style="border-right:thick solid #fff;"><?php
                                         if (isset($lang['sub_sector']) && $lang['sub_sector'] != '') {
@@ -994,7 +994,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 
 
     <?php
-    if ($row['application_type'] != 2) {
+    if (php72_cmp($row['application_type']) != 2) {
         if (@$pitch_org[0]['patents'] == '1') {
             $patents = $lang['yes'];
         } else {
@@ -1004,7 +1004,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 
     <?php } ?>
 
-    <?php if ($row['application_type'] != 2) { ?>
+    <?php if (php72_cmp($row['application_type']) != 2) { ?>
                                                                                     <!--  <tr class="odd">
                                                                                           <td width="30%" style="border-right:thick solid #fff;">Have you won a prize, recognition, award for your incubatee? If yes, please mention it.</td>
                                                                                           <td width="60%"><?php echo nl2br(@$pitch_org[0]['awards_hi']); ?></td>
@@ -1197,7 +1197,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                                         ?></td>
                                                                                     </tr>
                                                                                     <?php
-                                                                                    if ($row['application_type'] == 2) {
+                                                                                    if (php72_cmp($row['application_type']) == 2) {
                                                                                         $doc_path = host_url() . 'poweringlivelihoods/';
                                                                                     } else {
                                                                                         $doc_path = host_url() . 'pitchform/';
@@ -1282,7 +1282,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 
                                                             <h1 class="text-left reduce_space">Comments Log </h1>
                                                             <?php
-                                                            if ($this->session->userdata('independent_shortlist') == 1 && $this->session->userdata('role_id') == 4) {
+                                                            if (php72_cmp($this->session->userdata('independent_shortlist')) == 1 && php72_cmp($this->session->userdata('role_id')) == 4) {
                                                                 ?>
                                                                 <form id="comments_form" name="comments_form" enctype="multipart/form-data" action="<?php echo site_url('scouting/saveshortlist_comments'); ?>" method="post">
                                                                     <div class="row" style="padding: 10px 10px">
@@ -1323,15 +1323,15 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                         foreach ($shortlist_comment as $commentlist) {
 
                                                                             $emp_name = $this->Minnovation->getUsername($commentlist['created_by']);
-                                                                            if ($commentlist['application_status'] == 12) {
+                                                                            if (php72_cmp($commentlist['application_status']) == 12) {
                                                                                 $app_status = 'Open';
-                                                                            } else if ($commentlist['application_status'] == 3) {
+                                                                            } else if (php72_cmp($commentlist['application_status']) == 3) {
                                                                                 $app_status = 'Closed';
-                                                                            } else if ($commentlist['application_status'] == 2) {
+                                                                            } else if (php72_cmp($commentlist['application_status']) == 2) {
                                                                                 $app_status = 'On Hold';
-                                                                            } else if ($commentlist['application_status'] == 25) {
+                                                                            } else if (php72_cmp($commentlist['application_status']) == 25) {
                                                                                 $app_status = 'Shortlisted';
-                                                                            } else if ($commentlist['application_status'] == 26) {
+                                                                            } else if (php72_cmp($commentlist['application_status']) == 26) {
                                                                                 $app_status = 'Selected';
                                                                             }
                                                                             ?>

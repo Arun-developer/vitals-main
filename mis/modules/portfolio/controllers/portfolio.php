@@ -177,7 +177,7 @@ class Portfolio extends CI_Controller {
 
 //        if ($this->session->userdata['user_type'] == 'admin') { 
   	$emp_id = $option['employee_id'] = (int) $this->session->userdata['emp_number'];
-  	if ($this->session->userdata['last_log_view'] == 1) {
+  	if (php72_cmp($this->session->userdata['last_log_view']) == 1) {
   		$get_last_log = $this->Mportfolio->getDetails('user_login_history', $option);
   		$data['last_logtime'] = $get_last_log[1]['last_login'];
   	}
@@ -213,7 +213,7 @@ class Portfolio extends CI_Controller {
 
   		if ($data['fin_year'][0]['fin_year'] != '') {
   			foreach ($data['fin_year'] as $fy) {
-  				if ($fy['status'] == 1) {
+  				if (php72_cmp($fy['status']) == 1) {
   					$f_year = $fy['fin_year'];
   				}
   			}
@@ -329,10 +329,10 @@ class Portfolio extends CI_Controller {
             // print_r($exit_companies);
   		foreach ($exit_companies as $company) {
   			$comp_yr = $company['exit_year'];
-  			if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
+  			if (php72_cmp($company['exit_month']) == 01 || php72_cmp($company['exit_month']) == 02 || php72_cmp($company['exit_month']) == 03) {
   				$comp_yr = $company['exit_year'] - 1;
   			}
-  			if ($company['company_status'] == 3 || $company['company_status'] == 2) {
+  			if (php72_cmp($company['company_status']) == 3 || php72_cmp($company['company_status']) == 2) {
   				if ($comp_yr == '0000' || ($f_year <= $comp_yr)) {
   					$ext_count += 1;
   				}
@@ -348,7 +348,7 @@ class Portfolio extends CI_Controller {
   		$actualMonth = $this->actual_month();
   		$arr = php72_array_search($cur_month, $getmonth);
 
-  		for ($i = ($arr - 1); $i >= 0; $i--) {
+  		for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
   			$monthName[] = $getmonth[$i];
   		}
   		$pends_innov = array();
@@ -362,7 +362,7 @@ class Portfolio extends CI_Controller {
 
   			foreach ($pends as $allpends => $pendval) {
   				if ($tables == 'plan_vif_funding') {
-  					if ($pendval == 0) {
+  					if (php72_cmp($pendval) == 0) {
   						$pends_innov[] = $allpends;
   					}
   				} else {
@@ -423,10 +423,10 @@ class Portfolio extends CI_Controller {
   		$inc_year = date('Y');
   		foreach ($listing1 as $lists) {
   			$comp_yr = $lists['exit_year'];
-  			if ($lists['exit_month'] == 01 || $lists['exit_month'] == 02 || $lists['exit_month'] == 03) {
+  			if (php72_cmp($lists['exit_month']) == 01 || php72_cmp($lists['exit_month']) == 02 || php72_cmp($lists['exit_month']) == 03) {
   				$comp_yr = $lists['exit_year'] - 1;
   			}
-  			if ($lists['company_status'] == 3 || $lists['company_status'] == 2) {
+  			if (php72_cmp($lists['company_status']) == 3 || php72_cmp($lists['company_status']) == 2) {
 
   				if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
   					$config_calc += 1;
@@ -487,10 +487,10 @@ class Portfolio extends CI_Controller {
   				$pending_calc = 0;
   				foreach ($pending_listing as $plists) {
   					$pcomp_yr = $plists['exit_year'];
-  					if ($plists['exit_month'] == 01 || $plists['exit_month'] == 02 || $plists['exit_month'] == 03) {
+  					if (php72_cmp($plists['exit_month']) == 01 || php72_cmp($plists['exit_month']) == 02 || php72_cmp($plists['exit_month']) == 03) {
   						$pcomp_yr = $plists['exit_year'] - 1;
   					}
-  					if ($plists['company_status'] == 3 || $plists['company_status'] == 2) {
+  					if (php72_cmp($plists['company_status']) == 3 || php72_cmp($plists['company_status']) == 2) {
 
   						if ($pcomp_yr == '0000' || ($inc_year <= $pcomp_yr)) {
   							$pending_calc += 1;
@@ -556,7 +556,7 @@ class Portfolio extends CI_Controller {
 //        if ($this->session->userdata['user_type'] == 'admin') {
   	$emp_id = $option['employee_id'] = (int) $this->session->userdata['emp_number'];
 	
-  	if ($this->session->userdata['last_log_view'] == 1) {
+  	if (php72_cmp($this->session->userdata['last_log_view']) == 1) {
   		$get_last_log = $this->Mportfolio->getDetails('user_login_history', $option);
   		$data['last_logtime'] = $get_last_log[1]['last_login'];
   	}
@@ -592,7 +592,7 @@ class Portfolio extends CI_Controller {
 
   		if ($data['fin_year'][0]['fin_year'] != '') {
   			foreach ($data['fin_year'] as $fy) {
-  				if ($fy['status'] == 1) {
+  				if (php72_cmp($fy['status']) == 1) {
   					$f_year = $fy['fin_year'];
   				}
   			}
@@ -706,10 +706,10 @@ class Portfolio extends CI_Controller {
             // print_r($exit_companies);
   		foreach ($exit_companies as $company) {
   			$comp_yr = $company['exit_year'];
-  			if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
+  			if (php72_cmp($company['exit_month']) == 01 || php72_cmp($company['exit_month']) == 02 || php72_cmp($company['exit_month']) == 03) {
   				$comp_yr = $company['exit_year'] - 1;
   			}
-  			if ($company['company_status'] == 3 || $company['company_status'] == 2) {
+  			if (php72_cmp($company['company_status']) == 3 || php72_cmp($company['company_status']) == 2) {
   				if ($comp_yr == '0000' || ($f_year <= $comp_yr)) {
   					$ext_count += 1;
   				}
@@ -725,7 +725,7 @@ class Portfolio extends CI_Controller {
   		$actualMonth = $this->actual_month();
   		$arr = php72_array_search($cur_month, $getmonth);
 
-  		for ($i = ($arr - 1); $i >= 0; $i--) {
+  		for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
   			$monthName[] = $getmonth[$i];
   		}
   		$pends_innov = array();
@@ -739,7 +739,7 @@ class Portfolio extends CI_Controller {
 
   			foreach ($pends as $allpends => $pendval) {
   				if ($tables == 'plan_vif_funding') {
-  					if ($pendval == 0) {
+  					if (php72_cmp($pendval) == 0) {
   						$pends_innov[] = $allpends;
   					}
   				} else {
@@ -800,10 +800,10 @@ class Portfolio extends CI_Controller {
   		$inc_year = date('Y');
   		foreach ($listing1 as $lists) {
   			$comp_yr = $lists['exit_year'];
-  			if ($lists['exit_month'] == 01 || $lists['exit_month'] == 02 || $lists['exit_month'] == 03) {
+  			if (php72_cmp($lists['exit_month']) == 01 || php72_cmp($lists['exit_month']) == 02 || php72_cmp($lists['exit_month']) == 03) {
   				$comp_yr = $lists['exit_year'] - 1;
   			}
-  			if ($lists['company_status'] == 3 || $lists['company_status'] == 2) {
+  			if (php72_cmp($lists['company_status']) == 3 || php72_cmp($lists['company_status']) == 2) {
 
   				if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
   					$config_calc += 1;
@@ -864,10 +864,10 @@ class Portfolio extends CI_Controller {
   				$pending_calc = 0;
   				foreach ($pending_listing as $plists) {
   					$pcomp_yr = $plists['exit_year'];
-  					if ($plists['exit_month'] == 01 || $plists['exit_month'] == 02 || $plists['exit_month'] == 03) {
+  					if (php72_cmp($plists['exit_month']) == 01 || php72_cmp($plists['exit_month']) == 02 || php72_cmp($plists['exit_month']) == 03) {
   						$pcomp_yr = $plists['exit_year'] - 1;
   					}
-  					if ($plists['company_status'] == 3 || $plists['company_status'] == 2) {
+  					if (php72_cmp($plists['company_status']) == 3 || php72_cmp($plists['company_status']) == 2) {
 
   						if ($pcomp_yr == '0000' || ($inc_year <= $pcomp_yr)) {
   							$pending_calc += 1;
@@ -928,7 +928,7 @@ class Portfolio extends CI_Controller {
   public function dashboard_new() {
 //        if ($this->session->userdata['user_type'] == 'admin') {
   	$emp_id = $option['employee_id'] = (int) $this->session->userdata['emp_number'];
-  	if ($this->session->userdata['last_log_view'] == 1) {
+  	if (php72_cmp($this->session->userdata['last_log_view']) == 1) {
   		$get_last_log = $this->Mportfolio->getDetails('user_login_history', $option);
   		$data['last_logtime'] = $get_last_log[1]['last_login'];
   	}
@@ -1271,7 +1271,7 @@ class Portfolio extends CI_Controller {
   	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
   	if ($data['fin_year'][0]['fin_year'] != '') {
   		foreach ($data['fin_year'] as $fy) {
-  			if ($fy['status'] == 1) {
+  			if (php72_cmp($fy['status']) == 1) {
   				$f_year = $fy['fin_year'];
   			}
   		}
@@ -1284,7 +1284,7 @@ class Portfolio extends CI_Controller {
   	$actualMonth = $this->actual_month();
   	$arr = php72_array_search($cur_month, $getmonth);
 
-  	for ($i = ($arr - 1); $i >= 0; $i--) {
+  	for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
   		$monthName[] = $getmonth[$i];
   	}
   	$pends_innov = array();
@@ -1349,7 +1349,7 @@ class Portfolio extends CI_Controller {
 
   	if ($data['fin_year'][0]['fin_year'] != '') {
   		foreach ($data['fin_year'] as $fy) {
-  			if ($fy['status'] == 1) {
+  			if (php72_cmp($fy['status']) == 1) {
   				$f_year = $fy['fin_year'];
   			}
   		}
@@ -1367,7 +1367,7 @@ class Portfolio extends CI_Controller {
   	$actualMonth = $this->actual_month();
   	$arr = php72_array_search($cur_month, $getmonth);
 
-  	for ($i = ($arr - 1); $i >= 0; $i--) {
+  	for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
   		$monthName[] = $getmonth[$i];
   	}
 
@@ -1384,7 +1384,7 @@ class Portfolio extends CI_Controller {
 
   		foreach ($pends as $allpends => $pendval) {
   			if ($tables == 'plan_vif_funding') {
-  				if ($pendval == 0) {
+  				if (php72_cmp($pendval) == 0) {
   					$pends_innov[] = $allpends;
   				}
   			} else {
@@ -1453,10 +1453,10 @@ class Portfolio extends CI_Controller {
   	foreach ($query as $row) {
 
   		$comp_yr = $row['exit_year'];
-  		if ($row['exit_month'] == 01 || $row['exit_month'] == 02 || $row['exit_month'] == 03) {
+  		if (php72_cmp($row['exit_month']) == 01 || php72_cmp($row['exit_month']) == 02 || php72_cmp($row['exit_month']) == 03) {
   			$comp_yr = $row['exit_year'] - 1;
   		}
-  		if ($row['company_status'] == 3 || $row['company_status'] == 2) {
+  		if (php72_cmp($row['company_status']) == 3 || php72_cmp($row['company_status']) == 2) {
 
   			if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 
@@ -1672,10 +1672,10 @@ class Portfolio extends CI_Controller {
   	foreach ($query as $row) {
 
   		$comp_yr = $row['exit_year'];
-  		if ($row['exit_month'] == 01 || $row['exit_month'] == 02 || $row['exit_month'] == 03) {
+  		if (php72_cmp($row['exit_month']) == 01 || php72_cmp($row['exit_month']) == 02 || php72_cmp($row['exit_month']) == 03) {
   			$comp_yr = $row['exit_year'] - 1;
   		}
-  		if ($row['company_status'] == 3 || $row['company_status'] == 2) {
+  		if (php72_cmp($row['company_status']) == 3 || php72_cmp($row['company_status']) == 2) {
 
   			if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 
@@ -1700,7 +1700,7 @@ class Portfolio extends CI_Controller {
   				$status = $this->Minnovation->getInnvationStatus();
   				$nestedData[] = $arr_stage[$row['stage']];
 
-  				if ($row['config_approval'] == 3) {
+  				if (php72_cmp($row['config_approval']) == 3) {
   					$nestedData[] = '<span>Done</span><a href="' . base_url() . 'index.php/portfolio/product/' . $row['copy_id'] . '" class="text-success"><i class="fas fa-check-circle"></i></a>';
   				} else {
   					$nestedData[] = '<span>Pending</span><a href="' . base_url() . 'index.php/portfolio/product/' . $row['copy_id'] . '" class="pend-inputlink"><i class="fas fa-long-arrow-alt-right"></i></a>';
@@ -1736,7 +1736,7 @@ class Portfolio extends CI_Controller {
   			$status = $this->Minnovation->getInnvationStatus();
   			$nestedData[] = $arr_stage[$row['stage']];
 
-  			if ($row['config_approval'] == 3) {
+  			if (php72_cmp($row['config_approval']) == 3) {
   				$nestedData[] = '<span>Done</span><a href="' . base_url() . 'index.php/portfolio/product/' . $row['copy_id'] . '" class="text-success"><i class="fas fa-check-circle"></i></a>';
   			} else {
   				$nestedData[] = '<span>Pending</span><a href="' . base_url() . 'index.php/portfolio/product/' . $row['copy_id'] . '" class="pend-inputlink"><i class="fas fa-long-arrow-alt-right"></i></a>';
@@ -2543,8 +2543,8 @@ class Portfolio extends CI_Controller {
   		$copy = $row['copy_partner_id'];
   		$copyud = substr($copy, 1);
   		$sql = "SELECT partner_name as branch_name FROM hr_partner_type where id = " . $copyud . "";
-  		$result = mysqli_query($sql);
-  		$row1 = mysqli_fetch_array($result);
+  		$result = php72_mysqli_query($sql);
+  		$row1 = php72_mysqli_fetch_array($result);
 
   		$asArray = array();
   		$associate = $this->Mincharge->getAssociate(array('innovation' => $row['id'], 'active' => 'Active'));
@@ -2671,9 +2671,9 @@ class Portfolio extends CI_Controller {
   		$partnersList = implode(',', array_unique($get_partner_id));
   		if ($row['sector'] == 'MCH') {
   			$sector_name = 'Maternal & child health';
-  		} else if ($row['sector'] > 0) {
+  		} else if (php72_cmp($row['sector']) > 0) {
   			$sector_name = $this->Minnovation->getNewSectorDetails($row['sector']);
-  		} else if ($row['program'] > 0) {
+  		} else if (php72_cmp($row['program']) > 0) {
   			$sector_name = $this->Minnovation->getSectorName($row['pitch_id']);
   		} else {
   			$sector_name = $row['sector'];
@@ -2686,7 +2686,7 @@ class Portfolio extends CI_Controller {
 		
 		
   		$emp_id = $this->session->userdata('emp_number');
-  		if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+  		if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
   			$get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $row['id']);
   			$shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
   		}
@@ -2893,8 +2893,8 @@ class Portfolio extends CI_Controller {
 		
   		if ($isCopy) {
   			$sql = "SELECT partner_name as branch_name FROM hr_partner_type where id = " . $row['copy_partner_from'] . "";
-  			$result = mysqli_query($sql);
-  			$row1 = mysqli_fetch_array($result);
+  			$result = php72_mysqli_query($sql);
+  			$row1 = php72_mysqli_fetch_array($result);
   			if ($this->session->userdata('accessTo') != '' || $this->session->userdata('user_type') == 'superadmin' || $this->session->userdata('user_type') == 'admin' || $this->session->userdata('role_id') == '1' || $this->session->userdata('role_id') == '2') {
   				if ($deals_status != '4' && $deals_status != '10' && $deals_status != '11' && $row['copy_status'] == '0') {
   					$copytext = 'Copy';
@@ -2921,103 +2921,103 @@ class Portfolio extends CI_Controller {
   		}
 
   		$doc_files = $attach_click = $download_values = '';
-  		if ($row['program'] == 0 || $row['program'] == 11 || $row['program'] == 13) {
+  		if (php72_cmp($row['program']) == 0 || php72_cmp($row['program']) == 11 || php72_cmp($row['program']) == 13) {
   			$doc_files = '"' . $row['id'] . '",0, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'];
-  		} else if ($row['program'] == 3) {
+  		} else if (php72_cmp($row['program']) == 3) {
   			$doc_files = '"' . $row['id'] . '",3, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
-  		} else if ($row['program'] == 4) {
+  		} else if (php72_cmp($row['program']) == 4) {
   			$doc_files = '"' . $row['id'] . '",4, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
-  		} else if ($row['program'] == 5) {
+  		} else if (php72_cmp($row['program']) == 5) {
   			$doc_files = '"' . $row['id'] . '",5, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
-  		} else if ($row['program'] == 7) {
+  		} else if (php72_cmp($row['program']) == 7) {
   			$doc_files = '"' . $row['id'] . '",7, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
-  		} else if ($row['program'] == 9) {
+  		} else if (php72_cmp($row['program']) == 9) {
   			$doc_files = '"' . $row['id'] . '",9, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'];
-  		} else if ($row['program'] == 10) {
+  		} else if (php72_cmp($row['program']) == 10) {
   			$doc_files = '"' . $row['id'] . '",10, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['inc_doc3'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['inc_doc3'];
-  		} else if ($row['program'] == 12) {
+  		} else if (php72_cmp($row['program']) == 12) {
   			$doc_files = '"' . $row['id'] . '",12, "' . $row['inc_doc1'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-  		}else if ($row['program'] == 14) {
+  		}else if (php72_cmp($row['program']) == 14) {
             $doc_files = '"' . $row['id'] . '",14, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 21) {
+          }else if (php72_cmp($row['program']) == 21) {
             $doc_files = '"' . $row['id'] . '",21, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 22) {
+          }else if (php72_cmp($row['program']) == 22) {
             $doc_files = '"' . $row['id'] . '",22, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 23) {
+          }else if (php72_cmp($row['program']) == 23) {
             $doc_files = '"' . $row['id'] . '",23, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 24) {
+          }else if (php72_cmp($row['program']) == 24) {
             $doc_files = '"' . $row['id'] . '",24, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 25) {
+          }else if (php72_cmp($row['program']) == 25) {
             $doc_files = '"' . $row['id'] . '",25, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 26) {
+          }else if (php72_cmp($row['program']) == 26) {
             $doc_files = '"' . $row['id'] . '",26, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 27) {
+          }else if (php72_cmp($row['program']) == 27) {
            $doc_files = '"' . $row['id'] . '",27, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['thrive_doc'];
-          }else if ($row['program'] == 28) {
+          }else if (php72_cmp($row['program']) == 28) {
            $doc_files = '"' . $row['id'] . '",28, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['thrive_doc'];
-          }else if ($row['program'] == 29) {
+          }else if (php72_cmp($row['program']) == 29) {
            $doc_files = '"' . $row['id'] . '",29, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['thrive_doc'];
-          }else if ($row['program'] == 30) {
+          }else if (php72_cmp($row['program']) == 30) {
            $doc_files = '"' . $row['id'] . '",30, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['thrive_doc'];
-          }else if ($row['program'] == 31) {
+          }else if (php72_cmp($row['program']) == 31) {
             $doc_files = '"' . $row['id'] . '",23, "' . $row['inc_doc1'] . '"';
             $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 32) {
+          }else if (php72_cmp($row['program']) == 32) {
             $doc_files = '"' . $row['id'] . '",32, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 33) {
+          }else if (php72_cmp($row['program']) == 33) {
             $doc_files = '"' . $row['id'] . '",33, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 34) {
+          }else if (php72_cmp($row['program']) == 34) {
             $doc_files = '"' . $row['id'] . '",34, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['thrive_doc'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
             $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'];
-          }else if ($row['program'] == 37) {
+          }else if (php72_cmp($row['program']) == 37) {
             $doc_files = '"' . $row['id'] . '",37, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['inc_doc4'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['inc_doc4'];
-          }else if ($row['program'] == 38) {
+          }else if (php72_cmp($row['program']) == 38) {
             $doc_files = '"' . $row['id'] . '",38,"' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '","' . $row['inc_doc6'] . '","' . $row['inc_doc7'] . '"';
   			$attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
   			$download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'] . '/' . $row['inc_doc6']. '/' . $row['inc_doc7'];
@@ -3213,12 +3213,12 @@ class Portfolio extends CI_Controller {
         else
         	$this->db->order_by('Submitted_Date', 'desc');
 
-        if ($options['program'] == 0 || $options['program'] == 11 || $options['program'] == 13 || $options['program'] == 24) {
-        	if ($options['program'] == 11) {
+        if (php72_cmp($options['program']) == 0 || php72_cmp($options['program']) == 11 || php72_cmp($options['program']) == 13 || php72_cmp($options['program']) == 24) {
+        	if (php72_cmp($options['program']) == 11) {
         		$program_type = 'SISFS';
-        	} else if ($options['program'] == 13) {
+        	} else if (php72_cmp($options['program']) == 13) {
         		$program_type = 'Nidhi';
-        	}  else if ($options['program'] == 24) {
+        	}  else if (php72_cmp($options['program']) == 24) {
         		$program_type = 'Sustainable Mobility Challenge';
         	}else {
         		$program_type = 'Incubation';
@@ -3285,7 +3285,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        }else if($options['program'] == 32) {
+        }else if(php72_cmp($options['program']) == 32) {
 			$program_type = 'Villgro Debt Access Program';
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_entrepreneur,IP.name_of_entrepreneur as Name_of_the_entrepreneur,
         		IP.email_id as Email,
@@ -3368,7 +3368,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get('innovation_pool IP');
 			
 			
-		}else  if ($options['program'] == 25) {
+		}else  if (php72_cmp($options['program']) == 25) {
         	$program_type = 'MAPHealth (Market Access Partners for Healthcare)';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -3447,7 +3447,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');  
-        }else if($options['program'] == 30) {
+        }else if(php72_cmp($options['program']) == 30) {
 		
 			$program_type = 'Tvaran2.0';
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder,
@@ -3632,7 +3632,7 @@ class Portfolio extends CI_Controller {
 			
 			}
 			
-		}else  if ($options['program'] == 26) {
+		}else  if (php72_cmp($options['program']) == 26) {
 			$program_type = 'Powering Livelihoods II';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -3697,7 +3697,7 @@ class Portfolio extends CI_Controller {
         	else
         		$query = $this->db->get('innovation_pool IP');
         }
-		else if ($options['program'] == 3) {
+		else if (php72_cmp($options['program']) == 3) {
         	$program_type = 'Unc Pitch';
             // IF(IP.program=1 ,'EIR', IF(IP.program=2 , 'SEED', IF(IP.program=3, 'Unc Pitch','Incubation'))) as Program,
             //     IP.stage as Stage,IP.status as Status, MS.master_name as Closed_Reasons, IP.comments as Closed_Comments,
@@ -3749,7 +3749,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 5) {
+        } else if (php72_cmp($options['program']) == 5) {
         	$program_type = 'FPAI - IC';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id, TRIM(IP.name_of_entrepreneur) as Name_of_Entrepreneur, TRIM(IP.name_of_enterprise) as Name_of_Enterprise, TRIM(pitch.designation) as Designation, pitch.gender as Gender,
         		IP.email_id as Email, IP.mobile_no as Mobile_number, pitch.altmobileno as Alternate_mobile, CONCAT(UCASE(LEFT(pitch_step1_info.ent_type, 1)),SUBSTRING(pitch_step1_info.ent_type, 2)) as Applying_Type,
@@ -3803,7 +3803,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 6) {
+        } else if (php72_cmp($options['program']) == 6) {
         	$program_type = 'UBS Challenge';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id, TRIM(IP.name_of_entrepreneur) as Name_of_Entrepreneur, TRIM(IP.name_of_enterprise) as Name_of_Enterprise, IP.email_id as Email, IP.mobile_no as Mobile_number,
         		TRIM(pitch_step1_info.cin_number) as CIN_Number, pitch_step2.incorporation_year as Year_of_incorporation, pitch_step1_info.company_address as Company_Registered_Address, eir_st.state_name as State_Name, eir_ct.city_name as City_Name, SC.sector as Sector, pitch_step2.sub_sector as Sub_Sector, pitch_step2.website as Company_Website,
@@ -3856,7 +3856,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 7) {
+        } else if (php72_cmp($options['program']) == 7) {
         	$program_type = 'YSVF';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id, TRIM(IP.name_of_entrepreneur) as Name_of_Entrepreneur, TRIM(IP.name_of_enterprise) as Name_of_Enterprise, TRIM(pitch.designation) as Designation,
         		IP.email_id as Email, IP.mobile_no as Mobile_number, pitch.altmobileno as Alternate_mobile,pitch_step1_info.applicant_type as Applicant_type, CONCAT(UCASE(LEFT(pitch_step1_info.ent_type, 1)),SUBSTRING(pitch_step1_info.ent_type, 2)) as Applying_Type,
@@ -3887,7 +3887,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 9) {
+        } else if (php72_cmp($options['program']) == 9) {
         	$program_type = 'Swachhata Startup Challenge';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Applicant_Name,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, prog.program_name as Program, IP.stage as Stage, IP.status as Status, MS.master_name as Closed_Reasons, IP.comments as Closed_Comments,
@@ -3950,7 +3950,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 10) {
+        } else if (php72_cmp($options['program']) == 10) {
         	$program_type = 'TANSEED';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Applicant_Name,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, prog.program_name as Program, IP.stage as Stage, IP.status as Status, MS.master_name as Closed_Reasons, IP.comments as Closed_Comments,
@@ -4014,7 +4014,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 12) {
+        } else if (php72_cmp($options['program']) == 12) {
         	$program_type = 'YASH Entrepreneurs';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Applicant_Name, INV.sub_sector_other as Designation, INV.gender as Gender,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IP.phone_no as Alternate_mobile_number, prog.program_name as Program, IP.stage as Stage, IP.status as Status, MS.master_name as Closed_Reasons, IP.comments as Closed_Comments,
@@ -4075,7 +4075,7 @@ class Portfolio extends CI_Controller {
           // if($this->session->userdata('emp_number') == '275') {
           //   debug_last_query();die;
           // }
-        } else if ($options['program'] == 4) {
+        } else if (php72_cmp($options['program']) == 4) {
         	$program_type = 'Livelihoods';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_entrepreneur as Name_of_Entrepreneur,IP.name_of_enterprise as Name_of_Enterprise,
         		IP.email_id as Email,IP.mobile_no as Mobile_number,pitch.altmobileno as Alternate_mobile,
@@ -4132,7 +4132,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        }else if($options['program'] == 14) {
+        }else if(php72_cmp($options['program']) == 14) {
 			$program_type = 'Tvaran';
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -4197,7 +4197,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get('innovation_pool IP');
 			
 			
-		}else if($options['program'] == 27) {
+		}else if(php72_cmp($options['program']) == 27) {
 			$program_type = 'EcoSakhi';
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,
@@ -4262,7 +4262,7 @@ class Portfolio extends CI_Controller {
 			
 			#echo'<pre>';print_r($query->result());die;
 			
-		}else if($options['program'] == 21) {
+		}else if(php72_cmp($options['program']) == 21) {
 			$program_type = 'Empower';
 			
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder_Senior_executive,
@@ -4326,7 +4326,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get('innovation_pool IP');
 			
 			
-		}else if($options['program'] == 22) { 
+		}else if(php72_cmp($options['program']) == 22) { 
 			$program_type = 'Working Capital Loans for Social Enterprise';
 			
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder_Senior_executive,
@@ -4388,7 +4388,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get('innovation_pool IP');
 			
 			
-		}else if($options['program'] == 23) { 
+		}else if(php72_cmp($options['program']) == 23) { 
 			$program_type = 'Shelter Tech';
 			
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder_Senior_executive,
@@ -4459,7 +4459,7 @@ class Portfolio extends CI_Controller {
 			
 			
 			
-		}else if($options['program'] == 31) { 
+		}else if(php72_cmp($options['program']) == 31) { 
 			$program_type = 'Enroute: A Mobility-as-a-Service Challenge';
 			
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Organisation,IP.name_of_entrepreneur as Name_of_the_woman_founder_co_founder_Senior_executive,
@@ -4528,7 +4528,7 @@ class Portfolio extends CI_Controller {
 			
 			#echo'<pre>';print_r($query->result());die;
 			
-		}else if($options['program'] == 28) { //   Name_of_business_plan_competition 
+		}else if(php72_cmp($options['program']) == 28) { //   Name_of_business_plan_competition 
 			$program_type = 'Innovators for Bharat';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -4588,7 +4588,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-		}else if($options['program'] == 28) { //   Name_of_business_plan_competition 
+		}else if(php72_cmp($options['program']) == 28) { //   Name_of_business_plan_competition 
 			$program_type = 'Innovators for Bharat';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -4648,7 +4648,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-		}else if($options['program'] == 29) {
+		}else if(php72_cmp($options['program']) == 29) {
 			
 			$program_type = 'Rural Access to Impact Innovations (RAIIn)';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
@@ -4713,7 +4713,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-		}else if ($options['program'] == 33) {
+		}else if (php72_cmp($options['program']) == 33) {
         	$program_type = 'Scaling Innovations in Sustainable Mobility and Environment process';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Address1,IP.address_line2 as Address2,
@@ -4777,7 +4777,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        }else if($options['program'] == 37) {
+        }else if(php72_cmp($options['program']) == 37) {
 			$program_type = 'Water Lab';
 			
 			$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
@@ -4844,7 +4844,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-		}else if ($options['program'] == 38) { 
+		}else if (php72_cmp($options['program']) == 38) { 
 			$program_type = 'Tvaran3.0';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number,INV.product_service as DIPP_Number,INV.state,INV.supporting_doc as Does_your_startup_have_a_woman_founder,INV.Cin_Number as cin_number,INV.website as Website_URL,INV.sub_sector_other as Website,INV.india_based as Entity,INV.impact_product as city, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, IP.address_line1 as Registered_Address,IP.address_line2 as Have_you_previously_received_grant,
@@ -4908,7 +4908,7 @@ class Portfolio extends CI_Controller {
         		$query = $this->db->get_where('innovation_pool IP', $whereQuery);
         	else
         		$query = $this->db->get('innovation_pool IP');
-        } else if ($options['program'] == 40) {
+        } else if (php72_cmp($options['program']) == 40) {
 			$program_type = 'Villgro CFA';
         	$this->db->select("CONCAT(IP.copy_id,'_',IP.partner_id,'_',IP.partner_count) as Innovation_id,IP.copy_id,IP.name_of_enterprise as Name_of_Enterprise,IP.name_of_entrepreneur as Name_of_Entrepreneur,
         		IP.email_id as Email,IP.mobile_no as Mobile_number, IF(pitch.lang_code='hi', 'Hindi','English') as Language,IF(IP.country='', INV.country, IP.country) as Country, INV.address1 as Address1,INV.address2 as Address2,
@@ -5106,8 +5106,8 @@ class Portfolio extends CI_Controller {
     		$copy = $row['copy_partner_id'];
     		$copyud = substr($copy, 1);
     		$sql = "SELECT partner_name as branch_name FROM hr_partner_type where id = " . $copyud . "";
-    		$result = mysqli_query($sql);
-    		$row1 = mysqli_fetch_array($result);
+    		$result = php72_mysqli_query($sql);
+    		$row1 = php72_mysqli_fetch_array($result);
 
     		$asArray = array();
     		$associate = $this->Mincharge->getAssociate(array('innovation' => $row['id'], 'active' => 'Active'));
@@ -5153,9 +5153,9 @@ class Portfolio extends CI_Controller {
     		$partnersList = implode(',', php72_array_unique($get_partner_id));
     		if ($row['sector'] == 'MCH') {
     			$sector_name = 'Maternal & child health';
-    		} else if ($row['sector'] > 0) {
+    		} else if (php72_cmp($row['sector']) > 0) {
     			$sector_name = $this->Minnovation->getNewSectorDetails($row['sector']);
-    		} else if ($row['program'] > 0) {
+    		} else if (php72_cmp($row['program']) > 0) {
     			$sector_name = $this->Minnovation->getSectorName($row['pitch_id']);
     		} else {
     			$sector_name = $row['sector'];
@@ -5222,15 +5222,15 @@ class Portfolio extends CI_Controller {
 
     					$users_name = $this->Minnovation->getUsername($short_lists['created_by']);
 
-    					if ($short_lists['application_status'] == 12) {
+    					if (php72_cmp($short_lists['application_status']) == 12) {
     						$app_status = 'Open';
-    					} else if ($short_lists['application_status'] == 3) {
+    					} else if (php72_cmp($short_lists['application_status']) == 3) {
     						$app_status = 'Closed';
-    					} else if ($short_lists['application_status'] == 2) {
+    					} else if (php72_cmp($short_lists['application_status']) == 2) {
     						$app_status = 'On Hold';
-    					} else if ($short_lists['application_status'] == 25) {
+    					} else if (php72_cmp($short_lists['application_status']) == 25) {
     						$app_status = 'Shortlisted';
-    					} else if ($short_lists['application_status'] == 26) {
+    					} else if (php72_cmp($short_lists['application_status']) == 26) {
     						$app_status = 'Selected';
     					} else {
     						$app_status = '--';
@@ -5375,8 +5375,8 @@ class Portfolio extends CI_Controller {
         	$options['decision_status'] = '6';
         }
 
-        if ($this->session->userdata('role_id') == 4) {
-        	if ($this->session->userdata('independent_shortlist') == 1) {
+        if (php72_cmp($this->session->userdata('role_id')) == 4) {
+        	if (php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
         		unset($options['sector']);
         		unset($options['program']);
         	}
@@ -5390,8 +5390,8 @@ class Portfolio extends CI_Controller {
         else if (isset($options['assigned_incharge']) && $options['assigned_incharge'] != "" && $whereQuery != '')
         	$whereQuery .= " and AA.associate_employee = '" . $options['assigned_incharge'] . "' and AA.status=1";
 
-        if ($this->session->userdata('role_id') == 4) {
-        	if ($this->session->userdata('independent_shortlist') == 1) {
+        if (php72_cmp($this->session->userdata('role_id')) == 4) {
+        	if (php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
 
         		$sector_arr = $this->session->userdata('sectorAccess');
         		$prgm_arr = $this->session->userdata('programAccess');
@@ -5987,7 +5987,7 @@ class Portfolio extends CI_Controller {
 
         	if ($fy_data['fin_year'][0]['fin_year'] != '') {
         		foreach ($fy_data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -6013,9 +6013,9 @@ class Portfolio extends CI_Controller {
         		$invID = 'INV' . $_POST['inv_id'];
         		$innv_pool = $this->Mdiligence->get_data('innovation_pool', $invID);
         		$mem_data = array();
-        		if ($innv_pool[0]['program'] == 0) {
+        		if (php72_cmp($innv_pool[0]['program']) == 0) {
         			$mem_data = $this->Mdiligence->getManageIncub($invID);
-        		} else if ($innv_pool[0]['program'] == 3 || $innv_pool[0]['program'] == 4 || $innv_pool[0]['program'] == 5) {
+        		} else if (php72_cmp($innv_pool[0]['program']) == 3 || php72_cmp($innv_pool[0]['program']) == 4 || php72_cmp($innv_pool[0]['program']) == 5) {
         			$mem_data = $this->Mdiligence->getManagePitch($invID);
         		}
 
@@ -6048,7 +6048,7 @@ class Portfolio extends CI_Controller {
         	$company['created_at'] = $business['created_at'] = date("Y-m-d H:i:s");
 			
 			$business['program'] = $inv_details[0]['program'];
-			if($inv_details[0]['program']==0){
+			if(php72_cmp($inv_details[0]['program'])==0){
 				$business['program'] = 0;
 			}else{
 				$business['program'] = $inv_details[0]['program'];
@@ -6355,7 +6355,7 @@ class Portfolio extends CI_Controller {
         function getOrdinal($number) {
         	$digit = abs($number) % 10;
         	$ext = 'th';
-        	$ext = ((abs($number) % 100 < 21 && abs($number) % 100 > 4) ? 'th' : (($digit < 4) ? ($digit < 3) ? ($digit < 2) ? ($digit < 1) ? 'th' : 'st' : 'nd' : 'rd' : 'th'));
+        	$ext = ((abs($number) % 100 < 21 && abs($number) % 100 > 4) ? 'th' : ((php72_cmp($digit) < 4) ? (php72_cmp($digit) < 3) ? (php72_cmp($digit) < 2) ? (php72_cmp($digit) < 1) ? 'th' : 'st' : 'nd' : 'rd' : 'th'));
         	return $number . $ext;
         }
 
@@ -6378,7 +6378,7 @@ class Portfolio extends CI_Controller {
         	$data['get_innovation'] = $this->Mportfolio->getDetails('innovation_pool', $option);
         	$data['get_master_company'] = $this->Mportfolio->getDetails('company_master_data', $msaoption);
 
-        	if ($data['company_data'][0]['company_status'] == 3) {
+        	if (php72_cmp($data['company_data'][0]['company_status']) == 3) {
         		$data['invest_list'] = $this->Mportfolio->getDetails('port_company_data_exit_invest', $invest_option);
         	}
 
@@ -6435,7 +6435,7 @@ class Portfolio extends CI_Controller {
         	$data['partner_id'] = $this->session->userdata('partner_id');
         	$data['document'] = $this->portfolio_file_upload('app', 'uploads/portfolio/company', 'document_file', 'doc|docx|ppt|pptx|pdf', $_POST['old_doc']);
 
-        	if ($_POST['company_status'] == 3) {
+        	if (php72_cmp($_POST['company_status']) == 3) {
         		$data['company_valuation'] = $_POST['company_valuation'];
         		$data['villgro_investment'] = $_POST['villgro_invest'];
 //            $data['investor_name'] = $_POST['investor_name'];
@@ -6479,22 +6479,22 @@ class Portfolio extends CI_Controller {
         		}, $employees);
         		$employees_id = rtrim(implode(',', $emp_Ids), ',');
 
-        		if ($_POST['company_status'] == 1) {
+        		if (php72_cmp($_POST['company_status']) == 1) {
         			$log_status = '12';
         			$maindata['status'] = '12';
-        		} else if ($_POST['company_status'] == 2) {
+        		} else if (php72_cmp($_POST['company_status']) == 2) {
         			$log_status = '23';
         			$maindata['status'] = '23';
-        		} else if ($_POST['company_status'] == 3) {
+        		} else if (php72_cmp($_POST['company_status']) == 3) {
         			$log_status = '9';
         			$maindata['status'] = '9';
-        		}else if ($_POST['company_status'] == 4) {
+        		}else if (php72_cmp($_POST['company_status']) == 4) {
         			$log_status = '27';
         			$maindata['status'] = '27';
-        		}else if ($_POST['company_status'] == 5) {
+        		}else if (php72_cmp($_POST['company_status']) == 5) {
         			$log_status = '27';
         			$maindata['status'] = '27';
-        		}else if ($_POST['company_status'] == 5) {
+        		}else if (php72_cmp($_POST['company_status']) == 5) {
         			$log_status = '28';
         			$maindata['status'] = '28';
         		}
@@ -6581,7 +6581,7 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector Name Dashboard
 
-        	if ($data['get_innovation'][0]['program'] == 0) {
+        	if (php72_cmp($data['get_innovation'][0]['program']) == 0) {
         		$getSector['inv_no'] = 'INV' . $data['get_innovation'][0]['id'];
         		$data['subSec'] = $this->Mportfolio->getDetails('inv_user', $getSector);
         	} else {
@@ -8601,13 +8601,13 @@ class Portfolio extends CI_Controller {
         	$to_approveFields = array();
         	$get_awaitConfigApp = $this->Mportfolio->getDetails('port_config_approval', $option);
         	/* product approve */
-        	if ($get_awaitConfigApp[0]['product_approval'] == 1 || $get_awaitConfigApp[0]['product_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['product_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['product_approval']) == 2) {
         		$set_app['product_approval'] = 3;
         		$qualitative = $this->qualitative_approve($inno_id, $fin_yr, '1');
         	}
 
         	/* sales approve */
-        	if ($get_awaitConfigApp[0]['sales_approval'] == 1 || $get_awaitConfigApp[0]['sales_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['sales_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['sales_approval']) == 2) {
         		$sales_tempDetails = $this->Mportfolio->getDetails('temp_sales_data', $option, $status);
         		if (php72_count($sales_tempDetails) > 0) {
         			foreach ($sales_tempDetails as $sales) {
@@ -8629,7 +8629,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* channel approve */
-        	if ($get_awaitConfigApp[0]['channel_approval'] == 1 || $get_awaitConfigApp[0]['channel_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['channel_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['channel_approval']) == 2) {
         		$channel_tempDetails = $this->Mportfolio->getDetails('temp_channel_data', $option, $status);
         		if (php72_count($channel_tempDetails) > 0) {
         			foreach ($channel_tempDetails as $channel) {
@@ -8647,7 +8647,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* pipeline approve */
-        	if ($get_awaitConfigApp[0]['pipeline_approval'] == 1 || $get_awaitConfigApp[0]['pipeline_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['pipeline_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['pipeline_approval']) == 2) {
         		$pipeline_tempDetails = $this->Mportfolio->getDetails('temp_pipeline_data', $option, $status);
         		if (php72_count($pipeline_tempDetails) > 0) {
         			$pipelinedata['open_pipeline'] = $pipeline_tempDetails[0]['open_pipeline'];
@@ -8666,7 +8666,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* vif funcding approve */
-        	if ($get_awaitConfigApp[0]['vif_approval'] == 1 || $get_awaitConfigApp[0]['vif_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['vif_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['vif_approval']) == 2) {
         		$option['inv_id'] = $vifplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $vifplan['financial_year'] = $this->input->post('fin_year');
 
@@ -8702,7 +8702,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* revenue approve */
-        	if ($get_awaitConfigApp[0]['revenue_approval'] == 1 || $get_awaitConfigApp[0]['revenue_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['revenue_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['revenue_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 1;
@@ -8722,7 +8722,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* netprofit approve */
-        	if ($get_awaitConfigApp[0]['netprofit_approval'] == 1 || $get_awaitConfigApp[0]['netprofit_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['netprofit_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['netprofit_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 2;
@@ -8742,7 +8742,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* fundraise approve */
-        	if ($get_awaitConfigApp[0]['fundraise_approval'] == 1 || $get_awaitConfigApp[0]['fundraise_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['fundraise_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['fundraise_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 3;
@@ -8762,7 +8762,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* mentor approve */
-        	if ($get_awaitConfigApp[0]['mentor_approval'] == 1 || $get_awaitConfigApp[0]['mentor_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['mentor_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['mentor_approval']) == 2) {
         		$mentor_tempDetails = $this->Mportfolio->getDetails('temp_ttm_mentor_master', $option, $status);
         		if (php72_count($mentor_tempDetails) > 0) {
         			$mentordata['mentor_qone'] = $mentor_tempDetails[0]['mentor_qone'];
@@ -8802,7 +8802,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* tap approve */
-        	if ($get_awaitConfigApp[0]['tap_approval'] == 1 || $get_awaitConfigApp[0]['tap_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['tap_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['tap_approval']) == 2) {
         		$option['inv_id'] = $tapplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $tapplan['financial_year'] = $this->input->post('fin_year');
 
@@ -8837,7 +8837,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* non-tap approve */
-        	if ($get_awaitConfigApp[0]['nontap_approval'] == 1 || $get_awaitConfigApp[0]['nontap_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['nontap_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['nontap_approval']) == 2) {
         		$option['inv_id'] = $nontapplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $nontapplan['financial_year'] = $this->input->post('fin_year');
 
@@ -8872,7 +8872,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* diagnostic panel approve */
-        	if ($get_awaitConfigApp[0]['dp_approval'] == 1 || $get_awaitConfigApp[0]['dp_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['dp_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['dp_approval']) == 2) {
         		$dp_tempDetails = $this->Mportfolio->getDetails('temp_diagnostic_panels', $option, $status);
         		if (php72_count($dp_tempDetails) > 0) {
         			$dpdata['dp_plan'] = $dp_tempDetails[0]['dp_plan'];
@@ -8889,7 +8889,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* board meetings approve */
-        	if ($get_awaitConfigApp[0]['board_approval'] == 1 || $get_awaitConfigApp[0]['board_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['board_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['board_approval']) == 2) {
         		$board_tempDetails = $this->Mportfolio->getDetails('temp_board_meetings', $option, $status);
         		if (php72_count($board_tempDetails) > 0) {
         			$boarddata['meeting_plan'] = $board_tempDetails[0]['meeting_plan'];
@@ -8905,7 +8905,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* team approve */
-        	if ($get_awaitConfigApp[0]['team_approval'] == 1 || $get_awaitConfigApp[0]['team_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['team_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['team_approval']) == 2) {
         		$team_tempDetails = $this->Mportfolio->getDetails('temp_team', $option, $status);
         		if (php72_count($team_tempDetails) > 0) {
         			$teamdata['new_employee'] = $team_tempDetails[0]['new_employee'];
@@ -8924,7 +8924,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* impact approve */
-        	if ($get_awaitConfigApp[0]['impact_approval'] == 1 || $get_awaitConfigApp[0]['impact_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['impact_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['impact_approval']) == 2) {
         		$option['inv_id'] = $impactplan['inv_id'] = $impactplan_option['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $impactplan['financial_year'] = $impactplan_option['financial_year'] = $this->input->post('fin_year');
 
@@ -9232,7 +9232,7 @@ class Portfolio extends CI_Controller {
         	$p_option['inv_id'] = $this->input->post('inv_id');
         	$p_option['project_approval'] = 2;
         	$get_awaitConfigApp = $this->Mportfolio->getDetails('port_config_approval', $p_option);
-        	if ($get_awaitConfigApp[0]['project_approval'] == 1 || $get_awaitConfigApp[0]['project_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['project_approval']) == 1 || php72_cmp($get_awaitConfigApp[0]['project_approval']) == 2) {
         		$app_field['inv_id'] = $mile['inv_id'] = $task['inv_id'] = $pro['inv_id'] = $inv_id['inv_id'] = $this->input->post('inv_id');
             // $app_field['financial_year'] = $mile['financial_year'] = $this->input->post('fin_year');
 //        $mile['id'] = $task['milestone_id'] = $pro['milestone_id'] = $this->input->post('mile_id');
@@ -9324,13 +9324,13 @@ class Portfolio extends CI_Controller {
         	$to_approveFields = array();
         	$get_awaitConfigApp = $this->Mportfolio->getDetails('port_config_approval', $option);
         	/* product approve */
-        	if ($get_awaitConfigApp[0]['product_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['product_approval']) == 2) {
         		$set_app['product_approval'] = 3;
         		$qualitative = $this->qualitative_approve($inno_id, $fin_yr, '1');
         	}
 
         	/* sales approve */
-        	if ($get_awaitConfigApp[0]['sales_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['sales_approval']) == 2) {
         		$sales_tempDetails = $this->Mportfolio->getDetails('temp_sales_data', $option, $status);
         		if (php72_count($sales_tempDetails) > 0) {
         			foreach ($sales_tempDetails as $sales) {
@@ -9352,7 +9352,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* channel approve */
-        	if ($get_awaitConfigApp[0]['channel_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['channel_approval']) == 2) {
         		$channel_tempDetails = $this->Mportfolio->getDetails('temp_channel_data', $option, $status);
         		if (php72_count($channel_tempDetails) > 0) {
         			foreach ($channel_tempDetails as $channel) {
@@ -9370,7 +9370,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* pipeline approve */
-        	if ($get_awaitConfigApp[0]['pipeline_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['pipeline_approval']) == 2) {
         		$pipeline_tempDetails = $this->Mportfolio->getDetails('temp_pipeline_data', $option, $status);
         		if (php72_count($pipeline_tempDetails) > 0) {
         			$pipelinedata['open_pipeline'] = $pipeline_tempDetails[0]['open_pipeline'];
@@ -9389,7 +9389,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* vif funcding approve */
-        	if ($get_awaitConfigApp[0]['vif_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['vif_approval']) == 2) {
         		$option['inv_id'] = $vifplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $vifplan['financial_year'] = $this->input->post('fin_year');
 
@@ -9425,7 +9425,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* revenue approve */
-        	if ($get_awaitConfigApp[0]['revenue_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['revenue_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 1;
@@ -9445,7 +9445,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* netprofit approve */
-        	if ($get_awaitConfigApp[0]['netprofit_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['netprofit_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 2;
@@ -9465,7 +9465,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* fundraise approve */
-        	if ($get_awaitConfigApp[0]['fundraise_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['fundraise_approval']) == 2) {
         		$config['inv_id'] = $finoption['inv_id'] = $this->input->post('inv_id');
         		$config['financial_year'] = $finoption['financial_year'] = $this->input->post('fin_year');
         		$finoption['finance_id'] = 3;
@@ -9485,7 +9485,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* mentor approve */
-        	if ($get_awaitConfigApp[0]['mentor_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['mentor_approval']) == 2) {
         		$mentor_tempDetails = $this->Mportfolio->getDetails('temp_ttm_mentor_master', $option, $status);
         		if (php72_count($mentor_tempDetails) > 0) {
         			$mentordata['mentor_qone'] = $mentor_tempDetails[0]['mentor_qone'];
@@ -9512,7 +9512,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* tap approve */
-        	if ($get_awaitConfigApp[0]['tap_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['tap_approval']) == 2) {
         		$option['inv_id'] = $tapplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $tapplan['financial_year'] = $this->input->post('fin_year');
 
@@ -9547,7 +9547,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* non-tap approve */
-        	if ($get_awaitConfigApp[0]['nontap_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['nontap_approval']) == 2) {
         		$option['inv_id'] = $nontapplan['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $nontapplan['financial_year'] = $this->input->post('fin_year');
 
@@ -9583,7 +9583,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* diagnostic panel approve */
-        	if ($get_awaitConfigApp[0]['dp_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['dp_approval']) == 2) {
         		$dp_tempDetails = $this->Mportfolio->getDetails('temp_diagnostic_panels', $option, $status);
         		if (php72_count($dp_tempDetails) > 0) {
         			$dpdata['dp_plan'] = $dp_tempDetails[0]['dp_plan'];
@@ -9600,7 +9600,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* board meetings approve */
-        	if ($get_awaitConfigApp[0]['board_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['board_approval']) == 2) {
         		$board_tempDetails = $this->Mportfolio->getDetails('temp_board_meetings', $option, $status);
         		if (php72_count($board_tempDetails) > 0) {
         			$boarddata['meeting_plan'] = $board_tempDetails[0]['meeting_plan'];
@@ -9616,7 +9616,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* team approve */
-        	if ($get_awaitConfigApp[0]['team_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['team_approval']) == 2) {
         		$team_tempDetails = $this->Mportfolio->getDetails('temp_team', $option, $status);
         		if (php72_count($team_tempDetails) > 0) {
         			$teamdata['new_employee'] = $team_tempDetails[0]['new_employee'];
@@ -9635,7 +9635,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	/* impact approve */
-        	if ($get_awaitConfigApp[0]['impact_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['impact_approval']) == 2) {
         		$option['inv_id'] = $impactplan['inv_id'] = $impactplan_option['inv_id'] = $this->input->post('inv_id');
         		$option['financial_year'] = $impactplan['financial_year'] = $impactplan_option['financial_year'] = $this->input->post('fin_year');
 
@@ -9943,7 +9943,7 @@ class Portfolio extends CI_Controller {
         	$p_option['inv_id'] = $this->input->post('inv_id');
         	$p_option['project_approval'] = 2;
         	$get_awaitConfigApp = $this->Mportfolio->getDetails('port_config_approval', $p_option);
-        	if ($get_awaitConfigApp[0]['project_approval'] == 2) {
+        	if (php72_cmp($get_awaitConfigApp[0]['project_approval']) == 2) {
         		$app_field['inv_id'] = $mile['inv_id'] = $task['inv_id'] = $pro['inv_id'] = $inv_id['inv_id'] = $this->input->post('inv_id');
             // $app_field['financial_year'] = $mile['financial_year'] = $this->input->post('fin_year');
 //        $mile['id'] = $task['milestone_id'] = $pro['milestone_id'] = $this->input->post('mile_id');
@@ -10103,7 +10103,7 @@ class Portfolio extends CI_Controller {
 
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -10119,9 +10119,9 @@ class Portfolio extends CI_Controller {
 			//	echo'<pre>';print_r($this->session->all_userdata());
         	
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['productCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['productCount']) > 0) {
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('port_qualitative_data', $qual_option, '1', $f_year);
@@ -10153,7 +10153,7 @@ class Portfolio extends CI_Controller {
         	
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'product_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/product/' . $id . '/' . $get_data[0]['financial_year']);
@@ -10209,7 +10209,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['product_approval'] = 3;
         	} else {
@@ -10221,12 +10221,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -10252,7 +10252,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/product/' . $_POST['inv_id'] . '/' . $_POST['finance_Year']);
         	} else {
@@ -10280,7 +10280,7 @@ class Portfolio extends CI_Controller {
 
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -10297,7 +10297,7 @@ class Portfolio extends CI_Controller {
         	$data['isAssociate'] = $this->Mincharge->isAssociateUser($id, $this->session->userdata('emp_number'));
         	$data['find_lead'] = $this->findSectorLead($sector['id']);
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['sales_data'] = $this->Mportfolio->getDetails('temp_sales_data', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         		if (php72_count($data['sales_data']) == 0) {
@@ -10318,7 +10318,7 @@ class Portfolio extends CI_Controller {
         			}
         			$data['sales_data'] = $this->Mportfolio->getDetails('temp_sales_data', $c_option, $status, $f_year);
         		}
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['salesCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['salesCount']) > 0) {
         		$data['sales_data'] = $this->Mportfolio->getDetails('temp_sales_data', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         		if (php72_count($data['sales_data']) == 0) {
@@ -10349,7 +10349,7 @@ class Portfolio extends CI_Controller {
 
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 // $get_data = $this->Mportfolio->getApprovalDetails('port_sales_data', $c_option, $pending);
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'sales_approval');
         			if (php72_count($get_data) > 0) {
@@ -10404,7 +10404,7 @@ class Portfolio extends CI_Controller {
         	$option['product_name'] = $data['product_name'] = $_POST['sales_name'];
         	$option['financial_year'] = $app_option['financial_year'] = $approval['financial_year'] = $data['financial_year'] = $_POST['cur_finance'];
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['sales_approval'] = 3;
         	} else {
@@ -10415,11 +10415,11 @@ class Portfolio extends CI_Controller {
 
         	$status = 3;
         	$checkExist = $this->Mportfolio->getDetails('port_sales_data', $option, $status);
-        	if (php72_count($checkExist) > 0 && $checkExist['edited_status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist['edited_status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_sales_data', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_sales_data', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist['edited_status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist['edited_status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_sales_data', $data, $option);
         	} else {
@@ -10451,8 +10451,8 @@ class Portfolio extends CI_Controller {
         		for ($i = 1; $i <= $_POST['row_id']; $i++) {
         			$option['id'] = $temp['sales_id'] = $_POST["sales_id" . $i];
         			$data['unit'] = $_POST["unit" . $i];
-        			$volume = isset($_POST["month" . $i]) && $_POST["month" . $i] != 0 ? $_POST["month" . $i] : 0;
-        			$value = isset($_POST["value" . $i]) && $_POST["value" . $i] != 0 ? $_POST["value" . $i] : 0;
+        			$volume = isset($_POST["month" . $i]) && php72_cmp($_POST["month" . $i]) != 0 ? $_POST["month" . $i] : 0;
+        			$value = isset($_POST["value" . $i]) && php72_cmp($_POST["value" . $i]) != 0 ? $_POST["value" . $i] : 0;
 
         			$getmonth = $this->month();
         			$combine_volume = php72_array_combine($getmonth, $volume);
@@ -10462,7 +10462,7 @@ class Portfolio extends CI_Controller {
         			$data['value'] = json_encode($combine_value);
 
         			$data['updated_by'] = $this->session->userdata('emp_number');
-        			if ($this->session->userdata['sector_lead'] == 11) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         				$data['status'] = 1;
         				$approval['sales_approval'] = 3;
         			} else {
@@ -10475,12 +10475,12 @@ class Portfolio extends CI_Controller {
         			$main_data = $data;
 
         			$edit_status = $this->Mportfolio->getDetails('port_sales_data', $option);
-        			if ($this->session->userdata['sector_lead'] != 11 && $edit_status[0]['status'] == 1) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($edit_status[0]['status']) == 1) {
         				$edited['edited_status'] = 1;
         				$m_query = $this->Mportfolio->updatePortfolioDetail('port_sales_data', $edited, $option);
         				$query = $this->Mportfolio->updatePortfolioDetail('temp_sales_data', $temp_data, $temp);
         			} else {
-        				if ($this->session->userdata['sector_lead'] == 11)
+        				if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         					$main_data['edited_status'] = 0;
         				$query = $this->Mportfolio->updatePortfolioDetail('temp_sales_data', $temp_data, $temp);
         				$m_query = $this->Mportfolio->updatePortfolioDetail('port_sales_data', $main_data, $option);
@@ -10528,7 +10528,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['sales_approval'] = 3;
         	} else {
@@ -10540,12 +10540,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -10571,7 +10571,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/sales/' . $_POST['inv_id'] . '/' . $_POST['finance_Year']);
         	} else {
@@ -10628,7 +10628,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -10644,9 +10644,9 @@ class Portfolio extends CI_Controller {
         	$data['isAssociate'] = $this->Mincharge->isAssociateUser($id, $this->session->userdata('emp_number'));
         	$data['find_lead'] = $this->findSectorLead($sector['id']);
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['channel_data'] = $this->Mportfolio->getDetails('temp_channel_data', $c_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['channelCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['channelCount']) > 0) {
         		$data['channel_data'] = $this->Mportfolio->getDetails('temp_channel_data', $c_option, $status, $f_year);
         	} else {
         		$data['channel_data'] = $this->Mportfolio->getDetails('port_channel_data', $c_option, '1', $f_year);
@@ -10656,7 +10656,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('channel_approval', $approvals[0]['channel_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'channel_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/channel/' . $id . '/' . $get_data[0]['financial_year']);
@@ -10706,7 +10706,7 @@ class Portfolio extends CI_Controller {
         	$option['channel_name'] = $data['channel_name'] = $_POST['channel_name'];
         	$option['financial_year'] = $app_option['financial_year'] = $approval['financial_year'] = $data['financial_year'] = $_POST['cur_finance'];
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['channel_approval'] = 3;
         	} else {
@@ -10717,11 +10717,11 @@ class Portfolio extends CI_Controller {
 
         	$status = 3;
         	$checkExist = $this->Mportfolio->getDetails('port_channel_data', $option, $status);
-        	if (php72_count($checkExist) > 0 && $checkExist['edited_status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist['edited_status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_channel_data', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_channel_data', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist['edited_status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist['edited_status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_channel_data', $data, $option);
         	} else {
@@ -10758,7 +10758,7 @@ class Portfolio extends CI_Controller {
         		$data['data'] = json_encode($combine_volume);
 
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$data['status'] = 1;
         			$approval['channel_approval'] = 3;
         		} else {
@@ -10771,12 +10771,12 @@ class Portfolio extends CI_Controller {
         		$main_data = $data;
 
         		$edit_status = $this->Mportfolio->getDetails('port_channel_data', $option);
-        		if ($this->session->userdata['sector_lead'] != 11 && $edit_status[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($edit_status[0]['status']) == 1) {
         			$edited['edited_status'] = 1;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_channel_data', $edited, $option);
         			$query = $this->Mportfolio->updatePortfolioDetail('temp_channel_data', $temp_data, $temp);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$main_data['edited_status'] = 0;
         			$query = $this->Mportfolio->updatePortfolioDetail('temp_channel_data', $temp_data, $temp);
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_channel_data', $main_data, $option);
@@ -10795,7 +10795,7 @@ class Portfolio extends CI_Controller {
         		}
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/channel/' . $_POST['inv_id'] . '/' . $_POST['finance_Year']);
         	} else {
@@ -10851,7 +10851,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -10867,9 +10867,9 @@ class Portfolio extends CI_Controller {
         	$data['isAssociate'] = $this->Mincharge->isAssociateUser($id, $this->session->userdata('emp_number'));
         	$data['find_lead'] = $this->findSectorLead($sector['id']);
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['pipe_data'] = $this->Mportfolio->getDetails('temp_pipeline_data', $c_option, '', $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['pipeCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['pipeCount']) > 0) {
         		$data['pipe_data'] = $this->Mportfolio->getDetails('temp_pipeline_data', $c_option, '', $f_year);
         	} else {
         		$data['pipe_data'] = $this->Mportfolio->getDetails('port_pipeline_data', $c_option, '1', $f_year);
@@ -10879,7 +10879,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('pipeline_approval', $approvals[0]['pipeline_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'pipeline_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/pipeline/' . $id . '/' . $get_data[0]['financial_year']);
@@ -10927,7 +10927,7 @@ class Portfolio extends CI_Controller {
         	$data['closed_pipeline'] = json_encode($combine_reject);
         	$data['converted_pipeline'] = json_encode($combine_convert);
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['pipeline_approval'] = 3;
         	} else {
@@ -10937,13 +10937,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_pipeline_data', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_pipeline_data', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_pipeline_data', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_pipeline_data', $main_data, $option);
@@ -10972,7 +10972,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/pipeline/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -11017,7 +11017,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -11055,10 +11055,10 @@ class Portfolio extends CI_Controller {
 
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['revenue_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['revenueCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['revenueCount']) > 0) {
         		$data['revenue_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -11072,7 +11072,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('revenue_approval', $approvals[0]['revenue_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $config_option, 'revenue_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/revenue/' . $id . '/' . $get_data[0]['financial_year']);
@@ -11136,7 +11136,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -11176,10 +11176,10 @@ class Portfolio extends CI_Controller {
 			#Sector User Map
 			
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['net_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['netCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['netCount']) > 0) {
         		$data['net_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -11191,7 +11191,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('netprofit_approval', $approvals[0]['netprofit_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $config_option, 'netprofit_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/netprofit/' . $id . '/' . $get_data[0]['financial_year']);
@@ -11256,7 +11256,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -11298,10 +11298,10 @@ class Portfolio extends CI_Controller {
         	$data['approvals'] = $approvals = $this->Mportfolio->getDetails('port_config_approval', $appoption);
 
         	$qual_option['module_id'] = 7;
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['vif_data'] = $this->Mportfolio->getDetails('temp_vif_funding', $c_option, $status, $f_year, '', 'month');
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['vifCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['vifCount']) > 0) {
         		$data['vif_data'] = $this->Mportfolio->getDetails('temp_vif_funding', $c_option, $status, $f_year, '', 'month');
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -11312,7 +11312,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('vif_approval', $approvals[0]['vif_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'vif_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/viffunding/' . $id . '/' . $get_data[0]['financial_year']);
@@ -11366,7 +11366,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['vif_approval'] = 3;
         	} else {
@@ -11378,12 +11378,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -11423,7 +11423,7 @@ class Portfolio extends CI_Controller {
         			$actualMonth = $this->actual_month();
 //                $get_dis = explode(',', $_POST['month'][$i]);
 //                $dis_search = array_search($get_dis[0], $actualMonth);
-        			if ($_POST['month'][$i] < 4) {
+        			if (php72_cmp($_POST['month'][$i]) < 4) {
         				$next_fy = php72_num($_POST['cur_finance']) + 1;
         			} else {
         				$next_fy = $_POST['cur_finance'];
@@ -11442,7 +11442,7 @@ class Portfolio extends CI_Controller {
         				$update_temp_vif = $this->Mportfolio->updatePortfolioDetail('temp_vif_funding', $status, $roption);
         			}
 
-        			if ($this->session->userdata['sector_lead'] == 11) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         				$data['status'] = 1;
         				$approval['vif_approval'] = 3;
         			} else {
@@ -11452,13 +11452,13 @@ class Portfolio extends CI_Controller {
         			}
 
         			$checkExist = $this->Mportfolio->getDetails('port_vif_funding', $option);
-        			if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        			if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
         				$m_query = $this->Mportfolio->updatePortfolioDetail('port_vif_funding', $data, $option);
         				$t_query = $this->Mportfolio->updatePortfolioDetail('temp_vif_funding', $data, $temp);
-        			} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        			} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
-        				if ($this->session->userdata['sector_lead'] == 11) {
+        				if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         					$main_data = $data;
         					$main_data['edited_status'] = 0;
         					$m_query = $this->Mportfolio->updatePortfolioDetail('port_vif_funding', $main_data, $option);
@@ -11490,7 +11490,7 @@ class Portfolio extends CI_Controller {
         	}
 
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/viffunding/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -11534,7 +11534,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -11571,10 +11571,10 @@ class Portfolio extends CI_Controller {
 
         	$status = 3;
         	$qual_option['module_id'] = 8;
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['fund_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['fundCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['fundCount']) > 0) {
         		$data['fund_data'] = $this->Mportfolio->getDetails('temp_finance_fundraise', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -11586,7 +11586,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('fundraise_approval', $approvals[0]['fundraise_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $config_option, 'fundraise_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/fundraise/' . $id . '/' . $get_data[0]['financial_year']);
@@ -11623,33 +11623,33 @@ class Portfolio extends CI_Controller {
         	$getmonth = $this->month();
 
         	$title = $page = '';
-        	if ($_POST['finance_type'] == 1) {
+        	if (php72_cmp($_POST['finance_type']) == 1) {
         		$title = 'Revenue';
         		$page = 'revenue';
         		$rdir = 'revenue';
         		$rev_mnth = $_POST["rev_month"];
         		$combine_revenue = php72_array_combine($getmonth, $rev_mnth);
         		$data['data'] = json_encode($combine_revenue);
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$approval['revenue_approval'] = $qual_approval['revenue_approval'] = 3;
         		} else {
         			$approval['revenue_approval'] = $qual_approval['revenue_approval'] = 1;
         			$approval['config_approval'] = $qual_approval['config_approval'] = 1;
         		}
-        	} else if ($_POST['finance_type'] == 2) {
+        	} else if (php72_cmp($_POST['finance_type']) == 2) {
         		$title = 'Net profit';
         		$page = 'netprofit';
         		$rdir = 'netprofit';
         		$net_mnth = $_POST["net_month"];
         		$combine_profit = php72_array_combine($getmonth, $net_mnth);
         		$data['data'] = json_encode($combine_profit);
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$approval['netprofit_approval'] = $qual_approval['netprofit_approval'] = 3;
         		} else {
         			$approval['netprofit_approval'] = $qual_approval['netprofit_approval'] = 1;
         			$approval['config_approval'] = $qual_approval['config_approval'] = 1;
         		}
-        	} elseif ($_POST['finance_type'] == 3) {
+        	} elseif (php72_cmp($_POST['finance_type']) == 3) {
         		$title = 'Fundraise';
         		$page = 'fundraise';
         		$rdir = 'fundraise';
@@ -11659,7 +11659,7 @@ class Portfolio extends CI_Controller {
         		$initial['qfour'] = $_POST['q_four'];
         		$initial['notes'] = $_POST['description'];
         		$data['data'] = json_encode($initial);
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$approval['fundraise_approval'] = $qual_approval['fundraise_approval'] = 3;
         		} else {
         			$approval['fundraise_approval'] = $qual_approval['fundraise_approval'] = 1;
@@ -11688,7 +11688,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = $data['status'] = 1;
         	} else {
         		$qual_data['status'] = $data['status'] = 0;
@@ -11697,12 +11697,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -11728,13 +11728,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_finance_fundraise', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_finance_fundraise', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_finance_fundraise', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_finance_fundraise', $main_data, $option);
@@ -11762,7 +11762,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect("portfolio/$page/" . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -11807,7 +11807,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -11847,11 +11847,11 @@ class Portfolio extends CI_Controller {
 			#Sector User Map
 			$data['program_type'] = $this->Mportfolio->getDetailsProgram('program_type', array('status'=>1),'','','','program_name');
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['mentor_master_data'] = $this->Mportfolio->getDetails('temp_ttm_mentor_master', $c_option, $status, $f_year);
         		$data['config_mentor'] = $this->Mportfolio->getDetails('temp_config_mentor', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['mentorCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['mentorCount']) > 0) {
         		$data['mentor_master_data'] = $this->Mportfolio->getDetails('temp_ttm_mentor_master', $c_option, $status, $f_year);
         		$data['config_mentor'] = $this->Mportfolio->getDetails('temp_config_mentor', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
@@ -11871,7 +11871,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('mentor_approval', $approvals[0]['mentor_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'mentor_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/mentor/' . $id . '/' . $get_data[0]['financial_year']);
@@ -11926,7 +11926,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['mentor_approval'] = 3;
         	} else {
@@ -11938,12 +11938,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -11978,7 +11978,7 @@ class Portfolio extends CI_Controller {
         	$data1['quarter_three'] = $_POST["quarter"][2];
         	$data1['quarter_four'] = $_POST["quarter"][3];
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data1['status'] = 1;
         		$approval['mentor_approval'] = 3;
         	} else {
@@ -11988,14 +11988,14 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_ttm_mentor_master', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data1['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_mentor_master', $data1, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_ttm_mentor_master', $data1, $option);
         		$mentor_master_id = $_POST["mentor_master_id"];
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data1['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data1;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_mentor_master', $main_data, $option);
@@ -12068,7 +12068,7 @@ class Portfolio extends CI_Controller {
         				$m_option['sow_document'] = $data['sow_document'] = '';
         			}
 
-        			if ($this->session->userdata['sector_lead'] == 11) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         				$data['status'] = 1;
         			} else {
         				$data['status'] = 0;
@@ -12093,11 +12093,11 @@ class Portfolio extends CI_Controller {
         			}
 
         			$checkExist3 = $this->Mportfolio->getDetails('port_config_mentor', $c_option);
-        			if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 0) {
+        			if (php72_count($checkExist3) > 0 && php72_cmp($checkExist3[0]['status']) == 0) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
         				$mc_query = $this->Mportfolio->updatePortfolioDetail('port_config_mentor', $data, $c_option);
         				$tc_query = $this->Mportfolio->updatePortfolioDetail('temp_config_mentor', $data, $c_option);
-        			} else if (php72_count($checkExist3) > 0 && $checkExist3[0]['status'] == 1) {
+        			} else if (php72_count($checkExist3) > 0 && php72_cmp($checkExist3[0]['status']) == 1) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
         				$edited['edited_status'] = 1;
         				$mc_query = $this->Mportfolio->updatePortfolioDetail('port_config_mentor', $edited, $c_option);
@@ -12123,7 +12123,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/mentor/' . $_POST['inv_id'] . '/' . $_POST['financial_year']);
         	} else {
@@ -12198,7 +12198,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -12233,10 +12233,10 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['get_tap'] = $this->Mportfolio->getDetails('temp_ttm_tap', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['tapCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['tapCount']) > 0) {
         		$data['get_tap'] = $this->Mportfolio->getDetails('temp_ttm_tap', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -12253,7 +12253,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('tap_approval', $approvals[0]['tap_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'tap_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/tap/' . $id . '/' . $get_data[0]['financial_year']);
@@ -12307,7 +12307,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['tap_approval'] = 3;
         	} else {
@@ -12319,12 +12319,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -12361,7 +12361,7 @@ class Portfolio extends CI_Controller {
         			$data['need_by'] = (isset($_POST['need_by'][$i]) && $_POST['need_by'][$i] != '') ? date('Y-m-d', strtotime($_POST['need_by'][$i])) : '';
 					$data['program'] = $_POST["program"][$i];
 
-        			if ($this->session->userdata['sector_lead'] == 11) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         				$data['status'] = 1;
         				$approval['tap_approval'] = 3;
         			} else {
@@ -12371,13 +12371,13 @@ class Portfolio extends CI_Controller {
         			}
 
         			$checkExist = $this->Mportfolio->getDetails('port_ttm_tap', $option);
-        			if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        			if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
         				$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_tap', $data, $option);
         				$t_query = $this->Mportfolio->updatePortfolioDetail('temp_ttm_tap', $data, $temp);
-        			} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        			} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
-        				if ($this->session->userdata['sector_lead'] == 11) {
+        				if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         					$main_data = $data;
         					$main_data['edited_status'] = 0;
         					$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_tap', $main_data, $option);
@@ -12407,7 +12407,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/tap/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -12452,7 +12452,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -12489,10 +12489,10 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['get_nontap'] = $this->Mportfolio->getDetails('temp_ttm_partnership', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['nontapCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['nontapCount']) > 0) {
         		$data['get_nontap'] = $this->Mportfolio->getDetails('temp_ttm_partnership', $c_option, $status, $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -12504,7 +12504,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('nontap_approval', $approvals[0]['nontap_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'nontap_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/nontap/' . $id . '/' . $get_data[0]['financial_year']);
@@ -12558,7 +12558,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['nontap_approval'] = 3;
         	} else {
@@ -12570,12 +12570,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -12614,7 +12614,7 @@ class Portfolio extends CI_Controller {
         			$data['notes'] = $_POST['nontap_notes'][$i];
         			$data['need_by'] = (isset($_POST['need_by'][$i]) && $_POST['need_by'][$i] != '') ? date('Y-m-d', strtotime($_POST['need_by'][$i])) : '';
 
-        			if ($this->session->userdata['sector_lead'] == 11) {
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         				$data['status'] = 1;
         				$approval['nontap_approval'] = 3;
         			} else {
@@ -12624,13 +12624,13 @@ class Portfolio extends CI_Controller {
         			}
 					
         			$checkExist = $this->Mportfolio->getDetails('port_ttm_partnership', $option);
-        			if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        			if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
         				$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_partnership', $data, $option);
         				$t_query = $this->Mportfolio->updatePortfolioDetail('temp_ttm_partnership', $data, $temp);
-        			} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        			} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         				$data['updated_by'] = $this->session->userdata('emp_number');
-        				if ($this->session->userdata['sector_lead'] == 11) {
+        				if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         					$main_data = $data;
         					$main_data['edited_status'] = 0;
         					$m_query = $this->Mportfolio->updatePortfolioDetail('port_ttm_partnership', $main_data, $option);
@@ -12662,7 +12662,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/nontap/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -12706,7 +12706,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -12743,10 +12743,10 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['dp_data'] = $this->Mportfolio->getDetails('temp_diagnostic_panels', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['dpCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['dpCount']) > 0) {
         		$data['dp_data'] = $this->Mportfolio->getDetails('temp_diagnostic_panels', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -12758,7 +12758,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('dp_approval', $approvals[0]['dp_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'dp_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/diagnosticpanel/' . $id . '/' . $get_data[0]['financial_year']);
@@ -12813,7 +12813,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['dp_approval'] = 3;
         	} else {
@@ -12825,12 +12825,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -12868,7 +12868,7 @@ class Portfolio extends CI_Controller {
         	$data['dp_plan'] = json_encode($dpanel);
         	$data['dp_external'] = json_encode($ex_panel);
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['dp_approval'] = 3;
         	} else {
@@ -12878,13 +12878,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_diagnostic_panels', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_diagnostic_panels', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_diagnostic_panels', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_diagnostic_panels', $main_data, $option);
@@ -12912,7 +12912,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/diagnosticpanel/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -12956,7 +12956,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -12993,10 +12993,10 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['board_data'] = $this->Mportfolio->getDetails('temp_board_meetings', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['boardCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['boardCount']) > 0) {
         		$data['board_data'] = $this->Mportfolio->getDetails('temp_board_meetings', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -13008,7 +13008,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('board_approval', $approvals[0]['board_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'board_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/boardmeeting/' . $id . '/' . $get_data[0]['financial_year']);
@@ -13063,7 +13063,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['board_approval'] = 3;
         	} else {
@@ -13075,12 +13075,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -13112,7 +13112,7 @@ class Portfolio extends CI_Controller {
 
         	$data['meeting_plan'] = json_encode($board);
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['board_approval'] = 3;
         	} else {
@@ -13122,13 +13122,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_board_meetings', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_board_meetings', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_board_meetings', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_board_meetings', $main_data, $option);
@@ -13156,7 +13156,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/boardmeeting/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -13200,7 +13200,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -13237,10 +13237,10 @@ class Portfolio extends CI_Controller {
 			}
 			#Sector User Map
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		$data['team_data'] = $this->Mportfolio->getDetails('temp_team', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['teamCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['teamCount']) > 0) {
         		$data['team_data'] = $this->Mportfolio->getDetails('temp_team', $c_option, '', $f_year);
         		$data['qualitative_data'] = $this->Mportfolio->getDetails('temp_qualitative_data', $qual_option, $status, $f_year);
         	} else {
@@ -13252,7 +13252,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('team_approval', $approvals[0]['team_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'team_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/team/' . $id . '/' . $get_data[0]['financial_year']);
@@ -13307,7 +13307,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['team_approval'] = 3;
         	} else {
@@ -13319,12 +13319,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -13369,7 +13369,7 @@ class Portfolio extends CI_Controller {
         	$data['survey_employee'] = json_encode($survey);
         	$data['employee_at_start'] = $_POST['emp_atStart'];
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$data['status'] = 1;
         		$approval['team_approval'] = 3;
         	} else {
@@ -13379,13 +13379,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_team', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_team', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_team', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_team', $main_data, $option);
@@ -13413,7 +13413,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/team/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -13488,7 +13488,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -13568,7 +13568,7 @@ class Portfolio extends CI_Controller {
 			$data['getMasterMetrics'] = $this->Mportfolio->getDetails('master_metrics',array('status'=>1));
 			
 
-        	if ($data['isAssociate'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        	if (php72_cmp($data['isAssociate']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
         		 
 				$data['end_male'] = $this->Mportfolio->getDetails('temp_impact_metric', $end_m_option, $status, $f_year);
         		$data['end_female'] = $this->Mportfolio->getDetails('temp_impact_metric', $end_f_option, $status, $f_year);
@@ -13608,7 +13608,7 @@ class Portfolio extends CI_Controller {
         			$data['metric_value'] = $this->Mportfolio->getDetails('temp_impact_metric', $metric_option, $status, $f_year);
         		}
 				
-        	} else if ($this->session->userdata['sector_lead'] == 1 && php72_count($data['dataConfig']['impactCount']) > 0) {
+        	} else if (php72_cmp($this->session->userdata['sector_lead']) == 1 && php72_count($data['dataConfig']['impactCount']) > 0) {
         		
 				$data['end_male'] = $this->Mportfolio->getDetails('temp_impact_metric', $end_m_option, $status, $f_year);
         		$data['end_female'] = $this->Mportfolio->getDetails('temp_impact_metric', $end_f_option, $status, $f_year);
@@ -13679,7 +13679,7 @@ class Portfolio extends CI_Controller {
         	$this->session->set_userdata('impact_approval', $approvals[0]['impact_approval']);
         	$pending = '0';
         	if ($year == '') {
-        		if ($this->session->userdata['sector_lead'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
         			$get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'impact_approval');
         			if (php72_count($get_data) > 0) {
         				redirect('portfolio/impact/' . $id . '/' . $get_data[0]['financial_year']);
@@ -13733,7 +13733,7 @@ class Portfolio extends CI_Controller {
         	$qual_data['mar_desc'] = $_POST['marContent'];
 
         	$qual_data['updated_by'] = $this->session->userdata('emp_number');
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$qual_data['status'] = 1;
         		$qual_approval['impact_approval'] = 3;
         	} else {
@@ -13745,12 +13745,12 @@ class Portfolio extends CI_Controller {
         	$check_qualit_exist = $this->Mportfolio->getDetails('port_qualitative_data', $qual_cond);
         	if (php72_count($check_qualit_exist) > 0) {
         		$qual_option['id'] = $qual_temp_option['qualitative_id'] = $check_qualit_exist[0]['id'];
-        		if ($this->session->userdata['sector_lead'] != 11 && $check_qualit_exist[0]['status'] == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) != 11 && php72_cmp($check_qualit_exist[0]['status']) == 1) {
         			$qual_edited['edited_status'] = 1;
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_edited, $qual_option);
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         		} else {
-        			if ($this->session->userdata['sector_lead'] == 11)
+        			if (php72_cmp($this->session->userdata['sector_lead']) == 11)
         				$qual_data['edited_status'] = 0;
         			$qt_query = $this->Mportfolio->updatePortfolioDetail('temp_qualitative_data', $qual_data, $qual_temp_option);
         			$qm_query = $this->Mportfolio->updatePortfolioDetail('port_qualitative_data', $qual_data, $qual_option);
@@ -13990,7 +13990,7 @@ class Portfolio extends CI_Controller {
         	$indirect_u_data['feb'] = $_POST['indirJob_unknown_feb'];
         	$indirect_u_data['mar'] = $_POST['indirJob_unknown_mar'];
 
-        	if ($this->session->userdata['sector_lead'] == 11) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         		$end_m_data['status'] = $end_f_data['status'] = $end_u_data['status'] = $end_o_data['status'] = 1;
         		$direct_m_data['status'] = $direct_f_data['status'] = $direct_u_data['status'] = $direct_o_data['status'] = 1;
         		$indirect_m_data['status'] = $indirect_f_data['status'] = $indirect_u_data['status'] = $indirect_o_data['status'] = 1;
@@ -14015,7 +14015,7 @@ class Portfolio extends CI_Controller {
 		
         	$check_endMale = $this->Mportfolio->getDetails('port_impact_metric', $endMale_cond);
 			
-        	if (php72_count($check_endMale) > 0 && $check_endMale[0]['status'] == 0) { 
+        	if (php72_count($check_endMale) > 0 && php72_cmp($check_endMale[0]['status']) == 0) { 
         		$end_m_data['updated_by'] = $end_f_data['updated_by'] = $end_u_data['updated_by'] = $end_o_data['updated_by'] = $this->session->userdata('emp_number');
 				
         		$endMale_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $end_m_data, $endMale_cond);
@@ -14029,9 +14029,9 @@ class Portfolio extends CI_Controller {
 
         		$endUnknown_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $end_u_data, $endUnknown_cond);
         		$endUnknown_t_query = $this->Mportfolio->updatePortfolioDetail('temp_impact_metric', $end_u_data, $endUnknown_cond);
-        	} else if (php72_count($check_endMale) > 0 && $check_endMale[0]['status'] == 1) {
+        	} else if (php72_count($check_endMale) > 0 && php72_cmp($check_endMale[0]['status']) == 1) {
         		$end_m_data['updated_by'] = $end_f_data['updated_by'] = $end_u_data['updated_by'] = $end_o_data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$endMale_main_data = $end_m_data;
         			$endFemale_main_data = $end_f_data;
         			$endOther_main_data = $end_o_data;
@@ -14078,7 +14078,7 @@ class Portfolio extends CI_Controller {
 
         	$check_directMale = $this->Mportfolio->getDetails('port_impact_metric', $directMale_cond);
 			
-        	if (php72_count($check_directMale) > 0 && $check_directMale[0]['status'] == 0) {
+        	if (php72_count($check_directMale) > 0 && php72_cmp($check_directMale[0]['status']) == 0) {
         		$direct_m_data['updated_by'] = $direct_f_data['updated_by'] = $direct_u_data['updated_by'] = $direct_o_data['updated_by'] = $this->session->userdata('emp_number');
 
         		$directMale_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $direct_m_data, $directMale_cond);
@@ -14092,9 +14092,9 @@ class Portfolio extends CI_Controller {
 
         		$directUnknown_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $direct_u_data, $directUnknown_cond);
         		$directUnknown_t_query = $this->Mportfolio->updatePortfolioDetail('temp_impact_metric', $direct_u_data, $directUnknown_cond);
-        	} else if (php72_count($check_directMale) > 0 && $check_directMale[0]['status'] == 1) {
+        	} else if (php72_count($check_directMale) > 0 && php72_cmp($check_directMale[0]['status']) == 1) {
         		$direct_m_data['updated_by'] = $direct_f_data['updated_by'] = $direct_u_data['updated_by'] = $direct_o_data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$directMale_main_data = $direct_m_data;
         			$directFemale_main_data = $direct_f_data;
         			$directOther_main_data = $direct_o_data;
@@ -14140,7 +14140,7 @@ class Portfolio extends CI_Controller {
         	$indirectUnknown_cond['gender'] = 4;
 
         	$check_indirectMale = $this->Mportfolio->getDetails('port_impact_metric', $indirectMale_cond);
-        	if (php72_count($check_indirectMale) > 0 && $check_indirectMale[0]['status'] == 0) {
+        	if (php72_count($check_indirectMale) > 0 && php72_cmp($check_indirectMale[0]['status']) == 0) {
         		$indirect_m_data['updated_by'] = $indirect_f_data['updated_by'] = $indirect_u_data['updated_by'] = $indirect_o_data['updated_by'] = $this->session->userdata('emp_number');
 
         		$indirectMale_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $indirect_m_data, $indirectMale_cond);
@@ -14154,9 +14154,9 @@ class Portfolio extends CI_Controller {
 
         		$indirectUnknown_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $indirect_u_data, $indirectUnknown_cond);
         		$indirectUnknown_t_query = $this->Mportfolio->updatePortfolioDetail('temp_impact_metric', $indirect_u_data, $indirectUnknown_cond);
-        	} else if (php72_count($check_indirectMale) > 0 && $check_indirectMale[0]['status'] == 1) {
+        	} else if (php72_count($check_indirectMale) > 0 && php72_cmp($check_indirectMale[0]['status']) == 1) {
         		$indirect_m_data['updated_by'] = $indirect_f_data['updated_by'] = $indirect_u_data['updated_by'] = $indirect_o_data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         			$indirectMale_main_data = $indirect_m_data;
         			$indirectFemale_main_data = $indirect_f_data;
         			$indirectOther_main_data = $indirect_o_data;
@@ -14218,13 +14218,13 @@ class Portfolio extends CI_Controller {
         			$metric_data['mar'] = $_POST['metric_mar_' . $m_inc];
 					
         			$checkMetric = $this->Mportfolio->getDetails('port_impact_metric', $metric_cond);
-        			if (php72_count($checkMetric) > 0 && $checkMetric[0]['status'] == 0) {
+        			if (php72_count($checkMetric) > 0 && php72_cmp($checkMetric[0]['status']) == 0) {
         				$metric_data['updated_by'] = $this->session->userdata('emp_number');
         				$metric_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $metric_data, $metric_cond);
         				$metric_t_query = $this->Mportfolio->updatePortfolioDetail('temp_impact_metric', $metric_data, $metric_cond);
-        			} else if (php72_count($checkMetric) > 0 && $checkMetric[0]['status'] == 1) {
+        			} else if (php72_count($checkMetric) > 0 && php72_cmp($checkMetric[0]['status']) == 1) {
         				$metric_data['updated_by'] = $this->session->userdata('emp_number');
-        				if ($this->session->userdata['sector_lead'] == 11) {
+        				if (php72_cmp($this->session->userdata['sector_lead']) == 11) {
         					$metric_main_data = $metric_data;
         					$metric_main_data['edited_status'] = 0;
         					$metric_m_query = $this->Mportfolio->updatePortfolioDetail('port_impact_metric', $metric_main_data, $metric_cond);
@@ -14256,7 +14256,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         		redirect('portfolio/impact/' . $_POST['innovation_id'] . '/' . $_POST['cur_finance']);
         	} else {
@@ -14279,7 +14279,7 @@ class Portfolio extends CI_Controller {
 
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -14413,7 +14413,7 @@ class Portfolio extends CI_Controller {
         // $option['financial_year'] = $app_option['financial_year'] = $approval['financial_year'] = $data['financial_year'] = $_POST['cur_finance'];
         	$data['name'] = $_POST['milestone_name'];
 
-        	if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         		$data['status'] = 1;
         		$approval['project_approval'] = 3;
         	} else {
@@ -14423,14 +14423,14 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_project_milestone', $check);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_milestone', $data, $option);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_project_milestone', $data, $option);
         		$mile_id = $_POST['milestone_edit_id'];
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_milestone', $main_data, $option);
@@ -14457,7 +14457,7 @@ class Portfolio extends CI_Controller {
         			$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         			$approval['financial_year'] = date('Y');
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$approval['financial_year'] = $fy['fin_year'];
         				}
         			}
@@ -14502,21 +14502,21 @@ class Portfolio extends CI_Controller {
         	$data['task_name'] = $_POST['task_name'];
         	$miles['name'] = $_POST['milestone_task'];
 
-        	if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         		$miles['status'] = $data['status'] = 1;
         	} else {
         		$miles['status'] = $data['status'] = 0;
         	}
 
         	$check = $this->Mportfolio->getDetails('port_project_milestone', $mileschk);
-        	if (php72_count($check) > 0 && $check[0]['status'] == 0) {
+        	if (php72_count($check) > 0 && php72_cmp($check[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_milestone', $miles, $mileschk);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_project_milestone', $miles, $mileschk);
         		$mile_id = $_POST['milestone_id'];
-        	} else if (php72_count($check) > 0 && $check[0]['status'] == 1) {
+        	} else if (php72_count($check) > 0 && php72_cmp($check[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         			$main_data = $miles;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_milestone', $main_data, $mileschk);
@@ -14535,13 +14535,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_project_task', $option);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
         		$mp_query = $this->Mportfolio->updatePortfolioDetail('port_project_task', $data, $option);
         		$tp_query = $this->Mportfolio->updatePortfolioDetail('temp_project_task', $data, $option);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$data['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         			$main_data = $data;
         			$main_data['edited_status'] = 0;
         			$mp_query = $this->Mportfolio->updatePortfolioDetail('port_project_task', $main_data, $option);
@@ -14582,7 +14582,7 @@ class Portfolio extends CI_Controller {
         	$result['proj_id'] = isset($get_project[0]['id']) && $get_project[0]['id'] != '' ? $get_project[0]['id'] : '';
         	$result['assigned'] = isset($get_project[0]['assigned_to']) && $get_project[0]['assigned_to'] != '' ? $get_project[0]['assigned_to'] : '';
         	$result['description'] = isset($get_project[0]['description']) && $get_project[0]['description'] != '' ? $get_project[0]['description'] : '';
-        	$result['projtype'] = isset($get_project[0]['type']) && $get_project[0]['type'] != '' && $get_project[0]['type'] != 0 ? $get_project[0]['type'] : '';
+        	$result['projtype'] = isset($get_project[0]['type']) && $get_project[0]['type'] != '' && php72_cmp($get_project[0]['type']) != 0 ? $get_project[0]['type'] : '';
         	$result['due_by'] = isset($get_project[0]['due_by']) && $get_project[0]['due_by'] != '0000-00-00 00:00:00' ? date("d-m-Y", strtotime($get_project[0]['due_by'])) : '';
         	$result['completed_on'] = isset($get_project[0]['completed_on']) && $get_project[0]['completed_on'] != '0000-00-00 00:00:00' ? date("d-m-Y", strtotime($get_project[0]['completed_on'])) : '';
         	$result['notes'] = isset($get_project[0]['notes']) && $get_project[0]['notes'] != '' ? $get_project[0]['notes'] : '';
@@ -14674,7 +14674,7 @@ class Portfolio extends CI_Controller {
         	$proj['completed_on'] = isset($_POST['project_completed_on']) && $_POST['project_completed_on'] != '' ? date("Y-m-d", strtotime($_POST['project_completed_on'])) : "0000-00-00 00:00:00";
         	$proj['notes'] = $_POST['project_note'];
 
-        	if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        	if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         		$miles['status'] = $task['status'] = $proj['status'] = 1;
         		$approval['project_approval'] = 3;
         	} else {
@@ -14701,7 +14701,7 @@ class Portfolio extends CI_Controller {
         		$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         		$approval['financial_year'] = date('Y');
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$approval['financial_year'] = $fy['fin_year'];
         			}
         		}
@@ -14709,13 +14709,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$checkExist = $this->Mportfolio->getDetails('port_project_task', $tcheck);
-        	if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+        	if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
         		$task['updated_by'] = $this->session->userdata('emp_number');
         		$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_task', $task, $tcheck);
         		$t_query = $this->Mportfolio->updatePortfolioDetail('temp_project_task', $task, $tcheck);
-        	} else if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 1) {
+        	} else if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 1) {
         		$task['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         			$main_data = $task;
         			$main_data['edited_status'] = 0;
         			$m_query = $this->Mportfolio->updatePortfolioDetail('port_project_task', $main_data, $tcheck);
@@ -14733,13 +14733,13 @@ class Portfolio extends CI_Controller {
         	}
 
         	$check = $this->Mportfolio->getDetails('port_project_details', $option);
-        	if (php72_count($check) > 0 && $check[0]['status'] == 0) {
+        	if (php72_count($check) > 0 && php72_cmp($check[0]['status']) == 0) {
         		$proj['updated_by'] = $this->session->userdata('emp_number');
         		$md_query = $this->Mportfolio->updatePortfolioDetail('port_project_details', $proj, $option);
         		$td_query = $this->Mportfolio->updatePortfolioDetail('temp_project_details', $proj, $option);
-        	} else if (php72_count($check) > 0 && $check[0]['status'] == 1) {
+        	} else if (php72_count($check) > 0 && php72_cmp($check[0]['status']) == 1) {
         		$proj['updated_by'] = $this->session->userdata('emp_number');
-        		if ($this->session->userdata['sector_lead'] == 11 || $approval_status == 1) {
+        		if (php72_cmp($this->session->userdata['sector_lead']) == 11 || php72_cmp($approval_status) == 1) {
         			$main_data = $proj;
         			$main_data['edited_status'] = 0;
         			$md_query = $this->Mportfolio->updatePortfolioDetail('port_project_details', $main_data, $option);
@@ -14761,7 +14761,7 @@ class Portfolio extends CI_Controller {
         		$this->session->set_flashdata('errormsg', 'Value Missing');
         	}
         	$lightBox = $_POST['updatePlan'];
-        	if ($lightBox == 1) {
+        	if (php72_cmp($lightBox) == 1) {
         		$this->session->set_userdata('plan_lightbox', 1);
         	} else {
         		$this->session->set_userdata('plan_lightbox', 0);
@@ -14841,52 +14841,52 @@ class Portfolio extends CI_Controller {
         	foreach ($getApprovalStatus as $appFields) {
         		$fields = array();
         		$option['id'] = $appFields['id'];
-        		if ($appFields['product_approval'] == 1) {
+        		if (php72_cmp($appFields['product_approval']) == 1) {
         			$fields['product_approval'] = 2;
         		}
-        		if ($appFields['sales_approval'] == 1) {
+        		if (php72_cmp($appFields['sales_approval']) == 1) {
         			$fields['sales_approval'] = 2;
         		}
-        		if ($appFields['channel_approval'] == 1) {
+        		if (php72_cmp($appFields['channel_approval']) == 1) {
         			$fields['channel_approval'] = 2;
         		}
-        		if ($appFields['pipeline_approval'] == 1) {
+        		if (php72_cmp($appFields['pipeline_approval']) == 1) {
         			$fields['pipeline_approval'] = 2;
         		}
-        		if ($appFields['revenue_approval'] == 1) {
+        		if (php72_cmp($appFields['revenue_approval']) == 1) {
         			$fields['revenue_approval'] = 2;
         		}
-        		if ($appFields['netprofit_approval'] == 1) {
+        		if (php72_cmp($appFields['netprofit_approval']) == 1) {
         			$fields['netprofit_approval'] = 2;
         		}
-        		if ($appFields['vif_approval'] == 1) {
+        		if (php72_cmp($appFields['vif_approval']) == 1) {
         			$fields['vif_approval'] = 2;
         		}
-        		if ($appFields['fundraise_approval'] == 1) {
+        		if (php72_cmp($appFields['fundraise_approval']) == 1) {
         			$fields['fundraise_approval'] = 2;
         		}
-        		if ($appFields['mentor_approval'] == 1) {
+        		if (php72_cmp($appFields['mentor_approval']) == 1) {
         			$fields['mentor_approval'] = 2;
         		}
-        		if ($appFields['tap_approval'] == 1) {
+        		if (php72_cmp($appFields['tap_approval']) == 1) {
         			$fields['tap_approval'] = 2;
         		}
-        		if ($appFields['nontap_approval'] == 1) {
+        		if (php72_cmp($appFields['nontap_approval']) == 1) {
         			$fields['nontap_approval'] = 2;
         		}
-        		if ($appFields['dp_approval'] == 1) {
+        		if (php72_cmp($appFields['dp_approval']) == 1) {
         			$fields['dp_approval'] = 2;
         		}
-        		if ($appFields['board_approval'] == 1) {
+        		if (php72_cmp($appFields['board_approval']) == 1) {
         			$fields['board_approval'] = 2;
         		}
-        		if ($appFields['team_approval'] == 1) {
+        		if (php72_cmp($appFields['team_approval']) == 1) {
         			$fields['team_approval'] = 2;
         		}
-        		if ($appFields['impact_approval'] == 1) {
+        		if (php72_cmp($appFields['impact_approval']) == 1) {
         			$fields['impact_approval'] = 2;
         		}
-        		if ($appFields['project_approval'] == 1) {
+        		if (php72_cmp($appFields['project_approval']) == 1) {
         			$proj_fields['project_approval'] = 2;
         		}
         		if (isset($fields) && count($fields) > 0) {
@@ -14978,7 +14978,7 @@ class Portfolio extends CI_Controller {
 
         	if ($year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -15092,7 +15092,7 @@ class Portfolio extends CI_Controller {
 
         	if (!isset($year) || $year == '') {
         		foreach ($data['fin_year'] as $fy) {
-        			if ($fy['status'] == 1) {
+        			if (php72_cmp($fy['status']) == 1) {
         				$f_year = $fy['fin_year'];
         			}
         		}
@@ -15172,7 +15172,7 @@ class Portfolio extends CI_Controller {
         		if ($year == '') {
         			if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         				foreach ($data['fin_year'] as $fy) {
-        					if ($fy['status'] == 1) {
+        					if (php72_cmp($fy['status']) == 1) {
         						$data['current_fy'] = $fy['fin_year'];
         					}
         				}
@@ -15270,7 +15270,7 @@ class Portfolio extends CI_Controller {
         		if ($year == '') {
         			if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         				foreach ($data['fin_year'] as $fy) {
-        					if ($fy['status'] == 1) {
+        					if (php72_cmp($fy['status']) == 1) {
         						$data['current_fy'] = $fy['fin_year'];
         					}
         				}
@@ -15360,7 +15360,7 @@ class Portfolio extends CI_Controller {
         		if ($year == '') {
         			if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         				foreach ($data['fin_year'] as $fy) {
-        					if ($fy['status'] == 1) {
+        					if (php72_cmp($fy['status']) == 1) {
         						$data['current_fy'] = $fy['fin_year'];
         					}
         				}
@@ -15417,11 +15417,11 @@ class Portfolio extends CI_Controller {
         	foreach ($company_list as $company) {
 				if($company['id']!='289202'){
         		$comp_yr = $company['exit_year'];
-        		if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
+        		if (php72_cmp($company['exit_month']) == 01 || php72_cmp($company['exit_month']) == 02 || php72_cmp($company['exit_month']) == 03) {
         			$comp_yr = $company['exit_year'] - 1;
         		}
 				if(!in_array($company['id'],$get_inv_id_merge)){
-					if ($company['company_status'] == 3) {
+					if (php72_cmp($company['company_status']) == 3) {
 						if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 							$exited_inv[$i]['id'] = $company['id'];
 							$exited_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
@@ -15430,7 +15430,7 @@ class Portfolio extends CI_Controller {
 							$exited_inv[$i]['exit_year'] = $company['exit_year'];
 							$exited_inv[$i]['comp_yr'] = $comp_yr;
 						}
-					} else if ($company['company_status'] == 2) {
+					} else if (php72_cmp($company['company_status']) == 2) {
 						if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 							$graduated_inv[$i]['id'] = $company['id'];
 							$graduated_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
@@ -15516,11 +15516,11 @@ class Portfolio extends CI_Controller {
         	foreach ($company_list as $company) {
 				if($company['id']!='289202'){
         		$comp_yr = $company['exit_year'];
-        		if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
+        		if (php72_cmp($company['exit_month']) == 01 || php72_cmp($company['exit_month']) == 02 || php72_cmp($company['exit_month']) == 03) {
         			$comp_yr = $company['exit_year'] - 1;
         		}
 				if(!in_array($company['id'],$get_inv_id_merge)){
-					if ($company['company_status'] == 3) {
+					if (php72_cmp($company['company_status']) == 3) {
 						if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 							$exited_inv[$i]['id'] = $company['id'];
 							$exited_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
@@ -15529,7 +15529,7 @@ class Portfolio extends CI_Controller {
 							$exited_inv[$i]['exit_year'] = $company['exit_year'];
 							$exited_inv[$i]['comp_yr'] = $comp_yr;
 						}
-					} else if ($company['company_status'] == 2) {
+					} else if (php72_cmp($company['company_status']) == 2) {
 						if ($comp_yr == '0000' || ($inc_year <= $comp_yr)) {
 							$graduated_inv[$i]['id'] = $company['id'];
 							$graduated_inv[$i]['name_of_enterprise'] = $company['name_of_enterprise'];
@@ -15609,7 +15609,7 @@ class Portfolio extends CI_Controller {
         	if ($year == '') {
         		if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$data['current_fy'] = $fy['fin_year'];
         				}
         			}
@@ -15751,7 +15751,7 @@ class Portfolio extends CI_Controller {
         	if ($year == '') {
         		if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$data['current_fy'] = $fy['fin_year'];
         				}
         			}
@@ -15882,40 +15882,40 @@ class Portfolio extends CI_Controller {
         	$tapactual_list = $this->Mportfolio->getActualTapMonthly($where, '', $f_year, '1');
         	$listtap_apr_actual = $listtap_may_actual = $listtap_jun_actual = $listtap_jul_actual = $listtap_aug_actual = $listtap_sep_actual = $listtap_oct_actual = $listtap_nov_actual = $listtap_decm_actual = $listtap_jan_actual = $listtap_feb_actual = $listtap_mar_actual = 0;
         	foreach ($tapactual_list as $liststap) {
-        		if ($liststap['apr'] != 0) {
+        		if (php72_cmp($liststap['apr']) != 0) {
         			$listtap_apr_actual += 1;
         		}
-        		if ($liststap['may'] != 0) {
+        		if (php72_cmp($liststap['may']) != 0) {
         			$listtap_may_actual += 1;
         		}
-        		if ($liststap['jun'] != 0) {
+        		if (php72_cmp($liststap['jun']) != 0) {
         			$listtap_jun_actual += 1;
         		}
-        		if ($liststap['jul'] != 0) {
+        		if (php72_cmp($liststap['jul']) != 0) {
         			$listtap_jul_actual += 1;
         		}
-        		if ($liststap['aug'] != 0) {
+        		if (php72_cmp($liststap['aug']) != 0) {
         			$listtap_aug_actual += 1;
         		}
-        		if ($liststap['sep'] != 0) {
+        		if (php72_cmp($liststap['sep']) != 0) {
         			$listtap_sep_actual += 1;
         		}
-        		if ($liststap['oct'] != 0) {
+        		if (php72_cmp($liststap['oct']) != 0) {
         			$listtap_oct_actual += 1;
         		}
-        		if ($liststap['nov'] != 0) {
+        		if (php72_cmp($liststap['nov']) != 0) {
         			$listtap_nov_actual += 1;
         		}
-        		if ($liststap['dec'] != 0) {
+        		if (php72_cmp($liststap['dec']) != 0) {
         			$listtap_decm_actual += 1;
         		}
-        		if ($liststap['jan'] != 0) {
+        		if (php72_cmp($liststap['jan']) != 0) {
         			$listtap_jan_actual += 1;
         		}
-        		if ($liststap['feb'] != 0) {
+        		if (php72_cmp($liststap['feb']) != 0) {
         			$listtap_feb_actual += 1;
         		}
-        		if ($liststap['mar'] != 0) {
+        		if (php72_cmp($liststap['mar']) != 0) {
         			$listtap_mar_actual += 1;
         		}
         	}
@@ -16499,7 +16499,7 @@ class Portfolio extends CI_Controller {
         	$objPHPExcel->getActiveSheet()->setCellValue('N20', $listtap_decm_actual != '' ? $listtap_decm_actual : 0);
         	$objPHPExcel->getActiveSheet()->setCellValue('O20', $listtap_jan_actual != '' ? $listtap_jan_actual : 0);
         	$objPHPExcel->getActiveSheet()->setCellValue('P20', $listtap_feb_actual != '' ? $listtap_feb_actual : 0);
-        	$objPHPExcel->getActiveSheet()->setCellValue('Q20', $listtap_mar_actual != '' ? $listtap_mar_actual : 0);
+        	$objPHPExcel->getActiveSheet()->setCellValue('Q20', !php72_loose_eq($listtap_mar_actual, '') ? $listtap_mar_actual : 0);
 
         	$tot_tap_actual = $listtap_apr_actual + $listtap_may_actual + $listtap_jun_actual + $listtap_jul_actual + $listtap_aug_actual + $listtap_sep_actual + $listtap_oct_actual + $listtap_nov_actual + $listtap_decm_actual + $listtap_jan_actual + $listtap_feb_actual + $listtap_mar_actual;
         	$objPHPExcel->getActiveSheet()->setCellValue('S20', $tot_tap_actual);
@@ -17025,7 +17025,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	$f_year = date('Y');
         	foreach ($data['fin_year'] as $fy) {
-        		if ($fy['status'] == 1) {
+        		if (php72_cmp($fy['status']) == 1) {
         			$f_year = $fy['fin_year'];
         		}
         	}
@@ -17049,7 +17049,7 @@ class Portfolio extends CI_Controller {
         	if ($year == '') {
         		if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$data['current_fy'] = $fy['fin_year'];
         				}
         			}
@@ -17341,7 +17341,7 @@ class Portfolio extends CI_Controller {
 					
 					
         			$comp_yr = $incubs['exit_year'];
-        			if ($incubs['exit_month'] == 01 || $incubs['exit_month'] == 02 || $incubs['exit_month'] == 03) {
+        			if (php72_cmp($incubs['exit_month']) == 01 || php72_cmp($incubs['exit_month']) == 02 || php72_cmp($incubs['exit_month']) == 03) {
         				$comp_yr = $incubs['exit_year'] - 1;
         			}
         			if ($comp_yr == '0000' || ($year <= $comp_yr) || $comp_yr == NULL) {
@@ -17375,7 +17375,7 @@ class Portfolio extends CI_Controller {
         						$datavalues = json_decode($revs['data'], TRUE);
         						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
         					}
-							if($revcost==0){
+							if(php72_cmp($revcost)==0){
 								$revcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$yearvalues[0]] . $rw_inc, $revcost);
@@ -17389,7 +17389,7 @@ class Portfolio extends CI_Controller {
         							$revactualcost += str_replace(',', '', $revs['revenue']);
         						}
         					}
-							if($revactualcost==0){
+							if(php72_cmp($revactualcost)==0){
 								$revactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $revactualcost);
@@ -17414,7 +17414,7 @@ class Portfolio extends CI_Controller {
         						$profvalues = json_decode($profs['data'], TRUE);
         						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
         					}
-							if($profcost==0){
+							if(php72_cmp($profcost)==0){
 								$profcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$profmonths[0]] . $rw_inc, $profcost);
@@ -17429,7 +17429,7 @@ class Portfolio extends CI_Controller {
         							$profactualcost += str_replace(',', '', $profs['net_profit']);
         						}
         					}
-							if($profactualcost==0){
+							if(php72_cmp($profactualcost)==0){
 								$profactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $profactualcost);
@@ -17455,7 +17455,7 @@ class Portfolio extends CI_Controller {
         						$salesvalues = json_decode($sales['value'], TRUE);
         						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
         					}
-							if($salescost==0){
+							if(php72_cmp($salescost)==0){
 								$salescost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$salesmonths[0]] . $rw_inc, $salescost);
@@ -17469,7 +17469,7 @@ class Portfolio extends CI_Controller {
         							$salesactualcost += str_replace(',', '', $sales['value']);
         						}
         					}
-							if($salesactualcost==0){
+							if(php72_cmp($salesactualcost)==0){
 								$salesactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $salesactualcost);
@@ -17503,13 +17503,13 @@ class Portfolio extends CI_Controller {
         									$salesskuactualcost += str_replace(',', '', $salessku['value']);
         								}
         							}
-									if($salesskuactualcost==0){
+									if(php72_cmp($salesskuactualcost)==0){
 										$salesskuactualcost ='';
 									}
         							$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $sales_inc, $salesskuactualcost);
         						}
 								
-								if($salesskucost==0){
+								if(php72_cmp($salesskucost)==0){
 									$salesskucost ='';
 								}
         						$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$salesskumonths[0]] . $sales_inc, $salesskucost);
@@ -17551,7 +17551,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$fundcost = 0;
         					}
-							if($fundcost==0){
+							if(php72_cmp($fundcost)==0){
 								$fundcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$fundmonths[0]] . $rw_inc, $fundcost);
@@ -17569,7 +17569,7 @@ class Portfolio extends CI_Controller {
         							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
         						}
         					}
-							if($fundactualcost==0){
+							if(php72_cmp($fundactualcost)==0){
 								$fundactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $fundactualcost);
@@ -17608,7 +17608,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$teamhcost = 0;
         					}
-							if($teamhcost==0){
+							if(php72_cmp($teamhcost)==0){
 								$teamhcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$teamhmonths[0]] . $rw_inc, $teamhcost);
@@ -17622,7 +17622,7 @@ class Portfolio extends CI_Controller {
         							$teamhactualcost += str_replace(',', '', $teamh['t_count']);
         						}
         					}
-							if($teamhactualcost==0){
+							if(php72_cmp($teamhactualcost)==0){
 								$teamhactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $teamhactualcost);
@@ -17662,7 +17662,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$teamecost = 0;
         					}
-							if($teamecost==0){
+							if(php72_cmp($teamecost)==0){
 								$teamecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$teamemonths[0]] . $rw_inc, $teamecost);
@@ -17676,7 +17676,7 @@ class Portfolio extends CI_Controller {
         							$teameactualcost += str_replace(',', '', $teame['t_count']);
         						}
         					}
-							if($teameactualcost==0){
+							if(php72_cmp($teameactualcost)==0){
 								$teameactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $teameactualcost);
@@ -17715,7 +17715,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$empsurveycost = 0;
         					}
-							if($empsurveycost==0){
+							if(php72_cmp($empsurveycost)==0){
 								$empsurveycost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$empsurveymonths[0]] . $rw_inc, $empsurveycost);
@@ -17729,7 +17729,7 @@ class Portfolio extends CI_Controller {
         							$empsurveyactualcost += str_replace(',', '', $empsurvey['t_count']);
         						}
         					}
-							if($empsurveyactualcost==0){
+							if(php72_cmp($empsurveyactualcost)==0){
 								$empsurveyactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $empsurveyactualcost);
@@ -17768,7 +17768,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$boardmtcost = 0;
         					}
-							if($boardmtcost==0){
+							if(php72_cmp($boardmtcost)==0){
 								$boardmtcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$boardmtmonths[0]] . $rw_inc, $boardmtcost);
@@ -17782,7 +17782,7 @@ class Portfolio extends CI_Controller {
         							$boardmtactualcost += str_replace(',', '', $boardmt['board']);
         						}
         					}
-							if($boardmtactualcost==0){
+							if(php72_cmp($boardmtactualcost)==0){
 								$boardmtactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $boardmtactualcost);
@@ -17984,7 +17984,7 @@ class Portfolio extends CI_Controller {
 										}
 									}
 								}
-								if($seedfncost==0){
+								if(php72_cmp($seedfncost)==0){
 									$seedfncost ='';
 								}
 								//echo $seedfncost;die;
@@ -18002,7 +18002,7 @@ class Portfolio extends CI_Controller {
 										
 									}
 								}
-								if($seedfnactualcost==0){
+								if(php72_cmp($seedfnactualcost)==0){
 									$seedfnactualcost ='';
 								}
 								$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $seedfnactualcost);
@@ -18050,7 +18050,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorcost = 0;
         					}
-							if($mentorcost==0){
+							if(php72_cmp($mentorcost)==0){
 								$mentorcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$mentormonths[0]] . $rw_inc, $mentorcost);
@@ -18100,21 +18100,21 @@ class Portfolio extends CI_Controller {
         								$get_unique_mentor[] = $tot['assigned_to'];
         							}
 
-        							if ($tot['month'] == 4 || $tot['month'] == 5 || $tot['month'] == 6) {
+        							if (php72_cmp($tot['month']) == 4 || php72_cmp($tot['month']) == 5 || php72_cmp($tot['month']) == 6) {
         								$mentoractualcost = $ment_actquat['q1'];
         							}
-        							if ($tot['month'] == 7 || $tot['month'] == 8 || $tot['month'] == 9) {
+        							if (php72_cmp($tot['month']) == 7 || php72_cmp($tot['month']) == 8 || php72_cmp($tot['month']) == 9) {
         								$mentoractualcost = $ment_actquat['q2'];
         							}
-        							if ($tot['month'] == 10 || $tot['month'] == 11 || $tot['month'] == 12) {
+        							if (php72_cmp($tot['month']) == 10 || php72_cmp($tot['month']) == 11 || php72_cmp($tot['month']) == 12) {
         								$mentoractualcost = $ment_actquat['q3'];
         							}
-        							if ($tot['month'] == 1 || $tot['month'] == 2 || $tot['month'] == 3) {
+        							if (php72_cmp($tot['month']) == 1 || php72_cmp($tot['month']) == 2 || php72_cmp($tot['month']) == 3) {
         								$mentoractualcost = $ment_actquat['q4'];
         							}
         						}
         					}
-							if($mentoractualcost==0){
+							if(php72_cmp($mentoractualcost)==0){
 								$mentoractualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $mentoractualcost);
@@ -18141,46 +18141,46 @@ class Portfolio extends CI_Controller {
 
         					if (php72_count($mentorhr_actual) > 0) {
         						foreach ($mentorhr_actual as $men_actual) {
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$tot_mentorhractualcost[$mn] += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
         							}
         						}
         					}
 							$tot_mentorhractualcostVal = $tot_mentorhractualcost[$mn];
-							if($tot_mentorhractualcost[$mn]==0){
+							if(php72_cmp($tot_mentorhractualcost[$mn])==0){
 								$tot_mentorhractualcostVal ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $tot_mentorhractualcostVal);
@@ -18190,10 +18190,10 @@ class Portfolio extends CI_Controller {
         				foreach ($montharr as $arrlist) {
         					$mentorhrcost = 0;
         					$mentorhrmonths = explode('-', $arrlist);
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$mentorhrmonths[0]] . $rw_inc, $mentorhrcost);
@@ -18222,7 +18222,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorcost = 0;
         					}
-							if($mentorcost==0){
+							if(php72_cmp($mentorcost)==0){
 								$mentorcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$mentormonths[0]] . $rw_inc, $mentorcost);
@@ -18246,7 +18246,7 @@ class Portfolio extends CI_Controller {
         						foreach ($montharr as $arrlist) {
         							$mentorhrcost = 0;
         							$mentorhrmonths = explode('-', $arrlist);
-									if($mentorhrcost==0){
+									if(php72_cmp($mentorhrcost)==0){
 										$mentorhrcost ='';
 									}
         							$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$mentorhrmonths[0]] . $rw_inc, $mentorhrcost);
@@ -18258,43 +18258,43 @@ class Portfolio extends CI_Controller {
         							$mentorhractualcost = 0;
         							$swap = array_flip($headkey_achieve);
 
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$mentorhractualcost += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$mentorhractualcost += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$mentorhractualcost += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$mentorhractualcost += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$mentorhractualcost += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$mentorhractualcost += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$mentorhractualcost += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$mentorhractualcost += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$mentorhractualcost += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$mentorhractualcost += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$mentorhractualcost += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$mentorhractualcost += $men_actual['mar'];
         							}
-									if($mentorhractualcost==0){
+									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
 									}
         							$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $mentorhractualcost);
@@ -18353,7 +18353,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$tapcost = 0;
         					}
-							if($tapcost==0){
+							if(php72_cmp($tapcost)==0){
 								$tapcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$tapmonths[0]] . $rw_inc, $tapcost);
@@ -18383,7 +18383,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$tapactualcost = 0;
         					}
-							if($tapactualcost==0){
+							if(php72_cmp($tapactualcost)==0){
 								$tapactualcost ='';
 							}
 							
@@ -18439,7 +18439,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$nontapcost = 0;
 								}
-								if($nontapcost==0){
+								if(php72_cmp($nontapcost)==0){
 									$nontapcost ='';
 								}
 								$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$nontapmonths[0]] . $rw_inc, $nontapcost);
@@ -18464,7 +18464,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$nontapactualcost = 0;
 								}
-								if($nontapactualcost==0){
+								if(php72_cmp($nontapactualcost)==0){
 									$nontapactualcost ='';
 								}
 								$objPHPExcel->getActiveSheet()->setCellValue($monthachieve[$nontapmonths2[0]] . $rw_inc, $nontapactualcost);
@@ -18507,7 +18507,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpcost = 0;
         					}
-							if($dpcost==0){
+							if(php72_cmp($dpcost)==0){
 								$dpcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$dpmonths[0]] . $rw_inc, $dpcost);
@@ -18521,7 +18521,7 @@ class Portfolio extends CI_Controller {
         							$dpactualcost += str_replace(',', '', $dp['dps']);
         						}
         					}
-							if($dpactualcost==0){
+							if(php72_cmp($dpactualcost)==0){
 								$dpactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $dpactualcost);
@@ -18562,7 +18562,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpexcost = 0;
         					}
-							if($dpexcost==0){
+							if(php72_cmp($dpexcost)==0){
 								$dpexcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$dpexmonths[0]] . $rw_inc, $dpexcost);
@@ -18577,7 +18577,7 @@ class Portfolio extends CI_Controller {
         							$dpexactualcost += count($atten);
         						}
         					}
-							if($dpexactualcost==0){
+							if(php72_cmp($dpexactualcost)==0){
 								$dpexactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $dpexactualcost);
@@ -18605,7 +18605,7 @@ class Portfolio extends CI_Controller {
         						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene['iris_name']);
         					}
-							if($endbenecost==0){
+							if(php72_cmp($endbenecost)==0){
 								$endbenecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$endbenemonths[0]] . $rw_inc, $endbenecost);
@@ -18619,7 +18619,7 @@ class Portfolio extends CI_Controller {
         							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
         						}
         					}
-							if($endbeneactualcost==0){
+							if(php72_cmp($endbeneactualcost)==0){
 								$endbeneactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $endbeneactualcost);
@@ -18647,7 +18647,7 @@ class Portfolio extends CI_Controller {
         						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_female['iris_name']);
         					}
-							if($endbene_femalecost==0){
+							if(php72_cmp($endbene_femalecost)==0){
 								$endbene_femalecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$endbene_femalemonths[0]] . $rw_inc, $endbene_femalecost);
@@ -18661,7 +18661,7 @@ class Portfolio extends CI_Controller {
         							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
         						}
         					}
-							if($endbene_femaleactualcost==0){
+							if(php72_cmp($endbene_femaleactualcost)==0){
 								$endbene_femaleactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $endbene_femaleactualcost);
@@ -18689,7 +18689,7 @@ class Portfolio extends CI_Controller {
         						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_other['iris_name']);
         					}
-							if($endbene_othercost==0){
+							if(php72_cmp($endbene_othercost)==0){
 								$endbene_othercost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$endbene_othermonths[0]] . $rw_inc, $endbene_othercost);
@@ -18703,7 +18703,7 @@ class Portfolio extends CI_Controller {
         							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
         						}
         					}
-							if($endbene_otheractualcost==0){
+							if(php72_cmp($endbene_otheractualcost)==0){
 								$endbene_otheractualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $endbene_otheractualcost);
@@ -18730,7 +18730,7 @@ class Portfolio extends CI_Controller {
         						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_unknown['iris_name']);
         					}
-							if($endbene_unknowncost==0){
+							if(php72_cmp($endbene_unknowncost)==0){
 								$endbene_unknowncost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$endbene_unknownmonths[0]] . $rw_inc, $endbene_unknowncost);
@@ -18745,7 +18745,7 @@ class Portfolio extends CI_Controller {
         							$endbene_unknownactualcost += $end_unknown;
         						}
         					}
-							if($endbene_unknownactualcost==0){
+							if(php72_cmp($endbene_unknownactualcost)==0){
 								$endbene_unknownactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $endbene_unknownactualcost);
@@ -18773,7 +18773,7 @@ class Portfolio extends CI_Controller {
         						$directjcost += str_replace(',', '', $directj[strtolower($directjmonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj['iris_name']);
         					}
-							if($directjcost==0){
+							if(php72_cmp($directjcost)==0){
 								$directjcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$directjmonths[0]] . $rw_inc, $directjcost);
@@ -18788,7 +18788,7 @@ class Portfolio extends CI_Controller {
         							$directjactualcost += $direct_male;
         						}
         					}
-							if($directjactualcost==0){
+							if(php72_cmp($directjactualcost)==0){
 								$directjactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $directjactualcost);
@@ -18815,7 +18815,7 @@ class Portfolio extends CI_Controller {
         						$directj_femalecost += str_replace(',', '', $directj_female[strtolower($directj_femalemonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_female['iris_name']);
         					}
-							if($directj_femalecost==0){
+							if(php72_cmp($directj_femalecost)==0){
 								$directj_femalecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$directj_femalemonths[0]] . $rw_inc, $directj_femalecost);
@@ -18830,7 +18830,7 @@ class Portfolio extends CI_Controller {
         							$directj_femaleactualcost += $direct_female;
         						}
         					}
-							if($directj_femaleactualcost==0){
+							if(php72_cmp($directj_femaleactualcost)==0){
 								$directj_femaleactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $directj_femaleactualcost);
@@ -18857,7 +18857,7 @@ class Portfolio extends CI_Controller {
         						$directj_othercost += str_replace(',', '', $directj_other[strtolower($directj_othermonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_other['iris_name']);
         					}
-							if($directj_othercost==0){
+							if(php72_cmp($directj_othercost)==0){
 								$directj_othercost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$directj_othermonths[0]] . $rw_inc, $directj_othercost);
@@ -18872,7 +18872,7 @@ class Portfolio extends CI_Controller {
         							$directj_otheractualcost += $direct_other;
         						}
         					}
-							if($directj_otheractualcost==0){
+							if(php72_cmp($directj_otheractualcost)==0){
 								$directj_otheractualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $directj_otheractualcost);
@@ -18899,7 +18899,7 @@ class Portfolio extends CI_Controller {
         						$directj_unknowncost += str_replace(',', '', $directj_unknown[strtolower($directj_unknownmonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_unknown['iris_name']);
         					}
-							if($directj_unknowncost==0){
+							if(php72_cmp($directj_unknowncost)==0){
 								$directj_unknowncost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$directj_unknownmonths[0]] . $rw_inc, $directj_unknowncost);
@@ -18914,7 +18914,7 @@ class Portfolio extends CI_Controller {
         							$directj_unknownactualcost += $direct_unknown;
         						}
         					}
-							if($directj_unknownactualcost==0){
+							if(php72_cmp($directj_unknownactualcost)==0){
 								$directj_unknownactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $directj_unknownactualcost);
@@ -18941,7 +18941,7 @@ class Portfolio extends CI_Controller {
         						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_male['iris_name']);
         					}
-							if($indirectj_malecost==0){
+							if(php72_cmp($indirectj_malecost)==0){
 								$indirectj_malecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$indirectj_malemonths[0]] . $rw_inc, $indirectj_malecost);
@@ -18956,7 +18956,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_maleactualcost += $indirect_male;
         						}
         					}
-							if($indirectj_maleactualcost==0){
+							if(php72_cmp($indirectj_maleactualcost)==0){
 								$indirectj_maleactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $indirectj_maleactualcost);
@@ -18983,7 +18983,7 @@ class Portfolio extends CI_Controller {
         						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_female['iris_name']);
         					}
-							if($indirectj_femalecost==0){
+							if(php72_cmp($indirectj_femalecost)==0){
 								$indirectj_femalecost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$indirectj_femalemonths[0]] . $rw_inc, $indirectj_femalecost);
@@ -18998,7 +18998,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_femaleactualcost += $indirect_female;
         						}
         					}
-							if($indirectj_femaleactualcost==0){
+							if(php72_cmp($indirectj_femaleactualcost)==0){
 								$indirectj_femaleactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $indirectj_femaleactualcost);
@@ -19025,7 +19025,7 @@ class Portfolio extends CI_Controller {
         						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_other['iris_name']);
         					}
-							if($indirectj_othercost==0){
+							if(php72_cmp($indirectj_othercost)==0){
 								$indirectj_othercost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$indirectj_othermonths[0]] . $rw_inc, $indirectj_othercost);
@@ -19040,7 +19040,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_otheractualcost += $indirect_other;
         						}
         					}
-							if($indirectj_otheractualcost==0){
+							if(php72_cmp($indirectj_otheractualcost)==0){
 								$indirectj_otheractualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $indirectj_otheractualcost);
@@ -19067,7 +19067,7 @@ class Portfolio extends CI_Controller {
         						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_unknown['iris_name']);
         					}
-							if($indirectj_unknowncost==0){
+							if(php72_cmp($indirectj_unknowncost)==0){
 								$indirectj_unknowncost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$indirectj_unknownmonths[0]] . $rw_inc, $indirectj_unknowncost);
@@ -19082,7 +19082,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_unknownactualcost += $indirect_unknown;
         						}
         					}
-							if($indirectj_unknownactualcost==0){
+							if(php72_cmp($indirectj_unknownactualcost)==0){
 								$indirectj_unknownactualcost ='';
 							}
         					$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $rw_inc, $indirectj_unknownactualcost);
@@ -19123,12 +19123,12 @@ class Portfolio extends CI_Controller {
         									$metricactualcost += $metric_act['metric_value'];
         								}
         							}
-									if($metricactualcost==0){
+									if(php72_cmp($metricactualcost)==0){
 										$metricactualcost ='';
 									}
         							$objPHPExcel->getActiveSheet()->setCellValue($swap[$mn] . $met_inc, $metricactualcost);
         						}
-								if($metriccost==0){
+								if(php72_cmp($metriccost)==0){
 										$metriccost ='';
 								}
         						$objPHPExcel->getActiveSheet()->setCellValue($monthplan[$metricmonths[0]] . $met_inc, $metriccost);
@@ -19279,7 +19279,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19308,7 +19308,7 @@ class Portfolio extends CI_Controller {
     	$actualMonth = $this->actual_month();
     	$arr = php72_array_search($cur_month, $getmonth);
 
-    	for ($i = ($arr - 1); $i >= 0; $i--) {
+    	for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
     		$derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
     		$monthName[] = $getmonth[$i];
     	}
@@ -19385,7 +19385,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19394,7 +19394,7 @@ class Portfolio extends CI_Controller {
     	$actualMonth = $this->actual_month();
     	$arr = php72_array_search($cur_month, $getmonth);
 
-    	for ($i = ($arr - 1); $i >= 0; $i--) {
+    	for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
     		$derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
     		$monthName[] = $getmonth[$i];
     	}
@@ -19495,13 +19495,13 @@ class Portfolio extends CI_Controller {
 
     	$searchArray = array();
 
-    	if ($quarter == 1) {
+    	if (php72_cmp($quarter) == 1) {
     		$searchArray[] = "pu.quarter = 1";
-    	} else if ($quarter == 2) {
+    	} else if (php72_cmp($quarter) == 2) {
     		$searchArray[] = "pu.quarter = 2";
-    	} else if ($quarter == 3) {
+    	} else if (php72_cmp($quarter) == 3) {
     		$searchArray[] = "pu.quarter = 3";
-    	} else if ($quarter == 4) {
+    	} else if (php72_cmp($quarter) == 4) {
     		$searchArray[] = "pu.quarter = 4";
     	}
     	$where = implode(" and ", $searchArray);
@@ -19567,7 +19567,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19644,7 +19644,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19705,7 +19705,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19743,7 +19743,7 @@ class Portfolio extends CI_Controller {
     	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
     	$f_year = date('Y');
     	foreach ($data['fin_year'] as $fy) {
-    		if ($fy['status'] == 1) {
+    		if (php72_cmp($fy['status']) == 1) {
     			$f_year = $fy['fin_year'];
     		}
     	}
@@ -19773,7 +19773,7 @@ class Portfolio extends CI_Controller {
 
     	$search_array = $last_target = array();
 
-    	if ($type == 1) {
+    	if (php72_cmp($type) == 1) {
     		$start_year = explode(',', $start_date);
     		$end_year = explode(',', $end_date);
 
@@ -19841,24 +19841,24 @@ class Portfolio extends CI_Controller {
     			}
     			$m++;
     		}
-    	} else if ($type == 2) {
-    		if ($from_quarter == 1) {
+    	} else if (php72_cmp($type) == 2) {
+    		if (php72_cmp($from_quarter) == 1) {
     			$start_month = reset($q1);
-    		} else if ($from_quarter == 2) {
+    		} else if (php72_cmp($from_quarter) == 2) {
     			$start_month = reset($q2);
-    		} else if ($from_quarter == 3) {
+    		} else if (php72_cmp($from_quarter) == 3) {
     			$start_month = reset($q3);
-    		} else if ($from_quarter == 4) {
+    		} else if (php72_cmp($from_quarter) == 4) {
     			$start_month = reset($q4);
     		}
 
-    		if ($to_quarter == 1) {
+    		if (php72_cmp($to_quarter) == 1) {
     			$end_month = end($q1);
-    		} else if ($to_quarter == 2) {
+    		} else if (php72_cmp($to_quarter) == 2) {
     			$end_month = end($q2);
-    		} else if ($to_quarter == 3) {
+    		} else if (php72_cmp($to_quarter) == 3) {
     			$end_month = end($q3);
-    		} else if ($to_quarter == 4) {
+    		} else if (php72_cmp($to_quarter) == 4) {
     			$end_month = end($q4);
     		}
 
@@ -20090,7 +20090,7 @@ class Portfolio extends CI_Controller {
     	$result['chat_module_id'] = $data['module_id'] = $this->input->post('module_id');
 
 
-    	if (($_POST['page_id'] == 1 && ($_POST['module_id'] == 10 || $_POST['module_id'] == 11 || $_POST['module_id'] == 12)) || $_POST['page_id'] == 2)
+    	if ((php72_cmp($_POST['page_id']) == 1 && (php72_cmp($_POST['module_id']) == 10 || php72_cmp($_POST['module_id']) == 11 || php72_cmp($_POST['module_id']) == 12)) || php72_cmp($_POST['page_id']) == 2)
     		$data['sector_id'] = isset($sector_id) && $sector_id != '' ? $sector_id : 0;
 
     	$data['page_id'] = 2;
@@ -20398,7 +20398,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	$f_year = date('Y');
         	foreach ($data['fin_year'] as $fy) {
-        		if ($fy['status'] == 1) {
+        		if (php72_cmp($fy['status']) == 1) {
         			$f_year = $fy['fin_year'];
         		}
         	}
@@ -20422,7 +20422,7 @@ class Portfolio extends CI_Controller {
         	if ($year == '') {
         		if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$data['current_fy'] = $fy['fin_year'];
         				}
         			}
@@ -20564,7 +20564,7 @@ class Portfolio extends CI_Controller {
         		foreach ($sector_incubs as $incubs) {
 					#echo'<pre>';print_r($incubs);
 					$comp_yr = $incubs['exit_year'];
-        			if ($incubs['exit_month'] == 01 || $incubs['exit_month'] == 02 || $incubs['exit_month'] == 03) {
+        			if (php72_cmp($incubs['exit_month']) == 01 || php72_cmp($incubs['exit_month']) == 02 || php72_cmp($incubs['exit_month']) == 03) {
         				$comp_yr = $incubs['exit_year'] - 1;
         			}
         			if ($comp_yr == '0000' || ($year <= $comp_yr) || $comp_yr == NULL) {
@@ -20692,7 +20692,7 @@ class Portfolio extends CI_Controller {
 										}
 									}
 								}
-								if($seedfncost==0){
+								if(php72_cmp($seedfncost)==0){
 									$seedfncost ='';
 								}
 								$sfplArr[$monthDataArr[$sfpl]] = $seedfncost;
@@ -20712,7 +20712,7 @@ class Portfolio extends CI_Controller {
 										
 									}
 								}
-								if($seedfnactualcost==0){
+								if(php72_cmp($seedfnactualcost)==0){
 									$seedfnactualcost ='';
 								}
 								$sfAcArr[$monthActualDataArr[$sfAc]] = $seedfnactualcost;
@@ -20790,7 +20790,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorcost = 0;
         					}
-							if($mentorcost==0){
+							if(php72_cmp($mentorcost)==0){
 								$mentorcost ='';
 							}
 							$mcPlArr[$monthDataArr[$mcPl]] = $mentorcost;
@@ -20861,21 +20861,21 @@ class Portfolio extends CI_Controller {
         								$get_unique_mentor[] = $tot['assigned_to'];
         							}
 
-        							if ($tot['month'] == 4 || $tot['month'] == 5 || $tot['month'] == 6) {
+        							if (php72_cmp($tot['month']) == 4 || php72_cmp($tot['month']) == 5 || php72_cmp($tot['month']) == 6) {
         								$mentoractualcost = $ment_actquat['q1'];
         							}
-        							if ($tot['month'] == 7 || $tot['month'] == 8 || $tot['month'] == 9) {
+        							if (php72_cmp($tot['month']) == 7 || php72_cmp($tot['month']) == 8 || php72_cmp($tot['month']) == 9) {
         								$mentoractualcost = $ment_actquat['q2'];
         							}
-        							if ($tot['month'] == 10 || $tot['month'] == 11 || $tot['month'] == 12) {
+        							if (php72_cmp($tot['month']) == 10 || php72_cmp($tot['month']) == 11 || php72_cmp($tot['month']) == 12) {
         								$mentoractualcost = $ment_actquat['q3'];
         							}
-        							if ($tot['month'] == 1 || $tot['month'] == 2 || $tot['month'] == 3) {
+        							if (php72_cmp($tot['month']) == 1 || php72_cmp($tot['month']) == 2 || php72_cmp($tot['month']) == 3) {
         								$mentoractualcost = $ment_actquat['q4'];
         							}
         						}
         					}
-							if($mentoractualcost==0){
+							if(php72_cmp($mentoractualcost)==0){
 								$mentoractualcost ='';
 							}
 							$mcAcArr[$monthActualDataArr[$mcAC]] = $mentoractualcost;
@@ -20945,46 +20945,46 @@ class Portfolio extends CI_Controller {
 										}
 									}
 								
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$tot_mentorhractualcost[$mn] += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
         							}
         						}
         					}
 							$tot_mentorhractualcostVal = $tot_mentorhractualcost[$mn];
-							if($tot_mentorhractualcost[$mn]==0){
+							if(php72_cmp($tot_mentorhractualcost[$mn])==0){
 								$tot_mentorhractualcostVal ='';
 							}
 							$mchAcArr[$monthActualDataArr[$mchAC]] = $tot_mentorhractualcostVal;
@@ -20999,10 +20999,10 @@ class Portfolio extends CI_Controller {
         				foreach ($montharr as $arrlist) {
         					$mentorhrcost = 0;
         					$mentorhrmonths = explode('-', $arrlist);
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
 							/* $mcHPlArr[$monthDataArr[$mcHPl]] = $mentorhrcost;
@@ -21030,7 +21030,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorhrcost = 0;
         					}
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
 							
@@ -21146,7 +21146,7 @@ class Portfolio extends CI_Controller {
         						foreach ($montharr as $arrlist) {
         							$mentorhrcost = 0;
         							$mentorhrmonths = explode('-', $arrlist);
-									if($mentorhrcost==0){
+									if(php72_cmp($mentorhrcost)==0){
 										$mentorhrcost ='';
 									}
 									$mcHPlAArr[$monthDataArr[$mcHPlA]] = $mentorhrcost;
@@ -21160,43 +21160,43 @@ class Portfolio extends CI_Controller {
         							$mentorhractualcost = 0;
         							$swap = array_flip($headkey_achieve);
 
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$mentorhractualcost += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$mentorhractualcost += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$mentorhractualcost += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$mentorhractualcost += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$mentorhractualcost += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$mentorhractualcost += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$mentorhractualcost += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$mentorhractualcost += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$mentorhractualcost += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$mentorhractualcost += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$mentorhractualcost += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$mentorhractualcost += $men_actual['mar'];
         							}
-									if($mentorhractualcost==0){
+									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
 									}
 									$mchAcAArr[$monthActualDataArr[$mchACA]] = $mentorhractualcost;
@@ -21284,7 +21284,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$tapcost = 0;
 								}
-								if($tapcost==0){
+								if(php72_cmp($tapcost)==0){
 									$tapcost ='';
 								}
 								
@@ -21329,7 +21329,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$tapactualcost = 0;
 								}
-								if($tapactualcost==0){
+								if(php72_cmp($tapactualcost)==0){
 									$tapactualcost ='';
 								}
 								if($monthActualDataArr[$taAc]!=''){
@@ -21414,7 +21414,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpcost = 0;
         					}
-							if($dpcost==0){
+							if(php72_cmp($dpcost)==0){
 								$dpcost ='';
 							}
 									
@@ -21431,7 +21431,7 @@ class Portfolio extends CI_Controller {
         							$dpactualcost += str_replace(',', '', $dp['dps']);
         						}
         					}
-							if($dpactualcost==0){
+							if(php72_cmp($dpactualcost)==0){
 								$dpactualcost ='';
 							}
 							$diagAcArr[$monthActualDataArr[$diagAc]] = $dpactualcost;
@@ -21504,7 +21504,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpexcost = 0;
         					}
-							if($dpexcost==0){
+							if(php72_cmp($dpexcost)==0){
 								$dpexcost ='';
 							}
 							$diagExPlArr[$monthDataArr[$diagExPl]] = $dpexcost;
@@ -21520,7 +21520,7 @@ class Portfolio extends CI_Controller {
         							$dpexactualcost += count($atten);
         						}
         					}
-							if($dpexactualcost==0){
+							if(php72_cmp($dpexactualcost)==0){
 								$dpexactualcost ='';
 							}
 							$diagExAcArr[$monthActualDataArr[$diagExAc]] = $dpexactualcost;
@@ -21577,7 +21577,7 @@ class Portfolio extends CI_Controller {
         						$datavalues = json_decode($revs['data'], TRUE);
         						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
         					}
-							if($revcost==0){
+							if(php72_cmp($revcost)==0){
 								$revcost ='';
 							}
 							$revenuePlArr[$monthDataArr[$revenuePl]] = $revcost;
@@ -21592,7 +21592,7 @@ class Portfolio extends CI_Controller {
         							$revactualcost += str_replace(',', '', $revs['revenue']);
         						}
         					}
-							if($revactualcost==0){
+							if(php72_cmp($revactualcost)==0){
 								$revactualcost ='';
 							}
 							$revenueAcArr[$monthActualDataArr[$revenueAc]] = $revactualcost;
@@ -21659,7 +21659,7 @@ class Portfolio extends CI_Controller {
         						$salesvalues = json_decode($sales['value'], TRUE);
         						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
         					}
-							if($salescost==0){
+							if(php72_cmp($salescost)==0){
 								$salescost ='';
 							}
 							$salePlArr[$monthDataArr[$salePl]] = $salescost;
@@ -21674,7 +21674,7 @@ class Portfolio extends CI_Controller {
         							$salesactualcost += str_replace(',', '', $sales['value']);
         						}
         					}
-							if($salesactualcost==0){
+							if(php72_cmp($salesactualcost)==0){
 								$salesactualcost ='';
 							}
 							$saleAcArr[$monthActualDataArr[$saleAc]] = $salesactualcost;
@@ -21798,7 +21798,7 @@ class Portfolio extends CI_Controller {
         						$profvalues = json_decode($profs['data'], TRUE);
         						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
         					}
-							if($profcost==0){
+							if(php72_cmp($profcost)==0){
 								$profcost ='';
 							}
 							$profitPlArr[$monthDataArr[$profitPl]] = $profcost;
@@ -21813,7 +21813,7 @@ class Portfolio extends CI_Controller {
         							$profactualcost += str_replace(',', '', $profs['net_profit']);
         						}
         					}
-							if($profactualcost==0){
+							if(php72_cmp($profactualcost)==0){
 								$profactualcost ='';
 							}
 							$profitAcArr[$monthActualDataArr[$profitAc]] = $profactualcost;
@@ -21886,7 +21886,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$fundcost = 0;
         					}
-							if($fundcost==0){
+							if(php72_cmp($fundcost)==0){
 								$fundcost ='';
 							}
 							$fundraisePlArr[$monthDataArr[$fundraisePl]] = $fundcost;
@@ -21905,7 +21905,7 @@ class Portfolio extends CI_Controller {
         							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
         						}
         					}
-							if($fundactualcost==0){
+							if(php72_cmp($fundactualcost)==0){
 								$fundactualcost ='';
 							}
 							$fundraiseAcArr[$monthActualDataArr[$fundraiseAc]] = $fundactualcost;
@@ -21961,7 +21961,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_target as $endbene) {
         						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
         					}
-							if($endbenecost==0){
+							if(php72_cmp($endbenecost)==0){
 								$endbenecost ='';
 							}
 							$impactMalePlArr[$monthDataArr[$impactMalePl]] = $endbenecost;
@@ -21976,7 +21976,7 @@ class Portfolio extends CI_Controller {
         							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
         						}
         					}
-							if($endbeneactualcost==0){
+							if(php72_cmp($endbeneactualcost)==0){
 								$endbeneactualcost ='';
 							}
 							$impactMaleAcArr[$monthActualDataArr[$impactMaleAc]] = $endbeneactualcost;
@@ -22034,7 +22034,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_female_target as $endbene_female) {
         						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
         					}
-							if($endbene_femalecost==0){
+							if(php72_cmp($endbene_femalecost)==0){
 								$endbene_femalecost ='';
 							}
 							$impactFeMalePlArr[$monthDataArr[$impactFeMalePl]] = $endbene_femalecost;
@@ -22049,7 +22049,7 @@ class Portfolio extends CI_Controller {
         							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
         						}
         					}
-							if($endbene_femaleactualcost==0){
+							if(php72_cmp($endbene_femaleactualcost)==0){
 								$endbene_femaleactualcost ='';
 							}
 							$impactFeMaleAcArr[$monthActualDataArr[$impactFeMaleAc]] = $endbene_femaleactualcost;
@@ -22108,7 +22108,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_other_target as $endbene_other) {
         						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
         					}
-							if($endbene_othercost==0){
+							if(php72_cmp($endbene_othercost)==0){
 								$endbene_othercost ='';
 							}
 							$impactEndOtherPlArr[$monthDataArr[$impactEndOtherPl]] = $endbene_othercost;
@@ -22124,7 +22124,7 @@ class Portfolio extends CI_Controller {
         							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
         						}
         					}
-							if($endbene_otheractualcost==0){
+							if(php72_cmp($endbene_otheractualcost)==0){
 								$endbene_otheractualcost ='';
 							}
 							$impactEndOtherAcArr[$monthActualDataArr[$impactEndOtherAc]] = $endbene_otheractualcost;
@@ -22181,7 +22181,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_unknown_target as $endbene_unknown) {
         						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
         					}
-							if($endbene_unknowncost==0){
+							if(php72_cmp($endbene_unknowncost)==0){
 								$endbene_unknowncost ='';
 							}
 							$impactEndUnknownPlArr[$monthDataArr[$impactEndUnknownPl]] = $endbene_unknowncost;
@@ -22196,7 +22196,7 @@ class Portfolio extends CI_Controller {
         							$endbene_unknownactualcost += $end_unknown;
         						}
         					}
-							if($endbene_unknownactualcost==0){
+							if(php72_cmp($endbene_unknownactualcost)==0){
 								$endbene_unknownactualcost ='';
 							}
 							$impactEndUnknownAcArr[$monthActualDataArr[$impactEndUnknownAc]] = $endbene_unknownactualcost;
@@ -22255,7 +22255,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_male_target as $indirectj_male) {
         						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
         					}
-							if($indirectj_malecost==0){
+							if(php72_cmp($indirectj_malecost)==0){
 								$indirectj_malecost ='';
 							}
 							$impactIndirectJobMalePlArr[$monthDataArr[$impactIndirectJobMalePl]] = $indirectj_malecost;
@@ -22271,7 +22271,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_maleactualcost += $indirect_male;
         						}
         					}
-							if($indirectj_maleactualcost==0){
+							if(php72_cmp($indirectj_maleactualcost)==0){
 								$indirectj_maleactualcost ='';
 							}
 							$impactIndirectJobMaleAcArr[$monthActualDataArr[$impactIndirectJobMaleAc]] = $indirectj_maleactualcost;
@@ -22330,7 +22330,7 @@ class Portfolio extends CI_Controller {
 							foreach ($Directj_female_target as $Directj_female) {
 								$Directj_femalecost += str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]);
 							}
-							if($Directj_femalecost==0){
+							if(php72_cmp($Directj_femalecost)==0){
 								$Directj_femalecost ='';
 							}
 							$impactdirectJobFeMalePlArr[$monthDataArr[$impactdirectJobFeMalePl]] = $Directj_femalecost;
@@ -22346,7 +22346,7 @@ class Portfolio extends CI_Controller {
 									$Directj_femaleactualcost += $Direct_female;
 								}
 							}
-							if($Directj_femaleactualcost==0){
+							if(php72_cmp($Directj_femaleactualcost)==0){
 								$Directj_femaleactualcost ='';
 							}
 							$impactDirectJobFeMaleAcArr[$monthActualDataArr[$impactDirectJobFeMaleAc]] = $Directj_femaleactualcost;
@@ -22404,7 +22404,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_other_target as $Directj_other) {
 							$Directj_othercost += str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]);
 						}
-						if($Directj_othercost==0){
+						if(php72_cmp($Directj_othercost)==0){
 							$Directj_othercost ='';
 						}
 						$impactdirectJobotherPlArr[$monthDataArr[$impactdirectJobotherPl]] = $Directj_othercost;
@@ -22420,7 +22420,7 @@ class Portfolio extends CI_Controller {
 								$Directj_otheractualcost += $Direct_other;
 							}
 						}
-						if($Directj_otheractualcost==0){
+						if(php72_cmp($Directj_otheractualcost)==0){
 							$Directj_otheractualcost ='';
 						}
 						$impactDirectJobotherAcArr[$monthActualDataArr[$impactDirectJobotherAc]] = $Directj_otheractualcost;
@@ -22477,7 +22477,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_unknown_target as $Directj_unknown) {
 							$Directj_unknowncost += str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]);
 						}
-						if($Directj_unknowncost==0){
+						if(php72_cmp($Directj_unknowncost)==0){
 							$Directj_unknowncost ='';
 						}
 						$impactdirectJobunknownPlArr[$monthDataArr[$impactdirectJobunknownPl]] = $Directj_unknowncost;
@@ -22493,7 +22493,7 @@ class Portfolio extends CI_Controller {
 								$Directj_unknownactualcost += $Direct_unknown;
 							}
 						}
-						if($Directj_unknownactualcost==0){
+						if(php72_cmp($Directj_unknownactualcost)==0){
 							$Directj_unknownactualcost ='';
 						}
 						$impactDirectJobunknownAcArr[$monthActualDataArr[$impactDirectJobunknownAc]] = $Directj_unknownactualcost;
@@ -22553,7 +22553,7 @@ class Portfolio extends CI_Controller {
 						foreach ($indirectj_male_id_target as $indirectj_male_id) {
 							$indirectj_male_idcost += str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]);
 						}
-						if($indirectj_male_idcost==0){
+						if(php72_cmp($indirectj_male_idcost)==0){
 							$indirectj_male_idcost ='';
 						}
 						$impactIndirectJobmale_idPlArr[$monthDataArr[$impactIndirectJobmale_idPl]] = $indirectj_male_idcost;
@@ -22569,7 +22569,7 @@ class Portfolio extends CI_Controller {
 								$indirectj_male_idactualcost += $indirect_male_id;
 							}
 						}
-						if($indirectj_male_idactualcost==0){
+						if(php72_cmp($indirectj_male_idactualcost)==0){
 							$indirectj_male_idactualcost ='';
 						}
 						$impactIndirectJobmale_idAcArr[$monthActualDataArr[$impactIndirectJobmale_idAc]] = $indirectj_male_idactualcost;
@@ -22627,7 +22627,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_female_target as $indirectj_female) {
         						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
         					}
-							if($indirectj_femalecost==0){
+							if(php72_cmp($indirectj_femalecost)==0){
 								$indirectj_femalecost ='';
 							}
 							$impactIndirectJobFeMalePlArr[$monthDataArr[$impactIndirectJobFeMalePl]] = $indirectj_femalecost;
@@ -22643,7 +22643,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_femaleactualcost += $indirect_female;
         						}
         					}
-							if($indirectj_femaleactualcost==0){
+							if(php72_cmp($indirectj_femaleactualcost)==0){
 								$indirectj_femaleactualcost ='';
 							}
 							$impactIndirectJobFeMaleAcArr[$monthActualDataArr[$impactIndirectJobFeMaleAc]] = $indirectj_femaleactualcost;
@@ -22698,7 +22698,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_other_target as $indirectj_other) {
         						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
         					}
-							if($indirectj_othercost==0){
+							if(php72_cmp($indirectj_othercost)==0){
 								$indirectj_othercost ='';
 							}
 							$impactIndirectOtherPlArr[$monthDataArr[$impactIndirectOtherPl]] = $indirectj_othercost;
@@ -22714,7 +22714,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_otheractualcost += $indirect_other;
         						}
         					}
-							if($indirectj_otheractualcost==0){
+							if(php72_cmp($indirectj_otheractualcost)==0){
 								$indirectj_otheractualcost ='';
 							}
 							$impactIndirectOtherAcArr[$monthActualDataArr[$impactIndirectOtherAc]] = $indirectj_otheractualcost;
@@ -22772,7 +22772,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_unknown_target as $indirectj_unknown) {
         						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
         					}
-							if($indirectj_unknowncost==0){
+							if(php72_cmp($indirectj_unknowncost)==0){
 								$indirectj_unknowncost ='';
 							}
 							$impactIndirectUnknownPlArr[$monthDataArr[$impactIndirectUnknownPl]] = $indirectj_unknowncost;
@@ -22788,7 +22788,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_unknownactualcost += $indirect_unknown;
         						}
         					}
-							if($indirectj_unknownactualcost==0){
+							if(php72_cmp($indirectj_unknownactualcost)==0){
 								$indirectj_unknownactualcost ='';
 							}
 							$impactIndirectUnknownAcArr[$monthActualDataArr[$impactIndirectUnknownAc]] = $indirectj_unknownactualcost;
@@ -22963,7 +22963,7 @@ class Portfolio extends CI_Controller {
         	$data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         	$f_year = date('Y');
         	foreach ($data['fin_year'] as $fy) {
-        		if ($fy['status'] == 1) {
+        		if (php72_cmp($fy['status']) == 1) {
         			$f_year = $fy['fin_year'];
         		}
         	}
@@ -22987,7 +22987,7 @@ class Portfolio extends CI_Controller {
         	if ($year == '') {
         		if (isset($data['fin_year'][0]['fin_year']) && $data['fin_year'][0]['fin_year'] != '') {
         			foreach ($data['fin_year'] as $fy) {
-        				if ($fy['status'] == 1) {
+        				if (php72_cmp($fy['status']) == 1) {
         					$data['current_fy'] = $fy['fin_year'];
         				}
         			}
@@ -23130,7 +23130,7 @@ class Portfolio extends CI_Controller {
 				 if($incubs['name_of_enterprise']=='vegneta'){
 					#echo'<pre>';print_r($incubs);
 					$comp_yr = $incubs['exit_year'];
-        			if ($incubs['exit_month'] == 01 || $incubs['exit_month'] == 02 || $incubs['exit_month'] == 03) {
+        			if (php72_cmp($incubs['exit_month']) == 01 || php72_cmp($incubs['exit_month']) == 02 || php72_cmp($incubs['exit_month']) == 03) {
         				$comp_yr = $incubs['exit_year'] - 1;
         			}
         			if ($comp_yr == '0000' || ($year <= $comp_yr) || $comp_yr == NULL) {
@@ -23258,7 +23258,7 @@ class Portfolio extends CI_Controller {
 										}
 									}
 								}
-								if($seedfncost==0){
+								if(php72_cmp($seedfncost)==0){
 									$seedfncost ='';
 								}
 								$sfplArr[$monthDataArr[$sfpl]] = $seedfncost;
@@ -23278,7 +23278,7 @@ class Portfolio extends CI_Controller {
 										
 									}
 								}
-								if($seedfnactualcost==0){
+								if(php72_cmp($seedfnactualcost)==0){
 									$seedfnactualcost ='';
 								}
 								$sfAcArr[$monthActualDataArr[$sfAc]] = $seedfnactualcost;
@@ -23356,7 +23356,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorcost = 0;
         					}
-							if($mentorcost==0){
+							if(php72_cmp($mentorcost)==0){
 								$mentorcost ='';
 							}
 							$mcPlArr[$monthDataArr[$mcPl]] = $mentorcost;
@@ -23427,21 +23427,21 @@ class Portfolio extends CI_Controller {
         								$get_unique_mentor[] = $tot['assigned_to'];
         							}
 
-        							if ($tot['month'] == 4 || $tot['month'] == 5 || $tot['month'] == 6) {
+        							if (php72_cmp($tot['month']) == 4 || php72_cmp($tot['month']) == 5 || php72_cmp($tot['month']) == 6) {
         								$mentoractualcost = $ment_actquat['q1'];
         							}
-        							if ($tot['month'] == 7 || $tot['month'] == 8 || $tot['month'] == 9) {
+        							if (php72_cmp($tot['month']) == 7 || php72_cmp($tot['month']) == 8 || php72_cmp($tot['month']) == 9) {
         								$mentoractualcost = $ment_actquat['q2'];
         							}
-        							if ($tot['month'] == 10 || $tot['month'] == 11 || $tot['month'] == 12) {
+        							if (php72_cmp($tot['month']) == 10 || php72_cmp($tot['month']) == 11 || php72_cmp($tot['month']) == 12) {
         								$mentoractualcost = $ment_actquat['q3'];
         							}
-        							if ($tot['month'] == 1 || $tot['month'] == 2 || $tot['month'] == 3) {
+        							if (php72_cmp($tot['month']) == 1 || php72_cmp($tot['month']) == 2 || php72_cmp($tot['month']) == 3) {
         								$mentoractualcost = $ment_actquat['q4'];
         							}
         						}
         					}
-							if($mentoractualcost==0){
+							if(php72_cmp($mentoractualcost)==0){
 								$mentoractualcost ='';
 							}
 							$mcAcArr[$monthActualDataArr[$mcAC]] = $mentoractualcost;
@@ -23514,46 +23514,46 @@ class Portfolio extends CI_Controller {
 										}
 									}
 								
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$tot_mentorhractualcost[$mn] += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
         							}
         						}
         					}
 							$tot_mentorhractualcostVal = $tot_mentorhractualcost[$mn];
-							if($tot_mentorhractualcost[$mn]==0){
+							if(php72_cmp($tot_mentorhractualcost[$mn])==0){
 								$tot_mentorhractualcostVal ='';
 							}
 							$mchAcArr[$monthActualDataArr[$mchAC]] = $tot_mentorhractualcostVal;
@@ -23568,10 +23568,10 @@ class Portfolio extends CI_Controller {
         				foreach ($montharr as $arrlist) {
         					$mentorhrcost = 0;
         					$mentorhrmonths = explode('-', $arrlist);
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
 							/* $mcHPlArr[$monthDataArr[$mcHPl]] = $mentorhrcost;
@@ -23599,7 +23599,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$mentorhrcost = 0;
         					}
-							if($mentorhrcost==0){
+							if(php72_cmp($mentorhrcost)==0){
 								$mentorhrcost ='';
 							}
 							
@@ -23729,7 +23729,7 @@ class Portfolio extends CI_Controller {
         						foreach ($montharr as $arrlist) {
         							$mentorhrcost = 0;
         							$mentorhrmonths = explode('-', $arrlist);
-									if($mentorhrcost==0){
+									if(php72_cmp($mentorhrcost)==0){
 										$mentorhrcost ='';
 									}
 									$mcHPlAArr[$monthDataArr[$mcHPlA]] = $mentorhrcost;
@@ -23743,43 +23743,43 @@ class Portfolio extends CI_Controller {
         							$mentorhractualcost = 0;
         							$swap = array_flip($headkey_achieve);
 
-        							if ($mn == 4) {
+        							if (php72_cmp($mn) == 4) {
         								$mentorhractualcost += $men_actual['apr'];
         							}
-        							if ($mn == 5) {
+        							if (php72_cmp($mn) == 5) {
         								$mentorhractualcost += $men_actual['may'];
         							}
-        							if ($mn == 6) {
+        							if (php72_cmp($mn) == 6) {
         								$mentorhractualcost += $men_actual['jun'];
         							}
-        							if ($mn == 7) {
+        							if (php72_cmp($mn) == 7) {
         								$mentorhractualcost += $men_actual['jul'];
         							}
-        							if ($mn == 8) {
+        							if (php72_cmp($mn) == 8) {
         								$mentorhractualcost += $men_actual['aug'];
         							}
-        							if ($mn == 9) {
+        							if (php72_cmp($mn) == 9) {
         								$mentorhractualcost += $men_actual['sep'];
         							}
-        							if ($mn == 10) {
+        							if (php72_cmp($mn) == 10) {
         								$mentorhractualcost += $men_actual['oct'];
         							}
-        							if ($mn == 11) {
+        							if (php72_cmp($mn) == 11) {
         								$mentorhractualcost += $men_actual['nov'];
         							}
-        							if ($mn == 12) {
+        							if (php72_cmp($mn) == 12) {
         								$mentorhractualcost += $men_actual['dec'];
         							}
-        							if ($mn == 1) {
+        							if (php72_cmp($mn) == 1) {
         								$mentorhractualcost += $men_actual['jan'];
         							}
-        							if ($mn == 2) {
+        							if (php72_cmp($mn) == 2) {
         								$mentorhractualcost += $men_actual['feb'];
         							}
-        							if ($mn == 3) {
+        							if (php72_cmp($mn) == 3) {
         								$mentorhractualcost += $men_actual['mar'];
         							}
-									if($mentorhractualcost==0){
+									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
 									}
 									$mchAcAArr[$monthActualDataArr[$mchACA]] = $mentorhractualcost;
@@ -23867,7 +23867,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$tapcost = 0;
 								}
-								if($tapcost==0){
+								if(php72_cmp($tapcost)==0){
 									$tapcost ='';
 								}
 								
@@ -23912,7 +23912,7 @@ class Portfolio extends CI_Controller {
 								} else {
 									$tapactualcost = 0;
 								}
-								if($tapactualcost==0){
+								if(php72_cmp($tapactualcost)==0){
 									$tapactualcost ='';
 								}
 								if($monthActualDataArr[$taAc]!=''){
@@ -23997,7 +23997,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpcost = 0;
         					}
-							if($dpcost==0){
+							if(php72_cmp($dpcost)==0){
 								$dpcost ='';
 							}
 									
@@ -24014,7 +24014,7 @@ class Portfolio extends CI_Controller {
         							$dpactualcost += str_replace(',', '', $dp['dps']);
         						}
         					}
-							if($dpactualcost==0){
+							if(php72_cmp($dpactualcost)==0){
 								$dpactualcost ='';
 							}
 							$diagAcArr[$monthActualDataArr[$diagAc]] = $dpactualcost;
@@ -24087,7 +24087,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$dpexcost = 0;
         					}
-							if($dpexcost==0){
+							if(php72_cmp($dpexcost)==0){
 								$dpexcost ='';
 							}
 							$diagExPlArr[$monthDataArr[$diagExPl]] = $dpexcost;
@@ -24103,7 +24103,7 @@ class Portfolio extends CI_Controller {
         							$dpexactualcost += count($atten);
         						}
         					}
-							if($dpexactualcost==0){
+							if(php72_cmp($dpexactualcost)==0){
 								$dpexactualcost ='';
 							}
 							$diagExAcArr[$monthActualDataArr[$diagExAc]] = $dpexactualcost;
@@ -24160,7 +24160,7 @@ class Portfolio extends CI_Controller {
         						$datavalues = json_decode($revs['data'], TRUE);
         						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
         					}
-							if($revcost==0){
+							if(php72_cmp($revcost)==0){
 								$revcost ='';
 							}
 							$revenuePlArr[$monthDataArr[$revenuePl]] = $revcost;
@@ -24175,7 +24175,7 @@ class Portfolio extends CI_Controller {
         							$revactualcost += str_replace(',', '', $revs['revenue']);
         						}
         					}
-							if($revactualcost==0){
+							if(php72_cmp($revactualcost)==0){
 								$revactualcost ='';
 							}
 							$revenueAcArr[$monthActualDataArr[$revenueAc]] = $revactualcost;
@@ -24242,7 +24242,7 @@ class Portfolio extends CI_Controller {
         						$salesvalues = json_decode($sales['value'], TRUE);
         						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
         					}
-							if($salescost==0){
+							if(php72_cmp($salescost)==0){
 								$salescost ='';
 							}
 							$salePlArr[$monthDataArr[$salePl]] = $salescost;
@@ -24257,7 +24257,7 @@ class Portfolio extends CI_Controller {
         							$salesactualcost += str_replace(',', '', $sales['value']);
         						}
         					}
-							if($salesactualcost==0){
+							if(php72_cmp($salesactualcost)==0){
 								$salesactualcost ='';
 							}
 							$saleAcArr[$monthActualDataArr[$saleAc]] = $salesactualcost;
@@ -24381,7 +24381,7 @@ class Portfolio extends CI_Controller {
         						$profvalues = json_decode($profs['data'], TRUE);
         						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
         					}
-							if($profcost==0){
+							if(php72_cmp($profcost)==0){
 								$profcost ='';
 							}
 							$profitPlArr[$monthDataArr[$profitPl]] = $profcost;
@@ -24396,7 +24396,7 @@ class Portfolio extends CI_Controller {
         							$profactualcost += str_replace(',', '', $profs['net_profit']);
         						}
         					}
-							if($profactualcost==0){
+							if(php72_cmp($profactualcost)==0){
 								$profactualcost ='';
 							}
 							$profitAcArr[$monthActualDataArr[$profitAc]] = $profactualcost;
@@ -24469,7 +24469,7 @@ class Portfolio extends CI_Controller {
         					} else {
         						$fundcost = 0;
         					}
-							if($fundcost==0){
+							if(php72_cmp($fundcost)==0){
 								$fundcost ='';
 							}
 							$fundraisePlArr[$monthDataArr[$fundraisePl]] = $fundcost;
@@ -24488,7 +24488,7 @@ class Portfolio extends CI_Controller {
         							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
         						}
         					}
-							if($fundactualcost==0){
+							if(php72_cmp($fundactualcost)==0){
 								$fundactualcost ='';
 							}
 							$fundraiseAcArr[$monthActualDataArr[$fundraiseAc]] = $fundactualcost;
@@ -24544,7 +24544,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_target as $endbene) {
         						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
         					}
-							if($endbenecost==0){
+							if(php72_cmp($endbenecost)==0){
 								$endbenecost ='';
 							}
 							$impactMalePlArr[$monthDataArr[$impactMalePl]] = $endbenecost;
@@ -24559,7 +24559,7 @@ class Portfolio extends CI_Controller {
         							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
         						}
         					}
-							if($endbeneactualcost==0){
+							if(php72_cmp($endbeneactualcost)==0){
 								$endbeneactualcost ='';
 							}
 							$impactMaleAcArr[$monthActualDataArr[$impactMaleAc]] = $endbeneactualcost;
@@ -24619,7 +24619,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_female_target as $endbene_female) {
         						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
         					}
-							if($endbene_femalecost==0){
+							if(php72_cmp($endbene_femalecost)==0){
 								$endbene_femalecost ='';
 							}
 							$impactFeMalePlArr[$monthDataArr[$impactFeMalePl]] = $endbene_femalecost;
@@ -24636,7 +24636,7 @@ class Portfolio extends CI_Controller {
         							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
         						}
         					}
-							if($endbene_femaleactualcost==0){
+							if(php72_cmp($endbene_femaleactualcost)==0){
 								$endbene_femaleactualcost ='';
 							}
 							$impactFeMaleAcArr[$monthActualDataArr[$impactFeMaleAc]] = $endbene_femaleactualcost;
@@ -24695,7 +24695,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_other_target as $endbene_other) {
         						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
         					}
-							if($endbene_othercost==0){
+							if(php72_cmp($endbene_othercost)==0){
 								$endbene_othercost ='';
 							}
 							$impactEndOtherPlArr[$monthDataArr[$impactEndOtherPl]] = $endbene_othercost;
@@ -24711,7 +24711,7 @@ class Portfolio extends CI_Controller {
         							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
         						}
         					}
-							if($endbene_otheractualcost==0){
+							if(php72_cmp($endbene_otheractualcost)==0){
 								$endbene_otheractualcost ='';
 							}
 							$impactEndOtherAcArr[$monthActualDataArr[$impactEndOtherAc]] = $endbene_otheractualcost;
@@ -24768,7 +24768,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_unknown_target as $endbene_unknown) {
         						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
         					}
-							if($endbene_unknowncost==0){
+							if(php72_cmp($endbene_unknowncost)==0){
 								$endbene_unknowncost ='';
 							}
 							$impactEndUnknownPlArr[$monthDataArr[$impactEndUnknownPl]] = $endbene_unknowncost;
@@ -24783,7 +24783,7 @@ class Portfolio extends CI_Controller {
         							$endbene_unknownactualcost += $end_unknown;
         						}
         					}
-							if($endbene_unknownactualcost==0){
+							if(php72_cmp($endbene_unknownactualcost)==0){
 								$endbene_unknownactualcost ='';
 							}
 							$impactEndUnknownAcArr[$monthActualDataArr[$impactEndUnknownAc]] = $endbene_unknownactualcost;
@@ -24842,7 +24842,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_male_target as $indirectj_male) {
         						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
         					}
-							if($indirectj_malecost==0){
+							if(php72_cmp($indirectj_malecost)==0){
 								$indirectj_malecost ='';
 							}
 							$impactIndirectJobMalePlArr[$monthDataArr[$impactIndirectJobMalePl]] = $indirectj_malecost;
@@ -24858,7 +24858,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_maleactualcost += $indirect_male;
         						}
         					}
-							if($indirectj_maleactualcost==0){
+							if(php72_cmp($indirectj_maleactualcost)==0){
 								$indirectj_maleactualcost ='';
 							}
 							$impactIndirectJobMaleAcArr[$monthActualDataArr[$impactIndirectJobMaleAc]] = $indirectj_maleactualcost;
@@ -24918,7 +24918,7 @@ class Portfolio extends CI_Controller {
 							foreach ($Directj_female_target as $Directj_female) {
 								$Directj_femalecost += str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]);
 							}
-							if($Directj_femalecost==0){
+							if(php72_cmp($Directj_femalecost)==0){
 								$Directj_femalecost ='';
 							}
 							$impactdirectJobFeMalePlArr[$monthDataArr[$impactdirectJobFeMalePl]] = $Directj_femalecost;
@@ -24934,7 +24934,7 @@ class Portfolio extends CI_Controller {
 									$Directj_femaleactualcost += $Direct_female;
 								}
 							}
-							if($Directj_femaleactualcost==0){
+							if(php72_cmp($Directj_femaleactualcost)==0){
 								$Directj_femaleactualcost ='';
 							}
 							$impactDirectJobFeMaleAcArr[$monthActualDataArr[$impactDirectJobFeMaleAc]] = $Directj_femaleactualcost;
@@ -24992,7 +24992,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_other_target as $Directj_other) {
 							$Directj_othercost += str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]);
 						}
-						if($Directj_othercost==0){
+						if(php72_cmp($Directj_othercost)==0){
 							$Directj_othercost ='';
 						}
 						$impactdirectJobotherPlArr[$monthDataArr[$impactdirectJobotherPl]] = $Directj_othercost;
@@ -25008,7 +25008,7 @@ class Portfolio extends CI_Controller {
 								$Directj_otheractualcost += $Direct_other;
 							}
 						}
-						if($Directj_otheractualcost==0){
+						if(php72_cmp($Directj_otheractualcost)==0){
 							$Directj_otheractualcost ='';
 						}
 						$impactDirectJobotherAcArr[$monthActualDataArr[$impactDirectJobotherAc]] = $Directj_otheractualcost;
@@ -25065,7 +25065,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_unknown_target as $Directj_unknown) {
 							$Directj_unknowncost += str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]);
 						}
-						if($Directj_unknowncost==0){
+						if(php72_cmp($Directj_unknowncost)==0){
 							$Directj_unknowncost ='';
 						}
 						$impactdirectJobunknownPlArr[$monthDataArr[$impactdirectJobunknownPl]] = $Directj_unknowncost;
@@ -25081,7 +25081,7 @@ class Portfolio extends CI_Controller {
 								$Directj_unknownactualcost += $Direct_unknown;
 							}
 						}
-						if($Directj_unknownactualcost==0){
+						if(php72_cmp($Directj_unknownactualcost)==0){
 							$Directj_unknownactualcost ='';
 						}
 						$impactDirectJobunknownAcArr[$monthActualDataArr[$impactDirectJobunknownAc]] = $Directj_unknownactualcost;
@@ -25141,7 +25141,7 @@ class Portfolio extends CI_Controller {
 						foreach ($indirectj_male_id_target as $indirectj_male_id) {
 							$indirectj_male_idcost += str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]);
 						}
-						if($indirectj_male_idcost==0){
+						if(php72_cmp($indirectj_male_idcost)==0){
 							$indirectj_male_idcost ='';
 						}
 						$impactIndirectJobmale_idPlArr[$monthDataArr[$impactIndirectJobmale_idPl]] = $indirectj_male_idcost;
@@ -25157,7 +25157,7 @@ class Portfolio extends CI_Controller {
 								$indirectj_male_idactualcost += $indirect_male_id;
 							}
 						}
-						if($indirectj_male_idactualcost==0){
+						if(php72_cmp($indirectj_male_idactualcost)==0){
 							$indirectj_male_idactualcost ='';
 						}
 						$impactIndirectJobmale_idAcArr[$monthActualDataArr[$impactIndirectJobmale_idAc]] = $indirectj_male_idactualcost;
@@ -25215,7 +25215,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_female_target as $indirectj_female) {
         						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
         					}
-							if($indirectj_femalecost==0){
+							if(php72_cmp($indirectj_femalecost)==0){
 								$indirectj_femalecost ='';
 							}
 							$impactIndirectJobFeMalePlArr[$monthDataArr[$impactIndirectJobFeMalePl]] = $indirectj_femalecost;
@@ -25231,7 +25231,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_femaleactualcost += $indirect_female;
         						}
         					}
-							if($indirectj_femaleactualcost==0){
+							if(php72_cmp($indirectj_femaleactualcost)==0){
 								$indirectj_femaleactualcost ='';
 							}
 							$impactIndirectJobFeMaleAcArr[$monthActualDataArr[$impactIndirectJobFeMaleAc]] = $indirectj_femaleactualcost;
@@ -25286,7 +25286,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_other_target as $indirectj_other) {
         						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
         					}
-							if($indirectj_othercost==0){
+							if(php72_cmp($indirectj_othercost)==0){
 								$indirectj_othercost ='';
 							}
 							$impactIndirectOtherPlArr[$monthDataArr[$impactIndirectOtherPl]] = $indirectj_othercost;
@@ -25302,7 +25302,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_otheractualcost += $indirect_other;
         						}
         					}
-							if($indirectj_otheractualcost==0){
+							if(php72_cmp($indirectj_otheractualcost)==0){
 								$indirectj_otheractualcost ='';
 							}
 							$impactIndirectOtherAcArr[$monthActualDataArr[$impactIndirectOtherAc]] = $indirectj_otheractualcost;
@@ -25360,7 +25360,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_unknown_target as $indirectj_unknown) {
         						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
         					}
-							if($indirectj_unknowncost==0){
+							if(php72_cmp($indirectj_unknowncost)==0){
 								$indirectj_unknowncost ='';
 							}
 							$impactIndirectUnknownPlArr[$monthDataArr[$impactIndirectUnknownPl]] = $indirectj_unknowncost;
@@ -25376,7 +25376,7 @@ class Portfolio extends CI_Controller {
         							$indirectj_unknownactualcost += $indirect_unknown;
         						}
         					}
-							if($indirectj_unknownactualcost==0){
+							if(php72_cmp($indirectj_unknownactualcost)==0){
 								$indirectj_unknownactualcost ='';
 							}
 							$impactIndirectUnknownAcArr[$monthActualDataArr[$impactIndirectUnknownAc]] = $indirectj_unknownactualcost;

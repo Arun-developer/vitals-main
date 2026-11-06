@@ -514,25 +514,25 @@ table {
 	<form name="monthchangeform" action="<?php site_url('incubationprogress/form')?>" method="post">
 	<label style="font-weight:bold;">Select Month  : &nbsp;&nbsp;</label>
 	<select name="monthdropdown"  onchange="monthchange(this.value);">
-	<option value="0" <?=($monthcount == 0)?'selected':''?>>Jan</option>
-	<option value="1" <?=($monthcount == 1)?'selected':''?>>Feb</option>
-	<option value="2" <?=($monthcount == 2)?'selected':''?>>Mar</option>
-	<option value="3" <?=($monthcount == 3)?'selected':''?>>Apr</option>
-	<option value="4" <?=($monthcount == 4)?'selected':''?>>May</option>
-	<option value="5" <?=($monthcount == 5)?'selected':''?>>Jun</option>
-	<option value="6" <?=($monthcount == 6)?'selected':''?>>Jul</option>
-	<option value="7" <?=($monthcount == 7)?'selected':''?>>Aug</option>
-	<option value="8" <?=($monthcount == 8)?'selected':''?>>Sep</option>
-	<option value="9" <?=($monthcount == 9)?'selected':''?>>Oct</option>
-	<option value="10" <?=($monthcount == 10)?'selected':''?>>Nov</option>
-	<option value="11" <?=($monthcount == 11)?'selected':''?>>Dec</option>
+	<option value="0" <?=(php72_cmp($monthcount) == 0)?'selected':''?>>Jan</option>
+	<option value="1" <?=(php72_cmp($monthcount) == 1)?'selected':''?>>Feb</option>
+	<option value="2" <?=(php72_cmp($monthcount) == 2)?'selected':''?>>Mar</option>
+	<option value="3" <?=(php72_cmp($monthcount) == 3)?'selected':''?>>Apr</option>
+	<option value="4" <?=(php72_cmp($monthcount) == 4)?'selected':''?>>May</option>
+	<option value="5" <?=(php72_cmp($monthcount) == 5)?'selected':''?>>Jun</option>
+	<option value="6" <?=(php72_cmp($monthcount) == 6)?'selected':''?>>Jul</option>
+	<option value="7" <?=(php72_cmp($monthcount) == 7)?'selected':''?>>Aug</option>
+	<option value="8" <?=(php72_cmp($monthcount) == 8)?'selected':''?>>Sep</option>
+	<option value="9" <?=(php72_cmp($monthcount) == 9)?'selected':''?>>Oct</option>
+	<option value="10" <?=(php72_cmp($monthcount) == 10)?'selected':''?>>Nov</option>
+	<option value="11" <?=(php72_cmp($monthcount) == 11)?'selected':''?>>Dec</option>
 	</select>
 	</form>
 	<br>
 	<table id="travel" style="width:845px" cellspacing="3" cellpadding="4">
 		
 		<?php
-		switch($monthcount)
+		switch(php72_cmp($monthcount))
 			{
 				case 0:
 					if (is_array($monthanswerreport0))
@@ -642,18 +642,18 @@ table {
 	<form name="monthchangeform" action="<?php site_url('incubationprogress/form')?>" method="post">
 	<label style="font-weight:bold;">Select Month  : &nbsp;&nbsp;</label>
 	<select name="monthdropdown"  onchange="monthchange(this.value);">
-	<option value="0" <?=($monthcount == 0)?'selected':''?>>Jan</option>
-	<option value="1" <?=($monthcount == 1)?'selected':''?>>Feb</option>
-	<option value="2" <?=($monthcount == 2)?'selected':''?>>Mar</option>
-	<option value="3" <?=($monthcount == 3)?'selected':''?>>Apr</option>
-	<option value="4" <?=($monthcount == 4)?'selected':''?>>May</option>
-	<option value="5" <?=($monthcount == 5)?'selected':''?>>Jun</option>
-	<option value="6" <?=($monthcount == 6)?'selected':''?>>Jul</option>
-	<option value="7" <?=($monthcount == 7)?'selected':''?>>Aug</option>
-	<option value="8" <?=($monthcount == 8)?'selected':''?>>Sep</option>
-	<option value="9" <?=($monthcount == 9)?'selected':''?>>Oct</option>
-	<option value="10" <?=($monthcount == 10)?'selected':''?>>Nov</option>
-	<option value="11" <?=($monthcount == 11)?'selected':''?>>Dec</option>
+	<option value="0" <?=(php72_cmp($monthcount) == 0)?'selected':''?>>Jan</option>
+	<option value="1" <?=(php72_cmp($monthcount) == 1)?'selected':''?>>Feb</option>
+	<option value="2" <?=(php72_cmp($monthcount) == 2)?'selected':''?>>Mar</option>
+	<option value="3" <?=(php72_cmp($monthcount) == 3)?'selected':''?>>Apr</option>
+	<option value="4" <?=(php72_cmp($monthcount) == 4)?'selected':''?>>May</option>
+	<option value="5" <?=(php72_cmp($monthcount) == 5)?'selected':''?>>Jun</option>
+	<option value="6" <?=(php72_cmp($monthcount) == 6)?'selected':''?>>Jul</option>
+	<option value="7" <?=(php72_cmp($monthcount) == 7)?'selected':''?>>Aug</option>
+	<option value="8" <?=(php72_cmp($monthcount) == 8)?'selected':''?>>Sep</option>
+	<option value="9" <?=(php72_cmp($monthcount) == 9)?'selected':''?>>Oct</option>
+	<option value="10" <?=(php72_cmp($monthcount) == 10)?'selected':''?>>Nov</option>
+	<option value="11" <?=(php72_cmp($monthcount) == 11)?'selected':''?>>Dec</option>
 	</select>
 	</form>
 	<br>
@@ -667,7 +667,7 @@ table {
 			echo '<tr scope="row">';
 			echo '<td width="70%"><a class="fancybox" style="color:black" href="'.site_url("incubationprogress/assign/".$defaultyearly.'/'.$defaultmonthly.'/'.$monthreport[$i]['id'].'/'.$defaulttype.'/'.$innovation).'">'.$monthreport[$i]['label'].'</a></td>';
 
-			switch($monthcount)
+			switch(php72_cmp($monthcount))
 			{
 				case 0:
 				if (is_array($monthanswerreport0))

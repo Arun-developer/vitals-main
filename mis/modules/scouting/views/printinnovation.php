@@ -114,9 +114,9 @@
                                 <td><?= $row['city'] ?></td>
                                 <td>
                                     <?php
-                                    if ($row['LIS'] == 0)
+                                    if (php72_cmp($row['LIS']) == 0)
                                         $lis = 'No';
-                                    else if ($row['LIS'] == 1)
+                                    else if (php72_cmp($row['LIS']) == 1)
                                         $lis = 'Yes';
                                     else
                                         $lis = '';

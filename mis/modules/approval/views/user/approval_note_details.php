@@ -616,7 +616,7 @@ if ($approvalNoteDetails[0]['status'] == 'pending') {
                             <h4></h4>
                         </div>
                         <span>The selected approval note has unutilized amount of RS. <?php
-                        $remain = ($remain_amt > 0) ? $remain_amt : 0;
+                        $remain = (php72_cmp($remain_amt) > 0) ? $remain_amt : 0;
                         echo $remain;
                         ?>. Closing the approval note will <br/>
                     a. Release the unutilized amount to donors budget.</br>

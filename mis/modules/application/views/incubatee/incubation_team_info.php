@@ -43,7 +43,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 										echo "Enterprise";
 									}  
 								?></a></li>
-								<?php if($team_information[0]['program'] != 28 && $team_information[0]['program'] != 31){  ?>
+								<?php if(php72_cmp($team_information[0]['program']) != 28 && php72_cmp($team_information[0]['program']) != 31){  ?>
                                 <li role="presentation"><a href="<?php echo base_url() . 'index.php/application/innovation_info/' . $application_id; ?>"><?php if($team_information[0]['program'] == '21' || $team_information[0]['program'] == '22'){
 									echo "About the Business model";  
 									}else if($team_information[0]['program'] == '23'){
@@ -58,7 +58,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 									
 								<?php }else{  ?>
 								
-								<?php  if ($team_information[0]['program'] == 25 || $team_information[0]['program'] == 34) {  ?>
+								<?php  if (php72_cmp($team_information[0]['program']) == 25 || php72_cmp($team_information[0]['program']) == 34) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								
@@ -73,9 +73,9 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 									<?php } ?>
 								
 								<?php } ?> 
-								<?php  if ($team_information[0]['program'] != 37 && $team_information[0]['program'] != 33 && $team_information[0]['program'] !=34  &&$team_information[0]['program'] != 28 && $team_information[0]['program'] != 0 && $team_information[0]['program'] != 21 && $team_information[0]['program'] != 22 && $team_information[0]['program'] != 23 && $team_information[0]['program'] != 31  && $team_information[0]['program'] != 26 && $team_information[0]['program'] != 27 && $team_information[0]['program'] != 25 && $team_information[0]['program'] != 29) {  ?>
+								<?php  if (php72_cmp($team_information[0]['program']) != 37 && php72_cmp($team_information[0]['program']) != 33 && php72_cmp($team_information[0]['program']) !=34  &&php72_cmp($team_information[0]['program']) != 28 && php72_cmp($team_information[0]['program']) != 0 && php72_cmp($team_information[0]['program']) != 21 && php72_cmp($team_information[0]['program']) != 22 && php72_cmp($team_information[0]['program']) != 23 && php72_cmp($team_information[0]['program']) != 31  && php72_cmp($team_information[0]['program']) != 26 && php72_cmp($team_information[0]['program']) != 27 && php72_cmp($team_information[0]['program']) != 25 && php72_cmp($team_information[0]['program']) != 29) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
-									<?php  if ($team_information[0]['program'] == 25) {  ?>
+									<?php  if (php72_cmp($team_information[0]['program']) == 25) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								<?php } ?>
@@ -98,24 +98,24 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                     } else {
                                         $list = '3';
                                     }
-									if($team_information[0]['program'] == 29 || $team_information[0]['program'] == 28 || $team_information[0]['program'] == 14 || $team_information[0]['program'] == 27 || $team_information[0]['program'] == 25 || $team_information[0]['program'] == 34){
+									if(php72_cmp($team_information[0]['program']) == 29 || php72_cmp($team_information[0]['program']) == 28 || php72_cmp($team_information[0]['program']) == 14 || php72_cmp($team_information[0]['program']) == 27 || php72_cmp($team_information[0]['program']) == 25 || php72_cmp($team_information[0]['program']) == 34){
 										$list = '4';
 									}
-									if($team_information[0]['program'] == 21){
+									if(php72_cmp($team_information[0]['program']) == 21){
 										$list = '2';
 										if(date('Y-m-d', strtotime($team_information[0]['created_date']))  >= date('2024-01-01')){ 
 											$list = '1';
 										}
 									}
-									if($team_information[0]['program'] == 22 || $team_information[0]['program'] == 31){
+									if(php72_cmp($team_information[0]['program']) == 22 || php72_cmp($team_information[0]['program']) == 31){
 										$list = '2';
 									}
-									if($team_information[0]['program'] == 37 || $team_information[0]['program'] == 38 ){
+									if(php72_cmp($team_information[0]['program']) == 37 || php72_cmp($team_information[0]['program']) == 38 ){
 										$list = '4';
 									}
 
 
-                                    if ($team_information[0]['program'] == 10 || $team_information[0]['program'] == 12 || $team_information[0]['program'] == 14|| $team_information[0]['program'] == 30) {
+                                    if (php72_cmp($team_information[0]['program']) == 10 || php72_cmp($team_information[0]['program']) == 12 || php72_cmp($team_information[0]['program']) == 14|| php72_cmp($team_information[0]['program']) == 30) {
                                         for ($i = 0; $i < $list; $i++) {
                                             $mandatory = '';
                                             if ($i == 0) {
@@ -164,7 +164,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <?php if ($team_information[0]['program'] == 10) { ?>
+                                        <?php if (php72_cmp($team_information[0]['program']) == 10) { ?>
                                             <br>
                                             <div class="row">
                                                 <div class="col-12 col-lg-4 col-md-4">
@@ -218,7 +218,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                     </div>
                                                 </div>
 												
-												  <?php if ($team_information[0]['program'] != 21 && $team_information[0]['program'] != 22) { ?>
+												  <?php if (php72_cmp($team_information[0]['program']) != 21 && php72_cmp($team_information[0]['program']) != 22) { ?>
                                                 <div class="col-12 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label>Organization<?= $mandatory; ?></label>
@@ -271,18 +271,18 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php if ($team_information[0]['program'] == 9 || $team_information[0]['program'] == 21|| $team_information[0]['program'] == 38) { ?>
+                                            <?php if (php72_cmp($team_information[0]['program']) == 9 || php72_cmp($team_information[0]['program']) == 21|| php72_cmp($team_information[0]['program']) == 38) { ?>
                                                 <div class="row">
                                                     <div class="col-12 col-lg-4 col-md-4">
                                                         <div class="form-group">
-                                                            <label>LinkedIn<?php if($team_information[0]['program'] ==21){ echo""; }else{ echo $mandatory; } ?></label>
+                                                            <label>LinkedIn<?php if(php72_cmp($team_information[0]['program']) ==21){ echo""; }else{ echo $mandatory; } ?></label>
                                                             <input type="text" class="form-control" value="<?= $team_information[$i]['linkedin_profile']; ?>" disabled />
                                                         </div>
                                                     </div>
                                                 </div>
                                             <?php } else { ?>
 											
-												<?php  if ($team_information[0]['program'] != 21 && $team_information[0]['program'] != 22) {  ?>
+												<?php  if (php72_cmp($team_information[0]['program']) != 21 && php72_cmp($team_information[0]['program']) != 22) {  ?>
 														<div class="row">
 															<div class="col-12 col-lg-4 col-md-4">
 																<div class="form-group clearfix">
@@ -305,9 +305,9 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 																		
 																		<?php 
 																			$Download_url = '';
-																			if($team_information[0]['program'] == 25){
+																			if(php72_cmp($team_information[0]['program']) == 25){
 																				$Download_url = host_url() . 'MAPHealth/uploads/' . $team_information[$i]['mem_resume'];
-																			}else if($team_information[0]['program'] == 34){ 
+																			}else if(php72_cmp($team_information[0]['program']) == 34){ 
 																				$Download_url = host_url() . 'maphealthcap/uploads/' . $team_information[$i]['mem_resume'];
 																			}else{
 																				$Download_url = host_url() . 'IncubationForm/uploads/' . $team_information[$i]['mem_resume'];
@@ -329,7 +329,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                     }
                                     ?>
 
-                                    <?php if ($team_information[0]['program'] == 9) { ?>
+                                    <?php if (php72_cmp($team_information[0]['program']) == 9) { ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
@@ -346,7 +346,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                         </div>
                                     <?php } ?>
 									
-									<?php if ($team_information[0]['program'] == 38) {  ?>
+									<?php if (php72_cmp($team_information[0]['program']) == 38) {  ?>
                                         <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">

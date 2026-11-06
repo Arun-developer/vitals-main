@@ -16,7 +16,7 @@ if($r==0)
         <dd>
             <?php
 $cfValue = (isset($_POST['txtSubmit']))?$_POST[$row['id']]:$row['answer'];
-$suQuesion = ($row['sub_field']>0)?'showSubField':'';
+$suQuesion = (php72_cmp($row['sub_field'])>0)?'showSubField':'';
 switch($row['input_type']){
 	case 'Text':
 		?>
@@ -78,7 +78,7 @@ switch($row['input_type']){
     </dl>
 
     <?php
-if($row['sub_field']>0)
+if(php72_cmp($row['sub_field'])>0)
 {
 	$this->Mscreening->ajaxForm($innovation,$criteria,$row['id'],$cfValue);
 }

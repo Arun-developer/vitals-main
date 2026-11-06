@@ -28,9 +28,9 @@
 
                         <?php
                         $switch_type = '';
-                        if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+                        if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
                             $switch_type = 'Switch to user';
-                        } else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+                        } else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
                             $switch_type = 'Switch to admin';
                         }
                         ?>

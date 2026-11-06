@@ -72,10 +72,10 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 								
 								
 								
-								<?php  if ($enterprise_information[0]['program'] != 21 && $enterprise_information[0]['program'] !=34  && $enterprise_information[0]['program'] != 22 && $enterprise_information[0]['program'] != 31 && $enterprise_information[0]['program'] != 23 && $enterprise_information[0]['program'] != 26 && $enterprise_information[0]['program'] != 27 && $enterprise_information[0]['program'] != 25 && $enterprise_information[0]['program'] != 34) {  ?>
+								<?php  if (php72_cmp($enterprise_information[0]['program']) != 21 && php72_cmp($enterprise_information[0]['program']) !=34  && php72_cmp($enterprise_information[0]['program']) != 22 && php72_cmp($enterprise_information[0]['program']) != 31 && php72_cmp($enterprise_information[0]['program']) != 23 && php72_cmp($enterprise_information[0]['program']) != 26 && php72_cmp($enterprise_information[0]['program']) != 27 && php72_cmp($enterprise_information[0]['program']) != 25 && php72_cmp($enterprise_information[0]['program']) != 34) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
-								<?php  if ($enterprise_information[0]['program'] == 25 || $enterprise_information[0]['program'] == 34) {  ?>
+								<?php  if (php72_cmp($enterprise_information[0]['program']) == 25 || php72_cmp($enterprise_information[0]['program']) == 34) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								
@@ -269,7 +269,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
 												</div>
 											</div>
 										<?php } ?>
-										<?php  if ($enterprise_information[0]['program'] == 23 || $enterprise_information[0]['program'] == 31) {  ?>
+										<?php  if (php72_cmp($enterprise_information[0]['program']) == 23 || php72_cmp($enterprise_information[0]['program']) == 31) {  ?>
 										
 										  <div class="row">
                                             <div class="col-12 col-lg-4 col-md-4">
@@ -298,7 +298,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                     <label>
 													<?php 
 													
-														if ($enterprise_information[0]['program'] != 31){
+														if (php72_cmp($enterprise_information[0]['program']) != 31){
 															echo "Do you already have a tech-based mobility solution";
 														}else{
 															echo "Is your solution aligned with the Green construction or affordable housing industry";
@@ -316,7 +316,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                     <input type="text" class="form-control" value="<?= $enterprise_information[0]['inv_problem']; ?>" disabled />
                                                 </div>
                                             </div>
-											<?php if ($enterprise_information[0]['program'] != 31){ ?>
+											<?php if (php72_cmp($enterprise_information[0]['program']) != 31){ ?>
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>What green construction/affordable housing problem does your innovation address</label>
@@ -331,7 +331,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                     <label>
 													<?php 
 													
-															if ($enterprise_information[0]['program'] == 31){
+															if (php72_cmp($enterprise_information[0]['program']) == 31){
 																echo "Describe your proposed solution for the Enroute: A Mobility as a Service Challenge.";
 															}else{
 																echo "If you are involved in the development of green building materials, kindly indicate the certifications you have obtained, are currently pursuing, or intend
@@ -379,7 +379,7 @@ to pursue? (GreenPro, GRIHA, BMTPC PACs, LCA, EPD, etc)";
 													
 													<?php 
 													
-															if ($enterprise_information[0]['program'] == 31){
+															if (php72_cmp($enterprise_information[0]['program']) == 31){
 																echo "Why do you want to participate in this challenge";
 															}else{
 																echo "What will be the operational model? How do you make your operations robust and efficient";
@@ -401,7 +401,7 @@ to pursue? (GreenPro, GRIHA, BMTPC PACs, LCA, EPD, etc)";
                                                     <label>
 													<?php 
 													
-															if ($enterprise_information[0]['program'] == 31){
+															if (php72_cmp($enterprise_information[0]['program']) == 31){
 																echo "What makes your team uniquely qualified to address the challenge";
 															}else{
 																echo "How much was your turnover (financial report) in the last 2 financial years? If your organisation is less than a year old, please answer";
@@ -420,7 +420,7 @@ to pursue? (GreenPro, GRIHA, BMTPC PACs, LCA, EPD, etc)";
 													
 													<?php 
 													
-															if ($enterprise_information[0]['program'] == 31){
+															if (php72_cmp($enterprise_information[0]['program']) == 31){
 																echo "Any additional information you would like to provide";
 															}else{
 																echo "What is the market size of the opportunity";
@@ -440,7 +440,7 @@ to pursue? (GreenPro, GRIHA, BMTPC PACs, LCA, EPD, etc)";
 													
 													<?php 
 													
-															if ($enterprise_information[0]['program'] == 31){
+															if (php72_cmp($enterprise_information[0]['program']) == 31){
 																echo "Are you willing to develop a solution and pilot the same with metro and bus services in Bangalore city";
 															}else{
 																echo "How do you aim to scale-up";
@@ -466,7 +466,7 @@ calculation and the data collection will be preferable
                                                 </div>
                                             </div>
 											
-											<?php if ($enterprise_information[0]['program'] != 31){ ?>
+											<?php if (php72_cmp($enterprise_information[0]['program']) != 31){ ?>
                                             <div class="col-12 col-lg-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>

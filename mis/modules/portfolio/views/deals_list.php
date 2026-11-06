@@ -161,7 +161,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" id='showSearch' onclick="showsearch();">Show Search</a>
-                                                <?php if ($this->session->userdata('role_id') != '4' || ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') != 1)) { ?>
+                                                <?php if ($this->session->userdata('role_id') != '4' || ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) != 1)) { ?>
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#globalModal">Global Search</a>
                                                 <?php } ?>
                                                 <?php
@@ -598,7 +598,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                         <option value="">--Select--</option>
                                                         <?php
                                                         foreach ($status_list as $key => $value):
-                                                            if ($key != 21 && $key != 22) {
+                                                            if (php72_cmp($key) != 21 && php72_cmp($key) != 22) {
                                                                 ?>
                                                                 <option value="<?= $key ?>"
                                                                     <?php
@@ -676,7 +676,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php if ($this->session->userdata('role_id') != '4' || ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') != 1)) { ?>
+                                        <?php if ($this->session->userdata('role_id') != '4' || ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) != 1)) { ?>
                                             <tr>
                                                 <td width="40%" class="text-right"><label>LIS</label></td>
                                                 <td width="60%" class="pad-lt15px">

@@ -364,7 +364,7 @@ class Sectorplan extends CI_Model {
             }
         }
         $partner_id = $this->session->userdata('partner_id');
-        if ($month == 01 || $month == 02 || $month == 03) {
+        if (php72_cmp($month) == 01 || php72_cmp($month) == 02 || php72_cmp($month) == 03) {
             $nxtye = $fyear + 1;
         } else {
             $nxtye = $fyear;
@@ -402,7 +402,7 @@ class Sectorplan extends CI_Model {
         }
 		
         $partner_id = $this->session->userdata('partner_id');
-        if ($month == 01 || $month == 02 || $month == 03) {
+        if (php72_cmp($month) == 01 || php72_cmp($month) == 02 || php72_cmp($month) == 03) {
             $nxtye = $fyear + 1;
         } else {
             $nxtye = $fyear;
@@ -504,7 +504,7 @@ class Sectorplan extends CI_Model {
             }
         }
         $partner_id = $this->session->userdata('partner_id');
-        if ($month == 01 || $month == 02 || $month == 03) {
+        if (php72_cmp($month) == 01 || php72_cmp($month) == 02 || php72_cmp($month) == 03) {
             $nxtye = $fyear + 1;
         } else {
             $nxtye = $fyear;

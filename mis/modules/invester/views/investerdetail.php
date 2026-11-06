@@ -102,7 +102,7 @@ $val=$investerDetails[0];
 						if($isAbi )
 						{?>
 						
-						    <?php if(($row['invester_status'])==1)
+						    <?php if(php72_cmp(($row['invester_status']))==1)
 						      {
 							    echo "Accepted";
 								?>
@@ -114,7 +114,7 @@ $val=$investerDetails[0];
 						       <a class="button fancybox"  height="200" href="<?=site_url('invester/changeinvesterstatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.
 							   $row['invester_id']);?>">Approve</a> 
 						 <?php }?>
-							 <?php if(($row['invester_status'])==2)
+							 <?php if(php72_cmp(($row['invester_status']))==2)
 							   {
 								 echo "Rejected";
 								 ?>
@@ -127,7 +127,7 @@ $val=$investerDetails[0];
 								  $row['id'].'/'.$row['invester_id']);?>">Reject</a> 
 						  <?php } ?>
 					     
-								<?php if(($row['invester_status'])==0)
+								<?php if(php72_cmp(($row['invester_status']))==0)
 								  {
 									 echo "Pending"; 
 									 ?>
@@ -160,7 +160,7 @@ $val=$investerDetails[0];
 						 if($this->session->userdata('user_type') == 'incubatee')
 						{?>
 						
-						    <?php if(($row['incubatee_status'])== 1)
+						    <?php if(php72_cmp(($row['incubatee_status']))== 1)
 						      {
 							    echo "Accepted";
 								?>
@@ -172,7 +172,7 @@ $val=$investerDetails[0];
 						       <a class="button fancybox"  height="200" href="<?=site_url('invester/changeincubateestatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.
 							   $row['invester_id']);?>">Approve</a> 
 						 <?php }?>
-							 <?php if(($row['incubatee_status'])==2)
+							 <?php if(php72_cmp(($row['incubatee_status']))==2)
 							   {
 								 echo "Rejected"; ?>
 								 
@@ -184,7 +184,7 @@ $val=$investerDetails[0];
 								 <a class="button fancybox" height="200" href="<?=site_url('invester/changeincubateestatus/reject/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.$row['invester_id']);?>">Reject</a> 
 						  <?php } ?>
 					     
-								<?php if(($row['incubatee_status'])==0)
+								<?php if(php72_cmp(($row['incubatee_status']))==0)
 								  {
 								  
 									 echo "Pending";
@@ -237,7 +237,7 @@ $val=$investerDetails[0];
 						  <?php } else
 						        {?>
 								 <?php 
-									    if(($row['villgro_status'])==1)
+									    if(php72_cmp(($row['villgro_status']))==1)
 										  {
 											echo "Accepted";
 										  }
@@ -248,7 +248,7 @@ $val=$investerDetails[0];
 										   <a class="button fancybox" height="200" href="<?=site_url('invester/changevillgrostatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.$row['invester_id'].'/');?>">Approve</a> 
 									
 									<?php }?>
-									 <?php if(($row['villgro_status'])==2)
+									 <?php if(php72_cmp(($row['villgro_status']))==2)
 									   {
 										 echo "Rejected";
 									   }
@@ -257,7 +257,7 @@ $val=$investerDetails[0];
 										 <a class="button fancybox" height="200" href="<?=site_url('invester/changevillgrostatus/reject/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.$row['invester_id']);?>">Reject</a> 
 								  <?php }  ?>
 								  
-								  <?php if(($row['villgro_status'])==0)
+								  <?php if(php72_cmp(($row['villgro_status']))==0)
 									  {
 										 echo "Pending";
 									  } 

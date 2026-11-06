@@ -112,7 +112,7 @@ $val=$mentorDetails[0];
                     <td align="left" valign="middle"><?=$row["company"];?></td>
                     <?php
 		
-			  if(($row['villgro_status'])==1)
+			  if(php72_cmp(($row['villgro_status']))==1)
 			  {?>
                     <td align="left" valign="middle">
                         <?php  if($this->session->userdata('user_type') == 'incubatee')
@@ -148,7 +148,7 @@ $val=$mentorDetails[0];
                         <?php } else
 						        {?>
                         <?php 
-									    if(($row['villgro_status'])==1)
+									    if(php72_cmp(($row['villgro_status']))==1)
 										  {
 											echo "Accepted";
 										  }
@@ -157,7 +157,7 @@ $val=$mentorDetails[0];
                         <a class="button fancybox" height="200"
                             href="<?=site_url('mentor/changevillgrostatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.$row['mentor_id']);?>">Approve</a>
                         <?php }?>
-                        <?php if(($row['villgro_status'])==2)
+                        <?php if(php72_cmp(($row['villgro_status']))==2)
 									   {
 										 echo "Rejected";
 									   }
@@ -167,7 +167,7 @@ $val=$mentorDetails[0];
                             href="<?=site_url('mentor/changevillgrostatus/reject/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.$row['mentor_id']);?>">Reject</a>
                         <?php }  ?>
 
-                        <?php if(($row['villgro_status'])==0)
+                        <?php if(php72_cmp(($row['villgro_status']))==0)
 									  {
 										 echo "Pending";
 									  } 

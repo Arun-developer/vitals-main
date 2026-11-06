@@ -255,10 +255,10 @@ class Screening_master extends CI_Controller
     {
         $quo = 0;
         $rem = 0;
-        if ($val >= 60) {
+        if (php72_cmp($val) >= 60) {
             $rem = $val % 60;
             $quo = $val / 60;
-            $quo = (int) ($quo < 0 ? ceil($quo) : floor($quo));
+            $quo = (int) (php72_cmp($quo) < 0 ? ceil($quo) : floor($quo));
             $result = $quo . '.' . $rem;
         } else {
             $result = '0.' . $val;

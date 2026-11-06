@@ -56,7 +56,7 @@ if ($class_name == '4') {
     $active_cls = 'activeform';
 }
 
-if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['sector_lead'] == 1) {
+if (isset($this->session->userdata['sector_lead']) && php72_cmp($this->session->userdata['sector_lead']) == 1) {
     $config_data = isset($configData) ? $configData : '';
 } else {
     $config_data = '';

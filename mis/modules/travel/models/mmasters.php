@@ -584,7 +584,7 @@ class Mmasters extends My_Model {
             mysql2ddmmyyyy($data['0']['bill_date']),
             $data['0']['AMC'],
             $data['0']['AMC_vendorname'],
-            ($data['0']['available_status'] == 1) ? 'Available' : getEmployeeName($data['0']['available_status']));
+            (php72_cmp($data['0']['available_status']) == 1) ? 'Available' : getEmployeeName($data['0']['available_status']));
 
         $data1 = array('org' => $org,
             'replace' => $replace,
@@ -684,7 +684,7 @@ class Mmasters extends My_Model {
                             $reportValue = (strpos(@$rowExport[$i][$more_option['0']], 'SR')) ? getEmployeeName(@$rowExport[$i][$more_option['0']]) : @$rowExport[$i][$more_option['0']];
                     }
                     if ($more_option['1'] == 'master') {
-                        if (@$rowExport[$i][$more_option['0']] == 0)
+                        if (@php72_cmp($rowExport[$i][$more_option['0']]) == 0)
                             $reportValue = @$rowExport[$i]["other_" . $more_option['0']];
                         else
                             $reportValue = showMaster(@$rowExport[$i][$more_option['0']]);
@@ -709,7 +709,7 @@ class Mmasters extends My_Model {
         }
         foreach ($dataArray as $key1 => $value1):
             foreach ($value1 as $key => $value):
-                if ($sum_columns[$key] == 0)
+                if (php72_cmp($sum_columns[$key]) == 0)
                     $sum_value[$key] = '';
                 else
                     @$sum_value[$key] += $value;
@@ -1261,7 +1261,7 @@ class Mmasters extends My_Model {
                     'amount_date' => ddmmyyyy2mysql($this->input->post('date'))
                 );
 				
-                if($options['amountchanged'][$key] == 1){
+                if(php72_cmp($options['amountchanged'][$key]) == 1){
                     $data3 = array(
                         'programme_id' => $this->input->post('programme'),
                         'donor_id' => $this->input->post('donor'),
@@ -1704,7 +1704,7 @@ class Mmasters extends My_Model {
             }
         }
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
         $returnArray = array();
@@ -1869,7 +1869,7 @@ class Mmasters extends My_Model {
                     "IN Amount" => "-", "Total(Remaining Amount)" => $amount_diff);
             }
         }
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
         $returnArray = array();

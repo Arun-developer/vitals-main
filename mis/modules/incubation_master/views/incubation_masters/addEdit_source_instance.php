@@ -121,7 +121,7 @@ label.tbl_err {
 															
 															<div class="form-group">
 																<label>Date<span>*</span></label>
-																<input value="<?php if (isset($instance_master->date) && $instance_master->date != '' && $instance_master->date != 0) echo date('d/m/Y', strtotime($instance_master->date)); ?>"  name="date" id="dateCalendar" class="form-control edit_cls" type="text" placeholder="">
+																<input value="<?php if (isset($instance_master->date) && $instance_master->date != '' && php72_cmp($instance_master->date) != 0) echo date('d/m/Y', strtotime($instance_master->date)); ?>"  name="date" id="dateCalendar" class="form-control edit_cls" type="text" placeholder="">
 															</div>
 															<div class="form-group">
 																<label>Remarks<span>*</span></label>

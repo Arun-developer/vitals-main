@@ -86,13 +86,13 @@ class User extends CI_Controller {
             $ro_officer = implode(', ', $report_to);
 
             $user_role = '-';
-            if($row['user_role'] == 1) {
+            if(php72_cmp($row['user_role']) == 1) {
                 $user_role = 'User';
-            } else if($row['user_role'] == 2) {
+            } else if(php72_cmp($row['user_role']) == 2) {
                 $user_role = 'Partner Admin';
-            } else if($row['user_role'] == 3) {
+            } else if(php72_cmp($row['user_role']) == 3) {
                 $user_role = 'Super Admin';
-            } else if($row['user_role'] == 4) {
+            } else if(php72_cmp($row['user_role']) == 4) {
                 $user_role = 'Custom User';
             }
 
@@ -335,7 +335,7 @@ class User extends CI_Controller {
             $data['tab_access'] = $tab_access;
         }
 
-        if ($_POST['user_role'] == 4) {
+        if (php72_cmp($_POST['user_role']) == 4) {
             if (isset($_POST['user_module_access'])) {
                 $tab_access = php72_implode(',', $_POST['user_module_access']);
                 $data['menu_access'] = $tab_access;
@@ -353,7 +353,7 @@ class User extends CI_Controller {
 
             $data['deals_from_date'] = (isset($_POST['deals_from']) && $_POST['deals_from'] != '') ? date('Y-m-d', strtotime($_POST['deals_from'])) : '';
             $data['deals_to_date'] = (isset($_POST['deals_to']) && $_POST['deals_to'] != '') ? date('Y-m-d', strtotime($_POST['deals_to'])) : '';
-            $data['independent_shortlist'] = isset($_POST['shortlistID']) && $_POST['shortlistID'] == 1 ? $_POST['shortlistID'] : 0;
+            $data['independent_shortlist'] = isset($_POST['shortlistID']) && php72_cmp($_POST['shortlistID']) == 1 ? $_POST['shortlistID'] : 0;
         } else {
             $data['menu_access'] = $data['sector_access'] = $data['program_access'] = '';
             $data['deals_from_date'] = $data['deals_to_date'] = '0000-00-00';
@@ -1042,9 +1042,9 @@ class User extends CI_Controller {
             $nestedData = array();
             $nestedData[] = '<input type="checkbox" class="chk_box" id="education_chk_box" name="education_id[]" value="' . $row['id'] . '"/>';
             $graduate = '';
-            if ($row['qualification'] == 1) {
+            if (php72_cmp($row['qualification']) == 1) {
                 $graduate = 'UG';
-            } else if ($row['qualification'] == 2) {
+            } else if (php72_cmp($row['qualification']) == 2) {
                 $graduate = 'PG';
             }
             $institute_name = $row['institute_name'];
@@ -1314,10 +1314,10 @@ class User extends CI_Controller {
 
     public function add_reporting() {
         $emp_id = $_POST['employee_id'];
-        if ($_POST['report_to'] == 1) {
+        if (php72_cmp($_POST['report_to']) == 1) {
             $data['report_supervisor'] = $_POST['employee_id'];
             $data['report_subordinate'] = $_POST['report_employee'];
-        } else if ($_POST['report_to'] == 2) {
+        } else if (php72_cmp($_POST['report_to']) == 2) {
             $data['report_supervisor'] = $_POST['report_employee'];
             $data['report_subordinate'] = $_POST['employee_id'];
         }
@@ -1416,7 +1416,7 @@ class User extends CI_Controller {
             $nestedData[] = '<input type="checkbox" class="chk_box supervisor_chkbox" id="supervisor_chk_box" name="supervisor_id[]" value="' . $row['id'] . '"/>';
             $nestedData[] = $row['report_subordinate'];
             $nestedData[] = $row['emp_name'];
-            if ($row['report_method'] == 1) {
+            if (php72_cmp($row['report_method']) == 1) {
                 $report_method = 'Direct';
             } else {
                 $report_method = 'Indirect';
@@ -1458,7 +1458,7 @@ class User extends CI_Controller {
             $nestedData[] = '<input type="checkbox" class="chk_box subordinate_chkbox" id="subordinate_chk_box" name="subordinate_id[]" value="' . $row['id'] . '"/>';
             $nestedData[] = $row['report_supervisor'];
             $nestedData[] = $row['emp_name'];
-            if ($row['report_method'] == 1) {
+            if (php72_cmp($row['report_method']) == 1) {
                 $report_method = 'Direct';
             } else {
                 $report_method = 'Indirect';
@@ -1564,7 +1564,7 @@ class User extends CI_Controller {
 
             $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->created_date));
             if (isset($getFunderDoc[0]->updated_date) && $getFunderDoc[0]->updated_date != '') {
-                if ($getFunderDoc[0]->updated_date > 0) {
+                if (php72_cmp($getFunderDoc[0]->updated_date) > 0) {
                     $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->updated_date));
                 }
             }

@@ -141,7 +141,7 @@ class Incubationprogress extends CI_Controller
         $start_date = '';
         $end_date = '';
         $post = $this->input->post('value');
-        if ($_POST['frequency'] == 3) {
+        if (php72_cmp($_POST['frequency']) == 3) {
             switch ($_POST['months']) {
 
                 case "1":

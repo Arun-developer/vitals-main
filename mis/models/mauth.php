@@ -19,7 +19,7 @@ class Mauth extends CI_Model {
 
     function isPartnerCheck() {
         $this->isLoggedCheck();
-        if ($this->session->userdata('ais_privilege') != 1) {
+        if (php72_cmp($this->session->userdata('ais_privilege')) != 1) {
             $this->session->set_flashdata('warningMsg', 'You are not Authorized to view this page');
             redirect('login');
         }
@@ -46,7 +46,7 @@ class Mauth extends CI_Model {
     /* GET USER TYPE */
 
     function getUserType($emp_number = '', $branch = '', $role = '') {
-        if ($role == 1) {
+        if (php72_cmp($role) == 1) {
             $user = $this->Mmaster->getUserSetup_branch($branch);
             if ($emp_number == $user['ceo'])
                 return 'ceo';
@@ -57,10 +57,10 @@ class Mauth extends CI_Model {
             if (php72_in_array($emp_number, $user['abi']))
                 return 'abi';
         }
-        if ($role == 2) {
+        if (php72_cmp($role) == 2) {
             return 'admin';
         }
-        if ($role == 3)
+        if (php72_cmp($role) == 3)
             return 'superadmin';
 
         #DEFAULT

@@ -48,24 +48,24 @@
                                     } else {
                                         $list = '3';
                                     }
-									if($team_information[0]['program'] == 29 || $team_information[0]['program'] == 28 || $team_information[0]['program'] == 14 || $team_information[0]['program'] == 27 || $team_information[0]['program'] == 25){
+									if(php72_cmp($team_information[0]['program']) == 29 || php72_cmp($team_information[0]['program']) == 28 || php72_cmp($team_information[0]['program']) == 14 || php72_cmp($team_information[0]['program']) == 27 || php72_cmp($team_information[0]['program']) == 25){
 										$list = '4';
 									}
-									if($team_information[0]['program'] == 21){
+									if(php72_cmp($team_information[0]['program']) == 21){
 										$list = '2';
 										if(date('Y-m-d', strtotime($team_information[0]['created_date']))  >= date('2024-01-01')){ 
 											$list = '1';
 										}
 									}
-									if($team_information[0]['program'] == 22 || $team_information[0]['program'] == 31){
+									if(php72_cmp($team_information[0]['program']) == 22 || php72_cmp($team_information[0]['program']) == 31){
 										$list = '2';
 									}
 									
-									if($team_information[0]['program'] == 32){
+									if(php72_cmp($team_information[0]['program']) == 32){
 										$list = '2';
 									}
 
-                                    if ($team_information[0]['program'] == 10 || $team_information[0]['program'] == 12 || $team_information[0]['program'] == 14|| $team_information[0]['program'] == 30) {
+                                    if (php72_cmp($team_information[0]['program']) == 10 || php72_cmp($team_information[0]['program']) == 12 || php72_cmp($team_information[0]['program']) == 14|| php72_cmp($team_information[0]['program']) == 30) {
                                         for ($i = 0; $i < $list; $i++) {
                                             $mandatory = '';
                                             if ($i == 0) {
@@ -116,7 +116,7 @@
                                         <?php } ?>
                                         <?php 
 										
-									if ($team_information[0]['program'] == 10) { 
+									if (php72_cmp($team_information[0]['program']) == 10) { 
                                         }
                                     } else {
                                         for ($i = 0; $i < $list; $i++) {
@@ -140,7 +140,7 @@
                                                     </div>
                                                 </div>
 												
-												  <?php if ($team_information[0]['program'] != 21 && $team_information[0]['program'] != 22) { ?>
+												  <?php if (php72_cmp($team_information[0]['program']) != 21 && php72_cmp($team_information[0]['program']) != 22) { ?>
                                                 <div class="col-12 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label>Organization<?= $mandatory; ?></label>

@@ -34,7 +34,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 <?php
 if($this->session->userdata('user_type') == 'admin'){
 
-if($innovation['edit_request'] == 1 && ($innovation['editrequest_status'] == 0)) { 
+if(php72_cmp($innovation['edit_request']) == 1 && (php72_cmp($innovation['editrequest_status']) == 0)) { 
 
 ?>
 
@@ -53,7 +53,7 @@ if($innovation['edit_request'] == 1 && ($innovation['editrequest_status'] == 0))
 ?>
 
 <h2><?=$cpagetitle?>
- <?php if($innovation['incubation_plan'] == 1)
+ <?php if(php72_cmp($innovation['incubation_plan']) == 1)
  { 
  	echo "&nbsp;&nbsp;(&nbsp;Status : ".$pre_ic_status[$innovation['pre_ic_status']]."&nbsp;)"; 
  }?>
@@ -71,7 +71,7 @@ else{
 <li><a href="<?=site_url('seedfunding/monthly_progress/'.$innovation['id']);?>" class="button">Add Monthly Target/Achieved</a></li>
 <li><a href="<?=site_url('seedfunding/actionhistory/'.$innovation['id']);?>" class="button fancybox">Action History</a></li>
     <?php 
-	if($innovation['incubation_plan'] == 1 && $innovation['pre_ic_status'] == 0 && $isAuth){ //
+	if(php72_cmp($innovation['incubation_plan']) == 1 && php72_cmp($innovation['pre_ic_status']) == 0 && $isAuth){ //
 	?>
     <li><a url="<?=site_url('screening/pre_ic_action/1/'.$innovation['id']);?>" class="button confirmDelete">Approve</a></li>
     <li><a url="<?=site_url('screening/pre_ic_action/2/'.$innovation['id']);?>" class="button confirmDelete">Reject</a></li>
@@ -213,7 +213,7 @@ else{
 
 					 foreach($vfunded as $key => $value){
 
-				if($innovation['pre_ic_status'] == 1)	{?>
+				if(php72_cmp($innovation['pre_ic_status']) == 1)	{?>
 
                     <td align="left" valign="middle"><strong>
 

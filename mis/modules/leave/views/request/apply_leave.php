@@ -41,11 +41,11 @@
                                                         if (php72_count($leave_quotas) > 0) {
 
                                                             foreach ($leave_quotas as $quotas) {
-                                                                if ($quotas['no_restrictions'] == 1) {
+                                                                if (php72_cmp($quotas['no_restrictions']) == 1) {
                                                                     $quota_list[$quotas['leave_type_id']] = $quotas['leave_type_name'];
                                                                 } else {
                                                                     $remaining = ($quotas['no_of_days_allotted'] + $quotas['leave_brought_forward']) - $quotas['leave_taken'];
-                                                                    if ($remaining > 0 && $quotas['leave_type_name']!="Work From Home") {
+                                                                    if (php72_cmp($remaining) > 0 && $quotas['leave_type_name']!="Work From Home") {
                                                                         $quota_list[$quotas['leave_type_id']] = $quotas['leave_type_name'];
                                                                     }
                                                                 }

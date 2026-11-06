@@ -376,7 +376,7 @@ class Mportfolio extends CI_Model {
 	#CR QUERY
     public function getSummaryDetails($table, $sector = '', $fy = '') { #echo'<pre>';print_r($sector);die; 
 		$sel_fy = $fy.'-12-31';
-        if ($sector > 0) {
+        if (php72_cmp($sector) > 0) {
             #$this->db->where('PB.sector', $sector);
             $this->db->join('port_business PB', 'PB.inv_id = IP.id', 'left');
 			$this->db->join('port_business_year B', 'B.inv_id = PB.inv_id', 'left');
@@ -414,7 +414,7 @@ class Mportfolio extends CI_Model {
 	#CR QUERY
     public function getSummaryDetails_export($table, $sector = '', $fy = '') {   #echo'<pre>';print_r($sector);die;
 		$sel_fy = $fy.'-12-31';
-        if ($sector > 0) {
+        if (php72_cmp($sector) > 0) {
             #$this->db->where('PB.sector', $sector);
             $this->db->join('port_business PB', 'PB.inv_id = IP.id', 'left');
 			$this->db->join('port_business_year B', 'B.inv_id = PB.inv_id', 'left');
@@ -2100,7 +2100,7 @@ return $rows;  */
         $this->db->where(array('t1.inv_id' => $id, 't1.financial_year' => $fyear, 't1.status' => 1));
         // $this->db->where(array('t1.inv_id' => $id, 't1.status' => 1));
 
-        if ($month < 4) {
+        if (php72_cmp($month) < 4) {
             $fin_year = $fyear + 1;
         } else {
             $fin_year = $fyear;
@@ -2695,7 +2695,7 @@ return $rows;  */
 		
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 if ($this->session->userdata['role_id'] == '4') {
                     $searchArray[] = "IP.program = 0";
                 } else {
@@ -2946,7 +2946,7 @@ return $rows;  */
         }
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 if ($this->session->userdata['role_id'] == '4') {
                     $searchArray[] = "IP.program = 0";
                 } else {
@@ -2969,7 +2969,7 @@ return $rows;  */
         if (isset($options['status']) && $options['status'] != "") {
             $split_status = explode(',', $options['status']);
             $merge_status = "'" . implode("','", $split_status) . "'";
-            if ($this->session->userdata['role_id'] == '4' && $this->session->userdata('independent_shortlist') == 1) {
+            if ($this->session->userdata['role_id'] == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
                 $searchArray[] = "(ISC.current_app_status IN(" . $merge_status . ") AND ISC.created_by = " . $this->session->userdata('emp_number') . ")";
             } else {
                 $searchArray[] = "IP.status IN(" . $merge_status . ")";
@@ -3204,7 +3204,7 @@ return $rows;  */
         }
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 if ($this->session->userdata['role_id'] == '4') {
                     $searchArray[] = "IP.program = 0";
                 } else {
@@ -3224,11 +3224,11 @@ return $rows;  */
             $searchArray[] = "IP.stage='" . $options['stage'] . "'";
         }
 
-        if (!isset($options['independent_shortlister']) && $options['independent_shortlister'] != 1) {
+        if (!isset($options['independent_shortlister']) && php72_cmp($options['independent_shortlister']) != 1) {
             if (isset($options['status']) && $options['status'] != "null") {
                 $split_status = explode(',', $options['status']);
                 $merge_status = "'" . implode("','", $split_status) . "'";
-                if (isset($options['independent_shortlister']) && $options['independent_shortlister'] == 1) {
+                if (isset($options['independent_shortlister']) && php72_cmp($options['independent_shortlister']) == 1) {
                     $searchArray[] = "(ISC.current_app_status IN(" . $merge_status . ") AND ISC.created_by = " . $options['assigned_incharge'] . ") AND IP.status IN(" . $merge_status . ")";
                 } else {
                     $searchArray[] = "IP.status IN(" . $merge_status . ")";
@@ -3238,7 +3238,7 @@ return $rows;  */
             }
         } else {
             $split_status = explode(',', $options['status']);
-            if (!in_array(12, $split_status)) {
+            if (!php72_in_array(12, $split_status)) {
                 $merge_status = "'" . implode("','", $split_status) . "'";
                 $searchArray[] = "(ISC.current_app_status IN(" . $merge_status . ") AND ISC.created_by = " . $options['assigned_incharge'] . ")";
             } else {
@@ -3302,7 +3302,7 @@ return $rows;  */
         }
 
         if (isset($options['assigned_incharge']) && $options['assigned_incharge'] != "") {
-            if (isset($options['independent_shortlister']) && $options['independent_shortlister'] == 0) {
+            if (isset($options['independent_shortlister']) && php72_cmp($options['independent_shortlister']) == 0) {
                 $searchArray[] = "AA.associate_employee = '" . $options['assigned_incharge'] . "'";
                 $searchArray[] = "AA.status = 1";
             }
@@ -3624,7 +3624,7 @@ return $rows;  */
         $rows = $query->result_array();
 		$rowsResult = $query->result_array();
 		//if($this->session->userdata('emp_number') =='275'){
-		  if($rowsResult[0]['fin_from_month']=='April' && $rowsResult[0]['fin_to_month']=='March' && $rowsResult[0]['fin_to_year']== date('Y') && date('m') <=3){
+		  if($rowsResult[0]['fin_from_month']=='April' && $rowsResult[0]['fin_to_month']=='March' && $rowsResult[0]['fin_to_year']== date('Y') && php72_cmp(date('m')) <=3){
 			   $rows[0]['fin_to_year'] = $rows[0]['fin_to_year']+1;
 		  }
 		//}
@@ -5820,7 +5820,7 @@ return $rows;  */
         if ($months != '') {
             $this->db->where($months);
         }
-        if ($status == 3) {
+        if (php72_cmp($status) == 3) {
             $this->db->where(array('status !=' => $status));
         } else if ($status != '') {
             $this->db->where(array('status' => $status));

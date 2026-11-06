@@ -127,7 +127,7 @@
                                                             <label>Gender </label>
                                                             <select class="form-control gender" name="gender" id="gender" disabled>
                                                                 <?php 
-                                                                if($emp_gender ==1){
+                                                                if(php72_cmp($emp_gender) ==1){
                                                                     $emp_gender = 'Male';
                                                                 }else{
                                                                     $emp_gender ='Female';
@@ -153,7 +153,7 @@
                                                             <label>Marital Status</label>
                                                            <select name = marital_status class="form-control"  id="marital_status" disabled>
                                                             <?php 
-                                                                if($marital_status ==1){
+                                                                if(php72_cmp($marital_status) ==1){
                                                                     $marital_status = '2';
                                                                 }else{
                                                                     $marital_status ='3';

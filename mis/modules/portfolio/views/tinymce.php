@@ -70,13 +70,13 @@ $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-right">
                                             <ul class="milestone-links">
-                                                <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin') && ($approvals[0]['product_approval'] == 2 || $approvals[0]['sales_approval'] == 2 || $approvals[0]['channel_approval'] == 2 || $approvals[0]['pipeline_approval'] == 2 || $approvals[0]['revenue_approval'] == 2 || $approvals[0]['netprofit_approval'] == 2 || $approvals[0]['vif_approval'] == 2 || $approvals[0]['fundraise_approval'] == 2 || $approvals[0]['mentor_approval'] == 2 || $approvals[0]['tap_approval'] == 2 || $approvals[0]['nontap_approval'] == 2 || $approvaless[0]['board_approval'] == 2 || $approvals[0]['impact_approval'] == 2 || $approvals[0]['project_approval'] == 2)) { ?>
+                                                <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin') && (php72_cmp($approvals[0]['product_approval']) == 2 || php72_cmp($approvals[0]['sales_approval']) == 2 || php72_cmp($approvals[0]['channel_approval']) == 2 || php72_cmp($approvals[0]['pipeline_approval']) == 2 || php72_cmp($approvals[0]['revenue_approval']) == 2 || php72_cmp($approvals[0]['netprofit_approval']) == 2 || php72_cmp($approvals[0]['vif_approval']) == 2 || php72_cmp($approvals[0]['fundraise_approval']) == 2 || php72_cmp($approvals[0]['mentor_approval']) == 2 || php72_cmp($approvals[0]['tap_approval']) == 2 || php72_cmp($approvals[0]['nontap_approval']) == 2 || php72_cmp($approvaless[0]['board_approval']) == 2 || php72_cmp($approvals[0]['impact_approval']) == 2 || php72_cmp($approvals[0]['project_approval']) == 2)) { ?>
                                                     <li><a class="approveall" href="javascript:void(0);">Approve All</a></li>
                                                 <?php } ?>
-                                                <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
+                                                <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') { ?>
                                                     <li><a class="saveContinue" href="javascript:void(0);">Save</a></li>
                                                 <?php } ?>
-                                                <?php if ($this->session->userdata['sector_lead'] != '1' && $approvals[0]['config_approval'] == 1) { ?>
+                                                <?php if ($this->session->userdata['sector_lead'] != '1' && php72_cmp($approvals[0]['config_approval']) == 1) { ?>
                                                     <li><a class="sendApproval sendApprovalBtn" id="sendApproval" href="javascript:void(0);">Send for Approval</a></li>
                                                 <?php } ?>
                                                 <li>
@@ -97,9 +97,9 @@ $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
                                         <?php } ?>
                                         <div class="row dataconfig">
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-12">
-                                                <?php if ($approvals[0]['product_approval'] == 2) { ?>
+                                                <?php if (php72_cmp($approvals[0]['product_approval']) == 2) { ?>
                                                     <h4>Tinymce : <span class="text-danger"><small>(Awaiting approval)</small></span></h4>
-                                                <?php } else if ($approvals[0]['product_approval'] == 3) { ?>
+                                                <?php } else if (php72_cmp($approvals[0]['product_approval']) == 3) { ?>
                                                     <h4>Tinymce : <span class="text-success"><small>(Approved)</small></span></h4>
                                                 <?php } else { ?>
                                                     <h4>Tinymce</h4>
@@ -120,7 +120,7 @@ $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin') && $approvals[0]['product_approval'] == 2) { ?>
+                                        <?php if (($this->session->userdata['sector_lead'] == '1' || $this->session->userdata['user_type'] == 'admin') && php72_cmp($approvals[0]['product_approval']) == 2) { ?>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="approved-btn text-right">

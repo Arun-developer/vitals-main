@@ -25,7 +25,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'application', 'page
                                 <li role="presentation"><a href="<?php echo base_url() . 'index.php/application/basic_info/' . $application_id; ?>">Basic Information</a></li>
                                 <li role="presentation"><a href="<?php echo base_url() . 'index.php/application/team_info/' . $application_id; ?>">Team</a></li>
                                 <li role="presentation" class=" active"><a href="<?php echo base_url() . 'index.php/application/enterprise_info/' . $application_id; ?>">Enterprise</a></li>
-                                <?php if($enterprise_information[0]['program'] != 28){  ?>
+                                <?php if(php72_cmp($enterprise_information[0]['program']) != 28){  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/innovation_info/' . $application_id; ?>">Impact</a></li>
 								<?php } ?>
 								<?php if($enterprise_information[0]['program'] == '14') { ?>

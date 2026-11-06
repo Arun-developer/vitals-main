@@ -23,11 +23,11 @@ class MY_Controller extends CI_Controller {
 
     public function getAuthorization() {
         $getName = '';
-        if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+        if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
             $getName = $this->session->userdata('emp_name');
-        } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+        } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
             $getName = $this->session->userdata('emp_name');
-        } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+        } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
             $getName = $this->session->userdata('emp_name');
         } else if ($this->session->userdata('user_type') != 'admin' and $this->session->userdata('user_type') != 'mipuser') {
             $getName = $this->session->userdata('emp_name');
@@ -43,7 +43,7 @@ class MY_Controller extends CI_Controller {
         $RES = explode('.', $num);
         $num = $RES[0];
         $digit = '';
-        if ($RES[1] > 0) {
+        if (php72_cmp($RES[1]) > 0) {
             $digit = '.' . $RES[1];
         }
         if ($type == 'view') {
@@ -101,7 +101,7 @@ class MY_Controller extends CI_Controller {
         if (php72_in_array($user_id, $getDonorUser)) {
             $status['donor_team'] = '1';
         }
-        if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+        if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
             $status['admin_user'] = '1';
         }
         if ($this->session->userdata('user_type') == 'superadmin') {

@@ -97,7 +97,7 @@ $form_name = 'query_list';
             <td align="left" valign="middle"><?=$row["query_response"]?></td>
             <td align="left" valign="middle"><?=mysql2date($row["due_date"])?></td>
             <td align="left" valign="middle"><?=$row["documents"]?></td>
-            <td align="left" valign="middle"><?=($row["alert"]==1)?'Yes':'No'?></td>
+            <td align="left" valign="middle"><?=(php72_cmp($row["alert"])==1)?'Yes':'No'?></td>
             <td align="left" valign="middle"><?=$row["created_emp"]?></td>
             <td align="left" valign="middle"><?=$row["employee_name"]?></td>
             <td align="left" valign="middle">

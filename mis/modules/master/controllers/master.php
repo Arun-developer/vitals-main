@@ -334,7 +334,7 @@ class Master extends CI_Controller {
 
         $search_type = isset($_POST['search_type']) ? $_POST['search_type'] : '';
         if ($search_type != '') {
-            if ($search_type == 1) {
+            if (php72_cmp($search_type) == 1) {
                 $search_column = 'job_name';
             }
         } else {
@@ -343,7 +343,7 @@ class Master extends CI_Controller {
 
         $data['search_field'] = $search_field = (isset($_POST['search_field'])) ? $_POST['search_field'] : '';
         if ($search_field != '') {
-            if ($search_type == 2) {
+            if (php72_cmp($search_type) == 2) {
                 if ($search_field == 'active') {
                     $search_stat = '1';
                 } else if ($search_field == 'inactive') {
@@ -370,9 +370,9 @@ class Master extends CI_Controller {
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 2) {
+            } else if (php72_cmp($row['status']) == 2) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -462,16 +462,16 @@ class Master extends CI_Controller {
 
         $search_type = isset($_POST['search_type']) ? $_POST['search_type'] : '';
         if ($search_type != '') {
-            if ($search_type == 1) {
+            if (php72_cmp($search_type) == 1) {
                 $search_column = 'job_department';
-            } else if ($search_type == 3) {
+            } else if (php72_cmp($search_type) == 3) {
                 $search_column = 't2.partner_name';
             }
         }
 
         $data['search_field'] = $search_field = (isset($_POST['search_field'])) ? $_POST['search_field'] : '';
         if ($search_field != '') {
-            if ($search_type == 2) {
+            if (php72_cmp($search_type) == 2) {
                 if ($search_field == 'active') {
                     $search_stat = '1';
                 } else if ($search_field == 'inactive') {
@@ -498,9 +498,9 @@ class Master extends CI_Controller {
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 2) {
+            } else if (php72_cmp($row['status']) == 2) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -604,11 +604,11 @@ class Master extends CI_Controller {
         );
         $search_type = isset($_POST['search_type']) ? $_POST['search_type'] : '';
         if ($search_type != '') {
-            if ($search_type == 1) {
+            if (php72_cmp($search_type) == 1) {
                 $search_column = 'specification_name';
-            } else if ($search_type == 2) {
+            } else if (php72_cmp($search_type) == 2) {
                 $search_column = 'specification_description';
-            } else if ($search_type == 3) {
+            } else if (php72_cmp($search_type) == 3) {
                 $search_column = 'specification_duties';
             } else {
                 $search_column = 'specification_name';
@@ -618,7 +618,7 @@ class Master extends CI_Controller {
         }
         $data['search_field'] = $search_field = (isset($_POST['search_field'])) ? $_POST['search_field'] : '';
         if ($search_field != '') {
-            if ($search_type == 4) {
+            if (php72_cmp($search_type) == 4) {
                 if ($search_field == 'active') {
                     $search_stat = '1';
                 } else if ($search_field == 'inactive') {
@@ -647,9 +647,9 @@ class Master extends CI_Controller {
 
         foreach ($query as $row) {
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 2) {
+            } else if (php72_cmp($row['status']) == 2) {
                 $selected2 = 'selected';
             }
 
@@ -743,7 +743,7 @@ class Master extends CI_Controller {
 
         $search_type = isset($_POST['search_type']) ? $_POST['search_type'] : '';
         if ($search_type != '') {
-            if ($search_type == 1) {
+            if (php72_cmp($search_type) == 1) {
                 $search_column = 'grade_name';
             }
         } else {
@@ -752,7 +752,7 @@ class Master extends CI_Controller {
 
         $data['search_field'] = $search_field = (isset($_POST['search_field'])) ? $_POST['search_field'] : '';
         if ($search_field != '') {
-            if ($search_type == 2) {
+            if (php72_cmp($search_type) == 2) {
                 if ($search_field == 'active') {
                     $search_stat = '1';
                 } else if ($search_field == 'inactive') {
@@ -780,9 +780,9 @@ class Master extends CI_Controller {
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 2) {
+            } else if (php72_cmp($row['status']) == 2) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -1006,9 +1006,9 @@ class Master extends CI_Controller {
         $i = $requestData['start'] + 1;
         foreach ($query as $row) {
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -1155,9 +1155,9 @@ class Master extends CI_Controller {
             }
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -1412,9 +1412,9 @@ class Master extends CI_Controller {
             }
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected2 = 'selected';
             }
             $nestedData = array();
@@ -1562,9 +1562,9 @@ class Master extends CI_Controller {
         foreach ($query as $row) {
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 2) {
+            } else if (php72_cmp($row['status']) == 2) {
                 $selected = 'Inactive';
             }
             $nestedData = array();
@@ -1680,9 +1680,9 @@ class Master extends CI_Controller {
         foreach ($query as $row) {
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'selected';
-            } else if ($row['status'] == 0 && $row['status'] != '') {
+            } else if (php72_cmp($row['status']) == 0 && $row['status'] != '') {
                 $selected2 = 'selected';
             }
             #echo $selected2;die;
@@ -1865,15 +1865,15 @@ class Master extends CI_Controller {
             }
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected = 'Inactive';
             }
             $donorr = unserialize($row["donor"]);
             $donors = '';
             foreach (unserialize($row["donor"]) as $key => $value):
-                if (php72_count($donorr != 1))
+                if (php72_count(php72_cmp($donorr) != 1))
                     $donors .= $this->Mmaster->showMaster($value) . ", ";
                 else
                     $donors .= $this->Mmaster->showMaster($value);
@@ -2117,15 +2117,15 @@ class Master extends CI_Controller {
 
             $selected = $selected2 = '';
             $purchase_date = $warrenty_date = '--';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected = 'Inactive';
             }
 
-            if ($row['available_status'] == 1) {
+            if (php72_cmp($row['available_status']) == 1) {
                 $avail_status = 'Available';
-            } else if ($row['available_status'] == 0) {
+            } else if (php72_cmp($row['available_status']) == 0) {
                 $avail_status = 'Unavailable';
             }
 
@@ -2205,7 +2205,7 @@ class Master extends CI_Controller {
         $mas_data['bill_no'] = $_POST['bill_no'];
         $mas_data['bill_date'] = isset($_POST['bill_date']) && $_POST['bill_date'] != '' ? date('Y-m-d', strtotime($_POST['bill_date'])) : '';
         $mas_data['AMC'] = isset($_POST['amc']) && $_POST['amc'] != '' ? $_POST['amc'] : '0';
-        if ($_POST['amc'] == 1) {
+        if (php72_cmp($_POST['amc']) == 1) {
             $mas_data['AMC_period'] = isset($_POST['AMC_period']) && $_POST['AMC_period'] != '' ? date('Y-m-d', strtotime($_POST['AMC_period'])) : '';
             $mas_data['AMC_vendor'] = $_POST['AMC_vendor'];
         }
@@ -2296,9 +2296,9 @@ class Master extends CI_Controller {
         foreach ($query as $row) {
 
             $selected = $selected2 = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected = 'Inactive';
             }
 
@@ -2468,15 +2468,15 @@ class Master extends CI_Controller {
         foreach ($query as $row) {
 
             $selected = $selected2 = $available = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected = 'Inactive';
             }
 
-            if ($row['available'] == 1) {
+            if (php72_cmp($row['available']) == 1) {
                 $available = 'available';
-            } else if ($row['available'] == 0) {
+            } else if (php72_cmp($row['available']) == 0) {
                 $available = 'Not available';
             }
 
@@ -2608,9 +2608,9 @@ class Master extends CI_Controller {
         foreach ($query as $row) {
 
             $selected = $selected2 = $available = '';
-            if ($row['status'] == 1) {
+            if (php72_cmp($row['status']) == 1) {
                 $selected = 'Active';
-            } else if ($row['status'] == 0) {
+            } else if (php72_cmp($row['status']) == 0) {
                 $selected = 'Inactive';
             }
 
@@ -3733,7 +3733,7 @@ class Master extends CI_Controller {
         $RES = explode('.', $num);
         $num = $RES[0];
         $digit = '';
-        if ($RES[1] > 0) {
+        if (php72_cmp($RES[1]) > 0) {
             $digit = '.' . $RES[1];
         }
         if ($type == 'view') {
@@ -4345,9 +4345,9 @@ class Master extends CI_Controller {
             $AMC_period = '';
 
 
-        if ($list['available_status'] == 1) {
+        if (php72_cmp($list['available_status']) == 1) {
             $avail_status = 'Available';
-        } else if ($list['available_status'] == 0) {
+        } else if (php72_cmp($list['available_status']) == 0) {
             $avail_status = 'Unavailable';
         }
 
@@ -4597,7 +4597,7 @@ function books_export() {
         $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
         $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 
-        if ($export_type == 2) {
+        if (php72_cmp($export_type) == 2) {
             $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Name Of Visitor');
             $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Innovation');
             $objPHPExcel->getActiveSheet()->getStyle('A1:Y1')->applyFromArray($styletitle);
@@ -4646,7 +4646,7 @@ function books_export() {
         $i = 2;
         foreach ($visitorsList as $list) {
 
-            if ($export_type == 2) {
+            if (php72_cmp($export_type) == 2) {
                 $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $list['name_of_visitor']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $list['innovation']);
             } else {
@@ -4662,7 +4662,7 @@ function books_export() {
             $i++;
         }
         $file_name = 'visitorslog.xlsx';
-        if ($export_type == 2) {
+        if (php72_cmp($export_type) == 2) {
             $file_name = 'visitors_innovation.xlsx';
         }
 
@@ -4974,7 +4974,7 @@ function books_export() {
         $objPHPExcel->getActiveSheet()->setCellValue('F1', 'Line Item');
         $objPHPExcel->getActiveSheet()->setCellValue('G1', 'Additional Info');
         
-        if ($export_amt == 1) {
+        if (php72_cmp($export_amt) == 1) {
             $objPHPExcel->getActiveSheet()->setCellValue('H1', 'Assigned Amount (INR)');
             $objPHPExcel->getActiveSheet()->setCellValue('I1', 'Approval Notes (INR)');
             $objPHPExcel->getActiveSheet()->setCellValue('J1', 'Internal Notes (INR)');
@@ -5078,7 +5078,7 @@ function books_export() {
                 $unutilized_amt = formatnumber($unuitizedAmount);
 
                 $get_additional_info = $this->Mmaster->getAdditionalInfo($row['programme_id'], $row['donor_id'], $row['budget_id'], $row['line_itemid'], $row['subline_itemid']);
-                $get_info_val = isset($get_additional_info['add_info']) && $get_additional_info['add_info'] != '' || $get_additional_info['add_info'] != 0 ? $get_additional_info['add_info'] : '';
+                $get_info_val = isset($get_additional_info['add_info']) && $get_additional_info['add_info'] != '' || php72_cmp($get_additional_info['add_info']) != 0 ? $get_additional_info['add_info'] : '';
                 $add_details = substr($get_info_val, 0, strlen($get_info_val) - 2);
 
                 $grant_name = ' ' . $row['grant_name'] . ' ';
@@ -5090,7 +5090,7 @@ function books_export() {
                 $objPHPExcel->getActiveSheet()->setCellValue('F' . $i, $row['line_item']);
                 $objPHPExcel->getActiveSheet()->setCellValue('G' . $i, $add_details);
 
-                if ($export_amt == 1) {
+                if (php72_cmp($export_amt) == 1) {
                     $objPHPExcel->getActiveSheet()->setCellValue('H' . $i, $assign_amt);
                     $objPHPExcel->getActiveSheet()->setCellValue('I' . $i, $approval_amt);
                     $objPHPExcel->getActiveSheet()->setCellValue('J' . $i, $internal_amt);
@@ -5102,7 +5102,7 @@ function books_export() {
             }
         }
         $file_name = 'balance_sheet_without_amount.xlsx';
-        if ($export_amt == 1) {
+        if (php72_cmp($export_amt) == 1) {
             $file_name = 'balance_sheet_with_amount.xlsx';
         }
 

@@ -16,7 +16,7 @@ if($r==0)
 <dd>
 <?php
 $cfValue = (isset($_POST['txtSubmit']))?$_POST[$row['id']]:$row['answer'];
-$suQuesion = ($row['sub_field']>0)?'showSubField':'';
+$suQuesion = (php72_cmp($row['sub_field'])>0)?'showSubField':'';
 switch($row['input_type']){
 
 	case 'Text':

@@ -33,7 +33,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
         <?php if(isset($filename) == "") { ?>
 
-        <?php if($innovation['incubation_plan'] == 1){  echo "&nbsp;&nbsp;(&nbsp;Status : ".$pre_ic_status[$innovation['pre_ic_status']]."&nbsp;)"; } } ?>
+        <?php if(php72_cmp($innovation['incubation_plan']) == 1){  echo "&nbsp;&nbsp;(&nbsp;Status : ".$pre_ic_status[$innovation['pre_ic_status']]."&nbsp;)"; } } ?>
     </h1>
 
 
@@ -99,7 +99,7 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
 
         <?php if($this->session->userdata('user_type') != 'incubatee') {
-		if($innovation['pre_ic_status'] == 0) { ?>
+		if(php72_cmp($innovation['pre_ic_status']) == 0) { ?>
 
         <li><a href="<?=site_url('seedfunding/installment/view_list/'.$innovation['id']);?>"
                 class="fancybox button">Installments</a></li>
@@ -123,11 +123,11 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
         <li><a href="<?=site_url('screening/send_incubation_plan/'.$innovation['id']);?>" class="button">
 
-                <?=($innovation['incubation_plan'] == 1)?'Resend Incubation Plan':'Send Incubation Plan';?></a></li>
+                <?=(php72_cmp($innovation['incubation_plan']) == 1)?'Resend Incubation Plan':'Send Incubation Plan';?></a></li>
 
         <?php 
 
-	if($innovation['incubation_plan'] == 1 && $innovation['pre_ic_status'] == 0 && $isAuth && $this->session->userdata('user_type')!='abi'){ //
+	if(php72_cmp($innovation['incubation_plan']) == 1 && php72_cmp($innovation['pre_ic_status']) == 0 && $isAuth && $this->session->userdata('user_type')!='abi'){ //
 
 	?>
 
@@ -251,13 +251,13 @@ $pre_ic_status = array('Pending','Approved','Rejected');
 
                 <td align="left" valign="middle"><?=$activitiesList[$i]['activity']?></td>
 
-                <?php if($activitiesList[$i]['amount'] == 0) {?>
+                <?php if(php72_cmp($activitiesList[$i]['amount']) == 0) {?>
                 <td align="left" valign="middle">-</td>
                 <?php } else
 					{?>
                 <td align="left" valign="middle"><?=formatnumber($activitiesList[$i]['amount'])?></td>
                 <?php } ?>
-                <?php if($activitiesList[$i]['companyamt'] == 0)
+                <?php if(php72_cmp($activitiesList[$i]['companyamt']) == 0)
 					{?>
                 <td align="left" valign="middle">-</td>
                 <?php } else { ?>

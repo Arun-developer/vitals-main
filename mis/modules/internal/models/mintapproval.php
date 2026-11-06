@@ -1110,7 +1110,7 @@ class Mintapproval extends CI_Model {
     }
 
     function getCurrentInAmt($programme = '', $donor = '', $budgethead = '', $lineitem = '', $details, $approval_id = '') {
-        if ($details == NULL || $details == '') {
+        if ($details == NULL || php72_loose_eq($details, '')) {
             $details = 0;
         }
         $this->ais->select('sum(amount_toapprove) as amount_toapprove');
@@ -1170,9 +1170,9 @@ class Mintapproval extends CI_Model {
 
             $amount += $value;
         }
-        if ($this->session->userdata('currency') == 'INR' && $amount > 50000) {
+        if ($this->session->userdata('currency') == 'INR' && php72_cmp($amount) > 50000) {
             $above = 'yes';
-        } else if ($this->session->userdata('currency') != 'INR' && $amount > 1500) {
+        } else if ($this->session->userdata('currency') != 'INR' && php72_cmp($amount) > 1500) {
             $above = 'yes';
         } else {
             $above = 'no';

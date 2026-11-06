@@ -194,7 +194,7 @@ class Internal extends CI_Controller {
 		
 		
 		$partnerNote = $this->Mapproval->getPartner($id);
-		if ($partnerNote < 1 && is_numeric($id)) {
+		if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
 				//redirect('approvaladmin/approval_note/pending');
 		}
 		$data['section'] = $section;
@@ -277,7 +277,7 @@ class Internal extends CI_Controller {
 		
         $emp_id = $this->session->userdata('emp_number');
         $partnerNote = $this->Mapproval->getPartner($id);
-        if ($partnerNote < 1 && is_numeric($id)) {
+        if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
           redirect('approvaladmin/approval_note/confirmed');
         }
         $data['section'] = $section;
@@ -1568,7 +1568,7 @@ function internal_note_details($id = '', $section = 'mylist') {
   $data['internalNoteDetails'] = $internalNoteDetails = $this->Minternal->getInternalNoteDetails($id);
 
   /* amount recoverable */
-  if ($data['fin_Usercount'] == 1) {
+  if (php72_cmp($data['fin_Usercount']) == 1) {
     $data['recover_detail'] = $recover_detail = $this->Minternal->getRecoveredDetail($id);
     if (php72_count($recover_detail) > 0) {
       $data['recover_amt'] = $this->Minternal->getRecoveredAmount($recover_detail[0]['id']);
@@ -1719,14 +1719,14 @@ function check_calucalations() {
           $return[$i]["lineitem"] = $_REQUEST["lineitem"][$i];
           $return[$i]["amtavailable"] = $gran_wise_amount = $this->getaval_amount($_REQUEST["donor"][$i], $_REQUEST["budgethead"][$i], $_REQUEST["lineitem"][$i], $_REQUEST["progid"], $check, $pre, $_REQUEST["grant_list"][$i]);
           $return[$i]["amtreq"] = $_REQUEST["amtreq"][$i];
-          if ($inam != 0 && !empty($inam)) {
+          if (php72_cmp($inam) != 0 && !empty($inam)) {
             if ($return[$i]['amtreq'] < $inam[$i]['amount_toapprove']) {
               $return[$i]['amtreq'] = 0;
             }
           }
           if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
             $return[$i]['amtreq'] = 0;
-          }if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+          }if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
             $return[$i]['amtreq'] = 0;
           }
         } else {
@@ -1739,7 +1739,7 @@ function check_calucalations() {
           if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
             $return[$i]['amtreq'] = 0;
           }
-          if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+          if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
             $return[$i]['amtreq'] = 0;
           }
         }

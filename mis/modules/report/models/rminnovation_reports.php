@@ -116,7 +116,7 @@ public function _searchReport_All($options = array()) {
 
     if (isset($options['program']) && $options['program'] != "") {
 //            $searchArray[] = "IP.program = '" . $options['program'] . "'";
-        if ($options['program'] == 0) {
+        if (php72_cmp($options['program']) == 0) {
             $searchArray[] = "(IP.program = 0 or IP.program = 4)";
         } else {
             $searchArray[] = "IP.program = '" . $options['program'] . "'";
@@ -301,7 +301,7 @@ public function _searchReport_All($options = array()) {
 
     }
 
-    if ((isset($options['firstdraft']) && $options['dealsearch'] == 'draft') && $options['dealsearch'] != 1) {
+    if ((isset($options['firstdraft']) && $options['dealsearch'] == 'draft') && php72_cmp($options['dealsearch']) != 1) {
 
         $searchArray[] = "IP.is_deleted != '0' AND ((
         (INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' or INV.submitted_date = '0000-00-00')
@@ -316,22 +316,22 @@ public function _searchReport_All($options = array()) {
     )";
 }
 
-if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && $options['dealsearch'] == 1) {
+if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && php72_cmp($options['dealsearch']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
 }
-if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] != 1 && $options['rstatus'] != 10) {
+if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) != 1 && php72_cmp($options['rstatus']) != 10) {
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
 }
 
-if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] == 1) {
+if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
 }
 
-if (isset($options['first']) && $options['first'] == 1) {
+if (isset($options['first']) && php72_cmp($options['first']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
-} else if (isset($options['checkbox']) && $options['checkbox'] == 0) {
+} else if (isset($options['checkbox']) && php72_cmp($options['checkbox']) == 0) {
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' and INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "' or INV.submitted_date = 0000-00-00) or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "' or pitch_user.submitted_date = 0000-00-00))";
-} else if (isset($options['first']) && $options['first'] == 0) {
+} else if (isset($options['first']) && php72_cmp($options['first']) == 0) {
 
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
 } else if (isset($options['first']) && $options['first'] == 'draft') {
@@ -373,7 +373,7 @@ public function _searchReport($options = array()) {
 
     if (isset($options['program']) && $options['program'] != "") {
 //            $searchArray[] = "IP.program = '" . $options['program'] . "'";
-        if ($options['program'] == 0) {
+        if (php72_cmp($options['program']) == 0) {
             $searchArray[] = "(IP.program = 0 or IP.program = 4)";
         } else {
             $searchArray[] = "IP.program = '" . $options['program'] . "'";
@@ -559,7 +559,7 @@ public function _searchReport($options = array()) {
 
     }
 
-    if ((isset($options['firstdraft']) && $options['dealsearch'] == 'draft') && $options['dealsearch'] != 1) {
+    if ((isset($options['firstdraft']) && $options['dealsearch'] == 'draft') && php72_cmp($options['dealsearch']) != 1) {
 
         $searchArray[] = "IP.is_deleted != '0' AND ((
         (INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' or INV.submitted_date = '0000-00-00')
@@ -574,22 +574,22 @@ public function _searchReport($options = array()) {
     )";
 }
 
-if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && $options['dealsearch'] == 1) {
+if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && php72_cmp($options['dealsearch']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
 }
-if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] != 1 && $options['rstatus'] != 10) {
+if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) != 1 && php72_cmp($options['rstatus']) != 10) {
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
 }
 
-if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] == 1) {
+if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
 }
 
-if (isset($options['first']) && $options['first'] == 1) {
+if (isset($options['first']) && php72_cmp($options['first']) == 1) {
     $searchArray[] = "IP.is_deleted != '0'";
-} else if (isset($options['checkbox']) && $options['checkbox'] == 0) {
+} else if (isset($options['checkbox']) && php72_cmp($options['checkbox']) == 0) {
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' and INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "' or INV.submitted_date = 0000-00-00) or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "' or pitch_user.submitted_date = 0000-00-00))";
-} else if (isset($options['first']) && $options['first'] == 0) {
+} else if (isset($options['first']) && php72_cmp($options['first']) == 0) {
 
     $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch_user.submitted_date>='" . date2mysql($options['submitted_date']) . "' and  pitch_user.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
 } else if (isset($options['first']) && $options['first'] == 'draft') {

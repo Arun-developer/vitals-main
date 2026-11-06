@@ -24,7 +24,7 @@
                     <div id="tab1" class="tab-slider--body pad-none tabpanel-details config-wrapper dataconfig-content page-wrapper chiller-theme">
                         <main class="page-content">
                             <div class="inputplan-structureall plan-structure-new">
-                                <?php if($additional_information[0]['program'] == 10) { ?>
+                                <?php if(php72_cmp($additional_information[0]['program']) == 10) { ?>
                                     <div class="row">
                                         <div class="col-12 col-lg-3 col-md-3">
                                             <div class="form-group">
@@ -121,7 +121,7 @@
                                     </div>
                                     <?php 
                                 }
-                                if($additional_information[0]['program'] == 10) {
+                                if(php72_cmp($additional_information[0]['program']) == 10) {
                                     $doc_link = host_url() . "tanseed/uploads/"; 
                                 } else {
                                     $doc_link = host_url() . "swachhata_startupchallenge/uploads/"; 

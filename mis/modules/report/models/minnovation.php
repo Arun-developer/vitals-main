@@ -207,7 +207,7 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
         $employee = ($employee != "") ? $employee : '-';
 		//
         $date_of_request = date("d/m/Y", strtotime($row['date_of_request']));
-        if ($row['indonor'] == $row['addonor'] && $row['inbudget_head'] == $row['adbudget_head'] && ($row['incost_centre'] == $row['adcost_centre'] || $row['incost_centre']==0) && $row['inline_item'] == $row['adline_item'] && $row['inapproval_id'] == $row['adapproval_id']) {
+        if ($row['indonor'] == $row['addonor'] && $row['inbudget_head'] == $row['adbudget_head'] && ($row['incost_centre'] == $row['adcost_centre'] || php72_cmp($row['incost_centre'])==0) && $row['inline_item'] == $row['adline_item'] && $row['inapproval_id'] == $row['adapproval_id']) {
             $internal_date = date("d/m/Y", strtotime($row['indate']));
             $status = ucfirst($row['status']);
             $donor_remain = $row['adamt_required'] - $donor_IN_sum[0]['donor_sum'];
@@ -505,7 +505,7 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
     }
 
     public function update($form = array()) {
-        if ($form['source'] != 0) {
+        if (php72_cmp($form['source']) != 0) {
             $form['source_others'] = '';
         }
 
@@ -588,8 +588,8 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
     public function PartnerList($id) {
         $sql = "SELECT id,branch_name FROM hs_hr_branch where id IN ($id)";
         $values = array();
-        $result = mysqli_query($sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = php72_mysqli_query($sql);
+        while ($row = php72_mysqli_fetch_array($result)) {
             $values[] = array($row['branch_name']);
         }
         return $values;
@@ -598,15 +598,15 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
     public function Partnername($id) {
         $sql = "SELECT branch_name FROM hs_hr_branch where id =" . $id;
 
-        $result = mysqli_query($sql);
-        $row = mysqli_fetch_array($result);
+        $result = php72_mysqli_query($sql);
+        $row = php72_mysqli_fetch_array($result);
         return $row['branch_name'];
     }
 
     public function PartnerId($val) {
         $sql = "SELECT id FROM hs_hr_branch where branch_name ='" . $val . "'";
-        $result = mysqli_query($sql);
-        $row = mysqli_fetch_array($result);
+        $result = php72_mysqli_query($sql);
+        $row = php72_mysqli_fetch_array($result);
         return $row['id'];
     }
 
@@ -1208,12 +1208,12 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
     public function copyRequestMail($ent_name, $id, $partner, $sourcepartner, $invid, $inc_inv_id) {
         $partnerid = ltrim($partner, '0');
         $sql = "SELECT branch_email,branch_name FROM hs_hr_branch where id = " . $partnerid . "";
-        $result = mysqli_query($sql);
-        $row1 = mysqli_fetch_array($result);
+        $result = php72_mysqli_query($sql);
+        $row1 = php72_mysqli_fetch_array($result);
 
         $sql1 = "SELECT branch_email,branch_name FROM hs_hr_branch where id = " . $sourcepartner . "";
-        $result1 = mysqli_query($sql1);
-        $row2 = mysqli_fetch_array($result1);
+        $result1 = php72_mysqli_query($sql1);
+        $row2 = php72_mysqli_fetch_array($result1);
 
         $detail_text = 'SEND my application form to your partner organization';
         $detail_No = 'DO NOT SEND my application form to your partner organizations';
@@ -1286,13 +1286,13 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
     public function getPartnersRecords($enterprise, $enterpreneur, $email, $type) {
         // and IP.status != '4'
         $searchArray[] = "IP.copy_status != '4' and IP.status != '10' and IP.status != '11'";
-        if (!empty($enterprise) && $enterprise != 1) {
+        if (!empty($enterprise) && php72_cmp($enterprise) != 1) {
             $searchArray[] = "IP.name_of_enterprise like '%" . $enterprise . "%'";
         }
-        if (!empty($enterpreneur) && $enterpreneur != 1) {
+        if (!empty($enterpreneur) && php72_cmp($enterpreneur) != 1) {
             $searchArray[] = "IP.name_of_entrepreneur like '%" . $enterpreneur . "%'";
         }
-        if (!empty($email) && $email != 1) {
+        if (!empty($email) && php72_cmp($email) != 1) {
             $searchArray[] = "(IP.email_id = '" . $email . "' or MEM.mem_email = '" . $email . "')";
         }
         $whereCond = php72_implode(' and ', $searchArray);
@@ -1358,18 +1358,18 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
             } else {
                 $inv_id = $row['copy_id'] . "_" . $row['copy_partner_id'] . "_" . $row['partner_count'];
             }
-            if ($type == 1) {
+            if (php72_cmp($type) == 1) {
                 $enterprise = (strlen($row['name_of_enterprise']) > 15) ? substr($row['name_of_enterprise'], 0, 15) . ".." : $row['name_of_enterprise'];
                 $entrepreneur = strlen($row['name_of_entrepreneur']) > 15 ? substr($row['name_of_entrepreneur'], 0, 15) . ".." : $row['name_of_entrepreneur'];
-            } else if ($type == 2) {
+            } else if (php72_cmp($type) == 2) {
                 $enterprise = $row['name_of_enterprise'];
                 $entrepreneur = $row['name_of_entrepreneur'];
             }
             if ($row['sector'] == 'MCH') {
                 $sector = 'Maternal & child health';
-            } else if ($row['sector'] > 0) {
+            } else if (php72_cmp($row['sector']) > 0) {
                 $sector = $this->Minnovation->getNewSectorDetails($row['sector']);
-            } else if ($row['program'] > 0) {
+            } else if (php72_cmp($row['program']) > 0) {
                 $sector = $this->Minnovation->getSectorName($row['pitch_id']);
             } else {
                 $sector = $row['sector'];
@@ -1515,8 +1515,8 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 $copy = $row['copy_partner_id'];
                 $copyud = substr($copy, 1);
                 $sql = "SELECT branch_name FROM hs_hr_branch where id = " . $copyud . "";
-                $result = mysqli_query($sql);
-                $row1 = mysqli_fetch_array($result);
+                $result = php72_mysqli_query($sql);
+                $row1 = php72_mysqli_fetch_array($result);
 
                 $asArray = array();
                 $associate = $this->Mincharge->getAssociate(array('innovation' => $row['id'], 'active' => 'Active'));
@@ -1615,9 +1615,9 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 $partnersList = implode(',', array_unique($get_partner_id));
                 if ($row['sector'] == 'MCH') {
                     $sector_name = 'Maternal & child health';
-                } else if ($row['sector'] > 0) {
+                } else if (php72_cmp($row['sector']) > 0) {
                     $sector_name = $this->Minnovation->getNewSectorDetails($row['sector']);
-                } else if ($row['program'] > 0) {
+                } else if (php72_cmp($row['program']) > 0) {
                     $sector_name = $this->Minnovation->getSectorName($row['pitch_id']);
                 } else {
                     $sector_name = $row['sector'];
@@ -1701,8 +1701,8 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 }
                 if ($isCopy) {
                     $sql = "SELECT branch_name FROM hs_hr_branch where id = " . $row['copy_partner_from'] . "";
-                    $result = mysqli_query($sql);
-                    $row1 = mysqli_fetch_array($result);
+                    $result = php72_mysqli_query($sql);
+                    $row1 = php72_mysqli_fetch_array($result);
                     if ($this->session->userdata('accessTo') != '' || $this->session->userdata('user_type') == 'superadmin' || $this->session->userdata('user_type') == 'admin' || $this->session->userdata('role_id') == '1' || $this->session->userdata('role_id') == '2') {
                         if ($row['status'] != '4' && $row['status'] != '10' && $row['status'] != '11' && $row['copy_status'] == '0') {
 
@@ -1731,16 +1731,16 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
 
                 $doc_files = $attach_click = $download_values = '';
                 // if ($row['program'] == 0 && ($row['inc_doc1'] != '' || $row['inc_doc2'] != '')) {
-                if ($row['program'] == 0) {
+                if (php72_cmp($row['program']) == 0) {
                     $doc_files = '"' . $row['id'] . '",0, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
                     $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['inc_doc1'] . '/' . $row['inc_doc2'];
                     // } else if ($row['program'] == 3 && ($row['pitch_doc1'] != '' || $row['pitch_doc2'] != '')) {
-                } else if ($row['program'] == 3) {
+                } else if (php72_cmp($row['program']) == 3) {
                     $doc_files = '"' . $row['id'] . '",3, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
                     $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
-                } else if ($row['program'] == 4) {
+                } else if (php72_cmp($row['program']) == 4) {
                     $doc_files = '"' . $row['id'] . '",4, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
                     $download_values = $row['id'] . '/' . $options['currentTab'] . '/' . $row['pitch_doc1'] . '/' . $row['pitch_doc2'];
@@ -1897,8 +1897,8 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 $copy = $row['copy_partner_id'];
                 $copyud = substr($copy, 1);
                 $sql = "SELECT branch_name FROM hs_hr_branch where id = " . $copyud . "";
-                $result = mysqli_query($sql);
-                $row1 = mysqli_fetch_array($result);
+                $result = php72_mysqli_query($sql);
+                $row1 = php72_mysqli_fetch_array($result);
 
                 $asArray = array();
                 $associate = $this->Mincharge->getAssociate(array('innovation' => $row['id'], 'active' => 'Active'));
@@ -1992,9 +1992,9 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 $partnersList = implode(',', array_unique($get_partner_id));
                 if ($row['sector'] == 'MCH') {
                     $sector = 'Maternal & child health';
-                } else if ($row['sector'] > 0) {
+                } else if (php72_cmp($row['sector']) > 0) {
                     $sector = $this->Minnovation->getNewSectorDetails($row['sector']);
-                } else if ($row['program'] > 0) {
+                } else if (php72_cmp($row['program']) > 0) {
                     $sector = $this->Minnovation->getSectorName($row['pitch_id']);
                 } else {
                     $sector = $row['sector'];
@@ -2074,8 +2074,8 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 }
                 if ($isCopy) {
                     $sql = "SELECT branch_name FROM hs_hr_branch where id = " . $row['copy_partner_from'] . "";
-                    $result = mysqli_query($sql);
-                    $row1 = mysqli_fetch_array($result);
+                    $result = php72_mysqli_query($sql);
+                    $row1 = php72_mysqli_fetch_array($result);
                     if ($this->session->userdata('accessTo') != '' || $this->session->userdata('user_type') == 'superadmin' || $this->session->userdata('user_type') == 'admin' || $this->session->userdata('role_id') == '1' || $this->session->userdata('role_id') == '2') {
                         if ($row['status'] != '4' && $row['status'] != '10' && $row['status'] != '11' && $row['copy_status'] == '0') {
 
@@ -2103,13 +2103,13 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
                 }
 
                 $doc_files = $attach_click = '';
-                if ($row['program'] == 0) {
+                if (php72_cmp($row['program']) == 0) {
                     $doc_files = '"' . $row['id'] . '",0, "' . $row['inc_doc1'] . '","' . $row['inc_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
-                } else if ($row['program'] == 3) {
+                } else if (php72_cmp($row['program']) == 3) {
                     $doc_files = '"' . $row['id'] . '",3, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
-                } else if ($row['program'] == 4) {
+                } else if (php72_cmp($row['program']) == 4) {
                     $doc_files = '"' . $row['id'] . '",4, "' . $row['pitch_doc1'] . '","' . $row['pitch_doc2'] . '"';
                     $attach_click = "onclick='attachmentDownload(" . $doc_files . ");'";
                 }
@@ -2245,7 +2245,7 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
         }
 
         if (isset($options['program']) && $options['program'] != "") {
-            if ($options['program'] == 0) {
+            if (php72_cmp($options['program']) == 0) {
                 $searchArray[] = "(IP.program = 0 or IP.program = 4)";
             } else {
                 $searchArray[] = "IP.program = '" . $options['program'] . "'";
@@ -2431,7 +2431,7 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
 
         }
 
-        if ((isset($options['firstdraft']) && dealsearch == 'draft') && $options['dealsearch'] != 1) {
+        if ((isset($options['firstdraft']) && dealsearch == 'draft') && php72_cmp($options['dealsearch']) != 1) {
 
             if ($currentTab == 'all') {
                 $searchArray[] = "IP.is_deleted != '0' AND ((
@@ -2450,10 +2450,10 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
         }
     }
 
-    if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && $options['dealsearch'] == 1) {
+    if ((isset($options['firstdraft']) && $options['firstdraft'] == 'draft') && php72_cmp($options['dealsearch']) == 1) {
         $searchArray[] = "IP.is_deleted != '0'";
     }
-    if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] != 1 && $options['rstatus'] != 10) {
+    if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) != 1 && php72_cmp($options['rstatus']) != 10) {
         if ($currentTab == 'all') {
             $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch.submitted_date >='" . date2mysql($options['submitted_date']) . "' and  pitch.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
         } else {
@@ -2461,19 +2461,19 @@ function findopenamt_new_ajax($options, $where, $export = NULL) {
         }
     }
 
-    if ((isset($options['firstw']) && $options['firstw'] == '') && $options['dealsearch'] == 1) {
+    if ((isset($options['firstw']) && $options['firstw'] == '') && php72_cmp($options['dealsearch']) == 1) {
         $searchArray[] = "IP.is_deleted != '0'";
     }
 
-    if (isset($options['first']) && $options['first'] == 1) {
+    if (isset($options['first']) && php72_cmp($options['first']) == 1) {
         $searchArray[] = "IP.is_deleted != '0'";
-    } else if (isset($options['checkbox']) && $options['checkbox'] == 0) {
+    } else if (isset($options['checkbox']) && php72_cmp($options['checkbox']) == 0) {
         if ($currentTab == 'all') {
             $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' and INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "' or INV.submitted_date = 0000-00-00) or (pitch.submitted_date >='" . date2mysql($options['submitted_date']) . "' and  pitch.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or pitch.submitted_date = 0000-00-00))";
         } else {
             $searchArray[] = "IP.is_deleted != '0'";
         }
-    } else if (isset($options['first']) && $options['first'] == 0) {
+    } else if (isset($options['first']) && php72_cmp($options['first']) == 0) {
         if ($currentTab == 'all') {
             $searchArray[] = "IP.is_deleted != '0' AND ((INV.submitted_date >='" . date2mysql($options['submitted_date']) . "' AND INV.submitted_date <='" . date2mysql($options['submitted_date_to']) . "') or (pitch.submitted_date >='" . date2mysql($options['submitted_date']) . "' and  pitch.submitted_date <='" . date2mysql($options['submitted_date_to']) . "'))";
         } else {
@@ -3241,12 +3241,12 @@ public function getDraftInv_partner() {
         $this->db->update('innovation_pool');
 
         $sql = "SELECT branch_email,branch_name FROM hs_hr_branch where id = " . $Partner . "";
-        $result = mysqli_query($sql);
-        $row1 = mysqli_fetch_array($result);
+        $result = php72_mysqli_query($sql);
+        $row1 = php72_mysqli_fetch_array($result);
 
-        if ($Partner == 1) {
+        if (php72_cmp($Partner) == 1) {
             redirect('login/copy_request' . '/' . base64_encode($row1['branch_email']));
-        } else if ($Partner == 2) {
+        } else if (php72_cmp($Partner) == 2) {
             redirect('login/copy_request' . '/' . base64_encode($row1['branch_email']));
         }
     }
@@ -3256,12 +3256,12 @@ public function getDraftInv_partner() {
         $this->db->where('id', $id);
         $this->db->update('innovation_pool');
         $sql = "SELECT branch_email,branch_name FROM hs_hr_branch where id = " . $Partner . "";
-        $result = mysqli_query($sql);
-        $row1 = mysqli_fetch_array($result);
+        $result = php72_mysqli_query($sql);
+        $row1 = php72_mysqli_fetch_array($result);
 
-        if ($Partner == 1) {
+        if (php72_cmp($Partner) == 1) {
             redirect('login/copy_request' . '/' . base64_encode($row1['branch_email']));
-        } else if ($Partner == 2) {
+        } else if (php72_cmp($Partner) == 2) {
             redirect('login/copy_request' . '/' . base64_encode($row1['branch_email']));
         }
     }
@@ -3295,7 +3295,7 @@ public function getDraftInv_partner() {
             $query = "SELECT emp_firstname, emp_lastname FROM " . $this->hris->database . ".hs_hr_employee where emp_number = '" . $a['associate_employee'] . "'";
             $q = $this->db->query($query);
             $name = $q->result_array();
-            if ($val == 1) {
+            if (php72_cmp($val) == 1) {
                 $emp_name[] = $name[0]['emp_firstname'];
             } else {
                 $emp_name[] = $name[0]['emp_firstname'] . ' ' . $name[0]['emp_lastname'];
@@ -3551,7 +3551,7 @@ public function getDraftInv_partner() {
                 $data[$key][$vkey] = $rw;
             }
         }
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 
@@ -3670,7 +3670,7 @@ public function getDraftInv_partner() {
                 $data[$key][$vkey] = $rw;
             }
         }
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 
@@ -3822,7 +3822,7 @@ public function getDraftInv_partner() {
 
 
 			$assigned_user = $value['assigned_user'];
-			if($assigned_user>0){
+			if(php72_cmp($assigned_user)>0){
 				$this->db->where('id', $assigned_user);
 				$employee = $this->db->get('hr_user_profile');
 				$resAssigned_user = $employee->result_array();
@@ -3836,7 +3836,7 @@ public function getDraftInv_partner() {
 			 	
 			if($value['assigned_user']=='0'){ 
 				$value['phhead'] = '';
-			}else if($value['assigned_user']>0){
+			}else if(php72_cmp($value['assigned_user'])>0){
 				$value['phhead'] = $resAssigned_user[0]['emp_first_name'] . " " . $resAssigned_user[0]['emp_last_name'];
 			}else{
 				if(trim($value['above_50000'])=='yes'){ 
@@ -3875,7 +3875,7 @@ public function getDraftInv_partner() {
 		
 		
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 
@@ -3942,9 +3942,9 @@ public function getDraftInv_partner() {
         $data = array();
         $grantName = '';
         foreach ($result as $key => $value) {
-            if (($value['amt_required'] >= 20000) && ($value['an_status'] == 'confirmed')) {
+            if ((php72_cmp($value['amt_required']) >= 20000) && ($value['an_status'] == 'confirmed')) {
                 $value['an_confirmed_date'] = $value['CEO_date'];
-            } else if (($value['amt_required'] < 20000) && ($value['an_status'] == 'confirmed')) {
+            } else if ((php72_cmp($value['amt_required']) < 20000) && ($value['an_status'] == 'confirmed')) {
                 $value['an_confirmed_date'] = $value['PH_date'];
             } else if ($value['an_status'] == 'closed') {
                 if ($value['CEO_date'] != '') {
@@ -3978,7 +3978,7 @@ public function getDraftInv_partner() {
             }
         }
 
-        if ($export == 1) {
+        if (php72_cmp($export) == 1) {
             return $data;
         }
 

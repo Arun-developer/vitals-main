@@ -56,7 +56,7 @@
 
 			foreach($dataArray as $key1 => $value1):
 				foreach($value1 as $key => $value):
-					if($sum_columns[$key] == 0)
+					if(php72_cmp($sum_columns[$key]) == 0)
 						$sum_value[$key] = '';
 
 					else

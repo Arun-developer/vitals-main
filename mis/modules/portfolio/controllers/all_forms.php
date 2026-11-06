@@ -79,7 +79,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -92,13 +92,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -142,7 +142,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -268,7 +268,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -281,13 +281,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -301,7 +301,7 @@ class All_forms extends CI_Controller {
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -388,7 +388,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -399,7 +399,7 @@ class All_forms extends CI_Controller {
         $getmonth = $this->month();
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -537,7 +537,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -549,7 +549,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -663,7 +663,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -675,7 +675,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -791,7 +791,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -804,13 +804,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -825,7 +825,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -949,7 +949,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -961,7 +961,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1053,7 +1053,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1066,13 +1066,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -1087,7 +1087,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1252,7 +1252,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1264,7 +1264,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1455,7 +1455,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1468,13 +1468,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -1489,7 +1489,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1592,7 +1592,7 @@ class All_forms extends CI_Controller {
         $jw = 1;
 		
 		
-		if($this->session->userdata('emp_number') ==457){
+		if(php72_cmp($this->session->userdata('emp_number')) ==457){
 		
 				
 			 foreach ($_POST["metric"] as $key => $val) {
@@ -1668,7 +1668,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1681,13 +1681,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -1702,7 +1702,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -1962,7 +1962,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -1974,7 +1974,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2171,7 +2171,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2184,13 +2184,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -2205,7 +2205,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2361,7 +2361,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2373,7 +2373,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2433,7 +2433,7 @@ class All_forms extends CI_Controller {
 
         $plan = $nontap_plan[0];
         $data['plan_count'] = $plan_count = isset($plan) ? php72_count($nontap_plan) : 0;
-        if ($plan_count == 0) {
+        if (php72_cmp($plan_count) == 0) {
             $service1['inv_id'] = $id;
             $service1['financial_year'] = $f_year;
             $service1['status'] = 1;
@@ -2503,7 +2503,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2521,7 +2521,7 @@ class All_forms extends CI_Controller {
         $donor['status'] = 1;
         $data['isAssociate'] = $this->Mincharge->isAssociateUser($id, $this->session->userdata('emp_number'));
 
-        if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+        if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
             $data['note_plan'] = $this->Mportfolio->getPlanDetails('plan_meeting_notes', $plan, '', $f_year, $status, '', 'meeting_date', 'desc');
         }else{
             $data['note_plan'] = $this->Mportfolio->getPlanDetails('plan_meeting_notes', $plan, '', $f_year, $status, '', 'meeting_date', 'desc');
@@ -2614,7 +2614,7 @@ class All_forms extends CI_Controller {
 
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2668,7 +2668,7 @@ class All_forms extends CI_Controller {
         $pending = '0';
 
         if ($milestone == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getApprovalDetails('port_project_milestone', $c_option, $pending);
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/milestone/' . $id . '/' . $get_data[0]['financial_year'] . '/' . $get_data[0]['id']);
@@ -2736,7 +2736,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2748,7 +2748,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];
@@ -2877,7 +2877,7 @@ class All_forms extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -2890,13 +2890,13 @@ class All_forms extends CI_Controller {
         $url_fyear = $f_year;
 
         if ($month == '') {
-            if ($get_current_date >= 16) {
+            if (php72_cmp($get_current_date) >= 16) {
                 $past_month = $get_current_month;
             } else {
                 $set_past_month = $get_current_month - 1;
-                if ($set_past_month == 0) {
+                if (php72_cmp($set_past_month) == 0) {
                     $past_month = '12';
-                } else if ($set_past_month == 3) {
+                } else if (php72_cmp($set_past_month) == 3) {
                     $url_fyear = $f_year - 1;
                     $past_month = $set_past_month;
                 } else {
@@ -2911,7 +2911,7 @@ class All_forms extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr); $i >= 0; $i--) {
+        for ($i = ($arr); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
             $monthlist[] = $getmonth[$i];

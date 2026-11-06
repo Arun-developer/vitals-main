@@ -223,8 +223,8 @@
                                                                     <label>Status<span>*</span></label>
                                                                     <select name="status" id="status"  disabled class="form-control edit_cls">
                                                                         <option value="">--Select--</option>
-                                                                        <option <?php if ($subfieldsDetails->status == 1) echo"selected"; ?> value="1" >Approved</option>
-                                                                        <option <?php if ($subfieldsDetails->status == 0) echo"selected"; ?> value="0">Disapproved </option></select>
+                                                                        <option <?php if (php72_cmp($subfieldsDetails->status) == 1) echo"selected"; ?> value="1" >Approved</option>
+                                                                        <option <?php if (php72_cmp($subfieldsDetails->status) == 0) echo"selected"; ?> value="0">Disapproved </option></select>
                                                                 </div>
 
                                                                 <div class="form-group">

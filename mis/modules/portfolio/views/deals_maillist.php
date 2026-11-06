@@ -66,9 +66,9 @@
                 $fail_mail = $this->Mmail->MailDetails($failarrwhr);
 
                 $sender = $this->Muser->getUsersList($row['sender_id']);
-                if ($row['status'] == 0) {
+                if (php72_cmp($row['status']) == 0) {
                     $status = 'Pending';
-                } else if ($row['status'] == 1) {
+                } else if (php72_cmp($row['status']) == 1) {
                     $status = 'Sent';
                 } else {
                     $status = 'Failed';
@@ -78,7 +78,7 @@
                 ?>
                 <tr class="<?= $row_type ?>">
                     <td style="text-align: center;"><?php
-                        if ($row['sender_id'] == 1) {
+                        if (php72_cmp($row['sender_id']) == 1) {
                             echo 'Super Admin';
                         } else {
                             echo $sender[0]['emp_name'];

@@ -13,7 +13,7 @@ class Calendar extends CI_Controller
     {
         // The forth segment will be used as timeid
         $timeid = $this->uri->segment(3);
-        if ($timeid == 0) {
+        if (php72_cmp($timeid) == 0) {
             $time = time();
         } else {
             $time = $timeid;
@@ -134,7 +134,7 @@ class Calendar extends CI_Controller
         $data['user'] = $user->row_array();
 
         $timeid = $this->uri->segment(5);
-        if ($timeid == 0) {
+        if (php72_cmp($timeid) == 0) {
             $time = time();
         } else {
             $time = $timeid;

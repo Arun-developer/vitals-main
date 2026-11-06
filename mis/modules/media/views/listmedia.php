@@ -55,7 +55,7 @@ $if = (!$isincubAuth);
                 <td align="left" valign="middle"><?=$row["requested_on"];?></td>
                 <td align="left" valign="middle"><?=$innovator;?></td>
                 <td align="left" valign="middle">
-                    <?php if(($row['decision'])==0)
+                    <?php if(php72_cmp(($row['decision']))==0)
 						      {
 							    echo "Accepted";
 							  }
@@ -64,7 +64,7 @@ $if = (!$isincubAuth);
                     <a class="button fancybox " height="200"
                         href="<?=site_url('media/liststatus/approve/'.$innovationid.'/'.$row['id']);?>">Approve</a>
                     <?php } }?>
-                    <?php if(($row['decision'])==1)
+                    <?php if(php72_cmp(($row['decision']))==1)
 						   {
 						     echo "Rejected";
 						   }
@@ -74,7 +74,7 @@ $if = (!$isincubAuth);
                         href="<?=site_url('media/liststatus/reject/'.$innovationid.'/'.$row['id']);?>">Reject</a>
                     <?php } } ?>
 
-                    <?php if(($row['decision'])==2)
+                    <?php if(php72_cmp(($row['decision']))==2)
 					      {
 					         echo "Pending";
 			   		      } ?>
@@ -84,7 +84,7 @@ $if = (!$isincubAuth);
                 <td align="left" valign="middle"><?=$row['status'];?></td>
                 <td nowrap="nowrap">
                     <?php if(!$isincubAuth){ ?>
-                    <?php if($row['decision']==0){?>
+                    <?php if(php72_cmp($row['decision'])==0){?>
                     <a href="<?=site_url('media/addinnovator_detail/'.$innovationid.'/'.$row['id'])?>"
                         class="fancybox">Schedule Interview</a>
                     <a href="<?=site_url('media/addmedia_detail/'.$innovationid.'/'.$row['id'])?>" class="button">Add

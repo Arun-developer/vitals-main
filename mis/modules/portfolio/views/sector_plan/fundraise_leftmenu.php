@@ -45,7 +45,7 @@ if ($class_name == 'salesDiv') {
     $project_menu = $showMenu;
 }
 
-if (isset($this->session->userdata['sector_lead']) && $this->session->userdata['sector_lead'] == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
+if (isset($this->session->userdata['sector_lead']) && php72_cmp($this->session->userdata['sector_lead']) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin') {
     $config_data = isset($configData) ? $configData : '';
 } else {
     $config_data = '';

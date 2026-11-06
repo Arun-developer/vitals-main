@@ -109,13 +109,13 @@ $this->load->view('vitals_header.php', array('main_menu' => 'travellist', 'page_
 													<div class="form-group">
 														Ro Status : <?php
 														 
-														if ($get_travel_request[0]['ro_status'] == 1) {
+														if (php72_cmp($get_travel_request[0]['ro_status']) == 1) {
 															$status = 'Pending';
-														} else if ($get_travel_request[0]['ro_status'] == 2) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) == 2) {
 															$status = 'Cancel';
-														} else if ($get_travel_request[0]['ro_status'] ==3) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) ==3) {
 															$status = 'Confirm';
-														} else if ($get_travel_request[0]['ro_status'] == 4) {
+														} else if (php72_cmp($get_travel_request[0]['ro_status']) == 4) {
 															$status = 'Reject';
 														}
 

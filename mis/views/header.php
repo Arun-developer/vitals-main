@@ -16,26 +16,26 @@ if ($loginDetails == '0') {
 }
 $server_url = $this->config->item('server_url');
 $url_server = explode('/', site_url(''), 2);
-if ($this->session->userdata['partner_id'] == 2) {
+if (php72_cmp($this->session->userdata['partner_id']) == 2) {
     $img_url = "source/template/images/villgro-logo-kenya-one.png";
-} else if ($this->session->userdata['partner_id'] == 3) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 3) {
     $img_url = "source/template/images/menterra.jpg";
-} else if ($this->session->userdata['partner_id'] == 4) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 4) {
     $img_url = "source/template/images/startup.png";
-} else if ($this->session->userdata['partner_id'] == 5) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 5) {
     $img_url = "source/template/images/IIMC.png";
-} else if ($this->session->userdata['partner_id'] == 6) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 6) {
     $img_url = "source/template/images/KIIT.jpg";
-} else if ($this->session->userdata['partner_id'] == 7) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 7) {
     $img_url = "source/template/images/SIIC_llogo.jpg";
-} else if ($this->session->userdata['partner_id'] == 10) {
+} else if (php72_cmp($this->session->userdata['partner_id']) == 10) {
     $img_url = "source/template/images/ceew.png";
 } else {
     $img_url = "source/template/images/logo.png";
 }
 
 if ($this->session->userdata('user_type')) {
-    if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) {
+    if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) {
         $count = total_pending_count();
     }
 }
@@ -54,17 +54,17 @@ if ($this->session->userdata('user_type')) {
                     <?php
                     if ($this->session->userdata('user_type') == 'superadmin') {
                         echo "Super Admin";
-                    } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 2) {
+                    } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 2) {
                         echo $this->session->userdata('emp_name');
                         ?>
 
                         <?php
-                    } else if ($this->session->userdata('user_type') == 'employee' and $this->session->userdata('role_id') == 2) {
+                    } else if ($this->session->userdata('user_type') == 'employee' and php72_cmp($this->session->userdata('role_id')) == 2) {
                         echo $this->session->userdata('emp_name');
                         ?>
 
                         <?php
-                    } else if ($this->session->userdata('user_type') == 'admin' and $this->session->userdata('role_id') == 1) {
+                    } else if ($this->session->userdata('user_type') == 'admin' and php72_cmp($this->session->userdata('role_id')) == 1) {
                         echo $this->session->userdata('emp_name');
                         ?>
 
@@ -85,9 +85,9 @@ if ($this->session->userdata('user_type')) {
 
                 <?php
                 $switch_type = '';
-                if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'admin') {
+                if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'admin') {
                     $switch_type = 'Switch to user';
-                } else if ($this->session->userdata('role_id') == 2 && $this->session->userdata('user_type') == 'employee') {
+                } else if (php72_cmp($this->session->userdata('role_id')) == 2 && $this->session->userdata('user_type') == 'employee') {
                     $switch_type = 'Switch to admin';
                 }
                 ?>

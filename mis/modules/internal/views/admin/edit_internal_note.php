@@ -222,7 +222,7 @@
                                                 <div class="form-group">
                                                     <label>Amount for which approval has been taken (<?= $this->session->userdata['currency']; ?>)<span>*</span></label>
                                                     <input readonly="" name="total_amount" value="<?php
-                                                    if (isset($internalNoteDetails[0]['total_amount']) && $internalNoteDetails[0]['total_amount'] != '' && $internalNoteDetails[0]['total_amount'] != 0) {
+                                                    if (isset($internalNoteDetails[0]['total_amount']) && $internalNoteDetails[0]['total_amount'] != '' && php72_cmp($internalNoteDetails[0]['total_amount']) != 0) {
                                                         echo $internalNoteDetails[0]['total_amount'];
                                                     } else {
                                                         echo $tot_amount;

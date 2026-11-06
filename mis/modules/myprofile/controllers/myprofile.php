@@ -151,7 +151,7 @@ class Myprofile extends CI_Controller {
             // }
         $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->created_date));
         if (isset($getFunderDoc[0]->updated_date) && $getFunderDoc[0]->updated_date != '') {
-            if ($getFunderDoc[0]->updated_date > 0) {
+            if (php72_cmp($getFunderDoc[0]->updated_date) > 0) {
                 $updated_date_doc = date('d-m-Y', strtotime($getFunderDoc[0]->updated_date));
             }
         }
@@ -788,7 +788,7 @@ public function add_login() {
         $data['tab_access'] = $tab_access;
     }
 
-    if ($_POST['user_role'] == 4) {
+    if (php72_cmp($_POST['user_role']) == 4) {
         if (isset($_POST['user_module_access'])) {
             $tab_access = php72_implode(',', $_POST['user_module_access']);
             $data['menu_access'] = $tab_access;
@@ -806,7 +806,7 @@ public function add_login() {
 
         $data['deals_from_date'] = (isset($_POST['deals_from']) && $_POST['deals_from'] != '') ? date('Y-m-d', strtotime($_POST['deals_from'])) : '';
         $data['deals_to_date'] = (isset($_POST['deals_to']) && $_POST['deals_to'] != '') ? date('Y-m-d', strtotime($_POST['deals_to'])) : '';
-        $data['independent_shortlist'] = isset($_POST['shortlistID']) && $_POST['shortlistID'] == 1 ? $_POST['shortlistID'] : 0;
+        $data['independent_shortlist'] = isset($_POST['shortlistID']) && php72_cmp($_POST['shortlistID']) == 1 ? $_POST['shortlistID'] : 0;
     } else {
         $data['menu_access'] = $data['sector_access'] = $data['program_access'] = '';
         $data['deals_from_date'] = $data['deals_to_date'] = '0000-00-00';
@@ -1551,9 +1551,9 @@ public function DT_education() {
         $nestedData = array();
         $nestedData[] = '<input type="checkbox" class="chk_box" id="education_chk_box" name="education_id[]" value="' . $row['id'] . '"/>';
         $graduate = '';
-        if ($row['qualification'] == 1) {
+        if (php72_cmp($row['qualification']) == 1) {
             $graduate = 'UG';
-        } else if ($row['qualification'] == 2) {
+        } else if (php72_cmp($row['qualification']) == 2) {
             $graduate = 'PG';
         }
         $institute_name = $row['institute_name'];
@@ -1845,7 +1845,7 @@ public function DT_supervisor() {
         $nestedData[] = '<input type="checkbox" class="chk_box supervisor_chkbox" id="supervisor_chk_box" name="supervisor_id[]" value="' . $row['id'] . '"/>';
         $nestedData[] = $row['report_subordinate'];
         $nestedData[] = $row['emp_name'];
-        if ($row['report_method'] == 1) {
+        if (php72_cmp($row['report_method']) == 1) {
             $report_method = 'Direct';
         } else {
             $report_method = 'Indirect';
@@ -1887,7 +1887,7 @@ public function DT_subordinate() {
         $nestedData[] = '<input type="checkbox" class="chk_box subordinate_chkbox" id="subordinate_chk_box" name="subordinate_id[]" value="' . $row['id'] . '"/>';
         $nestedData[] = $row['report_supervisor'];
         $nestedData[] = $row['emp_name'];
-        if ($row['report_method'] == 1) {
+        if (php72_cmp($row['report_method']) == 1) {
             $report_method = 'Direct';
         } else {
             $report_method = 'Indirect';

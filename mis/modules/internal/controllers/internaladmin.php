@@ -164,7 +164,7 @@ class Internaladmin extends CI_Controller {
 
       function edit_internal_note($id = NULL, $section = 'mylist') {
         $partnerNote = $this->Mapproval->getPartner($id);
-        if ($partnerNote < 1 && is_numeric($id)) {
+        if (php72_cmp($partnerNote) < 1 && is_numeric($id)) {
             //redirect('approvaladmin/approval_note/pending');
         }
         $data['section'] = $section;
@@ -641,7 +641,7 @@ class Internaladmin extends CI_Controller {
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnIndex, $rowIndex + 2, $value);
 					}
 					
-					if (($rowIndex + 1) % 3 == 0 && $rowIndex > 0) {
+					if (($rowIndex + 1) % 3 == 0 && php72_cmp($rowIndex) > 0) {
 						#$objPHPExcel->getActiveSheet()->mergeCells("A".($rowIndex - 2 + 2).":A".($rowIndex + 0 + 2));
 					}
 				}
@@ -1519,7 +1519,7 @@ error_reporting(E_ALL);
 		
 
         /* amount recoverable */
-        if ($data['fin_Usercount'] == 1) {
+        if (php72_cmp($data['fin_Usercount']) == 1) {
           $data['recover_detail'] = $recover_detail = $this->Minternal->getRecoveredDetail($id);
           if (php72_count($recover_detail) > 0) {
             $data['recover_amt'] = $this->Minternal->getRecoveredAmount($recover_detail[0]['id']);
@@ -1662,14 +1662,14 @@ error_reporting(E_ALL);
                 $return[$i]["lineitem"] = $_REQUEST["lineitem"][$i];
                 $return[$i]["amtavailable"] = $gran_wise_amount = $this->getaval_amount($_REQUEST["donor"][$i], $_REQUEST["budgethead"][$i], $_REQUEST["lineitem"][$i], $_REQUEST["progid"], $check, $pre, $_REQUEST["grant_list"][$i]);
                 $return[$i]["amtreq"] = $_REQUEST["amtreq"][$i];
-                if ($inam != 0 && !empty($inam)) {
+                if (php72_cmp($inam) != 0 && !empty($inam)) {
                   if ($return[$i]['amtreq'] < $inam[$i]['amount_toapprove']) {
                     $return[$i]['amtreq'] = 0;
                   }
                 }
                 if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                   $return[$i]['amtreq'] = 0;
-                }if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                }if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                   $return[$i]['amtreq'] = 0;
                 }
               } else {
@@ -1682,7 +1682,7 @@ error_reporting(E_ALL);
                 if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                   $return[$i]['amtreq'] = 0;
                 }
-                if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                   $return[$i]['amtreq'] = 0;
                 }
               }
@@ -2086,7 +2086,7 @@ error_reporting(E_ALL);
           $approval_Amount = $this->Minternal->Approval_note_amount($this->input->post('approval_no'));
           $remain_amount = $approval_Amount[0]['approval_amount'] - $internal_Amount[0]['internal_amount'];
         }
-        $remain_amount = ($remain_amount < 0) ? $internal_Amount[0]['internal_amount'] . '/' . $approval_Amount[0]['approval_amount'] : $remain_amount;
+        $remain_amount = (php72_cmp($remain_amount) < 0) ? $internal_Amount[0]['internal_amount'] . '/' . $approval_Amount[0]['approval_amount'] : $remain_amount;
 
         $this->session->set_flashdata('successMsg', $succ);
         redirect('internal/internaladmin/internal_note_details/' . $id . '/mylist');

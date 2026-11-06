@@ -205,11 +205,11 @@ class Portfolioui extends CI_Controller {
             $q4 = $this->quarter4();
             $q4_key = php72_array_keys($q4);
             if (in_array($comp_mnt, $q4_key)) {
-                if ($company['exit_month'] == 01 || $company['exit_month'] == 02 || $company['exit_month'] == 03) {
+                if (php72_cmp($company['exit_month']) == 01 || php72_cmp($company['exit_month']) == 02 || php72_cmp($company['exit_month']) == 03) {
                     $comp_yr = $company['exit_year'] - 1;
                 }
             }
-            if ($company['company_status'] == 3 || $company['company_status'] == 2) {
+            if (php72_cmp($company['company_status']) == 3 || php72_cmp($company['company_status']) == 2) {
                 if ($comp_yr == '0000' || ($fin_year <= $comp_yr)) {
                     $ext_count += 1;
                 }
@@ -261,7 +261,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -270,7 +270,7 @@ class Portfolioui extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
@@ -373,7 +373,7 @@ class Portfolioui extends CI_Controller {
 
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -421,7 +421,7 @@ class Portfolioui extends CI_Controller {
         $pending = '0';
 
         if ($milestone == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getApprovalDetails('port_project_milestone', $c_option, $pending);
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/milestone/' . $id . '/' . $get_data[0]['financial_year'] . '/' . $get_data[0]['id']);
@@ -488,7 +488,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -497,7 +497,7 @@ class Portfolioui extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
@@ -604,7 +604,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -613,7 +613,7 @@ class Portfolioui extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
@@ -751,7 +751,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -824,7 +824,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -896,7 +896,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -957,7 +957,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1005,25 +1005,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -1047,7 +1047,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -1105,7 +1105,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1139,7 +1139,7 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
             } else if ($from_quarter == 2) {
@@ -1245,7 +1245,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1302,7 +1302,7 @@ class Portfolioui extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($sales_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     $categories[0] = 'Q1';
                     $categories[1] = 'Q2';
                     $categories[2] = 'Q3';
@@ -1337,16 +1337,16 @@ class Portfolioui extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1372,17 +1372,17 @@ class Portfolioui extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1402,7 +1402,7 @@ class Portfolioui extends CI_Controller {
             $sales_actual = $this->Mportfolio->getActualSales($default_where);
             $actual_month_value = array();
             if (php72_count($sales_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($sales_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['value']);
@@ -1474,7 +1474,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1522,25 +1522,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -1564,7 +1564,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -1621,7 +1621,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1655,7 +1655,7 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -1753,7 +1753,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -1810,7 +1810,7 @@ class Portfolioui extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($revenue_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($revenue_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
@@ -1836,16 +1836,16 @@ class Portfolioui extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1871,17 +1871,17 @@ class Portfolioui extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -1901,7 +1901,7 @@ class Portfolioui extends CI_Controller {
             $revenue_actual = $this->Mportfolio->getActualRevenue($default_where);
             $actual_month_value = array();
             if (php72_count($revenue_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($revenue_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['revenue']);
@@ -1970,7 +1970,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -2014,25 +2014,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -2056,7 +2056,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
 
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
@@ -2114,7 +2114,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -2148,36 +2148,36 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $getFrom_year = $from_year;
-            if ($from_quarter == 1) {
+            if (php72_cmp($from_quarter) == 1) {
                 $start_month = reset($q1);
-            } else if ($from_quarter == 2) {
+            } else if (php72_cmp($from_quarter) == 2) {
                 $start_month = reset($q2);
-            } else if ($from_quarter == 3) {
+            } else if (php72_cmp($from_quarter) == 3) {
                 $start_month = reset($q3);
-            } else if ($from_quarter == 4) {
+            } else if (php72_cmp($from_quarter) == 4) {
                 $start_month = reset($q4);
                 $getFrom_year = $from_year + 1;
             }
 
             $getTo_year = $to_year;
-            if ($to_quarter == 1) {
+            if (php72_cmp($to_quarter) == 1) {
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
-            } else if ($to_quarter == 2) {
+            } else if (php72_cmp($to_quarter) == 2) {
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
-            } else if ($to_quarter == 3) {
+            } else if (php72_cmp($to_quarter) == 3) {
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
-            } else if ($to_quarter == 4) {
+            } else if (php72_cmp($to_quarter) == 4) {
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
@@ -2246,7 +2246,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -2303,7 +2303,7 @@ class Portfolioui extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($profit_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($profit_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
@@ -2330,16 +2330,16 @@ class Portfolioui extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -2365,17 +2365,17 @@ class Portfolioui extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -2395,7 +2395,7 @@ class Portfolioui extends CI_Controller {
             $profit_actual = $this->Mportfolio->getActualProfit($default_where);
             $actual_month_value = array();
             if (php72_count($profit_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($profit_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['net_profit']);
@@ -2463,7 +2463,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -2516,25 +2516,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -2560,7 +2560,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 		
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -2625,7 +2625,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         } else {
@@ -2666,7 +2666,7 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
 
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
@@ -3157,7 +3157,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3213,16 +3213,16 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $g_end_month = $q1[6];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $g_end_month = $q2[9];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $g_end_month = $q3[12];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $g_end_month = $q4[3];
                 $g_getTo_year = $g_year;
@@ -3245,7 +3245,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -3300,7 +3300,7 @@ class Portfolioui extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
                 $split_year = $split[1];
                 $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
-                    if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                    if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                         $prev_split_yr = $split_year - 1;
                         return ($var['financial_year'] == $prev_split_yr);
                     } else {
@@ -3339,7 +3339,7 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -3534,7 +3534,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3587,25 +3587,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3630,7 +3630,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -3690,7 +3690,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -3730,7 +3730,7 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $getFrom_year = $from_year;
             if ($from_quarter == 1) {
                 $start_month = reset($q1);
@@ -3878,7 +3878,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -3926,25 +3926,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -3968,7 +3968,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -4056,7 +4056,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -4103,38 +4103,38 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $quarter_qone = $quarter_qtwo = $quarter_qthree = $quarter_qfour = array();
 
             $getFrom_year = $from_year;
-            if ($from_quarter == 1) {
+            if (php72_cmp($from_quarter) == 1) {
                 $start_month = reset($q1);
-            } else if ($from_quarter == 2) {
+            } else if (php72_cmp($from_quarter) == 2) {
                 $start_month = reset($q2);
-            } else if ($from_quarter == 3) {
+            } else if (php72_cmp($from_quarter) == 3) {
                 $start_month = reset($q3);
-            } else if ($from_quarter == 4) {
+            } else if (php72_cmp($from_quarter) == 4) {
                 $start_month = reset($q4);
                 $getFrom_year = $from_year + 1;
             }
 
             $getTo_year = $to_year;
-            if ($to_quarter == 1) {
+            if (php72_cmp($to_quarter) == 1) {
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
-            } else if ($to_quarter == 2) {
+            } else if (php72_cmp($to_quarter) == 2) {
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
-            } else if ($to_quarter == 3) {
+            } else if (php72_cmp($to_quarter) == 3) {
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
-            } else if ($to_quarter == 4) {
+            } else if (php72_cmp($to_quarter) == 4) {
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
@@ -4242,7 +4242,7 @@ class Portfolioui extends CI_Controller {
                     $q4 = $this->quarter4();
                     $q4_key = php72_array_keys($q4);
                     if (in_array($var['month'], $q4_key)) {
-                        if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                        if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                             $prev_split_yr = $split_year - 1;
                             return ($var['financial_year'] == $prev_split_yr);
                         }
@@ -4311,7 +4311,7 @@ class Portfolioui extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($capital_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($capital_target as $target) {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
@@ -4338,16 +4338,16 @@ class Portfolioui extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -4373,17 +4373,17 @@ class Portfolioui extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -4403,7 +4403,7 @@ class Portfolioui extends CI_Controller {
             $capital_actual = $this->Mportfolio->getActualCapital($default_where);
             $actual_month_value = $actual_month_equity = $actual_month_short = $actual_month_long = array();
             if (php72_count($capital_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($capital_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_equity += str_replace(',', '', $actual['equity_total']);
@@ -4491,7 +4491,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -4537,25 +4537,25 @@ class Portfolioui extends CI_Controller {
         }
         if ($g_year != '' || $g_quarter != '') {
             $g_getFrom_year = $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -4589,7 +4589,7 @@ class Portfolioui extends CI_Controller {
         $search_array = $last_target = array();
         $categories = $hc_target = $hc_actual = array();
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $start_year = explode(', ', $start_date);
             $end_year = explode(', ', $end_date);
 
@@ -4620,7 +4620,7 @@ class Portfolioui extends CI_Controller {
                         $q4 = $this->quarter4();
                         $q4_key = php72_array_keys($q4);
                         if (in_array($value['month'], $q4_key)) {
-                            if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
+                            if (php72_cmp($value['month']) == 1 || php72_cmp($value['month']) == 2 || php72_cmp($value['month']) == 3) {
                                 $value['year'] = $value['year'] - 1;
                             }
                         } else {
@@ -4661,7 +4661,7 @@ class Portfolioui extends CI_Controller {
 //                }
 
                 $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
-                    if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                    if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                         $prev_split_yr = $split_year;
                         return ($var['year'] == $prev_split_yr);
                     } else {
@@ -4694,36 +4694,36 @@ class Portfolioui extends CI_Controller {
                 }
                 $m++;
             }
-        } else if ($type == 2) {
+        } else if (php72_cmp($type) == 2) {
             $getFrom_year = $from_year;
-            if ($from_quarter == 1) {
+            if (php72_cmp($from_quarter) == 1) {
                 $start_month = reset($q1);
-            } else if ($from_quarter == 2) {
+            } else if (php72_cmp($from_quarter) == 2) {
                 $start_month = reset($q2);
-            } else if ($from_quarter == 3) {
+            } else if (php72_cmp($from_quarter) == 3) {
                 $start_month = reset($q3);
-            } else if ($from_quarter == 4) {
+            } else if (php72_cmp($from_quarter) == 4) {
                 $start_month = reset($q4);
                 $getFrom_year = $from_year + 1;
             }
 
             $getTo_year = $to_year;
-            if ($to_quarter == 1) {
+            if (php72_cmp($to_quarter) == 1) {
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $end_month = $q1[$q1_keyVal];
-            } else if ($to_quarter == 2) {
+            } else if (php72_cmp($to_quarter) == 2) {
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $end_month = $q2[$q2_keyVal];
-            } else if ($to_quarter == 3) {
+            } else if (php72_cmp($to_quarter) == 3) {
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $end_month = $q3[$q3_keyVal];
-            } else if ($to_quarter == 4) {
+            } else if (php72_cmp($to_quarter) == 4) {
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
                 $q4_keyVal = $g_q4_key[0];
@@ -4757,7 +4757,7 @@ class Portfolioui extends CI_Controller {
                         $q4 = $this->quarter4();
                         $q4_key = php72_array_keys($q4);
                         if (in_array($value['month'], $q4_key)) {
-                            if ($value['month'] == 1 || $value['month'] == 2 || $value['month'] == 3) {
+                            if (php72_cmp($value['month']) == 1 || php72_cmp($value['month']) == 2 || php72_cmp($value['month']) == 3) {
                                 $value['year'] = $value['year'] - 1;
                             }
                         } else {
@@ -4802,7 +4802,7 @@ class Portfolioui extends CI_Controller {
                 $plan_month = date('n', strtotime("$split[0] 1 2020"));
 
                 $new_fy = php72_array_filter($monthly_actual, function ($var) use ($split_year) {
-                    if ($var['month'] == 1 || $var['month'] == 2 || $var['month'] == 3) {
+                    if (php72_cmp($var['month']) == 1 || php72_cmp($var['month']) == 2 || php72_cmp($var['month']) == 3) {
                         $prev_split_yr = $split_year;
                         return ($var['year'] == $prev_split_yr);
                     } else {
@@ -4860,7 +4860,7 @@ class Portfolioui extends CI_Controller {
             $hc_target[0] = $hc_target[1] = $hc_target[2] = $hc_target[3] = $hc_target[4] = '0';
             $hc_actual[0] = $hc_actual[1] = $hc_actual[2] = $hc_actual[3] = $hc_actual[4] = '0';
             if (php72_count($seed_target) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($seed_target as $target) {
                         $value = $target['amount'];
                         if (in_array($target['month'], $q1_key)) {
@@ -4885,16 +4885,16 @@ class Portfolioui extends CI_Controller {
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -4921,17 +4921,17 @@ class Portfolioui extends CI_Controller {
                     unset($hc_actual[4]);
                 }
             } else {
-                if ($g_quarter != '' && $g_quarter != 5) {
-                    if ($g_quarter == 1) {
+                if ($g_quarter != '' && php72_cmp($g_quarter) != 5) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -4951,7 +4951,7 @@ class Portfolioui extends CI_Controller {
             $seed_actual = $this->Mportfolio->getActualSeedFund($default_actual_where);
             $actual_month_value = array();
             if (php72_count($seed_actual) > 0) {
-                if ($g_quarter == '' || $g_quarter == 5) {
+                if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($seed_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
                             $a1_val += str_replace(',', '', $actual['disburse_amount']);
@@ -4974,16 +4974,16 @@ class Portfolioui extends CI_Controller {
                     $annual_acheive = $a1_val + $a2_val + $a3_val + $a4_val;
                     $hc_actual[4] = $annual_acheive;
                 } else {
-                    if ($g_quarter == 1) {
+                    if (php72_cmp($g_quarter) == 1) {
                         $main_quarter = $q1;
                         $quarter_title = 'Q1';
-                    } else if ($g_quarter == 2) {
+                    } else if (php72_cmp($g_quarter) == 2) {
                         $main_quarter = $q2;
                         $quarter_title = 'Q2';
-                    } else if ($g_quarter == 3) {
+                    } else if (php72_cmp($g_quarter) == 3) {
                         $main_quarter = $q3;
                         $quarter_title = 'Q3';
-                    } else if ($g_quarter == 4) {
+                    } else if (php72_cmp($g_quarter) == 4) {
                         $main_quarter = $q4;
                         $quarter_title = 'Q4';
                     }
@@ -5053,7 +5053,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5075,25 +5075,25 @@ class Portfolioui extends CI_Controller {
 
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -5117,13 +5117,13 @@ class Portfolioui extends CI_Controller {
                 $q4 = $this->quarter4();
                 $q4_key = php72_array_keys($q4);
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -5137,13 +5137,13 @@ class Portfolioui extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -5206,7 +5206,7 @@ class Portfolioui extends CI_Controller {
 
         foreach ($total_list as $tot) {
             if (!isset($ment_act[$tot['inv_id']][$tot['month']][$tot['assigned_to']])) {
-                if ($ftype != 1) {
+                if (php72_cmp($ftype) != 1) {
                     if ($tot['month'] == '4' || $tot['month'] == '5' || $tot['month'] == '6') {
                         if (isset($ment_act[$tot['inv_id']][4][$tot['assigned_to']]) || isset($ment_act[$tot['inv_id']][5][$tot['assigned_to']]) || isset($ment_act[$tot['inv_id']][6][$tot['assigned_to']])) {
                             $ment_actquat['q1'] = $ment_actquat['q1'];
@@ -5272,7 +5272,7 @@ class Portfolioui extends CI_Controller {
 //        $target[3] = $fin_quarters['Q4'];
 //        $target[4] = $fin_quarters['Q1'] + $fin_quarters['Q2'] + $fin_quarters['Q3'] + $fin_quarters['Q4'];
 
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
             $categories[2] = 'Q3';
@@ -5354,7 +5354,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5373,25 +5373,25 @@ class Portfolioui extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -5414,13 +5414,13 @@ class Portfolioui extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -5434,13 +5434,13 @@ class Portfolioui extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -5479,7 +5479,7 @@ class Portfolioui extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualMentorHours($where, $startDate, '', '1');
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
@@ -5591,7 +5591,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5610,25 +5610,25 @@ class Portfolioui extends CI_Controller {
         $end_year = explode(', ', $endDate);
         if ($g_year != '' || $g_quarter != '') {
             $g_getTo_year = $g_year;
-            if ($g_quarter == 1) {
+            if (php72_cmp($g_quarter) == 1) {
                 $g_start_month = reset($q1);
                 $q1_arr = php72_array_slice($q1, 2, 2, true);
                 $q1_key = array_keys($q1_arr);
                 $q1_keyVal = $q1_key[0];
                 $g_end_month = $q1[$q1_keyVal];
-            } else if ($g_quarter == 2) {
+            } else if (php72_cmp($g_quarter) == 2) {
                 $g_start_month = reset($q2);
                 $q2_arr = php72_array_slice($q2, 2, 2, true);
                 $q2_key = array_keys($q2_arr);
                 $q2_keyVal = $q2_key[0];
                 $g_end_month = $q2[$q2_keyVal];
-            } else if ($g_quarter == 3) {
+            } else if (php72_cmp($g_quarter) == 3) {
                 $g_start_month = reset($q3);
                 $q3_arr = php72_array_slice($q3, 2, 2, true);
                 $q3_key = array_keys($q3_arr);
                 $q3_keyVal = $q3_key[0];
                 $g_end_month = $q3[$q3_keyVal];
-            } else if ($g_quarter == 4) {
+            } else if (php72_cmp($g_quarter) == 4) {
                 $g_start_month = reset($q4);
                 $q4_arr = php72_array_slice($q4, 2, 2, true);
                 $g_q4_key = array_keys($q4_arr);
@@ -5650,13 +5650,13 @@ class Portfolioui extends CI_Controller {
                 $fin_smonth = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
                 $fin_emonth = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
                 if (in_array($fin_smonth, $q4_key)) {
-                    if ($fin_smonth == 1 || $fin_smonth == 2 || $fin_smonth == 3) {
+                    if (php72_cmp($fin_smonth) == 1 || php72_cmp($fin_smonth) == 2 || php72_cmp($fin_smonth) == 3) {
                         $g_year = $g_year - 1;
                     }
                 }
 
                 if (in_array($fin_emonth, $q4_key)) {
-                    if ($fin_emonth == 1 || $fin_emonth == 2 || $fin_emonth == 3) {
+                    if (php72_cmp($fin_emonth) == 1 || php72_cmp($fin_emonth) == 2 || php72_cmp($fin_emonth) == 3) {
                         $g_getTo_year = $end_year[1] - 1;
                     }
                 }
@@ -5670,13 +5670,13 @@ class Portfolioui extends CI_Controller {
             $sdatefmt = date("n", strtotime($start_year[0] . ' ' . $start_year[1]));
             $edatefmt = date('n', strtotime($end_year[1] . '-' . $end_year[0]));
             if (in_array($sdatefmt, $q4_key)) {
-                if ($sdatefmt == 1 || $sdatefmt == 2 || $sdatefmt == 3) {
+                if (php72_cmp($sdatefmt) == 1 || php72_cmp($sdatefmt) == 2 || php72_cmp($sdatefmt) == 3) {
                     $st_year = $start_year[1] - 1;
                 }
             }
 
             if (in_array($edatefmt, $q4_key)) {
-                if ($edatefmt == 1 || $edatefmt == 2 || $edatefmt == 3) {
+                if (php72_cmp($edatefmt) == 1 || php72_cmp($edatefmt) == 2 || php72_cmp($edatefmt) == 3) {
                     $end_yr = $end_year[1] - 1;
                 }
             } else {
@@ -5715,7 +5715,7 @@ class Portfolioui extends CI_Controller {
         $categories = $target = $actual = array();
         $actualMonth = $this->actual_month();
 
-        if ($ftype != 1) {
+        if (php72_cmp($ftype) != 1) {
             $total_list = $this->Mportfolio->getActualDpMeeting($where, $startDate, '', '1');
             $categories[0] = 'Q1';
             $categories[1] = 'Q2';
@@ -5868,7 +5868,7 @@ class Portfolioui extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -5922,7 +5922,7 @@ class Portfolioui extends CI_Controller {
         $tap_actquat['q3'] = 0;
         $tap_actquat['q4'] = 0;
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $search_month = "t1.need_by >= '$StartDate 00:00:00' and t1.need_by <= '$StopDate 23:59:59'";
             $search_actual = "t1.month_engaged >= '$StartDate 00:00:00' and t1.month_engaged <= '$StopDate 23:59:59'";
 
@@ -6005,7 +6005,7 @@ class Portfolioui extends CI_Controller {
             }
         }
 
-        if ($type == 1) {
+        if (php72_cmp($type) == 1) {
             $ac = 0;
             foreach ($categories as $cate) {
                 $target[$ac] = $tap_tarquat[$cate];
@@ -6060,7 +6060,7 @@ class Portfolioui extends CI_Controller {
 
         if ($year == '') {
             foreach ($data['fin_year'] as $fy) {
-                if ($fy['status'] == 1) {
+                if (php72_cmp($fy['status']) == 1) {
                     $f_year = $fy['fin_year'];
                 }
             }
@@ -6082,7 +6082,7 @@ class Portfolioui extends CI_Controller {
 
         $pending = '0';
         if ($year == '') {
-            if ($this->session->userdata['sector_lead'] == 1) {
+            if (php72_cmp($this->session->userdata['sector_lead']) == 1) {
                 $get_data = $this->Mportfolio->getConfigApprovalDetails('port_config_approval', $c_option, 'product_approval');
                 if (php72_count($get_data) > 0) {
                     redirect('portfolio/product/' . $id . '/' . $get_data[0]['financial_year']);

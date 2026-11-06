@@ -41,7 +41,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'admin', 'page_title
                                     <form id="filter_job" action="" method="POST" autocomplete="off">
                                         <div class="col-xl-7 col-lg-7 col-md-7 col-12" >
                                             <ul class="vitals-links">
-                                                <?php if ($admin_type == 0) { ?>
+                                                <?php if (php72_cmp($admin_type) == 0) { ?>
                                                     <li class="mob_fulfill">
                                                         <label style="font-size: 12px !important;" >Partner</label>
                                                         <div class="form-group mar-bt8  wdt_180">
@@ -100,11 +100,11 @@ $this->load->view('vitals_header.php', array('main_menu' => 'admin', 'page_title
                                                     <tr>
                                                         <th width="18px" class="removeArrow" style="text-align: center"><input class='master_check_all' type='checkbox' name='master_check_all' id='master_check_all'></th>
                                                         <th width="35%"><?php echo $titles; ?></th>
-                                                        <?php if ($admin_type == 0) { ?>
+                                                        <?php if (php72_cmp($admin_type) == 0) { ?>
                                                             <th width="20%">Partner Type</th>
                                                         <?php } ?>
                                                         <th width="20%">Status</th>
-                                                        <?php if ($admin_type == 1) { ?>
+                                                        <?php if (php72_cmp($admin_type) == 1) { ?>
                                                             <th width="17%" class="removeArrow"></th>
                                                         <?php } ?>
                                                         <th width="17%" class="removeArrow"></th>

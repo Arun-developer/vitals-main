@@ -252,8 +252,8 @@ $edit_id = $this->uri->segment(4);
 													<td>
 														<select class="form-control gender_0" name="sex[]">
 															<option value="">--Select--</option>
-															<option <?php if($lists['sex'] == 1)echo "selected"; ?> value="1">Male</option>
-															<option <?php if($lists['sex'] == 2)echo "selected"; ?> value="2">Female</option>
+															<option <?php if(php72_cmp($lists['sex']) == 1)echo "selected"; ?> value="1">Male</option>
+															<option <?php if(php72_cmp($lists['sex']) == 2)echo "selected"; ?> value="2">Female</option>
 														</select>
 													</td>
 													<td>

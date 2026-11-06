@@ -234,7 +234,7 @@ $role_id = $this->session->userdata('role_id');
                         <tbody>
                             <?php
                             $status_array = array('12' => 'Open', '3' => 'Closed', '2' => 'On Hold', '25' => 'Shortlisted', '26' => 'Selected');
-                            if ($this->session->userdata('independent_shortlist') == 1 && $this->session->userdata('role_id') == 4) {
+                            if (php72_cmp($this->session->userdata('independent_shortlist')) == 1 && php72_cmp($this->session->userdata('role_id')) == 4) {
                                 $emp_comment = $this->session->userdata['emp_number'];
                             } else {
                                 $emp_comment = '';
@@ -298,7 +298,7 @@ $role_id = $this->session->userdata('role_id');
         </div>
         <?php
     } else if ($innovation['status'] == '3') {
-        if ($this->session->userdata('role_id') != '4' && $this->session->userdata('independent_shortlist') != 1) {
+        if ($this->session->userdata('role_id') != '4' && php72_cmp($this->session->userdata('independent_shortlist')) != 1) {
             $empName = $this->Sector_model->getEmployeeNameByID($innovation['modified_by']);
             $cmnts = isset($innovation['comments']) && $innovation['comments'] != '' ? $innovation['comments'] : '-N/A-';
             ?>

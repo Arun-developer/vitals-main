@@ -105,7 +105,7 @@ $val=$memberDetails[0];
 						if($isAbi )
 						{?>
 						
-						    <?php if(($row['member_status'])==1)
+						    <?php if(php72_cmp(($row['member_status']))==1)
 						      {
 							    echo "Accepted";
 							  }
@@ -114,7 +114,7 @@ $val=$memberDetails[0];
 						       <a class="button fancybox"  height="200" href="<?=site_url('boardmember/changememberstatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.
 							   $row['board_id']);?>">Approve</a> 
 						 <?php }?>
-							 <?php if(($row['member_status'])==2)
+							 <?php if(php72_cmp(($row['member_status']))==2)
 							   {
 								 echo "Rejected";
 							   }
@@ -124,7 +124,7 @@ $val=$memberDetails[0];
 								  $row['id'].'/'.$row['board_id']);?>">Reject</a> 
 						  <?php } ?>
 					     
-								<?php if(($row['member_status'])==0)
+								<?php if(php72_cmp(($row['member_status']))==0)
 								  {
 									 echo "Pending";
 								  } 
@@ -148,7 +148,7 @@ $val=$memberDetails[0];
 						if($isincubAuth)
 						{?>
 						
-						    <?php if(($row['incubatee_status'])==1)
+						    <?php if(php72_cmp(($row['incubatee_status']))==1)
 						      {
 							    echo "Accepted";
 							  }
@@ -157,7 +157,7 @@ $val=$memberDetails[0];
 						       <a class="button fancybox"  height="200" href="<?=site_url('boardmember/changeincubateestatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.
 							   $row['board_id']);?>">Approve</a> 
 						 <?php }?>
-							 <?php if(($row['incubatee_status'])==2)
+							 <?php if(php72_cmp(($row['incubatee_status']))==2)
 							   {
 								 echo "Rejected";
 							   }
@@ -167,7 +167,7 @@ $val=$memberDetails[0];
 								  $row['id'].'/'.$row['board_id']);?>">Reject</a> 
 						  <?php } ?>
 					     
-								<?php if(($row['incubatee_status'])==0)
+								<?php if(php72_cmp(($row['incubatee_status']))==0)
 								  {
 									 echo "Pending";
 								  } 
@@ -196,7 +196,7 @@ $val=$memberDetails[0];
 					
 						else
 						{ 
-						   if(($row['villgro_status'])==1)
+						   if(php72_cmp(($row['villgro_status']))==1)
 						      {
 						         echo "Accepted";
 						      }
@@ -205,7 +205,7 @@ $val=$memberDetails[0];
 						       <a class="button fancybox"  height="200" href="<?=site_url('boardmember/changevillgrostatus/approve/'.$innovationid.'/'.$id.'/'.$row['id'].'/'.
 							   $row['board_id']);?>">Approve</a> 
 						 <?php } 
-						 if(($row['villgro_status'])==2)
+						 if(php72_cmp(($row['villgro_status']))==2)
 						   {
 						     echo "Rejected";
 						   }

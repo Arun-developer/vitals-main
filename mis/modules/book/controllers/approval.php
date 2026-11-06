@@ -95,7 +95,7 @@ class Approval extends CI_Controller {
             } else {
                 $status = "Pending";
             }
-            if ($lists->available == 1) {
+            if (php72_cmp($lists->available) == 1) {
                 $available_status = 'Available';
             }
             $nestedData = array();
@@ -264,7 +264,7 @@ class Approval extends CI_Controller {
 
             }
             if ($request_type == 'confirmed' || $request_type == 'returned') {
-                if ($date_type_renew != '' && $date_type_renew != 0) {
+                if ($date_type_renew != '' && php72_cmp($date_type_renew) != 0) {
                     $date_type_renew = date('d-m-Y', strtotime($date_type_renew));
                 };
 

@@ -921,7 +921,7 @@ class Master_settings extends CI_Controller {
     }
 
     public function document_type_add() {
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('doc_type', 'Document Name', 'required');
             if ($this->form_validation->run() != false) {
                 $insert = array('type' => '1', 'name' => $_POST['doc_type'], 'status' => '1');
@@ -945,7 +945,7 @@ class Master_settings extends CI_Controller {
         if ($id != null) {
             $data['type_list'] = $this->Mmaster_settings->fetchListType('diligence_document_types', $id);
         }
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('doc_type', 'Document Name', 'required');
             if ($this->form_validation->run() != false) {
                 $update = array('type' => '1', 'name' => $_POST['doc_type'], 'status' => '1');
@@ -1009,7 +1009,7 @@ class Master_settings extends CI_Controller {
     }
 
     public function meeting_type_add() {
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('doc_type', 'Meeting Name', 'required');
             if ($this->form_validation->run() != false) {
                 $insert = array('name' => $_POST['doc_type'], 'status' => '1');
@@ -1030,7 +1030,7 @@ class Master_settings extends CI_Controller {
     }
 
     public function currency_add() {
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('name', 'Currency Name', 'required');
             $this->form_validation->set_rules('currency_code', 'Currency Code', 'required');
             if ($this->form_validation->run() != false) {
@@ -1056,7 +1056,7 @@ class Master_settings extends CI_Controller {
         if ($id != null) {
             $data['type_list'] = $this->Mmaster_settings->fetchListType('diligence_meeting_type', $id);
         }
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('doc_type', 'Meeting Name', 'required');
             if ($this->form_validation->run() != false) {
                 $update = array('name' => $_POST['doc_type'], 'status' => '1');
@@ -1082,7 +1082,7 @@ class Master_settings extends CI_Controller {
         if ($id != null) {
             $data['type_list'] = $this->Mmaster_settings->fetchListType('partner_currency', $id);
         }
-        if (isset($_POST['formsubmit']) && $_POST['formsubmit'] == 1) {
+        if (isset($_POST['formsubmit']) && php72_cmp($_POST['formsubmit']) == 1) {
             $this->form_validation->set_rules('name', 'Currency Name', 'required');
             $this->form_validation->set_rules('currency_code', 'Currency Code', 'required');
             if ($this->form_validation->run() != false) {

@@ -300,7 +300,7 @@ class Mscreening_master extends CI_Model
         } else {
             $val = $pre['order'] + 1;
         }
-        if ($val > 0) {
+        if (php72_cmp($val) > 0) {
             if ($type = 'main') {
                 $q1 = "update screening_master set `order` = '" . $pre['order'] . "' where `order` = '" . $val . "' and criteria = '" . $criteria . "' and pid = '0'";
                 $this->db->query($q1);

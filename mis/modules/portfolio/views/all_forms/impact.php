@@ -64,7 +64,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-right">
                                     <ul class="milestone-links">
-                                        <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                        <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                             <li><a class="saveContinue">Save &amp; Continue</a></li>
                                         <?php } ?>
                                         <li>
@@ -120,7 +120,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                 <h6>Impact</h6>
                                                             </div>
-                                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right" id='editImpactSec'>
                                                                     <a href="javascript:void(0)" class="pad-rt15px" id="editImpact"><i class="fas fa-pencil-alt"></i> Edit</a>
                                                                 </div>
@@ -302,7 +302,7 @@ $this->load->view('vitals_header.php', array('main_menu' => 'portfolio', 'page_t
                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-12">
                                                                 <h6>Incubatee Specific Metrics</h6>
                                                             </div>
-                                                            <?php if ($isAssociate == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || $this->session->userdata['sector_lead'] == 1) { ?>
+                                                            <?php if (php72_cmp($isAssociate) == 1 || $this->session->userdata['user_type'] == 'admin' || $this->session->userdata['user_type'] == 'superadmin' || php72_cmp($this->session->userdata['sector_lead']) == 1) { ?>
                                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12 text-right" id='editMetricSec'>
                                                                     <a href="javascript:void(0)" class="pad-rt15px" id="editMetric"><i class="fas fa-pencil-alt"></i> Edit</a>
                                                                 </div>

@@ -13,7 +13,7 @@ if ($this->session->userdata['role_id'] == '4') {
 <?php
 $userName = strstr($this->session->userdata['emp_name'] . ' ', ' ', true);
 if ($this->session->userdata('user_type')) {
-    if ($this->session->userdata('user_type') != 'incubatee' && $this->session->userdata('ais_privilege') == 1) {
+    if ($this->session->userdata('user_type') != 'incubatee' && php72_cmp($this->session->userdata('ais_privilege')) == 1) {
         $pendingapproval_count = total_pending_count();
     }
 }
@@ -26,7 +26,7 @@ if (isset($last_logtime) && $last_logtime != '') {
 }
 ?>
 
-<?php if ($this->session->userdata['last_log_view'] == 1) { ?>
+<?php if (php72_cmp($this->session->userdata['last_log_view']) == 1) { ?>
     <div class="msg success"><strong>Welcome <span><?php echo $userName; ?>,</span></strong>
         <p><?= $welcome_msg; ?></p>
     </div>

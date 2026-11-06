@@ -294,7 +294,7 @@ echo form_open_multipart("scouting/pitch_app_edit_save/" . $this->uri->segment('
             <label>Alternate Phone Number</label>
         </dt>
         <dd>
-            <input type="text" id="alt_ph" name="alt_ph" placeholder="Phone number" class="input-text " size="40" value="<?= ($pitch_user[0]['altmobileno'] != 0 && $pitch_user[0]['altmobileno'] != '') ? $pitch_user[0]['altmobileno'] : '' ?>" />
+            <input type="text" id="alt_ph" name="alt_ph" placeholder="Phone number" class="input-text " size="40" value="<?= (php72_cmp($pitch_user[0]['altmobileno']) != 0 && $pitch_user[0]['altmobileno'] != '') ? $pitch_user[0]['altmobileno'] : '' ?>" />
             <span id="alt_ph_error" style="color:red"></span>
         </dd>
 
@@ -375,7 +375,7 @@ foreach ($pitch_member as $mem) {
             </dd>
 
             <dt>
-                <label>Gender<?php if ($i == 1) { ?><span class="req_field">*</span><?php } ?></label>
+                <label>Gender<?php if (php72_cmp($i) == 1) { ?><span class="req_field">*</span><?php } ?></label>
             </dt>
             <dd>
                 <div class="chkbox chkboxiframe" style="width:60px !important;">
@@ -407,8 +407,8 @@ foreach ($pitch_member as $mem) {
     <?php
     $i = $i + 1;
 }
-if ($i < 4) {
-    for ($j = $i; $j <= 3; $j++) {
+if (php72_cmp($i) < 4) {
+    for ($j = $i; php72_cmp($j) <= 3; $j++) {
         ?>
                 <dt>
                     <h3 style="color:green">Member <?php echo $j; ?></h3>
@@ -474,7 +474,7 @@ $sectorName = $get_sectorName[0];
             <dd class="fund2" id="sub_sector_cat">
                 <select id="sub_sector" name="sub_sector">
                     <option value="">-Select-</option>
-<?php if ($pitch_org[0]['sub_sector'] != 0 || $pitch_org[0]['sub_sector'] != '') { ?>
+<?php if (php72_cmp($pitch_org[0]['sub_sector']) != 0 || $pitch_org[0]['sub_sector'] != '') { ?>
                         <option value="<?php echo $subSectorName[0]['id']; ?>" selected><?php echo $subSectorName[0]['sector']; ?></option>
 <?php } ?>
                 </select>

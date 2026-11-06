@@ -65,11 +65,11 @@
 								<?php } ?>
 								
 								
-								<?php  if ($innovation_information[0]['program'] != 0  && $innovation_information[0]['program'] !=34  && $innovation_information[0]['program'] != 33 && $innovation_information[0]['program'] != 21 && $innovation_information[0]['program'] != 22 && $innovation_information[0]['program'] != 23 && $innovation_information[0]['program'] != 26 && $innovation_information[0]['program'] != 24 && $innovation_information[0]['program'] != 27 && $innovation_information[0]['program'] != 25 && $innovation_information[0]['program'] != 34  && $innovation_information[0]['program'] != 29) {  ?>
+								<?php  if (php72_cmp($innovation_information[0]['program']) != 0  && php72_cmp($innovation_information[0]['program']) !=34  && php72_cmp($innovation_information[0]['program']) != 33 && php72_cmp($innovation_information[0]['program']) != 21 && php72_cmp($innovation_information[0]['program']) != 22 && php72_cmp($innovation_information[0]['program']) != 23 && php72_cmp($innovation_information[0]['program']) != 26 && php72_cmp($innovation_information[0]['program']) != 24 && php72_cmp($innovation_information[0]['program']) != 27 && php72_cmp($innovation_information[0]['program']) != 25 && php72_cmp($innovation_information[0]['program']) != 34  && php72_cmp($innovation_information[0]['program']) != 29) {  ?>
 								<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/support_info/' . $application_id; ?>">Support</a></li>
 								<?php } ?>
 								
-								<?php  if ($innovation_information[0]['program'] == 25 || $innovation_information[0]['program'] == 34) {  ?>
+								<?php  if (php72_cmp($innovation_information[0]['program']) == 25 || php72_cmp($innovation_information[0]['program']) == 34) {  ?>
 									<li role="presentation"><a href="<?php echo base_url() . 'index.php/application/gmt_info/' . $application_id; ?>">GTM related information </a></li>
 								<?php } ?>
 								
@@ -335,7 +335,7 @@
 														}  
 														?> 
 														
-														<?php if($innovation_information[0]['program']==21 || $innovation_information[0]['program']==22 || $innovation_information[0]['program']==27){ echo '<span>*<span>'; }?></label>
+														<?php if(php72_cmp($innovation_information[0]['program'])==21 || php72_cmp($innovation_information[0]['program'])==22 || php72_cmp($innovation_information[0]['program'])==27){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="inno_desc" id="inno_desc" cols="30" rows="8" disabled><?= $innovation_information[0]['inv_desc']; ?></textarea>
                                                 </div>
                                             </div>
@@ -355,7 +355,7 @@
 														} 
 													?>
 													
-													<?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+													<?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 											
 													<?php if($innovationDetails[0]['program'] == '21'  && date('Y-m-d', strtotime($innovation_information[0]['created_date']))  < date('2024-01-01')){ ?>
 														<textarea class="form-control fieldDisable" name="inno_prob" id="inno_prob" cols="30" rows="8" disabled><?= $innovation_information[0]['inv_problem']; ?></textarea>
@@ -438,7 +438,7 @@
                                         <div class="row">
                                             <div class="col-12 col-lg-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Provide a brief description of your innovation (product or service)<?php if($innovation_information[0]['program']==21 || $innovation_information[0]['program']==25 || $innovation_information[0]['program']==34 ){ echo '<span>*<span>'; }?></label>
+                                                    <label>Provide a brief description of your innovation (product or service)<?php if(php72_cmp($innovation_information[0]['program'])==21 || php72_cmp($innovation_information[0]['program'])==25 || php72_cmp($innovation_information[0]['program'])==34 ){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="inno_desc" id="inno_desc" cols="30" rows="8" disabled><?= $innovation_information[0]['inv_desc']; ?></textarea>
                                                 </div>
                                             </div>
@@ -472,7 +472,7 @@
 															echo "How is the need addressed without your innovation? What are the available alternatives"; 
 														} 
 													?>
-													<?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+													<?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="avail_alter" id="avail_alter" cols="30" rows="8" disabled><?= $innovation_information[0]['inv_alternatives']; ?></textarea>
                                                 </div>
                                             </div>
@@ -487,7 +487,7 @@
 															}else{
 																echo"Describe your proposed / current business model";
 															}
-													?><?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?>
+													?><?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?>
 													</label>
                                                     <textarea class="form-control fieldDisable" name="prop_model" id="prop_model" cols="30" rows="8" disabled><?= $innovation_information[0]['proposal_desc']; ?></textarea>
                                                 </div>
@@ -578,7 +578,7 @@
 													
 													Have you faced any of the challenges mentioned below in your business
 													
-													<?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+													<?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 													
 													<?php if($innovation_information[0]['program'] == '27'){  ?>
 													 <div><div class="form-check form-check-inline">
@@ -622,7 +622,7 @@
 													}
 													?>
 													
-													<?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+													<?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 													
 													<?php if($innovation_information[0]['program'] == '27'){  ?>
 													 <div><div class="form-check form-check-inline">
@@ -658,7 +658,7 @@
 											
 												 <div class="col-12 col-lg-6 col-md-6">
 													<div class="form-group">
-														<label>How do you aim to scale your business? <?php if($innovation_information[0]['program']==21){ echo '<span>*<span>'; }?></label>
+														<label>How do you aim to scale your business? <?php if(php72_cmp($innovation_information[0]['program'])==21){ echo '<span>*<span>'; }?></label>
 														<textarea class="form-control fieldDisable" name="primary_point" id="primary_point" cols="30" rows="8" disabled><?= $innovation_information[0]['primary_point']; ?></textarea>
 													</div>
 												</div>
@@ -670,7 +670,7 @@
 											
 											 <div class="col-12 col-lg-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label>How do you aim to scale up? <?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+                                                    <label>How do you aim to scale up? <?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="prim_benefi" id="prim_benefi" cols="30" rows="8" disabled><?= $innovation_information[0]['primary_point']; ?></textarea>
                                                 </div>
                                             </div>
@@ -695,7 +695,7 @@
 															echo"Who is the intended primary beneficiary of your product / service?";
 														}
 													
-													?><?php if($innovation_information[0]['program']==27 || $innovation_information[0]['program']==25 || $innovation_information[0]['program']==34 ){ echo '<span>*<span>'; }?></label>
+													?><?php if(php72_cmp($innovation_information[0]['program'])==27 || php72_cmp($innovation_information[0]['program'])==25 || php72_cmp($innovation_information[0]['program'])==34 ){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="prim_benefi" id="prim_benefi" cols="30" rows="8" disabled><?= $innovation_information[0]['primary_benifi']; ?></textarea>
                                                 </div>
                                             </div>
@@ -713,7 +713,7 @@
 															echo"Will your product or service benefit other beneficiary groups? Describe these groups briefly.";
 														}
 													
-													?><?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+													?><?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
                                                     <textarea class="form-control fieldDisable" name="service_benefit" id="service_benefit" cols="30" rows="8" disabled><?= $innovation_information[0]['others_benefit']; ?></textarea>
                                                 </div>
                                             </div>
@@ -721,7 +721,7 @@
 											<?php  if($innovation_information[0]['program'] == '27'){  ?>
 												<div class="col-12 col-lg-6 col-md-6">
 													<div class="form-group">
-														<label>How do you quantitatively and qualitatively measure the social impact of your activity<?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+														<label>How do you quantitatively and qualitatively measure the social impact of your activity<?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 														<textarea class="form-control fieldDisable" name="no_impact" id="no_impact" cols="30" rows="8" disabled><?= $innovation_information[0]['research_cus_seg']; ?></textarea>
 													</div>
 												</div>
@@ -829,7 +829,7 @@
 											
 												<div class="col-12 col-lg-6 col-md-6" style="margin-left: 103px; ">
 													<div class="form-group">
-														<label>If the acceleration program provides financial assistance support of 35L, how do you plan to utilise this? <?php if($innovation_information[0]['program']==27 ){ echo '<span>*<span>'; }?></label>
+														<label>If the acceleration program provides financial assistance support of 35L, how do you plan to utilise this? <?php if(php72_cmp($innovation_information[0]['program'])==27 ){ echo '<span>*<span>'; }?></label>
 														<textarea class="form-control fieldDisable" name="prim_benefi" id="prim_benefi" cols="30" rows="8" disabled><?= $innovation_information[0]['geographic']; ?></textarea>
 													</div>
 												</div>

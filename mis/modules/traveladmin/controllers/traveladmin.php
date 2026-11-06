@@ -155,17 +155,17 @@ class Traveladmin extends CI_Controller {
             $employeeName = $this->Mtravel->getUserNameInfo($employe_id);
             $user_name = $employeeName[0]['user_name'];
 
-			if($lists["donor"]==0){
+			if(php72_cmp($lists["donor"])==0){
 				$donor = $lists["other_donor"];
 			}else{
 				$donor = $this->showMaster($lists["donor"]);
 			}
-			if($lists["budget_head"]==0){
+			if(php72_cmp($lists["budget_head"])==0){
 				$budget_head = $lists["other_budget_head"];
 			}else{
 				$budget_head = $this->showMaster($lists["budget_head"]);
 			}
-			if($lists["cost_centre"]==0){
+			if(php72_cmp($lists["cost_centre"])==0){
 				$cost_centre = $lists["other_cost_centre"];
 			}else{
 				$cost_centre = $this->showMaster($lists["cost_centre"]);
@@ -358,15 +358,15 @@ class Traveladmin extends CI_Controller {
         foreach ($travel_requestLists as $lists) {
 			
 			$donor_str = $lists['other_donor'];
-			if($lists['donor']!=0){
+			if(php72_cmp($lists['donor'])!=0){
 				$donor_str = $this->showMaster($lists['donor']);
 			}
 			$budget_head_str = $lists['other_budget_head'];
-			if($lists['budget_head']!=0){
+			if(php72_cmp($lists['budget_head'])!=0){
 				$budget_head_str = $this->showMaster($lists['budget_head']);
 			}
 			$cost_centre_str = $lists['other_cost_centre'];
-			if($lists['budget_head']!=0){
+			if(php72_cmp($lists['budget_head'])!=0){
 				$cost_centre_str = $this->showMaster($lists['cost_centre']);
 			}
 			if($lists['employee_id']!=''){
@@ -605,22 +605,22 @@ class Traveladmin extends CI_Controller {
 			}else{
 				$name = $lists['name'];
 			}
-			if($lists["donor"] == 0){
+			if(php72_cmp($lists["donor"]) == 0){
 				$donor =  $lists["other_donor"]; 
 			}else{
 				$donor = $this->showMaster($lists["donor"]);
 			}
-			if($lists["budget_head"] == 0){
+			if(php72_cmp($lists["budget_head"]) == 0){
 				$budget_head =  $lists["other_budget_head"]; 
 			}else{
 				$budget_head = $this->showMaster($lists["budget_head"]);
 			}
-			if($lists["line_item"] == 0){
+			if(php72_cmp($lists["line_item"]) == 0){
 				$line_item =  $lists["other_line_item"]; 
 			}else{
 				$line_item = $this->showMaster($lists["line_item"]);
 			}
-			if($lists["cost_centre"] == 0){
+			if(php72_cmp($lists["cost_centre"]) == 0){
 				$cost_centre =  $lists["other_cost_centre"]; 
 			}else{
 				$cost_centre = $this->showMaster($lists["cost_centre"]);
@@ -1080,14 +1080,14 @@ class Traveladmin extends CI_Controller {
                         $return[$i]["amtavailable"] = $gran_wise_amount = $this->getaval_amount($_REQUEST["donor"][$i], $_REQUEST["budgethead"][$i], $_REQUEST["lineitem"][$i], $_REQUEST["progid"], $check, $pre, $_REQUEST["grant_id"][$i]);
                         #echo'<pew>';print_r($gran_wise_amount);die;
                         $return[$i]["amtreq"] = $_REQUEST["amtreq"][$i];
-                        if ($inam != 0 && !empty($inam)) {
+                        if (php72_cmp($inam) != 0 && !empty($inam)) {
                             if ($return[$i]['amtreq'] < $inam[$i]['amount_toapprove']) {
                                 $return[$i]['amtreq'] = 0;
                             }
                         }
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
-                        }if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        }if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                     } else { #error_reporting(-1);
@@ -1101,7 +1101,7 @@ class Traveladmin extends CI_Controller {
                         if ($return[$i]["amtreq"] > $return[$i]['amtavailable']) {
                             $return[$i]['amtreq'] = 0;
                         }
-                        if ((!is_numeric($return[$i]["amtreq"]) || ($return[$i]["amtreq"] < 0)) && !empty($return[$i]["amtreq"])) {
+                        if ((!is_numeric($return[$i]["amtreq"]) || (php72_cmp($return[$i]["amtreq"]) < 0)) && !empty($return[$i]["amtreq"])) {
                             $return[$i]['amtreq'] = 0;
                         }
                         #echo'<pre>';print_r($return);die;
@@ -1744,7 +1744,7 @@ class Traveladmin extends CI_Controller {
 		#$getFinanceUser = $this->vendor_model->get_all_details('approval_setting', $conditionFinance, array('finance'), '', '', '', true, 'ais');
 		$data['user_status'] ='';
 		if(!empty($getFinanceUser)){
-			if(in_array($role_id, array(1,2,3))){
+			if(php72_in_array($role_id, array(1,2,3))){
 				$data['user_status'] ='1';
 			}
 			$financeUserId = unserialize($getFinanceUser[0]->finance);
@@ -1806,13 +1806,13 @@ class Traveladmin extends CI_Controller {
 			$status = '';
 			
 			
-			if ($row['status'] == 1) {
+			if (php72_cmp($row['status']) == 1) {
 				$status = 'Pending';
-			} else if ($row['status'] == 2) {
+			} else if (php72_cmp($row['status']) == 2) {
 				$status = 'Cancel';
-			}  else if ($row['status'] == 3) {
+			}  else if (php72_cmp($row['status']) == 3) {
 				$status = 'Confirm';
-			} else if ($row['status'] == 4) {
+			} else if (php72_cmp($row['status']) == 4) {
 				$status = 'Reject';
 			}
 			$nestedData[] = $status;

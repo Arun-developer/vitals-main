@@ -80,10 +80,10 @@ function closeScale(criteria) {
                 class="uniform">
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[11][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[11][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[11][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[11][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Innovation</legend>
                     <p>
@@ -92,22 +92,22 @@ function closeScale(criteria) {
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
-                                <?php echo ($assessDetails[11][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 1) ? 'selected="selected"' : ''?>>1
                             </option>
                             <option value="2"
-                                <?php echo ($assessDetails[11][0]['grade'] == 2) ? 'selected="selected"' : ''?>>2
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 2) ? 'selected="selected"' : ''?>>2
                             </option>
                             <option value="3"
-                                <?php echo ($assessDetails[11][0]['grade'] == 3) ? 'selected="selected"' : ''?>>3
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 3) ? 'selected="selected"' : ''?>>3
                             </option>
                             <option value="4"
-                                <?php echo ($assessDetails[11][0]['grade'] == 4) ? 'selected="selected"' : ''?>>4
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 4) ? 'selected="selected"' : ''?>>4
                             </option>
                             <option value="5"
-                                <?php echo ($assessDetails[11][0]['grade'] == 5) ? 'selected="selected"' : ''?>>5
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 5) ? 'selected="selected"' : ''?>>5
                             </option>
                             <option value="6"
-                                <?php echo ($assessDetails[11][0]['grade'] == 6) ? 'selected="selected"' : ''?>>6
+                                <?php echo (php72_cmp($assessDetails[11][0]['grade']) == 6) ? 'selected="selected"' : ''?>>6
                             </option>
                         </select>
 
@@ -156,10 +156,10 @@ function closeScale(criteria) {
                 </fieldset>
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[12][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[12][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[12][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[12][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Entrepreneur</legend>
                     <p>
@@ -168,22 +168,22 @@ function closeScale(criteria) {
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
-                                <?php echo ($assessDetails[12][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 1) ? 'selected="selected"' : ''?>>1
                             </option>
                             <option value="2"
-                                <?php echo ($assessDetails[12][0]['grade'] == 2) ? 'selected="selected"' : ''?>>2
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 2) ? 'selected="selected"' : ''?>>2
                             </option>
                             <option value="3"
-                                <?php echo ($assessDetails[12][0]['grade'] == 3) ? 'selected="selected"' : ''?>>3
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 3) ? 'selected="selected"' : ''?>>3
                             </option>
                             <option value="4"
-                                <?php echo ($assessDetails[12][0]['grade'] == 4) ? 'selected="selected"' : ''?>>4
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 4) ? 'selected="selected"' : ''?>>4
                             </option>
                             <option value="5"
-                                <?php echo ($assessDetails[12][0]['grade'] == 5) ? 'selected="selected"' : ''?>>5
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 5) ? 'selected="selected"' : ''?>>5
                             </option>
                             <option value="6"
-                                <?php echo ($assessDetails[12][0]['grade'] == 6) ? 'selected="selected"' : ''?>>6
+                                <?php echo (php72_cmp($assessDetails[12][0]['grade']) == 6) ? 'selected="selected"' : ''?>>6
                             </option>
                         </select>
 
@@ -229,10 +229,10 @@ function closeScale(criteria) {
                 </fieldset>
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[13][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[13][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[13][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[13][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Social Impact</legend>
                     <p>
@@ -241,22 +241,22 @@ function closeScale(criteria) {
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
-                                <?php echo ($assessDetails[13][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 1) ? 'selected="selected"' : ''?>>1
                             </option>
                             <option value="2"
-                                <?php echo ($assessDetails[13][0]['grade'] == 2) ? 'selected="selected"' : ''?>>2
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 2) ? 'selected="selected"' : ''?>>2
                             </option>
                             <option value="3"
-                                <?php echo ($assessDetails[13][0]['grade'] == 3) ? 'selected="selected"' : ''?>>3
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 3) ? 'selected="selected"' : ''?>>3
                             </option>
                             <option value="4"
-                                <?php echo ($assessDetails[13][0]['grade'] == 4) ? 'selected="selected"' : ''?>>4
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 4) ? 'selected="selected"' : ''?>>4
                             </option>
                             <option value="5"
-                                <?php echo ($assessDetails[13][0]['grade'] == 5) ? 'selected="selected"' : ''?>>5
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 5) ? 'selected="selected"' : ''?>>5
                             </option>
                             <option value="6"
-                                <?php echo ($assessDetails[13][0]['grade'] == 6) ? 'selected="selected"' : ''?>>6
+                                <?php echo (php72_cmp($assessDetails[13][0]['grade']) == 6) ? 'selected="selected"' : ''?>>6
                             </option>
                         </select>
 
@@ -301,10 +301,10 @@ function closeScale(criteria) {
                 </fieldset>
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[14][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[14][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[14][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[14][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Business Viability</legend>
                     <p>
@@ -313,22 +313,22 @@ function closeScale(criteria) {
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
-                                <?php echo ($assessDetails[14][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 1) ? 'selected="selected"' : ''?>>1
                             </option>
                             <option value="2"
-                                <?php echo ($assessDetails[14][0]['grade'] == 2) ? 'selected="selected"' : ''?>>2
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 2) ? 'selected="selected"' : ''?>>2
                             </option>
                             <option value="3"
-                                <?php echo ($assessDetails[14][0]['grade'] == 3) ? 'selected="selected"' : ''?>>3
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 3) ? 'selected="selected"' : ''?>>3
                             </option>
                             <option value="4"
-                                <?php echo ($assessDetails[14][0]['grade'] == 4) ? 'selected="selected"' : ''?>>4
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 4) ? 'selected="selected"' : ''?>>4
                             </option>
                             <option value="5"
-                                <?php echo ($assessDetails[14][0]['grade'] == 5) ? 'selected="selected"' : ''?>>5
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 5) ? 'selected="selected"' : ''?>>5
                             </option>
                             <option value="6"
-                                <?php echo ($assessDetails[14][0]['grade'] == 6) ? 'selected="selected"' : ''?>>6
+                                <?php echo (php72_cmp($assessDetails[14][0]['grade']) == 6) ? 'selected="selected"' : ''?>>6
                             </option>
                         </select>
 
@@ -373,10 +373,10 @@ function closeScale(criteria) {
                 </fieldset>
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[15][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[15][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[15][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[15][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Scalability</legend>
                     <p>
@@ -385,22 +385,22 @@ function closeScale(criteria) {
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
                             <option value="1"
-                                <?php echo ($assessDetails[15][0]['grade'] == 1) ? 'selected="selected"' : ''?>>1
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 1) ? 'selected="selected"' : ''?>>1
                             </option>
                             <option value="2"
-                                <?php echo ($assessDetails[15][0]['grade'] == 2) ? 'selected="selected"' : ''?>>2
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 2) ? 'selected="selected"' : ''?>>2
                             </option>
                             <option value="3"
-                                <?php echo ($assessDetails[15][0]['grade'] == 3) ? 'selected="selected"' : ''?>>3
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 3) ? 'selected="selected"' : ''?>>3
                             </option>
                             <option value="4"
-                                <?php echo ($assessDetails[15][0]['grade'] == 4) ? 'selected="selected"' : ''?>>4
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 4) ? 'selected="selected"' : ''?>>4
                             </option>
                             <option value="5"
-                                <?php echo ($assessDetails[15][0]['grade'] == 5) ? 'selected="selected"' : ''?>>5
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 5) ? 'selected="selected"' : ''?>>5
                             </option>
                             <option value="6"
-                                <?php echo ($assessDetails[15][0]['grade'] == 6) ? 'selected="selected"' : ''?>>6
+                                <?php echo (php72_cmp($assessDetails[15][0]['grade']) == 6) ? 'selected="selected"' : ''?>>6
                             </option>
                         </select>
 
@@ -445,10 +445,10 @@ function closeScale(criteria) {
                 </fieldset>
                 <fieldset class="step">
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[61][0]['id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[61][0]['id'];?>"
                         name="ass_id[]" />
                     <input type="hidden"
-                        value="<?=(isset($exist) && ($exist==0 || $exist == ''))?'':$assessDetails[61][0]['grading_id'];?>"
+                        value="<?=(isset($exist) && (php72_cmp($exist)==0 || $exist == ''))?'':$assessDetails[61][0]['grading_id'];?>"
                         name="grad_id[]" />
                     <legend>Add Details - Incubation Fit</legend>
                     <p>
@@ -456,17 +456,17 @@ function closeScale(criteria) {
                         <select name="score[]"
                             <?php echo (in_array($this->session->userdata('user_type'),array('admin','ceo','cio')) || (php72_in_array($this->session->userdata('emp_number'),$assigned_incharge))) ? '' : 'disabled="disabled"'?>>
                             <option value="">-- Select --</option>
-                            <option value="1" <?php echo ($assessDetails[61][0]['grade'] == 1) ? 'selected' : ''?>>1
+                            <option value="1" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 1) ? 'selected' : ''?>>1
                             </option>
-                            <option value="2" <?php echo ($assessDetails[61][0]['grade'] == 2) ? 'selected' : ''?>>2
+                            <option value="2" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 2) ? 'selected' : ''?>>2
                             </option>
-                            <option value="3" <?php echo ($assessDetails[61][0]['grade'] == 3) ? 'selected' : ''?>>3
+                            <option value="3" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 3) ? 'selected' : ''?>>3
                             </option>
-                            <option value="4" <?php echo ($assessDetails[61][0]['grade'] == 4) ? 'selected' : ''?>>4
+                            <option value="4" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 4) ? 'selected' : ''?>>4
                             </option>
-                            <option value="5" <?php echo ($assessDetails[61][0]['grade'] == 5) ? 'selected' : ''?>>5
+                            <option value="5" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 5) ? 'selected' : ''?>>5
                             </option>
-                            <option value="6" <?php echo ($assessDetails[61][0]['grade'] == 6) ? 'selected' : ''?>>6
+                            <option value="6" <?php echo (php72_cmp($assessDetails[61][0]['grade']) == 6) ? 'selected' : ''?>>6
                             </option>
                         </select>
 

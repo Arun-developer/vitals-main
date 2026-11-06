@@ -262,15 +262,15 @@ class Application extends CI_Controller {
 		$branch = $this->session->userdata('partner_id');
 		$data['stateLists'] = $this->Minnovation->getState($branch);
 
-        if ($check_app[0]['program'] == 37 || $check_app[0]['program'] == 38 ||  $check_app[0]['program'] == 31|| $check_app[0]['program'] == 0 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 9 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21|| $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23 || $check_app[0]['program'] == 24  || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 26  || $check_app[0]['program'] == 27  || $check_app[0]['program'] == 28 || $check_app[0]['program'] == 29 || $check_app[0]['program'] == 30 || $check_app[0]['program'] == 32)
+        if (php72_cmp($check_app[0]['program']) == 37 || php72_cmp($check_app[0]['program']) == 38 ||  php72_cmp($check_app[0]['program']) == 31|| php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21|| php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 24  || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 26  || php72_cmp($check_app[0]['program']) == 27  || php72_cmp($check_app[0]['program']) == 28 || php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 32)
             $data['basic_information'] = $this->Mapplication->getIncApplicationBasic($id);
-			if($check_app[0]['program'] == 37 ||  $check_app[0]['program'] == 23 || $check_app[0]['program'] == 31||$check_app[0]['program'] == 30 || $check_app[0]['program'] == 32){
+			if(php72_cmp($check_app[0]['program']) == 37 ||  php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 31||php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 32){
 				$data['inv_ent_info'] = $this->Mapplication->getIncApplicationTeam($id);
 			}
-        else if ( $check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7 || $check_app[0]['program'] == 8)
+        else if ( php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7 || php72_cmp($check_app[0]['program']) == 8)
             $data['basic_information'] = $this->Mapplication->getPitchApplicationBasic($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -318,15 +318,15 @@ class Application extends CI_Controller {
         $data['application_id'] = $id;
         $this->load->vars($data);
 
-        if (($check_app[0]['program'] == 0 || $check_app[0]['program'] == 33|| $check_app[0]['program'] == 30 || $check_app[0]['program'] == 24  || $check_app[0]['program'] == 9 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13) && $check_app[0]['partner_id'] == 1 || $check_app[0]['program'] == 14 || $check_app[0]['program'] == 21|| $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23  || $check_app[0]['program'] == 31 || $check_app[0]['program'] == 27  || $check_app[0]['program'] == 25 ||  $check_app[0]['program'] == 34 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 28 ||  $check_app[0]['program'] == 29 || $check_app[0]['program'] == 38) {
+        if ((php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 33|| php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 24  || php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13) && php72_cmp($check_app[0]['partner_id']) == 1 || php72_cmp($check_app[0]['program']) == 14 || php72_cmp($check_app[0]['program']) == 21|| php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23  || php72_cmp($check_app[0]['program']) == 31 || php72_cmp($check_app[0]['program']) == 27  || php72_cmp($check_app[0]['program']) == 25 ||  php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 28 ||  php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 38) {
             $this->load->view('application/incubatee/incubation_basic_info');
-        } else if ($check_app[0]['program'] == 0 && $check_app[0]['partner_id'] == 2) {
+        } else if (php72_cmp($check_app[0]['program']) == 0 && php72_cmp($check_app[0]['partner_id']) == 2) {
             $this->load->view('application/incubatee/kenya_basic_info');
-        } else if ($check_app[0]['program'] == 6 && $check_app[0]['partner_id'] == 1) {
+        } else if (php72_cmp($check_app[0]['program']) == 6 && php72_cmp($check_app[0]['partner_id']) == 1) {
             $this->load->view('application/incubatee/ubs_basic_info');
-        } else if ($check_app[0]['program'] == 32) {
+        } else if (php72_cmp($check_app[0]['program']) == 32) {
              $this->load->view('application/incubatee/incubation_basic_info_common');
-        } else if ($check_app[0]['program'] == 37) {
+        } else if (php72_cmp($check_app[0]['program']) == 37) {
              $this->load->view('application/incubatee/water_lab_basic_info');
         }  else {
             if ($this->uri->segment(4) == 'hi') {
@@ -434,16 +434,16 @@ class Application extends CI_Controller {
 		
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 37 || $check_app[0]['program'] == 38 ||  $check_app[0]['program'] == 32 || $check_app[0]['program'] == 30 ||  $check_app[0]['program'] == 0 ||  $check_app[0]['program'] == 33 || $check_app[0]['program'] == 9 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23 ||  $check_app[0]['program'] == 31 || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 25  || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 28 || $check_app[0]['program'] == 29)
+        if (php72_cmp($check_app[0]['program']) == 37 || php72_cmp($check_app[0]['program']) == 38 ||  php72_cmp($check_app[0]['program']) == 32 || php72_cmp($check_app[0]['program']) == 30 ||  php72_cmp($check_app[0]['program']) == 0 ||  php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23 ||  php72_cmp($check_app[0]['program']) == 31 || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 25  || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 28 || php72_cmp($check_app[0]['program']) == 29)
             $data['team_information'] = $this->Mapplication->getIncApplicationTeam($id);
-        else if ($check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7 || $check_app[0]['program'] == 8)
+        else if (php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7 || php72_cmp($check_app[0]['program']) == 8)
             $data['team_information'] = $this->Mapplication->getPitchApplicationTeam($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
-		if($check_app[0]['program'] == 38){
+		if(php72_cmp($check_app[0]['program']) == 38){
 			 $data['basic_information'] = $this->Mapplication->getIncApplicationBasic($id);
 		}
 
@@ -490,12 +490,12 @@ class Application extends CI_Controller {
             $data['lang_code'] = 'hi';
         }
         $this->load->vars($data);
-        if ($check_app[0]['program'] == 37 ||  $check_app[0]['program'] == 38  || $check_app[0]['program'] == 0 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 30 || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34  || $check_app[0]['program'] == 9  || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23  || $check_app[0]['program'] == 31|| $check_app[0]['program'] == 27|| $check_app[0]['program'] == 26 || $check_app[0]['program'] == 29 || $check_app[0]['program'] == 28 ) {
+        if (php72_cmp($check_app[0]['program']) == 37 ||  php72_cmp($check_app[0]['program']) == 38  || php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34  || php72_cmp($check_app[0]['program']) == 9  || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23  || php72_cmp($check_app[0]['program']) == 31|| php72_cmp($check_app[0]['program']) == 27|| php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 28 ) {
            
 		   $this->load->view('application/incubatee/incubation_team_info');
-        } else if ($check_app[0]['program'] == 6) {
+        } else if (php72_cmp($check_app[0]['program']) == 6) {
             $this->load->view('application/incubatee/ubs_team_info');
-        }else if ($check_app[0]['program'] == 32) {
+        }else if (php72_cmp($check_app[0]['program']) == 32) {
             $this->load->view('application/incubatee/incubation_team_info_common');
         } else {
             if ($this->uri->segment(4) == 'hi') {
@@ -578,14 +578,14 @@ class Application extends CI_Controller {
 		
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 32 || $check_app[0]['program'] == 38 || $check_app[0]['program'] == 37  || $check_app[0]['program'] == 30 ||$check_app[0]['program'] == 0 ||$check_app[0]['program'] == 33 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23  || $check_app[0]['program'] == 31  || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34  || $check_app[0]['program'] == 29 || $check_app[0]['program'] == 28 )
+        if (php72_cmp($check_app[0]['program']) == 32 || php72_cmp($check_app[0]['program']) == 38 || php72_cmp($check_app[0]['program']) == 37  || php72_cmp($check_app[0]['program']) == 30 ||php72_cmp($check_app[0]['program']) == 0 ||php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23  || php72_cmp($check_app[0]['program']) == 31  || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34  || php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 28 )
             $data['enterprise_information'] = $this->Mapplication->getIncApplicationEnterprise($id);
-        else if ($check_app[0]['program'] == 9)
+        else if (php72_cmp($check_app[0]['program']) == 9)
             $data['enterprise_information'] = $this->Mapplication->getAFDapplicationEnterprise($id);
-        else if ($check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7)
+        else if (php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7)
             $data['enterprise_information'] = $this->Mapplication->getPitchApplicationEnterprise($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -638,10 +638,10 @@ class Application extends CI_Controller {
         }
         $this->load->vars($data);
 		
-		if($check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23  || $check_app[0]['program'] == 31  || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34 ){
+		if(php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23  || php72_cmp($check_app[0]['program']) == 31  || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34 ){
 			 $this->load->view('application/incubatee/cisco_enterprise_info'); return false;
 		}
-        if ($check_app[0]['program'] == 0 || $check_app[0]['program'] == 38 ||$check_app[0]['program'] == 33  || $check_app[0]['program'] == 30 ||  $check_app[0]['program'] == 24 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 28  || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 29 ) {
+        if (php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 38 ||php72_cmp($check_app[0]['program']) == 33  || php72_cmp($check_app[0]['program']) == 30 ||  php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 28  || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 29 ) {
 			
 			/* if($this->session->userdata('emp_number') =='275'){
 				$this->load->view('application/incubatee/incubation_enterprise_info_test');
@@ -650,13 +650,13 @@ class Application extends CI_Controller {
 			} */
 			$this->load->view('application/incubatee/incubation_enterprise_info');
             
-        } else if ($check_app[0]['program'] == 9) {
+        } else if (php72_cmp($check_app[0]['program']) == 9) {
             $this->load->view('application/incubatee/afd_entity');
-        } else if ($check_app[0]['program'] == 10) {
+        } else if (php72_cmp($check_app[0]['program']) == 10) {
             $this->load->view('application/incubatee/tanseed_entity');
-        } else if ($check_app[0]['program'] == 6) {
+        } else if (php72_cmp($check_app[0]['program']) == 6) {
             $this->load->view('application/incubatee/ubs_enterprise_info');
-        }else if ($check_app[0]['program'] == 32 || $check_app[0]['program'] == 37) {
+        }else if (php72_cmp($check_app[0]['program']) == 32 || php72_cmp($check_app[0]['program']) == 37) {
             $this->load->view('application/incubatee/incubation_enterprise_info_common');
         } else {
             if ($this->uri->segment(4) == 'hi') {
@@ -768,11 +768,11 @@ class Application extends CI_Controller {
 	 public function about_business($id) {
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 14 || $check_app[0]['program'] == 21 ||  $check_app[0]['program'] == 22)
+        if (php72_cmp($check_app[0]['program']) == 14 || php72_cmp($check_app[0]['program']) == 21 ||  php72_cmp($check_app[0]['program']) == 22)
             $data['innovation_information'] = $this->Mapplication->getIncApplicationInnovation($id);
-        else if ($check_app[0]['program'] == 9 || $check_app[0]['program'] == 10)
+        else if (php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10)
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -820,7 +820,7 @@ class Application extends CI_Controller {
         }
         $this->load->vars($data);
 
-        if ( $check_app[0]['program'] == 14 || $check_app[0]['program'] == 21 ||  $check_app[0]['program'] == 22) {
+        if ( php72_cmp($check_app[0]['program']) == 14 || php72_cmp($check_app[0]['program']) == 21 ||  php72_cmp($check_app[0]['program']) == 22) {
             $this->load->view('application/incubatee/cico_innovation_info');
         } 
     }
@@ -828,14 +828,14 @@ class Application extends CI_Controller {
     public function innovation_info($id) {
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 37 || $check_app[0]['program'] == 38 ||  $check_app[0]['program'] == 0 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 30 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23 || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34  || $check_app[0]['program'] == 29)
+        if (php72_cmp($check_app[0]['program']) == 37 || php72_cmp($check_app[0]['program']) == 38 ||  php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34  || php72_cmp($check_app[0]['program']) == 29)
             $data['innovation_information'] = $this->Mapplication->getIncApplicationInnovation($id);
-        else if ($check_app[0]['program'] == 9 || $check_app[0]['program'] == 10)
+        else if (php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10)
             $data['innovation_information'] = $this->Mapplication->getAFDapplicationInnovation($id);
-        else if ($check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7)
+        else if (php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7)
             $data['innovation_information'] = $this->Mapplication->getPitchApplicationInnovation($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -885,15 +885,15 @@ class Application extends CI_Controller {
 
          
 
-        if ($check_app[0]['program'] == 0 || $check_app[0]['program'] == 38 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 30 || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14|| $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 29) {
+        if (php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 38 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14|| php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 29) {
             $this->load->view('application/incubatee/incubation_innovation_info');
-        } else if ($check_app[0]['program'] == 9) {
+        } else if (php72_cmp($check_app[0]['program']) == 9) {
             $this->load->view('application/incubatee/afd_organisation');
-        } else if ($check_app[0]['program'] == 10) {
+        } else if (php72_cmp($check_app[0]['program']) == 10) {
             $this->load->view('application/incubatee/tanseed_organisation');
-        } else if ($check_app[0]['program'] == 6) {
+        } else if (php72_cmp($check_app[0]['program']) == 6) {
             $this->load->view('application/incubatee/ubs_innovation_info');
-        }else if ($check_app[0]['program'] == 37) {
+        }else if (php72_cmp($check_app[0]['program']) == 37) {
             $this->load->view('application/incubatee/water_lab_innovation_info');
         }  else {
             if ($this->uri->segment(4) == 'hi') {
@@ -910,7 +910,7 @@ class Application extends CI_Controller {
         $check_app = $this->Mapplication->getApplicationType($id);
         $data['innovation_information'] = $this->Mapplication->getIncApplicationInnovation($id);
 		 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -1001,12 +1001,12 @@ class Application extends CI_Controller {
 		public function gmt_info($id) {
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 0 || $check_app[0]['program'] == 24 ||$check_app[0]['program'] == 9 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14 || $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22|| $check_app[0]['program'] == 23 || $check_app[0]['program'] == 25  || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 40)
+        if (php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 24 ||php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14 || php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22|| php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 25  || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 40)
             $data['additional_information'] = $this->Mapplication->getIncApplicationAdditional_gmt($id);
-        else if ($check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7)
+        else if (php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7)
             $data['additional_information'] = $this->Mapplication->getPitchApplicationAdditional($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
@@ -1060,17 +1060,17 @@ class Application extends CI_Controller {
     public function additional_info($id) {//competition_name
         $emp_id = $this->session->userdata('emp_number');
         $check_app = $this->Mapplication->getApplicationType($id);
-        if ($check_app[0]['program'] == 32 ||$check_app[0]['program'] == 38 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 0 || $check_app[0]['program'] == 9 || $check_app[0]['program'] == 30 || $check_app[0]['program'] == 10 || $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13 || $check_app[0]['program'] == 14  || $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23  || $check_app[0]['program'] == 31 || $check_app[0]['program'] == 24 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 29 || $check_app[0]['program'] == 28 || $check_app[0]['program'] == 40 )
+        if (php72_cmp($check_app[0]['program']) == 32 ||php72_cmp($check_app[0]['program']) == 38 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 0 || php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 30 || php72_cmp($check_app[0]['program']) == 10 || php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13 || php72_cmp($check_app[0]['program']) == 14  || php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23  || php72_cmp($check_app[0]['program']) == 31 || php72_cmp($check_app[0]['program']) == 24 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 28 || php72_cmp($check_app[0]['program']) == 40 )
             $data['additional_information'] = $this->Mapplication->getIncApplicationAdditional($id);
-        else if ($check_app[0]['program'] == 3 || $check_app[0]['program'] == 5 || $check_app[0]['program'] == 6 || $check_app[0]['program'] == 7)
+        else if (php72_cmp($check_app[0]['program']) == 3 || php72_cmp($check_app[0]['program']) == 5 || php72_cmp($check_app[0]['program']) == 6 || php72_cmp($check_app[0]['program']) == 7)
             $data['additional_information'] = $this->Mapplication->getPitchApplicationAdditional($id);
 
-        if ($this->session->userdata('role_id') == '4' && $this->session->userdata('independent_shortlist') == 1) {
+        if ($this->session->userdata('role_id') == '4' && php72_cmp($this->session->userdata('independent_shortlist')) == 1) {
             $get_shortlist = $this->Mportfolio->getShortlistStatus($emp_id, $id);
             $shortlist_status = isset($get_shortlist['application_status']) && $get_shortlist['application_status'] != '' ? $get_shortlist['application_status'] : '12';
         }
 		
-		if ($check_app[0]['program'] == 37){
+		if (php72_cmp($check_app[0]['program']) == 37){
 			$data['additional_information'] = $this->Mapplication->getIncApplicationAdditional_gmt($id);  
 		}
 		   
@@ -1120,15 +1120,15 @@ class Application extends CI_Controller {
         $this->load->vars($data);
 
 
-        if (($check_app[0]['program'] == 37 ||$check_app[0]['program'] == 38 || $check_app[0]['program'] == 33 || $check_app[0]['program'] == 0 ||  $check_app[0]['program'] == 30  || $check_app[0]['program'] == 24 ||  $check_app[0]['program'] == 11 || $check_app[0]['program'] == 12 || $check_app[0]['program'] == 13) && $check_app[0]['partner_id'] == 1 || $check_app[0]['program'] == 14  || $check_app[0]['program'] == 21 || $check_app[0]['program'] == 22 || $check_app[0]['program'] == 23 || $check_app[0]['program'] == 31 || $check_app[0]['program'] == 27 || $check_app[0]['program'] == 26 || $check_app[0]['program'] == 25 || $check_app[0]['program'] == 34 || $check_app[0]['program'] == 29 || $check_app[0]['program'] == 28 ) {
+        if ((php72_cmp($check_app[0]['program']) == 37 ||php72_cmp($check_app[0]['program']) == 38 || php72_cmp($check_app[0]['program']) == 33 || php72_cmp($check_app[0]['program']) == 0 ||  php72_cmp($check_app[0]['program']) == 30  || php72_cmp($check_app[0]['program']) == 24 ||  php72_cmp($check_app[0]['program']) == 11 || php72_cmp($check_app[0]['program']) == 12 || php72_cmp($check_app[0]['program']) == 13) && php72_cmp($check_app[0]['partner_id']) == 1 || php72_cmp($check_app[0]['program']) == 14  || php72_cmp($check_app[0]['program']) == 21 || php72_cmp($check_app[0]['program']) == 22 || php72_cmp($check_app[0]['program']) == 23 || php72_cmp($check_app[0]['program']) == 31 || php72_cmp($check_app[0]['program']) == 27 || php72_cmp($check_app[0]['program']) == 26 || php72_cmp($check_app[0]['program']) == 25 || php72_cmp($check_app[0]['program']) == 34 || php72_cmp($check_app[0]['program']) == 29 || php72_cmp($check_app[0]['program']) == 28 ) {
             $this->load->view('application/incubatee/incubation_additional_info');
-        } else if (($check_app[0]['program'] == 9 || $check_app[0]['program'] == 10) && $check_app[0]['partner_id'] == 1) {
+        } else if ((php72_cmp($check_app[0]['program']) == 9 || php72_cmp($check_app[0]['program']) == 10) && php72_cmp($check_app[0]['partner_id']) == 1) {
             $this->load->view('application/incubatee/afd_document');
-        } else if ($check_app[0]['program'] == 0 && $check_app[0]['partner_id'] == 2) {
+        } else if (php72_cmp($check_app[0]['program']) == 0 && php72_cmp($check_app[0]['partner_id']) == 2) {
             $this->load->view('application/incubatee/kenya_additional_info');
-        } else if ($check_app[0]['program'] == 6 && $check_app[0]['partner_id'] == 1) {
+        } else if (php72_cmp($check_app[0]['program']) == 6 && php72_cmp($check_app[0]['partner_id']) == 1) {
             $this->load->view('application/incubatee/ubs_additional_info');
-        }else if($check_app[0]['program'] == 32) {
+        }else if(php72_cmp($check_app[0]['program']) == 32) {
            $this->load->view('application/incubatee/incubation_additional_info_common');
         } else {
             if ($this->uri->segment(4) == 'hi') {
@@ -1359,12 +1359,12 @@ class Application extends CI_Controller {
 
             if (in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio'))) {
                 $data['exist'] = $this->Massessment->checkassessexist($id, $this->session->userdata('emp_number'));
-                if ($data['exist'] == 0 || $data['exist'] == '') {
+                if (php72_cmp($data['exist']) == 0 || $data['exist'] == '') {
                     $no_assigned = php72_count($assigned_incharge);
                     if ($no_assigned > 1) {
                         foreach ($assigned_incharge as $incharge) {
                             $assign_exist = $this->Massessment->checkassessexist($id, $incharge);
-                            if ($assign_exist != 0) {
+                            if (php72_cmp($assign_exist) != 0) {
                                 $assigned_incharge[0] = $incharge;
                                 break;
                             }
@@ -1411,7 +1411,7 @@ class Application extends CI_Controller {
         $assessor_emp = array();
         $i = 0;
         foreach ($status as $stat) {
-            if ($stat == 1) {
+            if (php72_cmp($stat) == 1) {
                 if (!empty($employee)) {
                     $assessor_emp[] = $employee[$i];
                 }
@@ -1690,7 +1690,7 @@ class Application extends CI_Controller {
         $risk = serialize($risk_string);
         $table = "assest_detail";
 
-        if ($_POST['total_score'] != '' || $check_main > 0 || $check_individual > 0) {
+        if ($_POST['total_score'] != '' || php72_cmp($check_main) > 0 || $check_individual > 0) {
             $score_enter = '1';
         } else {
             $score_enter = '0';
@@ -2049,9 +2049,9 @@ class Application extends CI_Controller {
                 $invID = 'INV' . $ids;
                 $innv_pool = $this->Mdiligence->get_data('innovation_pool', $invID);
                 $mem_data = array();
-                if ($innv_pool[0]['program'] == 0) {
+                if (php72_cmp($innv_pool[0]['program']) == 0) {
                     $mem_data = $this->Mdiligence->getManageIncub($invID);
-                } else if ($innv_pool[0]['program'] == 3 || $innv_pool[0]['program'] == 4 || $innv_pool[0]['program'] == 6) {
+                } else if (php72_cmp($innv_pool[0]['program']) == 3 || php72_cmp($innv_pool[0]['program']) == 4 || php72_cmp($innv_pool[0]['program']) == 6) {
                     $mem_data = $this->Mdiligence->getManagePitch($invID);
                 }
 
@@ -2147,7 +2147,7 @@ class Application extends CI_Controller {
                     $org = array('#name_of_entrepreneur#', '#applied_date#');
                     $replace = array($details[0]['name_of_entrepreneur'], $strip);
                     $messageBody = str_replace($org, $replace, $mail_template);
-                    if ($partner_id == 1) {
+                    if (php72_cmp($partner_id) == 1) {
                         $body = $this->imgUrl($messageBody);
                     } else {
                         $body = $messageBody;
@@ -2515,10 +2515,10 @@ class Application extends CI_Controller {
     public function diligence_company_data($id = '') {
         $invID = 'INV' . $id;
         $innv_pool = $this->Mdiligence->get_data('innovation_pool', $invID);
-        if ($innv_pool[0]['program'] == 0) {
+        if (php72_cmp($innv_pool[0]['program']) == 0) {
             $data['main_data'] = $this->Mdiligence->getMainIncub($invID);
             $data['mem_data'] = $this->Mdiligence->getManageIncub($invID);
-        } else if ($innv_pool[0]['program'] == 3 || $innv_pool[0]['program'] == 4 || $innv_pool[0]['program'] == 6) {
+        } else if (php72_cmp($innv_pool[0]['program']) == 3 || php72_cmp($innv_pool[0]['program']) == 4 || php72_cmp($innv_pool[0]['program']) == 6) {
             $data['main_data'] = $this->Mdiligence->getMainPitch($invID);
             $data['mem_data'] = $this->Mdiligence->getManagePitch($invID);
         }
@@ -3008,17 +3008,17 @@ class Application extends CI_Controller {
         $send_data = 0;
 
         foreach ($_POST['doc_type'] as $type) {
-            if ($type == 1) {
+            if (php72_cmp($type) == 1) {
                 $this->dd_document_type($inv_id, $type, $_POST['signed_desc'], 'signed_file', $_FILES['signed_file'], $_POST['old_signed_file']);
-            } else if ($type == 2) {
+            } else if (php72_cmp($type) == 2) {
                 $this->dd_document_type($inv_id, $type, $_POST['quest_desc'], 'quest_file', $_FILES['quest_file'], $_POST['old_quest_file']);
-            } else if ($type == 3) {
+            } else if (php72_cmp($type) == 3) {
                 $this->dd_document_type($inv_id, $type, $_POST['term_desc'], 'term_file', $_FILES['term_file'], $_POST['old_term_file']);
-            } else if ($type == 4) {
+            } else if (php72_cmp($type) == 4) {
                 $this->dd_document_type($inv_id, $type, $_POST['service_desc'], 'service_file', $_FILES['service_file'], $_POST['old_service_file']);
-            } else if ($type == 5) {
+            } else if (php72_cmp($type) == 5) {
                 $this->dd_document_type($inv_id, $type, $_POST['comp_desc'], 'comp_file', $_FILES['comp_file'], $_POST['old_comp_file']);
-            } else if ($type == 6) {
+            } else if (php72_cmp($type) == 6) {
                 $this->dd_document_type($inv_id, $type, $_POST['villgro_desc'], 'villgro_file', $_FILES['villgro_file'], $_POST['old_villgro_file']);
             }
             $send_data = 1;
@@ -5300,7 +5300,7 @@ class Application extends CI_Controller {
                 $data['associate_employee'] = $option['associate_employee'] = $_POST['select_assign'][$i];
                 $data['status'] = '1';
                 $checkExist = $this->Mportfolio->getDetails('assign_associate', $option);
-                if (php72_count($checkExist) > 0 && $checkExist[0]['status'] == 0) {
+                if (php72_count($checkExist) > 0 && php72_cmp($checkExist[0]['status']) == 0) {
                     $data['modified_by'] = $this->session->userdata('emp_number');
                     $query = $this->Mportfolio->updatePortfolioDetail('assign_associate', $data, $option);
                 } else {

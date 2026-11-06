@@ -143,7 +143,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                              }
                              ?></li>
                              <?php
-                             if ($this->session->userdata('independent_shortlist') != 1 || $this->session->userdata('role_id') != 4) {
+                             if (php72_cmp($this->session->userdata('independent_shortlist')) != 1 || php72_cmp($this->session->userdata('role_id')) != 4) {
                                 ?>
                                 <li><strong>Status</strong> : <?= $status[$innovationDetails[0]['status']]; ?></li>
                             <?php } ?>
@@ -177,7 +177,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                         } else if ($innovationDetails[0]['status'] == '3') {
                             $empName = $this->Sector_model->getEmployeeNameByID($innovation['modified_by']);
                             $cmnts = isset($innovation['comments']) && $innovation['comments'] != '' ? $innovation['comments'] : '-N/A-';
-                            if ($this->session->userdata('independent_shortlist') != 1 || $this->session->userdata('role_id') != 4) {
+                            if (php72_cmp($this->session->userdata('independent_shortlist')) != 1 || php72_cmp($this->session->userdata('role_id')) != 4) {
                                 ?>
                                 <ul class="inv-detail-status">
                                     <li><strong>Reason</strong> : <?php echo $innovationDetails[0]['reasons_title']; ?></li>
@@ -248,7 +248,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                     <td style="border-right:thick solid #fff;">Gender of Applicant</td>
                                     <td><?= ucfirst($row['gender']); ?></td>
                                 </tr>
-                                <?php if ($row['application_type'] == 2) { ?>
+                                <?php if (php72_cmp($row['application_type']) == 2) { ?>
                                     <tr class="odd">
                                         <td>What is your enterprise registered as</td>
                                         <td><?= $row['enterprise_registered_under']; ?></td>
@@ -274,7 +274,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 </td>
 </tr>
 
-<?php if ($row['application_type'] == 2) { ?>
+<?php if (php72_cmp($row['application_type']) == 2) { ?>
     <tr class="even">
         <td>Components</td>
         <?php
@@ -430,7 +430,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
         $subsectorName = Mincharge::getSubsectorName($pitch_org[0]['sub_sector']);
         ?>
         <?php
-        if ($row['application_type'] != 2) {
+        if (php72_cmp($row['application_type']) != 2) {
             if (@$pitch_info[0]['ent_type'] == 'profit') {
                 $ent_type = 'For-profit Organization';
             } else {
@@ -522,7 +522,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
             ?></td>
         </tr>
 
-        <?php if ($row['application_type'] != 2) { ?>
+        <?php if (php72_cmp($row['application_type']) != 2) { ?>
             <tr class="even">
                 <td width="30%" style="border-right:thick solid #fff;">Sub Sector</td>
                 <td width="60%"><?php
@@ -592,7 +592,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
 
 
 
-                            <?php if ($row['application_type'] == 2) { ?>
+                            <?php if (php72_cmp($row['application_type']) == 2) { ?>
                                 <tr class="odd">
                                     <td width="30%" style="border-right:thick solid #fff;">Describe your organization's inclusion strategies be it in the case of gender, marginalised communities, or other deprived sections of the society. </td>
                                     <td width="60%"><?php echo nl2br(@$pitch_org[0]['inclusion_strategy']); ?></td>
@@ -672,7 +672,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                             <?php } ?>
 
 
-                            <?php if ($row['application_type'] == 2) { ?>
+                            <?php if (php72_cmp($row['application_type']) == 2) { ?>
                                 <tr class="odd">
                                     <td width="30%" style="border-right:thick solid #fff;">Revenue of company: 2015-16</td>
                                     <?php $fy_15 = isset($pitch_org[0]['fy_15_16']) && $pitch_org[0]['fy_15_16'] != '' ? $pitch_org[0]['fy_15_16'] : '0'; ?>
@@ -701,7 +701,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
     <td width="30%" style="border-right:thick solid #fff; width:50%;">When did you last raise funding/ win a grant? Please specify month & year. Also specify the source of funding. </td>
     <td width="60%"><?php echo nl2br(@$pitch_org[0]['last_fund_desc']); ?></td>
 </tr> -->
-<?php if ($row['application_type'] != 2) { ?>
+<?php if (php72_cmp($row['application_type']) != 2) { ?>
                                                                                         <!--  <tr class="odd">
                                                                                         <td width="30%" style="border-right:thick solid #fff;">Have you won a prize, recognition, award for your incubatee? If yes, please mention it.</td>
                                                                                         <td width="60%"><?php echo nl2br(@$pitch_org[0]['awards']); ?></td>
@@ -789,7 +789,7 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                                     <td width="60%"><?php echo $abtVill; ?><?php echo $implode_info . '' . $other_org_name; ?></td>
                                                                                 </tr>
                                                                                 <?php
-                                                                                if ($row['application_type'] == 2) {
+                                                                                if (php72_cmp($row['application_type']) == 2) {
                                                                                     $doc_path = host_url() . 'poweringlivelihoods/';
                                                                                 } else {
                                                                                     $doc_path = host_url() . 'pitchform/';
@@ -913,15 +913,15 @@ if (((in_array($this->session->userdata('user_type'), array('admin', 'ceo', 'cio
                                                                             foreach ($shortlist_comment as $commentlist) {
 
                                                                                 $emp_name = $this->Minnovation->getUsername($commentlist['created_by']);
-                                                                                if ($commentlist['application_status'] == 12) {
+                                                                                if (php72_cmp($commentlist['application_status']) == 12) {
                                                                                     $app_status = 'Open';
-                                                                                } else if ($commentlist['application_status'] == 3) {
+                                                                                } else if (php72_cmp($commentlist['application_status']) == 3) {
                                                                                     $app_status = 'Closed';
-                                                                                } else if ($commentlist['application_status'] == 2) {
+                                                                                } else if (php72_cmp($commentlist['application_status']) == 2) {
                                                                                     $app_status = 'On Hold';
-                                                                                } else if ($commentlist['application_status'] == 25) {
+                                                                                } else if (php72_cmp($commentlist['application_status']) == 25) {
                                                                                     $app_status = 'Shortlisted';
-                                                                                } else if ($commentlist['application_status'] == 26) {
+                                                                                } else if (php72_cmp($commentlist['application_status']) == 26) {
                                                                                     $app_status = 'Selected';
                                                                                 }
                                                                                 ?>

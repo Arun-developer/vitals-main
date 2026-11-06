@@ -48,7 +48,7 @@ class Pending_inputs extends CI_Controller {
         $arr = php72_array_search($cur_month, $getmonth);
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -130,7 +130,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -163,13 +163,13 @@ class Pending_inputs extends CI_Controller {
         $actualMonth = $this->actual_month();
         $arr = php72_array_search($cur_month, $getmonth);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -292,7 +292,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -303,13 +303,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -424,7 +424,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -435,13 +435,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -555,7 +555,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -566,13 +566,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -690,7 +690,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -701,13 +701,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -825,7 +825,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -836,13 +836,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -935,7 +935,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -946,13 +946,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1042,7 +1042,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1053,13 +1053,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1224,7 +1224,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1235,13 +1235,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1335,7 +1335,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1346,13 +1346,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1454,7 +1454,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1465,13 +1465,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1564,7 +1564,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1575,13 +1575,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1684,7 +1684,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1695,13 +1695,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -1743,7 +1743,7 @@ class Pending_inputs extends CI_Controller {
 
         $plan = $nontap_plan[0];
         $data['plan_count'] = $plan_count = isset($plan) ? php72_count($nontap_plan) : 0;
-        if ($plan_count == 0) {
+        if (php72_cmp($plan_count) == 0) {
             $service['inv_id'] = $id;
             $service['financial_year'] = $f_year;
             $service['status'] = 1;
@@ -1806,7 +1806,7 @@ class Pending_inputs extends CI_Controller {
 
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1918,7 +1918,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -1929,13 +1929,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -2061,7 +2061,7 @@ class Pending_inputs extends CI_Controller {
         $partner_id = $this->session->userdata('partner_id');
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
@@ -2072,13 +2072,13 @@ class Pending_inputs extends CI_Controller {
 
         $data['pending_plans'] = $this->pending_plans($id, $month);
 
-        for ($i = ($arr - 1); $i >= 0; $i--) {
+        for ($i = ($arr - 1); php72_cmp($i) >= 0; $i--) {
             $derivemonth[] = php72_array_search($getmonth[$i], $actualMonth);
             $monthName[] = $getmonth[$i];
         }
 
         $get_current_month = date('n');
-        if ($get_current_month == 1)
+        if (php72_cmp($get_current_month) == 1)
             $last_month = '12';
         else
             $last_month = date('n') - 1;
@@ -2170,7 +2170,7 @@ class Pending_inputs extends CI_Controller {
         $data['fin_year'] = $this->Mportfolio->getAllFinancialYear($partner_id);
         $f_year = date('Y');
         foreach ($data['fin_year'] as $fy) {
-            if ($fy['status'] == 1) {
+            if (php72_cmp($fy['status']) == 1) {
                 $f_year = $fy['fin_year'];
             }
         }
