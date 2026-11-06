@@ -923,11 +923,11 @@ class Portfolioui extends CI_Controller {
         $grad_q4 = str_replace(',', '', $master_list[0]['grad_q4']);
         $grad_q5 = str_replace(',', '', $master_list[0]['grad_annual']);
 
-        $target[0] = $exit_q1 + $grad_q1;
-        $target[1] = $exit_q2 + $grad_q2;
-        $target[2] = $exit_q3 + $grad_q3;
-        $target[3] = $exit_q4 + $grad_q4;
-        $target[4] = $exit_q5 + $grad_q5;
+        $target[0] = php72_num($exit_q1) + php72_num($grad_q1);
+        $target[1] = php72_num($exit_q2) + php72_num($grad_q2);
+        $target[2] = php72_num($exit_q3) + php72_num($grad_q3);
+        $target[3] = php72_num($exit_q4) + php72_num($grad_q4);
+        $target[4] = php72_num($exit_q5) + php72_num($grad_q5);
 
         $actual[0] = $total_list[0]['q1'];
         $actual[1] = $total_list[0]['q2'];
@@ -1076,7 +1076,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -1125,7 +1125,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['value']);
                                 $rev_cost = str_replace(',', '', $result['value']);
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['value']) && $value['value'] != '' ? str_replace(',', '', $value['value']) : 0;
                             }
@@ -1210,7 +1210,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -1265,7 +1265,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['value']);
                                 $rev_cost = str_replace(',', '', $result['value']);
-                                $fetch_target[$m]['actual'] += $actual_cost;
+                                $fetch_target[$m]['actual'] += php72_num($actual_cost);
                             } else {
                                 $fetch_target[$m]['actual'] = isset($value['value']) && $value['value'] != '' ? str_replace(',', '', $value['value']) : 0;
                             }
@@ -1287,8 +1287,8 @@ class Portfolioui extends CI_Controller {
                 foreach ($quarter_group[$q] as $value) {
                     $inc = $q + 1;
                     $categories[$q] = $value['name'];
-                    $hc_target[$q] += $value['target'];
-                    $hc_actual[$q] += $value['actual'];
+                    $hc_target[$q] += php72_num($value['target']);
+                    $hc_actual[$q] += php72_num($value['actual']);
                 }
             }
         } else {
@@ -1315,25 +1315,25 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['value']);
                         foreach ($get_data as $key => $value) {
                             if (php72_in_array($key, $q1)) {
-                                $q1_val += str_replace(',', '', $value);
+                                $q1_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[0] = $q1_val;
                             }
                             if (php72_in_array($key, $q2)) {
-                                $q2_val += str_replace(',', '', $value);
+                                $q2_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[1] = $q2_val;
                             }
                             if (php72_in_array($key, $q3)) {
-                                $q3_val += str_replace(',', '', $value);
+                                $q3_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[2] = $q3_val;
                             }
                             if (php72_in_array($key, $q4)) {
-                                $q4_val += str_replace(',', '', $value);
+                                $q4_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[3] = $q4_val;
                             }
                         }
                     }
 
-                    $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+                    $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
@@ -1354,7 +1354,7 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['value']);
                         $k = 0;
                         foreach ($main_quarter as $key => $value) {
-                            $target_month_value[$value] += str_replace(',', '', $get_data->$value);
+                            $target_month_value[$value] += php72_num(str_replace(',', '', $get_data->$value));
                             $categories[$k] = $value;
                             $hc_actual[$k] = '0';
                             $k++;
@@ -1405,19 +1405,19 @@ class Portfolioui extends CI_Controller {
                 if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($sales_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
-                            $a1_val += str_replace(',', '', $actual['value']);
+                            $a1_val += php72_num(str_replace(',', '', $actual['value']));
                             $hc_actual[0] = $a1_val;
                         }
                         if (in_array($actual['month'], $q2_key)) {
-                            $a2_val += str_replace(',', '', $actual['value']);
+                            $a2_val += php72_num(str_replace(',', '', $actual['value']));
                             $hc_actual[1] = $a2_val;
                         }
                         if (in_array($actual['month'], $q3_key)) {
-                            $a3_val += str_replace(',', '', $actual['value']);
+                            $a3_val += php72_num(str_replace(',', '', $actual['value']));
                             $hc_actual[2] = $a3_val;
                         }
                         if (in_array($actual['month'], $q4_key)) {
-                            $a4_val += str_replace(',', '', $actual['value']);
+                            $a4_val += php72_num(str_replace(',', '', $actual['value']));
                             $hc_actual[3] = $a4_val;
                         }
                     }
@@ -1428,7 +1428,7 @@ class Portfolioui extends CI_Controller {
                     foreach ($sales_actual as $actual) {
                         foreach ($main_quarter as $key => $value) {
                             if ($key == $actual['month']) {
-                                $actual_month_value[$value] += str_replace(',', '', $actual['value']);
+                                $actual_month_value[$value] += php72_num(str_replace(',', '', $actual['value']));
                             }
                         }
                     }
@@ -1593,7 +1593,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -1641,7 +1641,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['revenue']);
                                 $rev_cost = str_replace(',', '', $result['revenue']);
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['revenue']) && $value['revenue'] != '' ? str_replace(',', '', $value['revenue']) : 0;
                             }
@@ -1717,7 +1717,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -1773,7 +1773,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['revenue']);
                                 $rev_cost = str_replace(',', '', $result['revenue']);
-                                $fetch_target[$m]['actual'] += $actual_cost;
+                                $fetch_target[$m]['actual'] += php72_num($actual_cost);
                             } else {
                                 $fetch_target[$m]['actual'] = isset($value['revenue']) && $value['revenue'] != '' ? str_replace(',', '', $value['revenue']) : 0;
                             }
@@ -1795,8 +1795,8 @@ class Portfolioui extends CI_Controller {
                 foreach ($quarter_group[$q] as $value) {
                     $inc = $q + 1;
                     $categories[$q] = $value['name'];
-                    $hc_target[$q] += $value['target'];
-                    $hc_actual[$q] += $value['actual'];
+                    $hc_target[$q] += php72_num($value['target']);
+                    $hc_actual[$q] += php72_num($value['actual']);
                 }
             }
         } else {
@@ -1815,24 +1815,24 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
                             if (php72_in_array($key, $q1)) {
-                                $q1_val += str_replace(',', '', $value);
+                                $q1_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[0] = $q1_val;
                             }
                             if (php72_in_array($key, $q2)) {
-                                $q2_val += str_replace(',', '', $value);
+                                $q2_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[1] = $q2_val;
                             }
                             if (php72_in_array($key, $q3)) {
-                                $q3_val += str_replace(',', '', $value);
+                                $q3_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[2] = $q3_val;
                             }
                             if (php72_in_array($key, $q4)) {
-                                $q4_val += str_replace(',', '', $value);
+                                $q4_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[3] = $q4_val;
                             }
                         }
                     }
-                    $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+                    $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
@@ -1853,7 +1853,7 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         $k = 0;
                         foreach ($main_quarter as $key => $value) {
-                            $target_month_value[$value] += str_replace(',', '', $get_data->$value);
+                            $target_month_value[$value] += php72_num(str_replace(',', '', $get_data->$value));
                             $categories[$k] = $value;
                             $hc_actual[$k] = '0';
                             $k++;
@@ -1904,19 +1904,19 @@ class Portfolioui extends CI_Controller {
                 if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($revenue_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
-                            $a1_val += str_replace(',', '', $actual['revenue']);
+                            $a1_val += php72_num(str_replace(',', '', $actual['revenue']));
                             $hc_actual[0] = $a1_val;
                         }
                         if (in_array($actual['month'], $q2_key)) {
-                            $a2_val += str_replace(',', '', $actual['revenue']);
+                            $a2_val += php72_num(str_replace(',', '', $actual['revenue']));
                             $hc_actual[1] = $a2_val;
                         }
                         if (in_array($actual['month'], $q3_key)) {
-                            $a3_val += str_replace(',', '', $actual['revenue']);
+                            $a3_val += php72_num(str_replace(',', '', $actual['revenue']));
                             $hc_actual[2] = $a3_val;
                         }
                         if (in_array($actual['month'], $q4_key)) {
-                            $a4_val += str_replace(',', '', $actual['revenue']);
+                            $a4_val += php72_num(str_replace(',', '', $actual['revenue']));
                             $hc_actual[3] = $a4_val;
                         }
                     }
@@ -1927,7 +1927,7 @@ class Portfolioui extends CI_Controller {
                     foreach ($revenue_actual as $actual) {
                         foreach ($main_quarter as $key => $value) {
                             if ($key == $actual['month']) {
-                                $actual_month_value[$value] += str_replace(',', '', $actual['revenue']);
+                                $actual_month_value[$value] += php72_num(str_replace(',', '', $actual['revenue']));
                             }
                         }
                     }
@@ -2086,7 +2086,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -2134,7 +2134,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['net_profit']);
                                 $rev_cost = str_replace(',', '', $result['net_profit']);
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = str_replace(',', '', $value['net_profit']);
                             }
@@ -2210,7 +2210,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -2266,7 +2266,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['net_profit']);
                                 $rev_cost = str_replace(',', '', $result['net_profit']);
-                                $fetch_target[$m]['actual'] += $actual_cost;
+                                $fetch_target[$m]['actual'] += php72_num($actual_cost);
                             } else {
                                 $fetch_target[$m]['actual'] = str_replace(',', '', $value['net_profit']);
                             }
@@ -2288,8 +2288,8 @@ class Portfolioui extends CI_Controller {
                 foreach ($quarter_group[$q] as $value) {
                     $inc = $q + 1;
                     $categories[$q] = $value['name'];
-                    $hc_target[$q] += $value['target'];
-                    $hc_actual[$q] += $value['actual'];
+                    $hc_target[$q] += php72_num($value['target']);
+                    $hc_actual[$q] += php72_num($value['actual']);
                 }
             }
         } else {
@@ -2308,25 +2308,25 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
                             if (php72_in_array($key, $q1)) {
-                                $q1_val += str_replace(',', '', $value);
+                                $q1_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[0] = round($q1_val, 2);
                             }
                             if (php72_in_array($key, $q2)) {
-                                $q2_val += str_replace(',', '', $value);
+                                $q2_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[1] = round($q2_val, 2);
                             }
                             if (php72_in_array($key, $q3)) {
-                                $q3_val += str_replace(',', '', $value);
+                                $q3_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[2] = round($q3_val, 2);
                             }
                             if (php72_in_array($key, $q4)) {
-                                $q4_val += str_replace(',', '', $value);
+                                $q4_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[3] = round($q4_val, 2);
                             }
                         }
                     }
 
-                    $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+                    $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
@@ -2347,7 +2347,7 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         $k = 0;
                         foreach ($main_quarter as $key => $value) {
-                            $target_month_value[$value] += str_replace(',', '', $get_data->$value);
+                            $target_month_value[$value] += php72_num(str_replace(',', '', $get_data->$value));
                             $categories[$k] = $value;
                             $hc_actual[$k] = '0';
                             $k++;
@@ -2398,19 +2398,19 @@ class Portfolioui extends CI_Controller {
                 if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($profit_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
-                            $a1_val += str_replace(',', '', $actual['net_profit']);
+                            $a1_val += php72_num(str_replace(',', '', $actual['net_profit']));
                             $hc_actual[0] = $a1_val;
                         }
                         if (in_array($actual['month'], $q2_key)) {
-                            $a2_val += str_replace(',', '', $actual['net_profit']);
+                            $a2_val += php72_num(str_replace(',', '', $actual['net_profit']));
                             $hc_actual[1] = $a2_val;
                         }
                         if (in_array($actual['month'], $q3_key)) {
-                            $a3_val += str_replace(',', '', $actual['net_profit']);
+                            $a3_val += php72_num(str_replace(',', '', $actual['net_profit']));
                             $hc_actual[2] = $a3_val;
                         }
                         if (in_array($actual['month'], $q4_key)) {
-                            $a4_val += str_replace(',', '', $actual['net_profit']);
+                            $a4_val += php72_num(str_replace(',', '', $actual['net_profit']));
                             $hc_actual[3] = $a4_val;
                         }
                     }
@@ -2421,7 +2421,7 @@ class Portfolioui extends CI_Controller {
                     foreach ($profit_actual as $actual) {
                         foreach ($main_quarter as $key => $value) {
                             if ($key == $actual['month']) {
-                                $actual_month_value[$value] += str_replace(',', '', $actual['net_profit']);
+                                $actual_month_value[$value] += php72_num(str_replace(',', '', $actual['net_profit']));
                             }
                         }
                     }
@@ -2597,7 +2597,7 @@ class Portfolioui extends CI_Controller {
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $nums;
+                                    $search_array[$values] = $search_array[$values] + php72_num($nums);
                                 } else {
                                     $search_array[$values] = $nums;
                                 }
@@ -2648,11 +2648,11 @@ class Portfolioui extends CI_Controller {
                             $end_female = str_replace(',', '', $value['end_female']);
                             $end_other = str_replace(',', '', $value['end_other']);
                             $end_unknown = str_replace(',', '', $value['end_unknown']);
-                            $endBeneficiaries = $end_male + $end_female + $end_other + $end_unknown;
+                            $endBeneficiaries = php72_num($end_male) + php72_num($end_female) + php72_num($end_other) + php72_num($end_unknown);
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = $endBeneficiaries;
                                 $rev_cost = $endBeneficiaries;
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['end_male']) && isset($value['end_female']) && isset($value['end_other']) && isset($value['end_unknown']) && $endBeneficiaries != '' ? $endBeneficiaries : 0;
                             }
@@ -2740,10 +2740,10 @@ class Portfolioui extends CI_Controller {
                 $targ_feb = str_replace(',', '', $targs[strtolower($get_fy_month[10])]);
                 $targ_mar = str_replace(',', '', $targs[strtolower($get_fy_month[11])]);
 
-                $impt_tarquat['q1'] += $targ_apr + $targ_may + $targ_jun;
-                $impt_tarquat['q2'] += $targ_jul + $targ_aug + $targ_sep;
-                $impt_tarquat['q3'] += $targ_oct + $targ_nov + $targ_dec;
-                $impt_tarquat['q4'] += $targ_jan + $targ_feb + $targ_mar;
+                $impt_tarquat['q1'] += php72_num($targ_apr) + php72_num($targ_may) + php72_num($targ_jun);
+                $impt_tarquat['q2'] += php72_num($targ_jul) + php72_num($targ_aug) + php72_num($targ_sep);
+                $impt_tarquat['q3'] += php72_num($targ_oct) + php72_num($targ_nov) + php72_num($targ_dec);
+                $impt_tarquat['q4'] += php72_num($targ_jan) + php72_num($targ_feb) + php72_num($targ_mar);
             }
 
 
@@ -2753,7 +2753,7 @@ class Portfolioui extends CI_Controller {
                 $end_female = str_replace(',', '', $acts['end_female']);
                 $end_other = str_replace(',', '', $acts['end_other']);
                 $end_unknown = str_replace(',', '', $acts['end_unknown']);
-                $endBeneficiaries = $end_male + $end_female + $end_other + $end_unknown;
+                $endBeneficiaries = php72_num($end_male) + php72_num($end_female) + php72_num($end_other) + php72_num($end_unknown);
                 if (in_array($acts['month'], $q1_key)) {
                     $impt_actquat['q1'] += $endBeneficiaries;
                 }
@@ -3275,7 +3275,7 @@ class Portfolioui extends CI_Controller {
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $nums;
+                                    $search_array[$values] = $search_array[$values] + php72_num($nums);
                                 } else {
                                     $search_array[$values] = $nums;
                                 }
@@ -3320,12 +3320,12 @@ class Portfolioui extends CI_Controller {
                             $end_female = str_replace(',', '', $value['direct_female']);
                             $end_other = str_replace(',', '', $value['direct_other']);
                             $end_unknown = str_replace(',', '', $value['direct_unknown']);
-                            $endBeneficiaries = $end_male + $end_female + $end_other + $end_unknown;
+                            $endBeneficiaries = php72_num($end_male) + php72_num($end_female) + php72_num($end_other) + php72_num($end_unknown);
                             if ($result['month'] == $value['month']) {
 
                                 $actual_cost = $endBeneficiaries;
                                 $rev_cost = $endBeneficiaries;
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['direct_male']) && isset($value['direct_female']) && isset($value['direct_other']) && isset($value['direct_unknown']) && $endBeneficiaries != '' ? $endBeneficiaries : 0;
                             }
@@ -3404,10 +3404,10 @@ class Portfolioui extends CI_Controller {
                 // $impt_tarquat['q3'] += $targ_oct + $targ_nov + $targ_dec;
                 // $impt_tarquat['q4'] += $targ_jan + $targ_feb + $targ_mar;
 
-                $impt_tarquat['q1'] += $targ_jun;
-                $impt_tarquat['q2'] += $targ_sep;
-                $impt_tarquat['q3'] += $targ_dec;
-                $impt_tarquat['q4'] += $targ_mar;
+                $impt_tarquat['q1'] += php72_num($targ_jun);
+                $impt_tarquat['q2'] += php72_num($targ_sep);
+                $impt_tarquat['q3'] += php72_num($targ_dec);
+                $impt_tarquat['q4'] += php72_num($targ_mar);
             }
 
         // $apr_directjobs = $may_directjobs = $jun_directjobs = $jul_directjobs = $aug_directjobs = $sep_directjobs = $oct_directjobs = $nov_directjobs = $dec_directjobs = $jan_directjobs = $feb_directjobs = $mar_directjobs = 0;
@@ -3416,7 +3416,7 @@ class Portfolioui extends CI_Controller {
                 $direct_female = str_replace(',', '', $acts['direct_female']);
                 $direct_other = str_replace(',', '', $acts['direct_other']);
                 $direct_unknown = str_replace(',', '', $acts['direct_unknown']);
-                $directjobs = $direct_male + $direct_female + $direct_other + $direct_unknown;
+                $directjobs = php72_num($direct_male) + php72_num($direct_female) + php72_num($direct_other) + php72_num($direct_unknown);
                 if ($acts['month'] == '6') {
                     $jun_directjobs += $directjobs;
                 } else if($acts['month'] == '5'){
@@ -3662,7 +3662,7 @@ class Portfolioui extends CI_Controller {
                             if (isset($value[$yearvalues[0]])) {
                                 $nums = str_replace(',', '', $value[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $nums;
+                                    $search_array[$values] = $search_array[$values] + php72_num($nums);
                                 } else {
                                     $search_array[$values] = $nums;
                                 }
@@ -3711,12 +3711,12 @@ class Portfolioui extends CI_Controller {
                             $end_female = str_replace(',', '', $value['indirect_female']);
                             $end_other = str_replace(',', '', $value['indirect_other']);
                             $end_unknown = str_replace(',', '', $value['indirect_unknown']);
-                            $endBeneficiaries = $end_male + $end_female + $end_other + $end_unknown;
+                            $endBeneficiaries = php72_num($end_male) + php72_num($end_female) + php72_num($end_other) + php72_num($end_unknown);
                             if ($result['month'] == $value['month']) {
 
                                 $actual_cost = $endBeneficiaries;
                                 $rev_cost = $endBeneficiaries;
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['indirect_male']) && isset($value['indirect_female']) && isset($value['indirect_other']) && isset($value['indirect_unknown']) && $endBeneficiaries != '' ? $endBeneficiaries : 0;
                             }
@@ -3802,10 +3802,10 @@ class Portfolioui extends CI_Controller {
                 $targ_feb = str_replace(',', '', $targs[strtolower($get_fy_month[10])]);
                 $targ_mar = str_replace(',', '', $targs[strtolower($get_fy_month[11])]);
 
-                $impt_tarquat['q1'] += $targ_apr + $targ_may + $targ_jun;
-                $impt_tarquat['q2'] += $targ_jul + $targ_aug + $targ_sep;
-                $impt_tarquat['q3'] += $targ_oct + $targ_nov + $targ_dec;
-                $impt_tarquat['q4'] += $targ_jan + $targ_feb + $targ_mar;
+                $impt_tarquat['q1'] += php72_num($targ_apr) + php72_num($targ_may) + php72_num($targ_jun);
+                $impt_tarquat['q2'] += php72_num($targ_jul) + php72_num($targ_aug) + php72_num($targ_sep);
+                $impt_tarquat['q3'] += php72_num($targ_oct) + php72_num($targ_nov) + php72_num($targ_dec);
+                $impt_tarquat['q4'] += php72_num($targ_jan) + php72_num($targ_feb) + php72_num($targ_mar);
             }
 
             foreach ($monthly_actual as $acts) {
@@ -3813,7 +3813,7 @@ class Portfolioui extends CI_Controller {
                 $indirect_female = str_replace(',', '', $acts['indirect_female']);
                 $indirect_other = str_replace(',', '', $acts['indirect_other']);
                 $indirect_unknown = str_replace(',', '', $acts['indirect_unknown']);
-                $indirectjobs = $indirect_male + $indirect_female + $indirect_other + $indirect_unknown;
+                $indirectjobs = php72_num($indirect_male) + php72_num($indirect_female) + php72_num($indirect_other) + php72_num($indirect_unknown);
                 if (in_array($acts['month'], $q1_key)) {
                     $impt_actquat['q1'] += $indirectjobs;
                 }
@@ -3997,7 +3997,7 @@ class Portfolioui extends CI_Controller {
                             if (php72_array_key_exists($yearvalues[0], $datavalues)) {
                                 $cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -4006,28 +4006,28 @@ class Portfolioui extends CI_Controller {
                                 $fund_mons = explode('-', $values);
                                 if ($fund_mons[0] == $get_fy_month[2]) {
                                     if (php72_array_key_exists($values, $search_array)) {
-                                        $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qone']);
+                                        $search_array[$values] = $search_array[$values] + php72_num(str_replace(',', '', $datavalues['qone']));
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qone']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[5]) {
                                     if (php72_array_key_exists($values, $search_array)) {
-                                        $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qtwo']);
+                                        $search_array[$values] = $search_array[$values] + php72_num(str_replace(',', '', $datavalues['qtwo']));
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qtwo']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[8]) {
                                     if (php72_array_key_exists($values, $search_array)) {
-                                        $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qthree']);
+                                        $search_array[$values] = $search_array[$values] + php72_num(str_replace(',', '', $datavalues['qthree']));
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qthree']);
                                     }
                                 }
                                 if ($fund_mons[0] == $get_fy_month[11]) {
                                     if (php72_array_key_exists($values, $search_array)) {
-                                        $search_array[$values] = $search_array[$values] + str_replace(',', '', $datavalues['qfour']);
+                                        $search_array[$values] = $search_array[$values] + php72_num(str_replace(',', '', $datavalues['qfour']));
                                     } else {
                                         $search_array[$values] = str_replace(',', '', $datavalues['qfour']);
                                     }
@@ -4078,19 +4078,19 @@ class Portfolioui extends CI_Controller {
                                 $actual_grand = str_replace(',', '', $value['grand_total']);
                                 $actual_short = str_replace(',', '', $value['short_total']);
                                 $actual_long = str_replace(',', '', $value['long_total']);
-                                $actual_cost = $actual_equity + $actual_grand + $actual_short + $actual_long;
+                                $actual_cost = php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
                                 $rev_equity = str_replace(',', '', $result['equity_total']);
                                 $rev_grand = str_replace(',', '', $result['grand_total']);
                                 $rev_short = str_replace(',', '', $result['short_total']);
                                 $rev_long = str_replace(',', '', $result['long_total']);
-                                $rev_cost = $rev_equity + $rev_grand + $rev_short + $rev_long;
-                                $hc_actual[$m] += $actual_cost;
+                                $rev_cost = php72_num($rev_equity) + php72_num($rev_grand) + php72_num($rev_short) + php72_num($rev_long);
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $actual_equity = str_replace(',', '', $value['equity_total']);
                                 $actual_grand = str_replace(',', '', $value['grand_total']);
                                 $actual_short = str_replace(',', '', $value['short_total']);
                                 $actual_long = str_replace(',', '', $value['long_total']);
-                                $actual_cost = $actual_equity + $actual_grand + $actual_short + $actual_long;
+                                $actual_cost = php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
                                 $hc_actual[$m] = $actual_cost;
                             }
                             $result = $value;
@@ -4264,19 +4264,19 @@ class Portfolioui extends CI_Controller {
                                 $actual_grand = str_replace(',', '', $value['grand_total']);
                                 $actual_short = str_replace(',', '', $value['short_total']);
                                 $actual_long = str_replace(',', '', $value['long_total']);
-                                $actual_cost = $actual_equity + $actual_grand + $actual_short + $actual_long;
+                                $actual_cost = php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
                                 $rev_equity = str_replace(',', '', $result['equity_total']);
                                 $rev_grand = str_replace(',', '', $result['grand_total']);
                                 $rev_short = str_replace(',', '', $result['short_total']);
                                 $rev_long = str_replace(',', '', $result['long_total']);
-                                $rev_cost = $rev_equity + $rev_grand + $rev_short + $rev_long;
-                                $fetch_target[$m]['actual'] += $actual_cost;
+                                $rev_cost = php72_num($rev_equity) + php72_num($rev_grand) + php72_num($rev_short) + php72_num($rev_long);
+                                $fetch_target[$m]['actual'] += php72_num($actual_cost);
                             } else {
                                 $actual_equity = str_replace(',', '', $value['equity_total']);
                                 $actual_grand = str_replace(',', '', $value['grand_total']);
                                 $actual_short = str_replace(',', '', $value['short_total']);
                                 $actual_long = str_replace(',', '', $value['long_total']);
-                                $actual_cost = $actual_equity + $actual_grand + $actual_short + $actual_long;
+                                $actual_cost = php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
                                 $fetch_target[$m]['actual'] = $actual_cost;
                             }
                             $result = $value;
@@ -4297,7 +4297,7 @@ class Portfolioui extends CI_Controller {
                     $inc = $q + 1;
                     $categories[$q] = $value['name'];
                     $hc_target[$q] = $value['target'];
-                    $hc_actual[$q] += $value['actual'];
+                    $hc_actual[$q] += php72_num($value['actual']);
                 }
             }
         } else {
@@ -4316,25 +4316,25 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         foreach ($get_data as $key => $value) {
                             if (php72_in_array($key, $q1)) {
-                                $q1_val += str_replace(',', '', $value);
+                                $q1_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[0] = $q1_val;
                             }
                             if (php72_in_array($key, $q2)) {
-                                $q2_val += str_replace(',', '', $value);
+                                $q2_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[1] = $q2_val;
                             }
                             if (php72_in_array($key, $q3)) {
-                                $q3_val += str_replace(',', '', $value);
+                                $q3_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[2] = $q3_val;
                             }
                             if (php72_in_array($key, $q4)) {
-                                $q4_val += str_replace(',', '', $value);
+                                $q4_val += php72_num(str_replace(',', '', $value));
                                 $hc_target[3] = $q4_val;
                             }
                         }
                     }
 
-                    $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+                    $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
@@ -4355,7 +4355,7 @@ class Portfolioui extends CI_Controller {
                         $get_data = json_decode($target['data']);
                         $k = 0;
                         foreach ($main_quarter as $key => $value) {
-                            $target_month_value[$value] += str_replace(',', '', $get_data->$value);
+                            $target_month_value[$value] += php72_num(str_replace(',', '', $get_data->$value));
                             $categories[$k] = $value;
                             $hc_actual[$k] = '0';
                             $k++;
@@ -4406,34 +4406,34 @@ class Portfolioui extends CI_Controller {
                 if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($capital_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
-                            $a1_equity += str_replace(',', '', $actual['equity_total']);
-                            $a1_grand += str_replace(',', '', $actual['grand_total']);
-                            $a1_short += str_replace(',', '', $actual['short_total']);
-                            $a1_long += str_replace(',', '', $actual['long_total']);
+                            $a1_equity += php72_num(str_replace(',', '', $actual['equity_total']));
+                            $a1_grand += php72_num(str_replace(',', '', $actual['grand_total']));
+                            $a1_short += php72_num(str_replace(',', '', $actual['short_total']));
+                            $a1_long += php72_num(str_replace(',', '', $actual['long_total']));
                             $a1_val = $a1_equity + $a1_grand + $a1_short + $a1_long;
                             $hc_actual[0] = $a1_val;
                         }
                         if (in_array($actual['month'], $q2_key)) {
-                            $a2_equity += str_replace(',', '', $actual['equity_total']);
-                            $a2_grand += str_replace(',', '', $actual['grand_total']);
-                            $a2_short += str_replace(',', '', $actual['short_total']);
-                            $a2_long += str_replace(',', '', $actual['long_total']);
+                            $a2_equity += php72_num(str_replace(',', '', $actual['equity_total']));
+                            $a2_grand += php72_num(str_replace(',', '', $actual['grand_total']));
+                            $a2_short += php72_num(str_replace(',', '', $actual['short_total']));
+                            $a2_long += php72_num(str_replace(',', '', $actual['long_total']));
                             $a2_val = $a2_equity + $a2_grand + $a2_short + $a2_long;
                             $hc_actual[1] = $a2_val;
                         }
                         if (in_array($actual['month'], $q3_key)) {
-                            $a3_equity += str_replace(',', '', $actual['equity_total']);
-                            $a3_grand += str_replace(',', '', $actual['grand_total']);
-                            $a3_short += str_replace(',', '', $actual['short_total']);
-                            $a3_long += str_replace(',', '', $actual['long_total']);
+                            $a3_equity += php72_num(str_replace(',', '', $actual['equity_total']));
+                            $a3_grand += php72_num(str_replace(',', '', $actual['grand_total']));
+                            $a3_short += php72_num(str_replace(',', '', $actual['short_total']));
+                            $a3_long += php72_num(str_replace(',', '', $actual['long_total']));
                             $a3_val = $a3_equity + $a3_grand + $a3_short + $a3_long;
                             $hc_actual[2] = $a3_val;
                         }
                         if (in_array($actual['month'], $q4_key)) {
-                            $a4_equity += str_replace(',', '', $actual['equity_total']);
-                            $a4_grand += str_replace(',', '', $actual['grand_total']);
-                            $a4_short += str_replace(',', '', $actual['short_total']);
-                            $a4_long += str_replace(',', '', $actual['long_total']);
+                            $a4_equity += php72_num(str_replace(',', '', $actual['equity_total']));
+                            $a4_grand += php72_num(str_replace(',', '', $actual['grand_total']));
+                            $a4_short += php72_num(str_replace(',', '', $actual['short_total']));
+                            $a4_long += php72_num(str_replace(',', '', $actual['long_total']));
                             $a4_val = $a4_equity + $a4_grand + $a4_short + $a4_long;
                             $hc_actual[3] = $a4_val;
                         }
@@ -4445,10 +4445,10 @@ class Portfolioui extends CI_Controller {
                     foreach ($capital_actual as $actual) {
                         foreach ($main_quarter as $key => $value) {
                             if ($key == $actual['month']) {
-                                $actual_month_equity[$value] += str_replace(',', '', $actual['equity_total']);
-                                $actual_month_grand[$value] += str_replace(',', '', $actual['grand_total']);
-                                $actual_month_short[$value] += str_replace(',', '', $actual['short_total']);
-                                $actual_month_long[$value] += str_replace(',', '', $actual['long_total']);
+                                $actual_month_equity[$value] += php72_num(str_replace(',', '', $actual['equity_total']));
+                                $actual_month_grand[$value] += php72_num(str_replace(',', '', $actual['grand_total']));
+                                $actual_month_short[$value] += php72_num(str_replace(',', '', $actual['short_total']));
+                                $actual_month_long[$value] += php72_num(str_replace(',', '', $actual['long_total']));
                                 $actual_month_value[$value] += $actual_month_equity[$value] + $actual_month_grand[$value] + $actual_month_short[$value] + $actual_month_long[$value];
                             }
                         }
@@ -4631,7 +4631,7 @@ class Portfolioui extends CI_Controller {
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -4680,7 +4680,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['disburse_amount']);
                                 $rev_cost = str_replace(',', '', $result['disburse_amount']);
-                                $hc_actual[$m] += $actual_cost;
+                                $hc_actual[$m] += php72_num($actual_cost);
                             } else {
                                 $hc_actual[$m] = isset($value['disburse_amount']) && $value['disburse_amount'] != '' ? str_replace(',', '', $value['disburse_amount']) : 0;
                             }
@@ -4768,7 +4768,7 @@ class Portfolioui extends CI_Controller {
                             if ($yearvalues[0] == $datavalues) {
                                 $cost = str_replace(',', '', $value['amount']);
                                 if (php72_array_key_exists($values, $search_array)) {
-                                    $search_array[$values] = $search_array[$values] + $cost;
+                                    $search_array[$values] = $search_array[$values] + php72_num($cost);
                                 } else {
                                     $search_array[$values] = $cost;
                                 }
@@ -4821,7 +4821,7 @@ class Portfolioui extends CI_Controller {
                             if ($result['month'] == $value['month']) {
                                 $actual_cost = str_replace(',', '', $value['disburse_amount']);
                                 $rev_cost = str_replace(',', '', $result['disburse_amount']);
-                                $fetch_target[$m]['actual'] += $actual_cost;
+                                $fetch_target[$m]['actual'] += php72_num($actual_cost);
                             } else {
                                 $fetch_target[$m]['actual'] = isset($value['disburse_amount']) && $value['disburse_amount'] != '' ? str_replace(',', '', $value['disburse_amount']) : 0;
                             }
@@ -4843,8 +4843,8 @@ class Portfolioui extends CI_Controller {
                 foreach ($quarter_group[$q] as $value) {
                     $inc = $q + 1;
                     $categories[$q] = $value['name'];
-                    $hc_target[$q] += $value['target'];
-                    $hc_actual[$q] += $value['actual'];
+                    $hc_target[$q] += php72_num($value['target']);
+                    $hc_actual[$q] += php72_num($value['actual']);
                 }
             }
         } else {
@@ -4864,24 +4864,24 @@ class Portfolioui extends CI_Controller {
                     foreach ($seed_target as $target) {
                         $value = $target['amount'];
                         if (in_array($target['month'], $q1_key)) {
-                            $q1_val += str_replace(',', '', $value);
+                            $q1_val += php72_num(str_replace(',', '', $value));
                             $hc_target[0] = $q1_val;
                         }
                         if (in_array($target['month'], $q2_key)) {
-                            $q2_val += str_replace(',', '', $value);
+                            $q2_val += php72_num(str_replace(',', '', $value));
                             $hc_target[1] = $q2_val;
                         }
                         if (in_array($target['month'], $q3_key)) {
-                            $q3_val += str_replace(',', '', $value);
+                            $q3_val += php72_num(str_replace(',', '', $value));
                             $hc_target[2] = $q3_val;
                         }
                         if (in_array($target['month'], $q4_key)) {
-                            $q4_val += str_replace(',', '', $value);
+                            $q4_val += php72_num(str_replace(',', '', $value));
                             $hc_target[3] = $q4_val;
                         }
                     }
 
-                    $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+                    $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
                     $categories[4] = 'Annual';
                     $hc_target[4] = $annual_target;
                 } else {
@@ -4903,7 +4903,7 @@ class Portfolioui extends CI_Controller {
                         foreach ($main_quarter as $key => $value) {
                             $categories[$k] = $value;
                             if ($target['month'] == $key) {
-                                $target_month_value[$value] += str_replace(',', '', $target['amount']);
+                                $target_month_value[$value] += php72_num(str_replace(',', '', $target['amount']));
                                 $hc_actual[$k] = '0';
                             }
                             $k++;
@@ -4954,19 +4954,19 @@ class Portfolioui extends CI_Controller {
                 if ($g_quarter == '' || php72_cmp($g_quarter) == 5) {
                     foreach ($seed_actual as $actual) {
                         if (in_array($actual['month'], $q1_key)) {
-                            $a1_val += str_replace(',', '', $actual['disburse_amount']);
+                            $a1_val += php72_num(str_replace(',', '', $actual['disburse_amount']));
                             $hc_actual[0] = $a1_val;
                         }
                         if (in_array($actual['month'], $q2_key)) {
-                            $a2_val += str_replace(',', '', $actual['disburse_amount']);
+                            $a2_val += php72_num(str_replace(',', '', $actual['disburse_amount']));
                             $hc_actual[1] = $a2_val;
                         }
                         if (in_array($actual['month'], $q3_key)) {
-                            $a3_val += str_replace(',', '', $actual['disburse_amount']);
+                            $a3_val += php72_num(str_replace(',', '', $actual['disburse_amount']));
                             $hc_actual[2] = $a3_val;
                         }
                         if (in_array($actual['month'], $q4_key)) {
-                            $a4_val += str_replace(',', '', $actual['disburse_amount']);
+                            $a4_val += php72_num(str_replace(',', '', $actual['disburse_amount']));
                             $hc_actual[3] = $a4_val;
                         }
                     }
@@ -4992,7 +4992,7 @@ class Portfolioui extends CI_Controller {
 
                         foreach ($main_quarter as $key => $value) {
                             if ($actual['month'] == $key) {
-                                $actual_month_value[$value] += str_replace(',', '', $actual['disburse_amount']);
+                                $actual_month_value[$value] += php72_num(str_replace(',', '', $actual['disburse_amount']));
                                 $categories[$k] = $value;
                                 $hc_actual[$k] = '0';
                             }
@@ -5011,7 +5011,7 @@ class Portfolioui extends CI_Controller {
                 foreach ($seed_actual as $actual) {
                     foreach ($main_quarter as $key => $value) {
                         if ($key == $actual['month']) {
-                            $actual_month_value[$value] += str_replace(',', '', $actual['disburse_amount']);
+                            $actual_month_value[$value] += php72_num(str_replace(',', '', $actual['disburse_amount']));
                         }
                     }
                 }
@@ -5727,29 +5727,29 @@ class Portfolioui extends CI_Controller {
                 $getdata = json_decode($dp['dp_plan']);
                 foreach ($getdata as $key => $value) {
                     if ($key == 'q1') {
-                        $q1_val += str_replace(',', '', $value);
+                        $q1_val += php72_num(str_replace(',', '', $value));
                         $target[0] = $q1_val;
                         $actual[0] = '0';
                     }
                     if ($key == 'q2') {
-                        $q2_val += str_replace(',', '', $value);
+                        $q2_val += php72_num(str_replace(',', '', $value));
                         $target[1] = $q2_val;
                         $actual[1] = '0';
                     }
                     if ($key == 'q3') {
-                        $q3_val += str_replace(',', '', $value);
+                        $q3_val += php72_num(str_replace(',', '', $value));
                         $target[2] = $q3_val;
                         $actual[2] = '0';
                     }
                     if ($key == 'q4') {
-                        $q4_val += str_replace(',', '', $value);
+                        $q4_val += php72_num(str_replace(',', '', $value));
                         $target[3] = $q4_val;
                         $actual[3] = '0';
                     }
                 }
             }
 
-            $annual_target = $q1_val + $q2_val + $q3_val + $q4_val;
+            $annual_target = php72_num($q1_val) + php72_num($q2_val) + php72_num($q3_val) + php72_num($q4_val);
             $categories[4] = 'Annual';
             $target[4] = $annual_target;
 
@@ -5829,13 +5829,13 @@ class Portfolioui extends CI_Controller {
 
                             /* changed to last month of quarter - datemodified - 12/12/2019 */
                             if ($tar_mnths[0] == $get_fy_month[2]) {
-                                $target[$ac] += $q1_val;
+                                $target[$ac] += php72_num($q1_val);
                             } else if ($tar_mnths[0] == $get_fy_month[5]) {
-                                $target[$ac] += $q2_val;
+                                $target[$ac] += php72_num($q2_val);
                             } else if ($tar_mnths[0] == $get_fy_month[8]) {
-                                $target[$ac] += $q3_val;
+                                $target[$ac] += php72_num($q3_val);
                             } else if ($tar_mnths[0] == $get_fy_month[11]) {
-                                $target[$ac] += $q4_val;
+                                $target[$ac] += php72_num($q4_val);
                             } else {
                                 $target[$ac] = 0;
                             }

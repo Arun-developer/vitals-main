@@ -1,0 +1,19 @@
+{
+    "name": "villgro/vitals",
+    "description": "Vitals MIS - third-party libraries for PHP 8.2",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "dompdf/dompdf": "^3.1",
+        "phpoffice/phppresentation": "^1.2",
+        "phpoffice/phpspreadsheet": "^3.10.8",
+        "phpoffice/phpword": "^1.4"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.35"
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

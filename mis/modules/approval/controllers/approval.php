@@ -78,7 +78,7 @@ class Approval extends CI_Controller {
                         $progID[$i]['cost_centre'] = ($progID[$i]['cost_centre'] == '') ? 0 : $progID[$i]['cost_centre'];
                         if (php72_cmp($flag[$j]) == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
                             $flag[$j] = 1;
-                            $internal_amount += $internalID[$j]['amount_toapprove'];
+                            $internal_amount += php72_num($internalID[$j]['amount_toapprove']);
                         }
                     }
                     if ($internal_amount <= $progID[$i]['amt_required'])
@@ -106,7 +106,7 @@ class Approval extends CI_Controller {
                         $progID[$i]['cost_centre'] = ($progID[$i]['cost_centre'] == '') ? 0 : $progID[$i]['cost_centre'];
                         if (php72_cmp($flag[$j]) == 0 && $progID[$i]['donor_id'] == $internalID[$j]['donor'] && $progID[$i]['grant_id'] == $internalID[$j]['grant_id'] && $progID[$i]['line_item'] == $internalID[$j]['line_item'] && $progID[$i]['cost_centre'] == $internalID[$j]['cost_centre'] && $progID[$i]['budget_head'] == $internalID[$j]['budget_head']) {
                             $flag[$j] = 1;
-                            $internal_amount += $internalID[$j]['amount_toapprove'];
+                            $internal_amount += php72_num($internalID[$j]['amount_toapprove']);
                         }
                     }
                     if ($internal_amount <= $progID[$i]['amt_required'])
@@ -2646,7 +2646,7 @@ class Approval extends CI_Controller {
         if ($c > 0) {
             for ($i = 0; $i < $c; $i++) {
                 if ($data[$i]["donor"] == $d && $data[$i]["budgethead"] == $b && $data[$i]["lineitem"] == $l && $data[$i]["amtreq"] != "") {
-                    $return = $return + str_replace(',', '', $data[$i]["amtreq"]);
+                    $return = $return + php72_num(str_replace(',', '', $data[$i]["amtreq"]));
                 }
             }
         }

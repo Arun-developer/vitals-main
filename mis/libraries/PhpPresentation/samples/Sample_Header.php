@@ -26,10 +26,9 @@ define('EOL', CLI ? PHP_EOL : '<br />');
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME'], '.php'));
 define('IS_INDEX', SCRIPT_FILENAME == 'index');
 
-require_once __DIR__ . '/../src/PhpPresentation/Autoloader.php';
-Autoloader::register();
-if (is_file(__DIR__ . '/../vendor/autoload.php')) {
-    require_once __DIR__ . '/../vendor/autoload.php';
+// PhpPresentation is installed with Composer (phpoffice/phppresentation in /composer.json); the old copy in ../src is no longer loaded.
+if (is_file(FCPATH . 'vendor/autoload.php')) {
+    require_once FCPATH . 'vendor/autoload.php';
 } else {
     throw new Exception('Can not find the vendor folder!');
 }
@@ -65,7 +64,7 @@ $pageHeading = IS_INDEX ? '' : "<h1>{$pageHeading}</h1>";
 $oShapeDrawing = new Drawing\File();
 $oShapeDrawing->setName('PHPPresentation logo')
 ->setDescription('PHPPresentation logo')
-->setPath('./resources/phppowerpoint_logo.gif')
+->setPath(FCPATH . 'mis/libraries/PhpPresentation/samples/resources/logo.png')
 ->setHeight(36)
 ->setOffsetX(10)
 ->setOffsetY(10);
@@ -105,6 +104,34 @@ if ($handle = opendir('.')) {
 }
 
 /**
+ * The old PhpPresentation copy wrote a default table cell border (line width 1) as 1pt; PhpPresentation 1.x
+ * treats the width as pixels (0.75pt). Set default-width cell borders to 1pt (4/3 px) so exports look as before.
+ */
+function keepOldTableBorderWidth($phpPresentation) {
+    $walk = function ($shapes) use (&$walk) {
+        foreach ($shapes as $shape) {
+            if ($shape instanceof PhpOffice\PhpPresentation\Shape\Group) {
+                $walk($shape->getShapeCollection());
+            } elseif ($shape instanceof PhpOffice\PhpPresentation\Shape\Table) {
+                foreach ($shape->getRows() as $row) {
+                    foreach ($row->getCells() as $cell) {
+                        $b = $cell->getBorders();
+                        foreach (array($b->getTop(), $b->getBottom(), $b->getLeft(), $b->getRight(), $b->getDiagonalUp(), $b->getDiagonalDown()) as $border) {
+                            if ($border->getLineWidth() == 1) {
+                                $border->setLineWidth(4 / 3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+    foreach ($phpPresentation->getAllSlides() as $slide) {
+        $walk($slide->getShapeCollection());
+    }
+}
+
+/**
  * Write documents
  *
  * @param \PhpOffice\PhpPresentation\PhpPresentation $phpPresentation
@@ -114,6 +141,7 @@ if ($handle = opendir('.')) {
  */
 function write($phpPresentation, $filename, $writers) {
     $result = '';
+    keepOldTableBorderWidth($phpPresentation);
 
     foreach ($writers as $writer => $extension) {
         $result .= date('H:i:s') . " Write to {$writer} format";
@@ -182,7 +210,7 @@ function createTemplatedSlide(PhpOffice\PhpPresentation\PhpPresentation $objPHPP
     $shape = $slide->createDrawingShape();
     $shape->setName('Villgro Logo')
     ->setDescription('Villgro Logo')
-    ->setPath('./resources/logo.png')
+    ->setPath(FCPATH . 'mis/libraries/PhpPresentation/samples/resources/logo.png')
     ->setHeight(90)
     ->setOffsetX(750)
     ->setOffsetY(10);

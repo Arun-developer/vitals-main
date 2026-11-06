@@ -19,8 +19,8 @@ class Pdf
 {
     public function __construct(){
 
-        // include autoloader
-        require_once dirname(__FILE__).'/dompdf/autoload.inc.php';
+        // include autoloader (dompdf 3 is installed with Composer; the old 0.8 copy in libraries/dompdf is no longer loaded)
+        require_once FCPATH . 'vendor/autoload.php';
 
         // instantiate and use the dompdf class
         $pdf = new DOMPDF();

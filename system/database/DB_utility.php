@@ -469,7 +469,7 @@ class CI_DB_utility extends CI_DB_forge {
             show_error('You must submit a valid result object');
         }
 
-        if ($roleid == 4 && $independent_shortlist == 1) {
+        if (php72_cmp($roleid) == 4 && php72_cmp($independent_shortlist) == 1) {
             $log_title = array('PA/RD_Date', 'Accept_for_IIC_Date', 'IIC_Accept_Date', 'IIC_Reject_Date', 'EIC_Accept_Date', 'EIC_Reject_Date', 'Close_Date', 'Rejection_Mail_Sent_Date', 'Language', 'User Name', 'Status', 'Comments');
         } else {
             $log_title = array('PA/RD_Date', 'Accept_for_IIC_Date', 'IIC_Accept_Date', 'IIC_Reject_Date', 'EIC_Accept_Date', 'EIC_Reject_Date', 'Close_Date', 'Rejection_Mail_Sent_Date', 'Language');
@@ -498,7 +498,7 @@ class CI_DB_utility extends CI_DB_forge {
 				 $row['Sub_Sector'] =  $this->getSectorName($row['Sub_Sector']);
 			 }
 			 
-            if (count($logData) > 0) {
+            if (php72_count($logData) > 0) {
                 foreach ($logData as $log) {
                     if ($log['id'] != '') {
                         if ($log['stage'] == '8' && $log['status'] == '12' && $row['PA/RD_Date'] == '') {
@@ -569,7 +569,7 @@ class CI_DB_utility extends CI_DB_forge {
             }
 
             $rejectionDate = $this->getRejectionMail($get_id);
-            if (count($rejectionDate) > 0) {
+            if (php72_count($rejectionDate) > 0) {
                 $row['Rejection_Mail_Sent_Date'] = $rejectionDate[0]['sent_date'];
             } else {
                 $row['Rejection_Mail_Sent_Date'] = '';
@@ -582,21 +582,21 @@ class CI_DB_utility extends CI_DB_forge {
                 $row['Language'] = 'English';
             }
 
-            if ($roleid == 4 && $independent_shortlist == 1) {
+            if (php72_cmp($roleid) == 4 && php72_cmp($independent_shortlist) == 1) {
 
                 $shortlist_comment = $this->getShortlistComments($get_id, $userid);
 
                 $users_name = $this->getUsername($userid);
-                if (count($shortlist_comment) > 0) {
-                    if ($shortlist_comment[0]['application_status'] == 12) {
+                if (php72_count($shortlist_comment) > 0) {
+                    if (php72_cmp($shortlist_comment[0]['application_status']) == 12) {
                         $app_status = 'Open';
-                    } else if ($shortlist_comment[0]['application_status'] == 3) {
+                    } else if (php72_cmp($shortlist_comment[0]['application_status']) == 3) {
                         $app_status = 'Closed';
-                    } else if ($shortlist_comment[0]['application_status'] == 2) {
+                    } else if (php72_cmp($shortlist_comment[0]['application_status']) == 2) {
                         $app_status = 'On Hold';
-                    } else if ($shortlist_comment[0]['application_status'] == 25) {
+                    } else if (php72_cmp($shortlist_comment[0]['application_status']) == 25) {
                         $app_status = 'Shortlisted';
-                    } else if ($shortlist_comment[0]['application_status'] == 26) {
+                    } else if (php72_cmp($shortlist_comment[0]['application_status']) == 26) {
                         $app_status = 'Selected';
                     } else {
                         $app_status = '--';
@@ -644,7 +644,7 @@ class CI_DB_utility extends CI_DB_forge {
                 $partnersList = $get_partner_id = array();
                 if ($other_partners != '') {
                     $explode_partners = explode(',', $other_partners);
-                    for ($i = 0; $i < count($explode_partners); $i++) {
+                    for ($i = 0; $i < php72_count($explode_partners); $i++) {
                         $individual_id = $explode_partners[$i];
                         $this->db->select('t1.partner_id');
                         $this->db->where("t2.id", $individual_id);
@@ -682,12 +682,12 @@ class CI_DB_utility extends CI_DB_forge {
                         }
                     }
                 }
-                $row['Applied_to_Partners'] = implode(',', array_unique($get_partner_id));
+                $row['Applied_to_Partners'] = php72_implode(',', array_unique($get_partner_id));
             }
 			#echo $row['Program'];die;
             if ($row['Sector'] == 'MCH') {
                 $sector = 'Maternal & child health';
-            } else if ($row['Sector'] > 0) {
+            } else if (php72_cmp($row['Sector']) > 0) {
                 $sector = $this->getNewSectorDetails($row['Sector']);
             } else if ($row['Sector'] == '' && $row['Program'] == 'Unc Pitch') {
                 $sector = $this->getSectorName($row['pitch_id']);
@@ -786,7 +786,7 @@ class CI_DB_utility extends CI_DB_forge {
  }
 	  
 
-        if ($roleid == 4 && $independent_shortlist == 1) {
+        if (php72_cmp($roleid) == 4 && php72_cmp($independent_shortlist) == 1) {
             $log_title = array('User Name', 'Status', 'Comments');
             $get_fields1 = array_merge($get_fields1, $log_title);
         }
@@ -827,7 +827,7 @@ class CI_DB_utility extends CI_DB_forge {
 					$sectorNameStr = $row['Sector_for_your_enterprise']; 
 				}							
 				$row['Sector_for_your_enterprise'] = $sectorNameStr;
-				$row['impact_of_your_productservice_include_below_mentioned']= implode(',',unserialize($row['impact_of_your_productservice_include_below_mentioned']));
+				$row['impact_of_your_productservice_include_below_mentioned']= php72_implode(',',unserialize($row['impact_of_your_productservice_include_below_mentioned']));
 			}
 
 			
@@ -853,7 +853,7 @@ class CI_DB_utility extends CI_DB_forge {
 
 		if ($prgm_type == 'Tvaran' ||$prgm_type == 'Tvaran2.0' ||  $prgm_type == 'Tvaran3.0') { 
             $team_member = $this->getTeamMembers($row['id']);
-			if (count($team_member) > 1) {
+			if (php72_count($team_member) > 1) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -883,10 +883,10 @@ class CI_DB_utility extends CI_DB_forge {
 				  $row['state'] = $stateName;
 			}  
 			if (!empty($row['What_type_of_impact_will_your_product'])) {
-				 $row['What_type_of_impact_will_your_product'] = implode(', ', unserialize($row['What_type_of_impact_will_your_product']));
+				 $row['What_type_of_impact_will_your_product'] = php72_implode(', ', unserialize($row['What_type_of_impact_will_your_product']));
 			}
 			if (!empty($row['Do_you_have_any_formal_engagement'])) {
-				 $row['Do_you_have_any_formal_engagement'] = implode(', ', unserialize($row['Do_you_have_any_formal_engagement']));
+				 $row['Do_you_have_any_formal_engagement'] = php72_implode(', ', unserialize($row['Do_you_have_any_formal_engagement']));
 			}
 			 
 			 
@@ -896,25 +896,25 @@ class CI_DB_utility extends CI_DB_forge {
 		//WaterLab
 		if ($prgm_type == 'Water Lab'){
 				if($row['Beneficiaries_of_product_service']!=''){
-					$row['Beneficiaries_of_product_service'] = implode(', ', unserialize($row['Beneficiaries_of_product_service']));
+					$row['Beneficiaries_of_product_service'] = php72_implode(', ', unserialize($row['Beneficiaries_of_product_service']));
 				}
 				if($row['How_will_you_define_the_primary_clients_of_your_innovation']!=''){
-					$row['How_will_you_define_the_primary_clients_of_your_innovation'] = implode(', ', unserialize($row['How_will_you_define_the_primary_clients_of_your_innovation']));
+					$row['How_will_you_define_the_primary_clients_of_your_innovation'] = php72_implode(', ', unserialize($row['How_will_you_define_the_primary_clients_of_your_innovation']));
 				}
 				if($row['Which_solutions_does_your_project_align_with']!=''){
-					$row['Which_solutions_does_your_project_align_with'] = implode(', ', unserialize($row['Which_solutions_does_your_project_align_with']));
+					$row['Which_solutions_does_your_project_align_with'] = php72_implode(', ', unserialize($row['Which_solutions_does_your_project_align_with']));
 				}
 				if($row['Which_stages_of_the_water_value_chain_does_your_enterprise_operate']!=''){
-					$row['Which_stages_of_the_water_value_chain_does_your_enterprise_operate'] = implode(', ', unserialize($row['Which_stages_of_the_water_value_chain_does_your_enterprise_operate']));
+					$row['Which_stages_of_the_water_value_chain_does_your_enterprise_operate'] = php72_implode(', ', unserialize($row['Which_stages_of_the_water_value_chain_does_your_enterprise_operate']));
 				}
 				if($row['Do_you_currently_have_any_formal_engagements']!=''){
-					$row['Do_you_currently_have_any_formal_engagements'] = implode(', ', unserialize($row['Do_you_currently_have_any_formal_engagements']));
+					$row['Do_you_currently_have_any_formal_engagements'] = php72_implode(', ', unserialize($row['Do_you_currently_have_any_formal_engagements']));
 				}
 				if($row['if_your_solution_is_currently_active_in_any_of_the_following']!=''){
-					$row['if_your_solution_is_currently_active_in_any_of_the_following'] = implode(', ', unserialize($row['if_your_solution_is_currently_active_in_any_of_the_following']));
+					$row['if_your_solution_is_currently_active_in_any_of_the_following'] = php72_implode(', ', unserialize($row['if_your_solution_is_currently_active_in_any_of_the_following']));
 				}
 				if($row['Which_solutions_does_your_project_align_with']!=''){
-					$row['Which_solutions_does_your_project_align_with'] = implode(', ', unserialize($row['Which_solutions_does_your_project_align_with']));
+					$row['Which_solutions_does_your_project_align_with'] = php72_implode(', ', unserialize($row['Which_solutions_does_your_project_align_with']));
 				}
 				#echo'<pre>';print_r($row);die;
 		}
@@ -939,7 +939,7 @@ class CI_DB_utility extends CI_DB_forge {
 				$setConCount = 0;
 			}
 			
-            if (count($team_member) > $setConCount) {
+            if (php72_count($team_member) > $setConCount) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -972,7 +972,7 @@ class CI_DB_utility extends CI_DB_forge {
 		if ($prgm_type == 'Working Capital Loans for Social Enterprise' ||$prgm_type == 'Shelter Tech' ||$prgm_type == 'Enroute: A Mobility-as-a-Service Challenge' || $prgm_type == 'Empower') {
             $team_member = $this->getTeamMembers($row['id']);
 			
-            if (count($team_member) > 0) {
+            if (php72_count($team_member) > 0) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -987,7 +987,7 @@ class CI_DB_utility extends CI_DB_forge {
         }
 		if ($prgm_type == 'Villgro Debt Access Program'){
 			$team_member = $this->getTeamMembers($row['id']);
-            if (count($team_member) > 0) {
+            if (php72_count($team_member) > 0) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -1005,7 +1005,7 @@ class CI_DB_utility extends CI_DB_forge {
 
         if ($prgm_type == 'Unc Pitch') {
             $team_pitch_member = $this->getPitchMembers($row['pitch_id']);
-            if (count($team_pitch_member) > 1) {
+            if (php72_count($team_pitch_member) > 1) {
                 $k = 1;
                 foreach ($team_pitch_member as $key) {
                     $row['Team_member_name_' . $k] = $key['name'];
@@ -1068,7 +1068,7 @@ class CI_DB_utility extends CI_DB_forge {
             $row['Applying_operation'] = $apply_value;
 
             $team_pitch_member = $this->getPitchMembers($row['pitch_id']);
-            if (count($team_pitch_member) > 1) {
+            if (php72_count($team_pitch_member) > 1) {
                 $k = 1;
                 foreach ($team_pitch_member as $key) {
                     $row['Team_member_name_' . $k] = $key['name'];
@@ -1097,17 +1097,17 @@ class CI_DB_utility extends CI_DB_forge {
         if ($prgm_type == 'Livelihoods') {
             if ($row['Product_components'] != '') {
                 $split_component = unserialize($row['Product_components']);
-                $component_value = implode(', ', $split_component);
+                $component_value = php72_implode(', ', $split_component);
                 $row['Product_components'] = $component_value;
             }
             if ($row['Product_beneficiary'] != '') {
                 $row['Product_beneficiaryv'] = $beneficiary_value;
                 $split_beneficiary = unserialize($row['beneficiary']);
-                $beneficiary_value = implode(', ', $split_beneficiary);
+                $beneficiary_value = php72_implode(', ', $split_beneficiary);
                 $row['Product_beneficiary'] = $beneficiary_value;
             }
             $team_pitch_member = $this->getPitchMembers($row['pitch_id']);
-            if (count($team_pitch_member) > 1) {
+            if (php72_count($team_pitch_member) > 1) {
                 $k = 1;
                 foreach ($team_pitch_member as $key) {
                     $row['Team_member_name_' . $k] = $key['name'];
@@ -1135,12 +1135,12 @@ class CI_DB_utility extends CI_DB_forge {
         if ($prgm_type == 'UBS Challenge') {
             if ($row['How_did_you_hear_about_us'] != '') {
                 $split_component = explode('*|*', $row['How_did_you_hear_about_us']);
-                $component_value = implode(', ', $split_component);
+                $component_value = php72_implode(', ', $split_component);
                 $row['How_did_you_hear_about_us'] = $component_value;
             }
 
             $team_pitch_member = $this->getPitchMembers($row['pitch_id']);
-            if (count($team_pitch_member) > 1) {
+            if (php72_count($team_pitch_member) > 1) {
                 $k = 1;
                 foreach ($team_pitch_member as $key) {
                     $row['Team_member_name_' . $k] = $key['name'];
@@ -1162,7 +1162,7 @@ class CI_DB_utility extends CI_DB_forge {
 
         if ($prgm_type == 'YSVF') {
             $team_pitch_member = $this->getPitchMembers($row['pitch_id']);
-            if (count($team_pitch_member) > 1) {
+            if (php72_count($team_pitch_member) > 1) {
                 $k = 1;
                 foreach ($team_pitch_member as $key) {
                     $row['Team_member_name_' . $k] = $key['name'];
@@ -1188,7 +1188,7 @@ class CI_DB_utility extends CI_DB_forge {
 
         if ($prgm_type == 'Swachhata Startup Challenge') {
             $team_member = $this->getTeamMembers($row['id']);
-            if (count($team_member) > 1) {
+            if (php72_count($team_member) > 1) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -1214,7 +1214,7 @@ class CI_DB_utility extends CI_DB_forge {
 
         if ($prgm_type == 'TANSEED') {
             $team_member = $this->getTeamMembers($row['id']);
-            if (count($team_member) > 1) {
+            if (php72_count($team_member) > 1) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -1245,7 +1245,7 @@ class CI_DB_utility extends CI_DB_forge {
 
         if ($prgm_type == 'YASH Entrepreneurs') {
             $team_member = $this->getTeamMembers($row['id']);
-            if (count($team_member) > 1) {
+            if (php72_count($team_member) > 1) {
                 $j = 1;
                 foreach ($team_member as $key) {
                     $row['Team_member_name_' . $j] = $key['mem_name'];
@@ -1264,19 +1264,19 @@ class CI_DB_utility extends CI_DB_forge {
             }
         }
 
-        if ($roleid == 4 && $independent_shortlist == 1) {
+        if (php72_cmp($roleid) == 4 && php72_cmp($independent_shortlist) == 1) {
             $shortlist_comment = $this->getShortlistComments($row['copy_id'], $userid);
             $users_name = $this->getUsername($userid);
-            if (count($shortlist_comment) > 0) {
-                if ($shortlist_comment[0]['application_status'] == 12) {
+            if (php72_count($shortlist_comment) > 0) {
+                if (php72_cmp($shortlist_comment[0]['application_status']) == 12) {
                     $app_status = 'Open';
-                } else if ($shortlist_comment[0]['application_status'] == 3) {
+                } else if (php72_cmp($shortlist_comment[0]['application_status']) == 3) {
                     $app_status = 'Closed';
-                } else if ($shortlist_comment[0]['application_status'] == 2) {
+                } else if (php72_cmp($shortlist_comment[0]['application_status']) == 2) {
                     $app_status = 'On Hold';
-                } else if ($shortlist_comment[0]['application_status'] == 25) {
+                } else if (php72_cmp($shortlist_comment[0]['application_status']) == 25) {
                     $app_status = 'Shortlisted';
-                } else if ($shortlist_comment[0]['application_status'] == 26) {
+                } else if (php72_cmp($shortlist_comment[0]['application_status']) == 26) {
                     $app_status = 'Selected';
                 } else {
                     $app_status = '--';
@@ -1336,7 +1336,7 @@ class CI_DB_utility extends CI_DB_forge {
                 $data[] = $row['state_name'];
             }
         }
-        $state_name = implode(', ', $data);
+        $state_name = php72_implode(', ', $data);
         return $state_name;
     }
 
@@ -1349,7 +1349,7 @@ class CI_DB_utility extends CI_DB_forge {
         foreach ($getResult as $ben) {
             $data = unserialize($ben['benificiary']);
         }
-        $benificiary = implode(', ', $data);
+        $benificiary = php72_implode(', ', $data);
         return $benificiary;
     }
 

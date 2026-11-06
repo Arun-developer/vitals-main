@@ -826,7 +826,7 @@ class Detailed_diligence extends CI_Controller {
         $shape = $currentGroup->createDrawingShape();
         $shape->setName('Villgro Logo')
         ->setDescription('Villgro Logo')
-        ->setPath('./resources/logo.png')
+        ->setPath(FCPATH . 'mis/libraries/PhpPresentation/samples/resources/logo.png')
         ->setHeight(90)
         ->setOffsetX(750)
         ->setOffsetY(10);
@@ -1934,10 +1934,12 @@ class Detailed_diligence extends CI_Controller {
         $phpWord->addFontStyle('title_Style', array('bold' => true, 'italic' => true, 'size' => 14));
         $phpWord->addParagraphStyle('para_Style', array('align' => 'both', 'spaceAfter' => 100));
 
-        $section = $phpWord->addSection();
+        // PhpWord 1.x defaults differ from 0.14: keep the old page size, px image sizes and wrapping table cells.
+        $section = $phpWord->addSection(array('pageSizeW' => 11870, 'pageSizeH' => 16787));
         $footer = $section->addFooter();
         $footer->addPreserveText('CONFIDENTIAL | Page {PAGE} of {NUMPAGES}', null, array('align' => 'center'));
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'align' => 'right',
@@ -1950,11 +1952,11 @@ class Detailed_diligence extends CI_Controller {
         $section->addTextBreak(5);
         $member_count = php72_count($team_members);
         $share_count = php72_count($share_details);
-        $styleCell = array('borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
-        $styleRightCell = array('borderLeftSize' => 1, 'borderLeftColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
+        $styleCell = array('noWrap' => false, 'borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
+        $styleRightCell = array('noWrap' => false, 'borderLeftSize' => 1, 'borderLeftColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
 
-        $headCell = array('borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'bgColor' => 'E2E2E2');
-        $teamCell = array('borderRightSize' => 1, 'borderRightColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
+        $headCell = array('noWrap' => false, 'borderRightSize' => 1, 'borderRightColor' => 'black', 'borderBottomSize' => 1, 'borderBottomColor' => 'black', 'bgColor' => 'E2E2E2');
+        $teamCell = array('noWrap' => false, 'borderRightSize' => 1, 'borderRightColor' => 'black', 'space' => array('before' => 360, 'after' => 280), 'indentation' => array('left' => 540, 'right' => 120));
 
         $fontStyle = array('size' => 13, 'name' => 'Times New Roman', 'afterSpacing' => 0, 'Spacing' => 0, 'cellMargin' => 0);
         $TfontStyle = array('bold' => true, 'size' => 13, 'name' => 'Times New Roman', 'afterSpacing' => 0, 'Spacing' => 0, 'cellMargin' => 0);
@@ -1962,7 +1964,7 @@ class Detailed_diligence extends CI_Controller {
         $noSpace = array('textBottomSpacing' => -1);
 
         $title = 'Detailed Assessment - ' . ucfirst($innovation[0]['name_of_enterprise']) . ' - Version ' . $get_records[0]['version'];
-        $section->addText($title, ['size' => 16], ['align' => \PhpOffice\PhpWord\Style\Alignment::ALIGN_CENTER]);
+        $section->addText($title, ['size' => 16], ['align' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
         $section->addTextBreak(3);
 
         $table = $section->addTable('myOwnTableStyle', array('borderRightSize' => 1, 'borderColor' => '999999', 'afterSpacing' => 0, 'Spacing' => 0, 'cellMargin' => 0));
@@ -2023,6 +2025,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',
@@ -2067,6 +2070,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',
@@ -2105,6 +2109,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',
@@ -2140,6 +2145,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',
@@ -2178,6 +2184,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',
@@ -2216,6 +2223,7 @@ class Detailed_diligence extends CI_Controller {
 
         $section->addPageBreak();
         $section->addImage($src_logo, array(
+            'unit' => 'px',
             'width' => 130,
             'height' => 60,
             'wrappingStyle' => 'square',

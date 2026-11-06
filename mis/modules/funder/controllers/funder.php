@@ -764,7 +764,7 @@ function editFunder_Documents() {
             $sum = '';
             foreach ($disbursement_amount as $key => $val) {
                 foreach ($val as $sumval) {
-                    $sum += str_replace(',', '', $sumval);
+                    $sum += php72_num(str_replace(',', '', $sumval));
                 }
             }
         }
@@ -1081,7 +1081,7 @@ function editFunder_Documents() {
         $sum = '';
         foreach ($amount_deposite as $key => $val) {
             foreach ($val as $sumval) {
-                $sum += str_replace(',', '', $sumval);
+                $sum += php72_num(str_replace(',', '', $sumval));
             }
         }
         if ($sum != '' && php72_cmp($sum) > 0) {

@@ -1,12 +1,11 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once  APPPATH . '/third_party/PhpWord/Autoloader.php';
-use PhpOffice\PhpWord\Autoloader;
+// PhpWord is installed with Composer (phpoffice/phpword in /composer.json); the old copy in third_party/PhpWord (0.14.0) is no longer loaded.
+require_once FCPATH . 'vendor/autoload.php';
 use PhpOffice\PhpWord\Settings;
-Autoloader::register();
 Settings::loadConfig();
 
-class Phpword extends Autoloader {
+class Phpword {
 
 }

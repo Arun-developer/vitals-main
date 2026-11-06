@@ -5150,7 +5150,7 @@ class Portfolio extends CI_Controller {
     		$userName = $this->Minnovation->getUsername($row['created_by']);
 
 
-    		$partnersList = implode(',', php72_array_unique($get_partner_id));
+    		$partnersList = php72_implode(',', php72_array_unique($get_partner_id));
     		if ($row['sector'] == 'MCH') {
     			$sector_name = 'Maternal & child health';
     		} else if (php72_cmp($row['sector']) > 0) {
@@ -6804,7 +6804,7 @@ class Portfolio extends CI_Controller {
         		if (php72_count($equity) > 0) {
         			foreach ($equity as $e) {
         				$e_total = str_replace(',', '', $e['value']);
-        				$edata['equity_total'] += $e_total;
+        				$edata['equity_total'] += php72_num($e_total);
         			}
         		} else {
         			$edata['equity_total'] = 0;
@@ -6813,7 +6813,7 @@ class Portfolio extends CI_Controller {
         		if (php72_count($grand) > 0) {
         			foreach ($grand as $g) {
         				$g_total = str_replace(',', '', $g['value']);
-        				$edata['grand_total'] += $g_total;
+        				$edata['grand_total'] += php72_num($g_total);
         			}
         		} else {
         			$edata['grand_total'] = 0;
@@ -6822,7 +6822,7 @@ class Portfolio extends CI_Controller {
         		if (php72_count($short) > 0) {
         			foreach ($short as $s) {
         				$s_total = str_replace(',', '', $s['value']);
-        				$edata['short_total'] += $s_total;
+        				$edata['short_total'] += php72_num($s_total);
         			}
         		} else {
         			$edata['short_total'] = 0;
@@ -6831,7 +6831,7 @@ class Portfolio extends CI_Controller {
         		if (php72_count($long) > 0) {
         			foreach ($long as $l) {
         				$l_total = str_replace(',', '', $l['value']);
-        				$edata['long_total'] += $l_total;
+        				$edata['long_total'] += php72_num($l_total);
         			}
         		} else {
         			$edata['long_total'] = 0;
@@ -16161,8 +16161,8 @@ class Portfolio extends CI_Controller {
         	foreach ($salesactual_data as $svalue) {
         		$safy = array('4' => 'apr', '5' => 'may', '6' => 'jun', '7' => 'jul', '8' => 'aug', '9' => 'sep', '10' => 'oct', '11' => 'nov', '12' => 'dec', '1' => 'jan', '2' => 'feb', '3' => 'mar');
         		$saamt = str_replace(",", "", $svalue['value']);
-        		$saact_data[$safy[$svalue['month']]]+=$saamt;
-        		$tot_sale_actual += $saamt;
+        		$saact_data[$safy[$svalue['month']]]+=php72_num($saamt);
+        		$tot_sale_actual += php72_num($saamt);
         	}
         	$objPHPExcel->getActiveSheet()->setCellValue('N8', number_format($saact_data[strtolower($get_month_list[0])], 2));
         	$objPHPExcel->getActiveSheet()->setCellValue('O8', number_format($saact_data[strtolower($get_month_list[1])], 2));
@@ -16219,7 +16219,7 @@ class Portfolio extends CI_Controller {
         		foreach ($headkey_achieve as $key => $value) {
         			if ($fnvalue['month'] == $value) {
         				$objPHPExcel->getActiveSheet()->setCellValue($key . '10', $fnvalue['revenue']);
-        				$tot_revenue_actual += str_replace(",", "", $fnvalue['revenue']);
+        				$tot_revenue_actual += php72_num(str_replace(",", "", $fnvalue['revenue']));
         			}
         		}
         	}
@@ -16233,7 +16233,7 @@ class Portfolio extends CI_Controller {
         		foreach ($headkey_achieve as $key => $value) {
         			if ($fnvalue['month'] == $value) {
         				$objPHPExcel->getActiveSheet()->setCellValue($key . '11', $fnvalue['net_profit']);
-        				$tot_net_actual += str_replace(",", "", $fnvalue['net_profit']);
+        				$tot_net_actual += php72_num(str_replace(",", "", $fnvalue['net_profit']));
         			}
         		}
         	}
@@ -16245,8 +16245,8 @@ class Portfolio extends CI_Controller {
         		$vifmn = date('m', strtotime($vifvalue['month']));
         		$viffy = array('04' => 'apr', '05' => 'may', '06' => 'jun', '07' => 'jul', '08' => 'aug', '09' => 'sep', '10' => 'oct', '11' => 'nov', '12' => 'dec', '01' => 'jan', '02' => 'feb', '03' => 'mar');
         		$vifamt = str_replace(",", "", $vifvalue['amount']);
-        		$vif_data[$viffy[$vifmn]]+=$vifamt;
-        		$tot_vif_plan+=$vifamt;
+        		$vif_data[$viffy[$vifmn]]+=php72_num($vifamt);
+        		$tot_vif_plan+=php72_num($vifamt);
         	}
         	$objPHPExcel->getActiveSheet()->setCellValue('B9', number_format($vif_data[strtolower($get_month_list[0])], 2));
         	$objPHPExcel->getActiveSheet()->setCellValue('C9', number_format($vif_data[strtolower($get_month_list[1])], 2));
@@ -16267,8 +16267,8 @@ class Portfolio extends CI_Controller {
         		$vifmn = date('m', strtotime($vifvalue['disburse_date']));
         		$viffy = array('04' => 'apr', '05' => 'may', '06' => 'jun', '07' => 'jul', '08' => 'aug', '09' => 'sep', '10' => 'oct', '11' => 'nov', '12' => 'dec', '01' => 'jan', '02' => 'feb', '03' => 'mar');
         		$vifamt = str_replace(",", "", $vifvalue['disburse_amount']);
-        		$vifact_data[$viffy[$vifmn]]+=$vifamt;
-        		$tot_vif_actual+=$vifamt;
+        		$vifact_data[$viffy[$vifmn]]+=php72_num($vifamt);
+        		$tot_vif_actual+=php72_num($vifamt);
         	}
         	$objPHPExcel->getActiveSheet()->setCellValue('N9', number_format($vifact_data[strtolower($get_month_list[0])], 2));
         	$objPHPExcel->getActiveSheet()->setCellValue('O9', number_format($vifact_data[strtolower($get_month_list[1])], 2));
@@ -16324,9 +16324,9 @@ class Portfolio extends CI_Controller {
         					$shamt = str_replace(",", "", $short_plan[0]['short_total']);
         					$lngamt = str_replace(",", "", $long_plan[0]['long_total']);
 
-        					$ftotal = $eqamt + $shamt + $lngamt + $gfamt;
+        					$ftotal = php72_num($eqamt) + php72_num($shamt) + php72_num($lngamt) + php72_num($gfamt);
         					$objPHPExcel->getActiveSheet()->setCellValue($key . '15', number_format($ftotal, 2));
-        					$tot_fund_actual += str_replace(",", "", $fvalue['value']);
+        					$tot_fund_actual += php72_num(str_replace(",", "", $fvalue['value']));
         				}
         			}
         		}
@@ -16347,51 +16347,51 @@ class Portfolio extends CI_Controller {
         	$add_apr_actual = $add_may_actual = $add_jun_actual = $add_jul_actual = $add_aug_actual = $add_sep_actual = $add_oct_actual = $add_nov_actual = $add_dem_actual = $add_jan_actual = $add_feb_actual = $add_mar_actual = 0;
         	foreach ($mentoractual_list as $mactual) {
         		if ($mactual['month'] == date('n', strtotime($get_month_list[0]))) {
-        			$add_apr_actual += $mactual[strtolower($get_month_list[0])];
+        			$add_apr_actual += php72_num($mactual[strtolower($get_month_list[0])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('F16', $add_apr_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[1]))) {
-        			$add_may_actual += $mactual[strtolower($get_month_list[1])];
+        			$add_may_actual += php72_num($mactual[strtolower($get_month_list[1])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('G16', $add_may_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[2]))) {
-        			$add_jun_actual += $mactual[strtolower($get_month_list[2])];
+        			$add_jun_actual += php72_num($mactual[strtolower($get_month_list[2])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('H16', $add_jun_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[3]))) {
-        			$add_jul_actual += $mactual[strtolower($get_month_list[3])];
+        			$add_jul_actual += php72_num($mactual[strtolower($get_month_list[3])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('I16', $add_jul_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[4]))) {
-        			$add_aug_actual += $mactual[strtolower($get_month_list[4])];
+        			$add_aug_actual += php72_num($mactual[strtolower($get_month_list[4])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('J16', $add_aug_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[5]))) {
-        			$add_sep_actual += $mactual[strtolower($get_month_list[5])];
+        			$add_sep_actual += php72_num($mactual[strtolower($get_month_list[5])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('K16', $add_sep_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[6]))) {
-        			$add_oct_actual += $mactual[strtolower($get_month_list[6])];
+        			$add_oct_actual += php72_num($mactual[strtolower($get_month_list[6])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('L16', $add_oct_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[7]))) {
-        			$add_nov_actual += $mactual[strtolower($get_month_list[7])];
+        			$add_nov_actual += php72_num($mactual[strtolower($get_month_list[7])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('M16', $add_nov_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[8]))) {
-        			$add_dem_actual += $mactual[strtolower($get_month_list[8])];
+        			$add_dem_actual += php72_num($mactual[strtolower($get_month_list[8])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('N16', $add_dem_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[9]))) {
-        			$add_jan_actual += $mactual[strtolower($get_month_list[9])];
+        			$add_jan_actual += php72_num($mactual[strtolower($get_month_list[9])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('O16', $add_jan_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[10]))) {
-        			$add_feb_actual += $mactual[strtolower($get_month_list[10])];
+        			$add_feb_actual += php72_num($mactual[strtolower($get_month_list[10])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('P16', $add_feb_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		} else if ($mactual['month'] == date('n', strtotime($get_month_list[11]))) {
-        			$add_mar_actual += $mactual[strtolower($get_month_list[11])];
+        			$add_mar_actual += php72_num($mactual[strtolower($get_month_list[11])]);
         			$objPHPExcel->getActiveSheet()->setCellValue('Q16', $add_mar_actual);
         			$tot_apr_actual[] = $mactual['assigned_to'];
         		}
@@ -17373,7 +17373,7 @@ class Portfolio extends CI_Controller {
         					$revcost = 0;
         					foreach ($rev_target as $revs) {
         						$datavalues = json_decode($revs['data'], TRUE);
-        						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
+        						$revcost += php72_num(str_replace(',', '', $datavalues[$yearvalues[0]]));
         					}
 							if(php72_cmp($revcost)==0){
 								$revcost ='';
@@ -17386,7 +17386,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($rev_actual as $revs) {
         						if ($revs['month'] == $mn) {
-        							$revactualcost += str_replace(',', '', $revs['revenue']);
+        							$revactualcost += php72_num(str_replace(',', '', $revs['revenue']));
         						}
         					}
 							if(php72_cmp($revactualcost)==0){
@@ -17412,7 +17412,7 @@ class Portfolio extends CI_Controller {
         					$profcost = 0;
         					foreach ($prof_target as $profs) {
         						$profvalues = json_decode($profs['data'], TRUE);
-        						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
+        						$profcost += php72_num(str_replace(',', '', $profvalues[$profmonths[0]]));
         					}
 							if(php72_cmp($profcost)==0){
 								$profcost ='';
@@ -17426,7 +17426,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($prof_actual as $profs) {
         						if ($profs['month'] == $mn) {
-        							$profactualcost += str_replace(',', '', $profs['net_profit']);
+        							$profactualcost += php72_num(str_replace(',', '', $profs['net_profit']));
         						}
         					}
 							if(php72_cmp($profactualcost)==0){
@@ -17453,7 +17453,7 @@ class Portfolio extends CI_Controller {
         					$salescost = 0;
         					foreach ($sales_target as $sales) {
         						$salesvalues = json_decode($sales['value'], TRUE);
-        						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
+        						$salescost += php72_num(str_replace(',', '', $salesvalues[$salesmonths[0]]));
         					}
 							if(php72_cmp($salescost)==0){
 								$salescost ='';
@@ -17466,7 +17466,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($sales_actual as $sales) {
         						if ($sales['month'] == $mn) {
-        							$salesactualcost += str_replace(',', '', $sales['value']);
+        							$salesactualcost += php72_num(str_replace(',', '', $sales['value']));
         						}
         					}
 							if(php72_cmp($salesactualcost)==0){
@@ -17491,7 +17491,7 @@ class Portfolio extends CI_Controller {
         						$objPHPExcel->getActiveSheet()->setCellValue('C' . $sales_inc, $incubs['name']);
         						$objPHPExcel->getActiveSheet()->setCellValue('D' . $sales_inc, 'Sales-' . $salessku['product_name']);
         						$salesskuvalues = json_decode($salessku['value'], TRUE);
-        						$salesskucost += str_replace(',', '', $salesskuvalues[$salesskumonths[0]]);
+        						$salesskucost += php72_num(str_replace(',', '', $salesskuvalues[$salesskumonths[0]]));
 
         						$salessku_actual = $this->Mportfolio->getActualSales($month_where, $salessku['id'],$sec_list);
 								
@@ -17500,7 +17500,7 @@ class Portfolio extends CI_Controller {
         							$swap = array_flip($headkey_achieve);
         							foreach ($salessku_actual as $salessku) {
         								if ($salessku['month'] == $mn) {
-        									$salesskuactualcost += str_replace(',', '', $salessku['value']);
+        									$salesskuactualcost += php72_num(str_replace(',', '', $salessku['value']));
         								}
         							}
 									if(php72_cmp($salesskuactualcost)==0){
@@ -17536,16 +17536,16 @@ class Portfolio extends CI_Controller {
         							$fundcost = 0;
         							$fundvalues = json_decode($fund['data'], TRUE);
         							if ($fundmonths[0] == 'Jun') {
-        								$fundcost += str_replace(',', '', $fundvalues['qone']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qone']));
         							}
         							if ($fundmonths[0] == 'Sep') {
-        								$fundcost += str_replace(',', '', $fundvalues['qtwo']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qtwo']));
         							}
         							if ($fundmonths[0] == 'Dec') {
-        								$fundcost += str_replace(',', '', $fundvalues['qthree']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qthree']));
         							}
         							if ($fundmonths[0] == 'Mar') {
-        								$fundcost += str_replace(',', '', $fundvalues['qfour']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qfour']));
         							}
         						}
         					} else {
@@ -17566,7 +17566,7 @@ class Portfolio extends CI_Controller {
         							$actual_grand = str_replace(',', '', $fund['grand_total']);
         							$actual_short = str_replace(',', '', $fund['short_total']);
         							$actual_long = str_replace(',', '', $fund['long_total']);
-        							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
+        							$fundactualcost += php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
         						}
         					}
 							if(php72_cmp($fundactualcost)==0){
@@ -17593,16 +17593,16 @@ class Portfolio extends CI_Controller {
         							$teamhcost = 0;
         							$teamhvalues = json_decode($teamh['new_employee'], TRUE);
         							if ($teamhmonths[0] == 'Jun') {
-        								$teamhcost += str_replace(',', '', $teamhvalues['q1']);
+        								$teamhcost += php72_num(str_replace(',', '', $teamhvalues['q1']));
         							}
         							if ($teamhmonths[0] == 'Sep') {
-        								$teamhcost += str_replace(',', '', $teamhvalues['q2']);
+        								$teamhcost += php72_num(str_replace(',', '', $teamhvalues['q2']));
         							}
         							if ($teamhmonths[0] == 'Dec') {
-        								$teamhcost += str_replace(',', '', $teamhvalues['q3']);
+        								$teamhcost += php72_num(str_replace(',', '', $teamhvalues['q3']));
         							}
         							if ($teamhmonths[0] == 'Mar') {
-        								$teamhcost += str_replace(',', '', $teamhvalues['q4']);
+        								$teamhcost += php72_num(str_replace(',', '', $teamhvalues['q4']));
         							}
         						}
         					} else {
@@ -17619,7 +17619,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($teamh_actual as $teamh) {
         						if ($teamh['month'] == $mn) {
-        							$teamhactualcost += str_replace(',', '', $teamh['t_count']);
+        							$teamhactualcost += php72_num(str_replace(',', '', $teamh['t_count']));
         						}
         					}
 							if(php72_cmp($teamhactualcost)==0){
@@ -17647,16 +17647,16 @@ class Portfolio extends CI_Controller {
         							$teamecost = 0;
         							$teamevalues = json_decode($teame['exit_employee'], TRUE);
         							if ($teamemonths[0] == 'Jun') {
-        								$teamecost += str_replace(',', '', $teamevalues['q1']);
+        								$teamecost += php72_num(str_replace(',', '', $teamevalues['q1']));
         							}
         							if ($teamemonths[0] == 'Sep') {
-        								$teamecost += str_replace(',', '', $teamevalues['q2']);
+        								$teamecost += php72_num(str_replace(',', '', $teamevalues['q2']));
         							}
         							if ($teamemonths[0] == 'Dec') {
-        								$teamecost += str_replace(',', '', $teamevalues['q3']);
+        								$teamecost += php72_num(str_replace(',', '', $teamevalues['q3']));
         							}
         							if ($teamemonths[0] == 'Mar') {
-        								$teamecost += str_replace(',', '', $teamevalues['q4']);
+        								$teamecost += php72_num(str_replace(',', '', $teamevalues['q4']));
         							}
         						}
         					} else {
@@ -17673,7 +17673,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($teame_actual as $teame) {
         						if ($teame['month'] == $mn) {
-        							$teameactualcost += str_replace(',', '', $teame['t_count']);
+        							$teameactualcost += php72_num(str_replace(',', '', $teame['t_count']));
         						}
         					}
 							if(php72_cmp($teameactualcost)==0){
@@ -17700,16 +17700,16 @@ class Portfolio extends CI_Controller {
         							$empsurveycost = 0;
         							$empsurveyvalues = json_decode($empsurvey['survey_employee'], TRUE);
         							if ($empsurveymonths[0] == 'Jun') {
-        								$empsurveycost += str_replace(',', '', $empsurveyvalues['q1']);
+        								$empsurveycost += php72_num(str_replace(',', '', $empsurveyvalues['q1']));
         							}
         							if ($empsurveymonths[0] == 'Sep') {
-        								$empsurveycost += str_replace(',', '', $empsurveyvalues['q2']);
+        								$empsurveycost += php72_num(str_replace(',', '', $empsurveyvalues['q2']));
         							}
         							if ($empsurveymonths[0] == 'Dec') {
-        								$empsurveycost += str_replace(',', '', $empsurveyvalues['q3']);
+        								$empsurveycost += php72_num(str_replace(',', '', $empsurveyvalues['q3']));
         							}
         							if ($empsurveymonths[0] == 'Mar') {
-        								$empsurveycost += str_replace(',', '', $empsurveyvalues['q4']);
+        								$empsurveycost += php72_num(str_replace(',', '', $empsurveyvalues['q4']));
         							}
         						}
         					} else {
@@ -17726,7 +17726,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($empsurvey_actual as $empsurvey) {
         						if ($empsurvey['month'] == $mn) {
-        							$empsurveyactualcost += str_replace(',', '', $empsurvey['t_count']);
+        							$empsurveyactualcost += php72_num(str_replace(',', '', $empsurvey['t_count']));
         						}
         					}
 							if(php72_cmp($empsurveyactualcost)==0){
@@ -17753,16 +17753,16 @@ class Portfolio extends CI_Controller {
         							$boardmtcost = 0;
         							$boardmtvalues = json_decode($boardmt['meeting_plan'], TRUE);
         							if ($boardmtmonths[0] == 'Jun') {
-        								$boardmtcost += str_replace(',', '', $boardmtvalues['q1']);
+        								$boardmtcost += php72_num(str_replace(',', '', $boardmtvalues['q1']));
         							}
         							if ($boardmtmonths[0] == 'Sep') {
-        								$boardmtcost += str_replace(',', '', $boardmtvalues['q2']);
+        								$boardmtcost += php72_num(str_replace(',', '', $boardmtvalues['q2']));
         							}
         							if ($boardmtmonths[0] == 'Dec') {
-        								$boardmtcost += str_replace(',', '', $boardmtvalues['q3']);
+        								$boardmtcost += php72_num(str_replace(',', '', $boardmtvalues['q3']));
         							}
         							if ($boardmtmonths[0] == 'Mar') {
-        								$boardmtcost += str_replace(',', '', $boardmtvalues['q4']);
+        								$boardmtcost += php72_num(str_replace(',', '', $boardmtvalues['q4']));
         							}
         						}
         					} else {
@@ -17779,7 +17779,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($boardmt_actual as $boardmt) {
         						if ($boardmt['month'] == $mn) {
-        							$boardmtactualcost += str_replace(',', '', $boardmt['board']);
+        							$boardmtactualcost += php72_num(str_replace(',', '', $boardmt['board']));
         						}
         					}
 							if(php72_cmp($boardmtactualcost)==0){
@@ -17938,7 +17938,7 @@ class Portfolio extends CI_Controller {
 									'sumOfAmount' => $item['amount'],
 								);
 							} else {
-								$sums[$key]['sumOfAmount'] += $item['amount'];
+								$sums[$key]['sumOfAmount'] += php72_num($item['amount']);
 							}
 						}
 						$sums = array_values($sums);
@@ -17978,7 +17978,7 @@ class Portfolio extends CI_Controller {
 											$seedtarmonth = date("M", mktime(0, 0, 0, $seedfn['month'], 1));
 											if ($seedfnmonths[0] == $seedtarmonth) {
 													if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-														$seedfncost += $seedfn['sumOfAmount'];
+														$seedfncost += php72_num($seedfn['sumOfAmount']);
 													}
 											}
 										}
@@ -17997,7 +17997,7 @@ class Portfolio extends CI_Controller {
 								foreach ($seedfn_actual as $seedfn) {
 									if ($seedfn['month'] == $mn) {
 										if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-											$seedfnactualcost += str_replace(',', '', $seedfn['disburse_amount']);
+											$seedfnactualcost += php72_num(str_replace(',', '', $seedfn['disburse_amount']));
 										}
 										
 									}
@@ -18035,16 +18035,16 @@ class Portfolio extends CI_Controller {
         						foreach ($mentor_target as $mentor) {
 
         							if ($mentormonths[0] == 'Apr' || $mentormonths[0] == 'May' || $mentormonths[0] == 'Jun') {
-        								$mentorcost += $mentor['mentorq1'];
+        								$mentorcost += php72_num($mentor['mentorq1']);
         							}
         							if ($mentormonths[0] == 'Jul' || $mentormonths[0] == 'Aug' || $mentormonths[0] == 'Sep') {
-        								$mentorcost += $mentor['mentorq2'];
+        								$mentorcost += php72_num($mentor['mentorq2']);
         							}
         							if ($mentormonths[0] == 'Oct' || $mentormonths[0] == 'Nov' || $mentormonths[0] == 'Dec') {
-        								$mentorcost += $mentor['mentorq3'];
+        								$mentorcost += php72_num($mentor['mentorq3']);
         							}
         							if ($mentormonths[0] == 'Jan' || $mentormonths[0] == 'Feb' || $mentormonths[0] == 'Mar') {
-        								$mentorcost += $mentor['mentorq4'];
+        								$mentorcost += php72_num($mentor['mentorq4']);
         							}
         						}
         					} else {
@@ -18142,40 +18142,40 @@ class Portfolio extends CI_Controller {
         					if (php72_count($mentorhr_actual) > 0) {
         						foreach ($mentorhr_actual as $men_actual) {
         							if (php72_cmp($mn) == 4) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['may'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['mar']);
         							}
         						}
         					}
@@ -18259,40 +18259,40 @@ class Portfolio extends CI_Controller {
         							$swap = array_flip($headkey_achieve);
 
         							if (php72_cmp($mn) == 4) {
-        								$mentorhractualcost += $men_actual['apr'];
+        								$mentorhractualcost += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$mentorhractualcost += $men_actual['may'];
+        								$mentorhractualcost += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$mentorhractualcost += $men_actual['jun'];
+        								$mentorhractualcost += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$mentorhractualcost += $men_actual['jul'];
+        								$mentorhractualcost += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$mentorhractualcost += $men_actual['aug'];
+        								$mentorhractualcost += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$mentorhractualcost += $men_actual['sep'];
+        								$mentorhractualcost += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$mentorhractualcost += $men_actual['oct'];
+        								$mentorhractualcost += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$mentorhractualcost += $men_actual['nov'];
+        								$mentorhractualcost += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$mentorhractualcost += $men_actual['dec'];
+        								$mentorhractualcost += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$mentorhractualcost += $men_actual['jan'];
+        								$mentorhractualcost += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$mentorhractualcost += $men_actual['feb'];
+        								$mentorhractualcost += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$mentorhractualcost += $men_actual['mar'];
+        								$mentorhractualcost += php72_num($men_actual['mar']);
         							}
 									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
@@ -18433,7 +18433,7 @@ class Portfolio extends CI_Controller {
 								if (php72_count($nontap_target) > 0) {
 									foreach ($nontap_target as $nontap) { # echo'<pre>';print_r($nontap_target[$i]['program_name']);
 										//if($nontap_target[$i]['program_name'] == $nontap['program_name']){
-											$nontapcost += $nontap[strtolower($monthid)];
+											$nontapcost += php72_num($nontap[strtolower($monthid)]);
 										//}
 									}
 								} else {
@@ -18458,7 +18458,7 @@ class Portfolio extends CI_Controller {
 								if (php72_count($nontap_actual) > 0) {
 									foreach ($nontap_actual as $nontapact) {
 										//if($nontap_target[$i]['program_name'] == $nontapact['program_name']){
-											$nontapactualcost += $nontapact[strtolower($monthid2)];
+											$nontapactualcost += php72_num($nontapact[strtolower($monthid2)]);
 										//}
 									}
 								} else {
@@ -18492,16 +18492,16 @@ class Portfolio extends CI_Controller {
         							$dpcost = 0;
         							$dpvalues = json_decode($dp['dp_plan'], TRUE);
         							if ($dpmonths[0] == 'Jun') {
-        								$dpcost += str_replace(',', '', $dpvalues['q1']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q1']));
         							}
         							if ($dpmonths[0] == 'Sep') {
-        								$dpcost += str_replace(',', '', $dpvalues['q2']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q2']));
         							}
         							if ($dpmonths[0] == 'Dec') {
-        								$dpcost += str_replace(',', '', $dpvalues['q3']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q3']));
         							}
         							if ($dpmonths[0] == 'Mar') {
-        								$dpcost += str_replace(',', '', $dpvalues['q4']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q4']));
         							}
         						}
         					} else {
@@ -18518,7 +18518,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($dp_actual as $dp) {
         						if ($dp['month'] == $mn) {
-        							$dpactualcost += str_replace(',', '', $dp['dps']);
+        							$dpactualcost += php72_num(str_replace(',', '', $dp['dps']));
         						}
         					}
 							if(php72_cmp($dpactualcost)==0){
@@ -18547,16 +18547,16 @@ class Portfolio extends CI_Controller {
         							$dpexcost = 0;
         							$dpexvalues = json_decode($dpex['dp_external'], TRUE);
         							if ($dpexmonths[0] == 'Jun') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q1']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q1']));
         							}
         							if ($dpexmonths[0] == 'Sep') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q2']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q2']));
         							}
         							if ($dpexmonths[0] == 'Dec') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q3']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q3']));
         							}
         							if ($dpexmonths[0] == 'Mar') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q4']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q4']));
         							}
         						}
         					} else {
@@ -18602,7 +18602,7 @@ class Portfolio extends CI_Controller {
         					$endbenemonths = explode('-', $arrlist);
         					$endbenecost = 0;
         					foreach ($endbene_target as $endbene) {
-        						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
+        						$endbenecost += php72_num(str_replace(',', '', $endbene[strtolower($endbenemonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene['iris_name']);
         					}
 							if(php72_cmp($endbenecost)==0){
@@ -18616,7 +18616,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_actual as $endbene) {
         						if ($endbene['month'] == $mn) {
-        							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
+        							$endbeneactualcost += php72_num(str_replace(',', '', $endbene['end_male']));
         						}
         					}
 							if(php72_cmp($endbeneactualcost)==0){
@@ -18644,7 +18644,7 @@ class Portfolio extends CI_Controller {
         					$endbene_femalemonths = explode('-', $arrlist);
         					$endbene_femalecost = 0;
         					foreach ($endbene_female_target as $endbene_female) {
-        						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
+        						$endbene_femalecost += php72_num(str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_female['iris_name']);
         					}
 							if(php72_cmp($endbene_femalecost)==0){
@@ -18658,7 +18658,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_female_actual as $endbene_female) {
         						if ($endbene_female['month'] == $mn) {
-        							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
+        							$endbene_femaleactualcost += php72_num(str_replace(',', '', $endbene_female['end_female']));
         						}
         					}
 							if(php72_cmp($endbene_femaleactualcost)==0){
@@ -18686,7 +18686,7 @@ class Portfolio extends CI_Controller {
         					$endbene_othermonths = explode('-', $arrlist);
         					$endbene_othercost = 0;
         					foreach ($endbene_other_target as $endbene_other) {
-        						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
+        						$endbene_othercost += php72_num(str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_other['iris_name']);
         					}
 							if(php72_cmp($endbene_othercost)==0){
@@ -18700,7 +18700,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_other_actual as $endbene_other) {
         						if ($endbene_other['month'] == $mn) {
-        							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
+        							$endbene_otheractualcost += php72_num(str_replace(',', '', $endbene_other['end_other']));
         						}
         					}
 							if(php72_cmp($endbene_otheractualcost)==0){
@@ -18727,7 +18727,7 @@ class Portfolio extends CI_Controller {
         					$endbene_unknownmonths = explode('-', $arrlist);
         					$endbene_unknowncost = 0;
         					foreach ($endbene_unknown_target as $endbene_unknown) {
-        						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
+        						$endbene_unknowncost += php72_num(str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $endbene_unknown['iris_name']);
         					}
 							if(php72_cmp($endbene_unknowncost)==0){
@@ -18742,7 +18742,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_unknown_actual as $endbene_unknown) {
         						if ($endbene_unknown['month'] == $mn) {
         							$end_unknown = str_replace(',', '', $endbene_unknown['end_unknown']);
-        							$endbene_unknownactualcost += $end_unknown;
+        							$endbene_unknownactualcost += php72_num($end_unknown);
         						}
         					}
 							if(php72_cmp($endbene_unknownactualcost)==0){
@@ -18770,7 +18770,7 @@ class Portfolio extends CI_Controller {
         					$directjmonths = explode('-', $arrlist);
         					$directjcost = 0;
         					foreach ($directj_target as $directj) {
-        						$directjcost += str_replace(',', '', $directj[strtolower($directjmonths[0])]);
+        						$directjcost += php72_num(str_replace(',', '', $directj[strtolower($directjmonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj['iris_name']);
         					}
 							if(php72_cmp($directjcost)==0){
@@ -18785,7 +18785,7 @@ class Portfolio extends CI_Controller {
         					foreach ($directj_actual as $directj) {
         						if ($directj['month'] == $mn) {
         							$direct_male = str_replace(',', '', $directj['direct_male']);
-        							$directjactualcost += $direct_male;
+        							$directjactualcost += php72_num($direct_male);
         						}
         					}
 							if(php72_cmp($directjactualcost)==0){
@@ -18812,7 +18812,7 @@ class Portfolio extends CI_Controller {
         					$directj_femalemonths = explode('-', $arrlist);
         					$directj_femalecost = 0;
         					foreach ($directj_female_target as $directj_female) {
-        						$directj_femalecost += str_replace(',', '', $directj_female[strtolower($directj_femalemonths[0])]);
+        						$directj_femalecost += php72_num(str_replace(',', '', $directj_female[strtolower($directj_femalemonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_female['iris_name']);
         					}
 							if(php72_cmp($directj_femalecost)==0){
@@ -18827,7 +18827,7 @@ class Portfolio extends CI_Controller {
         					foreach ($directj_female_actual as $directj_female) {
         						if ($directj_female['month'] == $mn) {
         							$direct_female = str_replace(',', '', $directj_female['direct_female']);
-        							$directj_femaleactualcost += $direct_female;
+        							$directj_femaleactualcost += php72_num($direct_female);
         						}
         					}
 							if(php72_cmp($directj_femaleactualcost)==0){
@@ -18854,7 +18854,7 @@ class Portfolio extends CI_Controller {
         					$directj_othermonths = explode('-', $arrlist);
         					$directj_othercost = 0;
         					foreach ($directj_other_target as $directj_other) {
-        						$directj_othercost += str_replace(',', '', $directj_other[strtolower($directj_othermonths[0])]);
+        						$directj_othercost += php72_num(str_replace(',', '', $directj_other[strtolower($directj_othermonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_other['iris_name']);
         					}
 							if(php72_cmp($directj_othercost)==0){
@@ -18869,7 +18869,7 @@ class Portfolio extends CI_Controller {
         					foreach ($directj_other_actual as $directj_other) {
         						if ($directj_other['month'] == $mn) {
         							$direct_other = str_replace(',', '', $directj_other['direct_other']);
-        							$directj_otheractualcost += $direct_other;
+        							$directj_otheractualcost += php72_num($direct_other);
         						}
         					}
 							if(php72_cmp($directj_otheractualcost)==0){
@@ -18896,7 +18896,7 @@ class Portfolio extends CI_Controller {
         					$directj_unknownmonths = explode('-', $arrlist);
         					$directj_unknowncost = 0;
         					foreach ($directj_unknown_target as $directj_unknown) {
-        						$directj_unknowncost += str_replace(',', '', $directj_unknown[strtolower($directj_unknownmonths[0])]);
+        						$directj_unknowncost += php72_num(str_replace(',', '', $directj_unknown[strtolower($directj_unknownmonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $directj_unknown['iris_name']);
         					}
 							if(php72_cmp($directj_unknowncost)==0){
@@ -18911,7 +18911,7 @@ class Portfolio extends CI_Controller {
         					foreach ($directj_unknown_actual as $directj_unknown) {
         						if ($directj_unknown['month'] == $mn) {
         							$direct_unknown = str_replace(',', '', $directj_unknown['direct_unknown']);
-        							$directj_unknownactualcost += $direct_unknown;
+        							$directj_unknownactualcost += php72_num($direct_unknown);
         						}
         					}
 							if(php72_cmp($directj_unknownactualcost)==0){
@@ -18938,7 +18938,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_malemonths = explode('-', $arrlist);
         					$indirectj_malecost = 0;
         					foreach ($indirectj_male_target as $indirectj_male) {
-        						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
+        						$indirectj_malecost += php72_num(str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_male['iris_name']);
         					}
 							if(php72_cmp($indirectj_malecost)==0){
@@ -18953,7 +18953,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_male_actual as $indirectj_male) {
         						if ($indirectj_male['month'] == $mn) {
         							$indirect_male = str_replace(',', '', $indirectj_male['indirect_male']);
-        							$indirectj_maleactualcost += $indirect_male;
+        							$indirectj_maleactualcost += php72_num($indirect_male);
         						}
         					}
 							if(php72_cmp($indirectj_maleactualcost)==0){
@@ -18980,7 +18980,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_femalemonths = explode('-', $arrlist);
         					$indirectj_femalecost = 0;
         					foreach ($indirectj_female_target as $indirectj_female) {
-        						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
+        						$indirectj_femalecost += php72_num(str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_female['iris_name']);
         					}
 							if(php72_cmp($indirectj_femalecost)==0){
@@ -18995,7 +18995,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_female_actual as $indirectj_female) {
         						if ($indirectj_female['month'] == $mn) {
         							$indirect_female = str_replace(',', '', $indirectj_female['indirect_female']);
-        							$indirectj_femaleactualcost += $indirect_female;
+        							$indirectj_femaleactualcost += php72_num($indirect_female);
         						}
         					}
 							if(php72_cmp($indirectj_femaleactualcost)==0){
@@ -19022,7 +19022,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_othermonths = explode('-', $arrlist);
         					$indirectj_othercost = 0;
         					foreach ($indirectj_other_target as $indirectj_other) {
-        						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
+        						$indirectj_othercost += php72_num(str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_other['iris_name']);
         					}
 							if(php72_cmp($indirectj_othercost)==0){
@@ -19037,7 +19037,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_other_actual as $indirectj_other) {
         						if ($indirectj_other['month'] == $mn) {
         							$indirect_other = str_replace(',', '', $indirectj_other['indirect_other']);
-        							$indirectj_otheractualcost += $indirect_other;
+        							$indirectj_otheractualcost += php72_num($indirect_other);
         						}
         					}
 							if(php72_cmp($indirectj_otheractualcost)==0){
@@ -19064,7 +19064,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_unknownmonths = explode('-', $arrlist);
         					$indirectj_unknowncost = 0;
         					foreach ($indirectj_unknown_target as $indirectj_unknown) {
-        						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
+        						$indirectj_unknowncost += php72_num(str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]));
         						$objPHPExcel->getActiveSheet()->setCellValue('AC' . $rw_inc, $indirectj_unknown['iris_name']);
         					}
 							if(php72_cmp($indirectj_unknowncost)==0){
@@ -19079,7 +19079,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_unknown_actual as $indirectj_unknown) {
         						if ($indirectj_unknown['month'] == $mn) {
         							$indirect_unknown = str_replace(',', '', $indirectj_unknown['indirect_unknown']);
-        							$indirectj_unknownactualcost += $indirect_unknown;
+        							$indirectj_unknownactualcost += php72_num($indirect_unknown);
         						}
         					}
 							if(php72_cmp($indirectj_unknownactualcost)==0){
@@ -19120,7 +19120,7 @@ class Portfolio extends CI_Controller {
         							$swap = array_flip($headkey_achieve);
         							foreach ($metric_actual as $metric_act) {
         								if ($metric_act['month'] == $mn) {
-        									$metricactualcost += $metric_act['metric_value'];
+        									$metricactualcost += php72_num($metric_act['metric_value']);
         								}
         							}
 									if(php72_cmp($metricactualcost)==0){
@@ -19792,7 +19792,7 @@ class Portfolio extends CI_Controller {
     					if (php72_array_key_exists($yearvalues[0], $datavalues)) {
     						$cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
     						if (php72_array_key_exists($values, $search_array)) {
-    							$search_array[$values] = $search_array[$values] + $cost;
+    							$search_array[$values] = $search_array[$values] + php72_num($cost);
     						} else {
     							$search_array[$values] = $cost;
     						}
@@ -19827,7 +19827,7 @@ class Portfolio extends CI_Controller {
     						if ($result['month'] == $value['month']) {
     							$actual_cost = str_replace(',', '', $value['revenue']);
     							$rev_cost = str_replace(',', '', $result['revenue']);
-    							$last_target[$m]['actual'] = $rev_cost + $actual_cost;
+    							$last_target[$m]['actual'] = php72_num($rev_cost) + php72_num($actual_cost);
     						} else {
     							$last_target[$m]['actual'] = str_replace(',', '', $value['revenue']);
     						}
@@ -19877,7 +19877,7 @@ class Portfolio extends CI_Controller {
     					if (php72_array_key_exists($yearvalues[0], $datavalues)) {
     						$cost = str_replace(',', '', $datavalues[$yearvalues[0]]);
     						if (php72_array_key_exists($values, $search_array)) {
-    							$search_array[$values] = $search_array[$values] + $cost;
+    							$search_array[$values] = $search_array[$values] + php72_num($cost);
     						} else {
     							$search_array[$values] = $cost;
     						}
@@ -19919,7 +19919,7 @@ class Portfolio extends CI_Controller {
     						if ($result['month'] == $value['month']) {
     							$actual_cost = str_replace(',', '', $value['revenue']);
     							$rev_cost = str_replace(',', '', $result['revenue']);
-    							$fetch_target[$m]['actual'] = $rev_cost + $actual_cost;
+    							$fetch_target[$m]['actual'] = php72_num($rev_cost) + php72_num($actual_cost);
     						} else {
     							$fetch_target[$m]['actual'] = str_replace(',', '', $value['revenue']);
     						}
@@ -19941,8 +19941,8 @@ class Portfolio extends CI_Controller {
     			foreach ($quarter_group[$q] as $value) {
     				$inc = $q + 1;
     				$last_target[$q]['name'] = $value['name'];
-    				$last_target[$q]['target'] += $value['target'];
-    				$last_target[$q]['actual'] += $value['actual'];
+    				$last_target[$q]['target'] += php72_num($value['target']);
+    				$last_target[$q]['actual'] += php72_num($value['actual']);
     			}
     		}
     	} else {
@@ -19952,25 +19952,25 @@ class Portfolio extends CI_Controller {
     				$get_data = json_decode($target['data']);
     				foreach ($get_data as $key => $value) {
     					if (php72_in_array($key, $q1)) {
-    						$q1_val += str_replace(',', '', $value);
+    						$q1_val += php72_num(str_replace(',', '', $value));
     						$last_target[0]['name'] = 'Q1';
     						$last_target[0]['target'] = $q1_val;
     						$last_target[0]['actual'] = '0';
     					}
     					if (php72_in_array($key, $q2)) {
-    						$q2_val += str_replace(',', '', $value);
+    						$q2_val += php72_num(str_replace(',', '', $value));
     						$last_target[1]['name'] = 'Q2';
     						$last_target[1]['target'] = $q2_val;
     						$last_target[1]['actual'] = '0';
     					}
     					if (php72_in_array($key, $q3)) {
-    						$q3_val += str_replace(',', '', $value);
+    						$q3_val += php72_num(str_replace(',', '', $value));
     						$last_target[2]['name'] = 'Q3';
     						$last_target[2]['target'] = $q3_val;
     						$last_target[2]['actual'] = '0';
     					}
     					if (php72_in_array($key, $q4)) {
-    						$q4_val += str_replace(',', '', $value);
+    						$q4_val += php72_num(str_replace(',', '', $value));
     						$last_target[3]['name'] = 'Q4';
     						$last_target[3]['target'] = $q4_val;
     						$last_target[3]['actual'] = '0';
@@ -19987,19 +19987,19 @@ class Portfolio extends CI_Controller {
     		if (php72_count($revenue_actual) > 0) {
     			foreach ($revenue_actual as $actual) {
     				if (in_array($actual['month'], $q1_key)) {
-    					$a1_val += str_replace(',', '', $actual['revenue']);
+    					$a1_val += php72_num(str_replace(',', '', $actual['revenue']));
     					$last_target[0]['actual'] = $a1_val;
     				}
     				if (in_array($actual['month'], $q2_key)) {
-    					$a2_val += str_replace(',', '', $actual['revenue']);
+    					$a2_val += php72_num(str_replace(',', '', $actual['revenue']));
     					$last_target[1]['actual'] = $a2_val;
     				}
     				if (in_array($actual['month'], $q3_key)) {
-    					$a3_val += str_replace(',', '', $actual['revenue']);
+    					$a3_val += php72_num(str_replace(',', '', $actual['revenue']));
     					$last_target[2]['actual'] = $a3_val;
     				}
     				if (in_array($actual['month'], $q4_key)) {
-    					$a4_val += str_replace(',', '', $actual['revenue']);
+    					$a4_val += php72_num(str_replace(',', '', $actual['revenue']));
     					$last_target[3]['actual'] = $a4_val;
     				}
     			}
@@ -20646,7 +20646,7 @@ class Portfolio extends CI_Controller {
 									'sumOfAmount' => $item['amount'],
 								);
 							} else {
-								$sums[$key]['sumOfAmount'] += $item['amount'];
+								$sums[$key]['sumOfAmount'] += php72_num($item['amount']);
 							}
 						}
 						
@@ -20686,7 +20686,7 @@ class Portfolio extends CI_Controller {
 											$seedtarmonth = date("M", mktime(0, 0, 0, $seedfn['month'], 1));
 											if ($seedfnmonths[0] == $seedtarmonth) {
 													if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-														$seedfncost += $seedfn['sumOfAmount'];
+														$seedfncost += php72_num($seedfn['sumOfAmount']);
 													}
 											}
 										}
@@ -20707,7 +20707,7 @@ class Portfolio extends CI_Controller {
 								foreach ($seedfn_actual as $seedfn) {
 									if ($seedfn['month'] == $mn) {
 										if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-											$seedfnactualcost += str_replace(',', '', $seedfn['disburse_amount']);
+											$seedfnactualcost += php72_num(str_replace(',', '', $seedfn['disburse_amount']));
 										}
 										
 									}
@@ -20775,16 +20775,16 @@ class Portfolio extends CI_Controller {
         						foreach ($mentor_target as $mentor) {
 
         							if ($mentormonths[0] == 'Apr' || $mentormonths[0] == 'May' || $mentormonths[0] == 'Jun') {
-        								$mentorcost += $mentor['mentorq1'];
+        								$mentorcost += php72_num($mentor['mentorq1']);
         							}
         							if ($mentormonths[0] == 'Jul' || $mentormonths[0] == 'Aug' || $mentormonths[0] == 'Sep') {
-        								$mentorcost += $mentor['mentorq2'];
+        								$mentorcost += php72_num($mentor['mentorq2']);
         							}
         							if ($mentormonths[0] == 'Oct' || $mentormonths[0] == 'Nov' || $mentormonths[0] == 'Dec') {
-        								$mentorcost += $mentor['mentorq3'];
+        								$mentorcost += php72_num($mentor['mentorq3']);
         							}
         							if ($mentormonths[0] == 'Jan' || $mentormonths[0] == 'Feb' || $mentormonths[0] == 'Mar') {
-        								$mentorcost += $mentor['mentorq4'];
+        								$mentorcost += php72_num($mentor['mentorq4']);
         							}
         						}
         					} else {
@@ -20946,40 +20946,40 @@ class Portfolio extends CI_Controller {
 									}
 								
         							if (php72_cmp($mn) == 4) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['may'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['mar']);
         							}
         						}
         					}
@@ -21161,40 +21161,40 @@ class Portfolio extends CI_Controller {
         							$swap = array_flip($headkey_achieve);
 
         							if (php72_cmp($mn) == 4) {
-        								$mentorhractualcost += $men_actual['apr'];
+        								$mentorhractualcost += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$mentorhractualcost += $men_actual['may'];
+        								$mentorhractualcost += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$mentorhractualcost += $men_actual['jun'];
+        								$mentorhractualcost += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$mentorhractualcost += $men_actual['jul'];
+        								$mentorhractualcost += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$mentorhractualcost += $men_actual['aug'];
+        								$mentorhractualcost += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$mentorhractualcost += $men_actual['sep'];
+        								$mentorhractualcost += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$mentorhractualcost += $men_actual['oct'];
+        								$mentorhractualcost += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$mentorhractualcost += $men_actual['nov'];
+        								$mentorhractualcost += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$mentorhractualcost += $men_actual['dec'];
+        								$mentorhractualcost += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$mentorhractualcost += $men_actual['jan'];
+        								$mentorhractualcost += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$mentorhractualcost += $men_actual['feb'];
+        								$mentorhractualcost += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$mentorhractualcost += $men_actual['mar'];
+        								$mentorhractualcost += php72_num($men_actual['mar']);
         							}
 									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
@@ -21277,7 +21277,7 @@ class Portfolio extends CI_Controller {
 								if (php72_count($tap_target) > 0) {
 									foreach ($tap_target as $tap) {
 										if($tap_target[$i]['program_name'] == $tap['program_name']){
-										   $tapcost += $tap[strtolower($monthid)];
+										   $tapcost += php72_num($tap[strtolower($monthid)]);
 										
 										}
 									}
@@ -21399,16 +21399,16 @@ class Portfolio extends CI_Controller {
         							$dpcost = 0;
         							$dpvalues = json_decode($dp['dp_plan'], TRUE);
         							if ($dpmonths[0] == 'Jun') {
-        								$dpcost += str_replace(',', '', $dpvalues['q1']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q1']));
         							}
         							if ($dpmonths[0] == 'Sep') {
-        								$dpcost += str_replace(',', '', $dpvalues['q2']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q2']));
         							}
         							if ($dpmonths[0] == 'Dec') {
-        								$dpcost += str_replace(',', '', $dpvalues['q3']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q3']));
         							}
         							if ($dpmonths[0] == 'Mar') {
-        								$dpcost += str_replace(',', '', $dpvalues['q4']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q4']));
         							}
         						}
         					} else {
@@ -21428,7 +21428,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($dp_actual as $dp) {
         						if ($dp['month'] == $mn) {
-        							$dpactualcost += str_replace(',', '', $dp['dps']);
+        							$dpactualcost += php72_num(str_replace(',', '', $dp['dps']));
         						}
         					}
 							if(php72_cmp($dpactualcost)==0){
@@ -21489,16 +21489,16 @@ class Portfolio extends CI_Controller {
         							$dpexcost = 0;
         							$dpexvalues = json_decode($dpex['dp_external'], TRUE);
         							if ($dpexmonths[0] == 'Jun') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q1']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q1']));
         							}
         							if ($dpexmonths[0] == 'Sep') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q2']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q2']));
         							}
         							if ($dpexmonths[0] == 'Dec') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q3']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q3']));
         							}
         							if ($dpexmonths[0] == 'Mar') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q4']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q4']));
         							}
         						}
         					} else {
@@ -21575,7 +21575,7 @@ class Portfolio extends CI_Controller {
         					$revcost = 0;
         					foreach ($rev_target as $revs) {
         						$datavalues = json_decode($revs['data'], TRUE);
-        						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
+        						$revcost += php72_num(str_replace(',', '', $datavalues[$yearvalues[0]]));
         					}
 							if(php72_cmp($revcost)==0){
 								$revcost ='';
@@ -21589,7 +21589,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($rev_actual as $revs) {
         						if ($revs['month'] == $mn) {
-        							$revactualcost += str_replace(',', '', $revs['revenue']);
+        							$revactualcost += php72_num(str_replace(',', '', $revs['revenue']));
         						}
         					}
 							if(php72_cmp($revactualcost)==0){
@@ -21657,7 +21657,7 @@ class Portfolio extends CI_Controller {
         					$salescost = 0;
         					foreach ($sales_target as $sales) {
         						$salesvalues = json_decode($sales['value'], TRUE);
-        						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
+        						$salescost += php72_num(str_replace(',', '', $salesvalues[$salesmonths[0]]));
         					}
 							if(php72_cmp($salescost)==0){
 								$salescost ='';
@@ -21671,7 +21671,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($sales_actual as $sales) {
         						if ($sales['month'] == $mn) {
-        							$salesactualcost += str_replace(',', '', $sales['value']);
+        							$salesactualcost += php72_num(str_replace(',', '', $sales['value']));
         						}
         					}
 							if(php72_cmp($salesactualcost)==0){
@@ -21796,7 +21796,7 @@ class Portfolio extends CI_Controller {
         					$profcost = 0;
         					foreach ($prof_target as $profs) {
         						$profvalues = json_decode($profs['data'], TRUE);
-        						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
+        						$profcost += php72_num(str_replace(',', '', $profvalues[$profmonths[0]]));
         					}
 							if(php72_cmp($profcost)==0){
 								$profcost ='';
@@ -21810,7 +21810,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($prof_actual as $profs) {
         						if ($profs['month'] == $mn) {
-        							$profactualcost += str_replace(',', '', $profs['net_profit']);
+        							$profactualcost += php72_num(str_replace(',', '', $profs['net_profit']));
         						}
         					}
 							if(php72_cmp($profactualcost)==0){
@@ -21871,16 +21871,16 @@ class Portfolio extends CI_Controller {
         							$fundcost = 0;
         							$fundvalues = json_decode($fund['data'], TRUE);
         							if ($fundmonths[0] == 'Jun') {
-        								$fundcost += str_replace(',', '', $fundvalues['qone']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qone']));
         							}
         							if ($fundmonths[0] == 'Sep') {
-        								$fundcost += str_replace(',', '', $fundvalues['qtwo']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qtwo']));
         							}
         							if ($fundmonths[0] == 'Dec') {
-        								$fundcost += str_replace(',', '', $fundvalues['qthree']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qthree']));
         							}
         							if ($fundmonths[0] == 'Mar') {
-        								$fundcost += str_replace(',', '', $fundvalues['qfour']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qfour']));
         							}
         						}
         					} else {
@@ -21902,7 +21902,7 @@ class Portfolio extends CI_Controller {
         							$actual_grand = str_replace(',', '', $fund['grand_total']);
         							$actual_short = str_replace(',', '', $fund['short_total']);
         							$actual_long = str_replace(',', '', $fund['long_total']);
-        							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
+        							$fundactualcost += php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
         						}
         					}
 							if(php72_cmp($fundactualcost)==0){
@@ -21959,7 +21959,7 @@ class Portfolio extends CI_Controller {
         					$endbenemonths = explode('-', $arrlist);
         					$endbenecost = 0;
         					foreach ($endbene_target as $endbene) {
-        						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
+        						$endbenecost += php72_num(str_replace(',', '', $endbene[strtolower($endbenemonths[0])]));
         					}
 							if(php72_cmp($endbenecost)==0){
 								$endbenecost ='';
@@ -21973,7 +21973,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_actual as $endbene) {
         						if ($endbene['month'] == $mn) {
-        							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
+        							$endbeneactualcost += php72_num(str_replace(',', '', $endbene['end_male']));
         						}
         					}
 							if(php72_cmp($endbeneactualcost)==0){
@@ -22032,7 +22032,7 @@ class Portfolio extends CI_Controller {
         					$endbene_femalemonths = explode('-', $arrlist);
         					$endbene_femalecost = 0;
         					foreach ($endbene_female_target as $endbene_female) {
-        						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
+        						$endbene_femalecost += php72_num(str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]));
         					}
 							if(php72_cmp($endbene_femalecost)==0){
 								$endbene_femalecost ='';
@@ -22046,7 +22046,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_female_actual as $endbene_female) {
         						if ($endbene_female['month'] == $mn) {
-        							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
+        							$endbene_femaleactualcost += php72_num(str_replace(',', '', $endbene_female['end_female']));
         						}
         					}
 							if(php72_cmp($endbene_femaleactualcost)==0){
@@ -22106,7 +22106,7 @@ class Portfolio extends CI_Controller {
         					$endbene_othermonths = explode('-', $arrlist);
         					$endbene_othercost = 0;
         					foreach ($endbene_other_target as $endbene_other) {
-        						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
+        						$endbene_othercost += php72_num(str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]));
         					}
 							if(php72_cmp($endbene_othercost)==0){
 								$endbene_othercost ='';
@@ -22121,7 +22121,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_other_actual as $endbene_other) {
         						if ($endbene_other['month'] == $mn) {
-        							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
+        							$endbene_otheractualcost += php72_num(str_replace(',', '', $endbene_other['end_other']));
         						}
         					}
 							if(php72_cmp($endbene_otheractualcost)==0){
@@ -22179,7 +22179,7 @@ class Portfolio extends CI_Controller {
         					$endbene_unknownmonths = explode('-', $arrlist);
         					$endbene_unknowncost = 0;
         					foreach ($endbene_unknown_target as $endbene_unknown) {
-        						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
+        						$endbene_unknowncost += php72_num(str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]));
         					}
 							if(php72_cmp($endbene_unknowncost)==0){
 								$endbene_unknowncost ='';
@@ -22193,7 +22193,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_unknown_actual as $endbene_unknown) {
         						if ($endbene_unknown['month'] == $mn) {
         							$end_unknown = str_replace(',', '', $endbene_unknown['end_unknown']);
-        							$endbene_unknownactualcost += $end_unknown;
+        							$endbene_unknownactualcost += php72_num($end_unknown);
         						}
         					}
 							if(php72_cmp($endbene_unknownactualcost)==0){
@@ -22253,7 +22253,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_malemonths = explode('-', $arrlist);
         					$indirectj_malecost = 0;
         					foreach ($indirectj_male_target as $indirectj_male) {
-        						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
+        						$indirectj_malecost += php72_num(str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]));
         					}
 							if(php72_cmp($indirectj_malecost)==0){
 								$indirectj_malecost ='';
@@ -22268,7 +22268,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_male_actual as $indirectj_male) {
         						if ($indirectj_male['month'] == $mn) {
         							$indirect_male = str_replace(',', '', $indirectj_male['direct_male']);
-        							$indirectj_maleactualcost += $indirect_male;
+        							$indirectj_maleactualcost += php72_num($indirect_male);
         						}
         					}
 							if(php72_cmp($indirectj_maleactualcost)==0){
@@ -22328,7 +22328,7 @@ class Portfolio extends CI_Controller {
 							$Directj_femalemonths = explode('-', $arrlist);
 							$Directj_femalecost = 0;
 							foreach ($Directj_female_target as $Directj_female) {
-								$Directj_femalecost += str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]);
+								$Directj_femalecost += php72_num(str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]));
 							}
 							if(php72_cmp($Directj_femalecost)==0){
 								$Directj_femalecost ='';
@@ -22343,7 +22343,7 @@ class Portfolio extends CI_Controller {
 							foreach ($Directj_female_actual as $Directj_female) {
 								if ($Directj_female['month'] == $mn) {
 									$Direct_female = str_replace(',', '', $Directj_female['direct_female']);
-									$Directj_femaleactualcost += $Direct_female;
+									$Directj_femaleactualcost += php72_num($Direct_female);
 								}
 							}
 							if(php72_cmp($Directj_femaleactualcost)==0){
@@ -22402,7 +22402,7 @@ class Portfolio extends CI_Controller {
 						$Directj_othermonths = explode('-', $arrlist);
 						$Directj_othercost = 0;
 						foreach ($directj_other_target as $Directj_other) {
-							$Directj_othercost += str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]);
+							$Directj_othercost += php72_num(str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]));
 						}
 						if(php72_cmp($Directj_othercost)==0){
 							$Directj_othercost ='';
@@ -22417,7 +22417,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_other_actuals as $Directj_other) {
 							if ($Directj_other['month'] == $mn) {
 								$Direct_other = str_replace(',', '', $Directj_other['direct_other']);
-								$Directj_otheractualcost += $Direct_other;
+								$Directj_otheractualcost += php72_num($Direct_other);
 							}
 						}
 						if(php72_cmp($Directj_otheractualcost)==0){
@@ -22475,7 +22475,7 @@ class Portfolio extends CI_Controller {
 						$Directj_unknownmonths = explode('-', $arrlist);
 						$Directj_unknowncost = 0;
 						foreach ($directj_unknown_target as $Directj_unknown) {
-							$Directj_unknowncost += str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]);
+							$Directj_unknowncost += php72_num(str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]));
 						}
 						if(php72_cmp($Directj_unknowncost)==0){
 							$Directj_unknowncost ='';
@@ -22490,7 +22490,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_unknown_actuals as $Directj_unknown) {
 							if ($Directj_unknown['month'] == $mn) {
 								$Direct_unknown = str_replace(',', '', $Directj_unknown['direct_unknown']);
-								$Directj_unknownactualcost += $Direct_unknown;
+								$Directj_unknownactualcost += php72_num($Direct_unknown);
 							}
 						}
 						if(php72_cmp($Directj_unknownactualcost)==0){
@@ -22551,7 +22551,7 @@ class Portfolio extends CI_Controller {
 						$indirectj_male_idmonths = explode('-', $arrlist);
 						$indirectj_male_idcost = 0;
 						foreach ($indirectj_male_id_target as $indirectj_male_id) {
-							$indirectj_male_idcost += str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]);
+							$indirectj_male_idcost += php72_num(str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]));
 						}
 						if(php72_cmp($indirectj_male_idcost)==0){
 							$indirectj_male_idcost ='';
@@ -22625,7 +22625,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_femalemonths = explode('-', $arrlist);
         					$indirectj_femalecost = 0;
         					foreach ($indirectj_female_target as $indirectj_female) {
-        						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
+        						$indirectj_femalecost += php72_num(str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]));
         					}
 							if(php72_cmp($indirectj_femalecost)==0){
 								$indirectj_femalecost ='';
@@ -22640,7 +22640,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_female_actual as $indirectj_female) {
         						if ($indirectj_female['month'] == $mn) {
         							$indirect_female = str_replace(',', '', $indirectj_female['indirect_female']);
-        							$indirectj_femaleactualcost += $indirect_female;
+        							$indirectj_femaleactualcost += php72_num($indirect_female);
         						}
         					}
 							if(php72_cmp($indirectj_femaleactualcost)==0){
@@ -22696,7 +22696,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_othermonths = explode('-', $arrlist);
         					$indirectj_othercost = 0;
         					foreach ($indirectj_other_target as $indirectj_other) {
-        						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
+        						$indirectj_othercost += php72_num(str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]));
         					}
 							if(php72_cmp($indirectj_othercost)==0){
 								$indirectj_othercost ='';
@@ -22711,7 +22711,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_other_actual as $indirectj_other) {
         						if ($indirectj_other['month'] == $mn) {
         							$indirect_other = str_replace(',', '', $indirectj_other['indirect_other']);
-        							$indirectj_otheractualcost += $indirect_other;
+        							$indirectj_otheractualcost += php72_num($indirect_other);
         						}
         					}
 							if(php72_cmp($indirectj_otheractualcost)==0){
@@ -22770,7 +22770,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_unknownmonths = explode('-', $arrlist);
         					$indirectj_unknowncost = 0;
         					foreach ($indirectj_unknown_target as $indirectj_unknown) {
-        						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
+        						$indirectj_unknowncost += php72_num(str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]));
         					}
 							if(php72_cmp($indirectj_unknowncost)==0){
 								$indirectj_unknowncost ='';
@@ -22785,7 +22785,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_unknown_actual as $indirectj_unknown) {
         						if ($indirectj_unknown['month'] == $mn) {
         							$indirect_unknown = str_replace(',', '', $indirectj_unknown['indirect_unknown']);
-        							$indirectj_unknownactualcost += $indirect_unknown;
+        							$indirectj_unknownactualcost += php72_num($indirect_unknown);
         						}
         					}
 							if(php72_cmp($indirectj_unknownactualcost)==0){
@@ -23212,7 +23212,7 @@ class Portfolio extends CI_Controller {
 									'sumOfAmount' => $item['amount'],
 								);
 							} else {
-								$sums[$key]['sumOfAmount'] += $item['amount'];
+								$sums[$key]['sumOfAmount'] += php72_num($item['amount']);
 							}
 						}
 						
@@ -23252,7 +23252,7 @@ class Portfolio extends CI_Controller {
 											$seedtarmonth = date("M", mktime(0, 0, 0, $seedfn['month'], 1));
 											if ($seedfnmonths[0] == $seedtarmonth) {
 													if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-														$seedfncost += $seedfn['sumOfAmount'];
+														$seedfncost += php72_num($seedfn['sumOfAmount']);
 													}
 											}
 										}
@@ -23273,7 +23273,7 @@ class Portfolio extends CI_Controller {
 								foreach ($seedfn_actual as $seedfn) {
 									if ($seedfn['month'] == $mn) {
 										if(array_keys($outputArray)[$i] == $seedfn['program_name']){
-											$seedfnactualcost += str_replace(',', '', $seedfn['disburse_amount']);
+											$seedfnactualcost += php72_num(str_replace(',', '', $seedfn['disburse_amount']));
 										}
 										
 									}
@@ -23341,16 +23341,16 @@ class Portfolio extends CI_Controller {
         						foreach ($mentor_target as $mentor) {
 
         							if ($mentormonths[0] == 'Apr' || $mentormonths[0] == 'May' || $mentormonths[0] == 'Jun') {
-        								$mentorcost += $mentor['mentorq1'];
+        								$mentorcost += php72_num($mentor['mentorq1']);
         							}
         							if ($mentormonths[0] == 'Jul' || $mentormonths[0] == 'Aug' || $mentormonths[0] == 'Sep') {
-        								$mentorcost += $mentor['mentorq2'];
+        								$mentorcost += php72_num($mentor['mentorq2']);
         							}
         							if ($mentormonths[0] == 'Oct' || $mentormonths[0] == 'Nov' || $mentormonths[0] == 'Dec') {
-        								$mentorcost += $mentor['mentorq3'];
+        								$mentorcost += php72_num($mentor['mentorq3']);
         							}
         							if ($mentormonths[0] == 'Jan' || $mentormonths[0] == 'Feb' || $mentormonths[0] == 'Mar') {
-        								$mentorcost += $mentor['mentorq4'];
+        								$mentorcost += php72_num($mentor['mentorq4']);
         							}
         						}
         					} else {
@@ -23515,40 +23515,40 @@ class Portfolio extends CI_Controller {
 									}
 								
         							if (php72_cmp($mn) == 4) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['apr'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['may'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jun'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jul'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['aug'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['sep'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['oct'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['nov'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['dec'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['jan'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['feb'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$tot_mentorhractualcost[$mn] += $men_actual['mar'];
+        								$tot_mentorhractualcost[$mn] += php72_num($men_actual['mar']);
         							}
         						}
         					}
@@ -23744,40 +23744,40 @@ class Portfolio extends CI_Controller {
         							$swap = array_flip($headkey_achieve);
 
         							if (php72_cmp($mn) == 4) {
-        								$mentorhractualcost += $men_actual['apr'];
+        								$mentorhractualcost += php72_num($men_actual['apr']);
         							}
         							if (php72_cmp($mn) == 5) {
-        								$mentorhractualcost += $men_actual['may'];
+        								$mentorhractualcost += php72_num($men_actual['may']);
         							}
         							if (php72_cmp($mn) == 6) {
-        								$mentorhractualcost += $men_actual['jun'];
+        								$mentorhractualcost += php72_num($men_actual['jun']);
         							}
         							if (php72_cmp($mn) == 7) {
-        								$mentorhractualcost += $men_actual['jul'];
+        								$mentorhractualcost += php72_num($men_actual['jul']);
         							}
         							if (php72_cmp($mn) == 8) {
-        								$mentorhractualcost += $men_actual['aug'];
+        								$mentorhractualcost += php72_num($men_actual['aug']);
         							}
         							if (php72_cmp($mn) == 9) {
-        								$mentorhractualcost += $men_actual['sep'];
+        								$mentorhractualcost += php72_num($men_actual['sep']);
         							}
         							if (php72_cmp($mn) == 10) {
-        								$mentorhractualcost += $men_actual['oct'];
+        								$mentorhractualcost += php72_num($men_actual['oct']);
         							}
         							if (php72_cmp($mn) == 11) {
-        								$mentorhractualcost += $men_actual['nov'];
+        								$mentorhractualcost += php72_num($men_actual['nov']);
         							}
         							if (php72_cmp($mn) == 12) {
-        								$mentorhractualcost += $men_actual['dec'];
+        								$mentorhractualcost += php72_num($men_actual['dec']);
         							}
         							if (php72_cmp($mn) == 1) {
-        								$mentorhractualcost += $men_actual['jan'];
+        								$mentorhractualcost += php72_num($men_actual['jan']);
         							}
         							if (php72_cmp($mn) == 2) {
-        								$mentorhractualcost += $men_actual['feb'];
+        								$mentorhractualcost += php72_num($men_actual['feb']);
         							}
         							if (php72_cmp($mn) == 3) {
-        								$mentorhractualcost += $men_actual['mar'];
+        								$mentorhractualcost += php72_num($men_actual['mar']);
         							}
 									if(php72_cmp($mentorhractualcost)==0){
 										$mentorhractualcost ='';
@@ -23860,7 +23860,7 @@ class Portfolio extends CI_Controller {
 								if (php72_count($tap_target) > 0) {
 									foreach ($tap_target as $tap) {
 										if($tap_target[$i]['program_name'] == $tap['program_name']){
-										   $tapcost += $tap[strtolower($monthid)];
+										   $tapcost += php72_num($tap[strtolower($monthid)]);
 										
 										}
 									}
@@ -23982,16 +23982,16 @@ class Portfolio extends CI_Controller {
         							$dpcost = 0;
         							$dpvalues = json_decode($dp['dp_plan'], TRUE);
         							if ($dpmonths[0] == 'Jun') {
-        								$dpcost += str_replace(',', '', $dpvalues['q1']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q1']));
         							}
         							if ($dpmonths[0] == 'Sep') {
-        								$dpcost += str_replace(',', '', $dpvalues['q2']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q2']));
         							}
         							if ($dpmonths[0] == 'Dec') {
-        								$dpcost += str_replace(',', '', $dpvalues['q3']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q3']));
         							}
         							if ($dpmonths[0] == 'Mar') {
-        								$dpcost += str_replace(',', '', $dpvalues['q4']);
+        								$dpcost += php72_num(str_replace(',', '', $dpvalues['q4']));
         							}
         						}
         					} else {
@@ -24011,7 +24011,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($dp_actual as $dp) {
         						if ($dp['month'] == $mn) {
-        							$dpactualcost += str_replace(',', '', $dp['dps']);
+        							$dpactualcost += php72_num(str_replace(',', '', $dp['dps']));
         						}
         					}
 							if(php72_cmp($dpactualcost)==0){
@@ -24072,16 +24072,16 @@ class Portfolio extends CI_Controller {
         							$dpexcost = 0;
         							$dpexvalues = json_decode($dpex['dp_external'], TRUE);
         							if ($dpexmonths[0] == 'Jun') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q1']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q1']));
         							}
         							if ($dpexmonths[0] == 'Sep') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q2']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q2']));
         							}
         							if ($dpexmonths[0] == 'Dec') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q3']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q3']));
         							}
         							if ($dpexmonths[0] == 'Mar') {
-        								$dpexcost += str_replace(',', '', $dpexvalues['q4']);
+        								$dpexcost += php72_num(str_replace(',', '', $dpexvalues['q4']));
         							}
         						}
         					} else {
@@ -24158,7 +24158,7 @@ class Portfolio extends CI_Controller {
         					$revcost = 0;
         					foreach ($rev_target as $revs) {
         						$datavalues = json_decode($revs['data'], TRUE);
-        						$revcost += str_replace(',', '', $datavalues[$yearvalues[0]]);
+        						$revcost += php72_num(str_replace(',', '', $datavalues[$yearvalues[0]]));
         					}
 							if(php72_cmp($revcost)==0){
 								$revcost ='';
@@ -24172,7 +24172,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($rev_actual as $revs) {
         						if ($revs['month'] == $mn) {
-        							$revactualcost += str_replace(',', '', $revs['revenue']);
+        							$revactualcost += php72_num(str_replace(',', '', $revs['revenue']));
         						}
         					}
 							if(php72_cmp($revactualcost)==0){
@@ -24240,7 +24240,7 @@ class Portfolio extends CI_Controller {
         					$salescost = 0;
         					foreach ($sales_target as $sales) {
         						$salesvalues = json_decode($sales['value'], TRUE);
-        						$salescost += str_replace(',', '', $salesvalues[$salesmonths[0]]);
+        						$salescost += php72_num(str_replace(',', '', $salesvalues[$salesmonths[0]]));
         					}
 							if(php72_cmp($salescost)==0){
 								$salescost ='';
@@ -24254,7 +24254,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($sales_actual as $sales) {
         						if ($sales['month'] == $mn) {
-        							$salesactualcost += str_replace(',', '', $sales['value']);
+        							$salesactualcost += php72_num(str_replace(',', '', $sales['value']));
         						}
         					}
 							if(php72_cmp($salesactualcost)==0){
@@ -24379,7 +24379,7 @@ class Portfolio extends CI_Controller {
         					$profcost = 0;
         					foreach ($prof_target as $profs) {
         						$profvalues = json_decode($profs['data'], TRUE);
-        						$profcost += str_replace(',', '', $profvalues[$profmonths[0]]);
+        						$profcost += php72_num(str_replace(',', '', $profvalues[$profmonths[0]]));
         					}
 							if(php72_cmp($profcost)==0){
 								$profcost ='';
@@ -24393,7 +24393,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($prof_actual as $profs) {
         						if ($profs['month'] == $mn) {
-        							$profactualcost += str_replace(',', '', $profs['net_profit']);
+        							$profactualcost += php72_num(str_replace(',', '', $profs['net_profit']));
         						}
         					}
 							if(php72_cmp($profactualcost)==0){
@@ -24454,16 +24454,16 @@ class Portfolio extends CI_Controller {
         							$fundcost = 0;
         							$fundvalues = json_decode($fund['data'], TRUE);
         							if ($fundmonths[0] == 'Jun') {
-        								$fundcost += str_replace(',', '', $fundvalues['qone']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qone']));
         							}
         							if ($fundmonths[0] == 'Sep') {
-        								$fundcost += str_replace(',', '', $fundvalues['qtwo']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qtwo']));
         							}
         							if ($fundmonths[0] == 'Dec') {
-        								$fundcost += str_replace(',', '', $fundvalues['qthree']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qthree']));
         							}
         							if ($fundmonths[0] == 'Mar') {
-        								$fundcost += str_replace(',', '', $fundvalues['qfour']);
+        								$fundcost += php72_num(str_replace(',', '', $fundvalues['qfour']));
         							}
         						}
         					} else {
@@ -24485,7 +24485,7 @@ class Portfolio extends CI_Controller {
         							$actual_grand = str_replace(',', '', $fund['grand_total']);
         							$actual_short = str_replace(',', '', $fund['short_total']);
         							$actual_long = str_replace(',', '', $fund['long_total']);
-        							$fundactualcost += $actual_equity + $actual_grand + $actual_short + $actual_long;
+        							$fundactualcost += php72_num($actual_equity) + php72_num($actual_grand) + php72_num($actual_short) + php72_num($actual_long);
         						}
         					}
 							if(php72_cmp($fundactualcost)==0){
@@ -24542,7 +24542,7 @@ class Portfolio extends CI_Controller {
         					$endbenemonths = explode('-', $arrlist);
         					$endbenecost = 0;
         					foreach ($endbene_target as $endbene) {
-        						$endbenecost += str_replace(',', '', $endbene[strtolower($endbenemonths[0])]);
+        						$endbenecost += php72_num(str_replace(',', '', $endbene[strtolower($endbenemonths[0])]));
         					}
 							if(php72_cmp($endbenecost)==0){
 								$endbenecost ='';
@@ -24556,7 +24556,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_actual as $endbene) {
         						if ($endbene['month'] == $mn) {
-        							$endbeneactualcost += str_replace(',', '', $endbene['end_male']);
+        							$endbeneactualcost += php72_num(str_replace(',', '', $endbene['end_male']));
         						}
         					}
 							if(php72_cmp($endbeneactualcost)==0){
@@ -24617,7 +24617,7 @@ class Portfolio extends CI_Controller {
         					$endbene_femalemonths = explode('-', $arrlist);
         					$endbene_femalecost = 0;
         					foreach ($endbene_female_target as $endbene_female) {
-        						$endbene_femalecost += str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]);
+        						$endbene_femalecost += php72_num(str_replace(',', '', $endbene_female[strtolower($endbene_femalemonths[0])]));
         					}
 							if(php72_cmp($endbene_femalecost)==0){
 								$endbene_femalecost ='';
@@ -24633,7 +24633,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_female_actual as $endbene_female) {
         						if ($endbene_female['month'] == $mn) {
-        							$endbene_femaleactualcost += str_replace(',', '', $endbene_female['end_female']);
+        							$endbene_femaleactualcost += php72_num(str_replace(',', '', $endbene_female['end_female']));
         						}
         					}
 							if(php72_cmp($endbene_femaleactualcost)==0){
@@ -24693,7 +24693,7 @@ class Portfolio extends CI_Controller {
         					$endbene_othermonths = explode('-', $arrlist);
         					$endbene_othercost = 0;
         					foreach ($endbene_other_target as $endbene_other) {
-        						$endbene_othercost += str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]);
+        						$endbene_othercost += php72_num(str_replace(',', '', $endbene_other[strtolower($endbene_othermonths[0])]));
         					}
 							if(php72_cmp($endbene_othercost)==0){
 								$endbene_othercost ='';
@@ -24708,7 +24708,7 @@ class Portfolio extends CI_Controller {
         					$swap = array_flip($headkey_achieve);
         					foreach ($endbene_other_actual as $endbene_other) {
         						if ($endbene_other['month'] == $mn) {
-        							$endbene_otheractualcost += str_replace(',', '', $endbene_other['end_other']);
+        							$endbene_otheractualcost += php72_num(str_replace(',', '', $endbene_other['end_other']));
         						}
         					}
 							if(php72_cmp($endbene_otheractualcost)==0){
@@ -24766,7 +24766,7 @@ class Portfolio extends CI_Controller {
         					$endbene_unknownmonths = explode('-', $arrlist);
         					$endbene_unknowncost = 0;
         					foreach ($endbene_unknown_target as $endbene_unknown) {
-        						$endbene_unknowncost += str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]);
+        						$endbene_unknowncost += php72_num(str_replace(',', '', $endbene_unknown[strtolower($endbene_unknownmonths[0])]));
         					}
 							if(php72_cmp($endbene_unknowncost)==0){
 								$endbene_unknowncost ='';
@@ -24780,7 +24780,7 @@ class Portfolio extends CI_Controller {
         					foreach ($endbene_unknown_actual as $endbene_unknown) {
         						if ($endbene_unknown['month'] == $mn) {
         							$end_unknown = str_replace(',', '', $endbene_unknown['end_unknown']);
-        							$endbene_unknownactualcost += $end_unknown;
+        							$endbene_unknownactualcost += php72_num($end_unknown);
         						}
         					}
 							if(php72_cmp($endbene_unknownactualcost)==0){
@@ -24840,7 +24840,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_malemonths = explode('-', $arrlist);
         					$indirectj_malecost = 0;
         					foreach ($indirectj_male_target as $indirectj_male) {
-        						$indirectj_malecost += str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]);
+        						$indirectj_malecost += php72_num(str_replace(',', '', $indirectj_male[strtolower($indirectj_malemonths[0])]));
         					}
 							if(php72_cmp($indirectj_malecost)==0){
 								$indirectj_malecost ='';
@@ -24855,7 +24855,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_male_actual as $indirectj_male) {
         						if ($indirectj_male['month'] == $mn) {
         							$indirect_male = str_replace(',', '', $indirectj_male['direct_male']);
-        							$indirectj_maleactualcost += $indirect_male;
+        							$indirectj_maleactualcost += php72_num($indirect_male);
         						}
         					}
 							if(php72_cmp($indirectj_maleactualcost)==0){
@@ -24916,7 +24916,7 @@ class Portfolio extends CI_Controller {
 							$Directj_femalemonths = explode('-', $arrlist);
 							$Directj_femalecost = 0;
 							foreach ($Directj_female_target as $Directj_female) {
-								$Directj_femalecost += str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]);
+								$Directj_femalecost += php72_num(str_replace(',', '', $Directj_female[strtolower($Directj_femalemonths[0])]));
 							}
 							if(php72_cmp($Directj_femalecost)==0){
 								$Directj_femalecost ='';
@@ -24931,7 +24931,7 @@ class Portfolio extends CI_Controller {
 							foreach ($Directj_female_actual as $Directj_female) {
 								if ($Directj_female['month'] == $mn) {
 									$Direct_female = str_replace(',', '', $Directj_female['direct_female']);
-									$Directj_femaleactualcost += $Direct_female;
+									$Directj_femaleactualcost += php72_num($Direct_female);
 								}
 							}
 							if(php72_cmp($Directj_femaleactualcost)==0){
@@ -24990,7 +24990,7 @@ class Portfolio extends CI_Controller {
 						$Directj_othermonths = explode('-', $arrlist);
 						$Directj_othercost = 0;
 						foreach ($directj_other_target as $Directj_other) {
-							$Directj_othercost += str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]);
+							$Directj_othercost += php72_num(str_replace(',', '', $Directj_other[strtolower($Directj_othermonths[0])]));
 						}
 						if(php72_cmp($Directj_othercost)==0){
 							$Directj_othercost ='';
@@ -25005,7 +25005,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_other_actuals as $Directj_other) {
 							if ($Directj_other['month'] == $mn) {
 								$Direct_other = str_replace(',', '', $Directj_other['direct_other']);
-								$Directj_otheractualcost += $Direct_other;
+								$Directj_otheractualcost += php72_num($Direct_other);
 							}
 						}
 						if(php72_cmp($Directj_otheractualcost)==0){
@@ -25063,7 +25063,7 @@ class Portfolio extends CI_Controller {
 						$Directj_unknownmonths = explode('-', $arrlist);
 						$Directj_unknowncost = 0;
 						foreach ($directj_unknown_target as $Directj_unknown) {
-							$Directj_unknowncost += str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]);
+							$Directj_unknowncost += php72_num(str_replace(',', '', $Directj_unknown[strtolower($Directj_unknownmonths[0])]));
 						}
 						if(php72_cmp($Directj_unknowncost)==0){
 							$Directj_unknowncost ='';
@@ -25078,7 +25078,7 @@ class Portfolio extends CI_Controller {
 						foreach ($directj_unknown_actuals as $Directj_unknown) {
 							if ($Directj_unknown['month'] == $mn) {
 								$Direct_unknown = str_replace(',', '', $Directj_unknown['direct_unknown']);
-								$Directj_unknownactualcost += $Direct_unknown;
+								$Directj_unknownactualcost += php72_num($Direct_unknown);
 							}
 						}
 						if(php72_cmp($Directj_unknownactualcost)==0){
@@ -25139,7 +25139,7 @@ class Portfolio extends CI_Controller {
 						$indirectj_male_idmonths = explode('-', $arrlist);
 						$indirectj_male_idcost = 0;
 						foreach ($indirectj_male_id_target as $indirectj_male_id) {
-							$indirectj_male_idcost += str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]);
+							$indirectj_male_idcost += php72_num(str_replace(',', '', $indirectj_male_id[strtolower($indirectj_male_idmonths[0])]));
 						}
 						if(php72_cmp($indirectj_male_idcost)==0){
 							$indirectj_male_idcost ='';
@@ -25213,7 +25213,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_femalemonths = explode('-', $arrlist);
         					$indirectj_femalecost = 0;
         					foreach ($indirectj_female_target as $indirectj_female) {
-        						$indirectj_femalecost += str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]);
+        						$indirectj_femalecost += php72_num(str_replace(',', '', $indirectj_female[strtolower($indirectj_femalemonths[0])]));
         					}
 							if(php72_cmp($indirectj_femalecost)==0){
 								$indirectj_femalecost ='';
@@ -25228,7 +25228,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_female_actual as $indirectj_female) {
         						if ($indirectj_female['month'] == $mn) {
         							$indirect_female = str_replace(',', '', $indirectj_female['indirect_female']);
-        							$indirectj_femaleactualcost += $indirect_female;
+        							$indirectj_femaleactualcost += php72_num($indirect_female);
         						}
         					}
 							if(php72_cmp($indirectj_femaleactualcost)==0){
@@ -25284,7 +25284,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_othermonths = explode('-', $arrlist);
         					$indirectj_othercost = 0;
         					foreach ($indirectj_other_target as $indirectj_other) {
-        						$indirectj_othercost += str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]);
+        						$indirectj_othercost += php72_num(str_replace(',', '', $indirectj_other[strtolower($indirectj_othermonths[0])]));
         					}
 							if(php72_cmp($indirectj_othercost)==0){
 								$indirectj_othercost ='';
@@ -25299,7 +25299,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_other_actual as $indirectj_other) {
         						if ($indirectj_other['month'] == $mn) {
         							$indirect_other = str_replace(',', '', $indirectj_other['indirect_other']);
-        							$indirectj_otheractualcost += $indirect_other;
+        							$indirectj_otheractualcost += php72_num($indirect_other);
         						}
         					}
 							if(php72_cmp($indirectj_otheractualcost)==0){
@@ -25358,7 +25358,7 @@ class Portfolio extends CI_Controller {
         					$indirectj_unknownmonths = explode('-', $arrlist);
         					$indirectj_unknowncost = 0;
         					foreach ($indirectj_unknown_target as $indirectj_unknown) {
-        						$indirectj_unknowncost += str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]);
+        						$indirectj_unknowncost += php72_num(str_replace(',', '', $indirectj_unknown[strtolower($indirectj_unknownmonths[0])]));
         					}
 							if(php72_cmp($indirectj_unknowncost)==0){
 								$indirectj_unknowncost ='';
@@ -25373,7 +25373,7 @@ class Portfolio extends CI_Controller {
         					foreach ($indirectj_unknown_actual as $indirectj_unknown) {
         						if ($indirectj_unknown['month'] == $mn) {
         							$indirect_unknown = str_replace(',', '', $indirectj_unknown['indirect_unknown']);
-        							$indirectj_unknownactualcost += $indirect_unknown;
+        							$indirectj_unknownactualcost += php72_num($indirect_unknown);
         						}
         					}
 							if(php72_cmp($indirectj_unknownactualcost)==0){

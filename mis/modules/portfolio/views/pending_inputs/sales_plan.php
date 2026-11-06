@@ -158,10 +158,10 @@
                                                 foreach ($approved_sales as $sales) {
                                                     $get_mnth = $actual_month[$current_month];
                                                     $get_volume = json_decode($sales['value']);
-                                                    $month_volume += str_replace(',', '', $get_volume->$get_mnth);
+                                                    $month_volume += php72_num(str_replace(',', '', $get_volume->$get_mnth));
                                                     foreach ($get_volume as $volume) {
                                                         $total = str_replace(',', '', $volume);
-                                                        $tot_volume += $total;
+                                                        $tot_volume += php72_num($total);
                                                     }
                                                 }
                                             }
