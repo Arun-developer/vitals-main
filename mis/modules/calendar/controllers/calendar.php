@@ -4,6 +4,15 @@
 
 class Calendar extends CI_Controller
 {
+    /**
+     * PHP 8 no longer runs the PHP 4-style constructor Calendar() when the controller is created,
+     * so it is called from __construct() (same behaviour as PHP 7).
+     */
+    public function __construct()
+    {
+        $this->Calendar();
+    }
+
     public function Calendar()
     {
         parent::__construct();

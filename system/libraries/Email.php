@@ -88,6 +88,14 @@ class CI_Email {
      *
      * The constructor can be passed an array of config values
      */
+    /**
+     * PHP 8 no longer runs the PHP 4-style constructor CI_Email() when the object is created,
+     * so it is called from __construct() (same behaviour as PHP 7).
+     */
+    public function __construct($config = array()) {
+        $this->CI_Email($config);
+    }
+
     function CI_Email($config = array()) {
         if (count($config) > 0) {
             $this->initialize($config);
